@@ -1,0 +1,516 @@
+{
+    "pools": [
+      {
+        "rolls": {
+          "min": 1,
+          "max": 2
+        },
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:golden_apple",
+            "weight": 15
+          },
+          {
+            "type": "item",
+            "name": "minecraft:appleEnchanted",
+            "weight": 2
+          },
+          {
+            "type": "item",
+            "name": "minecraft:record_far",
+            "weight": 15
+          },
+          {
+            "type": "item",
+            "name": "minecraft:record_blocks",
+            "weight": 15
+          },
+          {
+            "type": "item",
+            "name": "minecraft:record_otherside",
+            "weight": 2
+          },
+          {
+            "type": "item",
+            "name": "minecraft:name_tag",
+            "weight": 20
+          },
+          {
+            "type": "item",
+            "name": "minecraft:book",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "enchant_randomly"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rolls": {
+          "min": 1,
+          "max": 4
+        },
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:amethyst_shard",
+            "weight": 13,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 3,
+                  "max": 9
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:iron_ingot",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 4
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:gold_ingot",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 4
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:bread",
+            "weight": 20
+          },
+          {
+            "type": "item",
+            "name": "minecraft:snowball",
+            "weight": 20,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 4
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:bucket",
+            "weight": 10
+          },
+          {
+            "type": "item",
+            "name": "minecraft:redstone",
+            "weight": 15,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 4
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:coal",
+            "weight": 7,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 4
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:melon_seeds",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 2,
+                  "max": 4
+                }
+              }
+            ],
+            "weight": 10
+          },
+          {
+            "type": "item",
+            "name": "minecraft:pumpkin_seeds",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 2,
+                  "max": 4
+                }
+              }
+            ],
+            "weight": 10
+          },
+          {
+            "type": "item",
+            "name": "minecraft:beetroot_seeds",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 2,
+                  "max": 4
+                }
+              }
+            ],
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "rolls": 3,
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:bone",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 8
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:gunpowder",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 8
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:ice",
+            "weight": 15,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 8
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:packed_ice",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 8
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:blue_ice",
+            "weight": 10,
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 1,
+                  "max": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rolls": {
+          "min": 0,
+          "max": 2
+        },
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:experience_bottle",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 2,
+                  "max": 5
+                }
+              }
+            ],
+            "weight": 5
+          },
+          {
+            "type": "item",
+            "name": "minecraft:potion",
+            "weight": 7,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 21
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:splash_potion",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 21
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:potion",
+            "weight": 7,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 22
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:splash_potion",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 22
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:potion",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 14
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:splash_potion",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 15
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:potion",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 17
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:splash_potion",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 17
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:potion",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 18
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:splash_potion",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "set_data",
+                "data": 18
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rolls": {
+          "min": 0,
+          "max": 2
+        },
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:arrow",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 5,
+                  "max": 12
+                }
+              }
+            ],
+            "weight": 10
+          },
+          {
+            "type": "item",
+            "name": "minecraft:arrow",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 5,
+                  "max": 12
+                }
+              },
+              {
+                "function": "set_data",
+                "data": 18
+              }
+            ],
+            "weight": 10
+          },
+          {
+            "type": "item",
+            "name": "minecraft:arrow",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                  "min": 5,
+                  "max": 12
+                }
+              },
+              {
+                "function": "set_data",
+                "data": 19
+              }
+            ],
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "empty",
+            "weight": 7
+          },
+          {
+            "type": "item",
+            "name": "minere:amethyst_staff",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "empty",
+            "weight": 12
+          },
+          {
+            "type": "item",
+            "weight": 1,
+            "functions": [
+              {
+                "function": "specific_enchants",
+                "enchants": [
+                  {
+                    "id": "frost_walker",
+                    "level": 1
+                  }
+                ]
+              }
+            ],
+            "name": "minecraft:book"
+          },
+          {
+            "type": "item",
+            "weight": 1,
+            "functions": [
+              {
+                "function": "specific_enchants",
+                "enchants": [
+                  {
+                    "id": "frost_walker",
+                    "level": 2
+                  }
+                ]
+              }
+            ],
+            "name": "minecraft:book"
+          }
+        ]
+      }
+    ]
+  }

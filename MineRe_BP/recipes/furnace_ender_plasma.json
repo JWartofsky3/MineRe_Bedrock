@@ -1,0 +1,13 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+    "identifier": "minere:furnace_ender_plasma"
+    },
+
+    
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:ender_plasma_ore",
+    "output": "minere:ender_plasma"
+  }
+}

@@ -1,0 +1,161 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.minere.lizord",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "lizord",
+					"pivot": [0, 7.5, -1]
+				},
+				{
+					"name": "tail",
+					"parent": "lizord",
+					"pivot": [0, 6.5, 7],
+					"cubes": [
+						{"origin": [-2, 4.5, 7], "size": [4, 4, 9], "uv": [35, 15]}
+					]
+				},
+				{
+					"name": "front_left_leg",
+					"parent": "lizord",
+					"pivot": [4, 8.5, -3],
+					"cubes": [
+						{"origin": [4, -0.5, -5], "size": [4, 10, 4], "pivot": [4, 8.5, -3], "rotation": [0, 0, -17.5], "uv": [40, 41]}
+					]
+				},
+				{
+					"name": "front_right_leg",
+					"parent": "lizord",
+					"pivot": [-4, 8.5, -3],
+					"cubes": [
+						{"origin": [-8, -0.5, -5], "size": [4, 10, 4], "pivot": [-4, 8.5, -3], "rotation": [0, 0, 17.5], "uv": [0, 45]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "lizord",
+					"pivot": [0, 9.5, -3],
+					"cubes": [
+						{"origin": [-5, 6.5, -14], "size": [10, 9, 12], "uv": [0, 24]}
+					]
+				},
+				{
+					"name": "right_frill",
+					"parent": "head",
+					"pivot": [-5, 9.5, -11],
+					"cubes": [
+						{
+							"origin": [-5, 9.5, -11],
+							"size": [0, 3, 8],
+							"pivot": [-5, 9.5, -11],
+							"rotation": [0, -12.5, 0],
+							"uv": {
+								"north": {"uv": [40, 30], "uv_size": [0, 3]},
+								"east": {"uv": [32, 30], "uv_size": [8, 3]},
+								"south": {"uv": [48, 30], "uv_size": [0, 3]},
+								"west": {"uv": [40, 30], "uv_size": [-8, 3]},
+								"up": {"uv": [40, 22], "uv_size": [0, 8]},
+								"down": {"uv": [40, 30], "uv_size": [0, -8]}
+							}
+						}
+					]
+				},
+				{
+					"name": "top_frill",
+					"parent": "head",
+					"pivot": [1.5, 15.5, -11],
+					"cubes": [
+						{
+							"origin": [-1.5, 15.5, -11],
+							"size": [3, 0.01, 8],
+							"pivot": [1.5, 15.5, -11],
+							"rotation": [12.5, 0, 0],
+							"uv": {
+								"north": {"uv": [8, 8], "uv_size": [3, 0]},
+								"east": {"uv": [0, 8], "uv_size": [8, 0]},
+								"south": {"uv": [19, 8], "uv_size": [3, 0]},
+								"west": {"uv": [11, 8], "uv_size": [8, 0]},
+								"up": {"uv": [8, 0], "uv_size": [3, 8]},
+								"down": {"uv": [8, 8], "uv_size": [3, -8]}
+							}
+						}
+					]
+				},
+				{
+					"name": "left_frill",
+					"parent": "head",
+					"pivot": [5, 9.5, -11],
+					"cubes": [
+						{
+							"origin": [4.99, 9.5, -11],
+							"size": [0.01, 3, 8],
+							"pivot": [5, 9.5, -11],
+							"rotation": [0, 12.5, 0],
+							"uv": {
+								"north": {"uv": [40, 30], "uv_size": [0, 3]},
+								"east": {"uv": [32, 30], "uv_size": [8, 3]},
+								"south": {"uv": [48, 30], "uv_size": [0, 3]},
+								"west": {"uv": [40, 30], "uv_size": [-8, 3]},
+								"up": {"uv": [40, 22], "uv_size": [0, 8]},
+								"down": {"uv": [40, 30], "uv_size": [0, -8]}
+							}
+						}
+					]
+				},
+				{
+					"name": "body",
+					"parent": "lizord",
+					"pivot": [0, -1.5, 0],
+					"cubes": [
+						{"origin": [-4, 2.5, -7], "size": [8, 10, 14], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body_frill",
+					"parent": "body",
+					"pivot": [1.5, 12.5, 1],
+					"cubes": [
+						{
+							"origin": [-1.5, 12.5, 1],
+							"size": [3, 0.01, 8],
+							"pivot": [1.5, 12.5, 1],
+							"rotation": [12.5, 0, 0],
+							"uv": {
+								"north": {"uv": [8, 8], "uv_size": [3, 0]},
+								"east": {"uv": [0, 8], "uv_size": [8, 0]},
+								"south": {"uv": [19, 8], "uv_size": [3, 0]},
+								"west": {"uv": [11, 8], "uv_size": [8, 0]},
+								"up": {"uv": [8, 0], "uv_size": [3, 8]},
+								"down": {"uv": [8, 8], "uv_size": [3, -8]}
+							}
+						}
+					]
+				},
+				{
+					"name": "right_rear_leg",
+					"parent": "lizord",
+					"pivot": [-4, 8.5, 6],
+					"cubes": [
+						{"origin": [-8, -0.5, 4], "size": [4, 10, 4], "pivot": [-4, 8.5, 6], "rotation": [0, 0, 17.5], "uv": [16, 45]}
+					]
+				},
+				{
+					"name": "rear_left_leg",
+					"parent": "lizord",
+					"pivot": [4, 8.5, 6],
+					"cubes": [
+						{"origin": [4, -0.5, 4], "size": [4, 10, 4], "pivot": [4, 8.5, 6], "rotation": [0, 0, -17.5], "uv": [30, 0]}
+					]
+				}
+			]
+		}
+	]
+}

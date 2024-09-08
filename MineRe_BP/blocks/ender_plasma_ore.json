@@ -1,0 +1,27 @@
+{
+    "format_version": "1.20.60",
+    "minecraft:block": {
+      "description": {
+        "identifier": "minere:ender_plasma_ore",
+        "menu_category": {
+          "is_hidden_in_commands": false,
+          "category": "nature"
+        }
+      },
+      "components": {
+        "minecraft:destructible_by_mining": {
+          "seconds_to_destroy": 1.0
+        },
+        "minecraft:material_instances": {
+          "*": {
+            "texture": "ender_plasma_ore"
+          }
+        },
+        "minecraft:destructible_by_explosion": {
+          "explosion_resistance": 4
+        },
+        "minecraft:map_color": "#EEF6B4",
+        "minecraft:loot": "loot_tables/blocks/ender_plasma_ore.json"
+      }
+    }
+  }

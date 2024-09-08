@@ -1,0 +1,111 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:gremlin",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:height_filter": {
+          "min": -63,
+          "max": -24
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:weight": {
+          "default": 20
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 4
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag", "operator": "==", "value": "monster"
+        }
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:height_filter": {
+          "min": -24,
+          "max": 0
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:weight": {
+          "default": 10
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 4
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag", "operator": "==", "value": "monster"
+        }
+      },
+      {
+        "minecraft:spawns_underground": {
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 11,
+          "adjust_for_weather": true
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+
+        "minecraft:weight": {
+          "default": 9
+        },
+        
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 4
+        },
+        "minecraft:density_limit": {
+          "underground": 8
+        },
+        "minecraft:biome_filter": {
+            "test": "has_biome_tag", "operator": "==", "value": "warped_forest"
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 11,
+          "adjust_for_weather": true
+        },
+        "minecraft:weight": {
+          "default": 10
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 4
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag", "operator": "==", "value": "the_end"
+          }
+        ]
+      }
+    ]
+  }
+}

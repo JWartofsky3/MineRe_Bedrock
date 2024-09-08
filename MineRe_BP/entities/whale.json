@@ -1,0 +1,193 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:whale",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "minere:whale_baby": {
+        "minecraft:health": {
+          "value": 120,
+          "max": 120
+        },
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:ageable": {
+          "duration": 5000,
+          "feed_items": [
+            "kelp"
+          ],
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 5,
+          "speed_multiplier": 1.2
+        },
+        "minecraft:movement": {
+          "value": 0.25
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.25
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0.5
+        },
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? Math.Random(7,15) : 0"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/whale/whale_baby.json"
+        }
+      },
+      "minere:whale_adult": {
+        "minecraft:health": {
+          "value": 200,
+          "max": 200
+        },
+        "minecraft:scale": {
+          "value": 1
+        },
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.2
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0.9
+        },
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? Math.Random(15,40) : 0"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/whale/whale.json"
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:type_family": {
+        "family": [
+          "whale"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 6,
+        "height": 5
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 2000,
+        "breathes_air": false,
+        "breathes_water": true,
+        "breathes_solids": true
+      },
+      "minecraft:navigation.generic": {
+        "is_amphibious": false,
+        "can_path_over_water": false,
+        "can_swim": true,
+        "can_walk": false,
+        "can_breach": true,
+        "can_sink": false
+      },
+      "minecraft:physics": {
+        "has_gravity": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement.sway": {
+        "sway_amplitude": 0.01
+      },
+      "minecraft:behavior.swim_idle": {
+        "priority": 5,
+        "idle_time": 5,
+        "success_rate": 0.01
+      },
+      "minecraft:behavior.random_swim": {
+        "priority": 3,
+        "speed_multiplier": 1,
+        "xz_dist": 64,
+        "y_dist": 8,
+        "interval": 0
+      },
+      "minecraft:behavior.swim_wander": {
+        "priority": 4,
+        "interval": 0.03,
+        "look_ahead": 16,
+        "speed_multiplier": 1,
+        "wander_time": 5
+      },
+      "minecraft:nameable": {},
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 9,
+            "trigger": "minecraft:spawn_adult"
+          },
+          {
+            "weight": 1,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "minere:whale_baby"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:entity_born": {
+        "remove": {},
+        "add": {
+          "component_groups": [
+            "minere:whale_baby"
+          ]
+        }
+      },
+      "minecraft:ageable_grow_up": {
+        "remove": {
+          "component_groups": [
+            "minere:whale_baby"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minere:whale_adult"
+          ]
+        }
+      },
+      "minecraft:spawn_adult": {
+        "add": {
+          "component_groups": [
+            "minere:whale_adult"
+          ]
+        }
+      }
+    }
+  }
+}

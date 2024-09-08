@@ -1,0 +1,156 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:plasma_bolt",
+      "runtime_identifier": "minecraft:arrow",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "minecraft:exploding": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 1.85,
+          "causes_fire": true,
+          "fire_affected_by_griefing": true,
+          "destroy_affected_by_griefing": true
+        }
+      },
+      "minere:laser": {
+        "minecraft:projectile": {
+          "on_hit": {
+            "impact_damage": {
+              "damage": 8,
+              "knockback": false,
+              "semi_random_diff_damage": false
+            },
+            "definition_event": {
+              "affect_projectile": true,
+              "event_trigger": {
+                "event": "minecraft:explode",
+                "target": "self"
+              }
+            }
+          },
+          "power": 3.0,
+          "gravity": 0,
+          "inertia": 1,
+          "liquid_inertia": 1,
+          "uncertainty_base": 0,
+          "uncertainty_multiplier": 0,
+          "anchor": 2,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "catch_fire": false
+        }
+      },
+      "minere:walker_laser": {
+        "minecraft:projectile": {
+          "on_hit": {
+            "impact_damage": {
+              "damage": 8,
+              "knockback": false,
+              "semi_random_diff_damage": false
+            },
+            "definition_event": {
+              "affect_projectile": true,
+              "event_trigger": {
+                "event": "minecraft:explode",
+                "target": "self"
+              }
+            }
+          },
+          "power": 3.0,
+          "gravity": 0,
+          "inertia": 1,
+          "liquid_inertia": 1,
+          "uncertainty_base": 0,
+          "uncertainty_multiplier": 0,
+          "anchor": 2,
+          "offset": [
+            0,
+            2.3,
+            0
+          ],
+          "catch_fire": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 1,
+        "height": 0.5
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 80,
+          "max_dropped_ticks": 7,
+          "use_motion_prediction_hints": true
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "walker"
+            },
+            "add": {
+              "component_groups": [
+                "minere:walker_laser"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "operator": "not",
+              "value": "walker"
+            },
+            "add": {
+              "component_groups": [
+                "minere:laser"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:explode": {
+        "add": {
+          "component_groups": [
+            "minecraft:exploding"
+          ]
+        }
+      }
+    }
+  }
+}

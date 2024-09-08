@@ -1,0 +1,156 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:wooden_sword",
+            "weight": 5,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:wooden_axe",
+            "weight": 4,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:stone_axe",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:iron_sword",
+            "weight": 3,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:iron_axe",
+            "weight": 2,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:iron_shovel",
+            "weight": 2,
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:leather_helmet",
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "name": "minecraft:iron_helmet",
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 0.2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

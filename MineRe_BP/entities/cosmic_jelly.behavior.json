@@ -1,0 +1,256 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+	  "description": {
+		"identifier": "minere:cosmic_jelly",
+		"is_spawnable": true,
+		"is_summonable": true,
+		"is_experimental": false
+	  },
+	  "component_groups": {
+		"minere:jelly_float": {
+		  "minecraft:behavior.float_wander": {
+			"priority": 2,
+			"must_reach": true,
+			"y_offset": 0
+		  }
+		},
+		"minere:jelly_float_up": {
+		  "minecraft:behavior.float_wander": {
+			"priority": 2,
+			"must_reach": true,
+			"y_offset": 8
+		  }
+		},
+		"minere:jelly_float_down": {
+		  "minecraft:behavior.float_wander": {
+			"priority": 2,
+			"must_reach": true,
+			"y_offset": -8
+		  }
+		}
+	  },
+	  "components": {
+		"minecraft:is_hidden_when_invisible": {},
+		"minecraft:experience_reward": {
+		  "on_death": "query.last_hit_by_player?30:0"
+		},
+		"minecraft:breathable": {
+		  "total_supply": 15,
+		  "suffocate_time": 0
+		},
+		"minecraft:fire_immune": {},
+		"minecraft:nameable": {},
+		"minecraft:health": {
+		  "value": 20,
+		  "max": 20
+		},
+		"minecraft:collision_box": {
+		  "width": 7,
+		  "height": 7
+		},
+		"minecraft:movement": {
+		  "value": 0.03
+		},
+		"minecraft:navigation.float": {
+		  "can_path_over_water": true
+		},
+		"minecraft:can_fly": {},
+		"minecraft:loot": {
+		  "table": "loot_tables/entities/cosmic_jelly.json"
+		},
+		"minecraft:shooter": {
+		  "def": "minere:ender_jelly"
+		},
+		"minecraft:type_family": {
+		  "family": [
+			"cosmic_jelly",
+			"monster",
+			"mob"
+		  ]
+		},
+		"minecraft:damage_sensor": {
+		  "triggers": [
+			{
+			  "cause": "fall",
+			  "deals_damage": false
+			},
+			{
+			  "cause": "projectile",
+			  "deals_damage": true,
+			  "damage_multiplier": 0.33
+			}
+		  ]
+		},
+		"minecraft:jump.static": {},
+		"minecraft:despawn": {
+		  "filters": {
+			"any_of": [
+			  {
+				"all_of": [
+				  {
+					"test": "is_persistent",
+					"value": false
+				  },
+				  {
+					"test": "distance_to_nearest_player",
+					"operator": ">",
+					"value": 512
+				  }
+				]
+			  },
+			  {
+				"all_of": [
+				  {
+					"test": "is_persistent",
+					"value": false
+				  },
+				  {
+					"test": "inactivity_timer",
+					"subject": "self",
+					"value": 30
+				  },
+				  {
+					"test": "random_chance",
+					"value": 800
+				  },
+				  {
+					"test": "distance_to_nearest_player",
+					"operator": ">",
+					"value": 256
+				  }
+				]
+			  }
+			]
+		  }
+		},
+		"minecraft:behavior.float": {
+		  "priority": 0
+		},
+		"minecraft:behavior.ranged_attack": {
+		  "priority": 1,
+		  "attack_radius": 100,
+		  "charge_shoot_trigger": 2,
+		  "charge_charged_trigger": 1.5
+		},
+		"minecraft:follow_range": {
+		  "value": 100,
+		  "max": 100
+		},
+		"minecraft:behavior.hurt_by_target": {
+		  "priority": 1
+		},
+		"minecraft:behavior.nearest_attackable_target": {
+		  "priority": 2,
+		  "entity_types": [
+			{
+			  "filters": {
+				"test": "is_family",
+				"subject": "other",
+				"value": "player"
+			  },
+			  "max_dist": 100
+			}
+		  ],
+		  "must_see": true
+		},
+		"minecraft:physics": {},
+		"minecraft:pushable": {
+		  "is_pushable": true,
+		  "is_pushable_by_piston": true
+		},
+		"minecraft:conditional_bandwidth_optimization": {},
+		"minecraft:timer": {
+		  "looping": true,
+		  "randomInterval": true,
+		  "time": [
+			2,
+			6
+		  ],
+		  "time_down_event": {
+			"event": "minere:jelly_change_direction"
+		  }
+		}
+	  },
+	  "events": {
+		"minecraft:entity_spawned": {
+		  "add": {
+			"component_groups": [
+			  "minere:jelly_float"
+			]
+		  }
+		},
+		"minere:jelly_change_direction": {
+		  "sequence": [
+			{
+			  "filters": {
+				"test": "is_altitude",
+				"subject": "self",
+				"operator": ">",
+				"value": 128
+			  },
+			  "remove": {
+				"component_groups": [
+				  "minere:jelly_float_up",
+				  "minere:jelly_float"
+				]
+			  },
+			  "add": {
+				"component_groups": [
+				  "minere:jelly_float_down"
+				]
+			  }
+			},
+			{
+			  "filters": {
+				"test": "is_altitude",
+				"operator": "<",
+				"subject": "self",
+				"value": 48
+			  },
+			  "remove": {
+				"component_groups": [
+				  "minere:jelly_float_down",
+				  "minere:jelly_float"
+				]
+			  },
+			  "add": {
+				"component_groups": [
+				  "minere:jelly_float_up"
+				]
+			  }
+			},
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "is_altitude",
+					"operator": ">",
+					"subject": "self",
+					"value": 64
+				  },
+				  {
+					"test": "is_altitude",
+					"operator": "<",
+					"subject": "self",
+					"value": 90
+				  }
+				]
+			  },
+			  "remove": {
+				"component_groups": [
+				  "minere:jelly_float_up",
+				  "minere:jelly_float_down"
+				]
+			  },
+			  "add": {
+				"component_groups": [
+				  "minere:jelly_float"
+				]
+			  }
+			}
+		  ]
+		}
+	  }
+	}
+  }

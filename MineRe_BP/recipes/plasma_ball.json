@@ -1,0 +1,31 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+      "description": {
+      "identifier": "minere:plasma_ball"
+      },
+      "tags": [ "crafting_table" ],
+      "pattern": [
+        "GGG",
+        "GEG",
+        "GGG"
+      ],
+      "key": {
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "E": {
+          "item": "minere:ender_plasma"
+        }
+      },
+      "unlock": [
+        {
+          "item": "minere:ender_plasma"
+        }
+      ],
+      "result": {
+        "item": "minere:plasma_ball"
+      }
+    }
+  }
+  

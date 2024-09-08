@@ -1,0 +1,32 @@
+{
+    "format_version": "1.20.60",
+    "minecraft:block": {
+      "description": {
+        "identifier": "minere:amethyst_shield",
+        "menu_category": {
+          "category": "construction",
+          "is_hidden_in_commands": false
+        }
+      },
+      "components": {
+        "minecraft:destructible_by_mining": {
+          "seconds_to_destroy": 0
+        },
+        "minecraft:material_instances": {
+          "*": {
+            "texture": "amethyst_shield",
+            "ambient_occlusion": false,
+            "face_dimming": false,
+            "render_method": "blend"
+          }
+        },
+        "minecraft:destructible_by_explosion": {
+          "explosion_resistance": 3
+        },
+        "minecraft:friction": 0.01,
+        "minecraft:map_color": "#EA42E3",
+        "minecraft:light_dampening": 0,
+        "minecraft:loot": "loot_tables/empty.json"
+      }
+    }
+  }

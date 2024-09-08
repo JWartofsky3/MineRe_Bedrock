@@ -1,0 +1,28 @@
+{
+    "format_version": "1.20.60",
+    "minecraft:block": {
+      "description": {
+        "identifier": "minere:pulsar",
+        "menu_category": {
+          "category": "construction",
+          "is_hidden_in_commands": false
+        }
+      },
+      "components": {
+        "minecraft:destructible_by_mining": {
+          "seconds_to_destroy": 1.0
+        },
+        "minecraft:material_instances": {
+            "*": {
+              "texture": "pulsar"
+            }
+          },
+        "minecraft:destructible_by_explosion": {
+          "explosion_resistance": 3
+        },
+        "minecraft:map_color": "#EA42E3",
+        "minecraft:light_dampening": 0,
+        "minecraft:light_emission": 15
+      }
+    }
+  }

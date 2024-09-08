@@ -1,0 +1,549 @@
+{
+    "format_version": "1.18.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minere:demon",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "minere:soul_demon": {
+                "minecraft:variant": {
+                    "value": 1
+                }
+            },
+            "minere:demon_summoner": {
+                "minecraft:behavior.summon_entity": {
+                    "priority": 2,
+                    "summon_choices": [
+                        {
+                            "weight": 1,
+                            "cooldown_time": 32,
+                            "cast_duration": 1,
+                            "particle_color": "#05E0FE",
+                            "start_sound_event": "prepare.summon",
+                            "filters": {
+                                "none_of": [
+                                    {
+                                        "test": "has_component",
+                                        "subject": "self",
+                                        "value": "minecraft:behavior.knockback_roar"
+                                    },
+                                    {
+                                        "test": "has_component",
+                                        "subject": "self",
+                                        "value": "minecraft:attack_cooldown"
+                                    },
+                                    {
+                                        "test": "has_component",
+                                        "subject": "self",
+                                        "value": "attack_cooldown"
+                                    }
+                                ]
+                            },
+                            "sequence": [
+                                {
+                                    "shape": "circle",
+                                    "target": "self",
+                                    "base_delay": 0.5,
+                                    "delay_per_summon": 0.15,
+                                    "num_entities_spawned": 2,
+                                    "entity_type": "minere:demon_skull",
+                                    "summon_cap": 3,
+                                    "summon_cap_radius": 32,
+                                    "size": 1.5,
+                                    "entity_lifespan": 32
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "minere:demon_angry": {
+                "minecraft:behavior.delayed_attack": {
+                    "priority": 3,
+                    "attack_duration": 1,
+                    "attack_once": false,
+                    "track_target": true,
+                    "require_complete_path": false,
+                    "random_stop_interval": 0,
+                    "reach_multiplier": 3,
+                    "speed_multiplier": 1.25,
+                    "hit_delay_pct": 0.6
+                }
+            },
+            "minere:demon_berserk": {
+                "minecraft:behavior.delayed_attack": {
+                    "priority": 2,
+                    "attack_duration": 1,
+                    "attack_once": false,
+                    "track_target": true,
+                    "require_complete_path": false,
+                    "random_stop_interval": 0,
+                    "reach_multiplier": 2,
+                    "speed_multiplier": 1.6,
+                    "hit_delay_pct": 0.6,
+                    "on_attack": {
+                        "event": "minere:demon_stop_berserking",
+                        "target": "self",
+                        "filters": {
+                            "test": "random_chance",
+                            "value": 2
+                        }
+                    },
+                    "on_kill": {
+                        "event": "killed_enemy_event",
+                        "target": "self"
+                    }
+                },
+                "minecraft:timer": {
+                    "looping": false,
+                    "time": [
+                        3,
+                        6
+                    ],
+                    "time_down_event": {
+                        "event": "minere:demon_stop_berserking"
+                    }
+                }
+            },
+            "minere:demon_roaring": {
+                "minecraft:behavior.knockback_roar": {
+                    "priority": 0,
+                    "duration": 1.5,
+                    "attack_time": 0.9,
+                    "knockback_damage": 5,
+                    "knockback_horizontal_strength": 2.5,
+                    "knockback_vertical_strength": 2.5,
+                    "knockback_range": 4,
+                    "knockback_filters": {
+                        "none_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "demon"
+                            },
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "demon_skull"
+                            }
+                        ]
+                    },
+                    "on_roar_end": {
+                        "event": "minere:demon_end_roar"
+                    }
+                }
+            },
+            "minere:demon_mobile": {
+                "minecraft:movement": {
+                    "value": 0.26
+                }
+            },
+            "minere:magic_cooldown": {
+                "minecraft:attack_cooldown": {
+                    "attack_cooldown_complete_event": {
+                        "event": "minere:end_magic_cooldown",
+                        "target": "self"
+                    },
+                    "attack_cooldown_time": 6
+                }
+            }
+        },
+        "components": {
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player?25:0"
+            },
+            "minecraft:variant": {
+                "value": 0
+            },
+            "minecraft:nameable": {},
+            "minecraft:type_family": {
+                "family": [
+                    "demon",
+                    "monster",
+                    "mob"
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "suffocation",
+                        "on_damage": {
+                            "event": "minere:demon_start_berserking",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "damage_multiplier": 1.5,
+                        "on_damage": {
+                            "event": "minere:demon_start_berserking",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "cause": "block_explosion",
+                        "damage_multiplier": 1.5,
+                        "on_damage": {
+                            "event": "minere:demon_start_berserking",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "cause": "projectile",
+                        "on_damage": {
+                            "event": "projectile_roll",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "cause": "entity_attack",
+                        "on_damage": {
+                            "event": "melee_roll",
+                            "target": "self"
+                        }
+                    }
+                ]
+            },
+            "minecraft:follow_range": {
+                "value": 32,
+                "max": 32
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/demon.json"
+            },
+            "minecraft:collision_box": {
+                "width": 1.5,
+                "height": 2.9
+            },
+            "minecraft:health": {
+                "value": 100,
+                "max": 100
+            },
+            "minecraft:knockback_resistance": {
+                "value": 0.75
+            },
+            "minecraft:fire_immune": {},
+            "minecraft:movement": {
+                "value": 0
+            },
+            "minecraft:navigation.walk": {
+                "can_pass_doors": true,
+                "can_walk": true,
+                "can_swim": true,
+                "can_break_doors": true
+            },
+            "minecraft:annotation.break_door": {},
+            "minecraft:movement.basic": {},
+            "minecraft:jump.static": {},
+            "minecraft:attack": {
+                "damage": [
+                    7,
+                    11
+                ]
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": {}
+            },
+            "minecraft:behavior.float": {
+                "priority": 0
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1,
+                "must_see_forget_duration": 10
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 3,
+                "must_see": false,
+                "must_see_forget_duration": 15,
+                "persist_time": 15,
+                "attack_interval": 2,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "has_equipment",
+                                            "subject": "other",
+                                            "domain": "head",
+                                            "operator": "!=",
+                                            "value": "golden_helmet"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "subject": "other",
+                                            "domain": "torso",
+                                            "operator": "!=",
+                                            "value": "golden_chestplate"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "subject": "other",
+                                            "domain": "leg",
+                                            "operator": "!=",
+                                            "value": "golden_leggings"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "subject": "other",
+                                            "domain": "feet",
+                                            "operator": "!=",
+                                            "value": "golden_boots"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "irongolem"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "villager"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "goblin"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "ogre"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "yeti"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "max_dist": 32,
+                        "reevaluate_description": true
+                    }
+                ]
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 4,
+                "speed_multiplier": 0.8
+            },
+            "minecraft:behavior.look_at_target": {
+                "priority": 5,
+                "angle_of_view_horizontal": 90,
+                "angle_of_view_vertical": 90,
+                "look_distance": 32,
+                "look_time": [
+                    4,
+                    8
+                ],
+                "probability": 1
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 6,
+                "angle_of_view_horizontal": 90,
+                "angle_of_view_vertical": 90,
+                "look_distance": 16,
+                "look_time": [
+                    4,
+                    8
+                ],
+                "probability": 0.5
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 7,
+                "angle_of_view_horizontal": 90,
+                "angle_of_view_vertical": 90
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:conditional_bandwidth_optimization": {}
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minere:demon_mobile",
+                                "minere:demon_angry"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "has_biome_tag",
+                            "value": "soulsand_valley"
+                        },
+                        "trigger": "spawn_soul_demon"
+                    }
+                ]
+            },
+            "melee_roll": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "random_chance",
+                            "value": 11
+                        },
+                        "trigger": "minere:demon_start_berserking"
+                    }
+                ]
+            },
+            "projectile_roll": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "random_chance",
+                            "value": 5
+                        },
+                        "trigger": "minere:demon_start_berserking"
+                    }
+                ]
+            },
+            "spawn_soul_demon": {
+                "add": {
+                    "component_groups": [
+                        "minere:soul_demon"
+                    ]
+                }
+            },
+            "become_summoner": {
+                "add": {
+                    "component_groups": [
+                        "minere:demon_summoner"
+                    ]
+                }
+            },
+            "minere:demon_start_berserking": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "minere:demon_angry",
+                                "minere:demon_berserk"
+                            ]
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minere:demon_berserk"
+                            ]
+                        }
+                    },
+                    {
+                        "queue_command": {
+                            "command": "playsound mob.demon.laugh @a ~ ~ ~ 5.0"
+                        }
+                    }
+                ]
+            },
+            "minere:demon_stop_berserking": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "minere:demon_berserk"
+                            ]
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minere:demon_angry"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "minere:demon_start_roar": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "minere:demon_angry",
+                                "minere:demon_berserk",
+                                "minere:demon_mobile"
+                            ]
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minere:demon_roaring",
+                                "minere:magic_cooldown"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "minere:demon_end_roar": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "minere:demon_roaring"
+                            ]
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minere:demon_mobile"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 3,
+                                "add": {
+                                    "component_groups": [
+                                        "minere:demon_angry"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "minere:demon_berserk"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "minere:end_magic_cooldown": {
+                "remove": {
+                    "component_groups": [
+                        "minere:magic_cooldown"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minere:enderon_sword"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "X",
+      "X",
+      "#"
+    ],
+    "key": {
+      "#": {
+        "item": "minecraft:stick"
+      },
+      "X": {
+        "item": "minere:enderon_gemstone"
+      }
+    },
+	"unlock": [
+        {
+          "item": "minere:enderon_gemstone"
+        }
+    ],
+    "result": {
+      "item": "minere:enderon_sword"
+    }
+  }
+}

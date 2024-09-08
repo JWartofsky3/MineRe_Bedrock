@@ -1,0 +1,790 @@
+{
+	"format_version": "1.18.20",
+	"minecraft:entity": {
+	  "description": {
+		"identifier": "minere:yeti",
+		"is_spawnable": true,
+		"is_summonable": true,
+		"is_experimental": false,
+		"properties": {
+		  "minere:is_berserk": {
+			"type": "bool",
+			"client_sync": true,
+			"default": "false"
+		  }
+		}
+	  },
+	  "component_groups": {
+		"minere:cold_yeti": {
+		  "minecraft:variant": {
+			"value": 0
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/yeti/yeti.json"
+		  }
+		},
+		"minere:warm_yeti": {
+		  "minecraft:variant": {
+			"value": 1
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/yeti/yeti_warm.json"
+		  }
+		},
+		"minere:yeti_neutral": {
+		  "minecraft:environment_sensor": {
+			"triggers": {
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "is_brightness",
+					"operator": "<",
+					"value": 0.49
+				  },
+				  {
+					"test": "is_daytime",
+					"value": false
+				  }
+				]
+			  },
+			  "event": "minere:yeti_become_hostile"
+			}
+		  },
+		  "minecraft:on_target_acquired": {
+			"event": "minere:yeti_become_angry"
+		  },
+		  "minecraft:tameable": {
+			"probability": 0.07,
+			"tame_items": [
+			  "cod",
+			  "cooked_cod",
+			  "salmon",
+			  "cooked_salmon",
+			  "beef",
+			  "cooked_beef",
+			  "minere:venison",
+			  "minere:cooked_venison",
+			  "minere:blubber",
+			  "minere:whacon",
+			  "porkchop",
+			  "cooked_porkchop",
+			  "mutton",
+			  "cooked_mutton"
+			],
+			"tame_event": {
+			  "event": "on_tame",
+			  "target": "self"
+			}
+		  }
+		},
+		"minere:yeti_friendly": {
+		  "minecraft:follow_range": {
+			"value": 32,
+			"max": 32
+		  },
+		  "minecraft:on_target_acquired": {
+			"event": "minere:yeti_become_angry"
+		  },
+		  "minecraft:persistent": {},
+		  "minecraft:is_tamed": {},
+		  "minecraft:sittable": {},
+		  "minecraft:behavior.owner_hurt_by_target": {
+			"priority": 1
+		  },
+		  "minecraft:behavior.owner_hurt_target": {
+			"priority": 2
+		  },
+		  "minecraft:behavior.nearest_attackable_target": {
+			"priority": 3,
+			"must_see": false,
+			"must_see_forget_duration": 15,
+			"persist_time": 15,
+			"attack_interval": 2,
+			"entity_types": [
+			  {
+				"filters": {
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "undead"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "spider"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "demon"
+					}
+				  ]
+				},
+				"max_dist": 25
+			  }
+			]
+		  },
+		  "minecraft:behavior.stay_while_sitting": {
+			"priority": 5
+		  },
+		  "minecraft:behavior.tempt": {
+			"priority": 6,
+			"speed_multiplier": 1.2,
+			"items": [
+			  "cod",
+			  "cooked_cod",
+			  "salmon",
+			  "cooked_salmon",
+			  "beef",
+			  "cooked_beef",
+			  "minere:venison",
+			  "minere:cooked_venison",
+			  "minere:blubber",
+			  "minere:whacon",
+			  "porkchop",
+			  "cooked_porkchop",
+			  "mutton",
+			  "cooked_mutton"
+			],
+			"can_tempt_while_ridden": true,
+			"tempt_sound": "purr",
+			"sound_interval": {
+			  "range_min": 6,
+			  "range_max": 12
+			}
+		  },
+		  "minecraft:healable": {
+			"items": [
+			  {
+				"item": "porkchop",
+				"heal_amount": 3
+			  },
+			  {
+				"item": "cooked_porkchop",
+				"heal_amount": 8
+			  },
+			  {
+				"item": "fish",
+				"heal_amount": 2
+			  },
+			  {
+				"item": "salmon",
+				"heal_amount": 2
+			  },
+			  {
+				"item": "clownfish",
+				"heal_amount": 1
+			  },
+			  {
+				"item": "pufferfish",
+				"heal_amount": 1
+			  },
+			  {
+				"item": "cooked_fish",
+				"heal_amount": 5
+			  },
+			  {
+				"item": "cooked_salmon",
+				"heal_amount": 6
+			  },
+			  {
+				"item": "beef",
+				"heal_amount": 3
+			  },
+			  {
+				"item": "cooked_beef",
+				"heal_amount": 8
+			  },
+			  {
+				"item": "minere:blubber",
+				"heal_amount": 3
+			  },
+			  {
+				"item": "minere:whacon",
+				"heal_amount": 8
+			  },
+			  {
+				"item": "chicken",
+				"heal_amount": 2
+			  },
+			  {
+				"item": "cooked_chicken",
+				"heal_amount": 6
+			  },
+			  {
+				"item": "muttonRaw",
+				"heal_amount": 2
+			  },
+			  {
+				"item": "muttonCooked",
+				"heal_amount": 6
+			  },
+			  {
+				"item": "minere:venison",
+				"heal_amount": 2
+			  },
+			  {
+				"item": "minere:cooked_venison",
+				"heal_amount": 6
+			  },
+			  {
+				"item": "rotten_flesh",
+				"heal_amount": 4
+			  },
+			  {
+				"item": "rabbit",
+				"heal_amount": 3
+			  },
+			  {
+				"item": "cooked_rabbit",
+				"heal_amount": 5
+			  },
+			  {
+				"item": "rabbit_stew",
+				"heal_amount": 10
+			  }
+			]
+		  }
+		},
+		"minere:yeti_hostile": {
+		  "minecraft:environment_sensor": {
+			"triggers": {
+			  "filters": {
+				"test": "is_brightness",
+				"operator": ">",
+				"value": 0.49
+			  },
+			  "event": "minere:yeti_become_neutral"
+			}
+		  },
+		  "minecraft:on_target_acquired": {
+			"event": "minere:yeti_become_angry"
+		  },
+		  "minecraft:follow_range": {
+			"value": 32,
+			"max": 32
+		  },
+		  "minecraft:behavior.nearest_attackable_target": {
+			"priority": 3,
+			"must_see": false,
+			"must_see_forget_duration": 15,
+			"persist_time": 15,
+			"attack_interval": 2,
+			"entity_types": [
+			  {
+				"filters": {
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "player"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "snowgolem"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "irongolem"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "demon"
+					}
+				  ]
+				},
+				"max_dist": 25
+			  }
+			]
+		  }
+		},
+		"minere:yeti_angry": {
+		  "minecraft:collision_box": {
+			"width": 1.5,
+			"height": 2.9
+		  },
+		  "minecraft:angry": {
+			"duration": 30,
+			"calm_event": {
+			  "event": "minere:yeti_become_calm",
+			  "target": "self"
+			}
+		  },
+		  "minecraft:behavior.delayed_attack": {
+			"priority": 4,
+			"attack_duration": 1,
+			"attack_once": false,
+			"cooldown_time": 1,
+			"track_target": true,
+			"require_complete_path": false,
+			"random_stop_interval": 0,
+			"reach_multiplier": 1.65,
+			"speed_multiplier": 1.25,
+			"hit_delay_pct": 0.55
+		  }
+		},
+		"minere:yeti_berserk": {
+		  "minecraft:collision_box": {
+			"width": 1.5,
+			"height": 1.9
+		  },
+		  "minecraft:angry": {
+			"duration": 45,
+			"calm_event": {
+			  "event": "minere:yeti_become_calm",
+			  "target": "self"
+			}
+		  },
+		  "minecraft:behavior.delayed_attack": {
+			"priority": 4,
+			"attack_duration": 1,
+			"attack_once": false,
+			"cooldown_time": 1,
+			"track_target": true,
+			"require_complete_path": false,
+			"random_stop_interval": 0,
+			"reach_multiplier": 1.65,
+			"speed_multiplier": 1.85,
+			"hit_delay_pct": 0.55,
+			"on_attack": {
+			  "event": "minere:yeti_stop_berserking",
+			  "target": "self",
+			  "filters": {
+				"test": "random_chance",
+				"value": 2
+			  }
+			}
+		  },
+		  "minecraft:timer": {
+			"looping": false,
+			"time": [
+			  5,
+			  8
+			],
+			"time_down_event": {
+			  "event": "minere:yeti_stop_berserking"
+			}
+		  }
+		}
+	  },
+	  "components": {
+		"minecraft:is_hidden_when_invisible": {},
+		"minecraft:experience_reward": {
+		  "on_death": "query.last_hit_by_player?20:0"
+		},
+		"minecraft:nameable": {},
+		"minecraft:type_family": {
+		  "family": [
+			"yeti",
+			"monster",
+			"mob"
+		  ]
+		},
+		"minecraft:damage_sensor": {
+		  "triggers": [
+			{
+			  "cause": "fall",
+			  "deals_damage": true,
+			  "damage_modifier": -10
+			},
+			{
+			  "cause": "fire",
+			  "deals_damage": true,
+			  "damage_multiplier": 3
+			},
+			{
+			  "cause": "fire_tick",
+			  "deals_damage": true,
+			  "damage_multiplier": 3
+			},
+			{
+			  "cause": "lava",
+			  "deals_damage": true,
+			  "damage_multiplier": 3
+			},
+			{
+			  "cause": "suffocation",
+			  "on_damage": {
+				"event": "minere:yeti_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "entity_explosion",
+			  "on_damage": {
+				"event": "minere:yeti_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "block_explosion",
+			  "on_damage": {
+				"event": "minere:yeti_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "projectile",
+			  "on_damage": {
+				"filters": {
+				  "test": "random_chance",
+				  "value": 5
+				},
+				"event": "minere:yeti_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "entity_attack",
+			  "on_damage": {
+				"filters": {
+				  "test": "random_chance",
+				  "value": 11
+				},
+				"event": "minere:yeti_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "entity_attack",
+			  "on_damage": {
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "random_chance",
+					  "value": 3
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "player"
+					}
+				  ]
+				},
+				"event": "minere:yeti_become_neutral",
+				"target": "self"
+			  }
+			}
+		  ]
+		},
+		"minecraft:breathable": {
+		  "total_supply": 15,
+		  "suffocate_time": 0
+		},
+		"minecraft:collision_box": {
+		  "width": 1.5,
+		  "height": 2.9
+		},
+		"minecraft:health": {
+		  "value": 90,
+		  "max": 90
+		},
+		"minecraft:knockback_resistance": {
+		  "value": 0.9
+		},
+		"minecraft:hurt_on_condition": {
+		  "damage_conditions": [
+			{
+			  "filters": {
+				"test": "in_lava",
+				"subject": "self",
+				"operator": "==",
+				"value": true
+			  },
+			  "cause": "lava",
+			  "damage_per_tick": 4
+			}
+		  ]
+		},
+		"minecraft:movement": {
+		  "value": 0.26
+		},
+		"minecraft:navigation.climb": {
+		  "can_pass_doors": true,
+		  "can_walk": true,
+		  "can_swim": true,
+		  "can_break_doors": true,
+		  "blocks_to_avoid": [
+			"minecraft:powder_snow"
+		  ]
+		},
+		"minecraft:annotation.break_door": {},
+		"minecraft:movement.basic": {},
+		"minecraft:jump.static": {},
+		"minecraft:can_climb": {},
+		"minecraft:attack": {
+		  "damage": [
+			5,
+			8
+		  ]
+		},
+		"minecraft:despawn": {
+		  "despawn_from_distance": {}
+		},
+		"minecraft:behavior.float": {
+		  "priority": 0
+		},
+		"minecraft:behavior.hurt_by_target": {
+		  "priority": 1,
+		  "must_see_forget_duration": 10
+		},
+		"minecraft:behavior.avoid_block": {
+		  "priority": 2,
+		  "tick_interval": 5,
+		  "search_range": 8,
+		  "search_height": 4,
+		  "walk_speed_modifier": 1.85,
+		  "sprint_speed_modifier": 1.85,
+		  "avoid_block_sound": "retreat",
+		  "sound_interval": {
+			"range_min": 2,
+			"range_max": 5
+		  },
+		  "target_selection_method": "nearest",
+		  "target_blocks": [
+			"minecraft:fire",
+			"minecraft:item.campfire",
+			"minecraft:soul_fire",
+			"minecraft:item.soul_campfire",
+			"minecraft:portal"
+		  ]
+		},
+		"minecraft:behavior.jump_to_block": {
+		  "priority": 5,
+		  "search_width": 7,
+		  "search_height": 6,
+		  "minimum_path_length": 8,
+		  "minimum_distance": 1,
+		  "scale_factor": 0.6,
+		  "cooldown_range": [
+			30,
+			60
+		  ]
+		},
+		"minecraft:behavior.random_stroll": {
+		  "priority": 6,
+		  "speed_multiplier": 0.8
+		},
+		"minecraft:behavior.look_at_target": {
+		  "priority": 7,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90,
+		  "look_distance": 32,
+		  "look_time": [
+			4,
+			8
+		  ],
+		  "probability": 1
+		},
+		"minecraft:behavior.look_at_player": {
+		  "priority": 8,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90,
+		  "look_distance": 16,
+		  "look_time": [
+			4,
+			8
+		  ],
+		  "probability": 0.5
+		},
+		"minecraft:behavior.random_look_around": {
+		  "priority": 9,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90
+		},
+		"minecraft:physics": {},
+		"minecraft:pushable": {
+		  "is_pushable": true,
+		  "is_pushable_by_piston": true
+		},
+		"minecraft:conditional_bandwidth_optimization": {}
+	  },
+	  "events": {
+		"minecraft:entity_spawned": {
+		  "sequence": [
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:yeti_neutral"
+				]
+			  }
+			},
+			{
+			  "filters": {
+				"any_of": [
+				  {
+					"test": "has_biome_tag",
+					"value": "cold"
+				  },
+				  {
+					"test": "has_biome_tag",
+					"value": "frozen"
+				  }
+				]
+			  },
+			  "trigger": "spawn_cold_yeti"
+			},
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "has_biome_tag",
+					"operator": "!=",
+					"value": "cold"
+				  },
+				  {
+					"test": "has_biome_tag",
+					"operator": "!=",
+					"value": "frozen"
+				  }
+				]
+			  },
+			  "trigger": "spawn_warm_yeti"
+			}
+		  ]
+		},
+		"spawn_cold_yeti": {
+		  "add": {
+			"component_groups": [
+			  "minere:cold_yeti"
+			]
+		  }
+		},
+		"spawn_warm_yeti": {
+		  "add": {
+			"component_groups": [
+			  "minere:warm_yeti"
+			]
+		  }
+		},
+		"minere:yeti_become_hostile": {
+		  "remove": {
+			"component_groups": [
+			  "minere:yeti_neutral"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:yeti_hostile"
+			]
+		  }
+		},
+		"minere:yeti_become_neutral": {
+		  "remove": {
+			"component_groups": [
+			  "minere:yeti_hostile",
+			  "minere:yeti_friendly"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:yeti_neutral"
+			]
+		  }
+		},
+		"minere:yeti_become_angry": {
+		  "sequence": [
+			{
+			  "filters": {
+				"test": "has_component",
+				"subject": "self",
+				"operator": "!=",
+				"value": "minere:yeti_berserk"
+			  },
+			  "add": {
+				"component_groups": [
+				  "minere:yeti_angry"
+				]
+			  }
+			}
+		  ]
+		},
+		"minere:yeti_become_calm": {
+		  "remove": {
+			"component_groups": [
+			  "minere:yeti_angry"
+			]
+		  },
+		  "set_property": {
+			"minere:is_berserk": false
+		  }
+		},
+		"minere:yeti_start_berserking": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:yeti_angry",
+				  "minere:yeti_berserk"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:yeti_berserk"
+				]
+			  },
+			  "set_property": {
+				"minere:is_berserk": true
+			  }
+			},
+			{
+			  "queue_command": {
+				"command": "playsound mob.yeti.berserk @a ~ ~ ~ 5.0"
+			  }
+			}
+		  ]
+		},
+		"minere:yeti_stop_berserking": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:yeti_berserk"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:yeti_angry"
+				]
+			  },
+			  "set_property": {
+				"minere:is_berserk": false
+			  }
+			}
+		  ]
+		},
+		"on_tame": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:yeti_hostile",
+				  "minere:yeti_neutral"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:yeti_friendly"
+				]
+			  }
+			},
+			{
+			  "queue_command": {
+				"command": "playsound mob.yeti.purr @a ~ ~ ~ 1.0"
+			  }
+			}
+		  ]
+		}
+	  }
+	}
+  }

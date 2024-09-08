@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.gremlin": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "walking": "query.ground_speed"
+            },
+            {
+              "attacking": "variable.has_target && variable.attack_time >= 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walking": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "idle": "!query.ground_speed && !variable.has_target"
+            },
+            {
+              "attacking": "variable.has_target && variable.attack_time >= 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "idle": "variable.attack_time <= 0.0 && !query.ground_speed"
+            },
+            {
+              "walking": "variable.attack_time <= 0.0 && query.ground_speed"
+            }
+          ],
+          "blend_transition": 1.0
+        }
+      }
+    }
+  }
+}

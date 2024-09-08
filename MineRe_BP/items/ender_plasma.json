@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:ender_plasma",
+      "menu_category": {
+				"group": "itemGroup.name.ore"
+			}
+    },
+    "components": {
+      "minecraft:icon": "minere.ender_plasma",
+      "minecraft:display_name":{
+        "value": "item.ender_plasma.name"
+      },
+      "minecraft:fuel": {
+        "duration": 160
+      }
+    }
+  }
+}

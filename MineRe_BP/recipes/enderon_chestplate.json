@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minere:enderon_chestplate"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "X X",
+      "XXX",
+      "XXX"
+    ],
+    "key": {
+      "X": {
+        "item": "minere:enderon_gemstone"
+      }
+    },
+	"unlock": [
+        {
+          "item": "minere:enderon_gemstone"
+        }
+    ],
+    "result": {
+      "item": "minere:enderon_chestplate"
+    }
+  }
+}

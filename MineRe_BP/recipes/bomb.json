@@ -1,0 +1,37 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+      "description": {
+      "identifier": "minere:bomb"
+      },
+  
+      
+      "tags": [ "crafting_table" ],
+      "pattern": [
+        "LGS",
+        "GGG",
+        "LGL"
+      ],
+      "key": {
+        "L": {
+            "item": "minecraft:leather"
+        },
+        "S": {
+          "item": "minecraft:string"
+        },
+        "G": {
+          "item": "minecraft:gunpowder"
+        }
+      },
+      "unlock": [
+        {
+          "item": "minecraft:gunpowder"
+        }
+      ],
+      "result": {
+        "item": "minere:bomb",
+        "count": 4
+      }
+    }
+  }
+  

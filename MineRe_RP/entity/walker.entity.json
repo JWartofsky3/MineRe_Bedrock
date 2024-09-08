@@ -1,0 +1,65 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+	  "description": {
+		"identifier": "minere:walker",
+		"materials": {
+			"default": "ghast"
+		  },
+		"textures": {
+		  "default": "textures/entity/minere/walker/walker",
+		  "friendly": "textures/entity/minere/walker/walker_friendly"
+		},
+		"geometry": {
+		  "default": "geometry.minere.walker"
+		},
+		"spawn_egg": {
+		  "base_color": "#428f7e",
+		  "overlay_color": "#59565b"
+		},
+		"scripts": {
+		  "scale": "1.9",
+		  "animate": [
+			"controller",
+			"flaps",
+			"radar",
+			{
+				"shoot": "variable.is_charging"
+			},
+			{
+				"watch": "!variable.is_charging && !variable.is_blinking"
+			},
+			{
+				"blink": "!variable.is_charging && variable.is_blinking"
+			}
+		  ],
+		  "pre_animation": [
+			"variable.is_charging = query.is_charged || query.is_charging ? 1 : 0;",
+			"variable.is_blinking = math.mod(query.life_time * 3, 24) >= 22;"
+		  ]
+		},
+		"animations": {
+		  "emerge": "animation.minere.walker.emerge",
+		  "walk": "animation.minere.walker.walk",
+		  "radar": "animation.minere.walker.radar",
+		  "flaps": "animation.minere.walker.flaps",
+		  "kick": "animation.minere.walker.kick",
+		  "look_at_target": "animation.minere.walker.look_at_target",
+		  "controller": "controller.animation.minere.walker",
+		  "watch": "animation.minere.walker.watch",
+		  "shoot": "animation.minere.walker.shoot",
+		  "blink":  "animation.minere.walker.blink"
+		},
+		"render_controllers": [
+		  "controller.render.minere.walker"
+		],
+		"sound_effects": {
+			"emerge": "mob.walker.emerge",
+			"reprogram": "mob.walker.reprogram"
+		},
+		"particle_effects": {
+			"emerge": "minecraft:warden_dig"
+		}
+	  }
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "minecraft:leather_horse_armor"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"H  ",
+			"#W#",
+			"L#L"
+		],
+		"key": {
+			"W": {
+				"item": "minecraft:wool"
+			},
+			"#": {
+				"item": "minecraft:leather"
+			},
+			"H": {
+				"item": "minecraft:leather_helmet"
+			},
+			"L": {
+				"item": "minecraft:leather_leggings"
+			}
+		},
+		"result": {
+			"item": "minecraft:horsearmorleather"
+		}
+	}
+}

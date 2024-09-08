@@ -1,0 +1,27 @@
+{
+    "format_version": [1, 1, 0],
+    "minere:amethyst_shield": {
+      "textures": "amethyst_shield",
+      "sound": "glass"
+    },
+    "minere:pulsar": {
+      "textures": "pulsar",
+      "sound": "stone"
+    },
+    "minere:enderon_block": {
+      "textures": "enderon_block",
+      "sound": "stone"
+    },
+    "minere:plasma_ball": {
+      "textures": "plasma_ball",
+      "sound": "glass"
+    },
+    "minere:ender_plasma_ore": {
+      "textures": "ender_plasma_ore",
+      "sound": "stone"
+    },
+    "minere:enderon_ore": {
+      "textures": "enderon_ore",
+      "sound": "stone"
+    }
+  }

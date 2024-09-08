@@ -1,0 +1,128 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.minere.deer.baby_transform": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"scale": 2.0
+				}
+			}
+		},
+		"animation.minere.deer.walk": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved * 0.75",
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				},
+				"neck": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -5", 0, 0]
+				},
+				"head": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 5", 0, 0]
+				},
+				"tail": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 25", 0, 0]
+				},
+				"body2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 2", "math.cos(query.anim_time * 38.17) * 2", "math.cos(query.anim_time * 38.17) * 2"]
+				}
+			}
+		},
+		"animation.minere.deer.graze": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"neck": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.2": [90, 0, 0],
+						"1.8": [90, 0, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.2": {
+							"pre": [0, 0, 0],
+							"post": ["180.0 * (0.2 + 0.07 * math.sin(query.key_frame_lerp_time * 1644.39))", 0, 0]
+						},
+						"1.8": {
+							"pre": ["180.0 * (0.2 + 0.07 * math.sin(query.key_frame_lerp_time * 1644.39))", 0, 0],
+							"post": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.minere.deer.gallop": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"body": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 7", 0, 0]
+				},
+				"neck": {
+					"rotation": ["math.cos(25 + query.anim_time * 38.17) * -7", 0, 0]
+				},
+				"leg0": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * -7) + math.cos(25 + query.anim_time * 38.17) * 80", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * -7) + math.cos(query.anim_time * 38.17) * 80", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * -7) + math.cos(query.anim_time * 38.17) * -80", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * -7) + math.cos(25 + query.anim_time * 38.17) * -80", 0, 0]
+				},
+				"head": {
+					"rotation": ["math.cos(25 + query.anim_time * 38.17) * -7", 0, 0]
+				},
+				"tail": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 25", 0, 0]
+				},
+				"body2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * 3", "math.cos(query.anim_time * 38.17) * 3", "math.cos(query.anim_time * 38.17) * 3"]
+				}
+			}
+		},
+		"animation.minere.deer.look_at_target": {
+			"loop": true,
+			"bones": {
+				"neck": {
+					"rotation": ["query.target_x_rotation * 0.2", "query.target_y_rotation * 0.2", 0]
+				},
+				"head": {
+					"rotation": ["query.target_x_rotation * 0.8", "query.target_y_rotation * 0.8", 0]
+				}
+			}
+		},
+		"animation.minere.deer.tail": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.0": [0, 0, 0],
+						"1.25": [0, 45, 0],
+						"1.75": [0, -45, 0],
+						"2.0": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

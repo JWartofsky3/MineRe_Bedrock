@@ -1,0 +1,56 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:feature_rules": {
+	  "description": {
+		"identifier": "minere:ice_dungeon_rule",
+		"places_feature": "minere:ice_dungeon_feature"
+	  },
+	  "conditions": {
+		"placement_pass": "underground_pass",
+		"minecraft:biome_filter": [
+		  {
+			"any_of": [
+			  {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "frozen"
+			  },
+			  {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "cold"
+			  }
+			]
+		  }
+		]
+	  },
+	  "distribution": {
+		"iterations": 1,
+		"x": {
+		  "distribution": "uniform",
+		  "extent": [
+			0,
+			16
+		  ]
+		},
+		"y": {
+		  "extent": [
+			0,
+			90
+		  ],
+		  "distribution": "uniform"
+		},
+		"z": {
+		  "distribution": "uniform",
+		  "extent": [
+			0,
+			16
+		  ]
+		},
+		"scatter_chance": {
+		  "numerator": 1,
+		  "denominator": 50
+		}
+	  }
+	}
+  }

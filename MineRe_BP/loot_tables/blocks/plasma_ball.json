@@ -1,0 +1,31 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+			  {
+				"type": "item",
+				"name": "minere:ender_plasma"
+			  }
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+			  {
+				"type": "item",
+				"name": "minecraft:glass_pane",
+				"functions": [
+				  {
+					"function": "set_count",
+					"count": {
+						"min": 2,
+						"max": 6
+					}
+				  }
+				]
+			  }
+			]
+		}
+	]
+}

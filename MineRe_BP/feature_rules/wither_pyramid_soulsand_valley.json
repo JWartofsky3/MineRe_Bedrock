@@ -1,0 +1,39 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:feature_rules": {
+	  "description": {
+		"identifier": "minere:wither_pyramid_soulsand_valley",
+		"places_feature": "minere:wither_pyramid_feature"
+	  },
+	  "conditions": {
+		"placement_pass": "underground_pass",
+		"minecraft:biome_filter": [
+		  {
+			"any_of": [
+			  {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "soulsand_valley"
+			  }
+			]
+		  }
+		]
+	  },
+	  "distribution": {
+		"iterations": 1,
+		"x": -16,
+		"y": {
+		  "extent": [
+			80,
+			94
+		  ],
+		  "distribution": "uniform"
+		},
+		"z": -16,
+		"scatter_chance": {
+		  "numerator": 1,
+		  "denominator": 75
+		}
+	  }
+	}
+  }

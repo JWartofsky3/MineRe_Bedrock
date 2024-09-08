@@ -1,0 +1,33 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "minecraft:iron_horse_armor"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"H  ",
+			"#W#",
+			"L#L"
+		],
+		"key": {
+			"W": {
+				"item": "minecraft:wool"
+			},
+			"#": {
+				"item": "minecraft:iron_ingot"
+			},
+			"H": {
+				"item": "minecraft:iron_helmet"
+			},
+			"L": {
+				"item": "minecraft:iron_leggings"
+			}
+		},
+		"result": {
+			"item": "minecraft:horsearmoriron"
+		}
+	}
+}

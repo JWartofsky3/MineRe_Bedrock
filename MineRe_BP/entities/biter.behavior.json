@@ -1,0 +1,465 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+	  "description": {
+		"identifier": "minere:biter",
+		"runtime_identifier": "minecraft:cod",
+		"is_spawnable": true,
+		"is_summonable": true,
+		"is_experimental": false
+	  },
+	  "component_groups": {
+		"immediate_despawn": {
+		  "minecraft:instant_despawn": {}
+		},
+		"attack_cooldown": {
+		  "minecraft:attack_cooldown": {
+			"attack_cooldown_complete_event": {
+			  "event": "attack_cooldown_complete_event",
+			  "target": "self"
+			},
+			"attack_cooldown_time": [
+			  8,
+			  12
+			]
+		  }
+		},
+		"scale_small": {
+		  "minecraft:scale": {
+			"value": 0.75
+		  },
+		  "minecraft:attack": {
+			"damage": [
+			  1,
+			  2
+			]
+		  },
+		  "minecraft:experience_reward": {
+			"on_death": "query.last_hit_by_player ? 2 : 0"
+		  },
+		  "minecraft:health": {
+			"value": 6,
+			"max": 6
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/biter/biter.json"
+		  }
+		},
+		"scale_medium": {
+		  "minecraft:scale": {
+			"value": 1.5
+		  },
+		  "minecraft:knockback_resistance": {
+			"value": 0.15
+		  },
+		  "minecraft:experience_reward": {
+			"on_death": "query.last_hit_by_player ? 4 : 0"
+		  },
+		  "minecraft:attack": {
+			"damage": [
+			  3,
+			  4
+			]
+		  },
+		  "minecraft:health": {
+			"value": 12,
+			"max": 12
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/biter/biter.json"
+		  }
+		},
+		"scale_large": {
+		  "minecraft:scale": {
+			"value": 2
+		  },
+		  "minecraft:knockback_resistance": {
+			"value": 0.6
+		  },
+		  "minecraft:experience_reward": {
+			"on_death": "query.last_hit_by_player ? 5 : 0"
+		  },
+		  "minecraft:attack": {
+			"damage": [
+			  5,
+			  6
+			]
+		  },
+		  "minecraft:health": {
+			"value": 18,
+			"max": 18
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/biter/big_biter.json"
+		  }
+		}
+	  },
+	  "components": {
+		"minecraft:type_family": {
+		  "family": [
+			"biter",
+			"monster",
+			"fish",
+			"mob"
+		  ]
+		},
+		"minecraft:collision_box": {
+		  "width": 1,
+		  "height": 1
+		},
+		"minecraft:breathable": {
+		  "total_supply": 15,
+		  "suffocate_time": 0,
+		  "breathes_air": false,
+		  "breathes_water": true
+		},
+		"minecraft:hurt_on_condition": {
+		  "damage_conditions": [
+			{
+			  "filters": {
+				"test": "in_lava",
+				"subject": "self",
+				"operator": "==",
+				"value": true
+			  },
+			  "cause": "lava",
+			  "damage_per_tick": 4
+			}
+		  ]
+		},
+		"minecraft:movement": {
+		  "value": 0.12
+		},
+		"minecraft:underwater_movement": {
+		  "value": 0.2
+		},
+		"minecraft:navigation.generic": {
+		  "is_amphibious": false,
+		  "can_path_over_water": false,
+		  "can_swim": true,
+		  "can_walk": false,
+		  "can_breach": false,
+		  "can_sink": false
+		},
+		"minecraft:movement.sway": {
+		  "sway_amplitude": 0
+		},
+		"minecraft:physics": {
+		  "has_gravity": false
+		},
+		"minecraft:pushable": {
+		  "is_pushable": true,
+		  "is_pushable_by_piston": true
+		},
+		"minecraft:despawn": {
+		  "despawn_from_distance": {
+			"min_distance": 32,
+			"max_distance": 40
+		  }
+		},
+		"minecraft:inventory": {
+		  "inventory_size": 8
+		},
+		"minecraft:shareables": {
+		  "all_items": true,
+		  "all_items_max_amount": 64,
+		  "all_items_surplus_amount": 64,
+		  "all_items_want_amount": 64,
+		  "items": [
+			{
+			  "priority": 1,
+			  "item": "minecraft:rotten_flesh",
+			  "consume_item": true
+			},
+			{
+			  "priority": 0,
+			  "item": "minecraft:cod",
+			  "consume_item": true
+			},
+			{
+			  "item": "minecraft:salmon",
+			  "consume_item": true
+			},
+			{
+			  "item": "minecraft:tropical_fish",
+			  "consume_item": true
+			},
+			{
+			  "item": "minecraft:chicken",
+			  "consume_item": true
+			},
+			{
+			  "item": "minecraft:beef",
+			  "consume_item": true
+			},
+			{
+			  "item": "minecraft:porkchop",
+			  "consume_item": true
+			},
+			{
+			  "item": "minere:whacon",
+			  "consume_item": true
+			},
+			{
+			  "item": "minere:blubber",
+			  "consume_item": true
+			}
+		  ]
+		},
+		"minecraft:behavior.pickup_items": {
+		  "priority": 1,
+		  "max_dist": 16,
+		  "pickup_based_on_chance": false,
+		  "track_target": true,
+		  "goal_radius": 2,
+		  "speed_multiplier": 2,
+		  "cooldown_after_being_attacked": 20
+		},
+		"minecraft:behavior.melee_attack": {
+		  "priority": 2,
+		  "speed_multiplier": 2.5,
+		  "reach_multiplier": 0.9,
+		  "track_target": false,
+		  "require_complete_path": true,
+		  "on_kill": {
+			"event": "killed_enemy_event",
+			"target": "self"
+		  }
+		},
+		"minecraft:behavior.nearest_prioritized_attackable_target": {
+		  "priority": 3,
+		  "reselect_targets": true,
+		  "must_see": true,
+		  "within_radius": 32,
+		  "must_see_forget_duration": 17,
+		  "persist_time": 0.5,
+		  "entity_types": [
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "in_water",
+					"subject": "other",
+					"value": true
+				  },
+				  {
+					"test": "is_daytime",
+					"value": false
+				  },
+				  {
+					"any_of": [
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "player"
+					  },
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "villager"
+					  },
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "goblin"
+					  }
+					]
+				  }
+				]
+			  },
+			  "priority": 0,
+			  "max_dist": 32
+			},
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "in_water",
+					"subject": "other",
+					"value": true
+				  },
+				  {
+					"test": "is_daytime",
+					"value": true
+				  },
+				  {
+					"any_of": [
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "player"
+					  },
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "villager"
+					  },
+					  {
+						"test": "is_family",
+						"subject": "other",
+						"value": "goblin"
+					  }
+					]
+				  }
+				]
+			  },
+			  "priority": 1,
+			  "max_dist": 12
+			},
+			{
+			  "filters": {
+				"any_of": [
+				  {
+					"test": "is_family",
+					"subject": "other",
+					"value": "cod"
+				  },
+				  {
+					"test": "is_family",
+					"subject": "other",
+					"value": "salmon"
+				  }
+				],
+				"all_of": [
+				  {
+					"test": "in_water",
+					"subject": "other",
+					"value": true
+				  },
+				  {
+					"test": "is_daytime",
+					"value": false
+				  }
+				],
+				"none_of": [
+				  {
+					"test": "has_component",
+					"subject": "self",
+					"value": "minecraft:attack_cooldown"
+				  }
+				]
+			  },
+			  "priority": 2,
+			  "max_dist": 16
+			}
+		  ]
+		},
+		"minecraft:behavior.random_swim": {
+		  "speed_multiplier": 1,
+		  "avoid_surface": true,
+		  "priority": 4,
+		  "xz_dist": 16,
+		  "y_dist": 4,
+		  "interval": 0
+		},
+		"minecraft:behavior.swim_wander": {
+		  "priority": 5,
+		  "interval": 0.0166,
+		  "look_ahead": 5,
+		  "speed_multiplier": 0.033,
+		  "wander_time": 5
+		},
+		"minecraft:behavior.swim_idle": {
+		  "priority": 6,
+		  "idle_time": 5,
+		  "success_rate": 0.1
+		},
+		"minecraft:flocking": {
+		  "in_water": true,
+		  "match_variants": false,
+		  "use_center_of_mass": false,
+		  "low_flock_limit": 4,
+		  "high_flock_limit": 8,
+		  "goal_weight": 2,
+		  "loner_chance": 0.1,
+		  "influence_radius": 3,
+		  "breach_influence": 7,
+		  "separation_weight": 0.65,
+		  "separation_threshold": 0.15,
+		  "cohesion_weight": 2.25,
+		  "cohesion_threshold": 1.5,
+		  "innner_cohesion_threshold": 1.5,
+		  "min_height": 4,
+		  "max_height": 4,
+		  "block_distance": 1,
+		  "block_weight": 0.75
+		},
+		"minecraft:nameable": {},
+		"minecraft:conditional_bandwidth_optimization": {},
+		"minecraft:loot": {
+		  "table": "loot_tables/entities/biter.json"
+		}
+	  },
+	  "events": {
+		"minecraft:entity_spawned": {
+		  "sequence": [
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "is_daytime"
+				  },
+				  {
+					"test": "is_altitude",
+					"subject": "self",
+					"operator": ">",
+					"value": 40
+				  }
+				]
+			  },
+			  "add": {
+				"component_groups": [
+				  "immediate_despawn"
+				]
+			  }
+			},
+			{
+			  "randomize": [
+				{
+				  "weight": 40,
+				  "add": {
+					"component_groups": [
+					  "adult",
+					  "scale_small"
+					]
+				  }
+				},
+				{
+				  "weight": 40,
+				  "add": {
+					"component_groups": [
+					  "adult",
+					  "scale_medium"
+					]
+				  }
+				},
+				{
+				  "weight": 20,
+				  "add": {
+					"component_groups": [
+					  "adult",
+					  "scale_large"
+					]
+				  }
+				}
+			  ]
+			}
+		  ]
+		},
+		"killed_enemy_event": {
+		  "add": {
+			"component_groups": [
+			  "attack_cooldown"
+			]
+		  }
+		},
+		"attack_cooldown_complete_event": {
+		  "remove": {
+			"component_groups": [
+			  "attack_cooldown"
+			]
+		  }
+		}
+	  }
+	}
+  }

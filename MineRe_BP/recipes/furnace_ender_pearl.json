@@ -1,0 +1,13 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+    "identifier": "minere:furnace_ender_pearl"
+    },
+
+    
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:enderon_gemstone",
+    "output": "minecraft:ender_pearl"
+  }
+}

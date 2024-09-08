@@ -1,0 +1,123 @@
+import {
+  Entity,
+  EntityTypeFamilyComponent,
+  EntityComponentTypes,
+  EntityHealthComponent,
+  EntityEquippableComponent,
+  EquipmentSlot,
+  system,
+} from "@minecraft/server";
+import {
+  addVector3,
+  multiplyVector3Number,
+  getRandomAir,
+} from "util/vector3Functions";
+
+import { DEFAULT_TICK } from "main";
+
+const VAMPIRE_HEAL_AMOUNT = 3;
+const GOLD_DAMAGE_BOUNUS = 6;
+
+export function vampireHeal(vampire: Entity, target: Entity) {
+  if (vampire === null || target === null) {
+    return;
+  }
+  const targetFamily = target.getComponent(
+    EntityComponentTypes.TypeFamily,
+  ) as EntityTypeFamilyComponent;
+  if (!targetFamily || targetFamily.getTypeFamilies().includes("undead")) {
+    return;
+  }
+  const vampireHealth = vampire.getComponent(
+    EntityComponentTypes.Health,
+  ) as EntityHealthComponent;
+  if (!vampireHealth) {
+    return;
+  }
+  vampireHealth.setCurrentValue(
+    Math.min(
+      vampireHealth.effectiveMax,
+      vampireHealth.currentValue + VAMPIRE_HEAL_AMOUNT,
+    ),
+  );
+}
+
+export function vampireHurt(vampire: Entity, attacker: Entity) {
+  if (!vampire || !attacker) {
+    return;
+  }
+  const vampireHealth = vampire.getComponent(
+    EntityComponentTypes.Health,
+  ) as EntityHealthComponent;
+  if (!vampireHealth) {
+    return;
+  }
+  const attackerEquippable = attacker.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!attackerEquippable) {
+    return;
+  }
+  const weapon = attackerEquippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+  if (!weapon.getItem()) {
+    return;
+  }
+  if (weapon.typeId.toLowerCase().includes("gold")) {
+    vampireHealth.setCurrentValue(
+      vampireHealth.currentValue - GOLD_DAMAGE_BOUNUS,
+    );
+  }
+}
+
+export function rollBecomeBat(
+  entity: Entity,
+  chance: number,
+  minHealth: number,
+) {
+  if (!entity) {
+    return;
+  }
+
+  const health = entity.getComponent(
+    EntityComponentTypes.Health,
+  ) as EntityHealthComponent;
+  if (!health) {
+    return;
+  }
+  if (
+    health.currentValue > minHealth * health.effectiveMax ||
+    health.currentValue <= health.effectiveMin
+  ) {
+    return;
+  }
+
+  const dimension = entity.dimension;
+  const BAT_COOLDOWN = "batCooldown";
+  const cooldownTime = 8;
+
+  if (Math.random() > chance) {
+    return;
+  }
+  const cooldown = entity.getDynamicProperty(BAT_COOLDOWN);
+  if (
+    !!cooldown &&
+    typeof cooldown == "number" &&
+    system.currentTick - cooldown < cooldownTime * DEFAULT_TICK
+  ) {
+    return;
+  }
+  entity.setDynamicProperty(BAT_COOLDOWN, system.currentTick);
+
+  const pos = getRandomAir(entity.location, entity.dimension, 2.0, 3);
+  if (pos) {
+    dimension.spawnParticle("minecraft:dust_plume", entity.location);
+    dimension.spawnParticle(
+      "minecraft:dust_plume",
+      multiplyVector3Number(addVector3(entity.location, pos), 0.5),
+    );
+    dimension.spawnParticle("minecraft:dust_plume", pos);
+    entity.teleport(pos);
+    dimension.playSound("mob.bat.takeoff", pos);
+    entity.triggerEvent("become_bat");
+  }
+}

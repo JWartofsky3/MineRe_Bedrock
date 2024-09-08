@@ -1,0 +1,67 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "weight": 3,
+            "name": "minecraft:iron_sword",
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 1.0
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "weight": 1,
+            "name": "minecraft:iron_axe",
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "name": "minecraft:iron_helmet",
+            "functions": [
+              {
+                "function": "looting_enchant",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              },
+              {
+                "function": "enchant_random_gear",
+                "chance": 1.0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

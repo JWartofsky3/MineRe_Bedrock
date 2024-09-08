@@ -1,0 +1,26 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:structure_template_feature": {
+		"description": {
+			"identifier": "minere:red_sand_dungeon_feature"
+		},
+		"structure_name": "minere:red_sand_dungeon",
+		"adjustment_radius": 16,
+		"facing_direction": "random",
+		"constraints": {
+			"block_intersection": {
+				"block_allowlist": [
+					"minecraft:stone",
+                    "minecraft:granite",
+					"minecraft:andesite",
+                    "minecraft:diorite",
+                    "minecraft:gravel",
+                    "minecraft:dirt",
+                    "minecraft:sandstone",
+                    "minecraft:sand",
+					"minecraft:hardened_clay"
+				]
+			}
+		}
+	}
+}

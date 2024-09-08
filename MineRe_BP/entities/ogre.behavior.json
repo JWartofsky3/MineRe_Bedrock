@@ -1,0 +1,693 @@
+{
+	"format_version": "1.18.20",
+	"minecraft:entity": {
+	  "description": {
+		"identifier": "minere:ogre",
+		"is_spawnable": true,
+		"is_summonable": true,
+		"is_experimental": false
+	  },
+	  "component_groups": {
+		"minere:green_ogre": {
+		  "minecraft:variant": {
+			"value": 0
+		  },
+		  "minecraft:scale": {
+			"value": 1
+		  },
+		  "minecraft:health": {
+			"value": 120
+		  },
+		  "minecraft:attack": {
+			"damage": [
+			  4,
+			  7
+			]
+		  },
+		  "minecraft:experience_reward": {
+			"on_death": "query.last_hit_by_player?20:0"
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/ogre/ogre.json"
+		  }
+		},
+		"minere:cave_ogre": {
+		  "minecraft:variant": {
+			"value": 1
+		  },
+		  "minecraft:scale": {
+			"value": 1.1
+		  },
+		  "minecraft:health": {
+			"value": 150
+		  },
+		  "minecraft:attack": {
+			"damage": [
+			  5,
+			  10
+			]
+		  },
+		  "minecraft:experience_reward": {
+			"on_death": "query.last_hit_by_player?25:0"
+		  },
+		  "minecraft:loot": {
+			"table": "loot_tables/entities/ogre/cave_ogre.json"
+		  }
+		},
+		"minere:ogre_neutral": {
+		  "minecraft:environment_sensor": {
+			"triggers": {
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "is_brightness",
+					"operator": "<",
+					"value": 0.49
+				  },
+				  {
+					"test": "is_daytime",
+					"value": false
+				  }
+				]
+			  },
+			  "event": "minere:ogre_become_hostile"
+			}
+		  },
+		  "minecraft:on_target_acquired": {
+			"event": "minere:ogre_become_angry"
+		  }
+		},
+		"minere:ogre_hostile": {
+		  "minecraft:environment_sensor": {
+			"triggers": {
+			  "filters": {
+				"test": "is_brightness",
+				"operator": ">",
+				"value": 0.49
+			  },
+			  "event": "minere:ogre_become_neutral"
+			}
+		  },
+		  "minecraft:on_target_acquired": {
+			"event": "minere:ogre_become_angry"
+		  },
+		  "minecraft:follow_range": {
+			"value": 32,
+			"max": 32
+		  },
+		  "minecraft:behavior.nearest_attackable_target": {
+			"priority": 2,
+			"must_see": false,
+			"must_see_forget_duration": 15,
+			"persist_time": 15,
+			"attack_interval": 2,
+			"entity_types": [
+			  {
+				"filters": {
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "player"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "snowgolem"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "irongolem"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "villager"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "goblin"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "demon"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "demon_skull"
+					}
+				  ]
+				},
+				"max_dist": 28
+			  }
+			]
+		  }
+		},
+		"minere:ogre_angry": {
+		  "minecraft:angry": {
+			"duration": 30,
+			"calm_event": {
+			  "event": "minere:ogre_become_calm",
+			  "target": "self"
+			}
+		  },
+		  "minecraft:behavior.delayed_attack": {
+			"priority": 3,
+			"attack_duration": 1,
+			"attack_once": false,
+			"track_target": true,
+			"require_complete_path": false,
+			"random_stop_interval": 0,
+			"reach_multiplier": 2,
+			"speed_multiplier": 1.25,
+			"hit_delay_pct": 0.6,
+			"on_kill": {
+			  "event": "killed_enemy_event",
+			  "target": "self"
+			}
+		  }
+		},
+		"minere:ogre_berserk": {
+		  "minecraft:angry": {
+			"duration": 45,
+			"calm_event": {
+			  "event": "minere:ogre_become_calm",
+			  "target": "self"
+			}
+		  },
+		  "minecraft:behavior.delayed_attack": {
+			"priority": 3,
+			"attack_duration": 1,
+			"attack_once": false,
+			"track_target": true,
+			"require_complete_path": false,
+			"random_stop_interval": 0,
+			"reach_multiplier": 2,
+			"speed_multiplier": 1.6,
+			"hit_delay_pct": 0.6,
+			"on_attack": {
+			  "event": "minere:ogre_stop_berserking",
+			  "target": "self",
+			  "filters": {
+				"test": "random_chance",
+				"value": 2
+			  }
+			},
+			"on_kill": {
+			  "event": "killed_enemy_event",
+			  "target": "self"
+			}
+		  },
+		  "minecraft:timer": {
+			"looping": false,
+			"time": [
+			  3,
+			  5
+			],
+			"time_down_event": {
+			  "event": "minere:ogre_stop_berserking"
+			}
+		  }
+		},
+		"minere:ogre_roaring": {
+		  "minecraft:behavior.knockback_roar": {
+			"priority": 0,
+			"duration": 1.5,
+			"attack_time": 0.9,
+			"knockback_damage": 4,
+			"knockback_horizontal_strength": 3,
+			"knockback_vertical_strength": 3,
+			"knockback_range": 5,
+			"knockback_filters": {
+			  "any_of": [
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "player"
+				},
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "villager"
+				},
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "demon"
+				},
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "piglin"
+				},
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "goblin"
+				},
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "wolf"
+				}
+			  ]
+			},
+			"on_roar_end": {
+			  "event": "minere:ogre_end_roar"
+			}
+		  }
+		},
+		"minere:ogre_mobile": {
+		  "minecraft:movement": {
+			"value": 0.26
+		  }
+		},
+		"minere:roar_cooldown": {
+		  "minecraft:attack_cooldown": {
+			"attack_cooldown_complete_event": {
+			  "event": "minere:end_roar_cooldown",
+			  "target": "self"
+			},
+			"attack_cooldown_time": 6
+		  }
+		}
+	  },
+	  "components": {
+		"minecraft:is_hidden_when_invisible": {},
+		"minecraft:nameable": {},
+		"minecraft:type_family": {
+		  "family": [
+			"ogre",
+			"monster",
+			"mob"
+		  ]
+		},
+		"minecraft:damage_sensor": {
+		  "triggers": [
+			{
+			  "on_damage": {
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "target_distance",
+					  "subject": "self",
+					  "operator": "<=",
+					  "value": 5
+					},
+					{
+					  "test": "random_chance",
+					  "subject": "self",
+					  "value": 5
+					}
+				  ],
+				  "none_of": [
+					{
+					  "test": "has_component",
+					  "subject": "self",
+					  "value": "minecraft:behavior.knockback_roar"
+					},
+					{
+					  "test": "has_component",
+					  "subject": "self",
+					  "value": "minecraft:attack_cooldown"
+					}
+				  ]
+				},
+				"event": "minere:ogre_start_roar"
+			  }
+			},
+			{
+			  "cause": "suffocation",
+			  "on_damage": {
+				"event": "minere:ogre_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "entity_explosion",
+			  "damage_multiplier": 1.5,
+			  "on_damage": {
+				"event": "minere:ogre_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "block_explosion",
+			  "damage_multiplier": 1.5,
+			  "on_damage": {
+				"event": "minere:ogre_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "projectile",
+			  "on_damage": {
+				"filters": {
+				  "test": "random_chance",
+				  "value": 7
+				},
+				"event": "minere:ogre_start_berserking",
+				"target": "self"
+			  }
+			},
+			{
+			  "cause": "entity_attack",
+			  "on_damage": {
+				"filters": {
+				  "test": "random_chance",
+				  "value": 15
+				},
+				"event": "minere:ogre_start_berserking",
+				"target": "self"
+			  }
+			}
+		  ]
+		},
+		"minecraft:equipment": {
+		  "table": "loot_tables/entities/ogre/ogre_gear.json",
+		  "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.hand",
+              "drop_chance": 0.0
+            }
+          ]
+		},
+		"minecraft:breathable": {
+		  "total_supply": 15,
+		  "suffocate_time": 0
+		},
+		"minecraft:loot": {
+		  "table": "loot_tables/entities/ogre/ogre.json"
+		},
+		"minecraft:collision_box": {
+		  "width": 1.5,
+		  "height": 2.9
+		},
+		"minecraft:experience_reward": {
+		  "on_death": "query.last_hit_by_player?20:0"
+		},
+		"minecraft:health": {
+		  "value": 120,
+		  "max": 120
+		},
+		"minecraft:attack": {
+		  "damage": [
+			4,
+			7
+		  ]
+		},
+		"minecraft:knockback_resistance": {
+		  "value": 1
+		},
+		"minecraft:hurt_on_condition": {
+		  "damage_conditions": [
+			{
+			  "filters": {
+				"test": "in_lava",
+				"subject": "self",
+				"operator": "==",
+				"value": true
+			  },
+			  "cause": "lava",
+			  "damage_per_tick": 4
+			}
+		  ]
+		},
+		"minecraft:movement": {
+		  "value": 0
+		},
+		"minecraft:navigation.walk": {
+		  "can_pass_doors": true,
+		  "can_walk": true,
+		  "can_swim": true,
+		  "can_break_doors": true
+		},
+		"minecraft:annotation.break_door": {},
+		"minecraft:movement.basic": {},
+		"minecraft:jump.static": {},
+		"minecraft:despawn": {
+		  "despawn_from_distance": {}
+		},
+		"minecraft:behavior.float": {
+		  "priority": 0
+		},
+		"minecraft:behavior.hurt_by_target": {
+		  "priority": 1,
+		  "must_see_forget_duration": 10
+		},
+		"minecraft:behavior.random_stroll": {
+		  "priority": 4,
+		  "speed_multiplier": 0.8
+		},
+		"minecraft:behavior.look_at_target": {
+		  "priority": 5,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90,
+		  "look_distance": 32,
+		  "look_time": [
+			4,
+			8
+		  ],
+		  "probability": 1
+		},
+		"minecraft:behavior.look_at_player": {
+		  "priority": 6,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90,
+		  "look_distance": 16,
+		  "look_time": [
+			4,
+			8
+		  ],
+		  "probability": 0.5
+		},
+		"minecraft:behavior.random_look_around": {
+		  "priority": 7,
+		  "angle_of_view_horizontal": 90,
+		  "angle_of_view_vertical": 90
+		},
+		"minecraft:physics": {},
+		"minecraft:pushable": {
+		  "is_pushable": true,
+		  "is_pushable_by_piston": true
+		},
+		"minecraft:conditional_bandwidth_optimization": {}
+	  },
+	  "events": {
+		"minecraft:entity_spawned": {
+		  "sequence": [
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_neutral",
+				  "minere:ogre_mobile"
+				]
+			  }
+			},
+			{
+			  "filters": {
+				"all_of": [
+				  {
+					"test": "is_altitude",
+					"operator": "<",
+					"value": -16
+				  },
+				  {
+					"test": "random_chance",
+					"value": 2
+				  }
+				]
+			  },
+			  "trigger": "spawn_cave_ogre"
+			}
+		  ]
+		},
+		"spawn_cave_ogre": {
+		  "add": {
+			"component_groups": [
+			  "minere:cave_ogre"
+			]
+		  }
+		},
+		"spawn_green_ogre": {
+		  "remove": {
+			"component_groups": [
+			  "minere:cave_ogre"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:green_ogre"
+			]
+		  }
+		},
+		"minere:ogre_become_hostile": {
+		  "remove": {
+			"component_groups": [
+			  "minere:ogre_neutral"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:ogre_hostile"
+			]
+		  }
+		},
+		"minere:ogre_become_neutral": {
+		  "remove": {
+			"component_groups": [
+			  "minere:ogre_hostile"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:ogre_neutral"
+			]
+		  }
+		},
+		"minere:ogre_become_angry": {
+		  "sequence": [
+			{
+			  "filters": {
+				"test": "has_component",
+				"subject": "self",
+				"operator": "!=",
+				"value": "minere:ogre_berserk"
+			  },
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_angry"
+				]
+			  }
+			}
+		  ]
+		},
+		"minere:ogre_become_calm": {
+		  "remove": {
+			"component_groups": [
+			  "minere:ogre_angry"
+			]
+		  }
+		},
+		"minere:ogre_start_berserking": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:ogre_angry",
+				  "minere:ogre_berserk"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_berserk"
+				]
+			  }
+			},
+			{
+			  "queue_command": {
+				"command": "playsound mob.ogre.berserk @a ~ ~ ~ 5.0"
+			  }
+			}
+		  ]
+		},
+		"minere:ogre_stop_berserking": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:ogre_berserk"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_angry"
+				]
+			  }
+			}
+		  ]
+		},
+		"minere:ogre_start_roar": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:ogre_angry",
+				  "minere:ogre_berserk",
+				  "minere:ogre_hostile",
+				  "minere:ogre_mobile"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_roaring",
+				  "minere:roar_cooldown"
+				]
+			  }
+			}
+		  ]
+		},
+		"minere:ogre_end_roar": {
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "minere:ogre_roaring"
+				]
+			  }
+			},
+			{
+			  "add": {
+				"component_groups": [
+				  "minere:ogre_hostile",
+				  "minere:ogre_mobile"
+				]
+			  }
+			},
+			{
+			  "randomize": [
+				{
+				  "weight": 3,
+				  "add": {
+					"component_groups": [
+					  "minere:ogre_angry"
+					]
+				  }
+				},
+				{
+				  "weight": 1,
+				  "add": {
+					"component_groups": [
+					  "minere:ogre_berserk"
+					]
+				  }
+				}
+			  ]
+			}
+		  ]
+		},
+		"minere:end_roar_cooldown": {
+		  "remove": {
+			"component_groups": [
+			  "minere:roar_cooldown"
+			]
+		  }
+		},
+		"killed_enemy_event": {
+		  "queue_command": {
+			"command": "playsound mob.ogre.laugh @a ~ ~ ~ 5.0"
+		  }
+		}
+	  }
+	}
+  }

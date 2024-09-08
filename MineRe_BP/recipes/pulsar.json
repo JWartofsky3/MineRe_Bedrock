@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minere:pulsar"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "###",
+      "###",
+      "###"
+    ],
+    "key": {
+      "#": {
+        "item": "minere:ender_plasma"
+      }
+    },
+	"unlock": [
+        {
+          "item": "minere:ender_plasma"
+        }
+    ],
+    "result": {
+      "item": "minere:pulsar"
+    }
+  }
+}
