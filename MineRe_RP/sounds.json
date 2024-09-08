@@ -197,7 +197,8 @@
 						"sound": "mob.walker.step",
 						"volume": 3
 					},
-					"emerge": "mob.walker.emerge"
+					"emerge": "mob.walker.emerge",
+					"irongolem.repair" : "mob.irongolem.repair"
 				},
 				"pitch": [0.8, 1.2],
 				"volume": 5

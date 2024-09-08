@@ -16,11 +16,14 @@ const SPRINT_MULT = 1.3;
 const SNEAK_MULT = 0.3;
 
 export function armorWeight(player: Player) {
+  if (!player) {
+    return;
+  }
   let diff = (LIGHT_ARMOR_MULT - HEAVY_ARMOR_MULT) / 4;
-  const equippable = player.getComponent(
+  const equippable = player?.getComponent(
     EntityComponentTypes.Equippable,
   ) as EntityEquippableComponent;
-  const movementCopmonent = player.getComponent(
+  const movementCopmonent = player?.getComponent(
     "movement",
   ) as EntityAttributeComponent;
   if (!equippable || !movementCopmonent) {
@@ -41,7 +44,6 @@ export function armorWeight(player: Player) {
     baseMoveSpeed *
     getPotionModifier(player) *
     getSoulSpeedMultiplier(player);
-  //world.sendMessage(`unmodified: ${movementCopmonent.currentValue}, modified: ${finalSpeedValue}`);
   movementCopmonent.setCurrentValue(finalSpeedValue);
 }
 
@@ -67,7 +69,10 @@ function getItemWeight(item: ItemStack): number {
 }
 
 function getSoulSpeedMultiplier(player: Player) {
-  if (!player?.dimension || !player?.isOnGround) {
+  if (!player) {
+    return 1.0;
+  }
+  if (!player?.isOnGround) {
     return 1.0;
   }
   if (player.location.y - 0.75 < player.dimension.heightRange.min) {
@@ -78,7 +83,10 @@ function getSoulSpeedMultiplier(player: Player) {
     y: player.location.y - 0.75,
     z: player.location.z,
   });
-  if (!block.typeId.includes("soul")) {
+  if (!block) {
+    return 1.0;
+  }
+  if (!block?.typeId.includes("soul")) {
     return 1.0;
   }
   const equippable = player.getComponent(

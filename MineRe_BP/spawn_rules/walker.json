@@ -16,11 +16,6 @@
             "surface": 2,
             "underground": 2
           },
-          "minecraft:delay_filter": {
-            "min": 15,
-            "max": 120,
-            "identifier": "minere:walker"
-          },
           "minecraft:biome_filter": [
             {
               "test": "has_biome_tag", "operator": "==", "value": "the_end"

@@ -26,7 +26,7 @@
 		  "move": "animation.minere.ghost.move",
 		  "attack": "animation.minere.ghost.attack",
 		  "look_at_target": "animation.minere.ghost.look_at_target",
-		  "controller": "controller.minere.animation.ghost"
+		  "controller": "controller.animation.minere.ghost"
 		}
 	  }
 	}

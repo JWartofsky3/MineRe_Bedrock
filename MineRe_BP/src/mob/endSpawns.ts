@@ -2,7 +2,10 @@ import { world, system, Entity } from "@minecraft/server";
 import { distVector3 } from "util/vector3Functions";
 
 export const handleEndSpawn = (entity: Entity) => {
-  if (!entity?.typeId || !entity?.dimension) {
+  if (!entity) {
+    return;
+  }
+  if (!entity?.typeId) {
     return;
   }
   if (
@@ -16,13 +19,13 @@ export const handleEndSpawn = (entity: Entity) => {
     return;
   }
 
-  const dimension = world.getDimension(entity?.dimension.id);
+  const dimension = world.getDimension(entity?.dimension?.id);
   if (!dimension) {
     return;
   }
 
   system.run(() => {
-    if (!entity?.typeId || !entity?.dimension) {
+    if (!entity?.typeId) {
       return;
     }
     const location = entity.location;

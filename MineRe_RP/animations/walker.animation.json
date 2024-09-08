@@ -37,7 +37,6 @@
 		},
 		"animation.minere.walker.radar": {
 			"loop": true,
-			"animation_length": 6.375,
 			"bones": {
 				"radarTop": {
 					"rotation": [0, "query.anim_time * 100", 0]

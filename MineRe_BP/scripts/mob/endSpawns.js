@@ -1,7 +1,10 @@
 import { world, system } from "@minecraft/server";
 import { distVector3 } from "util/vector3Functions";
 export const handleEndSpawn = (entity) => {
-    if (!entity?.typeId || !entity?.dimension) {
+    if (!entity) {
+        return;
+    }
+    if (!entity?.typeId) {
         return;
     }
     if (!(entity.typeId == "minere:walker" ||
@@ -10,12 +13,12 @@ export const handleEndSpawn = (entity) => {
         entity.typeId == "minere:gremlin")) {
         return;
     }
-    const dimension = world.getDimension(entity?.dimension.id);
+    const dimension = world.getDimension(entity?.dimension?.id);
     if (!dimension) {
         return;
     }
     system.run(() => {
-        if (!entity?.typeId || !entity?.dimension) {
+        if (!entity?.typeId) {
             return;
         }
         const location = entity.location;

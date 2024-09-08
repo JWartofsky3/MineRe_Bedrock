@@ -176,7 +176,7 @@ function getProtectionDiff(
     getProtectionValue(equippable, EquipmentSlot.Chest) +
     getProtectionValue(equippable, EquipmentSlot.Legs) +
     getProtectionValue(equippable, EquipmentSlot.Feet);
-  const damagePreProt = damage / ((100 - totalProt * 4) / 100);
+  const damagePreProt = damage / ((100 - Math.min(80, totalProt * 4)) / 100);
   let newDamageReduction = 0;
   for (let i = 0; i < totalProt; i++) {
     if (i < 4) {

@@ -31,32 +31,6 @@
 			"entries": [
 				{
 					"type": "item",
-					"name": "gunpowder",
-					"weight": 1,
-					"functions": [
-						{
-							"function": "set_count",
-							"count": {
-								"min": 1,
-								"max": 3
-							}
-						},
-						{
-						  "function": "looting_enchant",
-						  "count": {
-							"min": 0,
-							"max": 1
-						  }
-						}
-					]
-				}
-			]
-		},
-		{
-			"rolls": 1,
-			"entries": [
-				{
-					"type": "item",
 					"name": "end_stone",
 					"weight": 1,
 					"functions": [
@@ -83,7 +57,7 @@
 			"entries": [
 				{
 					"type": "item",
-					"name": "emerald",
+					"name": "minere:enderon_gemstone",
 					"weight": 1,
 					"functions": [
 						{
@@ -128,6 +102,32 @@
 				  }
 				]
 			  }
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "gunpowder",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 3
+							}
+						},
+						{
+						  "function": "looting_enchant",
+						  "count": {
+							"min": 0,
+							"max": 1
+						  }
+						}
+					]
+				}
 			]
 		}
 	]
