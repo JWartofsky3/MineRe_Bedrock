@@ -14,7 +14,7 @@
             "adjust_for_weather": false
           },
           "minecraft:weight": {
-            "default": 32
+            "default": 30
           },
           "minecraft:herd": {
             "min_size": 1,
@@ -39,7 +39,7 @@
             "adjust_for_weather": false
           },
           "minecraft:weight": {
-            "default": 12
+            "default": 10
           },
           "minecraft:height_filter": {
             "min": 0
@@ -66,7 +66,7 @@
             "adjust_for_weather": false
           },
           "minecraft:weight": {
-            "default": 24
+            "default": 20
           },
           "minecraft:height_filter": {
             "min": -63,
