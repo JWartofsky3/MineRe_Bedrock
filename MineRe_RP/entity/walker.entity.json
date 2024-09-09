@@ -4,11 +4,16 @@
 	  "description": {
 		"identifier": "minere:walker",
 		"materials": {
-			"default": "ghast"
+			"default": "entity_emissive_alpha",
+			"cracks": "iron_golem"
 		  },
 		"textures": {
 		  "default": "textures/entity/minere/walker/walker",
-		  "friendly": "textures/entity/minere/walker/walker_friendly"
+		  "friendly": "textures/entity/minere/walker/walker_friendly",
+		  "cracked_low": "textures/entity/minere/walker/cracked_low",
+		  "cracked_medium": "textures/entity/minere/walker/cracked_medium",
+		  "cracked_high": "textures/entity/minere/walker/cracked_high",
+		  "cracked_none": "textures/entity/minere/walker/empty"
 		},
 		"geometry": {
 		  "default": "geometry.minere.walker"
@@ -51,7 +56,8 @@
 		  "blink":  "animation.minere.walker.blink"
 		},
 		"render_controllers": [
-		  "controller.render.minere.walker"
+		  "controller.render.minere.walker",
+		  "controller.render.minere.walker_cracks"
 		],
 		"sound_effects": {
 			"emerge": "mob.walker.emerge",

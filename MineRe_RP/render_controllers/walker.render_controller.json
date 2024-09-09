@@ -7,6 +7,11 @@
             "Array.skins": [
               "Texture.default",
               "Texture.friendly"
+            ],
+            "Array.cracks": [
+              "Texture.cracked_high",
+              "Texture.cracked_low",
+              "Texture.cracked_none"
             ]
           }
         },
@@ -16,7 +21,30 @@
             "*": "Material.default"
           }
         ],
-        "textures": [ "Array.skins[query.variant]" ]
+        "textures": [ "Array.skins[query.variant]"]
+      },
+      "controller.render.minere.walker_cracks": {
+        "arrays": {
+          "textures": {
+            "Array.skins": [
+              "Texture.default",
+              "Texture.friendly"
+            ],
+            "Array.cracks": [
+              "Texture.cracked_high",
+              "Texture.cracked_medium",
+              "Texture.cracked_low",
+              "Texture.cracked_none"
+            ]
+          }
+        },
+        "geometry": "Geometry.default",
+        "materials": [
+          {
+            "*": "Material.cracks"
+          }
+        ],
+        "textures": [ "Array.cracks[math.clamp(query.health / 37.5, 0, 3)]"]
       }
     }
 }

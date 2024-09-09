@@ -8,6 +8,9 @@
 		"is_experimental": false
 	  },
 	  "component_groups": {
+		"persistent": {
+		  "minecraft:persistent": {}
+		},
 		"hostile": {
 		  "minecraft:variant": {
 			"value": 0
@@ -46,22 +49,6 @@
 					  "subject": "other",
 					  "operator": "==",
 					  "value": "irongolem"
-					},
-					{
-					  "all_of": [
-						{
-						  "test": "is_family",
-						  "subject": "other",
-						  "operator": "==",
-						  "value": "walker"
-						},
-						{
-						  "test": "is_variant",
-						  "subject": "other",
-						  "operator": "==",
-						  "value": 1
-						}
-					  ]
 					}
 				  ]
 				},
@@ -83,7 +70,7 @@
 					}
 				  ]
 				},
-				"event": "reprogram",
+				"event": "start_reprogram",
 				"target": "self"
 			  },
 			  "use_item": true,
@@ -94,7 +81,7 @@
 		"reprogramming": {
 		  "minecraft:attack_cooldown": {
 			"attack_cooldown_complete_event": {
-			  "event": "become_friendly",
+			  "event": "end_reprogram",
 			  "target": "self"
 			},
 			"attack_cooldown_time": 7
@@ -111,7 +98,6 @@
 			  "mob"
 			]
 		  },
-		  "minecraft:persistent": {},
 		  "minecraft:behavior.hurt_by_target": {
 			"priority": 2,
 			"entity_types": {
@@ -150,7 +136,7 @@
 			  {
 				"priority": 1,
 				"filters": {
-				  "all_of": [
+				  "any_of": [
 					{
 					  "test": "is_family",
 					  "subject": "other",
@@ -174,6 +160,25 @@
 				  ]
 				},
 				"max_dist": 64
+			  },
+			  {
+				"priority": 2,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "enderman"
+					},
+					{
+					  "test": "has_component",
+					  "subject": "other",
+					  "value": "minecraft:angry"
+					}
+				  ]
+				},
+				"max_dist": 32
 			  }
 			],
 			"must_see": true
@@ -427,15 +432,44 @@
 	  },
 	  "events": {
 		"minecraft:entity_spawned": {
+		  "randomize": [
+			{
+			  "weight": 9,
+			  "add": {
+				"component_groups": [
+				  "emerging",
+				  "hostile",
+				  "immobile"
+				]
+			  }
+			},
+			{
+			  "weight": 1,
+			  "add": {
+				"component_groups": [
+				  "emerging",
+				  "friendly",
+				  "immobile"
+				]
+			  }
+			}
+		  ]
+		},
+		"spawn_hostile": {
 		  "add": {
 			"component_groups": [
-			  "emerging",
-			  "hostile",
-			  "immobile"
+			  "hostile"
 			]
 		  }
 		},
-		"reprogram": {
+		"spawn_friendly": {
+		  "add": {
+			"component_groups": [
+			  "friendly"
+			]
+		  }
+		},
+		"start_reprogram": {
 		  "randomize": [
 			{
 			  "weight": 1,
@@ -466,7 +500,7 @@
 			}
 		  ]
 		},
-		"become_friendly": {
+		"end_reprogram": {
 		  "sequence": [
 			{
 			  "remove": {
@@ -481,7 +515,8 @@
 				"component_groups": [
 				  "friendly",
 				  "can_move",
-				  "mode_switcher"
+				  "mode_switcher",
+				  "persistent"
 				]
 			  }
 			},

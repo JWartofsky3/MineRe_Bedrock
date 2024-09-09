@@ -54,7 +54,7 @@
 			"event": "minere:yeti_become_angry"
 		  },
 		  "minecraft:tameable": {
-			"probability": 0.07,
+			"probability": 0.1,
 			"tame_items": [
 			  "cod",
 			  "cooked_cod",
