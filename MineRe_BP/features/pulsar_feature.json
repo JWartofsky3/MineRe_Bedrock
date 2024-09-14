@@ -1,0 +1,15 @@
+{
+	"format_version": "1.13.0",
+
+	"minecraft:single_block_feature": {
+		"description": {
+			"identifier": "minere:pulsar_feature"
+		},
+
+		"places_block": "minere:pulsar",
+
+		"enforce_placement_rules": true,
+		"enforce_survivability_rules": true,
+		"may_replace": ["minecraft:air"]
+	}
+}

@@ -1,11 +1,10 @@
 import {
   Entity,
-  EntityComponentTypes,
-  EntityEquippableComponent,
   ItemComponentTypes,
   ItemEnchantableComponent,
   ItemReleaseUseAfterEvent,
 } from "@minecraft/server";
+import { consumeXp } from "player/consumeXp";
 
 const XP_COST = 1;
 
@@ -20,7 +19,9 @@ export const fireInfintyBowAfter = (data: ItemReleaseUseAfterEvent) => {
   if (!enchantments || !enchantments.getEnchantment("infinity")) {
     return;
   }
-  if (data.source.getTotalXp() < XP_COST) {
+  if (consumeXp(data.source, XP_COST)) {
+    return;
+  } else {
     const items = dimension.getEntities({
       type: "arrow",
       closest: 1,
@@ -32,15 +33,5 @@ export const fireInfintyBowAfter = (data: ItemReleaseUseAfterEvent) => {
       items[0].remove();
     }
     data.source.playSound("item.amethyst_staff.error");
-  }
-
-  if (data.source.getTotalXp() == 0) {
-    return;
-  }
-  if (data.source.xpEarnedAtCurrentLevel == 0) {
-    data.source.addLevels(-1);
-    data.source.addExperience(data.source.totalXpNeededForNextLevel - XP_COST);
-  } else {
-    data.source.addExperience(-1 * XP_COST);
   }
 };

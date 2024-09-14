@@ -18,15 +18,15 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 60
+          "default": 50
         },
         "minecraft:herd": {
           "min_size": 1,
           "max_size": 3
         },
         "minecraft:density_limit": {
-          "surface": 5,
-          "underground": 5
+          "surface": 4,
+          "underground": 4
         },
         
         "minecraft:biome_filter": {
@@ -45,15 +45,11 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 30
+          "default": 25
         },
         "minecraft:density_limit": {
-          "surface": 5,
-          "underground": 5
-        },
-        "minecraft:herd": {
-          "min_size": 1,
-          "max_size": 2
+          "surface": 4,
+          "underground": 4
         },
         "minecraft:biome_filter": {
           "none_of": [

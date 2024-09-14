@@ -101,7 +101,7 @@
             "adjust_for_weather": false
           },
           "minecraft:weight": {
-            "default": 10
+            "default": 14
           },
           "minecraft:density_limit": {
             "underground": 3

@@ -36,6 +36,9 @@
 			},
 			{
 				"blink": "!variable.is_charging && variable.is_blinking"
+			},
+			{
+				"emerge": "query.is_emerging"
 			}
 		  ],
 		  "pre_animation": [

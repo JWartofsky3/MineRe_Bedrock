@@ -21,6 +21,9 @@
       },
       "enderon_ore": {
         "textures": "textures/blocks/minere/enderon_ore"
+      },
+      "sulfur_ore": {
+        "textures": "textures/blocks/minere/sulfur_ore"
       }
     }
   }

@@ -32,19 +32,25 @@
 		  }
 		},
 		"minere:yeti_neutral": {
+		  "minecraft:behavior.hurt_by_target": {
+			"priority": 1,
+			"hurt_owner": true,
+			"must_see_forget_duration": 10
+		  },
 		  "minecraft:environment_sensor": {
 			"triggers": {
 			  "filters": {
-				"all_of": [
-				  {
-					"test": "is_brightness",
-					"operator": "<",
-					"value": 0.49
-				  },
-				  {
-					"test": "is_daytime",
-					"value": false
-				  }
+				"test": "is_brightness",
+				"operator": "<",
+				"value": 0.4,
+				"any_of": [
+					{
+						"test": "is_underground"
+					},
+					{
+						"test": "is_daytime",
+						"value": false
+					}
 				]
 			  },
 			  "event": "minere:yeti_become_hostile"
@@ -82,12 +88,30 @@
 			"value": 32,
 			"max": 32
 		  },
+		  "minecraft:leashable": {
+			"soft_distance": 4.0,
+			"hard_distance": 6.0,
+			"max_distance": 10.0,
+			"on_leash": {
+			  "event": "minecraft:on_leash",
+			  "target": "self"
+			},
+			"on_unleash": {
+			  "event": "minecraft:on_unleash",
+			  "target": "self"
+			}
+		  },
 		  "minecraft:on_target_acquired": {
 			"event": "minere:yeti_become_angry"
 		  },
 		  "minecraft:persistent": {},
 		  "minecraft:is_tamed": {},
 		  "minecraft:sittable": {},
+		  "minecraft:behavior.hurt_by_target": {
+			"priority": 1,
+			"hurt_owner": false,
+			"must_see_forget_duration": 10
+		  },
 		  "minecraft:behavior.owner_hurt_by_target": {
 			"priority": 1
 		  },
@@ -97,8 +121,8 @@
 		  "minecraft:behavior.nearest_attackable_target": {
 			"priority": 3,
 			"must_see": false,
-			"must_see_forget_duration": 15,
-			"persist_time": 15,
+			"must_see_forget_duration": 5,
+			"persist_time": 5,
 			"attack_interval": 2,
 			"entity_types": [
 			  {
@@ -126,7 +150,15 @@
 			]
 		  },
 		  "minecraft:behavior.stay_while_sitting": {
-			"priority": 5
+			"priority": 1
+		  },
+		  "minecraft:behavior.follow_owner": {
+			"priority": 6,
+			"speed_multiplier": 1,
+			"start_distance": 10,
+			"max_distance": 16,
+			"stop_distance": 4,
+			"can_teleport": false
 		  },
 		  "minecraft:behavior.tempt": {
 			"priority": 6,
@@ -248,12 +280,17 @@
 		  }
 		},
 		"minere:yeti_hostile": {
+		  "minecraft:behavior.hurt_by_target": {
+			"priority": 1,
+			"hurt_owner": true,
+			"must_see_forget_duration": 10
+		  },
 		  "minecraft:environment_sensor": {
 			"triggers": {
 			  "filters": {
-				"test": "is_brightness",
-				"operator": ">",
-				"value": 0.49
+					"test": "is_brightness",
+					"operator": ">",
+					"value": 0.4
 			  },
 			  "event": "minere:yeti_become_neutral"
 			}
@@ -268,8 +305,8 @@
 		  "minecraft:behavior.nearest_attackable_target": {
 			"priority": 3,
 			"must_see": false,
-			"must_see_forget_duration": 15,
-			"persist_time": 15,
+			"must_see_forget_duration": 5,
+			"persist_time": 5,
 			"attack_interval": 2,
 			"entity_types": [
 			  {
@@ -450,7 +487,6 @@
 			  }
 			},
 			{
-			  "cause": "entity_attack",
 			  "on_damage": {
 				"filters": {
 				  "all_of": [
@@ -462,10 +498,15 @@
 					  "test": "is_family",
 					  "subject": "other",
 					  "value": "player"
+					},
+					{
+					  "test": "has_component",
+					  "subject": "self",
+					  "value": "minecraft:is_tamed"
 					}
 				  ]
 				},
-				"event": "minere:yeti_become_neutral",
+				"event": "minere:yeti_untame",
 				"target": "self"
 			  }
 			}
@@ -527,10 +568,6 @@
 		},
 		"minecraft:behavior.float": {
 		  "priority": 0
-		},
-		"minecraft:behavior.hurt_by_target": {
-		  "priority": 1,
-		  "must_see_forget_duration": 10
 		},
 		"minecraft:behavior.avoid_block": {
 		  "priority": 2,
@@ -677,6 +714,18 @@
 		  "remove": {
 			"component_groups": [
 			  "minere:yeti_hostile",
+			  "minere:yeti_friendly"
+			]
+		  },
+		  "add": {
+			"component_groups": [
+			  "minere:yeti_neutral"
+			]
+		  }
+		},
+		"minere:yeti_untame": {
+		  "remove": {
+			"component_groups": [
 			  "minere:yeti_friendly"
 			]
 		  },

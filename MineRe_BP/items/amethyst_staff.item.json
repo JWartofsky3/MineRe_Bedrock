@@ -11,7 +11,7 @@
 		"minecraft:max_stack_size": 1,
 		"minecraft:icon":  "minere.amethyst_staff",
 		"minecraft:damage": 3,
-		"minecraft:can_destroy_in_creative": false,
+		"minecraft:can_destroy_in_creative": true,
 		"minecraft:enchantable": {
 		  "slot": "sword",
 		  "value": 15
@@ -20,8 +20,8 @@
 		  "max_durability": 384
 		},
 		"minecraft:cooldown": {
-		  "category": "attack",
-		  "duration": 0.2
+		  "category": "amethystStaff",
+		  "duration": 8.0
 		},
 		"minecraft:repairable": {
 		  "repair_items": [

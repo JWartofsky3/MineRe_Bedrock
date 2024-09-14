@@ -27,6 +27,15 @@
 		"minere.amethyst_staff": {
 			"textures": "textures/items/minere/amethyst_staff.png"
 		},
+		"minere.fire_staff": {
+			"textures": "textures/items/minere/fire_staff.png"
+		},
+		"minere.blaster_staff": {
+			"textures": "textures/items/minere/blaster_staff.png"
+		},
+		"minere.echo_staff": {
+			"textures": "textures/items/minere/echo_staff.png"
+		},
 		"minere.phased_ender_pearl": {
 			"textures": "textures/items/minere/phased_ender_pearl.png"
 		},

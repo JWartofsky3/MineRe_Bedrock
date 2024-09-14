@@ -11,6 +11,9 @@ export const throwBy = (
   scale: number,
   vAddition: number,
 ) => {
+  if (!throwBy || !target || !scale) {
+    return;
+  }
   const throwForce = addVector3(
     multiplyVector3Number(
       directionVector3(target.location, thrower.location),

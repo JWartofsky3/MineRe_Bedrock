@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "minere:echo_staff"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			" AA",
+			"ARA",
+			"RA "
+		],
+		"key": {
+			"R": {
+				"item": "minecraft:breeze_rod"
+			},
+			"A": {
+				"item": "minecraft:echo_shard"
+			}
+		},
+		"result": {
+			"item": "minere:echo_staff"
+		}
+	}
+}

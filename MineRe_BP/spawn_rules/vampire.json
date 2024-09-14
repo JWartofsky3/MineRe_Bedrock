@@ -10,7 +10,7 @@
           "minecraft:spawns_underground": {},
           "minecraft:brightness_filter": {
             "min": 0,
-            "max": 7,
+            "max": 1,
             "adjust_for_weather": false
           },
           "minecraft:weight": {
@@ -31,11 +31,10 @@
           }
         },
         {
-          "minecraft:spawns_on_surface": {},
           "minecraft:spawns_underground": {},
           "minecraft:brightness_filter": {
             "min": 0,
-            "max": 7,
+            "max": 1,
             "adjust_for_weather": false
           },
           "minecraft:weight": {
@@ -62,7 +61,7 @@
           "minecraft:spawns_underground": {},
           "minecraft:brightness_filter": {
             "min": 0,
-            "max": 7,
+            "max": 1,
             "adjust_for_weather": false
           },
           "minecraft:weight": {

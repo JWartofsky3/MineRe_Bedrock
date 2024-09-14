@@ -9,7 +9,17 @@
       "is_experimental": false
     },
     "component_groups": {
-      "minecraft:exploding": {
+      "minere:exploding": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 1.85,
+          "causes_fire": true,
+          "fire_affected_by_griefing": false,
+          "destroy_affected_by_griefing": false
+        }
+      },
+      "minere:mob_exploding": {
         "minecraft:explode": {
           "fuse_length": 0,
           "fuse_lit": true,
@@ -19,18 +29,18 @@
           "destroy_affected_by_griefing": true
         }
       },
-      "minere:laser": {
+      "minere:player_laser": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": 8,
+              "damage": 22,
               "knockback": false,
               "semi_random_diff_damage": false
             },
             "definition_event": {
               "affect_projectile": true,
               "event_trigger": {
-                "event": "minecraft:explode",
+                "event": "minere:explode",
                 "target": "self"
               }
             }
@@ -54,14 +64,14 @@
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": 8,
+              "damage": 10,
               "knockback": false,
               "semi_random_diff_damage": false
             },
             "definition_event": {
               "affect_projectile": true,
               "event_trigger": {
-                "event": "minecraft:explode",
+                "event": "minere:mob_explode",
                 "target": "self"
               }
             }
@@ -131,23 +141,33 @@
           },
           {
             "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "operator": "not",
-              "value": "walker"
+              "none_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "walker"
+                }
+              ]
             },
             "add": {
               "component_groups": [
-                "minere:laser"
+                "minere:player_laser"
               ]
             }
           }
         ]
       },
-      "minecraft:explode": {
+      "minere:mob_explode": {
         "add": {
           "component_groups": [
-            "minecraft:exploding"
+            "minere:mob_exploding"
+          ]
+        }
+      },
+      "minere:explode": {
+        "add": {
+          "component_groups": [
+            "minere:exploding"
           ]
         }
       }

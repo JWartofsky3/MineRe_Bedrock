@@ -1,0 +1,33 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "minere:blaster_staff"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"BPB",
+			"GRG",
+			" R "
+		],
+		"key": {
+			"R": {
+				"item": "minecraft:end_rod"
+			},
+			"G": {
+				"item": "minere:enderon_gemstone"
+			},
+			"B": {
+				"item": "minere:enderon_block"
+			},
+			"P": {
+				"item": "minere:phased_ender_pearl"
+			}
+		},
+		"result": {
+			"item": "minere:blaster_staff"
+		}
+	}
+}

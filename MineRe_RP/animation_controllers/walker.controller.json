@@ -2,18 +2,8 @@
 	"format_version": "1.10.0",
 	"animation_controllers": {
 	  "controller.animation.minere.walker": {
-		"initial_state": "emerging",
+		"initial_state": "walking",
 		"states": {
-		  "emerging": {
-			"animations": [
-			  "emerge"
-			],
-			"transitions": [
-			  {
-				"walking": "!query.is_emerging"
-			  }
-			]
-		  },
 		  "walking": {
 			"animations": [
 			  {

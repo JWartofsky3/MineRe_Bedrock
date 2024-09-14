@@ -11,6 +11,24 @@
         }
       ]
     },
+    "item.fire_staff.cast": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/fire_staff/cast"
+        }
+      ]
+    },
+    "item.echo_staff.whoosh": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/echo_staff/whoosh",
+          "pitch": 0.7,
+          "volume": 1.0
+        }
+      ]
+    },
     "mob.biter.bite": {
       "category": "hostile",
       "sounds": [

@@ -25,38 +25,6 @@
 		  "minecraft:behavior.hurt_by_target": {
 			"priority": 1
 		  },
-		  "minecraft:behavior.nearest_attackable_target": {
-			"priority": 2,
-			"within_radius": 32,
-			"entity_types": [
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "player"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "villager"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "irongolem"
-					}
-				  ]
-				},
-				"max_dist": 64
-			  }
-			],
-			"must_see": true
-		  },
 		  "minecraft:interact": {
 			"interactions": {
 			  "on_interact": {
@@ -109,80 +77,6 @@
 			  }
 			}
 		  },
-		  "minecraft:behavior.nearest_prioritized_attackable_target": {
-			"priority": 2,
-			"within_radius": 32,
-			"entity_types": [
-			  {
-				"priority": 0,
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "walker"
-					},
-					{
-					  "test": "is_variant",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": 0
-					}
-				  ]
-				},
-				"max_dist": 64
-			  },
-			  {
-				"priority": 1,
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "monster"
-					}
-				  ],
-				  "none_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "enderman"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "gremlin"
-					}
-				  ]
-				},
-				"max_dist": 64
-			  },
-			  {
-				"priority": 2,
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "operator": "==",
-					  "value": "enderman"
-					},
-					{
-					  "test": "has_component",
-					  "subject": "other",
-					  "value": "minecraft:angry"
-					}
-				  ]
-				},
-				"max_dist": 32
-			  }
-			],
-			"must_see": true
-		  },
 		  "minecraft:behavior.tempt": {
 			"priority": 3,
 			"speed_multiplier": 1.5,
@@ -202,10 +96,20 @@
 						"value": "player"
 					  },
 					  {
-						"test": "has_equipment",
-						"domain": "hand",
-						"subject": "other",
-						"value": "end_stone"
+						"any_of": [
+							{
+								"test": "has_equipment",
+								"domain": "hand",
+								"subject": "other",
+								"value": "end_stone"
+							},
+							{
+								"test": "has_equipment",
+								"domain": "hand",
+								"subject": "other",
+								"value": "end_bricks"
+							}
+						]
 					  },
 					  {
 						"test": "is_missing_health",
@@ -281,6 +185,199 @@
 		  },
 		  "minecraft:behavior.random_look_around": {
 			"priority": 9
+		  },
+		  "minecraft:behavior.nearest_prioritized_attackable_target": {
+			"priority": 2,
+			"within_radius": 64,
+			"reevaluate_description": true,
+			"entity_types": [
+			  {
+				"priority": 0,
+				"max_dist": 64,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 0
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "player"
+					}
+				  ]
+				}
+			  },
+			  {
+				"priority": 0,
+				"max_dist": 48,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 0
+					}
+				  ],
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "irongolem"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "goblin"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "piglin"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "villager"
+					}
+				  ]
+				}
+			  },
+			  {
+				"priority": 0,
+				"max_dist": 24,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 0
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "walker"
+					},
+					{
+					  "test": "is_variant",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": 1
+					}
+				  ]
+				}
+			  },
+			  {
+				"priority": 0,
+				"max_dist": 64,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 1
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "walker"
+					},
+					{
+					  "test": "is_variant",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": 0
+					}
+				  ]
+				}
+			  },
+			  {
+				"priority": 1,
+				"max_dist": 64,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 1
+					}
+				  ],
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "monster"
+					}
+				  ],
+				  "none_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "enderman"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "gremlin"
+					},
+					{
+						"test": "is_family",
+						"subject": "other",
+						"operator": "==",
+						"value": "shulker"
+					}
+				  ]
+				}
+			  },
+			  {
+				"priority": 1,
+				"max_dist": 64,
+				"reevaluate_description": true,
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_variant",
+					  "subject": "self",
+					  "operator": "==",
+					  "value": 1
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "operator": "==",
+					  "value": "enderman"
+					},
+					{
+					  "test": "has_component",
+					  "subject": "other",
+					  "value": "angry"
+					}
+				  ]
+				}
+			  }
+			],
+			"must_see": true
 		  }
 		},
 		"mode_switcher": {
@@ -432,28 +529,13 @@
 	  },
 	  "events": {
 		"minecraft:entity_spawned": {
-		  "randomize": [
-			{
-			  "weight": 9,
-			  "add": {
-				"component_groups": [
-				  "emerging",
-				  "hostile",
-				  "immobile"
-				]
-			  }
-			},
-			{
-			  "weight": 1,
-			  "add": {
-				"component_groups": [
-				  "emerging",
-				  "friendly",
-				  "immobile"
-				]
-			  }
-			}
-		  ]
+		  "add": {
+			"component_groups": [
+			  "emerging",
+			  "hostile",
+			  "immobile"
+			]
+		  }
 		},
 		"spawn_hostile": {
 		  "add": {
@@ -524,11 +606,6 @@
 			  "queue_command": {
 				"command": "playsound mob.walker.reprogram_complete @a ~ ~ ~ 2.0"
 			  }
-			},
-			{
-			  "queue_command": {
-				"command": "summon endermite"
-			  }
 			}
 		  ]
 		},
@@ -564,18 +641,42 @@
 		  }
 		},
 		"minere:emerged": {
-		  "remove": {
-			"component_groups": [
-			  "emerging",
-			  "immobile"
-			]
-		  },
-		  "add": {
-			"component_groups": [
-			  "can_move",
-			  "mode_switcher"
-			]
-		  }
+		  "sequence": [
+			{
+			  "remove": {
+				"component_groups": [
+				  "emerging"
+				]
+			  }
+			},
+			{
+			  "filters": {
+				"none_of": [
+				  {
+					"test": "has_component",
+					"subject": "self",
+					"value": "attack_cooldown"
+				  },
+				  {
+					"test": "has_component",
+					"subject": "self",
+					"value": "minecraft:attack_cooldown"
+				  }
+				]
+			  },
+			  "remove": {
+				"component_groups": [
+				  "immobile"
+				]
+			  },
+			  "add": {
+				"component_groups": [
+				  "can_move",
+				  "mode_switcher"
+				]
+			  }
+			}
+		  ]
 		}
 	  }
 	}

@@ -3,6 +3,7 @@
 	"minecraft:entity": {
 	  "description": {
 		"identifier": "minere:ender_phantom",
+		"runtime_identifier": "minecraft:phantom",
 		"is_spawnable": true,
 		"is_summonable": true,
 		"is_experimental": false

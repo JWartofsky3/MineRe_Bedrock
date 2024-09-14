@@ -7,6 +7,7 @@ import { throwBy } from "mob/throwBy";
 import { rollWebAttack } from "mob/shootWeb";
 import { ogreLaugh } from "mob/ogreLaugh";
 import { useAmethystStaff } from "item/amethyst_staff";
+import { useEchoStaff } from "item/echo_staff";
 import { usePhasedEnderPearl } from "item/phased_ender_pearl";
 import { replaceMinecart } from "item/replace_minecart";
 import { angerEndermen } from "mob/angerEndermen";
@@ -19,6 +20,8 @@ import { rollBecomeSummoner } from "mob/become_summoner";
 import { bombDamage } from "item/bomb_damage";
 import { handleItemDurability } from "item/handle_item_durability";
 import { onHoeUse } from "item/custom_hoe";
+import { useFireStaff } from "item/fire_staff";
+import { useBlasterStaff } from "item/blaster_staff";
 export const DEFAULT_TICK = 20;
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
     fireInfintyBowAfter(data);
@@ -36,6 +39,9 @@ world.beforeEvents.entityRemove.subscribe(function (data) {
 });
 world.beforeEvents.itemUse.subscribe((data) => {
     useAmethystStaff(data);
+    useEchoStaff(data);
+    useFireStaff(data);
+    useBlasterStaff(data);
 });
 world.afterEvents.itemUse.subscribe((data) => {
     usePhasedEnderPearl(data);

@@ -1,0 +1,27 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:structure_template_feature": {
+		"description": {
+			"identifier": "minere:wild_dungeon_feature"
+		},
+		"structure_name": "minere:wild_dungeon",
+		"adjustment_radius": 16,
+		"facing_direction": "random",
+		"constraints": {
+			"block_intersection": {
+				"block_allowlist": [
+					"minecraft:stone",
+					"minecraft:cobblestone",
+					"minecraft:mossy_cobblestone",
+                    "minecraft:granite",
+					"minecraft:andesite",
+                    "minecraft:diorite",
+                    "minecraft:gravel",
+                    "minecraft:dirt",
+                    "minecraft:sandstone",
+                    "minecraft:sand"
+				]
+			}
+		}
+	}
+}

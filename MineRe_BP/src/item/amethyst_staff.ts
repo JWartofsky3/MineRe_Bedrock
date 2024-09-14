@@ -6,13 +6,11 @@ import {
   EntityComponentTypes,
   EntityProjectileComponent,
   Dimension,
+  ItemComponentTypes,
+  ItemCooldownComponent,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
-import { DEFAULT_TICK } from "main";
-
-const AMETHYST_SHIELD_COOLDOWN = "amethystShieldCooldown";
-const cooldownTime = 8;
 
 export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -21,31 +19,33 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
   if (itemStack.typeId == "minere:amethyst_staff") {
     system.run(() => {
       if (source.isSneaking) {
-        const cooldown = source.getDynamicProperty(AMETHYST_SHIELD_COOLDOWN);
-        if (
-          !!cooldown &&
-          typeof cooldown == "number" &&
-          system.currentTick - cooldown < cooldownTime * DEFAULT_TICK
-        ) {
-          source.playSound("item.amethyst_staff.error");
-          return;
+        const cooldownComponent = data?.itemStack.getComponent(
+          ItemComponentTypes.Cooldown,
+        ) as ItemCooldownComponent;
+        if (cooldownComponent) {
+          if (cooldownComponent.getCooldownTicksRemaining(source)) {
+            source.playSound("item.amethyst_staff.error");
+            return;
+          }
+          cooldownComponent.startCooldown(source);
         }
-        source.setDynamicProperty(AMETHYST_SHIELD_COOLDOWN, system.currentTick);
         if (
           !source.runCommand("clear @s[m=!c] amethyst_shard 0 4")
             .successCount &&
           source.getGameMode() !== "creative"
         ) {
+          source.playSound("item.amethyst_staff.error");
           return;
         }
-        generateShield(source.location, dimension, 4, 90);
-        reduceDurability(source, itemStack, 5);
+        generateShield(source.location, dimension, 4, 100);
+        reduceDurability(source, itemStack, 4);
       } else {
         if (
           !source.runCommand("clear @s[m=!c] amethyst_shard 0 1")
             .successCount &&
           source.getGameMode() !== "creative"
         ) {
+          source.playSound("item.amethyst_staff.error");
           return;
         }
 
@@ -68,7 +68,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           y: -1 * source.getRotation().y,
         });
         fireball.applyImpulse(
-          multiplyVector3Number(source.getViewDirection(), 2.55),
+          multiplyVector3Number(source.getViewDirection(), 3.0),
         );
         if (source.getGameMode() === "creative") {
           return;

@@ -9,12 +9,15 @@
     },
     "components": {
       "minecraft:icon": "minere.phased_ender_pearl",
+      "minecraft:allow_off_hand": {
+        "value": true
+      },
       "minecraft:max_stack_size": 16,
       "minecraft:display_name":{
         "value": "item.phased_ender_pearl.name"
       },
       "minecraft:cooldown":{
-        "category" : "attack",
+        "category" : "phasedEnderPearl",
         "duration" : 2.0
       }
     }

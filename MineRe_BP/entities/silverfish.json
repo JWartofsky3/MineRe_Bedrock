@@ -36,7 +36,7 @@
 		"components": {
 			"minecraft:is_hidden_when_invisible": {},
 			"minecraft:experience_reward": {
-				"on_death": "query.last_hit_by_player?1:0"
+				"on_death": "query.last_hit_by_player?2:0"
 			},
 			"minecraft:type_family": {
 				"family": [

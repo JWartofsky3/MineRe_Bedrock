@@ -1,0 +1,20 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:ore_feature": {
+      "description": {
+        "identifier": "minere:sulfur_ore_feature"
+      },
+      "count": 4,
+      "discard_chance_on_air_exposure": 0.5,
+      "replace_rules": [
+        {
+          "places_block": "minere:sulfur_ore",
+          "may_replace": [
+            {
+              "name": "minecraft:stone"
+            }
+          ]
+        }
+      ]
+    }
+  }
