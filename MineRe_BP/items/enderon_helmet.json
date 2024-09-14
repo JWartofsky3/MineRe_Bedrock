@@ -11,7 +11,7 @@
         "components": {
             "minecraft:icon": "minere.enderon_helmet",
             "minecraft:display_name": {
-                "value": "Enderon Helmet"
+                "value": "item.minere:enderon_helmet"
             },
             "minecraft:max_stack_size": 1,
             "minecraft:enchantable": {

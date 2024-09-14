@@ -11,7 +11,7 @@
         "components": {
             "minecraft:icon": "minere.enderon_chestplate",
             "minecraft:display_name": {
-                "value": "Enderon Chestplate"
+                "value": "item.minere:enderon_chestplate"
             },
             "minecraft:max_stack_size": 1,
             "minecraft:enchantable": {

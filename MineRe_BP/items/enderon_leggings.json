@@ -11,7 +11,7 @@
         "components": {
             "minecraft:icon": "minere.enderon_leggings",
             "minecraft:display_name": {
-                "value": "Enderon Leggings"
+                "value": "item.minere:enderon_leggings"
             },
             "minecraft:max_stack_size": 1,
             "minecraft:enchantable": {

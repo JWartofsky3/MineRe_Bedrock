@@ -11,7 +11,7 @@
         "components": {
             "minecraft:icon": "minere.enderon_horse_armor",
             "minecraft:display_name": {
-                "value": "Enderon Horse Armor"
+                "value": "item.minere:enderon_horse_armor"
             },
             "minecraft:max_stack_size": 1
         }
