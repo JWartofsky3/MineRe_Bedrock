@@ -403,7 +403,7 @@
 					"test": "is_altitude",
 					"subject": "self",
 					"operator": ">",
-					"value": 50
+					"value": 30
 				  }
 				]
 			  },

@@ -4,7 +4,7 @@
 		"description": "Minecraft, redone, rebalanced, revised, or something like that",
 		"name": "MineRe",
 		"uuid": "741844f2-0592-11ee-be56-0242ac120002",
-		"version": [1, 4, 1],
+		"version": [1, 5, 0],
 		"min_engine_version": [1, 21, 20]
 	},
 	"modules": [
@@ -12,7 +12,7 @@
 			"description": "MineRe Data",
 			"type": "data",
 			"uuid": "cb02d868-fa91-4320-8474-72937e727ae0",
-			"version": [1, 4, 1]
+			"version": [1, 5, 0]
 		},
 		{
 			"description": "MineRe Scripts",
@@ -20,13 +20,13 @@
 			"language": "javascript",
 			"uuid": "4fa28595-c7bb-4aca-b332-6eb825c63bda",
 			"entry": "scripts/main.js",
-			"version": [1, 4, 1]
+			"version": [1, 5, 0]
 		}
 	],
 	"dependencies": [
 		{
 			"uuid": "134cbd38-1b56-49ea-bba2-53ff270865c0",
-			"version": [1, 4, 1]
+			"version": [1, 5, 0]
 		},
 		{
 			"module_name": "@minecraft/server",

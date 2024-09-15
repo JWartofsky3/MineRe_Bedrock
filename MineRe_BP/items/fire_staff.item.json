@@ -17,7 +17,7 @@
 		  "value": 15
 		},
 		"minecraft:durability": {
-		  "max_durability": 1024
+		  "max_durability": 2048
 		},
 		"minecraft:cooldown": {
 		  "category": "fireStaff",
@@ -29,7 +29,7 @@
 			  "items": [
 				"netherite_ingot"
 			  ],
-			  "repair_amount": 256
+			  "repair_amount": 512
 			}
 		  ]
 		}

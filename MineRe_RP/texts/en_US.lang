@@ -80,3 +80,5 @@ tile.minere:enderon_ore.name=Enderon Ore
 tile.minere:sulfur_ore.name=Sulfur Ore
 tile.minere:plasma_ball.name=Plasma Ball
 tile.minere:pulsar.name=Pulsar
+entity.minere:butterfly.name=Butterfly
+item.spawn_egg.entity.minere:butterfly.name=Spawn Butterfly

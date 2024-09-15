@@ -9,7 +9,6 @@
 				"enchanted": "entity_emissive_alpha"
 			},
 			"textures": {
-
 				"frame0": "textures/entity/minere/attachable/blaster_staff/frame0",
 				"frame1": "textures/entity/minere/attachable/blaster_staff/frame1",
 				"frame2": "textures/entity/minere/attachable/blaster_staff/frame2",
@@ -22,7 +21,9 @@
 			"animations": {
 				"first_person_hold": "animation.minere.blaster_staff.first_person_hold",
 				"third_person_hold": "animation.minere.blaster_staff.third_person_hold",
-				"rotate": "animation.minere.blaster_staff.rotate"
+				"rotate": "animation.minere.blaster_staff.rotate",
+				"charge": "animation.minere.blaster_staff.charge",
+				"controller": "controller.animation.minere.blaster_staff"
 			},
 			"scripts": {
 				"pre_animation": [
@@ -35,7 +36,7 @@
 					{
 						"third_person_hold": "!c.is_first_person"
 					},
-					"rotate"
+					"controller"
 				]
 			}
 		}

@@ -1,0 +1,42 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minere:butterfly",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"blue": "textures/entity/minere/butterfly/butterfly_blue",
+				"orange": "textures/entity/minere/butterfly/butterfly_orange",
+				"pink": "textures/entity/minere/butterfly/butterfly_pink",
+				"purple": "textures/entity/minere/butterfly/butterfly_purple",
+				"yellow": "textures/entity/minere/butterfly/butterfly_yellow",
+				"white": "textures/entity/minere/butterfly/butterfly_white",
+				"red": "textures/entity/minere/butterfly/butterfly_red",
+				"green": "textures/entity/minere/butterfly/butterfly_green"
+			},
+			"geometry": {
+				"default": "geometry.butterfly"
+			},
+			"scripts": {
+				"scale": "0.5",
+				"animate": [
+				  "controller",
+				  "look_at_target"
+				]
+			},
+			"animations": {
+			  "controller": "controller.animation.minere.butterfly",
+			  "fly": "animation.minere.butterfly.fly",
+			  "land": "animation.minere.butterfly.land",
+			  "look_at_target": "animation.minere.butterfly.look_at_target"
+			},
+			"render_controllers": ["controller.render.minere.butterfly"],
+			"spawn_egg": {
+				"base_color": "#ff7200",
+				"overlay_color": "#000000"
+			}
+		}
+	}
+}

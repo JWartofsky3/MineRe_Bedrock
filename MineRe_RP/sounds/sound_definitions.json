@@ -39,6 +39,13 @@
         }
       ]
     },
+    "mob.butterfly.squish": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/butterfly/squish0",
+        "sounds/mob/butterfly/squish1"
+      ]
+    },
     "mob.demon.ambient": {
       "category": "hostile",
       "sounds": [

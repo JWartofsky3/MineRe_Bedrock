@@ -141,6 +141,14 @@
 				"pitch": [0.6, 1],
 				"volume": 1.5
 			},
+			"minere:butterfly": {
+				"events": {
+					"death": "mob.butterfly.squish",
+					"hurt": "mob.butterfly.squish"
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
 			"minere:lizord": {
 				"events": {
 					"ambient": "mob.lizord.angry",
@@ -198,7 +206,7 @@
 						"volume": 3
 					},
 					"emerge": "mob.walker.emerge",
-					"irongolem.repair" : "mob.irongolem.repair"
+					"irongolem.repair": "mob.irongolem.repair"
 				},
 				"pitch": [0.8, 1.2],
 				"volume": 5

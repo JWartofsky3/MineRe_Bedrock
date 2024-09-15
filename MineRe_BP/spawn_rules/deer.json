@@ -15,7 +15,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 15
+          "default": 13
         },
         "minecraft:herd": {
           "min_size":2,

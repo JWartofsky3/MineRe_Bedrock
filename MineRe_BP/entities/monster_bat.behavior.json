@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.18.20",
   "minecraft:entity": {
     "description": {
       "identifier": "minere:monster_bat",
@@ -9,10 +9,22 @@
       "is_experimental": false
     },
     "component_groups": {
+      "despawn_timer": {
+        "minecraft:timer": {
+          "looping": false,
+          "time": [5, 15],
+          "time_down_event": {
+            "event": "end_despawn"
+          }
+        }
+      },
+      "immediate_despawn": {
+        "minecraft:instant_despawn": {}
+      },
       "aggressive": {
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
-          "speed_multiplier": 1.0,
+          "speed_multiplier": 1,
           "on_attack": {
             "filters": {
               "test": "random_chance",
@@ -79,7 +91,10 @@
         "max": 10
       },
       "minecraft:attack": {
-        "damage": [2, 3],
+        "damage": [
+          2,
+          3
+        ],
         "effect_name": "hunger",
         "effect_duration": 3
       },
@@ -106,14 +121,16 @@
         "height": 0.8
       },
       "minecraft:damage_sensor": {
-        "triggers": [{
-          "cause": "fall",
-          "deals_damage": false
-        },
-        {
-          "cause": "projectile",
-          "damage_multiplier": 2.0
-        }]
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": false
+          },
+          {
+            "cause": "projectile",
+            "damage_multiplier": 2
+          }
+        ]
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -201,6 +218,28 @@
         "emit_flap": true,
         "emit_move": false,
         "emit_swim": false
+      },
+      "minecraft:environment_sensor": {
+        "triggers": {
+          "filters": {
+            "all_of": [
+              {
+                "test": "is_brightness",
+                "operator": ">",
+                "value": 0.5
+              },
+              {
+                "test": "is_daytime"
+              }
+            ],
+            "none_of": [
+              {
+                "test": "is_underground"
+              }
+            ]
+          },
+          "event": "start_despawn"
+        }
       }
     },
     "events": {
@@ -232,6 +271,20 @@
         "add": {
           "component_groups": [
             "aggressive"
+          ]
+        }
+      },
+      "start_despawn": {
+        "add": {
+          "component_groups": [
+            "despawn_timer"
+          ]
+        }
+      },
+      "end_despawn": {
+        "add": {
+          "component_groups": [
+            "immediate_despawn"
           ]
         }
       }

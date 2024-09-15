@@ -16,7 +16,7 @@ export const useBlasterStaff = (data) => {
                 cooldownComponent.startCooldown(source);
             }
             dimension.playSound("mob.walker.warn", source.location, {
-                pitch: 1.0
+                pitch: 1.0,
             });
             system.runTimeout(() => {
                 if (!source.runCommand("clear @s[m=!c] minere:ender_plasma 0 1")
