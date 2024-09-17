@@ -9,17 +9,10 @@
       "is_experimental": false
     },
     "component_groups": {
-      "despawn_timer": {
-        "minecraft:timer": {
-          "looping": false,
-          "time": [5, 15],
-          "time_down_event": {
-            "event": "end_despawn"
-          }
+      "become_bat": {
+        "minecraft:transformation": {
+          "into": "minecraft:bat"
         }
-      },
-      "immediate_despawn": {
-        "minecraft:instant_despawn": {}
       },
       "aggressive": {
         "minecraft:behavior.melee_box_attack": {
@@ -238,7 +231,7 @@
               }
             ]
           },
-          "event": "start_despawn"
+          "event": "become_bat_event"
         }
       }
     },
@@ -274,17 +267,13 @@
           ]
         }
       },
-      "start_despawn": {
+      "become_bat_event": {
+        "queue_command": {
+          "command": "particle minere:big_smoke ~ ~0.25 ~"
+          },
         "add": {
           "component_groups": [
-            "despawn_timer"
-          ]
-        }
-      },
-      "end_despawn": {
-        "add": {
-          "component_groups": [
-            "immediate_despawn"
+            "become_bat"
           ]
         }
       }

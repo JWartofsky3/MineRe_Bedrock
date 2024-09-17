@@ -120,7 +120,7 @@
 		  },
 		  "minecraft:behavior.nearest_attackable_target": {
 			"priority": 3,
-			"must_see": false,
+			"must_see": true,
 			"must_see_forget_duration": 5,
 			"persist_time": 5,
 			"attack_interval": 2,
@@ -304,7 +304,7 @@
 		  },
 		  "minecraft:behavior.nearest_attackable_target": {
 			"priority": 3,
-			"must_see": false,
+			"must_see": true,
 			"must_see_forget_duration": 5,
 			"persist_time": 5,
 			"attack_interval": 2,

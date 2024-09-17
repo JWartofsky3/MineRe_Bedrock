@@ -17,7 +17,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 30
+          "default": 25
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -59,7 +59,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 20
+          "default": 10
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -104,7 +104,7 @@
           "underground": 4
         },
         "minecraft:weight": {
-          "default": 30
+          "default": 25
         },
         "minecraft:herd": {
           "min_size": 1,

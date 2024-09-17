@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minere:firefly",
+			"materials": {
+				"default": "entity_emissive_alpha"
+			},
+			"textures": {
+				"off": "textures/entity/minere/firefly/firefly_off",
+				"on": "textures/entity/minere/firefly/firefly_on"
+			},
+			"geometry": {
+				"default": "geometry.firefly"
+			},
+			"animations": {
+				"flying": "animation.minere.firefly.flying",
+				"look_at_target": "animation.minere.firefly.look_at_target"
+			},
+			"particle_effects": {
+				"nectar_dripping": "minecraft:nectar_drip_particle"
+			},
+			"scripts": {
+				"pre_animation": [
+					"variable.textureframe = math.mod(query.life_time, 5) < 3 ? 0 : 1;"
+				  ],
+				"animate": [
+					"flying",
+					"look_at_target"
+				]
+			},
+			"render_controllers": ["controller.render.minere.firefly"],
+			"spawn_egg": {
+				"base_color": "#c9ff00",
+				"overlay_color": "#00ff61"
+			}
+		}
+	}
+}

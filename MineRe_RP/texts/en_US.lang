@@ -82,3 +82,5 @@ tile.minere:plasma_ball.name=Plasma Ball
 tile.minere:pulsar.name=Pulsar
 entity.minere:butterfly.name=Butterfly
 item.spawn_egg.entity.minere:butterfly.name=Spawn Butterfly
+entity.minere:firefly.name=Firefly
+item.spawn_egg.entity.minere:firefly.name=Spawn Firefly

@@ -110,28 +110,56 @@
 			]
 		  },
 		  "minecraft:entity_sensor": {
-			"sensor_range": 3.0,
+			"sensor_range": 3,
 			"relative_range": false,
 			"minimum_count": 1,
 			"event_filters": {
 			  "any_of": [
-				{ "test": "is_family", "subject": "other", "value": "mob" },
-				{ "all_of": [
-				  { "test": "is_family", "subject": "other", "value": "player" },
-				  { "none_of": 
-					{ "test": "has_ability", "subject": "other", "value": "instabuild" } 
-				  }
-				]}
+				{
+				  "test": "is_family",
+				  "subject": "other",
+				  "value": "mob"
+				},
+				{
+				  "all_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "player"
+					},
+					{
+					  "none_of": {
+						"test": "has_ability",
+						"subject": "other",
+						"value": "instabuild"
+					  }
+					}
+				  ]
+				}
 			  ]
 			},
 			"event": "start_flying"
+		  },
+		  "minecraft:environment_sensor": {
+			"triggers": [
+			  {
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "in_contact_with_water"
+					}
+				  ]
+				},
+				"event": "start_flying"
+			  }
+			]
 		  },
 		  "minecraft:timer": {
 			"looping": true,
 			"randomInterval": true,
 			"time": [
-			  2,
-			  8
+			  4,
+			  16
 			],
 			"time_down_event": {
 			  "event": "start_flying"
@@ -185,11 +213,6 @@
 			  },
 			  "cause": "lava",
 			  "damage_per_tick": 4
-			},
-			{
-				"filters": { "test": "in_contact_with_water", "operator": "==", "value": true },
-				"cause": "drowning",
-				"damage_per_tick": 1
 			}
 		  ]
 		},
@@ -198,9 +221,9 @@
 		  "max": 16
 		},
 		"minecraft:leashable": {
-			"soft_distance": 4,
-			"hard_distance": 6,
-			"max_distance": 10
+		  "soft_distance": 4,
+		  "hard_distance": 6,
+		  "max_distance": 10
 		},
 		"minecraft:despawn": {
 		  "despawn_from_distance": {}

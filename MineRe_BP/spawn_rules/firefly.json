@@ -1,0 +1,92 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:firefly",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 6
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 25
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 4
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 10
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": {
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cold"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "frozen"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
+            }
+          ],
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "plains"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,6 +1,22 @@
 {
 	"entity_sounds": {
 		"entities": {
+			"minere:firefly": {
+				"events": {
+					"death": {
+						"pitch": [0.9, 1.1],
+						"sound": "mob.bee.death",
+						"volume": 0.6
+					},
+					"hurt": {
+						"pitch": [0.9, 1.1],
+						"sound": "mob.bee.hurt",
+						"volume": 0.6
+					}
+				},
+				"pitch": 1,
+				"volume": 0.6
+			},
 			"minere:ghost": {
 				"events": {
 					"ambient": "mob.ghost.ambient",
