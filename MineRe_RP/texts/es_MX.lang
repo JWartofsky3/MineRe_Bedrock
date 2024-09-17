@@ -93,3 +93,5 @@ tile.minere:plasma_ball.name=Energía de plasma
 tile.minere:pulsar.name=Pulsar
 entity.minere:butterfly.name=Mariposa
 item.spawn_egg.entity.minere:butterfly.name=Huevo generador de mariposa
+entity.minere:firefly.name=Luciérnaga
+item.spawn_egg.entity.minere:firefly.name=Huevo generador de luciérnaga
