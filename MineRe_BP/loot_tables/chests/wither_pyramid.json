@@ -1,361 +1,361 @@
 {
-	"pools": [
-	  {
-		"rolls": {
-		  "min": 2,
-		  "max": 4
-		},
-		"entries": [
-		  {
-			"type": "item",
-			"name": "minecraft:diamond",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 1,
-				  "max": 3
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:gold_nugget",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 3,
-				  "max": 9
-				}
-			  }
-			],
-			"weight": 10
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:iron_ingot",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 1,
-				  "max": 5
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:gold_ingot",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 1,
-				  "max": 3
-				}
-			  }
-			],
-			"weight": 15
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:stone_sword",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "enchant_random_gear",
-				"chance": 0.75
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:stone_pickaxe",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "enchant_random_gear",
-				"chance": 0.75
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:chainmail_chestplate",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:chainmail_helmet",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:golden_sword",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:golden_pickaxe",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:golden_chestplate",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:golden_helmet",
-			"weight": 3
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:flint_and_steel",
-			"weight": 2
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:obsidian",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 4
-				}
-			  }
-			],
-			"weight": 2
-		  }
-		]
-	  },
-	  {
-		"rolls": 1,
-		"entries": [
-		  {
-			"type": "empty",
-			"weight": 14
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:rib_armor_trim_smithing_template",
-			"weight": 1,
-			"functions": [
-				{
-				  "function": "set_count",
-				  "count": 2
-				}
-			  ]
-		  }
-		]
-	  },
-	  {
-		"rolls": {
-		  "min": 1,
-		  "max": 4
-		},
-		"entries": [
-		  {
-			"type": "item",
-			"name": "minecraft:bone",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 1,
-				  "max": 3
-				}
-			  }
-			],
-			"weight": 8
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:rotten_flesh",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 4
-				}
-			  }
-			],
-			"weight": 8
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:flint",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 4
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:coal",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 1,
-				  "max": 3
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:fire_charge",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 5
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:quartz",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 5
-				}
-			  }
-			],
-			"weight": 5
-		  }
-		]
-	  },
-	  {
-		"rolls": {
-		  "min": 0,
-		  "max": 2
-		},
-		"entries": [
-		  {
-			"type": "item",
-			"name": "minecraft:experience_bottle",
-			"functions": [
-			  {
-				"function": "set_count",
-				"count": {
-				  "min": 2,
-				  "max": 5
-				}
-			  }
-			],
-			"weight": 5
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 21
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:splash_potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 21
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 22
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:splash_potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 22
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 23
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:splash_potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 24
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 36
-			  }
-			]
-		  },
-		  {
-			"type": "item",
-			"name": "minecraft:splash_potion",
-			"weight": 3,
-			"functions": [
-			  {
-				"function": "set_data",
-				"data": 36
-			  }
-			]
-		  }
-		]
-	  }
-	]
-  }
+  "pools": [
+    {
+      "rolls": {
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:diamond",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 3,
+                "max": 9
+              }
+            }
+          ],
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stone_sword",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.75
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stone_pickaxe",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.75
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_chestplate",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_helmet",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_sword",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_pickaxe",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_chestplate",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_helmet",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:flint_and_steel",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minecraft:obsidian",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 14
+        },
+        {
+          "type": "item",
+          "name": "minecraft:rib_armor_trim_smithing_template",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:bone",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 8
+        },
+        {
+          "type": "item",
+          "name": "minecraft:rotten_flesh",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 8
+        },
+        {
+          "type": "item",
+          "name": "minecraft:flint",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:coal",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:fire_charge",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:quartz",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ],
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:experience_bottle",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 21
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 21
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 22
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 22
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 23
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 24
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 36
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 36
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

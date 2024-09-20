@@ -26,7 +26,7 @@
           ],
           "transitions": [
             {
-              "idle": "!query.ground_speed && !variable.has_target"
+              "idle": "!query.ground_speed"
             },
             {
               "attacking": "variable.has_target && variable.attack_time >= 0.1"

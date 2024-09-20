@@ -4,13 +4,8 @@
     "description": {
       "identifier": "minere:blubber_torch"
     },
-    "tags": [
-      "crafting_table"
-    ],
-    "pattern": [
-      "B",
-      "S"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["B", "S"],
     "key": {
       "S": {
         "item": "minecraft:stick"

@@ -2,13 +2,11 @@
   "format_version": "1.12",
   "minecraft:recipe_furnace": {
     "description": {
-    "identifier": "minere:furnace_venison"
+      "identifier": "minere:furnace_venison"
     },
 
-    
     "tags": ["furnace", "smoker", "campfire", "soul_campfire"],
     "input": "minere:venison",
     "output": "minere:cooked_venison"
   }
-  
 }

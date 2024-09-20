@@ -4,14 +4,8 @@
     "description": {
       "identifier": "minecraft:tuff_brick_stairs"
     },
-    "tags": [
-      "crafting_table"
-    ],
-    "pattern": [
-      "A",
-      "AA",
-      "AAA"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["A", "AA", "AAA"],
     "key": {
       "A": {
         "item": "minecraft:tuff_bricks"

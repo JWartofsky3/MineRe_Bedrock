@@ -12,10 +12,7 @@
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                2,
-                2
-              ],
+              "damage": [2, 2],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -33,21 +30,14 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:normal_arrow": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                4,
-                4
-              ],
+              "damage": [4, 4],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -65,21 +55,14 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:hard_arrow": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                6,
-                6
-              ],
+              "damage": [6, 6],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -97,21 +80,14 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:easy_crossbow_arrow": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                3,
-                3
-              ],
+              "damage": [3, 3],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -129,21 +105,14 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:normal_crossbow_arrow": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                6,
-                6
-              ],
+              "damage": [6, 6],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -161,21 +130,14 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:hard_crossbow_arrow": {
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": [
-                9,
-                9
-              ],
+              "damage": [9, 9],
               "power_multiplier": 1,
               "knockback": true,
               "semi_random_diff_damage": false,
@@ -193,11 +155,7 @@
           "uncertainty_multiplier": 4,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:bow_arrow": {
@@ -224,11 +182,7 @@
           "uncertainty_multiplier": 0,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       },
       "minecraft:crossbow_arrow": {
@@ -255,11 +209,7 @@
           "uncertainty_multiplier": 0,
           "anchor": 1,
           "should_bounce": true,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ]
+          "offset": [0, -0.1, 0]
         }
       }
     },
@@ -285,10 +235,7 @@
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {
-            "damage": [
-              1,
-              4
-            ],
+            "damage": [1, 4],
             "knockback": true,
             "semi_random_diff_damage": false,
             "destroy_on_hit": true
@@ -305,11 +252,7 @@
         "uncertainty_multiplier": 4,
         "anchor": 1,
         "should_bounce": true,
-        "offset": [
-          0,
-          -0.1,
-          0
-        ]
+        "offset": [0, -0.1, 0]
       },
       "minecraft:physics": {},
       "minecraft:pushable": {
@@ -329,9 +272,7 @@
         "sequence": [
           {
             "add": {
-              "component_groups": [
-                "minecraft:bow_arrow"
-              ]
+              "component_groups": ["minecraft:bow_arrow"]
             }
           },
           {
@@ -352,14 +293,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:crossbow_arrow"
-              ]
+              "component_groups": ["minecraft:crossbow_arrow"]
             }
           },
           {
@@ -383,14 +320,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:easy_arrow"
-              ]
+              "component_groups": ["minecraft:easy_arrow"]
             }
           },
           {
@@ -414,14 +347,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:normal_arrow"
-              ]
+              "component_groups": ["minecraft:normal_arrow"]
             }
           },
           {
@@ -445,14 +374,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:hard_arrow"
-              ]
+              "component_groups": ["minecraft:hard_arrow"]
             }
           },
           {
@@ -475,14 +400,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:easy_crossbow_arrow"
-              ]
+              "component_groups": ["minecraft:easy_crossbow_arrow"]
             }
           },
           {
@@ -505,14 +426,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:normal_crossbow_arrow"
-              ]
+              "component_groups": ["minecraft:normal_crossbow_arrow"]
             }
           },
           {
@@ -535,14 +452,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:bow_arrow"
-              ]
+              "component_groups": ["minere:bow_arrow"]
             },
             "add": {
-              "component_groups": [
-                "minecraft:hard_crossbow_arrow"
-              ]
+              "component_groups": ["minecraft:hard_crossbow_arrow"]
             }
           }
         ]

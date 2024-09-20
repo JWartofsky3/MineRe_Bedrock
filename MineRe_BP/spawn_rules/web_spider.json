@@ -1,59 +1,59 @@
 {
-    "format_version": "1.8.0",
-    "minecraft:spawn_rules": {
-      "description": {
-        "identifier": "minere:web_spider",
-        "population_control": "monster"
-      },
-      "conditions": [
-        {
-          "minecraft:spawns_underground": {},
-          "minecraft:height_filter": {
-            "min": 0,
-            "max": 48
-          },
-          "minecraft:brightness_filter": {
-            "min": 0,
-            "max": 7,
-            "adjust_for_weather": true
-          },
-          "minecraft:difficulty_filter": {
-            "min": "easy",
-            "max": "hard"
-          },
-          "minecraft:weight": {
-            "default": 25
-          },
-          "minecraft:biome_filter": {
-            "test": "has_biome_tag",
-            "operator": "==",
-            "value": "monster"
-          }
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:web_spider",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:height_filter": {
+          "min": 0,
+          "max": 48
         },
-        {
-          "minecraft:spawns_underground": {},
-          "minecraft:height_filter": {
-            "min": -63,
-            "max": 0
-          },
-          "minecraft:brightness_filter": {
-            "min": 0,
-            "max": 7,
-            "adjust_for_weather": true
-          },
-          "minecraft:difficulty_filter": {
-            "min": "easy",
-            "max": "hard"
-          },
-          "minecraft:weight": {
-            "default": 35
-          },
-          "minecraft:biome_filter": {
-            "test": "has_biome_tag",
-            "operator": "==",
-            "value": "monster"
-          }
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:weight": {
+          "default": 25
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "monster"
         }
-      ]
-    }
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:height_filter": {
+          "min": -63,
+          "max": 0
+        },
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:weight": {
+          "default": 35
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "monster"
+        }
+      }
+    ]
   }
+}

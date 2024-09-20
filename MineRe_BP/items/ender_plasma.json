@@ -4,12 +4,12 @@
     "description": {
       "identifier": "minere:ender_plasma",
       "menu_category": {
-				"group": "itemGroup.name.ore"
-			}
+        "group": "itemGroup.name.ore"
+      }
     },
     "components": {
       "minecraft:icon": "minere.ender_plasma",
-      "minecraft:display_name":{
+      "minecraft:display_name": {
         "value": "item.ender_plasma.name"
       },
       "minecraft:fuel": {

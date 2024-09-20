@@ -9,7 +9,7 @@
     },
     "components": {
       "minecraft:icon": "minere.emerald_shard",
-      "minecraft:display_name":{
+      "minecraft:display_name": {
         "value": "item.emerald_shard.name"
       }
     }

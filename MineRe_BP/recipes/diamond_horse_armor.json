@@ -1,33 +1,27 @@
 {
-	"format_version": "1.12",
-	"minecraft:recipe_shaped": {
-		"description": {
-			"identifier": "minecraft:diamond_horse_armor"
-		},
-		"tags": [
-			"crafting_table"
-		],
-		"pattern": [
-			"H  ",
-			"#W#",
-			"L#L"
-		],
-		"key": {
-			"W": {
-				"item": "minecraft:wool"
-			},
-			"#": {
-				"item": "minecraft:diamond"
-			},
-			"H": {
-				"item": "minecraft:diamond_helmet"
-			},
-			"L": {
-				"item": "minecraft:diamond_leggings"
-			}
-		},
-		"result": {
-			"item": "minecraft:horsearmordiamond"
-		}
-	}
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minecraft:diamond_horse_armor"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["H  ", "#W#", "L#L"],
+    "key": {
+      "W": {
+        "item": "minecraft:wool"
+      },
+      "#": {
+        "item": "minecraft:diamond"
+      },
+      "H": {
+        "item": "minecraft:diamond_helmet"
+      },
+      "L": {
+        "item": "minecraft:diamond_leggings"
+      }
+    },
+    "result": {
+      "item": "minecraft:horsearmordiamond"
+    }
+  }
 }

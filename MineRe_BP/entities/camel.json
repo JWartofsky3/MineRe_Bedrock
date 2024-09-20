@@ -9,21 +9,17 @@
     },
     "component_groups": {
       "minecraft:camel_saddled": {
-        "minecraft:is_saddled": {
-        },
-        "minecraft:input_ground_controlled": {
-        },
+        "minecraft:is_saddled": {},
+        "minecraft:input_ground_controlled": {},
         "minecraft:dash": {
           "cooldown_time": 2.75,
           "horizontal_momentum": 20.0,
           "vertical_momentum": 0.6
         },
-        "minecraft:behavior.player_ride_tamed": {
-        }
+        "minecraft:behavior.player_ride_tamed": {}
       },
       "minecraft:camel_baby": {
-        "minecraft:is_baby": {
-        },
+        "minecraft:is_baby": {},
         "minecraft:scale": {
           "value": 0.45
         },
@@ -50,7 +46,7 @@
             {
               "slot": 0,
               "item": "saddle",
-              "accepted_items": [ "saddle" ],
+              "accepted_items": ["saddle"],
               "on_equip": {
                 "event": "minecraft:camel_saddled"
               },
@@ -67,10 +63,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle" },
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -100,28 +115,24 @@
               }
             }
           ],
-          "breed_items": [
-            "cactus"
-          ]
+          "breed_items": ["cactus"]
         },
         "minecraft:rideable": {
           "seat_count": 2,
           "crouching_skip_interact": true,
           "pull_in_entities": true,
-          "family_types": [
-            "player"
-          ],
+          "family_types": ["player"],
           "interact_text": "action.interact.ride.horse",
           "seats": [
             {
               "min_rider_count": 0,
               "max_rider_count": 2,
-              "position": [ 0.0, 1.905, 0.5 ]
+              "position": [0.0, 1.905, 0.5]
             },
             {
               "min_rider_count": 1,
               "max_rider_count": 2,
-              "position": [ 0.0, 1.905, -0.5 ]
+              "position": [0.0, 1.905, -0.5]
             }
           ]
         }
@@ -148,9 +159,8 @@
       }
     },
     "components": {
-      "minecraft:is_chested": {},	
-      "minecraft:is_tamed": {
-      },
+      "minecraft:is_chested": {},
+      "minecraft:is_tamed": {},
       "minecraft:healable": {
         "items": [
           {
@@ -164,19 +174,16 @@
         "hard_distance": 6.0,
         "max_distance": 10.0
       },
-      "minecraft:balloonable": {
-      },
+      "minecraft:balloonable": {},
       "minecraft:type_family": {
-        "family": [ "camel", "mob" ]
+        "family": ["camel", "mob"]
       },
-      "minecraft:is_hidden_when_invisible": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0
       },
-      "minecraft:nameable": {
-      },
+      "minecraft:nameable": {},
       "minecraft:loot": {
         "table": "loot_tables/entities/camel.json"
       },
@@ -201,22 +208,17 @@
         "can_path_over_water": true,
         "avoid_damage_blocks": true
       },
-      "minecraft:movement.basic": {
-      },
-      "minecraft:jump.static": {
-      },
-      "minecraft:can_climb": {
-      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:movement": {
         "value": 0.09
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}
       },
-      "minecraft:physics": {
-      },
-      "minecraft:conditional_bandwidth_optimization": {
-      },
+      "minecraft:physics": {},
+      "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:behavior.float": {
         "priority": 0,
         "sink_with_passengers": true
@@ -229,7 +231,7 @@
         "priority": 3,
         "speed_multiplier": 2.5,
         "can_tempt_vertically": true,
-        "items": [ "cactus" ]
+        "items": ["cactus"]
       },
       "minecraft:behavior.random_look_around_and_sit": {
         "priority": 4,
@@ -293,52 +295,36 @@
       },
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": [
-            "minecraft:camel_baby"
-          ]
+          "component_groups": ["minecraft:camel_baby"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:camel_adult"
-          ]
+          "component_groups": ["minecraft:camel_adult"]
         }
       },
       "minecraft:camel_saddled": {
         "add": {
-          "component_groups": [
-            "minecraft:camel_saddled"
-          ]
+          "component_groups": ["minecraft:camel_saddled"]
         }
       },
       "minecraft:camel_unsaddled": {
         "remove": {
-          "component_groups": [
-            "minecraft:camel_saddled"
-          ]
+          "component_groups": ["minecraft:camel_saddled"]
         }
       },
       "minecraft:start_sitting": {
         "add": {
-          "component_groups": [
-            "minecraft:camel_sitting"
-          ]
+          "component_groups": ["minecraft:camel_sitting"]
         },
         "remove": {
-          "component_groups": [
-            "minecraft:camel_standing"
-          ]
+          "component_groups": ["minecraft:camel_standing"]
         }
       },
       "minecraft:stop_sitting": {
         "add": {
-          "component_groups": [
-            "minecraft:camel_standing"
-          ]
+          "component_groups": ["minecraft:camel_standing"]
         },
         "remove": {
-          "component_groups": [
-            "minecraft:camel_sitting"
-          ]
+          "component_groups": ["minecraft:camel_sitting"]
         }
       }
     }

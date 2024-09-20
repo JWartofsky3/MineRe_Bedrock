@@ -4,14 +4,8 @@
     "description": {
       "identifier": "minecraft:polished_tuff_stairs"
     },
-    "tags": [
-      "crafting_table"
-    ],
-    "pattern": [
-      "A",
-      "AA",
-      "AAA"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["A", "AA", "AAA"],
     "key": {
       "A": {
         "item": "minecraft:polished_tuff"

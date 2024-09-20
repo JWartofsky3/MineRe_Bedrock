@@ -1,37 +1,37 @@
 {
-    "format_version": "1.21.30",
-    "minecraft:block": {
-      "description": {
-        "identifier": "minere:plasma_ball",
-        "menu_category": {
-          "category": "construction",
-          "is_hidden_in_commands": false
+  "format_version": "1.21.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:plasma_ball",
+      "menu_category": {
+        "category": "construction",
+        "is_hidden_in_commands": false
+      }
+    },
+    "components": {
+      "tag:minecraft:iron_tier_destructible": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "plasma_ball",
+          "ambient_occlusion": false,
+          "face_dimming": false,
+          "render_method": "blend"
         }
       },
-      "components": {
-        "tag:minecraft:iron_tier_destructible": {},
-        "tag:minecraft:is_pickaxe_item_destructible": {},
-        "minecraft:destructible_by_mining": {
-          "seconds_to_destroy": 1.0
-        },
-        "minecraft:material_instances": {
-          "*": {
-            "texture": "plasma_ball",
-            "ambient_occlusion": false,
-            "face_dimming": false,
-            "render_method": "blend"
-          }
-        },
-        "minecraft:geometry": {
-          "identifier": "geometry.plasma_ball"
-        },
-        "minecraft:destructible_by_explosion": {
-          "explosion_resistance": 2
-        },
-        "minecraft:map_color": "#EA42E3",
-        "minecraft:light_dampening": 0,
-        "minecraft:light_emission": 10,
-        "minecraft:loot": "loot_tables/blocks/plasma_ball.json"
-      }
+      "minecraft:geometry": {
+        "identifier": "geometry.plasma_ball"
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "minecraft:map_color": "#EA42E3",
+      "minecraft:light_dampening": 0,
+      "minecraft:light_emission": 10,
+      "minecraft:loot": "loot_tables/blocks/plasma_ball.json"
     }
   }
+}

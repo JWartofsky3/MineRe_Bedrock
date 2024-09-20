@@ -22,8 +22,8 @@
           "value": "roofed"
         },
         "minecraft:herd": {
-          "min_size":3,
-          "max_size":5
+          "min_size": 3,
+          "max_size": 5
         }
       },
       {
@@ -37,8 +37,8 @@
           "default": 12
         },
         "minecraft:herd": {
-          "min_size":3,
-          "max_size":5
+          "min_size": 3,
+          "max_size": 5
         },
         "minecraft:biome_filter": {
           "none_of": [
@@ -98,8 +98,8 @@
           "default": 12
         },
         "minecraft:herd": {
-          "min_size":3,
-          "max_size":6
+          "min_size": 3,
+          "max_size": 6
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",

@@ -22,8 +22,7 @@
 
     "component_groups": {
       "minecraft:wolf_baby": {
-        "minecraft:is_baby": {
-        },
+        "minecraft:is_baby": {},
         "minecraft:scale": {
           "value": 0.5
         },
@@ -102,15 +101,12 @@
             "target": "self"
           }
         },
-        "minecraft:on_target_acquired": {
-        },
+        "minecraft:on_target_acquired": {},
         "minecraft:rideable": {
           "seat_count": 1,
-          "family_types": [
-            "zombie"
-          ],
+          "family_types": ["zombie"],
           "seats": {
-            "position": [ 0.0, 0.675, -0.1 ]
+            "position": [0.0, 0.675, -0.1]
           }
         }
       },
@@ -120,7 +116,11 @@
           "priority": 3,
           "entity_types": [
             {
-              "filters": { "test": "is_family", "subject": "other", "value": "llama" },
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "llama"
+              },
               "max_dist": 24,
               "walk_speed_multiplier": 1.5,
               "sprint_speed_multiplier": 1.5
@@ -144,13 +144,29 @@
             {
               "filters": {
                 "any_of": [
-                  { "test": "is_family", "subject": "other", "value": "skeleton" },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "skeleton"
+                  },
                   { "test": "is_family", "subject": "other", "value": "sheep" },
-                  { "test": "is_family", "subject": "other", "value": "rabbit" },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "rabbit"
+                  },
                   { "test": "is_family", "subject": "other", "value": "fox" },
-                  { "test": "is_family", "subject": "other", "value": "squirrel" },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "squirrel"
+                  },
                   { "test": "is_family", "subject": "other", "value": "duck" },
-                  { "test": "is_family", "subject": "other", "value": "raccoon" },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "raccoon"
+                  },
                   { "test": "is_family", "subject": "other", "value": "mouse" },
                   { "test": "is_family", "subject": "other", "value": "rat" }
                 ]
@@ -160,8 +176,17 @@
             {
               "filters": {
                 "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "baby_turtle" },
-                  { "test": "in_water", "subject": "other", "operator": "!=", "value": true }
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "baby_turtle"
+                  },
+                  {
+                    "test": "in_water",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": true
+                  }
                 ]
               },
               "max_dist": 16
@@ -169,8 +194,17 @@
             {
               "filters": {
                 "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "skeleton" },
-                  { "test": "is_underwater", "subject": "other", "operator": "!=", "value": true }
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "skeleton"
+                  },
+                  {
+                    "test": "is_underwater",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": true
+                  }
                 ]
               },
               "max_dist": 16
@@ -183,11 +217,9 @@
         },
         "minecraft:rideable": {
           "seat_count": 1,
-          "family_types": [
-            "zombie"
-          ],
+          "family_types": ["zombie"],
           "seats": {
-            "position": [ 0.0, 0.675, -0.1 ]
+            "position": [0.0, 0.675, -0.1]
           }
         }
       },
@@ -200,8 +232,7 @@
       },
 
       "minecraft:wolf_tame": {
-        "minecraft:is_tamed": {
-        },
+        "minecraft:is_tamed": {},
         "minecraft:color": {
           "value": 14
         },
@@ -239,7 +270,7 @@
                 "value": "skeleton"
               },
               "max_dist": 16,
-              "priority":  0
+              "priority": 0
             },
             {
               "filters": {
@@ -278,8 +309,7 @@
             }
           ]
         },
-        "minecraft:sittable": {
-        },
+        "minecraft:sittable": {},
         "minecraft:is_dyeable": {
           "interact_text": "action.interact.dye"
         }
@@ -292,11 +322,30 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "self", "domain": "armor", "operator": "not", "value": "wolf_armor" },
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wolf_armor" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "armor",
+                      "operator": "not",
+                      "value": "wolf_armor"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wolf_armor"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
                     { "test": "is_owner", "subject": "other", "value": true },
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -309,11 +358,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "wolf_armor" },
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "armor",
+                      "value": "wolf_armor"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
                     { "test": "is_owner", "subject": "other", "value": true },
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -329,11 +396,29 @@
                 "filters": {
                   "all_of": [
                     { "test": "is_sitting", "subject": "self" },
-                    { "test": "has_damaged_equipment", "subject": "self", "domain": "armor", "value": "wolf_armor" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
+                    {
+                      "test": "has_damaged_equipment",
+                      "subject": "self",
+                      "domain": "armor",
+                      "value": "wolf_armor"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
                     { "test": "is_owner", "subject": "other", "value": true },
-                    { "test": "is_sneak_held", "subject": "other", "value": false },
-                    { "test": "has_equipment", "domain": "hand", "subject": "other", "value": "armadillo_scute" }
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "subject": "other",
+                      "value": "armadillo_scute"
+                    }
                   ]
                 },
                 "target": "self"
@@ -422,12 +507,10 @@
       "minecraft:balloonable": {
         "mass": 0.8
       },
-      "minecraft:is_hidden_when_invisible": {
-      },
-      "minecraft:nameable": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:nameable": {},
       "minecraft:type_family": {
-        "family": [ "wolf", "mob" ]
+        "family": ["wolf", "mob"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -444,7 +527,12 @@
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -457,12 +545,9 @@
         "can_path_over_water": true,
         "avoid_damage_blocks": true
       },
-      "minecraft:movement.basic": {
-      },
-      "minecraft:jump.static": {
-      },
-      "minecraft:can_climb": {
-      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:attack": {
         "damage": 4
       },
@@ -566,7 +651,11 @@
             // Wolves receive the adjustment, we now overwrite the "health" attribute via a separate component group, applying it at runtime.
             "filters": {
               "all_of": [
-                { "test": "bool_property", "operator": "!=", "domain": "minecraft:has_increased_max_health" },
+                {
+                  "test": "bool_property",
+                  "operator": "!=",
+                  "domain": "minecraft:has_increased_max_health"
+                },
                 { "test": "has_component", "value": "minecraft:is_tamed" }
               ]
             },
@@ -577,8 +666,16 @@
             // the events are emittied in the same tick. Moreover, this takes care of upgrading pre-existing adult tame Wolves.
             "filters": {
               "all_of": [
-                { "test": "bool_property", "operator": "!=", "domain": "minecraft:is_armorable" },
-                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                {
+                  "test": "bool_property",
+                  "operator": "!=",
+                  "domain": "minecraft:is_armorable"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:is_baby"
+                },
                 { "test": "has_component", "value": "minecraft:is_tamed" }
               ]
             },
@@ -621,7 +718,7 @@
       "minecraft:behavior.beg": {
         "priority": 9,
         "look_distance": 8,
-        "look_time": [ 2, 4 ],
+        "look_time": [2, 4],
         "items": [
           "bone",
           "porkchop",
@@ -645,14 +742,12 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 3
       },
-      "minecraft:physics": {
-      },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
-      "minecraft:conditional_bandwidth_optimization": {
-      }
+      "minecraft:conditional_bandwidth_optimization": {}
     },
 
     "events": {
@@ -668,13 +763,15 @@
                 { "test": "has_biome_tag", "value": "taiga" },
                 { "test": "has_biome_tag", "operator": "not", "value": "cold" },
                 { "test": "has_biome_tag", "operator": "not", "value": "mega" },
-                { "test": "has_biome_tag", "operator": "not", "value": "mutated" }
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "mutated"
+                }
               ]
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_pale"
-              ]
+              "component_groups": ["minecraft:wolf_pale"]
             }
           },
           {
@@ -686,9 +783,7 @@
               ]
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_ashen"
-              ]
+              "component_groups": ["minecraft:wolf_ashen"]
             }
           },
           {
@@ -698,13 +793,15 @@
                 { "test": "has_biome_tag", "value": "mega" },
                 { "test": "has_biome_tag", "value": "taiga" },
                 { "test": "has_biome_tag", "value": "forest" },
-                { "test": "has_biome_tag", "operator": "not", "value": "mutated" }
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "mutated"
+                }
               ]
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_black"
-              ]
+              "component_groups": ["minecraft:wolf_black"]
             }
           },
           {
@@ -718,53 +815,47 @@
               ]
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_chestnut"
-              ]
+              "component_groups": ["minecraft:wolf_chestnut"]
             }
           },
           {
             // Rusty Wolf: every Jungle, which is broader than the variant's spawn rule.
             "filters": {
-              "test": "has_biome_tag", "value": "jungle"
+              "test": "has_biome_tag",
+              "value": "jungle"
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_rusty"
-              ]
+              "component_groups": ["minecraft:wolf_rusty"]
             }
           },
           {
             // Snowy Wolf: Grove only.
             "filters": {
-              "test": "has_biome_tag", "value": "grove"
+              "test": "has_biome_tag",
+              "value": "grove"
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_snowy"
-              ]
+              "component_groups": ["minecraft:wolf_snowy"]
             }
           },
           {
             // Spotted Wolf: every Savanna, which is broader than the variant's spawn rule.
             "filters": {
-              "test": "has_biome_tag", "value": "savanna"
+              "test": "has_biome_tag",
+              "value": "savanna"
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_spotted"
-              ]
+              "component_groups": ["minecraft:wolf_spotted"]
             }
           },
           {
             // Striped Wolf: every Badland, which is broader than the variant's spawn rule.
             "filters": {
-              "test": "has_biome_tag", "value": "mesa"
+              "test": "has_biome_tag",
+              "value": "mesa"
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_striped"
-              ]
+              "component_groups": ["minecraft:wolf_striped"]
             }
           },
           {
@@ -772,17 +863,35 @@
             "filters": {
               "all_of": [
                 { "test": "has_biome_tag", "value": "forest" },
-                { "test": "has_biome_tag", "operator": "not", "value": "birch" },
-                { "test": "has_biome_tag", "operator": "not", "value": "taiga" },
-                { "test": "has_biome_tag", "operator": "not", "value": "roofed" },
-                { "test": "has_biome_tag", "operator": "not", "value": "mutated" },
-                { "test": "has_biome_tag", "operator": "not", "value": "mountain" }
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "birch"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "taiga"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "roofed"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "mutated"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "mountain"
+                }
               ]
             },
             "add": {
-              "component_groups": [
-                "minecraft:wolf_woods"
-              ]
+              "component_groups": ["minecraft:wolf_woods"]
             }
           }
         ]
@@ -794,81 +903,63 @@
 
       "minecraft:spawn_wild_pale": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_pale"
-          ]
+          "component_groups": ["minecraft:wolf_pale"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_ashen": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_ashen"
-          ]
+          "component_groups": ["minecraft:wolf_ashen"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_black": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_black"
-          ]
+          "component_groups": ["minecraft:wolf_black"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_chestnut": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_chestnut"
-          ]
+          "component_groups": ["minecraft:wolf_chestnut"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_rusty": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_rusty"
-          ]
+          "component_groups": ["minecraft:wolf_rusty"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_snowy": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_snowy"
-          ]
+          "component_groups": ["minecraft:wolf_snowy"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_spotted": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_spotted"
-          ]
+          "component_groups": ["minecraft:wolf_spotted"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_striped": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_striped"
-          ]
+          "component_groups": ["minecraft:wolf_striped"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_woods": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_woods"
-          ]
+          "component_groups": ["minecraft:wolf_woods"]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
@@ -892,84 +983,58 @@
 
       "minecraft:spawn_wild_baby": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_baby",
-            "minecraft:wolf_wild"
-          ]
+          "component_groups": ["minecraft:wolf_baby", "minecraft:wolf_wild"]
         }
       },
 
       "minecraft:spawn_wild_adult": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_adult",
-            "minecraft:wolf_wild"
-          ]
+          "component_groups": ["minecraft:wolf_adult", "minecraft:wolf_wild"]
         }
       },
 
       "minecraft:spawn_tame_baby": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_baby",
-            "minecraft:wolf_tame"
-          ]
+          "component_groups": ["minecraft:wolf_baby", "minecraft:wolf_tame"]
         }
       },
 
       "minecraft:spawn_tame_adult": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_adult",
-            "minecraft:wolf_tame"
-          ]
+          "component_groups": ["minecraft:wolf_adult", "minecraft:wolf_tame"]
         }
       },
 
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": [
-            "minecraft:wolf_baby"
-          ]
+          "component_groups": ["minecraft:wolf_baby"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:wolf_adult"
-          ]
+          "component_groups": ["minecraft:wolf_adult"]
         }
       },
 
       "minecraft:ageable_set_baby": {
         "remove": {
-          "component_groups": [
-            "minecraft:wolf_adult"
-          ]
+          "component_groups": ["minecraft:wolf_adult"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:wolf_baby"
-          ]
+          "component_groups": ["minecraft:wolf_baby"]
         }
       },
 
       "minecraft:on_tame": {
         "remove": {
-          "component_groups": [
-            "minecraft:wolf_wild"
-          ]
+          "component_groups": ["minecraft:wolf_wild"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:wolf_tame"
-          ]
+          "component_groups": ["minecraft:wolf_tame"]
         }
       },
 
       "minecraft:increase_max_health": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_increased_max_health"
-          ]
+          "component_groups": ["minecraft:wolf_increased_max_health"]
         },
         "set_property": {
           "minecraft:has_increased_max_health": true
@@ -978,35 +1043,25 @@
 
       "minecraft:become_angry": {
         "remove": {
-          "component_groups": [
-            "minecraft:wolf_wild"
-          ]
+          "component_groups": ["minecraft:wolf_wild"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:wolf_angry"
-          ]
+          "component_groups": ["minecraft:wolf_angry"]
         }
       },
 
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": [
-            "minecraft:wolf_angry"
-          ]
+          "component_groups": ["minecraft:wolf_angry"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:wolf_wild"
-          ]
+          "component_groups": ["minecraft:wolf_wild"]
         }
       },
 
       "minecraft:become_armorable": {
         "add": {
-          "component_groups": [
-            "minecraft:wolf_armorable"
-          ]
+          "component_groups": ["minecraft:wolf_armorable"]
         },
         "set_property": {
           "minecraft:is_armorable": true

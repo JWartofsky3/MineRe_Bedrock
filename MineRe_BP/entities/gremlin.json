@@ -8,12 +8,28 @@
       "is_experimental": false
     },
     "component_groups": {
+      "angry": {
+        "minecraft:angry": {
+          "duration": 4,
+          "broadcast_anger": true,
+          "broadcast_anger_on_attack": true,
+          "broadcast_anger_on_being_attacked": true,
+          "broadcast_range": 10,
+          "broadcast_targets": ["gremlin"],
+          "calm_event": {
+            "event": "become_calm_event",
+            "target": "self"
+          },
+          "angry_sound": "angry",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          }
+        }
+      },
       "minere:big_gremlin": {
         "minecraft:experience_reward": {
           "on_death": "query.last_hit_by_player ? 6 : 0"
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/gremlin.json"
         },
         "minecraft:scale": {
           "value": 1.5
@@ -27,14 +43,45 @@
         },
         "minecraft:knockback_resistance": {
           "value": 0.6
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "must_see": true,
+          "within_radius": 4,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "endermite"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "silverfish"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "goblin"
+                  }
+                ]
+              },
+              "max_dist": 5
+            }
+          ]
         }
       },
       "minere:medium_gremlin": {
         "minecraft:experience_reward": {
           "on_death": "query.last_hit_by_player ? 3 : 0"
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/gremlin.json"
         },
         "minecraft:health": {
           "value": 18,
@@ -51,6 +98,9 @@
         "minecraft:experience_reward": {
           "on_death": "query.last_hit_by_player ? 2 : 0"
         },
+        "minecraft:loot": {
+          "table": "loot_tables/empty.json"
+        },
         "minecraft:scale": {
           "value": 0.75
         },
@@ -65,16 +115,25 @@
       "minere:cave_gremlin": {
         "minecraft:variant": {
           "value": 0
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/gremlin/gremlin.json"
         }
       },
       "minere:nether_gremlin": {
         "minecraft:variant": {
           "value": 1
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/gremlin/nether_gremlin.json"
         }
       },
       "minere:ender_gremlin": {
         "minecraft:variant": {
           "value": 2
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/gremlin/ender_gremlin.json"
         }
       }
     },
@@ -83,17 +142,17 @@
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? 3 : 0"
       },
+      "minecraft:on_target_acquired": {
+        "event": "become_angry_event",
+        "target": "self"
+      },
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0
       },
       "minecraft:nameable": {},
       "minecraft:type_family": {
-        "family": [
-          "gremlin",
-          "monster",
-          "mob"
-        ]
+        "family": ["gremlin", "monster", "mob"]
       },
       "minecraft:collision_box": {
         "width": 0.9,
@@ -123,8 +182,8 @@
         ]
       },
       "minecraft:follow_range": {
-        "value": 8,
-        "max": 8
+        "value": 10,
+        "max": 10
       },
       "minecraft:attack": {
         "damage": 4
@@ -153,11 +212,6 @@
           {
             "filters": {
               "any_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "player"
-                },
                 {
                   "test": "is_family",
                   "subject": "other",
@@ -197,42 +251,12 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "randomize": [
-              {
-                "weight": 5,
-                "add": {
-                  "component_groups": [
-                    "minere:medium_gremlin"
-                  ]
-                }
-              },
-              {
-                "weight": 2,
-                "add": {
-                  "component_groups": [
-                    "minere:small_gremlin"
-                  ]
-                }
-              },
-              {
-                "weight": 1,
-                "add": {
-                  "component_groups": [
-                    "minere:big_gremlin"
-                  ]
-                }
-              }
-            ]
-          },
-          {
             "filters": {
               "test": "has_biome_tag",
               "value": "overworld"
             },
             "add": {
-              "component_groups": [
-                "minere:cave_gremlin"
-              ]
+              "component_groups": ["minere:cave_gremlin"]
             }
           },
           {
@@ -241,9 +265,7 @@
               "value": "nether"
             },
             "add": {
-              "component_groups": [
-                "minere:nether_gremlin"
-              ]
+              "component_groups": ["minere:nether_gremlin"]
             }
           },
           {
@@ -252,12 +274,42 @@
               "value": "the_end"
             },
             "add": {
-              "component_groups": [
-                "minere:ender_gremlin"
-              ]
+              "component_groups": ["minere:ender_gremlin"]
             }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 5,
+                "add": {
+                  "component_groups": ["minere:medium_gremlin"]
+                }
+              },
+              {
+                "weight": 2,
+                "add": {
+                  "component_groups": ["minere:small_gremlin"]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": ["minere:big_gremlin"]
+                }
+              }
+            ]
           }
         ]
+      },
+      "become_angry_event": {
+        "add": {
+          "component_groups": ["angry"]
+        }
+      },
+      "become_calm_event": {
+        "remove": {
+          "component_groups": ["angry"]
+        }
       }
     }
   }

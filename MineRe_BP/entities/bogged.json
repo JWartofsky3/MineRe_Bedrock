@@ -10,8 +10,7 @@
 
     "component_groups": {
       "minecraft:bogged_sheared": {
-        "minecraft:is_sheared": {
-        }
+        "minecraft:is_sheared": {}
       },
       "minecraft:ranged_attack": {
         "minecraft:behavior.ranged_attack": {
@@ -85,8 +84,7 @@
       }
     },
     "components": {
-      "minecraft:is_hidden_when_invisible": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
       },
@@ -115,7 +113,12 @@
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -132,12 +135,9 @@
         "avoid_sun": true,
         "avoid_water": true
       },
-      "minecraft:movement.basic": {
-      },
-      "minecraft:jump.static": {
-      },
-      "minecraft:can_climb": {
-      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:equipment": {
         "table": "loot_tables/entities/skeleton_gear.json"
       },
@@ -421,13 +421,13 @@
             "max_dist": 24
           },
           {
-						"filters": {
-							"test": "is_family",
-							"subject": "other",
-							"value": "villager"
-						},
-						"max_dist": 24
-					},
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "villager"
+            },
+            "max_dist": 24
+          },
           {
             "filters": {
               "all_of": [
@@ -491,24 +491,31 @@
         "priority": 8
       },
       "minecraft:type_family": {
-        "family": [ "bogged", "skeleton", "monster", "mob", "undead" ]
+        "family": ["bogged", "skeleton", "monster", "mob", "undead"]
       },
-      "minecraft:physics": {
-      },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
-      "minecraft:conditional_bandwidth_optimization": {
-      },
+      "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:interact": {
         "interactions": [
           {
             "on_interact": {
               "filters": {
                 "all_of": [
-                  { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
-                  { "test": "has_component", "operator": "!=", "value":  "minecraft:is_sheared"}
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "shears"
+                  },
+                  {
+                    "test": "has_component",
+                    "operator": "!=",
+                    "value": "minecraft:is_sheared"
+                  }
                 ]
               },
               "event": "be_sheared",
@@ -517,7 +524,9 @@
             "use_item": false,
             "hurt_item": 1,
             "play_sounds": "shear",
-            "spawn_items": { "table": "loot_tables/entities/bogged_shear.json" },
+            "spawn_items": {
+              "table": "loot_tables/entities/bogged_shear.json"
+            },
             "interact_text": "action.interact.shear"
           }
         ]
@@ -527,26 +536,21 @@
     "events": {
       "minecraft:entity_spawned": {
         "add": {
-          "component_groups": [
-            "minecraft:ranged_attack"
-          ]
+          "component_groups": ["minecraft:ranged_attack"]
         }
       },
       "minecraft:melee_mode": {
-        "remove": { "component_groups": [ "minecraft:ranged_attack" ] },
-        "add": { "component_groups": [ "minecraft:melee_attack" ] }
+        "remove": { "component_groups": ["minecraft:ranged_attack"] },
+        "add": { "component_groups": ["minecraft:melee_attack"] }
       },
       "minecraft:ranged_mode": {
-        "remove": { "component_groups": [ "minecraft:melee_attack" ] },
-        "add": { "component_groups": [ "minecraft:ranged_attack" ] }
+        "remove": { "component_groups": ["minecraft:melee_attack"] },
+        "add": { "component_groups": ["minecraft:ranged_attack"] }
       },
       "be_sheared": {
-        "remove": {
-        },
+        "remove": {},
         "add": {
-          "component_groups": [
-            "minecraft:bogged_sheared"
-          ]
+          "component_groups": ["minecraft:bogged_sheared"]
         }
       }
     }

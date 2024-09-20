@@ -1,29 +1,29 @@
 {
-    "format_version": "1.21.30",
-    "minecraft:block": {
-      "description": {
-        "identifier": "minere:ender_plasma_ore",
-        "menu_category": {
-          "is_hidden_in_commands": false,
-          "category": "nature"
+  "format_version": "1.21.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:ender_plasma_ore",
+      "menu_category": {
+        "is_hidden_in_commands": false,
+        "category": "nature"
+      }
+    },
+    "components": {
+      "tag:minecraft:iron_tier_destructible": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 4.0
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ender_plasma_ore"
         }
       },
-      "components": {
-        "tag:minecraft:iron_tier_destructible": {},
-        "tag:minecraft:is_pickaxe_item_destructible": {},
-        "minecraft:destructible_by_mining": {
-          "seconds_to_destroy": 4.0
-        },
-        "minecraft:material_instances": {
-          "*": {
-            "texture": "ender_plasma_ore"
-          }
-        },
-        "minecraft:destructible_by_explosion": {
-          "explosion_resistance": 6
-        },
-        "minecraft:map_color": "#EEF6B4",
-        "minecraft:loot": "loot_tables/blocks/ender_plasma_ore.json"
-      }
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:map_color": "#EEF6B4",
+      "minecraft:loot": "loot_tables/blocks/ender_plasma_ore.json"
     }
   }
+}

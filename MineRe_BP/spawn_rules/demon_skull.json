@@ -29,7 +29,9 @@
           "max_size": 3
         },
         "minecraft:biome_filter": {
-          "test": "has_biome_tag", "operator": "==", "value": "soulsand_valley"
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "soulsand_valley"
         }
       }
     ]

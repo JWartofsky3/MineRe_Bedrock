@@ -1,51 +1,42 @@
 {
-	"format_version": "1.20.20",
-	"minecraft:feature_rules": {
-	  "description": {
-		"identifier": "minere:red_sand_dungeon_rule",
-		"places_feature": "minere:red_sand_dungeon_feature"
-	  },
-	  "conditions": {
-		"placement_pass": "underground_pass",
-		"minecraft:biome_filter": [
-		  {
-			"any_of": [
-			  {
-				"test": "has_biome_tag",
-				"operator": "==",
-				"value": "mesa"
-			  }
-			]
-		  }
-		]
-	  },
-	  "distribution": {
-		"iterations": 1,
-		"x": {
-		  "distribution": "uniform",
-		  "extent": [
-			0,
-			16
-		  ]
-		},
-		"y": {
-		  "extent": [
-			45,
-			90
-		  ],
-		  "distribution": "uniform"
-		},
-		"z": {
-		  "distribution": "uniform",
-		  "extent": [
-			0,
-			16
-		  ]
-		},
-		"scatter_chance": {
-		  "numerator": 1,
-		  "denominator": 50
-		}
-	  }
-	}
+  "format_version": "1.20.20",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "minere:red_sand_dungeon_rule",
+      "places_feature": "minere:red_sand_dungeon_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": [
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mesa"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 1,
+      "x": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      },
+      "y": {
+        "extent": [45, 90],
+        "distribution": "uniform"
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      },
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 50
+      }
+    }
   }
+}

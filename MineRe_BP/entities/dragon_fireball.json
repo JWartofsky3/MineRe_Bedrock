@@ -45,7 +45,7 @@
             "potion": 23,
             "particle": "dragonbreath",
             "duration": 30,
-            "color": [ 220, 0, 239 ],
+            "color": [220, 0, 239],
             "affect_owner": false,
             "reapplication_delay": 15
           }
@@ -54,15 +54,14 @@
         "gravity": 0.01,
         "inertia": 1,
         "anchor": 2,
-        "offset": [ 0, 0.5, 0 ],
+        "offset": [0, 0.5, 0],
         "semi_random_diff_damage": true,
         "uncertainty_base": 10.0,
         "reflect_on_hurt": true,
         "hit_sound": "explode"
       }
     },
-	  "minecraft:physics": {
-    },
+    "minecraft:physics": {},
     "minecraft:pushable": {
       "is_pushable": true,
       "is_pushable_by_piston": true
@@ -77,9 +76,7 @@
     "events": {
       "minere:dragon_fireball_explode": {
         "add": {
-          "component_groups": [
-            "minere:dragon_fireball_exploding"
-          ]
+          "component_groups": ["minere:dragon_fireball_exploding"]
         }
       }
     }

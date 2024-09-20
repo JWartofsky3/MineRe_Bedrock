@@ -1,24 +1,18 @@
 {
-	"format_version": "1.12",
-	"minecraft:recipe_shaped": {
-		"description": {
-			"identifier": "minere:copper_cauldron"
-		},
-		"tags": [
-			"crafting_table"
-		],
-		"pattern": [
-			"# #",
-			"# #",
-			"###"
-		],
-		"key": {
-			"#": {
-				"item": "minecraft:copper_ingot"
-			}
-		},
-		"result": {
-			"item": "minecraft:cauldron"
-		}
-	}
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:copper_cauldron"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["# #", "# #", "###"],
+    "key": {
+      "#": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "result": {
+      "item": "minecraft:cauldron"
+    }
+  }
 }

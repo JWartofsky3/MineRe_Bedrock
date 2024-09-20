@@ -1,923 +1,888 @@
 {
-	"format_version": "1.16.0",
-	"minecraft:entity": {
-	  "description": {
-		"identifier": "minere:goblin",
-		"is_spawnable": true,
-		"is_summonable": true,
-		"is_experimental": false
-	  },
-	  "component_groups": {
-		"noble_baby": {
-		  "minecraft:variant": {
-			"value": 1
-		  },
-		  "minecraft:health": {
-			"value": 16,
-			"max": 16
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_noble.json"
-		  }
-		},
-		"noble_unit": {
-		  "minecraft:variant": {
-			"value": 1
-		  },
-		  "minecraft:health": {
-			"value": 16,
-			"max": 16
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_noble.json"
-		  },
-		  "minecraft:experience_reward": {
-			"on_death": "query.last_hit_by_player ? 4 + (query.equipment_count * Math.Random(1,2)) : 0"
-		  }
-		},
-		"grunt_unit": {
-		  "minecraft:behavior.melee_attack": {
-			"priority": 5,
-			"speed_multiplier": 1,
-			"reach_multiplier": 0.85,
-			"track_target": true
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_grunt.json"
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_grunt_gear.json"
-		  }
-		},
-		"crossbow_unit": {
-		  "minecraft:behavior.ranged_attack": {
-			"priority": 5,
-			"attack_interval_min": 1.5,
-			"attack_interval_max": 1.5,
-			"attack_radius": 20,
-			"attack_radius_min": 4,
-			"speed_multiplier": 1,
-			"target_in_sight_time": 0.1
-		  },
-		  "minecraft:shooter": {
-			"def": "minecraft:arrow"
-		  },
-		  "minecraft:behavior.charge_held_item": {
-			"priority": 3,
-			"items": [
-			  "minecraft:arrow"
-			]
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_crossbow.json"
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_ranged.json"
-		  },
-		  "minecraft:variant": {
-			"value": 0
-		  }
-		},
-		"bow_unit": {
-		  "minecraft:behavior.ranged_attack": {
-			"priority": 5,
-			"attack_interval_min": 2,
-			"attack_interval_max": 2,
-			"attack_radius": 20
-		  },
-		  "minecraft:shooter": {
-			"def": "minecraft:arrow"
-		  },
-		  "minecraft:behavior.charge_held_item": {
-			"priority": 3,
-			"items": [
-			  "minecraft:arrow"
-			]
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_bow.json"
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_ranged.json"
-		  },
-		  "minecraft:variant": {
-			"value": 0
-		  }
-		},
-		"melee_unit": {
-		  "minecraft:behavior.melee_attack": {
-			"priority": 5,
-			"speed_multiplier": 1,
-			"reach_multiplier": 0.85,
-			"track_target": true
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_melee.json"
-		  }
-		},
-		"bomb_unit": {
-		  "minecraft:behavior.ranged_attack": {
-			"priority": 5,
-			"attack_interval_min": 2,
-			"attack_interval_max": 3,
-			"attack_radius": 16
-		  },
-		  "minecraft:shooter": {
-			"def": "minere:bomb"
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_bomb.json",
-			"slot_drop_chance": [
-			  {
-				"slot": "slot.weapon.mainhand",
-				"drop_chance": 0
-			  }
-			]
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_bombardier.json"
-		  }
-		},
-		"trader_unit": {
-		  "minecraft:health": {
-			"value": 16,
-			"max": 16
-		  },
-		  "minecraft:behavior.melee_attack": {
-			"priority": 5,
-			"speed_multiplier": 1,
-			"reach_multiplier": 0.85,
-			"track_target": true
-		  },
-		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_trader.json"
-		  },
-		  "minecraft:loot": {
-			"table": "loot_tables/entities/goblin/goblin_trader.json"
-		  },
-		  "minecraft:experience_reward": {
-			"on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,2)) : 0"
-		  },
-		  "minecraft:variant": {
-			"value": 2
-		  }
-		},
-		"angry": {
-		  "minecraft:angry": {
-			"duration": 30,
-			"broadcast_anger": true,
-			"broadcast_anger_on_attack": true,
-			"broadcast_anger_on_being_attacked": true,
-			"broadcast_range": 32,
-			"broadcast_targets": [
-			  "goblin"
-			],
-			"calm_event": {
-			  "event": "become_calm_event",
-			  "target": "self"
-			},
-			"filters": {
-			  "all_of": [
-				{
-				  "test": "is_family",
-				  "subject": "other",
-				  "operator": "!=",
-				  "value": "goblin"
-				},
-				{
-				  "test": "has_component",
-				  "subject": "self",
-				  "operator": "!=",
-				  "value": "minecraft:attack_cooldown"
-				}
-			  ]
-			},
-			"angry_sound": "angry",
-			"sound_interval": {
-			  "range_min": 2,
-			  "range_max": 5
-			}
-		  }
-		},
-		"attack_cooldown": {
-		  "minecraft:attack_cooldown": {
-			"attack_cooldown_time": [
-			  30,
-			  120
-			],
-			"attack_cooldown_complete_event": {
-			  "event": "attack_cooldown_complete_event",
-			  "target": "self"
-			}
-		  }
-		},
-		"goblin_baby": {
-		  "minecraft:is_baby": {},
-		  "minecraft:scale": {
-			"value": 0.5
-		  },
-		  "minecraft:movement": {
-			"value": 0.42
-		  },
-		  "minecraft:behavior.panic": {
-			"priority": 1,
-			"speed_multiplier": 1.1
-		  }
-		},
-		"goblin_adult": {
-		  "minecraft:group_size": {
-			"radius": 32,
-			"filters": {
-			  "all_of": [
-				{
-				  "test": "has_component",
-				  "operator": "!=",
-				  "value": "minecraft:is_baby"
-				},
-				{
-				  "test": "is_family",
-				  "value": "goblin"
-				}
-			  ]
-			}
-		  },
-		  "minecraft:movement": {
-			"value": 0.35
-		  },
-		  "minecraft:barter": {
-			"barter_table": "loot_tables/entities/goblin/goblin_barter.json",
-			"cooldown_after_being_attacked": 20
-		  },
-		  "minecraft:experience_reward": {
-			"on_death": "query.last_hit_by_player ? 3 + (query.equipment_count * 1) : 0"
-		  },
-		  "minecraft:celebrate_hunt": {
-			"celebration_targets": {
-			  "any_of": [
-				{
-				  "test": "is_family",
-				  "value": "gremlin"
-				},
-				{
-				  "test": "is_family",
-				  "value": "deer"
-				},
-				{
-				  "test": "is_family",
-				  "value": "ogre"
-				}
-			  ]
-			},
-			"broadcast": true,
-			"duration": 10,
-			"celebrate_sound": "celebrate",
-			"sound_interval": {
-			  "range_min": 2,
-			  "range_max": 5
-			},
-			"radius": 16
-		  },
-		  "minecraft:block_sensor": {
-			"sensor_radius": 16,
-			"on_break": [
-			  {
-				"block_list": [
-				  "minecraft:gold_ore",
-				  "minecraft:deepslate_gold_ore",
-				  "minecraft:diamond_ore",
-				  "minecraft:deepslate_diamond_ore",
-				  "minecraft:emerald_ore",
-				  "minecraft:deepslate_emerald_ore"
-				],
-				"on_block_broken": "important_block_destroyed_event"
-			  }
-			]
-		  }
-		},
-		"goblin_survival_instinct": {
-		  "minecraft:behavior.avoid_mob_type": {
-			"priority": 2,
-			"remove_target": true,
-			"entity_types": [
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "ogre"
-					}
-				  ]
-				},
-				"max_dist": 3
-			  },
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "zoglin"
-					}
-				  ]
-				},
-				"max_dist": 6
-			  }
-			],
-			"on_escape_event": {
-			  "event": "become_calm_event",
-			  "target": "self"
-			},
-			"avoid_mob_sound": "retreat",
-			"sound_interval": {
-			  "range_min": 2,
-			  "range_max": 5
-			}
-		  }
-		},
-		"interactable_goblin": {
-		  "minecraft:interact": {
-			"interactions": [
-			  {
-				"on_interact": {
-				  "filters": {
-					"all_of": [
-					  {
-						"test": "has_equipment",
-						"subject": "other",
-						"domain": "hand",
-						"value": "emerald"
-					  },
-					  {
-						"test": "is_family",
-						"subject": "other",
-						"value": "player"
-					  },
-					  {
-						"test": "has_component",
-						"subject": "self",
-						"operator": "!=",
-						"value": "minecraft:is_baby"
-					  }
-					]
-				  }
-				},
-				"barter": true,
-				"admire": true,
-				"use_item": true,
-				"cooldown_after_being_attacked": 20,
-				"interact_text": "action.interact.barter"
-			  }
-			]
-		  }
-		},
-		"tradeable_goblin": {
-		  "minecraft:behavior.trade_with_player": {
-			"priority": 7
-		  },
-		  "minecraft:economy_trade_table": {
-			"display_name": "Goblin Trader",
-			"table": "trading/goblin_trades.json",
-			"convert_trades_economy": true,
-			"new_screen": true
-		  }
-		},
-		"hunter": {
-		  "minecraft:type_family": {
-			"family": [
-			  "goblin",
-			  "goblin_hunter",
-			  "monster"
-			]
-		  }
-		},
-		"not_hunter": {
-		  "minecraft:type_family": {
-			"family": [
-			  "goblin",
-			  "monster"
-			]
-		  }
-		},
-		"alert_for_attack_targets": {
-		  "minecraft:behavior.nearest_attackable_target": {
-			"priority": 4,
-			"within_radius": 16,
-			"persist_time": 0,
-			"entity_types": [
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "wither"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "ogre"
-					}
-				  ]
-				},
-				"max_dist": 32
-			  },
-			  {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "is_family",
-					  "subject": "self",
-					  "value": "goblin_hunter"
-					},
-					{
-					  "any_of": [
-						{
-						  "test": "is_family",
-						  "subject": "other",
-						  "value": "gremlin"
-						},
-						{
-						  "test": "is_family",
-						  "subject": "other",
-						  "value": "deer"
-						}
-					  ]
-					},
-					{
-					  "test": "has_component",
-					  "subject": "other",
-					  "operator": "!=",
-					  "value": "minecraft:is_baby"
-					},
-					{
-					  "test": "has_component",
-					  "subject": "self",
-					  "operator": "!=",
-					  "value": "minecraft:attack_cooldown"
-					}
-				  ]
-				},
-				"max_dist": 32
-			  }
-			],
-			"must_see": true
-		  }
-		},
-		"take_target_as_response_to_block_break": {
-		  "minecraft:behavior.nearest_attackable_target": {
-			"priority": 4,
-			"entity_types": [
-			  {
-				"filters": {
-				  "test": "is_family",
-				  "subject": "other",
-				  "value": "player"
-				},
-				"max_dist": 16
-			  },
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "wither"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "ogre"
-					}
-				  ]
-				},
-				"max_dist": 32
-			  }
-			]
-		  }
-		},
-		"goblin_jockey": {
-		  "minecraft:variant": {
-			"value": 1
-		  },
-		  "minecraft:behavior.find_mount": {
-			"priority": 3,
-			"within_radius": 16,
-			"start_delay": 15,
-			"max_failed_attempts": 20
-		  }
-		}
-	  },
-	  "components": {
-		"minecraft:is_hidden_when_invisible": {},
-		"minecraft:equip_item": {},
-		"minecraft:admire_item": {
-		  "duration": 5,
-		  "cooldown_after_being_attacked": 20
-		},
-		"minecraft:collision_box": {
-		  "width": 0.45,
-		  "height": 1.4
-		},
-		"minecraft:on_target_acquired": {
-		  "event": "become_angry_event",
-		  "target": "self"
-		},
-		"minecraft:breathable": {
-		  "total_supply": 15,
-		  "suffocate_time": 0
-		},
-		"minecraft:attack": {
-		  "damage": 1
-		},
-		"minecraft:health": {
-		  "value": 14,
-		  "max": 14
-		},
-		"minecraft:hurt_on_condition": {
-		  "damage_conditions": [
-			{
-			  "filters": {
-				"test": "in_lava",
-				"subject": "self",
-				"operator": "==",
-				"value": true
-			  },
-			  "cause": "lava",
-			  "damage_per_tick": 4
-			}
-		  ]
-		},
-		"minecraft:navigation.walk": {
-		  "can_path_over_water": true,
-		  "can_open_doors": true
-		},
-		"minecraft:annotation.open_door": {},
-		"minecraft:movement.basic": {},
-		"minecraft:jump.static": {},
-		"minecraft:nameable": {},
-		"minecraft:inventory": {
-		  "inventory_size": 8
-		},
-		"minecraft:despawn": {
-		  "despawn_from_distance": {}
-		},
-		"minecraft:behavior.float": {
-		  "priority": 0
-		},
-		"minecraft:behavior.hurt_by_target": {
-		  "priority": 1
-		},
-		"minecraft:behavior.admire_item": {
-		  "priority": 2,
-		  "admire_item_sound": "admire",
-		  "sound_interval": {
-			"range_min": 2,
-			"range_max": 5
-		  },
-		  "on_admire_item_start": {
-			"event": "admire_item_started_event",
-			"target": "self"
-		  },
-		  "on_admire_item_stop": {
-			"event": "admire_item_stopped_event",
-			"target": "self"
-		  }
-		},
-		"minecraft:behavior.barter": {
-		  "priority": 7
-		},
-		"minecraft:conditional_bandwidth_optimization": {},
-		"minecraft:behavior.equip_item": {
-		  "priority": 8
-		},
-		"minecraft:behavior.pickup_items": {
-		  "priority": 9,
-		  "max_dist": 10,
-		  "goal_radius": 2,
-		  "speed_multiplier": 0.8,
-		  "pickup_based_on_chance": false,
-		  "can_pickup_any_item": false,
-		  "cooldown_after_being_attacked": 20
-		},
-		"minecraft:behavior.random_stroll": {
-		  "priority": 10,
-		  "speed_multiplier": 0.6
-		},
-		"minecraft:behavior.look_at_player": {
-		  "priority": 11,
-		  "look_distance": 8
-		},
-		"minecraft:behavior.random_look_around": {
-		  "priority": 12
-		},
-		"minecraft:physics": {},
-		"minecraft:pushable": {
-		  "is_pushable": true,
-		  "is_pushable_by_piston": true
-		},
-		"minecraft:follow_range": {
-		  "value": 32
-		},
-		"minecraft:shareables": {
-		  "items": [
-			{
-			  "item": "minere:whacon",
-			  "pickup_limit": 5,
-			  "priority": 1,
-			  "admire": true,
-			  "barter": true
-			},
-			{
-			  "item": "minere:blubber",
-			  "pickup_limit": 5,
-			  "priority": 1,
-			  "admire": true,
-			  "barter": true
-			},
-			{
-			  "item": "minere:emerald_shard",
-			  "pickup_limit": 5,
-			  "priority": 1,
-			  "admire": true,
-			  "consume_item": true
-			},
-			{
-			  "item": "minecraft:emerald",
-			  "pickup_limit": 1,
-			  "priority": 1,
-			  "admire": true,
-			  "barter": true
-			},
-			{
-			  "item": "minere:diamond_shard",
-			  "pickup_limit": 5,
-			  "priority": 1,
-			  "admire": true,
-			  "consume_item": true
-			},
-			{
-			  "item": "minecraft:diamond",
-			  "pickup_limit": 1,
-			  "priority": 1,
-			  "admire": true,
-			  "barter": true
-			}
-		  ]
-		}
-	  },
-	  "events": {
-		"minecraft:entity_spawned": {
-		  "randomize": [
-			{
-			  "weight": 5,
-			  "trigger": "spawn_baby"
-			},
-			{
-			  "weight": 95,
-			  "trigger": "spawn_adult"
-			}
-		  ]
-		},
-		"minecraft:entity_born": {
-		  "trigger": "spawn_baby"
-		},
-		"spawn_adult": {
-		  "randomize": [
-			{
-			  "weight": 125,
-			  "trigger": "spawn_adult_grunt"
-			},
-			{
-			  "weight": 200,
-			  "trigger": "spawn_adult_melee"
-			},
-			{
-			  "weight": 250,
-			  "trigger": "spawn_adult_bow"
-			},
-			{
-			  "weight": 125,
-			  "trigger": "spawn_adult_crossbow"
-			},
-			{
-			  "weight": 150,
-			  "sequence": [
-				{
-				  "filters": {
-					"test": "is_altitude",
-					"operator": "<=",
-					"value": 48
-				  },
-				  "trigger": "spawn_adult_bomb"
-				},
-				{
-				  "filters": {
-					"test": "is_altitude",
-					"operator": ">",
-					"value": 48
-				  },
-				  "randomize": [
-					{
-					  "weight": 1,
-					  "trigger": "spawn_adult_grunt"
-					},
-					{
-					  "weight": 2,
-					  "trigger": "spawn_adult_bow"
-					},
-					{
-					  "weight": 1,
-					  "trigger": "spawn_adult_crossbow"
-					},
-					{
-					  "weight": 4,
-					  "trigger": "spawn_adult_melee"
-					}
-				  ]
-				}
-			  ]
-			},
-			{
-			  "weight": 150,
-			  "trigger": "spawn_adult_trader"
-			}
-		  ]
-		},
-		"spawn_adult_grunt": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "grunt_unit",
-			  "attack_cooldown",
-			  "hunter",
-			  "interactable_goblin"
-			]
-		  }
-		},
-		"spawn_adult_melee": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "melee_unit",
-			  "noble_unit",
-			  "attack_cooldown",
-			  "hunter",
-			  "interactable_goblin"
-			]
-		  }
-		},
-		"spawn_adult_crossbow": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "crossbow_unit",
-			  "attack_cooldown",
-			  "hunter",
-			  "interactable_goblin",
-			  "goblin_survival_instinct"
-			]
-		  }
-		},
-		"spawn_adult_bow": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "bow_unit",
-			  "attack_cooldown",
-			  "hunter",
-			  "interactable_goblin",
-			  "goblin_survival_instinct"
-			]
-		  }
-		},
-		"spawn_adult_bomb": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "noble_unit",
-			  "bomb_unit",
-			  "attack_cooldown",
-			  "not_hunter",
-			  "interactable_goblin",
-			  "goblin_survival_instinct"
-			]
-		  }
-		},
-		"spawn_adult_trader": {
-		  "add": {
-			"component_groups": [
-			  "goblin_adult",
-			  "alert_for_attack_targets",
-			  "trader_unit",
-			  "attack_cooldown",
-			  "hunter",
-			  "tradeable_goblin"
-			]
-		  }
-		},
-		"spawn_baby": {
-		  "sequence": [
-			{
-			  "add": {
-				"component_groups": [
-				  "goblin_baby",
-				  "goblin_survival_instinct",
-				  "not_hunter"
-				]
-			  }
-			},
-			{
-			  "randomize": [
-				{
-				  "weight": 7
-				},
-				{
-				  "weight": 3,
-				  "add": {
-					"component_groups": [
-					  "goblin_jockey"
-					]
-				  }
-				}
-			  ]
-			},
-			{
-			  "randomize": [
-				{
-				  "weight": 2
-				},
-				{
-				  "weight": 1,
-				  "add": {
-					"component_groups": [
-					  "noble_baby"
-					]
-				  }
-				}
-			  ]
-			}
-		  ]
-		},
-		"become_angry_event": {
-		  "add": {
-			"component_groups": [
-			  "angry"
-			]
-		  }
-		},
-		"become_calm_event": {
-		  "remove": {
-			"component_groups": [
-			  "angry",
-			  "take_target_as_response_to_block_break"
-			]
-		  },
-		  "add": {
-			"component_groups": [
-			  "alert_for_attack_targets",
-			  "attack_cooldown"
-			]
-		  }
-		},
-		"attack_cooldown_complete_event": {
-		  "remove": {
-			"component_groups": [
-			  "attack_cooldown"
-			]
-		  }
-		},
-		"important_block_destroyed_event": {
-		  "remove": {
-			"component_groups": [
-			  "alert_for_attack_targets"
-			]
-		  },
-		  "add": {
-			"component_groups": [
-			  "take_target_as_response_to_block_break"
-			]
-		  }
-		},
-		"admire_item_started_event": {
-		  "remove": {
-			"component_groups": [
-			  "interactable_goblin"
-			]
-		  }
-		},
-		"admire_item_stopped_event": {
-		  "add": {
-			"component_groups": [
-			  "interactable_goblin"
-			]
-		  }
-		}
-	  }
-	}
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:goblin",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "noble_baby": {
+        "minecraft:variant": {
+          "value": 1
+        },
+        "minecraft:health": {
+          "value": 16,
+          "max": 16
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_noble.json"
+        }
+      },
+      "noble_unit": {
+        "minecraft:variant": {
+          "value": 1
+        },
+        "minecraft:health": {
+          "value": 16,
+          "max": 16
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_noble.json"
+        },
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? 4 + (query.equipment_count * Math.Random(1,2)) : 0"
+        }
+      },
+      "grunt_unit": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "speed_multiplier": 1,
+          "reach_multiplier": 0.85,
+          "track_target": true
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_grunt.json"
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_grunt_gear.json"
+        }
+      },
+      "crossbow_unit": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 5,
+          "attack_interval_min": 1.5,
+          "attack_interval_max": 1.5,
+          "attack_radius": 20,
+          "attack_radius_min": 4,
+          "speed_multiplier": 1,
+          "target_in_sight_time": 0.1
+        },
+        "minecraft:shooter": {
+          "def": "minecraft:arrow"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": ["minecraft:arrow"]
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_gear_crossbow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_ranged.json"
+        },
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "bow_unit": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 5,
+          "attack_interval_min": 2,
+          "attack_interval_max": 2,
+          "attack_radius": 20
+        },
+        "minecraft:shooter": {
+          "def": "minecraft:arrow"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": ["minecraft:arrow"]
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_gear_bow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_ranged.json"
+        },
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "melee_unit": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "speed_multiplier": 1,
+          "reach_multiplier": 0.85,
+          "track_target": true
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_gear_melee.json"
+        }
+      },
+      "bomb_unit": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 5,
+          "attack_interval_min": 2,
+          "attack_interval_max": 3,
+          "attack_radius": 16
+        },
+        "minecraft:shooter": {
+          "def": "minere:bomb"
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_gear_bomb.json",
+          "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.mainhand",
+              "drop_chance": 0
+            }
+          ]
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_bombardier.json"
+        }
+      },
+      "trader_unit": {
+        "minecraft:health": {
+          "value": 16,
+          "max": 16
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "speed_multiplier": 1,
+          "reach_multiplier": 0.85,
+          "track_target": true
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/goblin/goblin_gear_trader.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/goblin/goblin_trader.json"
+        },
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,2)) : 0"
+        },
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "angry": {
+        "minecraft:angry": {
+          "duration": 30,
+          "broadcast_anger": true,
+          "broadcast_anger_on_attack": true,
+          "broadcast_anger_on_being_attacked": true,
+          "broadcast_range": 32,
+          "broadcast_targets": ["goblin"],
+          "calm_event": {
+            "event": "become_calm_event",
+            "target": "self"
+          },
+          "filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "!=",
+                "value": "goblin"
+              },
+              {
+                "test": "has_component",
+                "subject": "self",
+                "operator": "!=",
+                "value": "minecraft:attack_cooldown"
+              }
+            ]
+          },
+          "angry_sound": "angry",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          }
+        }
+      },
+      "attack_cooldown": {
+        "minecraft:attack_cooldown": {
+          "attack_cooldown_time": [30, 120],
+          "attack_cooldown_complete_event": {
+            "event": "attack_cooldown_complete_event",
+            "target": "self"
+          }
+        }
+      },
+      "goblin_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:movement": {
+          "value": 0.42
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.1
+        }
+      },
+      "goblin_adult": {
+        "minecraft:group_size": {
+          "radius": 32,
+          "filters": {
+            "all_of": [
+              {
+                "test": "has_component",
+                "operator": "!=",
+                "value": "minecraft:is_baby"
+              },
+              {
+                "test": "is_family",
+                "value": "goblin"
+              }
+            ]
+          }
+        },
+        "minecraft:movement": {
+          "value": 0.35
+        },
+        "minecraft:barter": {
+          "barter_table": "loot_tables/entities/goblin/goblin_barter.json",
+          "cooldown_after_being_attacked": 20
+        },
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? 3 + (query.equipment_count * 1) : 0"
+        },
+        "minecraft:celebrate_hunt": {
+          "celebration_targets": {
+            "any_of": [
+              {
+                "test": "is_family",
+                "value": "gremlin"
+              },
+              {
+                "test": "is_family",
+                "value": "deer"
+              },
+              {
+                "test": "is_family",
+                "value": "ogre"
+              }
+            ]
+          },
+          "broadcast": true,
+          "duration": 10,
+          "celebrate_sound": "celebrate",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          },
+          "radius": 16
+        },
+        "minecraft:block_sensor": {
+          "sensor_radius": 16,
+          "on_break": [
+            {
+              "block_list": [
+                "minecraft:gold_ore",
+                "minecraft:deepslate_gold_ore",
+                "minecraft:diamond_ore",
+                "minecraft:deepslate_diamond_ore",
+                "minecraft:emerald_ore",
+                "minecraft:deepslate_emerald_ore"
+              ],
+              "on_block_broken": "important_block_destroyed_event"
+            }
+          ]
+        }
+      },
+      "goblin_survival_instinct": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 2,
+          "remove_target": true,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "ogre"
+                  }
+                ]
+              },
+              "max_dist": 3
+            },
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zoglin"
+                  }
+                ]
+              },
+              "max_dist": 6
+            }
+          ],
+          "on_escape_event": {
+            "event": "become_calm_event",
+            "target": "self"
+          },
+          "avoid_mob_sound": "retreat",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          }
+        }
+      },
+      "interactable_goblin": {
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "emerald"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:is_baby"
+                    }
+                  ]
+                }
+              },
+              "barter": true,
+              "admire": true,
+              "use_item": true,
+              "cooldown_after_being_attacked": 20,
+              "interact_text": "action.interact.barter"
+            }
+          ]
+        }
+      },
+      "tradeable_goblin": {
+        "minecraft:behavior.trade_with_player": {
+          "priority": 7
+        },
+        "minecraft:economy_trade_table": {
+          "display_name": "Goblin Trader",
+          "table": "trading/goblin_trades.json",
+          "convert_trades_economy": true,
+          "new_screen": true
+        }
+      },
+      "hunter": {
+        "minecraft:type_family": {
+          "family": ["goblin", "goblin_hunter", "monster"]
+        }
+      },
+      "not_hunter": {
+        "minecraft:type_family": {
+          "family": ["goblin", "monster"]
+        }
+      },
+      "alert_for_attack_targets": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 4,
+          "within_radius": 16,
+          "persist_time": 0,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "wither"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "ogre"
+                  }
+                ]
+              },
+              "max_dist": 32
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "self",
+                    "value": "goblin_hunter"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "gremlin"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "deer"
+                      }
+                    ]
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:attack_cooldown"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ],
+          "must_see": true
+        }
+      },
+      "take_target_as_response_to_block_break": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 4,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "wither"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "ogre"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
+      "goblin_jockey": {
+        "minecraft:variant": {
+          "value": 1
+        },
+        "minecraft:behavior.find_mount": {
+          "priority": 3,
+          "within_radius": 16,
+          "start_delay": 15,
+          "max_failed_attempts": 20
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:equip_item": {},
+      "minecraft:admire_item": {
+        "duration": 5,
+        "cooldown_after_being_attacked": 20
+      },
+      "minecraft:collision_box": {
+        "width": 0.45,
+        "height": 1.4
+      },
+      "minecraft:on_target_acquired": {
+        "event": "become_angry_event",
+        "target": "self"
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:health": {
+        "value": 14,
+        "max": 14
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "can_open_doors": true
+      },
+      "minecraft:annotation.open_door": {},
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:nameable": {},
+      "minecraft:inventory": {
+        "inventory_size": 8
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.admire_item": {
+        "priority": 2,
+        "admire_item_sound": "admire",
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 5
+        },
+        "on_admire_item_start": {
+          "event": "admire_item_started_event",
+          "target": "self"
+        },
+        "on_admire_item_stop": {
+          "event": "admire_item_stopped_event",
+          "target": "self"
+        }
+      },
+      "minecraft:behavior.barter": {
+        "priority": 7
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.equip_item": {
+        "priority": 8
+      },
+      "minecraft:behavior.pickup_items": {
+        "priority": 9,
+        "max_dist": 10,
+        "goal_radius": 2,
+        "speed_multiplier": 0.8,
+        "pickup_based_on_chance": false,
+        "can_pickup_any_item": false,
+        "cooldown_after_being_attacked": 20
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 10,
+        "speed_multiplier": 0.6
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 11,
+        "look_distance": 8
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 12
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:follow_range": {
+        "value": 32
+      },
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minere:whacon",
+            "pickup_limit": 5,
+            "priority": 1,
+            "admire": true,
+            "barter": true
+          },
+          {
+            "item": "minere:blubber",
+            "pickup_limit": 5,
+            "priority": 1,
+            "admire": true,
+            "barter": true
+          },
+          {
+            "item": "minere:emerald_shard",
+            "pickup_limit": 5,
+            "priority": 1,
+            "admire": true,
+            "consume_item": true
+          },
+          {
+            "item": "minecraft:emerald",
+            "pickup_limit": 1,
+            "priority": 1,
+            "admire": true,
+            "barter": true
+          },
+          {
+            "item": "minere:diamond_shard",
+            "pickup_limit": 5,
+            "priority": 1,
+            "admire": true,
+            "consume_item": true
+          },
+          {
+            "item": "minecraft:diamond",
+            "pickup_limit": 1,
+            "priority": 1,
+            "admire": true,
+            "barter": true
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 5,
+            "trigger": "spawn_baby"
+          },
+          {
+            "weight": 95,
+            "trigger": "spawn_adult"
+          }
+        ]
+      },
+      "minecraft:entity_born": {
+        "trigger": "spawn_baby"
+      },
+      "spawn_adult": {
+        "randomize": [
+          {
+            "weight": 125,
+            "trigger": "spawn_adult_grunt"
+          },
+          {
+            "weight": 200,
+            "trigger": "spawn_adult_melee"
+          },
+          {
+            "weight": 250,
+            "trigger": "spawn_adult_bow"
+          },
+          {
+            "weight": 125,
+            "trigger": "spawn_adult_crossbow"
+          },
+          {
+            "weight": 150,
+            "sequence": [
+              {
+                "filters": {
+                  "test": "is_altitude",
+                  "operator": "<=",
+                  "value": 48
+                },
+                "trigger": "spawn_adult_bomb"
+              },
+              {
+                "filters": {
+                  "test": "is_altitude",
+                  "operator": ">",
+                  "value": 48
+                },
+                "randomize": [
+                  {
+                    "weight": 1,
+                    "trigger": "spawn_adult_grunt"
+                  },
+                  {
+                    "weight": 2,
+                    "trigger": "spawn_adult_bow"
+                  },
+                  {
+                    "weight": 1,
+                    "trigger": "spawn_adult_crossbow"
+                  },
+                  {
+                    "weight": 4,
+                    "trigger": "spawn_adult_melee"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "weight": 150,
+            "trigger": "spawn_adult_trader"
+          }
+        ]
+      },
+      "spawn_adult_grunt": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "grunt_unit",
+            "attack_cooldown",
+            "hunter",
+            "interactable_goblin"
+          ]
+        }
+      },
+      "spawn_adult_melee": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "melee_unit",
+            "noble_unit",
+            "attack_cooldown",
+            "hunter",
+            "interactable_goblin"
+          ]
+        }
+      },
+      "spawn_adult_crossbow": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "crossbow_unit",
+            "attack_cooldown",
+            "hunter",
+            "interactable_goblin",
+            "goblin_survival_instinct"
+          ]
+        }
+      },
+      "spawn_adult_bow": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "bow_unit",
+            "attack_cooldown",
+            "hunter",
+            "interactable_goblin",
+            "goblin_survival_instinct"
+          ]
+        }
+      },
+      "spawn_adult_bomb": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "noble_unit",
+            "bomb_unit",
+            "attack_cooldown",
+            "not_hunter",
+            "interactable_goblin",
+            "goblin_survival_instinct"
+          ]
+        }
+      },
+      "spawn_adult_trader": {
+        "add": {
+          "component_groups": [
+            "goblin_adult",
+            "alert_for_attack_targets",
+            "trader_unit",
+            "attack_cooldown",
+            "hunter",
+            "tradeable_goblin"
+          ]
+        }
+      },
+      "spawn_baby": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "goblin_baby",
+                "goblin_survival_instinct",
+                "not_hunter"
+              ]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 7
+              },
+              {
+                "weight": 3,
+                "add": {
+                  "component_groups": ["goblin_jockey"]
+                }
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 2
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": ["noble_baby"]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "become_angry_event": {
+        "add": {
+          "component_groups": ["angry"]
+        }
+      },
+      "become_calm_event": {
+        "remove": {
+          "component_groups": [
+            "angry",
+            "take_target_as_response_to_block_break"
+          ]
+        },
+        "add": {
+          "component_groups": ["alert_for_attack_targets", "attack_cooldown"]
+        }
+      },
+      "attack_cooldown_complete_event": {
+        "remove": {
+          "component_groups": ["attack_cooldown"]
+        }
+      },
+      "important_block_destroyed_event": {
+        "remove": {
+          "component_groups": ["alert_for_attack_targets"]
+        },
+        "add": {
+          "component_groups": ["take_target_as_response_to_block_break"]
+        }
+      },
+      "admire_item_started_event": {
+        "remove": {
+          "component_groups": ["interactable_goblin"]
+        }
+      },
+      "admire_item_stopped_event": {
+        "add": {
+          "component_groups": ["interactable_goblin"]
+        }
+      }
+    }
   }
+}

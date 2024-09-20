@@ -9,13 +9,12 @@
       "is_experimental": false
     },
     "components": {
-      "minecraft:is_hidden_when_invisible": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
       },
       "minecraft:type_family": {
-        "family": [ "cod", "fish" ]
+        "family": ["cod", "fish"]
       },
       "minecraft:collision_box": {
         "width": 0.6,
@@ -159,10 +158,8 @@
         "block_distance": 2.0,
         "block_weight": 0.85
       },
-      "minecraft:nameable": {
-      },
-      "minecraft:conditional_bandwidth_optimization": {
-      }
+      "minecraft:nameable": {},
+      "minecraft:conditional_bandwidth_optimization": {}
     }
   }
 }

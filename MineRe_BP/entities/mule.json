@@ -10,8 +10,7 @@
 
     "component_groups": {
       "minecraft:mule_baby": {
-        "minecraft:is_baby": {
-        },
+        "minecraft:is_baby": {},
         "minecraft:scale_by_age": {
           "start_scale": 0.5,
           "end_scale": 1.0
@@ -75,13 +74,10 @@
       "minecraft:mule_wild": {
         "minecraft:rideable": {
           "seat_count": 1,
-          "family_types": [
-            "player",
-            "zombie"
-          ],
+          "family_types": ["player", "zombie"],
           "interact_text": "action.interact.mount",
           "seats": {
-            "position": [ 0.0, 0.975, -0.2 ]
+            "position": [0.0, 0.975, -0.2]
           }
         },
         "minecraft:behavior.mount_pathing": {
@@ -146,14 +142,13 @@
       },
 
       "minecraft:mule_tamed": {
-        "minecraft:is_tamed": {
-        },
+        "minecraft:is_tamed": {},
         "minecraft:equippable": {
           "slots": [
             {
               "slot": 0,
               "item": "saddle",
-              "accepted_items": [ "saddle" ],
+              "accepted_items": ["saddle"],
               "on_equip": {
                 "event": "minecraft:mule_saddled"
               },
@@ -166,12 +161,10 @@
         "minecraft:rideable": {
           "seat_count": 1,
           "crouching_skip_interact": true,
-          "family_types": [
-            "player"
-          ],
+          "family_types": ["player"],
           "interact_text": "action.interact.ride.horse",
           "seats": {
-            "position": [ 0.0, 0.975, -0.2 ]
+            "position": [0.0, 0.975, -0.2]
           }
         },
         "minecraft:inventory": {
@@ -187,9 +180,22 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "chest"},
-                    { "test": "is_family", "subject": "other", "value": "player"},
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "chest"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "event": "minecraft:on_chest",
@@ -203,10 +209,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle" },
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -219,8 +244,7 @@
       },
 
       "minecraft:mule_chested": {
-        "minecraft:is_chested": {
-        },
+        "minecraft:is_chested": {},
         "minecraft:interact": {
           "interactions": [
             {
@@ -228,10 +252,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle" },
-                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle" },
-                    { "test": "is_family", "subject": "other", "value": "player" },
-                    { "test": "is_sneak_held", "subject": "other", "value": false }
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -244,22 +287,17 @@
       },
 
       "minecraft:mule_saddled": {
-        "minecraft:is_saddled": {
-        },
-        "minecraft:input_ground_controlled": {
-        },
-        "minecraft:can_power_jump": {
-        },
-        "minecraft:behavior.player_ride_tamed": {
-        }
+        "minecraft:is_saddled": {},
+        "minecraft:input_ground_controlled": {},
+        "minecraft:can_power_jump": {},
+        "minecraft:behavior.player_ride_tamed": {}
       }
     },
 
     "components": {
-      "minecraft:is_hidden_when_invisible": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:type_family": {
-        "family": [ "mule", "mob" ]
+        "family": ["mule", "mob"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -278,7 +316,12 @@
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -292,12 +335,9 @@
         "avoid_water": true,
         "avoid_damage_blocks": true
       },
-      "minecraft:movement.basic": {
-      },
-      "minecraft:jump.static": {
-      },
-      "minecraft:nameable": {
-      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:nameable": {},
       "minecraft:horse.jump_strength": {
         "value": 0.5
       },
@@ -306,8 +346,7 @@
         "hard_distance": 6.0,
         "max_distance": 10.0
       },
-      "minecraft:balloonable": {
-      },
+      "minecraft:balloonable": {},
       "minecraft:healable": {
         "items": [
           {
@@ -353,11 +392,7 @@
       "minecraft:behavior.tempt": {
         "priority": 5,
         "speed_multiplier": 1.2,
-        "items": [
-          "golden_apple",
-          "appleEnchanted",
-          "golden_carrot"
-        ]
+        "items": ["golden_apple", "appleEnchanted", "golden_carrot"]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
@@ -371,14 +406,12 @@
       "minecraft:behavior.random_look_around": {
         "priority": 8
       },
-      "minecraft:physics": {
-      },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
-      "minecraft:conditional_bandwidth_optimization": {
-      }
+      "minecraft:conditional_bandwidth_optimization": {}
     },
 
     "events": {
@@ -396,9 +429,7 @@
           {
             "weight": 20,
             "add": {
-              "component_groups": [
-                "minecraft:mule_baby"
-              ]
+              "component_groups": ["minecraft:mule_baby"]
             }
           }
         ]
@@ -406,17 +437,13 @@
 
       "minecraft:entity_born": {
         "add": {
-          "component_groups": [
-            "minecraft:mule_baby"
-          ]
+          "component_groups": ["minecraft:mule_baby"]
         }
       },
 
       "minecraft:on_tame": {
         "remove": {
-          "component_groups": [
-            "minecraft:mule_wild"
-          ]
+          "component_groups": ["minecraft:mule_wild"]
         },
         "add": {
           "component_groups": [
@@ -428,43 +455,30 @@
 
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": [
-            "minecraft:mule_baby"
-          ]
+          "component_groups": ["minecraft:mule_baby"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:mule_adult",
-            "minecraft:mule_wild"
-          ]
+          "component_groups": ["minecraft:mule_adult", "minecraft:mule_wild"]
         }
       },
 
       "minecraft:on_chest": {
         "remove": {
-          "component_groups": [
-            "minecraft:mule_unchested"
-          ]
+          "component_groups": ["minecraft:mule_unchested"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:mule_chested"
-          ]
+          "component_groups": ["minecraft:mule_chested"]
         }
       },
 
       "minecraft:mule_saddled": {
         "add": {
-          "component_groups": [
-            "minecraft:mule_saddled"
-          ]
+          "component_groups": ["minecraft:mule_saddled"]
         }
       },
       "minecraft:mule_unsaddled": {
         "remove": {
-          "component_groups": [
-            "minecraft:mule_saddled"
-          ]
+          "component_groups": ["minecraft:mule_saddled"]
         }
       }
     }

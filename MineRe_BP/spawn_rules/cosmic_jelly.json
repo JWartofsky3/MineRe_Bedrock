@@ -1,47 +1,51 @@
 {
-    "format_version": "1.8.0",
-    "minecraft:spawn_rules": {
-      "description": {
-        "identifier": "minere:cosmic_jelly",
-        "population_control": "monster"
-      },
-      "conditions": [
-        {
-          "minecraft:spawns_on_surface": {},
-          "minecraft:density_limit": {
-            "surface": 4,
-            "underground": 4
-          },
-          "minecraft:height_filter": {
-            "max": 80
-          },
-          "minecraft:weight": {
-            "default": 2
-          },
-          "minecraft:biome_filter": [
-            {
-              "test": "has_biome_tag", "operator": "==", "value": "the_end"
-            }
-          ]
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:cosmic_jelly",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 4,
+          "underground": 4
         },
-        {
-          "minecraft:spawns_on_surface": {},
-          "minecraft:density_limit": {
-            "surface": 4,
-            "underground": 4
-          },
-          "minecraft:height_filter": {
-            "min": 80
-          },
-          "minecraft:weight": {
-            "default": 8
-          },
-          "minecraft:biome_filter": [
-            {
-              "test": "has_biome_tag", "operator": "==", "value": "the_end"
-            }
-          ]
-        }
-      ]
-    }
+        "minecraft:height_filter": {
+          "max": 80
+        },
+        "minecraft:weight": {
+          "default": 2
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "the_end"
+          }
+        ]
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 4,
+          "underground": 4
+        },
+        "minecraft:height_filter": {
+          "min": 80
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "the_end"
+          }
+        ]
+      }
+    ]
   }
+}

@@ -64,11 +64,7 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 2,
-          "offset": [
-            0,
-            1,
-            0
-          ],
+          "offset": [0, 1, 0],
           "should_bounce": true
         }
       },
@@ -89,11 +85,7 @@
           "angle_offset": -20,
           "inertia": 0.995,
           "anchor": 2,
-          "offset": [
-            0,
-            1,
-            0
-          ]
+          "offset": [0, 1, 0]
         }
       },
       "minere:goblin_bomb": {
@@ -116,11 +108,7 @@
           "angle_offset": -20,
           "inertia": 0.995,
           "anchor": 2,
-          "offset": [
-            0,
-            1,
-            0
-          ]
+          "offset": [0, 1, 0]
         }
       }
     },
@@ -135,10 +123,7 @@
         }
       },
       "minecraft:type_family": {
-        "family": [
-          "tnt",
-          "inanimate"
-        ]
+        "family": ["tnt", "inanimate"]
       },
       "minecraft:projectile": {
         "power": 0.8,
@@ -149,15 +134,10 @@
         "uncertainty_base": 0,
         "uncertainty_multiplier": 0,
         "anchor": 2,
-        "offset": [
-          0,
-          1,
-          0
-        ],
+        "offset": [0, 1, 0],
         "should_bounce": true
       },
-      "minecraft:physics": {
-      },
+      "minecraft:physics": {},
       "minecraft:body_rotation_blocked": {},
       "minecraft:pushable": {
         "is_pushable": false,
@@ -176,9 +156,7 @@
         "sequence": [
           {
             "add": {
-              "component_groups": [
-                "minere:regular_bomb"
-              ]
+              "component_groups": ["minere:regular_bomb"]
             }
           },
           {
@@ -198,14 +176,10 @@
               ]
             },
             "remove": {
-              "component_groups": [
-                "minere:regular_bomb"
-              ]
+              "component_groups": ["minere:regular_bomb"]
             },
             "add": {
-              "component_groups": [
-                "minere:mob_bomb"
-              ]
+              "component_groups": ["minere:mob_bomb"]
             }
           },
           {
@@ -215,14 +189,10 @@
               "value": "goblin"
             },
             "remove": {
-              "component_groups": [
-                "minere:regular_bomb"
-              ]
+              "component_groups": ["minere:regular_bomb"]
             },
             "add": {
-              "component_groups": [
-                "minere:goblin_bomb"
-              ]
+              "component_groups": ["minere:goblin_bomb"]
             }
           }
         ]
@@ -236,9 +206,7 @@
               "value": 0
             },
             "add": {
-              "component_groups": [
-                "minere:from_regular_explosion"
-              ]
+              "component_groups": ["minere:from_regular_explosion"]
             }
           },
           {
@@ -248,9 +216,7 @@
               "value": 1
             },
             "add": {
-              "component_groups": [
-                "minere:from_mob_explosion"
-              ]
+              "component_groups": ["minere:from_mob_explosion"]
             }
           },
           {
@@ -260,9 +226,7 @@
               "value": 2
             },
             "add": {
-              "component_groups": [
-                "minere:from_goblin_explosion"
-              ]
+              "component_groups": ["minere:from_goblin_explosion"]
             }
           }
         ]

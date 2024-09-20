@@ -4,18 +4,16 @@
     "description": {
       "identifier": "minere:blubber",
       "menu_category": {
-				"group": "itemGroup.name.rawFood"
-			}
+        "group": "itemGroup.name.rawFood"
+      }
     },
     "components": {
       "minecraft:icon": "minere.blubber",
-      "minecraft:display_name":{
+      "minecraft:display_name": {
         "value": "item.blubber.name"
       },
       "minecraft:tags": {
-        "tags": [
-          "minecraft:is_food"
-        ]
+        "tags": ["minecraft:is_food"]
       },
       "minecraft:use_modifiers": {
         "use_duration": 2.0,

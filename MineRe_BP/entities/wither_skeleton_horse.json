@@ -30,17 +30,10 @@
       "minecraft:attack": {
         "damage": 3,
         "effect_name": "wither",
-				"effect_duration": 4
+        "effect_duration": 4
       },
       "minecraft:type_family": {
-        "family": [
-          "wither",
-          "skeleton",
-          "undead",
-          "monster",
-          "mob",
-          "horse"
-        ]
+        "family": ["wither", "skeleton", "undead", "monster", "mob", "horse"]
       },
       "minecraft:equip_item": {},
       "minecraft:collision_box": {
@@ -49,20 +42,10 @@
       },
       "minecraft:rideable": {
         "seat_count": 1,
-        "family_types": [
-          "player",
-          "skeleton",
-          "wither",
-          "stray",
-          "zombie"
-        ],
+        "family_types": ["player", "skeleton", "wither", "stray", "zombie"],
         "interact_text": "action.interact.ride.horse",
         "seats": {
-          "position": [
-            0,
-            1.05,
-            -0.2
-          ]
+          "position": [0, 1.05, -0.2]
         }
       },
       "minecraft:experience_reward": {
@@ -78,7 +61,7 @@
       },
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
-			"minecraft:fire_immune": {},
+      "minecraft:fire_immune": {},
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0,

@@ -2,25 +2,20 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shaped": {
     "description": {
-    "identifier": "minere:enderon_leggings"
+      "identifier": "minere:enderon_leggings"
     },
 
-    
-    "tags": [ "crafting_table" ],
-    "pattern": [
-      "XXX",
-      "X X",
-      "X X"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["XXX", "X X", "X X"],
     "key": {
       "X": {
         "item": "minere:enderon_gemstone"
       }
     },
-	"unlock": [
-        {
-          "item": "minere:enderon_gemstone"
-        }
+    "unlock": [
+      {
+        "item": "minere:enderon_gemstone"
+      }
     ],
     "result": {
       "item": "minere:enderon_leggings"

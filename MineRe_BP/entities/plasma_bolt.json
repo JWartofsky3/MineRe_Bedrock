@@ -52,11 +52,7 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 2,
-          "offset": [
-            0,
-            0,
-            0
-          ],
+          "offset": [0, 0, 0],
           "catch_fire": false
         }
       },
@@ -83,11 +79,7 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 2,
-          "offset": [
-            0,
-            2.3,
-            0
-          ],
+          "offset": [0, 2.3, 0],
           "catch_fire": false
         }
       }
@@ -134,9 +126,7 @@
               "value": "walker"
             },
             "add": {
-              "component_groups": [
-                "minere:walker_laser"
-              ]
+              "component_groups": ["minere:walker_laser"]
             }
           },
           {
@@ -150,25 +140,19 @@
               ]
             },
             "add": {
-              "component_groups": [
-                "minere:player_laser"
-              ]
+              "component_groups": ["minere:player_laser"]
             }
           }
         ]
       },
       "minere:mob_explode": {
         "add": {
-          "component_groups": [
-            "minere:mob_exploding"
-          ]
+          "component_groups": ["minere:mob_exploding"]
         }
       },
       "minere:explode": {
         "add": {
-          "component_groups": [
-            "minere:exploding"
-          ]
+          "component_groups": ["minere:exploding"]
         }
       }
     }

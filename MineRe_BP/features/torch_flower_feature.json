@@ -4,11 +4,9 @@
     "description": {
       "identifier": "minere:torch_flower_feature"
     },
-    "may_replace": [
-      "minecraft:air"
-    ],
-    "may_attach_to": { 
-      "bottom": ["minecraft:grass"] 
+    "may_replace": ["minecraft:air"],
+    "may_attach_to": {
+      "bottom": ["minecraft:grass"]
     },
     "places_block": "minecraft:torchflower",
     "enforce_placement_rules": true,

@@ -29,8 +29,17 @@ import { handleItemDurability } from "item/handle_item_durability";
 import { onHoeUse } from "item/custom_hoe";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
+import { applyEnderStrike } from "item/ender_strike";
 
 export const DEFAULT_TICK = 20;
+
+world.beforeEvents.worldInitialize.subscribe(function (data) {
+  data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", {
+    onHitEntity(arg) {
+      applyEnderStrike(arg);
+    },
+  });
+});
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
   fireInfintyBowAfter(data);

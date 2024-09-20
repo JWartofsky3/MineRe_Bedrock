@@ -19,9 +19,7 @@
         },
         "minecraft:ageable": {
           "duration": 5000,
-          "feed_items": [
-            "kelp"
-          ],
+          "feed_items": ["kelp"],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -75,9 +73,7 @@
     "components": {
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:type_family": {
-        "family": [
-          "whale"
-        ]
+        "family": ["whale"]
       },
       "minecraft:collision_box": {
         "width": 6,
@@ -154,9 +150,7 @@
             "weight": 1,
             "remove": {},
             "add": {
-              "component_groups": [
-                "minere:whale_baby"
-              ]
+              "component_groups": ["minere:whale_baby"]
             }
           }
         ]
@@ -164,28 +158,20 @@
       "minecraft:entity_born": {
         "remove": {},
         "add": {
-          "component_groups": [
-            "minere:whale_baby"
-          ]
+          "component_groups": ["minere:whale_baby"]
         }
       },
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": [
-            "minere:whale_baby"
-          ]
+          "component_groups": ["minere:whale_baby"]
         },
         "add": {
-          "component_groups": [
-            "minere:whale_adult"
-          ]
+          "component_groups": ["minere:whale_adult"]
         }
       },
       "minecraft:spawn_adult": {
         "add": {
-          "component_groups": [
-            "minere:whale_adult"
-          ]
+          "component_groups": ["minere:whale_adult"]
         }
       }
     }

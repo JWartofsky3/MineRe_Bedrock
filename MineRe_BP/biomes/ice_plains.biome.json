@@ -7,7 +7,7 @@
     "components": {
       "minecraft:climate": {
         "downfall": 0.5,
-        "snow_accumulation": [ 0.25, 1.0 ],
+        "snow_accumulation": [0.25, 1.0],
         "temperature": 0.0
       },
       "minecraft:multinoise_generation_rules": {
@@ -31,18 +31,10 @@
       "minecraft:overworld_generation_rules": {
         "hills_transformation": "ice_mountains",
         "mutate_transformation": "ice_plains_spikes",
-        "generate_for_climates": [
-          [ "frozen", 3 ]
-        ]
+        "generate_for_climates": [["frozen", 3]]
       },
       "minecraft:tags": {
-        "tags": [
-          "frozen",
-          "ice",
-          "ice_plains",
-          "overworld",
-          "monster"
-        ]
+        "tags": ["frozen", "ice", "ice_plains", "overworld", "monster"]
       }
     }
   }

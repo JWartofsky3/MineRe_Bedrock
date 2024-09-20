@@ -32,10 +32,7 @@
           "xz_dist": 12,
           "y_dist": 12,
           "interval": 1,
-          "hover_height": [
-            2,
-            12
-          ]
+          "hover_height": [2, 12]
         }
       },
       "passive": {
@@ -44,31 +41,20 @@
           "xz_dist": 12,
           "y_dist": 12,
           "interval": 1,
-          "hover_height": [
-            2,
-            12
-          ]
+          "hover_height": [2, 12]
         },
         "minecraft:attack_cooldown": {
           "attack_cooldown_complete_event": {
             "event": "become_aggressive",
             "target": "self"
           },
-          "attack_cooldown_time": [
-            0,
-            3
-          ]
+          "attack_cooldown_time": [0, 3]
         }
       }
     },
     "components": {
       "minecraft:type_family": {
-        "family": [
-          "monster_bat",
-          "bat",
-          "mob",
-          "monster"
-        ]
+        "family": ["monster_bat", "bat", "mob", "monster"]
       },
       "minecraft:equipment": {
         "table": "loot_tables/entities/monster_bat.json"
@@ -84,10 +70,7 @@
         "max": 10
       },
       "minecraft:attack": {
-        "damage": [
-          2,
-          3
-        ],
+        "damage": [2, 3],
         "effect_name": "hunger",
         "effect_duration": 3
       },
@@ -238,43 +221,31 @@
     "events": {
       "minecraft:entity_spawned": {
         "add": {
-          "component_groups": [
-            "passive"
-          ]
+          "component_groups": ["passive"]
         }
       },
       "become_passive": {
         "remove": {
-          "component_groups": [
-            "aggressive"
-          ]
+          "component_groups": ["aggressive"]
         },
         "add": {
-          "component_groups": [
-            "passive"
-          ]
+          "component_groups": ["passive"]
         }
       },
       "become_aggressive": {
         "remove": {
-          "component_groups": [
-            "passive"
-          ]
+          "component_groups": ["passive"]
         },
         "add": {
-          "component_groups": [
-            "aggressive"
-          ]
+          "component_groups": ["aggressive"]
         }
       },
       "become_bat_event": {
         "queue_command": {
           "command": "particle minere:big_smoke ~ ~0.25 ~"
-          },
+        },
         "add": {
-          "component_groups": [
-            "become_bat"
-          ]
+          "component_groups": ["become_bat"]
         }
       }
     }

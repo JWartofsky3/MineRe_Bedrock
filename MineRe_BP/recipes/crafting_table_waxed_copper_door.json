@@ -4,14 +4,8 @@
     "description": {
       "identifier": "minecraft:crafting_table_waxed_copper_door"
     },
-    "tags": [
-      "crafting_table"
-    ],
-    "pattern": [
-      "##",
-      "##",
-      "##"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["##", "##", "##"],
     "key": {
       "#": {
         "item": "minecraft:waxed_copper"

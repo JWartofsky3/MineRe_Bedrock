@@ -3,19 +3,17 @@
   "minecraft:item": {
     "description": {
       "identifier": "minere:cooked_venison",
-			"menu_category": {
-				"group": "itemGroup.name.cookedFood"
-			}
+      "menu_category": {
+        "group": "itemGroup.name.cookedFood"
+      }
     },
     "components": {
       "minecraft:icon": "minere.cooked_venison",
-      "minecraft:display_name":{
+      "minecraft:display_name": {
         "value": "item.cooked_venison.name"
       },
       "minecraft:tags": {
-        "tags": [
-          "minecraft:is_food"
-        ]
+        "tags": ["minecraft:is_food"]
       },
       "minecraft:use_modifiers": {
         "use_duration": 2.0,

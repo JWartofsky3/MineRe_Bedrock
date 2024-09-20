@@ -37,13 +37,7 @@
         "damage": 2
       },
       "minecraft:type_family": {
-        "family": [
-          "skeleton",
-          "undead",
-          "monster",
-          "mob",
-          "horse"
-        ]
+        "family": ["skeleton", "undead", "monster", "mob", "horse"]
       },
       "minecraft:equip_item": {},
       "minecraft:collision_box": {
@@ -52,19 +46,10 @@
       },
       "minecraft:rideable": {
         "seat_count": 1,
-        "family_types": [
-          "player",
-          "skeleton",
-          "stray",
-          "zombie"
-        ],
+        "family_types": ["player", "skeleton", "stray", "zombie"],
         "interact_text": "action.interact.ride.horse",
         "seats": {
-          "position": [
-            0,
-            1.2,
-            -0.2
-          ]
+          "position": [0, 1.2, -0.2]
         }
       },
       "minecraft:experience_reward": {
@@ -222,9 +207,7 @@
               "value": false
             },
             "add": {
-              "component_groups": [
-                "minere:skeleton_cavalry"
-              ]
+              "component_groups": ["minere:skeleton_cavalry"]
             }
           },
           {
@@ -233,9 +216,7 @@
               "value": true
             },
             "add": {
-              "component_groups": [
-                "minere:snow_skeleton_cavalry"
-              ]
+              "component_groups": ["minere:snow_skeleton_cavalry"]
             }
           }
         ]

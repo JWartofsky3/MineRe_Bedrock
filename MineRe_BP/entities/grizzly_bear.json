@@ -151,12 +151,7 @@
     },
     "components": {
       "minecraft:type_family": {
-        "family": [
-          "grizzly_bear",
-          "mob",
-          "bear",
-          "polarbear"
-        ]
+        "family": ["grizzly_bear", "mob", "bear", "polarbear"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -235,29 +230,20 @@
           {
             "weight": 9,
             "add": {
-              "component_groups": [
-                "minecraft:adult",
-                "minecraft:adult_wild"
-              ]
+              "component_groups": ["minecraft:adult", "minecraft:adult_wild"]
             }
           },
           {
             "weight": 1,
             "add": {
-              "component_groups": [
-                "minecraft:baby",
-                "minecraft:baby_wild"
-              ]
+              "component_groups": ["minecraft:baby", "minecraft:baby_wild"]
             }
           }
         ]
       },
       "minecraft:entity_born": {
         "add": {
-          "component_groups": [
-            "minecraft:baby",
-            "minecraft:baby_wild"
-          ]
+          "component_groups": ["minecraft:baby", "minecraft:baby_wild"]
         }
       },
       "minecraft:ageable_grow_up": {
@@ -269,58 +255,39 @@
           ]
         },
         "add": {
-          "component_groups": [
-            "minecraft:adult",
-            "minecraft:adult_wild"
-          ]
+          "component_groups": ["minecraft:adult", "minecraft:adult_wild"]
         }
       },
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": [
-            "minecraft:adult_hostile"
-          ]
+          "component_groups": ["minecraft:adult_hostile"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:adult_wild"
-          ]
+          "component_groups": ["minecraft:adult_wild"]
         }
       },
       "minecraft:on_anger": {
         "remove": {
-          "component_groups": [
-            "minecraft:adult_wild"
-          ]
+          "component_groups": ["minecraft:adult_wild"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:adult_hostile"
-          ]
+          "component_groups": ["minecraft:adult_hostile"]
         }
       },
       "minecraft:baby_on_calm": {
         "remove": {
-          "component_groups": [
-            "minecraft:baby_scared"
-          ]
+          "component_groups": ["minecraft:baby_scared"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:baby_wild"
-          ]
+          "component_groups": ["minecraft:baby_wild"]
         }
       },
       "minecraft:on_scared": {
         "remove": {
-          "component_groups": [
-            "minecraft:baby_wild"
-          ]
+          "component_groups": ["minecraft:baby_wild"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:baby_scared"
-          ]
+          "component_groups": ["minecraft:baby_scared"]
         }
       }
     }

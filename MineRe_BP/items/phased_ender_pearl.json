@@ -13,12 +13,12 @@
         "value": true
       },
       "minecraft:max_stack_size": 16,
-      "minecraft:display_name":{
+      "minecraft:display_name": {
         "value": "item.phased_ender_pearl.name"
       },
-      "minecraft:cooldown":{
-        "category" : "phasedEnderPearl",
-        "duration" : 2.0
+      "minecraft:cooldown": {
+        "category": "phasedEnderPearl",
+        "duration": 2.0
       }
     }
   }

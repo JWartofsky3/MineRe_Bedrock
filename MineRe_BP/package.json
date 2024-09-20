@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@minecraft/server": "^1.21.0",
+    "@minecraft/server": "^1.14.0",
     "@minecraft/server-ui": "^1.1.0",
     "prettier": "^3.2.5"
   }

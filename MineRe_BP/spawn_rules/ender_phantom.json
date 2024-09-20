@@ -1,27 +1,29 @@
 {
-    "format_version": "1.8.0",
-    "minecraft:spawn_rules": {
-      "description": {
-        "identifier": "minere:ender_phantom",
-        "population_control": "monster"
-      },
-      "conditions": [
-        {
-          "minecraft:spawns_on_surface": {},
-          "minecraft:spawns_on_block_filter": { "name": "minecraft:end_stone" },
-          "minecraft:weight": {
-            "default": 2
-          },
-          "minecraft:density_limit": {
-            "surface": 4,
-            "underground": 4
-          },
-          "minecraft:biome_filter": [
-            {
-              "test": "has_biome_tag", "operator": "==", "value": "the_end"
-            }
-          ]
-        }
-      ]
-    }
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:ender_phantom",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": { "name": "minecraft:end_stone" },
+        "minecraft:weight": {
+          "default": 2
+        },
+        "minecraft:density_limit": {
+          "surface": 4,
+          "underground": 4
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "the_end"
+          }
+        ]
+      }
+    ]
   }
+}

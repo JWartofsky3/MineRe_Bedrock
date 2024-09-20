@@ -1,24 +1,18 @@
 {
-	"format_version": "1.12",
-	"minecraft:recipe_shaped": {
-		"description": {
-			"identifier": "minere:diamond"
-		},
-		"tags": [
-			"crafting_table"
-		],
-		"pattern": [
-			"###",
-			"###",
-			"###"
-		],
-		"key": {
-			"#": {
-				"item": "minere:diamond_shard"
-			}
-		},
-		"result": {
-			"item": "minecraft:diamond"
-		}
-	}
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:diamond"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["###", "###", "###"],
+    "key": {
+      "#": {
+        "item": "minere:diamond_shard"
+      }
+    },
+    "result": {
+      "item": "minecraft:diamond"
+    }
+  }
 }

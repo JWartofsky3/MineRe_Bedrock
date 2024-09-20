@@ -2,13 +2,11 @@
   "format_version": "1.12",
   "minecraft:recipe_furnace": {
     "description": {
-    "identifier": "minere:furnace_whacon"
+      "identifier": "minere:furnace_whacon"
     },
 
-    
     "tags": ["furnace", "smoker", "campfire", "soul_campfire"],
     "input": "minere:blubber",
     "output": "minere:whacon"
   }
-  
 }

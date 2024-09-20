@@ -1,30 +1,30 @@
 {
-    "format_version": "1.21.30",
-    "minecraft:block": {
-      "description": {
-        "identifier": "minere:pulsar",
-        "menu_category": {
-          "category": "construction",
-          "is_hidden_in_commands": false
+  "format_version": "1.21.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:pulsar",
+      "menu_category": {
+        "category": "construction",
+        "is_hidden_in_commands": false
+      }
+    },
+    "components": {
+      "tag:minecraft:wood_tier_destructible": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "pulsar"
         }
       },
-      "components": {
-        "tag:minecraft:wood_tier_destructible": {},
-        "tag:minecraft:is_pickaxe_item_destructible": {},
-        "minecraft:destructible_by_mining": {
-          "seconds_to_destroy": 1.0
-        },
-        "minecraft:material_instances": {
-            "*": {
-              "texture": "pulsar"
-            }
-          },
-        "minecraft:destructible_by_explosion": {
-          "explosion_resistance": 4
-        },
-        "minecraft:map_color": "#EA42E3",
-        "minecraft:light_dampening": 0,
-        "minecraft:light_emission": 15
-      }
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 4
+      },
+      "minecraft:map_color": "#EA42E3",
+      "minecraft:light_dampening": 0,
+      "minecraft:light_emission": 15
     }
   }
+}

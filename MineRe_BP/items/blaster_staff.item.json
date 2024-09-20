@@ -1,38 +1,36 @@
 {
-	"format_version": "1.20.80",
-	"minecraft:item": {
-	  "description": {
-		"identifier": "minere:blaster_staff",
-		"menu_category": {
-		  "category": "equipment"
-		}
-	  },
-	  "components": {
-		"minecraft:max_stack_size": 1,
-		"minecraft:icon":  "minere.blaster_staff",
-		"minecraft:damage": 2,
-		"minecraft:can_destroy_in_creative": true,
-		"minecraft:enchantable": {
-		  "slot": "shield",
-		  "value": 15
-		},
-		"minecraft:durability": {
-		  "max_durability": 1024
-		},
-		"minecraft:cooldown": {
-		  "category": "blasterStaff",
-		  "duration": 3.0
-		},
-		"minecraft:repairable": {
-		  "repair_items": [
-			{
-			  "items": [
-				"enderon_gemstone"
-			  ],
-			  "repair_amount": 256
-			}
-		  ]
-		}
-	  }
-	}
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:blaster_staff",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.blaster_staff",
+      "minecraft:damage": 2,
+      "minecraft:can_destroy_in_creative": true,
+      "minecraft:enchantable": {
+        "slot": "shield",
+        "value": 15
+      },
+      "minecraft:durability": {
+        "max_durability": 1024
+      },
+      "minecraft:cooldown": {
+        "category": "blasterStaff",
+        "duration": 3.0
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["enderon_gemstone"],
+            "repair_amount": 256
+          }
+        ]
+      }
+    }
   }
+}

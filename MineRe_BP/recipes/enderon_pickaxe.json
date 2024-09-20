@@ -2,16 +2,11 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shaped": {
     "description": {
-    "identifier": "minere:enderon_pickaxe"
+      "identifier": "minere:enderon_pickaxe"
     },
 
-    
-    "tags": [ "crafting_table" ],
-    "pattern": [
-      "XXX",
-      " # ",
-      " # "
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["XXX", " # ", " # "],
     "key": {
       "#": {
         "item": "minecraft:stick"
@@ -20,10 +15,10 @@
         "item": "minere:enderon_gemstone"
       }
     },
-	"unlock": [
-        {
-          "item": "minere:enderon_gemstone"
-        }
+    "unlock": [
+      {
+        "item": "minere:enderon_gemstone"
+      }
     ],
     "result": {
       "item": "minere:enderon_pickaxe"

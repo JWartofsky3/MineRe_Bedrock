@@ -2,16 +2,11 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shaped": {
     "description": {
-    "identifier": "minere:enderon_hoe"
+      "identifier": "minere:enderon_hoe"
     },
 
-    
-    "tags": [ "crafting_table" ],
-    "pattern": [
-      "XX",
-      " #",
-      " #"
-    ],
+    "tags": ["crafting_table"],
+    "pattern": ["XX", " #", " #"],
     "key": {
       "#": {
         "item": "minecraft:stick"
@@ -20,10 +15,10 @@
         "item": "minere:enderon_gemstone"
       }
     },
-	"unlock": [
-        {
-          "item": "minere:enderon_gemstone"
-        }
+    "unlock": [
+      {
+        "item": "minere:enderon_gemstone"
+      }
     ],
     "result": {
       "item": "minere:enderon_hoe"

@@ -68,20 +68,18 @@
     },
 
     "components": {
-      "minecraft:is_hidden_when_invisible": {
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? 10 : 0"
       },
       "minecraft:type_family": {
-        "family": [ "enderman", "monster", "mob" ]
+        "family": ["enderman", "monster", "mob"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0
       },
-      "minecraft:nameable": {
-      },
+      "minecraft:nameable": {},
       "minecraft:loot": {
         "table": "loot_tables/entities/enderman.json"
       },
@@ -90,17 +88,26 @@
         "max": 40
       },
       "minecraft:knockback_resistance": {
-        "value": 0.20
+        "value": 0.2
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
             "cause": "lava",
             "damage_per_tick": 4
           },
           {
-            "filters": { "test": "in_contact_with_water", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_contact_with_water",
+              "operator": "==",
+              "value": true
+            },
             "cause": "drowning",
             "damage_per_tick": 1
           }
@@ -120,7 +127,7 @@
       "minecraft:teleport": {
         "random_teleports": true,
         "max_random_teleport_time": 30,
-        "random_teleport_cube": [ 32, 32, 32 ],
+        "random_teleport_cube": [32, 32, 32],
         "target_distance": 16,
         "target_teleport_chance": 0.05,
         "light_teleport_chance": 0.05
@@ -168,13 +175,9 @@
         "can_path_over_water": false,
         "avoid_water": true
       },
-      "minecraft:movement.basic": {
-
-      },
-      "minecraft:jump.static": {
-      },
-      "minecraft:can_climb": {
-      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -199,8 +202,7 @@
       "minecraft:behavior.enderman_take_block": {
         "priority": 11
       },
-      "minecraft:physics": {
-      },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
@@ -220,36 +222,25 @@
 
     "events": {
       "minecraft:entity_spawned": {
-        "remove": {
-        },
+        "remove": {},
         "add": {
-          "component_groups": [
-            "minecraft:enderman_calm"
-          ]
+          "component_groups": ["minecraft:enderman_calm"]
         }
       },
       "minecraft:become_angry": {
         "remove": {
-          "component_groups": [
-            "minecraft:enderman_calm"
-          ]
+          "component_groups": ["minecraft:enderman_calm"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:enderman_angry"
-          ]
+          "component_groups": ["minecraft:enderman_angry"]
         }
       },
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": [
-            "minecraft:enderman_angry"
-          ]
+          "component_groups": ["minecraft:enderman_angry"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:enderman_calm"
-          ]
+          "component_groups": ["minecraft:enderman_calm"]
         }
       },
       "minere:start_search": {
@@ -260,9 +251,7 @@
           ]
         },
         "add": {
-          "component_groups": [
-            "minecraft:enderman_angry_search"
-          ]
+          "component_groups": ["minecraft:enderman_angry_search"]
         }
       }
     }

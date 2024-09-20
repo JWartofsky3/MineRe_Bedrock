@@ -41,11 +41,7 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 2,
-          "offset": [
-            0,
-            -0.1,
-            0
-          ],
+          "offset": [0, -0.1, 0],
           "reflect_on_hurt": true,
           "catch_fire": true
         }
@@ -73,7 +69,11 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 2,
-          "offset": [ "2 * math.sin(query.body_y_rotation)" , -3.25, "2 * math.sin(query.body_y_rotation - 90)" ],
+          "offset": [
+            "2 * math.sin(query.body_y_rotation)",
+            -3.25,
+            "2 * math.sin(query.body_y_rotation - 90)"
+          ],
           "reflect_on_hurt": true,
           "catch_fire": true
         }
@@ -101,7 +101,11 @@
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
           "anchor": 1,
-          "offset": [ "1 * math.sin(query.body_y_rotation)" , -0.875, "1 * math.sin(query.body_y_rotation - 90)" ],
+          "offset": [
+            "1 * math.sin(query.body_y_rotation)",
+            -0.875,
+            "1 * math.sin(query.body_y_rotation - 90)"
+          ],
           "reflect_on_hurt": true,
           "catch_fire": true
         }
@@ -129,7 +133,11 @@
           "uncertainty_base": 8,
           "uncertainty_multiplier": 4,
           "anchor": 1,
-          "offset": [ "1 * math.sin(query.body_y_rotation)" , -0.875, "1 * math.sin(query.body_y_rotation - 90)" ],
+          "offset": [
+            "1 * math.sin(query.body_y_rotation)",
+            -0.875,
+            "1 * math.sin(query.body_y_rotation - 90)"
+          ],
           "reflect_on_hurt": false,
           "catch_fire": true
         }
@@ -163,9 +171,7 @@
               "value": "ghast"
             },
             "add": {
-              "component_groups": [
-                "minecraft:ghast_fireball"
-              ]
+              "component_groups": ["minecraft:ghast_fireball"]
             }
           },
           {
@@ -175,9 +181,7 @@
               "value": "lizord"
             },
             "add": {
-              "component_groups": [
-                "minere:lizord_fireball"
-              ]
+              "component_groups": ["minere:lizord_fireball"]
             }
           },
           {
@@ -187,9 +191,7 @@
               "value": "netherzord"
             },
             "add": {
-              "component_groups": [
-                "minere:netherzord_fireball"
-              ]
+              "component_groups": ["minere:netherzord_fireball"]
             }
           },
           {
@@ -213,18 +215,14 @@
               ]
             },
             "add": {
-              "component_groups": [
-                "minere:vanilla_fireball"
-              ]
+              "component_groups": ["minere:vanilla_fireball"]
             }
           }
         ]
       },
       "minecraft:explode": {
         "add": {
-          "component_groups": [
-            "minecraft:exploding"
-          ]
+          "component_groups": ["minecraft:exploding"]
         }
       }
     }

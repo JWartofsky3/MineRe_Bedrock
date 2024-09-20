@@ -44,7 +44,7 @@
             }
           ]
         },
-        {  
+        {
           "num_to_select": 2,
           "trades": [
             {
@@ -78,7 +78,7 @@
                         {
                           "id": "unbreaking",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -119,7 +119,7 @@
                         {
                           "id": "unbreaking",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -160,7 +160,7 @@
                         {
                           "id": "unbreaking",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -201,7 +201,7 @@
                         {
                           "id": "mending",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -242,7 +242,7 @@
                         {
                           "id": "aqua_affinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -283,7 +283,7 @@
                         {
                           "id": "respiration",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -324,7 +324,7 @@
                         {
                           "id": "respiration",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -365,7 +365,7 @@
                         {
                           "id": "respiration",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -406,7 +406,7 @@
                         {
                           "id": "thorns",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -447,7 +447,7 @@
                         {
                           "id": "thorns",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -488,7 +488,7 @@
                         {
                           "id": "thorns",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -529,7 +529,7 @@
                         {
                           "id": "frost_walker",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -570,7 +570,7 @@
                         {
                           "id": "frost_walker",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -611,7 +611,7 @@
                         {
                           "id": "feather_falling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -652,7 +652,7 @@
                         {
                           "id": "feather_falling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -693,7 +693,7 @@
                         {
                           "id": "feather_falling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -734,7 +734,7 @@
                         {
                           "id": "feather_falling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -772,7 +772,7 @@
                         {
                           "id": "protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -813,7 +813,7 @@
                         {
                           "id": "protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -854,7 +854,7 @@
                         {
                           "id": "protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -895,7 +895,7 @@
                         {
                           "id": "protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -936,7 +936,7 @@
                         {
                           "id": "fire_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -977,7 +977,7 @@
                         {
                           "id": "fire_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1018,7 +1018,7 @@
                         {
                           "id": "fire_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1059,7 +1059,7 @@
                         {
                           "id": "fire_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1100,7 +1100,7 @@
                         {
                           "id": "blast_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1141,7 +1141,7 @@
                         {
                           "id": "blast_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1182,7 +1182,7 @@
                         {
                           "id": "blast_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1223,7 +1223,7 @@
                         {
                           "id": "blast_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1261,7 +1261,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1302,7 +1302,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1343,7 +1343,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1384,7 +1384,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1425,7 +1425,7 @@
                         {
                           "id": "depth_strider",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1466,7 +1466,7 @@
                         {
                           "id": "depth_strider",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1507,7 +1507,7 @@
                         {
                           "id": "depth_strider",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1548,7 +1548,7 @@
                         {
                           "id": "sharpness",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1589,7 +1589,7 @@
                         {
                           "id": "sharpness",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1630,7 +1630,7 @@
                         {
                           "id": "sharpness",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1671,7 +1671,7 @@
                         {
                           "id": "sharpness",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1712,7 +1712,7 @@
                         {
                           "id": "sharpness",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1753,7 +1753,7 @@
                         {
                           "id": "smite",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1794,7 +1794,7 @@
                         {
                           "id": "smite",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1835,7 +1835,7 @@
                         {
                           "id": "smite",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1876,7 +1876,7 @@
                         {
                           "id": "smite",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1917,7 +1917,7 @@
                         {
                           "id": "smite",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1958,7 +1958,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -1999,7 +1999,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2040,7 +2040,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2081,7 +2081,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2122,7 +2122,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2163,7 +2163,7 @@
                         {
                           "id": "efficiency",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2204,7 +2204,7 @@
                         {
                           "id": "efficiency",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2245,7 +2245,7 @@
                         {
                           "id": "efficiency",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2286,7 +2286,7 @@
                         {
                           "id": "efficiency",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2327,7 +2327,7 @@
                         {
                           "id": "efficiency",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2365,7 +2365,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2403,7 +2403,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2444,7 +2444,7 @@
                         {
                           "id": "looting",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2485,7 +2485,7 @@
                         {
                           "id": "looting",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2526,7 +2526,7 @@
                         {
                           "id": "looting",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2567,7 +2567,7 @@
                         {
                           "id": "impaling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2608,7 +2608,7 @@
                         {
                           "id": "impaling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2649,7 +2649,7 @@
                         {
                           "id": "impaling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2690,7 +2690,7 @@
                         {
                           "id": "impaling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2731,7 +2731,7 @@
                         {
                           "id": "impaling",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2769,7 +2769,7 @@
                         {
                           "id": "knockback",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2807,7 +2807,7 @@
                         {
                           "id": "knockback",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2848,7 +2848,7 @@
                         {
                           "id": "channeling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2889,7 +2889,7 @@
                         {
                           "id": "flame",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2930,7 +2930,7 @@
                         {
                           "id": "flame",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -2971,7 +2971,7 @@
                         {
                           "id": "infinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3012,7 +3012,7 @@
                         {
                           "id": "loyalty",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3053,7 +3053,7 @@
                         {
                           "id": "loyalty",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3094,7 +3094,7 @@
                         {
                           "id": "loyalty",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3135,7 +3135,7 @@
                         {
                           "id": "riptide",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3176,7 +3176,7 @@
                         {
                           "id": "riptide",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3217,7 +3217,7 @@
                         {
                           "id": "riptide",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3258,7 +3258,7 @@
                         {
                           "id": "multishot",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3299,7 +3299,7 @@
                         {
                           "id": "piercing",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3340,7 +3340,7 @@
                         {
                           "id": "piercing",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3381,7 +3381,7 @@
                         {
                           "id": "piercing",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3422,7 +3422,7 @@
                         {
                           "id": "power",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3463,7 +3463,7 @@
                         {
                           "id": "power",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3504,7 +3504,7 @@
                         {
                           "id": "power",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3545,7 +3545,7 @@
                         {
                           "id": "power",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3586,7 +3586,7 @@
                         {
                           "id": "power",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3627,7 +3627,7 @@
                         {
                           "id": "punch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3668,7 +3668,7 @@
                         {
                           "id": "punch",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3709,7 +3709,7 @@
                         {
                           "id": "quick_charge",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3750,7 +3750,7 @@
                         {
                           "id": "quick_charge",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3791,7 +3791,7 @@
                         {
                           "id": "quick_charge",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3829,7 +3829,7 @@
                         {
                           "id": "fortune",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3867,7 +3867,7 @@
                         {
                           "id": "fortune",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3908,7 +3908,7 @@
                         {
                           "id": "fortune",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3949,7 +3949,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -3990,7 +3990,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4031,7 +4031,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4072,7 +4072,7 @@
                         {
                           "id": "lure",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4113,7 +4113,7 @@
                         {
                           "id": "lure",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4154,7 +4154,7 @@
                         {
                           "id": "lure",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4195,7 +4195,7 @@
                         {
                           "id": "silk_touch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4253,7 +4253,7 @@
             }
           ]
         },
-        {  
+        {
           "num_to_select": 1,
           "trades": [
             {
@@ -4287,7 +4287,7 @@
                         {
                           "id": "unbreaking",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4328,7 +4328,7 @@
                         {
                           "id": "unbreaking",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4369,7 +4369,7 @@
                         {
                           "id": "unbreaking",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4410,7 +4410,7 @@
                         {
                           "id": "mending",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4451,7 +4451,7 @@
                         {
                           "id": "aqua_affinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4492,7 +4492,7 @@
                         {
                           "id": "respiration",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4533,7 +4533,7 @@
                         {
                           "id": "respiration",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4574,7 +4574,7 @@
                         {
                           "id": "respiration",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4615,7 +4615,7 @@
                         {
                           "id": "thorns",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4656,7 +4656,7 @@
                         {
                           "id": "thorns",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4697,7 +4697,7 @@
                         {
                           "id": "thorns",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4738,7 +4738,7 @@
                         {
                           "id": "frost_walker",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4779,7 +4779,7 @@
                         {
                           "id": "frost_walker",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4820,7 +4820,7 @@
                         {
                           "id": "feather_falling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4861,7 +4861,7 @@
                         {
                           "id": "feather_falling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4902,7 +4902,7 @@
                         {
                           "id": "feather_falling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4943,7 +4943,7 @@
                         {
                           "id": "feather_falling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -4981,7 +4981,7 @@
                         {
                           "id": "protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5022,7 +5022,7 @@
                         {
                           "id": "protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5063,7 +5063,7 @@
                         {
                           "id": "protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5104,7 +5104,7 @@
                         {
                           "id": "protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5145,7 +5145,7 @@
                         {
                           "id": "fire_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5186,7 +5186,7 @@
                         {
                           "id": "fire_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5227,7 +5227,7 @@
                         {
                           "id": "fire_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5268,7 +5268,7 @@
                         {
                           "id": "fire_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5309,7 +5309,7 @@
                         {
                           "id": "blast_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5350,7 +5350,7 @@
                         {
                           "id": "blast_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5391,7 +5391,7 @@
                         {
                           "id": "blast_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5432,7 +5432,7 @@
                         {
                           "id": "blast_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5470,7 +5470,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5511,7 +5511,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5552,7 +5552,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5593,7 +5593,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5634,7 +5634,7 @@
                         {
                           "id": "depth_strider",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5675,7 +5675,7 @@
                         {
                           "id": "depth_strider",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5716,7 +5716,7 @@
                         {
                           "id": "depth_strider",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5757,7 +5757,7 @@
                         {
                           "id": "sharpness",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5798,7 +5798,7 @@
                         {
                           "id": "sharpness",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5839,7 +5839,7 @@
                         {
                           "id": "sharpness",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5880,7 +5880,7 @@
                         {
                           "id": "sharpness",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5921,7 +5921,7 @@
                         {
                           "id": "sharpness",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -5962,7 +5962,7 @@
                         {
                           "id": "smite",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6003,7 +6003,7 @@
                         {
                           "id": "smite",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6044,7 +6044,7 @@
                         {
                           "id": "smite",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6085,7 +6085,7 @@
                         {
                           "id": "smite",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6126,7 +6126,7 @@
                         {
                           "id": "smite",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6167,7 +6167,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6208,7 +6208,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6249,7 +6249,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6290,7 +6290,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6331,7 +6331,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6372,7 +6372,7 @@
                         {
                           "id": "efficiency",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6413,7 +6413,7 @@
                         {
                           "id": "efficiency",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6454,7 +6454,7 @@
                         {
                           "id": "efficiency",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6495,7 +6495,7 @@
                         {
                           "id": "efficiency",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6536,7 +6536,7 @@
                         {
                           "id": "efficiency",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6574,7 +6574,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6612,7 +6612,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6653,7 +6653,7 @@
                         {
                           "id": "looting",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6694,7 +6694,7 @@
                         {
                           "id": "looting",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6735,7 +6735,7 @@
                         {
                           "id": "looting",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6776,7 +6776,7 @@
                         {
                           "id": "impaling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6817,7 +6817,7 @@
                         {
                           "id": "impaling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6858,7 +6858,7 @@
                         {
                           "id": "impaling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6899,7 +6899,7 @@
                         {
                           "id": "impaling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6940,7 +6940,7 @@
                         {
                           "id": "impaling",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -6978,7 +6978,7 @@
                         {
                           "id": "knockback",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7016,7 +7016,7 @@
                         {
                           "id": "knockback",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7057,7 +7057,7 @@
                         {
                           "id": "channeling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7098,7 +7098,7 @@
                         {
                           "id": "flame",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7139,7 +7139,7 @@
                         {
                           "id": "flame",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7180,7 +7180,7 @@
                         {
                           "id": "infinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7221,7 +7221,7 @@
                         {
                           "id": "loyalty",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7262,7 +7262,7 @@
                         {
                           "id": "loyalty",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7303,7 +7303,7 @@
                         {
                           "id": "loyalty",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7344,7 +7344,7 @@
                         {
                           "id": "riptide",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7385,7 +7385,7 @@
                         {
                           "id": "riptide",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7426,7 +7426,7 @@
                         {
                           "id": "riptide",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7467,7 +7467,7 @@
                         {
                           "id": "multishot",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7508,7 +7508,7 @@
                         {
                           "id": "piercing",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7549,7 +7549,7 @@
                         {
                           "id": "piercing",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7590,7 +7590,7 @@
                         {
                           "id": "piercing",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7631,7 +7631,7 @@
                         {
                           "id": "power",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7672,7 +7672,7 @@
                         {
                           "id": "power",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7713,7 +7713,7 @@
                         {
                           "id": "power",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7754,7 +7754,7 @@
                         {
                           "id": "power",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7795,7 +7795,7 @@
                         {
                           "id": "power",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7836,7 +7836,7 @@
                         {
                           "id": "punch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7877,7 +7877,7 @@
                         {
                           "id": "punch",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7918,7 +7918,7 @@
                         {
                           "id": "quick_charge",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -7959,7 +7959,7 @@
                         {
                           "id": "quick_charge",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8000,7 +8000,7 @@
                         {
                           "id": "quick_charge",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8038,7 +8038,7 @@
                         {
                           "id": "fortune",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8076,7 +8076,7 @@
                         {
                           "id": "fortune",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8117,7 +8117,7 @@
                         {
                           "id": "fortune",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8158,7 +8158,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8199,7 +8199,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8240,7 +8240,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8281,7 +8281,7 @@
                         {
                           "id": "lure",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8322,7 +8322,7 @@
                         {
                           "id": "lure",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8363,7 +8363,7 @@
                         {
                           "id": "lure",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8404,7 +8404,7 @@
                         {
                           "id": "silk_touch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8462,7 +8462,7 @@
             }
           ]
         },
-        {  
+        {
           "num_to_select": 1,
           "trades": [
             {
@@ -8496,7 +8496,7 @@
                         {
                           "id": "unbreaking",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8537,7 +8537,7 @@
                         {
                           "id": "unbreaking",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8578,7 +8578,7 @@
                         {
                           "id": "unbreaking",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8619,7 +8619,7 @@
                         {
                           "id": "mending",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8660,7 +8660,7 @@
                         {
                           "id": "aqua_affinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8701,7 +8701,7 @@
                         {
                           "id": "respiration",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8742,7 +8742,7 @@
                         {
                           "id": "respiration",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8783,7 +8783,7 @@
                         {
                           "id": "respiration",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8824,7 +8824,7 @@
                         {
                           "id": "thorns",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8865,7 +8865,7 @@
                         {
                           "id": "thorns",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8906,7 +8906,7 @@
                         {
                           "id": "thorns",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8947,7 +8947,7 @@
                         {
                           "id": "frost_walker",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -8988,7 +8988,7 @@
                         {
                           "id": "frost_walker",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9029,7 +9029,7 @@
                         {
                           "id": "feather_falling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9070,7 +9070,7 @@
                         {
                           "id": "feather_falling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9111,7 +9111,7 @@
                         {
                           "id": "feather_falling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9152,7 +9152,7 @@
                         {
                           "id": "feather_falling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9190,7 +9190,7 @@
                         {
                           "id": "protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9231,7 +9231,7 @@
                         {
                           "id": "protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9272,7 +9272,7 @@
                         {
                           "id": "protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9313,7 +9313,7 @@
                         {
                           "id": "protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9354,7 +9354,7 @@
                         {
                           "id": "fire_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9395,7 +9395,7 @@
                         {
                           "id": "fire_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9436,7 +9436,7 @@
                         {
                           "id": "fire_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9477,7 +9477,7 @@
                         {
                           "id": "fire_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9518,7 +9518,7 @@
                         {
                           "id": "blast_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9559,7 +9559,7 @@
                         {
                           "id": "blast_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9600,7 +9600,7 @@
                         {
                           "id": "blast_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9641,7 +9641,7 @@
                         {
                           "id": "blast_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9679,7 +9679,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9720,7 +9720,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9761,7 +9761,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9802,7 +9802,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9843,7 +9843,7 @@
                         {
                           "id": "depth_strider",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9884,7 +9884,7 @@
                         {
                           "id": "depth_strider",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9925,7 +9925,7 @@
                         {
                           "id": "depth_strider",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -9966,7 +9966,7 @@
                         {
                           "id": "sharpness",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10007,7 +10007,7 @@
                         {
                           "id": "sharpness",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10048,7 +10048,7 @@
                         {
                           "id": "sharpness",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10089,7 +10089,7 @@
                         {
                           "id": "sharpness",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10130,7 +10130,7 @@
                         {
                           "id": "sharpness",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10171,7 +10171,7 @@
                         {
                           "id": "smite",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10212,7 +10212,7 @@
                         {
                           "id": "smite",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10253,7 +10253,7 @@
                         {
                           "id": "smite",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10294,7 +10294,7 @@
                         {
                           "id": "smite",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10335,7 +10335,7 @@
                         {
                           "id": "smite",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10376,7 +10376,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10417,7 +10417,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10458,7 +10458,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10499,7 +10499,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10540,7 +10540,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10581,7 +10581,7 @@
                         {
                           "id": "efficiency",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10622,7 +10622,7 @@
                         {
                           "id": "efficiency",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10663,7 +10663,7 @@
                         {
                           "id": "efficiency",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10704,7 +10704,7 @@
                         {
                           "id": "efficiency",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10745,7 +10745,7 @@
                         {
                           "id": "efficiency",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10783,7 +10783,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10821,7 +10821,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10862,7 +10862,7 @@
                         {
                           "id": "looting",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10903,7 +10903,7 @@
                         {
                           "id": "looting",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10944,7 +10944,7 @@
                         {
                           "id": "looting",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -10985,7 +10985,7 @@
                         {
                           "id": "impaling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11026,7 +11026,7 @@
                         {
                           "id": "impaling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11067,7 +11067,7 @@
                         {
                           "id": "impaling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11108,7 +11108,7 @@
                         {
                           "id": "impaling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11149,7 +11149,7 @@
                         {
                           "id": "impaling",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11187,7 +11187,7 @@
                         {
                           "id": "knockback",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11225,7 +11225,7 @@
                         {
                           "id": "knockback",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11266,7 +11266,7 @@
                         {
                           "id": "channeling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11307,7 +11307,7 @@
                         {
                           "id": "flame",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11348,7 +11348,7 @@
                         {
                           "id": "flame",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11389,7 +11389,7 @@
                         {
                           "id": "infinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11430,7 +11430,7 @@
                         {
                           "id": "loyalty",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11471,7 +11471,7 @@
                         {
                           "id": "loyalty",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11512,7 +11512,7 @@
                         {
                           "id": "loyalty",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11553,7 +11553,7 @@
                         {
                           "id": "riptide",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11594,7 +11594,7 @@
                         {
                           "id": "riptide",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11635,7 +11635,7 @@
                         {
                           "id": "riptide",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11676,7 +11676,7 @@
                         {
                           "id": "multishot",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11717,7 +11717,7 @@
                         {
                           "id": "piercing",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11758,7 +11758,7 @@
                         {
                           "id": "piercing",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11799,7 +11799,7 @@
                         {
                           "id": "piercing",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11840,7 +11840,7 @@
                         {
                           "id": "power",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11881,7 +11881,7 @@
                         {
                           "id": "power",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11922,7 +11922,7 @@
                         {
                           "id": "power",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -11963,7 +11963,7 @@
                         {
                           "id": "power",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12004,7 +12004,7 @@
                         {
                           "id": "power",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12045,7 +12045,7 @@
                         {
                           "id": "punch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12086,7 +12086,7 @@
                         {
                           "id": "punch",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12127,7 +12127,7 @@
                         {
                           "id": "quick_charge",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12168,7 +12168,7 @@
                         {
                           "id": "quick_charge",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12209,7 +12209,7 @@
                         {
                           "id": "quick_charge",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12247,7 +12247,7 @@
                         {
                           "id": "fortune",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12285,7 +12285,7 @@
                         {
                           "id": "fortune",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12326,7 +12326,7 @@
                         {
                           "id": "fortune",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12367,7 +12367,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12408,7 +12408,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12449,7 +12449,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12490,7 +12490,7 @@
                         {
                           "id": "lure",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12531,7 +12531,7 @@
                         {
                           "id": "lure",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12572,7 +12572,7 @@
                         {
                           "id": "lure",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12613,7 +12613,7 @@
                         {
                           "id": "silk_touch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12696,7 +12696,7 @@
             }
           ]
         },
-        {  
+        {
           "num_to_select": 1,
           "trades": [
             {
@@ -12730,7 +12730,7 @@
                         {
                           "id": "unbreaking",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12771,7 +12771,7 @@
                         {
                           "id": "unbreaking",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12812,7 +12812,7 @@
                         {
                           "id": "unbreaking",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12853,7 +12853,7 @@
                         {
                           "id": "mending",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12894,7 +12894,7 @@
                         {
                           "id": "aqua_affinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12935,7 +12935,7 @@
                         {
                           "id": "respiration",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -12976,7 +12976,7 @@
                         {
                           "id": "respiration",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13017,7 +13017,7 @@
                         {
                           "id": "respiration",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13058,7 +13058,7 @@
                         {
                           "id": "thorns",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13099,7 +13099,7 @@
                         {
                           "id": "thorns",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13140,7 +13140,7 @@
                         {
                           "id": "thorns",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13181,7 +13181,7 @@
                         {
                           "id": "frost_walker",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13222,7 +13222,7 @@
                         {
                           "id": "frost_walker",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13263,7 +13263,7 @@
                         {
                           "id": "feather_falling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13304,7 +13304,7 @@
                         {
                           "id": "feather_falling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13345,7 +13345,7 @@
                         {
                           "id": "feather_falling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13386,7 +13386,7 @@
                         {
                           "id": "feather_falling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13424,7 +13424,7 @@
                         {
                           "id": "protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13465,7 +13465,7 @@
                         {
                           "id": "protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13506,7 +13506,7 @@
                         {
                           "id": "protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13547,7 +13547,7 @@
                         {
                           "id": "protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13588,7 +13588,7 @@
                         {
                           "id": "fire_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13629,7 +13629,7 @@
                         {
                           "id": "fire_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13670,7 +13670,7 @@
                         {
                           "id": "fire_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13711,7 +13711,7 @@
                         {
                           "id": "fire_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13752,7 +13752,7 @@
                         {
                           "id": "blast_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13793,7 +13793,7 @@
                         {
                           "id": "blast_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13834,7 +13834,7 @@
                         {
                           "id": "blast_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13875,7 +13875,7 @@
                         {
                           "id": "blast_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13913,7 +13913,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13954,7 +13954,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -13995,7 +13995,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14036,7 +14036,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14077,7 +14077,7 @@
                         {
                           "id": "depth_strider",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14118,7 +14118,7 @@
                         {
                           "id": "depth_strider",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14159,7 +14159,7 @@
                         {
                           "id": "depth_strider",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14200,7 +14200,7 @@
                         {
                           "id": "sharpness",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14241,7 +14241,7 @@
                         {
                           "id": "sharpness",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14282,7 +14282,7 @@
                         {
                           "id": "sharpness",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14323,7 +14323,7 @@
                         {
                           "id": "sharpness",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14364,7 +14364,7 @@
                         {
                           "id": "sharpness",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14405,7 +14405,7 @@
                         {
                           "id": "smite",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14446,7 +14446,7 @@
                         {
                           "id": "smite",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14487,7 +14487,7 @@
                         {
                           "id": "smite",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14528,7 +14528,7 @@
                         {
                           "id": "smite",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14569,7 +14569,7 @@
                         {
                           "id": "smite",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14610,7 +14610,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14651,7 +14651,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14692,7 +14692,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14733,7 +14733,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14774,7 +14774,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14815,7 +14815,7 @@
                         {
                           "id": "efficiency",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14856,7 +14856,7 @@
                         {
                           "id": "efficiency",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14897,7 +14897,7 @@
                         {
                           "id": "efficiency",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14938,7 +14938,7 @@
                         {
                           "id": "efficiency",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -14979,7 +14979,7 @@
                         {
                           "id": "efficiency",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15017,7 +15017,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15055,7 +15055,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15096,7 +15096,7 @@
                         {
                           "id": "looting",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15137,7 +15137,7 @@
                         {
                           "id": "looting",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15178,7 +15178,7 @@
                         {
                           "id": "looting",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15219,7 +15219,7 @@
                         {
                           "id": "impaling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15260,7 +15260,7 @@
                         {
                           "id": "impaling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15301,7 +15301,7 @@
                         {
                           "id": "impaling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15342,7 +15342,7 @@
                         {
                           "id": "impaling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15383,7 +15383,7 @@
                         {
                           "id": "impaling",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15421,7 +15421,7 @@
                         {
                           "id": "knockback",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15459,7 +15459,7 @@
                         {
                           "id": "knockback",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15500,7 +15500,7 @@
                         {
                           "id": "channeling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15541,7 +15541,7 @@
                         {
                           "id": "flame",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15582,7 +15582,7 @@
                         {
                           "id": "flame",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15623,7 +15623,7 @@
                         {
                           "id": "infinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15664,7 +15664,7 @@
                         {
                           "id": "loyalty",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15705,7 +15705,7 @@
                         {
                           "id": "loyalty",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15746,7 +15746,7 @@
                         {
                           "id": "loyalty",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15787,7 +15787,7 @@
                         {
                           "id": "riptide",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15828,7 +15828,7 @@
                         {
                           "id": "riptide",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15869,7 +15869,7 @@
                         {
                           "id": "riptide",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15910,7 +15910,7 @@
                         {
                           "id": "multishot",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15951,7 +15951,7 @@
                         {
                           "id": "piercing",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -15992,7 +15992,7 @@
                         {
                           "id": "piercing",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16033,7 +16033,7 @@
                         {
                           "id": "piercing",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16074,7 +16074,7 @@
                         {
                           "id": "power",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16115,7 +16115,7 @@
                         {
                           "id": "power",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16156,7 +16156,7 @@
                         {
                           "id": "power",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16197,7 +16197,7 @@
                         {
                           "id": "power",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16238,7 +16238,7 @@
                         {
                           "id": "power",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16279,7 +16279,7 @@
                         {
                           "id": "punch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16320,7 +16320,7 @@
                         {
                           "id": "punch",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16361,7 +16361,7 @@
                         {
                           "id": "quick_charge",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16402,7 +16402,7 @@
                         {
                           "id": "quick_charge",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16443,7 +16443,7 @@
                         {
                           "id": "quick_charge",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16481,7 +16481,7 @@
                         {
                           "id": "fortune",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16519,7 +16519,7 @@
                         {
                           "id": "fortune",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16560,7 +16560,7 @@
                         {
                           "id": "fortune",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16601,7 +16601,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16642,7 +16642,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16683,7 +16683,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16724,7 +16724,7 @@
                         {
                           "id": "lure",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16765,7 +16765,7 @@
                         {
                           "id": "lure",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16806,7 +16806,7 @@
                         {
                           "id": "lure",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16847,7 +16847,7 @@
                         {
                           "id": "silk_touch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16887,7 +16887,7 @@
             }
           ]
         },
-        {  
+        {
           "num_to_select": 2,
           "trades": [
             {
@@ -16921,7 +16921,7 @@
                         {
                           "id": "unbreaking",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -16962,7 +16962,7 @@
                         {
                           "id": "unbreaking",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17003,7 +17003,7 @@
                         {
                           "id": "unbreaking",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17044,7 +17044,7 @@
                         {
                           "id": "mending",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17085,7 +17085,7 @@
                         {
                           "id": "aqua_affinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17126,7 +17126,7 @@
                         {
                           "id": "respiration",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17167,7 +17167,7 @@
                         {
                           "id": "respiration",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17208,7 +17208,7 @@
                         {
                           "id": "respiration",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17249,7 +17249,7 @@
                         {
                           "id": "thorns",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17290,7 +17290,7 @@
                         {
                           "id": "thorns",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17331,7 +17331,7 @@
                         {
                           "id": "thorns",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17372,7 +17372,7 @@
                         {
                           "id": "frost_walker",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17413,7 +17413,7 @@
                         {
                           "id": "frost_walker",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17454,7 +17454,7 @@
                         {
                           "id": "feather_falling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17495,7 +17495,7 @@
                         {
                           "id": "feather_falling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17536,7 +17536,7 @@
                         {
                           "id": "feather_falling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17577,7 +17577,7 @@
                         {
                           "id": "feather_falling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17615,7 +17615,7 @@
                         {
                           "id": "protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17656,7 +17656,7 @@
                         {
                           "id": "protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17697,7 +17697,7 @@
                         {
                           "id": "protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17738,7 +17738,7 @@
                         {
                           "id": "protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17779,7 +17779,7 @@
                         {
                           "id": "fire_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17820,7 +17820,7 @@
                         {
                           "id": "fire_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17861,7 +17861,7 @@
                         {
                           "id": "fire_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17902,7 +17902,7 @@
                         {
                           "id": "fire_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17943,7 +17943,7 @@
                         {
                           "id": "blast_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -17984,7 +17984,7 @@
                         {
                           "id": "blast_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18025,7 +18025,7 @@
                         {
                           "id": "blast_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18066,7 +18066,7 @@
                         {
                           "id": "blast_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18104,7 +18104,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18145,7 +18145,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18186,7 +18186,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18227,7 +18227,7 @@
                         {
                           "id": "projectile_protection",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18268,7 +18268,7 @@
                         {
                           "id": "depth_strider",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18309,7 +18309,7 @@
                         {
                           "id": "depth_strider",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18350,7 +18350,7 @@
                         {
                           "id": "depth_strider",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18391,7 +18391,7 @@
                         {
                           "id": "sharpness",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18432,7 +18432,7 @@
                         {
                           "id": "sharpness",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18473,7 +18473,7 @@
                         {
                           "id": "sharpness",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18514,7 +18514,7 @@
                         {
                           "id": "sharpness",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18555,7 +18555,7 @@
                         {
                           "id": "sharpness",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18596,7 +18596,7 @@
                         {
                           "id": "smite",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18637,7 +18637,7 @@
                         {
                           "id": "smite",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18678,7 +18678,7 @@
                         {
                           "id": "smite",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18719,7 +18719,7 @@
                         {
                           "id": "smite",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18760,7 +18760,7 @@
                         {
                           "id": "smite",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18801,7 +18801,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18842,7 +18842,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18883,7 +18883,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18924,7 +18924,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -18965,7 +18965,7 @@
                         {
                           "id": "bane_of_arthropods",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19006,7 +19006,7 @@
                         {
                           "id": "efficiency",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19047,7 +19047,7 @@
                         {
                           "id": "efficiency",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19088,7 +19088,7 @@
                         {
                           "id": "efficiency",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19129,7 +19129,7 @@
                         {
                           "id": "efficiency",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19170,7 +19170,7 @@
                         {
                           "id": "efficiency",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19208,7 +19208,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19246,7 +19246,7 @@
                         {
                           "id": "fire_aspect",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19287,7 +19287,7 @@
                         {
                           "id": "looting",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19328,7 +19328,7 @@
                         {
                           "id": "looting",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19369,7 +19369,7 @@
                         {
                           "id": "looting",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19410,7 +19410,7 @@
                         {
                           "id": "impaling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19451,7 +19451,7 @@
                         {
                           "id": "impaling",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19492,7 +19492,7 @@
                         {
                           "id": "impaling",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19533,7 +19533,7 @@
                         {
                           "id": "impaling",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19574,7 +19574,7 @@
                         {
                           "id": "impaling",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19612,7 +19612,7 @@
                         {
                           "id": "knockback",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19650,7 +19650,7 @@
                         {
                           "id": "knockback",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19691,7 +19691,7 @@
                         {
                           "id": "channeling",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19732,7 +19732,7 @@
                         {
                           "id": "flame",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19773,7 +19773,7 @@
                         {
                           "id": "flame",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19814,7 +19814,7 @@
                         {
                           "id": "infinity",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19855,7 +19855,7 @@
                         {
                           "id": "loyalty",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19896,7 +19896,7 @@
                         {
                           "id": "loyalty",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19937,7 +19937,7 @@
                         {
                           "id": "loyalty",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -19978,7 +19978,7 @@
                         {
                           "id": "riptide",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20019,7 +20019,7 @@
                         {
                           "id": "riptide",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20060,7 +20060,7 @@
                         {
                           "id": "riptide",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20101,7 +20101,7 @@
                         {
                           "id": "multishot",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20142,7 +20142,7 @@
                         {
                           "id": "piercing",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20183,7 +20183,7 @@
                         {
                           "id": "piercing",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20224,7 +20224,7 @@
                         {
                           "id": "piercing",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20265,7 +20265,7 @@
                         {
                           "id": "power",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20306,7 +20306,7 @@
                         {
                           "id": "power",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20347,7 +20347,7 @@
                         {
                           "id": "power",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20388,7 +20388,7 @@
                         {
                           "id": "power",
                           "level": 4
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20429,7 +20429,7 @@
                         {
                           "id": "power",
                           "level": 5
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20470,7 +20470,7 @@
                         {
                           "id": "punch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20511,7 +20511,7 @@
                         {
                           "id": "punch",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20552,7 +20552,7 @@
                         {
                           "id": "quick_charge",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20593,7 +20593,7 @@
                         {
                           "id": "quick_charge",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20634,7 +20634,7 @@
                         {
                           "id": "quick_charge",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20672,7 +20672,7 @@
                         {
                           "id": "fortune",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20710,7 +20710,7 @@
                         {
                           "id": "fortune",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20751,7 +20751,7 @@
                         {
                           "id": "fortune",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20792,7 +20792,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20833,7 +20833,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20874,7 +20874,7 @@
                         {
                           "id": "luck_of_the_sea",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20915,7 +20915,7 @@
                         {
                           "id": "lure",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20956,7 +20956,7 @@
                         {
                           "id": "lure",
                           "level": 2
-                       }
+                        }
                       ]
                     }
                   ]
@@ -20997,7 +20997,7 @@
                         {
                           "id": "lure",
                           "level": 3
-                       }
+                        }
                       ]
                     }
                   ]
@@ -21038,7 +21038,7 @@
                         {
                           "id": "silk_touch",
                           "level": 1
-                       }
+                        }
                       ]
                     }
                   ]

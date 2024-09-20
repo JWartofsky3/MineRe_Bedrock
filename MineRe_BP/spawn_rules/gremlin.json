@@ -29,7 +29,9 @@
           "max_size": 4
         },
         "minecraft:biome_filter": {
-          "test": "has_biome_tag", "operator": "==", "value": "monster"
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "monster"
         }
       },
       {
@@ -55,12 +57,13 @@
           "max_size": 4
         },
         "minecraft:biome_filter": {
-          "test": "has_biome_tag", "operator": "==", "value": "monster"
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "monster"
         }
       },
       {
-        "minecraft:spawns_underground": {
-        },
+        "minecraft:spawns_underground": {},
         "minecraft:brightness_filter": {
           "min": 0,
           "max": 11,
@@ -74,7 +77,7 @@
         "minecraft:weight": {
           "default": 9
         },
-        
+
         "minecraft:herd": {
           "min_size": 2,
           "max_size": 4
@@ -83,9 +86,13 @@
           "underground": 8
         },
         "minecraft:biome_filter": {
-            "test": "has_biome_tag", "operator": "==", "value": "warped_forest"
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "warped_forest"
         },
-        "minecraft:spawns_on_block_filter": { "name": "minecraft:warped_nylium" }
+        "minecraft:spawns_on_block_filter": {
+          "name": "minecraft:warped_nylium"
+        }
       },
       {
         "minecraft:spawns_on_surface": {},
@@ -103,7 +110,9 @@
         },
         "minecraft:biome_filter": [
           {
-            "test": "has_biome_tag", "operator": "==", "value": "the_end"
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "the_end"
           }
         ]
       }

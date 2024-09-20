@@ -7,7 +7,7 @@
     "components": {
       "minecraft:climate": {
         "downfall": 0.5,
-        "snow_accumulation": [ 0.125, 0.25 ],
+        "snow_accumulation": [0.125, 0.25],
         "temperature": 0.0
       },
       "minecraft:overworld_height": {
@@ -23,12 +23,7 @@
       },
 
       "minecraft:tags": {
-        "tags": [
-          "frozen",
-          "overworld",
-          "river",
-          "monster"
-        ]
+        "tags": ["frozen", "overworld", "river", "monster"]
       }
     }
   }
