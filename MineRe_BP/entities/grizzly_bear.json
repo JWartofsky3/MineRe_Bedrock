@@ -82,7 +82,7 @@
           "on_death": "query.last_hit_by_player ? 7 : 0"
         },
         "minecraft:knockback_resistance": {
-          "value": 0.75
+          "value": 0.7
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/polar_bear.json"
@@ -123,7 +123,7 @@
               "max_dist": 16
             }
           ],
-          "must_see": false
+          "must_see": true
         }
       },
       "minecraft:adult_hostile": {
@@ -190,7 +190,7 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:follow_range": {
-        "value": 48
+        "value": 32
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}

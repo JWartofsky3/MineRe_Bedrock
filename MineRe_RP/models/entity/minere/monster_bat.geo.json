@@ -56,18 +56,18 @@
 				{
 					"name": "rightWing",
 					"parent": "body",
-					"pivot": [0, 24, 0],
+					"pivot": [0, 25, 0],
 					"cubes": [
 						{
-							"origin": [-16, 7, 1.5],
-							"size": [12, 16, 1],
+							"origin": [-16, 8, 1.5],
+							"size": [12, 18, 1],
 							"uv": {
-								"north": {"uv": [39, 1], "uv_size": [12, 16]},
-								"east": {"uv": [38, 1], "uv_size": [1, 16]},
-								"south": {"uv": [51, 1], "uv_size": [-12, 16]},
-								"west": {"uv": [51, 1], "uv_size": [1, 16]},
-								"up": {"uv": [39, 0], "uv_size": [12, 1]},
-								"down": {"uv": [51, 1], "uv_size": [12, -1]}
+								"north": {"uv": [39, 3], "uv_size": [12, 18]},
+								"east": {"uv": [38, 3], "uv_size": [1, 18]},
+								"south": {"uv": [51, 3], "uv_size": [-12, 18]},
+								"west": {"uv": [51, 3], "uv_size": [1, 18]},
+								"up": {"uv": [39, 2], "uv_size": [12, 1]},
+								"down": {"uv": [51, 3], "uv_size": [12, -1]}
 							}
 						}
 					]
@@ -75,10 +75,10 @@
 				{
 					"name": "rightWingTip",
 					"parent": "rightWing",
-					"pivot": [-12, 23, 1.5],
+					"pivot": [-16, 19, 1.5],
 					"cubes": [
 						{
-							"origin": [-26, 10, 1.5],
+							"origin": [-26, 11, 1.5],
 							"size": [10, 12, 1],
 							"uv": {
 								"north": {"uv": [43, 23], "uv_size": [10, 12]},
@@ -94,18 +94,18 @@
 				{
 					"name": "leftWing",
 					"parent": "body",
-					"pivot": [0, 24, 0],
+					"pivot": [0, 25, 0],
 					"cubes": [
 						{
-							"origin": [2, 7, 1.5],
-							"size": [12, 16, 1],
+							"origin": [2, 8, 1.5],
+							"size": [12, 18, 1],
 							"uv": {
-								"north": {"uv": [51, 1], "uv_size": [-12, 16]},
-								"east": {"uv": [52, 1], "uv_size": [-1, 16]},
-								"south": {"uv": [39, 1], "uv_size": [12, 16]},
-								"west": {"uv": [39, 1], "uv_size": [-1, 16]},
-								"up": {"uv": [51, 0], "uv_size": [-12, 1]},
-								"down": {"uv": [63, 1], "uv_size": [-12, -1]}
+								"north": {"uv": [51, 3], "uv_size": [-12, 18]},
+								"east": {"uv": [52, 3], "uv_size": [-1, 18]},
+								"south": {"uv": [39, 3], "uv_size": [12, 18]},
+								"west": {"uv": [39, 3], "uv_size": [-1, 18]},
+								"up": {"uv": [51, 2], "uv_size": [-12, 1]},
+								"down": {"uv": [63, 3], "uv_size": [-12, -1]}
 							}
 						}
 					]
@@ -113,10 +113,10 @@
 				{
 					"name": "leftWingTip",
 					"parent": "leftWing",
-					"pivot": [12, 23, 1.5],
+					"pivot": [14, 19, 1.5],
 					"cubes": [
 						{
-							"origin": [14, 10, 1.5],
+							"origin": [14, 11, 1.5],
 							"size": [10, 12, 1],
 							"uv": {
 								"north": {"uv": [53, 23], "uv_size": [-10, 12]},

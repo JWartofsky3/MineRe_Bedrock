@@ -118,7 +118,7 @@
               "max_dist": 16
             }
           ],
-          "must_see": false
+          "must_see": true
         }
       },
       "minecraft:adult_hostile": {
@@ -185,7 +185,7 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:follow_range": {
-        "value": 48
+        "value": 32
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}
