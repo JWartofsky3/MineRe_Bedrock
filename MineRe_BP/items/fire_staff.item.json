@@ -10,7 +10,7 @@
 	  "components": {
 		"minecraft:max_stack_size": 1,
 		"minecraft:icon":  "minere.fire_staff",
-		"minecraft:damage": 3,
+		"minecraft:damage": 2,
 		"minecraft:can_destroy_in_creative": true,
 		"minecraft:enchantable": {
 		  "slot": "sword",

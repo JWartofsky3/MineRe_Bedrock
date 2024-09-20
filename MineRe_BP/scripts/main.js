@@ -28,7 +28,6 @@ world.afterEvents.itemReleaseUse.subscribe(function (data) {
 });
 world.afterEvents.itemCompleteUse.subscribe(function (data) {
     healFromItem(data);
-    //runBuildPyramid(data);
 });
 world.afterEvents.entityHealthChanged.subscribe(function (data) {
     playerHungerHeal(data);
@@ -91,7 +90,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
         armorCurve(target, data.damage, data.damageSource);
     }
     if (attacker?.typeId === "minere:bomb") {
-        bombDamage(data?.hurtEntity, data?.damage);
+        bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
     }
     // throwing
     if (attacker?.typeId === "minere:yeti" ||

@@ -5,14 +5,14 @@
 		"min_engine_version": [1, 21, 20],
 		"name": "MineRe Resources",
 		"uuid": "134cbd38-1b56-49ea-bba2-53ff270865c0",
-		"version": [1, 5, 2]
+		"version": [1, 5, 5]
 	},
 	"modules": [
 		{
 			"description": "MineRe Resources",
 			"type": "resources",
 			"uuid": "89039f1e-6256-41fb-b294-86d1396a8ced",
-			"version": [1, 5, 2]
+			"version": [1, 5, 5]
 		}
 	],
 	"metadata": {

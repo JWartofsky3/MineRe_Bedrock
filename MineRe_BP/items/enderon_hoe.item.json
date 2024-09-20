@@ -33,7 +33,7 @@
 					},
                     {
 						"block": "minecraft:hay_block",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}

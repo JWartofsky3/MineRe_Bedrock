@@ -81,8 +81,8 @@
 		"bow_unit": {
 		  "minecraft:behavior.ranged_attack": {
 			"priority": 5,
-			"attack_interval_min": 2.0,
-			"attack_interval_max": 2.0,
+			"attack_interval_min": 2,
+			"attack_interval_max": 2,
 			"attack_radius": 20
 		  },
 		  "minecraft:shooter": {
@@ -118,15 +118,21 @@
 		"bomb_unit": {
 		  "minecraft:behavior.ranged_attack": {
 			"priority": 5,
-			"attack_interval_min": 3,
-			"attack_interval_max": 4,
-			"attack_radius": 10
+			"attack_interval_min": 2,
+			"attack_interval_max": 3,
+			"attack_radius": 16
 		  },
 		  "minecraft:shooter": {
 			"def": "minere:bomb"
 		  },
 		  "minecraft:equipment": {
-			"table": "loot_tables/entities/goblin/goblin_gear_bomb.json"
+			"table": "loot_tables/entities/goblin/goblin_gear_bomb.json",
+			"slot_drop_chance": [
+			  {
+				"slot": "slot.weapon.mainhand",
+				"drop_chance": 0
+			  }
+			]
 		  },
 		  "minecraft:loot": {
 			"table": "loot_tables/entities/goblin/goblin_bombardier.json"
@@ -408,10 +414,10 @@
 					  "value": "wither"
 					},
 					{
-						"test": "is_family",
-						"subject": "other",
-						"value": "ogre"
-					  }
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "ogre"
+					}
 				  ]
 				},
 				"max_dist": 32
@@ -469,6 +475,23 @@
 				  "value": "player"
 				},
 				"max_dist": 16
+			  },
+			  {
+				"filters": {
+				  "any_of": [
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "wither"
+					},
+					{
+					  "test": "is_family",
+					  "subject": "other",
+					  "value": "ogre"
+					}
+				  ]
+				},
+				"max_dist": 32
 			  }
 			]
 		  }
@@ -722,68 +745,29 @@
 		  ]
 		},
 		"spawn_adult_grunt": {
-		  "randomize": [
-			{
-			  "weight": 3,
-			  "add": {
-				"component_groups": [
-				  "goblin_adult",
-				  "alert_for_attack_targets",
-				  "grunt_unit",
-				  "attack_cooldown",
-				  "hunter",
-				  "interactable_goblin",
-				  "goblin_survival_instinct"
-				]
-			  }
-			},
-			{
-			  "weight": 1,
-			  "add": {
-				"component_groups": [
-				  "goblin_adult",
-				  "alert_for_attack_targets",
-				  "grunt_unit",
-				  "attack_cooldown",
-				  "hunter",
-				  "interactable_goblin"
-				]
-			  }
-			}
-		  ]
+		  "add": {
+			"component_groups": [
+			  "goblin_adult",
+			  "alert_for_attack_targets",
+			  "grunt_unit",
+			  "attack_cooldown",
+			  "hunter",
+			  "interactable_goblin"
+			]
+		  }
 		},
 		"spawn_adult_melee": {
-		  "randomize": [
-			{
-			  "weight": 1,
-			  "add": {
-				"component_groups": [
-				  "goblin_adult",
-				  "alert_for_attack_targets",
-				  "melee_unit",
-				  "noble_unit",
-				  "attack_cooldown",
-				  "hunter",
-				  "interactable_goblin",
-				  "goblin_survival_instinct"
-				]
-			  }
-			},
-			{
-			  "weight": 1,
-			  "add": {
-				"component_groups": [
-				  "goblin_adult",
-				  "alert_for_attack_targets",
-				  "melee_unit",
-				  "noble_unit",
-				  "attack_cooldown",
-				  "hunter",
-				  "interactable_goblin"
-				]
-			  }
-			}
-		  ]
+		  "add": {
+			"component_groups": [
+			  "goblin_adult",
+			  "alert_for_attack_targets",
+			  "melee_unit",
+			  "noble_unit",
+			  "attack_cooldown",
+			  "hunter",
+			  "interactable_goblin"
+			]
+		  }
 		},
 		"spawn_adult_crossbow": {
 		  "add": {
@@ -816,8 +800,8 @@
 			"component_groups": [
 			  "goblin_adult",
 			  "alert_for_attack_targets",
-			  "bomb_unit",
 			  "noble_unit",
+			  "bomb_unit",
 			  "attack_cooldown",
 			  "not_hunter",
 			  "interactable_goblin",
@@ -833,8 +817,7 @@
 			  "trader_unit",
 			  "attack_cooldown",
 			  "hunter",
-			  "tradeable_goblin",
-			  "goblin_survival_instinct"
+			  "tradeable_goblin"
 			]
 		  }
 		},

@@ -1,10 +1,11 @@
 import {
   Entity,
   EntityComponentTypes,
+  EntityDamageSource,
   EntityHealthComponent,
 } from "@minecraft/server";
 
-export function bombDamage(entity: Entity, damage: number) {
+export function bombDamage(entity: Entity, damage: number, damageSource: EntityDamageSource) {
   const health = entity?.getComponent(
     EntityComponentTypes.Health,
   ) as EntityHealthComponent;
@@ -12,8 +13,14 @@ export function bombDamage(entity: Entity, damage: number) {
     return;
   }
   if (entity.typeId === "minecraft:player") {
-    health.setCurrentValue(health.currentValue - damage * 0.5);
+    entity.applyDamage(damage * 1.5, {
+      cause: damageSource?.cause,
+      damagingProjectile: damageSource?.damagingProjectile
+    });
   } else {
-    health.setCurrentValue(health.currentValue - damage * 1.0);
+    entity.applyDamage(damage * 2.0, {
+      cause: damageSource?.cause,
+      damagingProjectile: damageSource?.damagingProjectile
+    });
   }
 }

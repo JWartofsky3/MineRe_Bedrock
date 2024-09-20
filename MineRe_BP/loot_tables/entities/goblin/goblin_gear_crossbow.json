@@ -27,13 +27,11 @@
       "conditions": [
         {
           "condition": "random_difficulty_chance",
-          "default_chance": 1.0,
-          "peaceful": 0,
-          "easy": 0
+          "default_chance": 1.0
         },
         {
           "condition": "random_regional_difficulty_chance",
-          "max_chance": 0.15
+          "max_chance": 0.2
         }
       ],
       "tiers": {

@@ -23,7 +23,7 @@
         "iterations": 1,
         "scatter_chance": {
           "numerator": 1,
-          "denominator": 200
+          "denominator": 300
         },
         "coordinate_eval_order": "zyx",
         "x": {

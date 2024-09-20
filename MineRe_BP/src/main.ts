@@ -4,6 +4,7 @@ import {
   system,
   EntityComponentTypes,
   Player,
+  GameMode,
 } from "@minecraft/server";
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -37,7 +38,6 @@ world.afterEvents.itemReleaseUse.subscribe(function (data) {
 
 world.afterEvents.itemCompleteUse.subscribe(function (data) {
   healFromItem(data);
-  //runBuildPyramid(data);
 });
 
 world.afterEvents.entityHealthChanged.subscribe(function (data) {
@@ -117,7 +117,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
   }
 
   if (attacker?.typeId === "minere:bomb") {
-    bombDamage(data?.hurtEntity, data?.damage);
+    bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
   }
 
   // throwing

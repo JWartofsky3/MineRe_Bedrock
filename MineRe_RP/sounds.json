@@ -12,6 +12,11 @@
 						"pitch": [0.9, 1.1],
 						"sound": "mob.bee.hurt",
 						"volume": 0.6
+					},
+					"ambient": {
+						"pitch": [0.9, 1.1],
+						"sound": "mob.bee.pollinate",
+						"volume": 0.6
 					}
 				},
 				"pitch": 1,
@@ -59,7 +64,6 @@
 					"celebrate": "mob.goblin.laugh",
 					"death": "mob.goblin.die",
 					"hurt": "mob.goblin.hurt",
-					"jealous": "mob.goblin.admire",
 					"retreat": {
 						"sound": "mob.goblin.laugh",
 						"pitch": [1.2, 1.4],
@@ -95,8 +99,7 @@
 					"attack": "dig.wood",
 					"roar": "mob.demon.magic",
 					"attack.strong": "mob.demon.attack",
-					"prepare.summon": "mob.demon.magic",
-					"magic": "mob.demon.magic"
+					"prepare.summon": "mob.demon.magic"
 				},
 				"pitch": [0.8, 1.2],
 				"volume": 2.5
@@ -123,7 +126,6 @@
 					"step": "mob.yeti.step",
 					"attack.strong": "mob.yeti.attack",
 					"retreat": "mob.yeti.scared",
-					"berserk": "mob.yeti.berserk",
 					"purr": "mob.yeti.purr"
 				},
 				"pitch": [0.8, 1.2],
@@ -221,7 +223,6 @@
 						"sound": "mob.walker.step",
 						"volume": 3
 					},
-					"emerge": "mob.walker.emerge",
 					"irongolem.repair": "mob.irongolem.repair"
 				},
 				"pitch": [0.8, 1.2],

@@ -26,21 +26,21 @@
 						"block": {
 							"tags": "q.any_tag('dirt', 'sand', 'gravel', 'grass', 'snow')"
 						},
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "minecraft:soul_sand",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "minecraft:soul_soil",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}

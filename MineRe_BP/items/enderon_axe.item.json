@@ -26,35 +26,35 @@
 						"block": {
 							"tags": "query.any_tag('wood', 'pumpkin', 'plant', 'text_sign')"
 						},
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "minecraft:leaves",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "minecraft:leaves2",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "minecraft:azalea_leaves",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}
 					},
 					{
 						"block": "crafting_table",
-						"speed": 13,
+						"speed": 12,
 						"on_dig": {
 							"event": "dmg"
 						}

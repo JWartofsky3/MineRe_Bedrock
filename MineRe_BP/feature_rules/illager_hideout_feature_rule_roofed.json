@@ -1,0 +1,46 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:feature_rules": {
+	  "description": {
+		"identifier": "minere:illager_hideout_feature_rule_roofed",
+		"places_feature": "minere:illager_hideout_feature"
+	  },
+	  "conditions": {
+		"placement_pass": "underground_pass",
+		"minecraft:biome_filter": [
+		  {
+			"any_of": [
+			  {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "roofed"
+			  }
+			],
+			"none_of": [
+				{
+					"test": "has_biome_tag",
+					"operator": "==",
+					"value": "ocean"
+				  }
+			]
+		  }
+		]
+	  },
+	  "distribution": {
+		"iterations": 1,
+		"x": -16,
+		"y": {
+		  "extent": [
+			  -15,
+			  50
+			],
+			"distribution": "uniform"
+		},
+		"z": -16,
+		"scatter_chance": {
+		  "numerator": 1,
+		  "denominator": 100
+		}
+	  }
+	}
+  }

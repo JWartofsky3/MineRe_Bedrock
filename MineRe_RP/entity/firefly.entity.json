@@ -11,7 +11,7 @@
 				"on": "textures/entity/minere/firefly/firefly_on"
 			},
 			"geometry": {
-				"default": "geometry.firefly"
+				"default": "geometry.minere.firefly"
 			},
 			"animations": {
 				"flying": "animation.minere.firefly.flying",

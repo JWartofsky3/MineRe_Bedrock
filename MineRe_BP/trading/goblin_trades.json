@@ -276,6 +276,24 @@
               "max_uses": 6
             },
             {
+              "weight": 2,
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:cooked_venison",
+                  "quantity": {
+                    "min": 3,
+                    "max": 6
+                  }
+                }
+              ],
+              "max_uses": 5
+            },
+            {
               "weight": 3,
               "wants": [
                 {
@@ -394,23 +412,6 @@
               "wants": [
                 {
                   "item": "minecraft:cooked_mutton",
-                  "quantity": {
-                    "min": 3,
-                    "max": 8
-                  }
-                }
-              ],
-              "gives": [
-                {
-                  "item": "minecraft:emerald"
-                }
-              ],
-              "max_uses": 5
-            },
-            {
-              "wants": [
-                {
-                  "item": "minere:cooked_venison",
                   "quantity": {
                     "min": 3,
                     "max": 8

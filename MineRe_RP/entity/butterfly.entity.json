@@ -17,7 +17,7 @@
 				"green": "textures/entity/minere/butterfly/butterfly_green"
 			},
 			"geometry": {
-				"default": "geometry.butterfly"
+				"default": "geometry.minere.butterfly"
 			},
 			"scripts": {
 				"scale": "0.5",

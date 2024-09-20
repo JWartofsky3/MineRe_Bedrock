@@ -367,8 +367,8 @@
 		  "table": "loot_tables/entities/ogre/ogre_gear.json",
 		  "slot_drop_chance": [
 			{
-			  "slot": "slot.weapon.hand",
-			  "drop_chance": 0
+			  "slot": "slot.weapon.mainhand",
+			  "drop_chance": 0.0
 			}
 		  ]
 		},

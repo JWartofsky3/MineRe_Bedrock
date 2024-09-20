@@ -1,0 +1,36 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:ore_feature": {
+      "description": {
+        "identifier": "minere:red_sand_feature"
+      },
+      "count": 64,
+      "replace_rules": [
+        {
+          "places_block": {
+            "name": "minecraft:red_sand"
+          },
+          "may_replace": [
+            {
+              "name": "minecraft:stone"
+            },
+            {
+              "name": "minecraft:andesite"
+            },
+            {
+              "name": "minecraft:diorite"
+            },
+            {
+              "name": "minecraft:granite"
+            },
+            {
+              "name": "minecraft:gravel"
+            },
+            {
+              "name": "minecraft:dirt"
+            }
+          ]
+        }
+      ]
+    }
+  }

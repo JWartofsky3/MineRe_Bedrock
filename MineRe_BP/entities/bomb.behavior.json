@@ -57,9 +57,9 @@
         },
         "minecraft:projectile": {
           "power": 0.8,
-          "gravity": 0.025,
+          "gravity": 0.005,
           "angle_offset": -20,
-          "inertia": 0.99,
+          "inertia": 0.995,
           "liquid_inertia": 0.5,
           "uncertainty_base": 0,
           "uncertainty_multiplier": 0,
@@ -85,8 +85,9 @@
         },
         "minecraft:projectile": {
           "power": 0.8,
-          "gravity": 0.025,
+          "gravity": 0,
           "angle_offset": -20,
+          "inertia": 0.995,
           "anchor": 2,
           "offset": [
             0,
@@ -111,8 +112,9 @@
         },
         "minecraft:projectile": {
           "power": 0.8,
-          "gravity": 0.025,
+          "gravity": 0,
           "angle_offset": -20,
+          "inertia": 0.995,
           "anchor": 2,
           "offset": [
             0,
@@ -140,16 +142,22 @@
       },
       "minecraft:projectile": {
         "power": 0.8,
-        "gravity": 0.025,
+        "gravity": 0,
         "angle_offset": -20,
+        "inertia": 0.995,
+        "liquid_inertia": 0.5,
+        "uncertainty_base": 0,
+        "uncertainty_multiplier": 0,
         "anchor": 2,
         "offset": [
           0,
           1,
           0
-        ]
+        ],
+        "should_bounce": true
       },
-      "minecraft:physics": {},
+      "minecraft:physics": {
+      },
       "minecraft:body_rotation_blocked": {},
       "minecraft:pushable": {
         "is_pushable": false,
