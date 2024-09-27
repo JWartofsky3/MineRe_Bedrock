@@ -427,6 +427,10 @@
             "damage_multiplier": 3
           },
           {
+            "cause": "freezing",
+            "deals_damage": false
+          },
+          {
             "cause": "fire_tick",
             "deals_damage": true,
             "damage_multiplier": 3

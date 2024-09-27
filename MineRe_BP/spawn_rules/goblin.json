@@ -82,6 +82,11 @@
             {
               "test": "has_biome_tag",
               "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
               "value": "jungle"
             }
           ]

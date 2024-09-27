@@ -20,9 +20,18 @@
           "surface": 2
         },
         "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "swamp"
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            }
+          ]
         }
       },
       {
@@ -54,6 +63,21 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mesa"
             }
           ],
           "all_of": [

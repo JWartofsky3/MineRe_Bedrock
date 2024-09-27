@@ -49,6 +49,17 @@
         },
         "minecraft:movement": {
           "value": 0.23
+        },
+        "minecraft:spell_effects": {
+          "add_effects": [
+            {
+              "effect": "instant_damage",
+              "duration": 1,
+              "amplifier": 0,
+              "visible": false,
+              "display_on_screen_animation": false
+            }
+          ]
         }
       },
       "minere:vampire_calm": {
@@ -199,10 +210,19 @@
         "height": 2.4
       },
       "minecraft:damage_sensor": {
-        "triggers": {
-          "cause": "fall",
-          "deals_damage": false
-        }
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": false
+          },
+          {
+            "cause": "suffocation",
+            "on_damage": {
+              "event": "become_bat",
+              "target": "self"
+            }
+          }
+        ]
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [

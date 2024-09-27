@@ -9,7 +9,7 @@
       }
     },
     "components": {
-      "tag:minecraft:iron_tier_destructible": {},
+      "tag:minecraft:wood_tier_destructible": {},
       "tag:minecraft:is_pickaxe_item_destructible": {},
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 1.0
@@ -23,7 +23,7 @@
         }
       },
       "minecraft:geometry": {
-        "identifier": "geometry.plasma_ball"
+        "identifier": "geometry.minere.plasma_ball"
       },
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 2

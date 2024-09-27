@@ -98,6 +98,35 @@
         "sounds/mob/demon_skull/screech1"
       ]
     },
+    "mob.freeze.hurt": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/freeze/hit0",
+        "sounds/mob/freeze/hit1",
+        "sounds/mob/freeze/hit2",
+        "sounds/mob/freeze/crumble0",
+        "sounds/mob/freeze/crumble1",
+        "sounds/mob/freeze/crumble2"
+      ]
+    },
+    "mob.freeze.die": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/freeze/crumble1"
+      ]
+    },
+    "mob.freeze.attack": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/freeze/attack"
+      ]
+    },
+    "mob.freeze.freeze": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/freeze/freeze"
+      ]
+    },
     "mob.ghast.fireball": {
       "__use_legacy_max_distance": "true",
       "category": "hostile",
@@ -232,6 +261,30 @@
           "pitch": 1.2,
           "volume": 2
         }
+      ]
+    },
+    "mob.scorpion.hurt": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        "sounds/mob/scorpion/hurt0",
+        "sounds/mob/scorpion/hurt1",
+        "sounds/mob/scorpion/hurt2"
+      ]
+    },
+    "mob.scorpion.death": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        "sounds/mob/scorpion/death"
+      ]
+    },
+    "mob.scorpion.walk": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        "sounds/mob/scorpion/walk0",
+        "sounds/mob/scorpion/walk1"
       ]
     },
     "mob.vampire.ambient": {

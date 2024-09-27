@@ -12,15 +12,10 @@
       "tag:minecraft:wood_tier_destructible": {},
       "tag:minecraft:is_pickaxe_item_destructible": {},
       "minecraft:destructible_by_mining": {
-        "seconds_to_destroy": 2.0
-      },
-      "minecraft:material_instances": {
-        "*": {
-          "texture": "sulfur_ore"
-        }
+        "seconds_to_destroy": 4.0
       },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 3
+        "explosion_resistance": 30
       },
       "minecraft:map_color": "#EEF6B4",
       "minecraft:loot": "loot_tables/blocks/sulfur_ore.json"

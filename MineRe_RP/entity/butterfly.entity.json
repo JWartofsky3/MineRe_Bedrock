@@ -23,14 +23,18 @@
 				"scale": "0.5",
 				"animate": [
 				  "controller",
-				  "look_at_target"
+				  "look_at_target",
+				  {
+					"baby_transform": "query.is_baby"
+				  }
 				]
 			},
 			"animations": {
 			  "controller": "controller.animation.minere.butterfly",
 			  "fly": "animation.minere.butterfly.fly",
 			  "land": "animation.minere.butterfly.land",
-			  "look_at_target": "animation.minere.butterfly.look_at_target"
+			  "look_at_target": "animation.minere.butterfly.look_at_target",
+			  "baby_transform": "animation.minere.butterfly.is_baby"
 			},
 			"render_controllers": ["controller.render.minere.butterfly"],
 			"spawn_egg": {

@@ -1,0 +1,47 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.minere.firefly_lamp",
+				"texture_width": 24,
+				"texture_height": 24,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "block",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-5, 0, -5],
+							"size": [10, 12, 10],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [12, 12]},
+								"east": {"uv": [0, 0], "uv_size": [12, 12]},
+								"south": {"uv": [0, 0], "uv_size": [12, 12]},
+								"west": {"uv": [0, 0], "uv_size": [12, 12]},
+								"up": {"uv": [12, 12], "uv_size": [-12, -12]},
+								"down": {"uv": [12, 12], "uv_size": [-12, -12]}
+							}
+						},
+						{
+							"origin": [-3, 3, -3],
+							"size": [6, 6, 6],
+							"uv": {
+								"north": {"uv": [12, 0], "uv_size": [6, 6]},
+								"east": {"uv": [18, 0], "uv_size": [6, 6]},
+								"south": {"uv": [12, 6], "uv_size": [6, 6]},
+								"west": {"uv": [18, 12], "uv_size": [6, 6]},
+								"up": {"uv": [24, 12], "uv_size": [-6, -6]},
+								"down": {"uv": [18, 18], "uv_size": [-6, -6]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

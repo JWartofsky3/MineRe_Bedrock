@@ -21,7 +21,7 @@ export const useFireStaff = (data) => {
                     source.playSound("item.amethyst_staff.error");
                     return;
                 }
-                source.addEffect("fire_resistance", 80, {
+                source.addEffect("fire_resistance", 120, {
                     showParticles: false,
                 });
                 fireWall(source.location, dimension, source.level >= 50 ? 3 : 2, 3, 5);

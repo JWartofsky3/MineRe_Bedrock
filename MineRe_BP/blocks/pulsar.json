@@ -14,13 +14,8 @@
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 1.0
       },
-      "minecraft:material_instances": {
-        "*": {
-          "texture": "pulsar"
-        }
-      },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 4
+        "explosion_resistance": 30
       },
       "minecraft:map_color": "#EA42E3",
       "minecraft:light_dampening": 0,

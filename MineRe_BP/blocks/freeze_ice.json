@@ -1,0 +1,33 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:freeze_ice",
+      "menu_category": {
+        "is_hidden_in_commands": false,
+        "is_hidden_in_creative": true,
+        "category": "none"
+      }
+    },
+    "components": {
+      "tag:minecraft:wood_tier_destructible": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.5
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ice",
+          "ambient_occlusion": false,
+          "face_dimming": false,
+          "render_method": "blend"
+        }
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1
+      },
+      "minecraft:map_color": "#EEF6B4",
+      "minecraft:loot": "loot_tables/empty.json"
+    }
+  }
+}

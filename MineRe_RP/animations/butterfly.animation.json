@@ -74,6 +74,14 @@
 					"rotation": [0, 0, "5 + math.cos(query.anim_time * 55) * -2"]
 				}
 			}
+		},
+		"animation.minere.butterfly.is_baby": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"scale": 1.5
+				}
+			}
 		}
 	}
 }

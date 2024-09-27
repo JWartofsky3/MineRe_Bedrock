@@ -17,7 +17,9 @@ export function bombDamage(
   if (!health) {
     return;
   }
-  const proj = damageSource.damagingProjectile?.getComponent(EntityComponentTypes.Projectile) as EntityProjectileComponent;
+  const proj = damageSource.damagingProjectile?.getComponent(
+    EntityComponentTypes.Projectile,
+  ) as EntityProjectileComponent;
   if (entity.typeId === "minecraft:player") {
     entity.applyDamage(damage * 1.5, {
       cause: damageSource?.cause,

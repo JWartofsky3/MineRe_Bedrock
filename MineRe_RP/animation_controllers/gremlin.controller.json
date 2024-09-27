@@ -14,7 +14,7 @@
               "walking": "query.ground_speed"
             },
             {
-              "attacking": "variable.has_target && variable.attack_time >= 0.1"
+              "attacking": "variable.attack_time > 0.0"
             }
           ],
           "blend_transition": 0.2
@@ -29,7 +29,7 @@
               "idle": "!query.ground_speed"
             },
             {
-              "attacking": "variable.has_target && variable.attack_time >= 0.1"
+              "attacking": "variable.has_target && variable.attack_time > 0.0"
             }
           ],
           "blend_transition": 0.2
@@ -41,10 +41,10 @@
           ],
           "transitions": [
             {
-              "idle": "variable.attack_time <= 0.0 && !query.ground_speed"
+              "idle": "query.all_animations_finished && !query.ground_speed"
             },
             {
-              "walking": "variable.attack_time <= 0.0 && query.ground_speed"
+              "walking": "query.all_animations_finished && query.ground_speed"
             }
           ],
           "blend_transition": 1.0

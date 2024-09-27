@@ -1,6 +1,20 @@
 {
 	"entity_sounds": {
 		"entities": {
+			"minere:scorpion": {
+				"events": {
+					"ambient": "mob.scorpion.hurt",
+					"death": "mob.scorpion.death",
+					"hurt": "mob.scorpion.hurt",
+					"step": {
+						"pitch": [0.8, 1.2],
+						"sound": "mob.scorpion.walk",
+						"volume": 0.35
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1.5
+			},
 			"minere:firefly": {
 				"events": {
 					"death": {
@@ -117,6 +131,19 @@
 				},
 				"pitch": [1.2, 1.6],
 				"volume": 0.8
+			},
+			"minere:freeze": {
+				"events": {
+					"attack.strong": "mob.freeze.attack",
+					"hurt": "mob.freeze.hurt",
+					"death": {
+						"sound": "mob.freeze.die",
+						"pitch": 0.6,
+						"volume": 1.75
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1.1
 			},
 			"minere:yeti": {
 				"events": {

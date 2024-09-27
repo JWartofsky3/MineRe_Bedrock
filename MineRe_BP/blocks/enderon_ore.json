@@ -14,13 +14,8 @@
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 4.0
       },
-      "minecraft:material_instances": {
-        "*": {
-          "texture": "enderon_ore"
-        }
-      },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 6
+        "explosion_resistance": 60
       },
       "minecraft:map_color": "#EEF6B4",
       "minecraft:loot": "loot_tables/blocks/enderon_ore.json"

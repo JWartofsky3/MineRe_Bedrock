@@ -1,29 +1,32 @@
 {
-    "texture_name": "atlas.terrain",
-    "resource_pack_name": "minere",
-    "padding": 8,
-    "num_mip_levels": 4,
-    "texture_data": {
-      "amethyst_shield": {
-        "textures": "textures/blocks/minere/amethyst_shield"
-      },
-      "plasma_ball": {
-        "textures": "textures/blocks/minere/plasma_ball"
-      },
-      "pulsar": {
-        "textures": "textures/blocks/minere/pulsar"
-      },
-      "enderon_block": {
-        "textures": "textures/blocks/minere/enderon_block"
-      },
-      "ender_plasma_ore": {
-        "textures": "textures/blocks/minere/ender_plasma_ore"
-      },
-      "enderon_ore": {
-        "textures": "textures/blocks/minere/enderon_ore"
-      },
-      "sulfur_ore": {
-        "textures": "textures/blocks/minere/sulfur_ore"
-      }
-    }
-  }
+	"resource_pack_name": "minere",
+	"texture_name": "atlas.terrain",
+	"padding": 8,
+	"num_mip_levels": 4,
+	"texture_data": {
+		"firefly_lantern": {
+			"textures": "textures/blocks/minere/firefly_lantern"
+		},
+		"amethyst_shield": {
+			"textures": "textures/blocks/minere/amethyst_shield"
+		},
+		"plasma_ball": {
+			"textures": "textures/blocks/minere/plasma_ball"
+		},
+		"pulsar": {
+			"textures": "textures/blocks/minere/pulsar"
+		},
+		"enderon_block": {
+			"textures": "textures/blocks/minere/enderon_block"
+		},
+		"ender_plasma_ore": {
+			"textures": "textures/blocks/minere/ender_plasma_ore"
+		},
+		"enderon_ore": {
+			"textures": "textures/blocks/minere/enderon_ore"
+		},
+		"sulfur_ore": {
+			"textures": "textures/blocks/minere/sulfur_ore"
+		}
+	}
+}

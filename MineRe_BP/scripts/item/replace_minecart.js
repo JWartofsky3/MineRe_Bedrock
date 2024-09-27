@@ -1,4 +1,5 @@
-import { system, world, EntityComponentTypes, ItemStack, } from "@minecraft/server";
+import { system, world, ItemStack, } from "@minecraft/server";
+import { getItem } from "./item_utils";
 export const replaceMinecart = (data) => {
     if (data.removedEntity.typeId !== "minere:advanced_minecart") {
         return;
@@ -13,27 +14,11 @@ export const replaceMinecart = (data) => {
         z: data.removedEntity.location.z,
     };
     system.run(() => {
-        const items = dimension.getEntities({
-            type: "minecraft:item",
-            closest: 1,
-            location: location,
-            maxDistance: 3,
-        });
-        const minecarts = items.filter((entity) => {
-            const item = entity.getComponent(EntityComponentTypes.Item);
-            if (!item) {
-                return false;
-            }
-            if (item.itemStack.typeId === "minecraft:minecart") {
-                return true;
-            }
-        });
-        if (minecarts.length < 1) {
-            return;
+        const minecart = getItem(dimension, location, "minecraft:minecart");
+        if (minecart) {
+            minecart.remove();
+            const advancedMinecartItem = new ItemStack("minere:advanced_minecart", 1);
+            dimension.spawnItem(advancedMinecartItem, location);
         }
-        const minecart = minecarts[0];
-        minecart.remove();
-        const advancedMinecartItem = new ItemStack("minere:advanced_minecart", 1);
-        dimension.spawnItem(advancedMinecartItem, location);
     });
 };

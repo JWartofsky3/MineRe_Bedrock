@@ -23,6 +23,8 @@ import { onHoeUse } from "item/custom_hoe";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
 import { applyEnderStrike } from "item/ender_strike";
+import { rollFreeze } from "mob/freeze";
+import { fireflyLamp } from "block/firefly_lamp";
 export const DEFAULT_TICK = 20;
 world.beforeEvents.worldInitialize.subscribe(function (data) {
     data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", {
@@ -30,6 +32,7 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
             applyEnderStrike(arg);
         },
     });
+    data.blockComponentRegistry.registerCustomComponent("minere:firefly_lamp", fireflyLamp);
 });
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
     fireInfintyBowAfter(data);
@@ -125,6 +128,10 @@ world.afterEvents.entityHurt.subscribe(function (data) {
             rollCastFire(target, attacker, 0.25);
             rollBecomeSummoner(target, 0.2);
         }
+    }
+    // freeze freezing
+    if (attacker?.typeId === "minere:freeze") {
+        rollFreeze(target, attacker);
     }
     // ender phantom teleport target
     if (attacker?.typeId === "minere:ender_phantom") {

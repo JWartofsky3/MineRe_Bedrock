@@ -64,9 +64,9 @@ export function rollBecomeBat(entity, chance, minHealth) {
     entity.setDynamicProperty(BAT_COOLDOWN, system.currentTick);
     const pos = getRandomAir(entity.location, entity.dimension, 2.0, 3);
     if (pos) {
-        dimension.spawnParticle("minecraft:dust_plume", entity.location);
-        dimension.spawnParticle("minecraft:dust_plume", multiplyVector3Number(addVector3(entity.location, pos), 0.5));
-        dimension.spawnParticle("minecraft:dust_plume", pos);
+        dimension.spawnParticle("minere:big_smoke", entity.location);
+        dimension.spawnParticle("minere:big_smoke", multiplyVector3Number(addVector3(entity.location, pos), 0.5));
+        dimension.spawnParticle("minere:big_smoke", pos);
         entity.teleport(pos);
         dimension.playSound("mob.bat.takeoff", pos);
         entity.triggerEvent("become_bat");

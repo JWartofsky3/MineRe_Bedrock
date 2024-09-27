@@ -95,3 +95,10 @@ entity.minere:butterfly.name=Mariposa
 item.spawn_egg.entity.minere:butterfly.name=Huevo generador de mariposa
 entity.minere:firefly.name=Luciérnaga
 item.spawn_egg.entity.minere:firefly.name=Huevo generador de luciérnaga
+
+entity.minere:freeze.name=Congelar
+item.spawn_egg.entity.minere:freeze.name=Huevo generador de congelar
+tile.minere:firefly_lamp.name=Lámpara de luciérnaga
+action.interact.catch=Atrapar
+entity.minere:scorpion.name=Escorpión
+item.spawn_egg.entity.minere:scorpion.name=Huevo generador de escorpión

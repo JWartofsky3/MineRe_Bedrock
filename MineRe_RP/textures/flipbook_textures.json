@@ -17,5 +17,11 @@
     "frames": [0, 1, 2, 3, 4, 5, 6],
     "ticks_per_frame": 3,
     "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp",
+    "atlas_tile": "firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
   }
 ]

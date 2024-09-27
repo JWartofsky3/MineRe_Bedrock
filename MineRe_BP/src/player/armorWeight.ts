@@ -1,4 +1,5 @@
 import {
+  world,
   Player,
   EntityAttributeComponent,
   EntityComponentTypes,
@@ -147,9 +148,17 @@ function getSneakMultiplier(player: Player) {
 }
 
 function getPotionModifier(player: Player) {
-  const speed = player.getEffect("speed");
-  if (!speed) {
-    return 1.0;
+  let speedMod = 0;
+  const speedEffect = player.getEffect("speed");
+  if (speedEffect) {
+    speedMod = 0.2 + 0.2 * speedEffect.amplifier;
   }
-  return 1.0 + (speed.amplifier + 1) * 0.2;
+
+  let slownessMod = 0;
+  const slownessEffect = player.getEffect("slowness");
+  if (slownessEffect) {
+    slownessMod = -1 * (0.2 + 0.2 * slownessEffect.amplifier);
+  }
+
+  return 1.0 + speedMod + slownessMod;
 }
