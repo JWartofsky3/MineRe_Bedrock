@@ -19,7 +19,7 @@
         "category": "iceDagger",
         "duration": 16.0
       },
-      "minecraft:damage": 2,
+      "minecraft:damage": 3,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,
       "minecraft:enchantable": {
