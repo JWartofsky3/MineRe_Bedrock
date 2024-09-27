@@ -1,4 +1,5 @@
-import { EntityComponentTypes } from "@minecraft/server";
+import { EntityComponentTypes, Player, ItemComponentTypes, } from "@minecraft/server";
+import { isAlive } from "mob/mob_utils";
 export function getItem(dimension, location, typeId) {
     const allItems = dimension.getEntities({
         type: "minecraft:item",
@@ -19,4 +20,20 @@ export function getItem(dimension, location, typeId) {
         return;
     }
     return items[0];
+}
+export function checkCooldown(item, entity) {
+    if (!(entity instanceof Player)) {
+        return false;
+    }
+    if (!isAlive(entity)) {
+        return false;
+    }
+    const player = entity;
+    const cooldownComponent = item?.getComponent(ItemComponentTypes.Cooldown);
+    if (!cooldownComponent ||
+        cooldownComponent.getCooldownTicksRemaining(player) > 0) {
+        return false;
+    }
+    cooldownComponent.startCooldown(player);
+    return true;
 }

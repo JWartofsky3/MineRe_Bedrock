@@ -102,3 +102,5 @@ tile.minere:firefly_lamp.name=Lámpara de luciérnaga
 action.interact.catch=Atrapar
 entity.minere:scorpion.name=Escorpión
 item.spawn_egg.entity.minere:scorpion.name=Huevo generador de escorpión
+item.minere:ice_dagger=Daga de hielo
+item.minere:venom_shank=Espada venenosa

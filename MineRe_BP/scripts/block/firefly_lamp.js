@@ -27,5 +27,5 @@ export const fireflyLamp = {
                 dimension.spawnEntity("minere:firefly", arg.block.location);
             }
         }
-    }
+    },
 };

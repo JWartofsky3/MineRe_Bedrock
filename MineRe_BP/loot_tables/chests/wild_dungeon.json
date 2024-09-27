@@ -156,6 +156,20 @@
           ]
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minere:venom_shank",
+          "weight": 1
+        }
+      ]
     }
   ]
 }

@@ -21,7 +21,8 @@
 		"scripts": {
 			"pre_animation": [
 			  "variable.ZRot = !query.is_in_water ? Math.cos((query.time_stamp + query.frame_alpha) * 14.32) * 90 : 0.0;",
-			  "variable.AnimationAmountBlend = Math.lerp(variable.AnimationAmountPrev, variable.AnimationAmount, query.frame_alpha);"
+			  "variable.AnimationAmountBlend = Math.lerp(variable.AnimationAmountPrev, variable.AnimationAmount, query.frame_alpha);",
+			  "variable.textureframe = math.mod(query.life_time * 3, 2);"
 			]
 		  },
 		  "animations": {

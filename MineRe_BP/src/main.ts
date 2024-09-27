@@ -29,19 +29,31 @@ import { handleItemDurability } from "item/handle_item_durability";
 import { onHoeUse } from "item/custom_hoe";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
-import { applyEnderStrike } from "item/ender_strike";
+import { EnderStrike } from "item/ender_strike";
 import { rollFreeze } from "mob/freeze";
 import { fireflyLamp } from "block/firefly_lamp";
+import { IceDagger } from "item/ice_dagger";
+import { VenomShank } from "item/venom_shank";
 
 export const DEFAULT_TICK = 20;
 
 world.beforeEvents.worldInitialize.subscribe(function (data) {
-  data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", {
-    onHitEntity(arg) {
-      applyEnderStrike(arg);
-    },
-  });
-  data.blockComponentRegistry.registerCustomComponent("minere:firefly_lamp", fireflyLamp);
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ender_strike",
+    EnderStrike,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ice_dagger",
+    IceDagger,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:venom_shank",
+    VenomShank,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:firefly_lamp",
+    fireflyLamp,
+  );
 });
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {

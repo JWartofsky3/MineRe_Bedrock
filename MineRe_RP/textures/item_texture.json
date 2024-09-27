@@ -74,6 +74,12 @@
 		},
 		"minere.enderon_horse_armor": {
 			"textures": "textures/items/minere/enderon_horse_armor"
+		},
+		"minere.ice_dagger": {
+			"textures": "textures/items/minere/ice_dagger.png"
+		},
+		"minere.venom_shank": {
+			"textures": "textures/items/minere/venom_shank.png"
 		}
 	},
 	"resource_pack_name": "MineRe Resources",

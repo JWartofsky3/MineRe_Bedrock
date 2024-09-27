@@ -1,5 +1,11 @@
-import { system, ItemComponentTypes, world, EntityComponentTypes, EntityDamageCause, } from "@minecraft/server";
+import { system, world, EntityComponentTypes, EntityDamageCause, } from "@minecraft/server";
 import { addVector3, randomVector3 } from "util/vector3Functions";
+import { checkCooldown } from "./item_utils";
+export const EnderStrike = {
+    onHitEntity(arg) {
+        applyEnderStrike(arg);
+    },
+};
 const strikeDamage = new Map();
 const defaultStrike = {
     targetDamage: 2,
@@ -29,12 +35,9 @@ export const applyEnderStrike = (data) => {
     }
     const player = data.attackingEntity;
     // check cooldown
-    const cooldownComponent = data?.itemStack.getComponent(ItemComponentTypes.Cooldown);
-    if (!cooldownComponent ||
-        cooldownComponent.getCooldownTicksRemaining(player) > 0) {
+    if (!checkCooldown(data?.itemStack, player)) {
         return;
     }
-    cooldownComponent.startCooldown(player);
     const stats = strikeDamage.get(data.itemStack?.typeId) || defaultStrike;
     //apply to hit entity
     if (health.currentValue < stats.targetDamage) {

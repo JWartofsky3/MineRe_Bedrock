@@ -4,8 +4,8 @@ import {
   EntityComponentTypes,
   EntityEquippableComponent,
   EquipmentSlot,
-  EntityHealthComponent,
 } from "@minecraft/server";
+import { isAlive } from "./mob_utils";
 
 const MAX_SLOWNESS = 4;
 
@@ -13,14 +13,10 @@ export function rollFreeze(target: Entity, attacker: Entity) {
   if (!target || !attacker) {
     return;
   }
-  const health = target?.getComponent(
-    EntityComponentTypes.Health,
-  ) as EntityHealthComponent;
-  if (!health || health.currentValue <= 0) {
-    return;
+  if (!isAlive(target) || !isAlive(attacker)) {
+    return false;
   }
 
-  const dimension = target?.dimension;
   const slownessEffect = target.getEffect("slowness");
   let slownessAmp = -1;
   if (slownessEffect) {
@@ -44,58 +40,8 @@ export function rollFreeze(target: Entity, attacker: Entity) {
     amplifier: targetSlowness - 1,
   });
 
-  const location = {
-    x: Math.round(target.location.x),
-    y: Math.round(target.location.y),
-    z: Math.round(target.location.z),
-  };
   if (Math.random() < iceChance) {
-    dimension.playSound("mob.freeze.freeze", target?.location);
-    for (let i = -1; i < 3; i++) {
-      system.runTimeout(
-        () => {
-          dimension.runCommand(
-            `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace air`,
-          );
-          dimension.runCommand(
-            `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace snow_layer`,
-          );
-          if (i == 0 || i == 1) {
-            dimension.runCommand(
-              `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`,
-            );
-          }
-          if (i == 0) {
-            target.teleport({
-              x: location.x + 0.5,
-              y: location.y,
-              z: location.z + 0.5,
-            });
-          }
-        },
-        3 + i * 3,
-      );
-    }
-
-    //cleanup
-    system.runTimeout(() => {
-      for (let i = -1; i < 3; i++) {
-        system.runTimeout(
-          () => {
-            dimension.runCommand(
-              `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} air replace minere:freeze_ice`,
-            );
-            if (i == 0) {
-              dimension.runCommand(
-                `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} air replace powder_snow`,
-              );
-            }
-          },
-          12 - i * 3,
-        );
-      }
-    }, 300);
-
+    freezeEntity(target);
     return;
   }
   if (Math.random() < snowChance) {
@@ -108,6 +54,71 @@ export function rollFreeze(target: Entity, attacker: Entity) {
       );
     }
   }
+}
+
+export function freezeEntity(target: Entity) {
+  if (!target) {
+    return;
+  }
+  const dimension = target.dimension;
+  if (!dimension) {
+    return;
+  }
+  if (dimension.id.includes("nether")) {
+    dimension.spawnParticle("minere:big_smoke", target.location);
+    dimension.playSound("extinguish.fire", target.location);
+    return;
+  }
+  const location = {
+    x: Math.round(target.location.x),
+    y: Math.round(target.location.y),
+    z: Math.round(target.location.z),
+  };
+  dimension.playSound("mob.freeze.freeze", target?.location);
+  for (let i = -1; i < 3; i++) {
+    system.runTimeout(
+      () => {
+        dimension.runCommand(
+          `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace air`,
+        );
+        dimension.runCommand(
+          `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace snow_layer`,
+        );
+        if (i == 0 || i == 1) {
+          dimension.runCommand(
+            `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`,
+          );
+        }
+        if (i == 0) {
+          target.teleport({
+            x: location.x + 0.5,
+            y: location.y,
+            z: location.z + 0.5,
+          });
+        }
+      },
+      3 + i * 3,
+    );
+  }
+
+  //cleanup
+  system.runTimeout(() => {
+    for (let i = -1; i < 3; i++) {
+      system.runTimeout(
+        () => {
+          dimension.runCommand(
+            `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} air replace minere:freeze_ice`,
+          );
+          if (i == 0) {
+            dimension.runCommand(
+              `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} air replace powder_snow`,
+            );
+          }
+        },
+        12 - i * 3,
+      );
+    }
+  }, 300);
 }
 
 function applySnow(entity: Entity) {

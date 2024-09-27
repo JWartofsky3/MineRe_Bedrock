@@ -16,7 +16,7 @@
           "*": "Material.default"
         }
       ],
-      "textures": [ "texture.default" ]
+      "textures": [ "Array.skins[query.has_target ? variable.textureframe : 0]" ]
     }
   }
 }

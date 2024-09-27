@@ -1,0 +1,51 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:venom_shank",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.venom_shank",
+      "minecraft:tags": {
+        "tags": ["minecraft:is_sword"]
+      },
+      "minecraft:custom_components": ["minere:venom_shank"],
+      "minecraft:damage": 6,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 15
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:bamboo",
+            "speed": 60
+          }
+        ]
+      },
+      "minecraft:durability": {
+        "max_durability": 900
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:iron_ingot"],
+            "repair_amount": 225
+          }
+        ]
+      }
+    }
+  }
+}

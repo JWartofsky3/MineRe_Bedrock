@@ -18,6 +18,7 @@
 				"default_leg_pose": "animation.minere.scorpion.default_leg_pose",
 				"walk": "animation.minere.scorpion.walk",
 				"attack": "animation.minere.scorpion.attack",
+				"look_at_target": "animation.spider.look_at_target",
 				"move": "controller.animation.spider.move",
 				"attack_controller": "controller.animation.minere.scorpion"
 			},

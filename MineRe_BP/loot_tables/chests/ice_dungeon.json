@@ -462,12 +462,17 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 7
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minere:amethyst_staff",
           "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:ice_dagger",
+          "weight": 3
         }
       ]
     },

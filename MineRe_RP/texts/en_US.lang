@@ -91,3 +91,5 @@ tile.minere:firefly_lamp.name=Firefly Lamp
 action.interact.catch=Catch
 entity.minere:scorpion.name=Scorpion
 item.spawn_egg.entity.minere:scorpion.name=Spawn Scorpion
+item.minere:ice_dagger=Ice Dagger
+item.minere:venom_shank=Venom Shank
