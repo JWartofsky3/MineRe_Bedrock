@@ -515,6 +515,15 @@
         }
       ]
     },
+    "mob.owl.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/owl/ambient0",
+        "sounds/mob/owl/ambient1",
+        "sounds/mob/owl/ambient2",
+        "sounds/mob/owl/ambient3"
+      ]
+    },
     "mob.ogre.step": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",

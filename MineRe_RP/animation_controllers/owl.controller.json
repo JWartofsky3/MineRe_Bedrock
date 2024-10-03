@@ -1,0 +1,94 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.minere.owl" : {
+			"initial_state" : "dancing",
+			"states" : {
+				"dancing" : {
+					"animations" : [ "dance" ],
+					"transitions" : [
+						{
+							"flying" : "variable.state == 0"
+						},
+						{
+							"standing" : "variable.state == 1"
+						},
+						{
+							"sitting" : "variable.state == 2"
+						}
+					],
+					"blend_transition": 0.5
+				},
+				"flying" : {
+					"animations" : [ "flying" ],
+					"transitions" : [
+						{
+							"standing" : "variable.state == 1"
+						},
+						{
+							"sitting" : "variable.state == 2"
+						},
+						{
+							"dancing" : "variable.state == 3"
+						}
+					],
+					"blend_transition": 0.5
+				},
+				"sitting" : {
+					"animations" : [ "sit" ],
+					"transitions" : [
+						{
+							"flying" : "variable.state == 0"
+						},
+						{
+							"standing" : "variable.state == 1"
+						},
+						{
+							"dancing" : "variable.state == 3"
+						}
+					],
+					"blend_transition": 0.5
+				},
+				"standing" : {
+					"transitions" : [
+						{
+							"flying" : "variable.state == 0"
+						},
+						{
+							"sitting" : "variable.state == 2"
+						},
+						{
+							"dancing" : "variable.state == 3"
+						}
+					],
+					"blend_transition": 0.5
+				}
+			}
+		},
+		"controller.animation.minere.owl_sleep": {
+			"initial_state": "awake",
+			"states": {
+				"awake": {
+					"animations": [
+						"look_at"
+					],
+					"transitions": [
+						{
+							"asleep": "variable.sleeping"
+						}
+					]
+				},
+				"asleep": {
+					"animations": [
+						"sleep"
+					],
+					"transitions": [
+						{
+							"awake": "!variable.sleeping"
+						}
+					]
+				}
+			}
+		}
+	}
+}

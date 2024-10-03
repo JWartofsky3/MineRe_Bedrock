@@ -9,7 +9,7 @@
       {
         "minecraft:spawns_on_surface": {},
         "minecraft:density_limit": {
-          "surface": 6
+          "surface": 4
         },
         "minecraft:brightness_filter": {
           "min": 7,
@@ -17,7 +17,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 25
+          "default": 15
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -109,7 +109,7 @@
           "underground": 4
         },
         "minecraft:weight": {
-          "default": 25
+          "default": 10
         },
         "minecraft:herd": {
           "min_size": 1,

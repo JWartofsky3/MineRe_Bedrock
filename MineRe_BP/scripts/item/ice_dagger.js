@@ -6,6 +6,9 @@ export const IceDagger = {
         if (!isAlive(arg.hitEntity)) {
             return;
         }
+        if (arg.hitEntity.typeId.includes("freeze")) {
+            return;
+        }
         arg.hitEntity.addEffect("slowness", 160, {
             amplifier: 0,
         });
@@ -15,6 +18,6 @@ export const IceDagger = {
         arg.hitEntity.addEffect("slowness", 160, {
             amplifier: 3,
         });
-        freezeEntity(arg.hitEntity);
+        freezeEntity(arg.hitEntity, 22);
     },
 };

@@ -276,7 +276,6 @@
               "max_uses": 6
             },
             {
-              "weight": 2,
               "wants": [
                 {
                   "item": "minecraft:emerald"
@@ -285,6 +284,23 @@
               "gives": [
                 {
                   "item": "minere:cooked_venison",
+                  "quantity": {
+                    "min": 3,
+                    "max": 6
+                  }
+                }
+              ],
+              "max_uses": 5
+            },
+            {
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:cooked_rabbit",
                   "quantity": {
                     "min": 3,
                     "max": 6
@@ -1828,7 +1844,7 @@
           "num_to_select": 2,
           "trades": [
             {
-              "weight": 2,
+              "weight": 3,
               "wants": [
                 {
                   "item": "minecraft:emerald",
@@ -1889,7 +1905,7 @@
                 {
                   "item": "minecraft:wind_charge",
                   "quantity": {
-                    "min": 1,
+                    "min": 2,
                     "max": 4
                   }
                 }
@@ -1981,8 +1997,8 @@
                 {
                   "item": "minecraft:emerald",
                   "quantity": {
-                    "min": 4,
-                    "max": 12
+                    "min": 7,
+                    "max": 14
                   }
                 }
               ],

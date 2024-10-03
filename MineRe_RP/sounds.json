@@ -1,6 +1,48 @@
 {
 	"entity_sounds": {
 		"entities": {
+			"minere:squirrel": {
+				"events": {
+					"ambient": "mob.fox.ambient",
+					"attack": "mob.fox.bite",
+					"death": "mob.fox.death",
+					"eat": "mob.fox.eat",
+					"hurt": "mob.fox.hurt",
+					"mad": "mob.fox.aggro",
+					"screech": {
+						"sound": "mob.fox.screech",
+						"volume": 2
+					},
+					"sleep": "mob.fox.sleep",
+					"sniff": "mob.fox.sniff",
+					"spit": "mob.fox.spit"
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"minere:owl": {
+				"events": {
+					"ambient": {
+						"sound": "mob.owl.ambient"
+					},
+					"death": {
+						"pitch": [0.8, 1],
+						"sound": "mob.owl.ambient",
+						"volume": 1.5
+					},
+					"eat": "mob.parrot.eat",
+					"fly": {
+						"pitch": [0.6, 0.8],
+						"sound": "mob.parrot.fly"
+					},
+					"hurt": {
+						"sound": "mob.owl.ambient"
+					},
+					"step": "mob.parrot.step"
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
 			"minere:scorpion": {
 				"events": {
 					"ambient": "mob.scorpion.hurt",
@@ -102,7 +144,7 @@
 					"attack.strong": "mob.ogre.attack"
 				},
 				"pitch": [0.8, 1.2],
-				"volume": 2.5
+				"volume": 2
 			},
 			"minere:demon": {
 				"events": {
@@ -116,7 +158,7 @@
 					"prepare.summon": "mob.demon.magic"
 				},
 				"pitch": [0.8, 1.2],
-				"volume": 2.5
+				"volume": 2
 			},
 			"minere:demon_skull": {
 				"events": {
@@ -156,7 +198,7 @@
 					"purr": "mob.yeti.purr"
 				},
 				"pitch": [0.8, 1.2],
-				"volume": 2.5
+				"volume": 2
 			},
 			"minere:deer": {
 				"events": {
@@ -333,7 +375,7 @@
 					}
 				},
 				"pitch": [0.8, 1.2],
-				"volume": 2.5
+				"volume": 1.5
 			},
 			"minere:ender_phantom": {
 				"events": {

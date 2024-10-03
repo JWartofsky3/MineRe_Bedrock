@@ -20,12 +20,12 @@ export function rollFreeze(target, attacker) {
         ?.typeId.includes("leather") ?? false;
     const targetSlowness = Math.min(slownessAmp + (hasLeather ? 1 : 2), MAX_SLOWNESS);
     const snowChance = 0.25 + targetSlowness * 0.15;
-    const iceChance = -0.4 + targetSlowness * 0.3;
+    const iceChance = -0.25 + targetSlowness * 0.2;
     target.addEffect("slowness", 8 * 20, {
         amplifier: targetSlowness - 1,
     });
     if (Math.random() < iceChance) {
-        freezeEntity(target);
+        freezeEntity(target, 15);
         return;
     }
     if (Math.random() < snowChance) {
@@ -36,7 +36,7 @@ export function rollFreeze(target, attacker) {
         }
     }
 }
-export function freezeEntity(target) {
+export function freezeEntity(target, duration) {
     if (!target) {
         return;
     }
@@ -44,6 +44,9 @@ export function freezeEntity(target) {
     if (!dimension) {
         return;
     }
+    target.addEffect("mining_fatigue", 80, {
+        amplifier: 0,
+    });
     if (dimension.id.includes("nether")) {
         dimension.spawnParticle("minere:big_smoke", target.location);
         dimension.playSound("extinguish.fire", target.location);
@@ -81,7 +84,7 @@ export function freezeEntity(target) {
                 }
             }, 12 - i * 3);
         }
-    }, 300);
+    }, duration * 20);
 }
 function applySnow(entity) {
     if (!entity) {

@@ -104,3 +104,5 @@ entity.minere:scorpion.name=Escorpión
 item.spawn_egg.entity.minere:scorpion.name=Huevo generador de escorpión
 item.minere:ice_dagger=Daga de hielo
 item.minere:venom_shank=Espada venenosa
+entity.minere:owl.name=Búho
+item.spawn_egg.entity.minere:owl.name=Huevo generador de búho

@@ -12,7 +12,7 @@
           "default": 3
         },
         "minecraft:density_limit": {
-          "underground": 2
+          "underground": 1
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
@@ -23,12 +23,7 @@
       {
         "minecraft:spawns_on_surface": {},
         "minecraft:weight": {
-          "default": 2
-        },
-        "minecraft:brightness_filter": {
-          "min": 7,
-          "max": 15,
-          "adjust_for_weather": false
+          "default": 1
         },
         "minecraft:density_limit": {
           "surface": 2

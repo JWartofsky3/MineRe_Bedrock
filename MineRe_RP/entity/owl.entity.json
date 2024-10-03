@@ -1,0 +1,41 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minere:owl",
+			"materials": {
+				"default": "parrot"
+			},
+			"textures": {
+				"brown": "textures/entity/minere/owl/owl_brown",
+				"silver": "textures/entity/minere/owl/owl_silver"
+			},
+			"geometry": {
+				"default": "geometry.minere.owl"
+			},
+			"animations": {
+				"flying": "animation.minere.owl.flying",
+				"breathe": "animation.minere.owl.breathe",
+				"look_at": "animation.minere.owl.look_at",
+				"sleep": "animation.minere.owl.sleep",
+				"sit": "animation.minere.owl.sit",
+				"dance": "animation.minere.owl.dance",
+				"controller": "controller.animation.minere.owl",
+				"sleep_controller": "controller.animation.minere.owl_sleep"
+			},
+			"scripts": {
+				"scale": 3.0,
+				"pre_animation": [
+					"variable.state = query.is_dancing ? 3 : (query.is_sitting ? 2 : (!query.is_on_ground && !query.is_jumping && !query.is_riding ? 0 : 1));",
+					"variable.sleeping = variable.state == 2 && query.time_of_day > 0.25 && query.time_of_day < 0.75;"
+				],
+				"animate": ["breathe", "controller", "sleep_controller"]
+			},
+			"render_controllers": ["controller.render.minere.owl"],
+			"spawn_egg": {
+				"base_color": "#9c8f83",
+				"overlay_color": "#c09367"
+			}
+		}
+	}
+}

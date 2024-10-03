@@ -14,7 +14,7 @@
 		},
 		"minecraft:collision_box": {
 		  "width": 1.1,
-		  "height": 2
+		  "height": 1.8
 		},
 		"minecraft:pushable": {
 		  "is_pushable": true,
@@ -23,6 +23,15 @@
 		"minecraft:loot": {
 		  "table": "loot_tables/entities/freeze.json"
 		},
+		"minecraft:equipment": {
+			"table": "loot_tables/entities/freeze_gear.json",
+			"slot_drop_chance": [
+			  {
+				"slot": "slot.armor.feet",
+				"drop_chance": 0.0
+			  }
+			]
+		  },
 		"minecraft:experience_reward": {
 			"on_death": "query.last_hit_by_player ? 7:0"
 		},
