@@ -76,7 +76,8 @@
 						{
 							"asleep": "variable.sleeping"
 						}
-					]
+					],
+					"blend_transition": 0.5
 				},
 				"asleep": {
 					"animations": [
@@ -86,7 +87,8 @@
 						{
 							"awake": "!variable.sleeping"
 						}
-					]
+					],
+					"blend_transition": 0.5
 				}
 			}
 		}

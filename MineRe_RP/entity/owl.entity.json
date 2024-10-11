@@ -24,7 +24,7 @@
 				"sleep_controller": "controller.animation.minere.owl_sleep"
 			},
 			"scripts": {
-				"scale": 3.0,
+				"scale": "1.2",
 				"pre_animation": [
 					"variable.state = query.is_dancing ? 3 : (query.is_sitting ? 2 : (!query.is_on_ground && !query.is_jumping && !query.is_riding ? 0 : 1));",
 					"variable.sleeping = variable.state == 2 && query.time_of_day > 0.25 && query.time_of_day < 0.75;"

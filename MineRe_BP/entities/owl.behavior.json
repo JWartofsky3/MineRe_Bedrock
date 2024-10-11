@@ -3,7 +3,6 @@
 	"minecraft:entity": {
 		"description": {
 			"identifier": "minere:owl",
-			"runtime_identifier": "minecraft:parrot",
 			"is_spawnable": true,
 			"is_summonable": true,
 			"is_experimental": false
@@ -44,7 +43,7 @@
 					"xz_dist": 15,
 					"y_dist": 1,
 					"y_offset": 0,
-					"speed_multiplier": 1,
+					"speed_multiplier": 1.5,
 					"can_land_on_trees": true,
 					"avoid_damage_blocks": true
 				},
@@ -81,6 +80,10 @@
 			}
 		},
 		"components": {
+			"minecraft:ambient_sound_interval": {
+				"range": 8.0,
+				"value": 4.0
+			},
 			"minecraft:breathable": {
 				"total_supply": 15,
 				"suffocate_time": 0

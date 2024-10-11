@@ -515,6 +515,21 @@
         }
       ]
     },
+    "mob.eagle.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/eagle/ambient0",
+        "sounds/mob/eagle/ambient1",
+        "sounds/mob/eagle/ambient2",
+        "sounds/mob/eagle/hawk"
+      ]
+    },
+    "mob.eagle.hawk": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/eagle/hawk"
+      ]
+    },
     "mob.owl.ambient": {
       "category": "ambient",
       "sounds": [
@@ -522,6 +537,13 @@
         "sounds/mob/owl/ambient1",
         "sounds/mob/owl/ambient2",
         "sounds/mob/owl/ambient3"
+      ]
+    },
+    "mob.owl.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/owl/hurt0",
+        "sounds/mob/owl/hurt1"
       ]
     },
     "mob.ogre.step": {

@@ -10,6 +10,9 @@
 		"amethyst_shield": {
 			"textures": "textures/blocks/minere/amethyst_shield"
 		},
+		"firefly_lamp": {
+			"textures": "textures/blocks/minere/firefly_lamp"
+		},
 		"plasma_ball": {
 			"textures": "textures/blocks/minere/plasma_ball"
 		},

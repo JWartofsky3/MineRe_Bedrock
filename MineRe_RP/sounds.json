@@ -1,34 +1,39 @@
 {
 	"entity_sounds": {
 		"entities": {
-			"minere:squirrel": {
+			"minere:eagle": {
 				"events": {
-					"ambient": "mob.fox.ambient",
-					"attack": "mob.fox.bite",
-					"death": "mob.fox.death",
-					"eat": "mob.fox.eat",
-					"hurt": "mob.fox.hurt",
-					"mad": "mob.fox.aggro",
-					"screech": {
-						"sound": "mob.fox.screech",
+					"ambient": "mob.eagle.ambient",
+					"attack": "mob.biter.bite",
+					"death": {
+						"pitch": 0.9,
+						"sound": "mob.eagle.hawk",
+						"volume": 1.5
+					},
+					"flap": {
+						"pitch": [1.5,  2.0],
+						"sound": "mob.phantom.flap",
 						"volume": 2
 					},
-					"sleep": "mob.fox.sleep",
-					"sniff": "mob.fox.sniff",
-					"spit": "mob.fox.spit"
+					"hurt": "mob.eagle.ambient",
+					"swoop": {
+						"pitch": [0.95, 1.05],
+						"sound": "mob.eagle.hawk"
+					}
 				},
 				"pitch": [0.8, 1.2],
-				"volume": 1
+				"volume": 10
 			},
 			"minere:owl": {
 				"events": {
 					"ambient": {
-						"sound": "mob.owl.ambient"
+						"sound": "mob.owl.ambient",
+						"volume": 2.0
 					},
 					"death": {
 						"pitch": [0.8, 1],
 						"sound": "mob.owl.ambient",
-						"volume": 1.5
+						"volume": 2.0
 					},
 					"eat": "mob.parrot.eat",
 					"fly": {
@@ -36,7 +41,7 @@
 						"sound": "mob.parrot.fly"
 					},
 					"hurt": {
-						"sound": "mob.owl.ambient"
+						"sound": "mob.owl.hurt"
 					},
 					"step": "mob.parrot.step"
 				},

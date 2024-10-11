@@ -95,3 +95,5 @@ item.minere:ice_dagger=Ice Dagger
 item.minere:venom_shank=Venomshank
 entity.minere:owl.name=Owl
 item.spawn_egg.entity.minere:owl.name=Spawn Owl
+entity.minere:eagle.name=Eagle
+item.spawn_egg.entity.minere:eagle.name=Spawn Eagle

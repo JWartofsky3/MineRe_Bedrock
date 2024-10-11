@@ -100,10 +100,20 @@
                     "value": "player"
                   },
                   {
-                    "test": "has_equipment",
-                    "domain": "hand",
-                    "subject": "other",
-                    "value": "glass"
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass_bottle"
+                      }
+                    ]
                   }
                 ]
               },
