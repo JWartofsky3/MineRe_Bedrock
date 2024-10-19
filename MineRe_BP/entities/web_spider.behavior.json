@@ -93,25 +93,9 @@
                     "value": "player"
                   },
                   {
-                    "all_of": [
-                      {
-                        "test": "has_component",
-                        "subject": "other",
-                        "value": "minecraft:is_baby"
-                      }
-                    ],
-                    "any_of": [
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "villager"
-                      },
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "goblin"
-                      }
-                    ]
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "villager"
                   },
                   {
                     "test": "is_family",

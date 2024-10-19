@@ -546,6 +546,28 @@
         "sounds/mob/owl/hurt1"
       ]
     },
+    "mob.dire_wolf.howl": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/dire_wolf/howl0",
+        "sounds/mob/dire_wolf/howl1",
+        "sounds/mob/dire_wolf/howl2",
+        "sounds/mob/dire_wolf/howl3",
+        "sounds/mob/dire_wolf/howl4"
+      ]
+    },
+    "mob.dire_wolf.growl": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/dire_wolf/growl0",
+        "sounds/mob/dire_wolf/growl1",
+        "sounds/mob/dire_wolf/growl2",
+        "sounds/mob/dire_wolf/growl3",
+        "sounds/mob/dire_wolf/growl4",
+        "sounds/mob/dire_wolf/growl5",
+        "sounds/mob/dire_wolf/growl6"
+      ]
+    },
     "mob.ogre.step": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",

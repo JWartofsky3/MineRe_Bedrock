@@ -10,7 +10,7 @@
     "components": {
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
-      "minecraft:icon": "advanced_minecart",
+      "minecraft:icon": "minere.advanced_minecart",
       "minecraft:entity_placer": {
         "entity": "minere:advanced_minecart",
         "dispense_on": [

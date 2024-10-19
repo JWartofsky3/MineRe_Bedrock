@@ -108,3 +108,10 @@ entity.minere:owl.name=Búho
 item.spawn_egg.entity.minere:owl.name=Huevo generador de búho
 entity.minere:eagle.name=Águila
 item.spawn_egg.entity.minere:eagle.name=Huevo generador de águila
+
+entity.minere:dire_wolf.name=Lobo terrible
+item.spawn_egg.entity.minere:dire_wolf.name=Huevo generador de lobo terrible
+entity.minere:squirrel.name=Ardilla
+item.spawn_egg.entity.minere:squirrel.name=Huevo generador de ardilla
+item.acorn.name=Bellota
+item.popcorn.name=Palomitas

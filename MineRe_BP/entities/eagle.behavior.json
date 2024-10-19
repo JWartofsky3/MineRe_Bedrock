@@ -84,7 +84,45 @@
 		  "max": 64
 		},
 		"minecraft:despawn": {
-		  "despawn_from_distance": {}
+			"filters": {
+			  "any_of": [
+				{
+				  "all_of": [
+					{
+					  "test": "is_persistent",
+					  "value": false
+					},
+					{
+					  "test": "distance_to_nearest_player",
+					  "operator": ">",
+					  "value": 512
+					}
+				  ]
+				},
+				{
+				  "all_of": [
+					{
+					  "test": "is_persistent",
+					  "value": false
+					},
+					{
+					  "test": "inactivity_timer",
+					  "subject": "self",
+					  "value": 30
+					},
+					{
+					  "test": "random_chance",
+					  "value": 800
+					},
+					{
+					  "test": "distance_to_nearest_player",
+					  "operator": ">",
+					  "value": 256
+					}
+				  ]
+				}
+			  ]
+			}
 		},
 		"minecraft:behavior.avoid_mob_type": {
 		  "priority": 0,
@@ -129,6 +167,11 @@
 				  {
 					"test": "is_family",
 					"subject": "other",
+					"value": "squirrel"
+				  },
+				  {
+					"test": "is_family",
+					"subject": "other",
 					"value": "chicken"
 				  },
 				  {
@@ -160,6 +203,16 @@
 					"test": "is_family",
 					"subject": "other",
 					"value": "spider"
+				  },
+				  {
+					"test": "is_family",
+					"subject": "other",
+					"value": "scorpion"
+				  },
+				  {
+					"test": "is_family",
+					"subject": "other",
+					"value": "bat"
 				  }
 				]
 			  },

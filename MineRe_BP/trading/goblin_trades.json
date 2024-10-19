@@ -55,7 +55,7 @@
                   "item": "minecraft:emerald"
                 }
               ],
-              "max_uses": 5
+              "max_uses": 10
             },
             {
               "wants": [
@@ -707,6 +707,23 @@
                 {
                   "item": "minere:emerald_shard",
                   "quantity": {
+                    "min": 4,
+                    "max": 8
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:potion:31"
+                }
+              ],
+              "max_uses": 3
+            },
+            {
+              "wants": [
+                {
+                  "item": "minere:emerald_shard",
+                  "quantity": {
                     "min": 6,
                     "max": 12
                   }
@@ -714,7 +731,7 @@
               ],
               "gives": [
                 {
-                  "item": "minecraft:potion:31"
+                  "item": "minecraft:potion:32"
                 }
               ],
               "max_uses": 3

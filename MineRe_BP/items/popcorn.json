@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:popcorn",
+      "menu_category": {
+        "group": "itemGroup.name.cookedFood"
+      }
+    },
+    "components": {
+      "minecraft:icon": "minere.popcorn",
+      "minecraft:display_name": {
+        "value": "item.popcorn.name"
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_food"]
+      },
+      "minecraft:use_modifiers": {
+        "use_duration": 0.25,
+        "movement_modifier": 0.75
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:food": {
+        "nutrition": 2,
+        "saturation_modifier": 0.0
+      }
+    }
+  }
+}

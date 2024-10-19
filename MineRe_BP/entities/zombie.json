@@ -401,7 +401,7 @@
       "minecraft:behavior.equip_item": {
         "priority": 2
       },
-      "minecraft:behavior.melee_attack": {
+      "minecraft:behavior.melee_box_attack": {
         "priority": 3,
         "speed_multiplier": 1.25
       },

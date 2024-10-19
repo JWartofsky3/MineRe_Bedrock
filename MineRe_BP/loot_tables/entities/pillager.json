@@ -50,11 +50,6 @@
             }
           ]
         }
-      ],
-      "conditions": [
-        {
-          "condition": "killed_by_player"
-        }
       ]
     }
   ]

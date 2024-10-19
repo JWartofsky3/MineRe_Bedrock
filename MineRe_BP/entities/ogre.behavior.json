@@ -152,7 +152,7 @@
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
-          "reach_multiplier": 2,
+          "reach_multiplier": 2.25,
           "speed_multiplier": 1.25,
           "hit_delay_pct": 0.6,
           "on_kill": {
@@ -176,7 +176,7 @@
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
-          "reach_multiplier": 2,
+          "reach_multiplier": 2.25,
           "speed_multiplier": 1.6,
           "hit_delay_pct": 0.6,
           "on_attack": {
@@ -297,6 +297,16 @@
                     "test": "has_component",
                     "subject": "self",
                     "value": "minecraft:attack_cooldown"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "value": "behavior.knockback_roar"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "value": "attack_cooldown"
                   }
                 ]
               },
@@ -527,6 +537,30 @@
         }
       },
       "minere:ogre_start_berserking": {
+        "filters": {
+          "none_of": [
+            {
+              "test": "has_component",
+              "subject": "self",
+              "value": "minecraft:behavior.knockback_roar"
+            },
+            {
+              "test": "has_component",
+              "subject": "self",
+              "value": "minecraft:attack_cooldown"
+            },
+            {
+              "test": "has_component",
+              "subject": "self",
+              "value": "behavior.knockback_roar"
+            },
+            {
+              "test": "has_component",
+              "subject": "self",
+              "value": "attack_cooldown"
+            }
+          ]
+        },
         "sequence": [
           {
             "remove": {

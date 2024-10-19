@@ -24,7 +24,7 @@
             "max": "hard"
           },
           "minecraft:weight": {
-            "default": 100
+            "default": 150
           },
           "minecraft:herd": {
             "min_size": 2,
@@ -52,8 +52,7 @@
         {
           "minecraft:spawns_underground": {},
           "minecraft:height_filter": {
-            "min": 16,
-            "max": 60
+            "min": 16
           },
           "minecraft:brightness_filter": {
             "min": 0,
@@ -65,7 +64,7 @@
             "max": "hard"
           },
           "minecraft:weight": {
-            "default": 13
+            "default": 15
           },
           "minecraft:herd": {
             "min_size": 2,
@@ -77,11 +76,6 @@
           },
           "minecraft:biome_filter": {
             "any_of": [
-              {
-                "test": "has_biome_tag",
-                "operator": "==",
-                "value": "cold"
-              },
               {
                 "test": "has_biome_tag",
                 "operator": "==",

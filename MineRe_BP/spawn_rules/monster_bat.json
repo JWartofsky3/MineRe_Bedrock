@@ -10,7 +10,7 @@
         "minecraft:spawns_underground": {},
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 5,
+          "max": 3,
           "adjust_for_weather": true
         },
         "minecraft:difficulty_filter": {
@@ -18,7 +18,7 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 40
+          "default": 36
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -39,7 +39,7 @@
         "minecraft:spawns_on_surface": {},
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 5,
+          "max": 3,
           "adjust_for_weather": true
         },
         "minecraft:difficulty_filter": {
@@ -47,7 +47,7 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 32
+          "default": 24
         },
         "minecraft:density_limit": {
           "surface": 4,

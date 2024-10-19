@@ -148,35 +148,18 @@
             },
             {
               "filters": {
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "rabbit"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "chicken"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "bird"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "duck"
-                  },
-                  { "test": "is_family", "subject": "other", "value": "mouse" },
-                  { "test": "is_family", "subject": "other", "value": "rat" },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "squirrel"
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "value": "squirrel"
+              },
+              "max_dist": 12,
+              "priority": 0
+            },
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "chicken"
               },
               "max_dist": 12,
               "priority": 0
@@ -246,6 +229,15 @@
                 "test": "is_family",
                 "subject": "other",
                 "value": "rabbit"
+              },
+              "max_dist": 12,
+              "priority": 1
+            },
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "squirrel"
               },
               "max_dist": 12,
               "priority": 1
@@ -625,7 +617,8 @@
                   ]
                 },
                 { "test": "is_family", "subject": "other", "value": "bear" },
-                { "test": "is_family", "subject": "other", "value": "wolf" }
+                { "test": "is_family", "subject": "other", "value": "wolf" },
+                { "test": "is_family", "subject": "other", "value": "dire_wolf" }
               ]
             },
             "max_dist": 16,

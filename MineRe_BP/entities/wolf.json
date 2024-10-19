@@ -702,9 +702,9 @@
         "priority": 4,
         "yd": 0.4
       },
-      "minecraft:behavior.melee_box_attack": {
+      "minecraft:behavior.melee_attack": {
         "priority": 5,
-        "speed_multiplier": 1.33
+        "speed_multiplier": 1.4
       },
       "minecraft:behavior.random_stroll": {
         "priority": 8,
