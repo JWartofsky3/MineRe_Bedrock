@@ -35,5 +35,9 @@
 	"minere:sulfur_ore": {
 		"textures": "sulfur_ore",
 		"sound": "stone"
+	},
+	"minere:nether_coal_ore": {
+		"textures": "nether_coal_ore",
+		"sound": "netherrack"
 	}
 }

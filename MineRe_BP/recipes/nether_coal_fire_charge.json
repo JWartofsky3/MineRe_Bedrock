@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:nether_coal_fire_charge"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["#"],
+    "key": {
+      "#": {
+        "item": "minere:nether_coal"
+      }
+    },
+    "result": {
+      "item": "minecraft:fire_charge",
+      "count": 3
+    }
+  }
+}

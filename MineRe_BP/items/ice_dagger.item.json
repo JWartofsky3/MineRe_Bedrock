@@ -17,7 +17,7 @@
       "minecraft:custom_components": ["minere:ice_dagger"],
       "minecraft:cooldown": {
         "category": "iceDagger",
-        "duration": 16.0
+        "duration": 8.0
       },
       "minecraft:damage": 3,
       "minecraft:can_destroy_in_creative": false,

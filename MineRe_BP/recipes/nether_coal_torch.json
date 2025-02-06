@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:nether_coal_torch"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["B", "S"],
+    "key": {
+      "S": {
+        "item": "minecraft:stick"
+      },
+      "B": {
+        "item": "minere:nether_coal"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minere:nether_coal"
+      }
+    ],
+    "result": {
+      "item": "minecraft:torch",
+      "count": 8
+    },
+    "priority": -1
+  }
+}

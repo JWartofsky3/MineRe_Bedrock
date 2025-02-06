@@ -539,7 +539,7 @@
         },
         {
           "type": "item",
-          "weight": 1,
+          "weight": 2,
           "functions": [
             {
               "function": "specific_enchants",

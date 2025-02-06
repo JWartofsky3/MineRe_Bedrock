@@ -33,7 +33,7 @@
         "minecraft:projectile": {
           "on_hit": {
             "impact_damage": {
-              "damage": 22,
+              "damage": 30,
               "knockback": false,
               "semi_random_diff_damage": false
             },

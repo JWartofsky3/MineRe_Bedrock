@@ -1,0 +1,29 @@
+{
+  "format_version": "1.16",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minere:nether_coal_soul_torch_soil"
+    },
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      ".",
+      "|",
+      "#"
+    ],
+    "key": {
+      ".": {
+        "item": "minere:nether_coal"
+      },
+      "|": {
+        "item": "minecraft:stick"
+      },
+      "#": {
+        "item": "minecraft:soul_soil"
+      }
+    },
+    "result": {
+      "item": "minecraft:soul_torch",
+      "count": 8
+    }
+  }
+}

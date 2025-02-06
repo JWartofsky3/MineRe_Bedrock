@@ -103,3 +103,6 @@ entity.minere:squirrel.name=Squirrel
 item.spawn_egg.entity.minere:squirrel.name=Spawn Squirrel
 item.acorn.name=Acorn
 item.popcorn.name=Popcorn
+
+tile.minere:nether_coal_ore.name=Nether Coal Ore
+item.nether_coal.name=Nether Coal

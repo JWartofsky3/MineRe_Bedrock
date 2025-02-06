@@ -25,7 +25,7 @@ export function rollFreeze(target, attacker) {
         amplifier: targetSlowness - 1,
     });
     if (Math.random() < iceChance) {
-        freezeEntity(target, 15);
+        freezeEntity(target, 16);
         return;
     }
     if (Math.random() < snowChance) {

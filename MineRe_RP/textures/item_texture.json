@@ -12,6 +12,9 @@
 		"minere.ender_plasma": {
 			"textures": "textures/items/minere/ender_plasma.png"
 		},
+		"minere.nether_coal": {
+			"textures": "textures/items/minere/nether_coal.png"
+		},
 		"minere.enderon_gemstone": {
 			"textures": "textures/items/minere/enderon_gemstone.png"
 		},

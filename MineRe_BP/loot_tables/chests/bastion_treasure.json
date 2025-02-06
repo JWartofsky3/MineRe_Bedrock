@@ -627,6 +627,15 @@
       "entries": [
         {
           "type": "item",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ],
           "name": "minecraft:netherite_upgrade_smithing_template",
           "weight": 1
         }

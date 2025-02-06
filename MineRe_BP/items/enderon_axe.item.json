@@ -17,7 +17,7 @@
       "minecraft:custom_components": ["minere:ender_strike"],
       "minecraft:cooldown": {
         "category": "enderStrike",
-        "duration": 6.0
+        "duration": 5.0
       },
       "minecraft:damage": 6,
       "minecraft:digger": {

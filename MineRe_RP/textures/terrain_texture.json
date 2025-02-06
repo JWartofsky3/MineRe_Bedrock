@@ -30,6 +30,9 @@
 		},
 		"sulfur_ore": {
 			"textures": "textures/blocks/minere/sulfur_ore"
+		},
+		"nether_coal_ore": {
+			"textures": "textures/blocks/minere/nether_coal_ore"
 		}
 	}
 }
