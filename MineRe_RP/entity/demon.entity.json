@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:demon",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/demon/demon",
+        "soul": "textures/entity/minere/demon/soul_demon"
+      },
+      "geometry": {
+        "default": "geometry.minere.demon"
+      },
+      "animations": {
+        "walk": "animation.minere.demon.walk",
+        "breathe": "animation.minere.demon.breathe",
+        "roar": "animation.minere.demon.roar",
+        "attack": "animation.minere.demon.attack",
+        "look_at_target": "animation.minere.demon.look_at_target",
+        "controller": "controller.animation.minere.demon"
+      },
+      "render_controllers": ["controller.render.minere.demon"],
+      "spawn_egg": {
+        "base_color": "#4f1515",
+        "overlay_color": "#af0000"
+      },
+      "particle_effects": {
+        "spell": "minecraft:evoker_spell"
+      },
+      "sound_effects": {
+        "magic": "mob.demon.magic"
+      },
+      "scripts": {
+        "scale": "1.2",
+        "animate": ["controller"]
+      }
+    }
+  }
+}

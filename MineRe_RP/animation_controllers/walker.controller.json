@@ -1,0 +1,31 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.walker": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking"
+            }
+          ]
+        },
+        "attacking": {
+          "animations": ["kick", "look_at_target"],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

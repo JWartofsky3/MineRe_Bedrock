@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.blaster_staff": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["rotate"],
+          "transitions": [
+            {
+              "attacking": "query.cooldown_time_remaining > 2"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "attacking": {
+          "animations": ["charge"],
+          "transitions": [
+            {
+              "idle": "query.cooldown_time_remaining < 2"
+            }
+          ],
+          "blend_transition": 1.0
+        }
+      }
+    }
+  }
+}

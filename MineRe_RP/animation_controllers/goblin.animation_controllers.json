@@ -1,0 +1,75 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.goblin.attack": {
+      "initial_state": "default",
+      "states": {
+        "ranged_charge": {
+          "animations": ["crossbow_charge"],
+          "transitions": [
+            {
+              "default": "!query.has_target  ||  query.is_admiring"
+            },
+            {
+              "ranged_hold": "query.item_is_charged"
+            }
+          ]
+        },
+        "default": {
+          "transitions": [
+            {
+              "bow_hold": "variable.has_target && query.is_item_name_any('slot.weapon.mainhand', 'minecraft:bow') && !query.is_admiring"
+            },
+            {
+              "ranged_hold": "variable.has_target && query.item_is_charged && query.is_item_name_any('slot.weapon.mainhand', 'minecraft:crossbow') && !query.is_admiring"
+            },
+            {
+              "ranged_charge": "variable.has_target && !query.item_is_charged && query.is_item_name_any('slot.weapon.mainhand', 'minecraft:crossbow') && !query.is_admiring"
+            },
+            {
+              "hand_attack": "variable.has_target && !query.is_item_equipped && variable.attack_time >= 0.0 && !query.is_admiring"
+            },
+            {
+              "melee_attack": "variable.has_target && query.is_item_equipped && variable.attack_time >= 0.0 && !query.is_admiring"
+            }
+          ]
+        },
+        "ranged_hold": {
+          "animations": ["crossbow_hold"],
+          "transitions": [
+            {
+              "default": "!query.has_target  ||  query.is_admiring"
+            },
+            {
+              "ranged_charge": "!query.item_is_charged"
+            }
+          ]
+        },
+        "bow_hold": {
+          "animations": ["bow_and_arrow"],
+          "transitions": [
+            {
+              "default": "!query.has_target  ||  query.is_admiring"
+            }
+          ]
+        },
+        "melee_attack": {
+          "animations": ["melee_attack"],
+          "transitions": [
+            {
+              "default": "!query.is_item_equipped || !variable.has_target || variable.attack_time < 0.0 ||  query.is_admiring"
+            }
+          ]
+        },
+        "hand_attack": {
+          "animations": ["hand_attack"],
+          "transitions": [
+            {
+              "default": "query.is_item_equipped || !variable.has_target || variable.attack_time < 0.0 ||  query.is_admiring"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

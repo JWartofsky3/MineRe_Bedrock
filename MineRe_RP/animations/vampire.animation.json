@@ -1,0 +1,214 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.vampire.breathe": {
+      "loop": true,
+      "bones": {
+        "right_arm": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * 5"]
+        },
+        "left_arm": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * -5"]
+        },
+        "upper_torso": {
+          "position": [0, "math.cos(query.anim_time * 55) * 0.25", 0]
+        },
+        "left_wing": {
+          "rotation": [0, "math.cos(query.anim_time * 75) * 5", 0]
+        },
+        "left_wing_tip": {
+          "rotation": [0, "math.cos(query.anim_time * 75) * 5", 0]
+        },
+        "right_wing": {
+          "rotation": [0, "math.cos(query.anim_time * 75) * -5", 0]
+        },
+        "right_wing_tip": {
+          "rotation": [0, "math.cos(query.anim_time * 75) * -5", 0]
+        }
+      }
+    },
+    "animation.minere.vampire.walk": {
+      "loop": true,
+      "anim_time_update": "query.modified_distance_moved * 0.6",
+      "bones": {
+        "left_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
+        },
+        "right_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
+        },
+        "lower_torso": {
+          "rotation": [
+            "math.cos(query.anim_time * 75) * -2",
+            "math.cos(query.anim_time * 60) * -2",
+            "math.cos(query.anim_time * 45) * -2"
+          ]
+        },
+        "right_arm": {
+          "rotation": ["math.cos(query.anim_time * 55) * 20", 0, 0]
+        },
+        "left_arm": {
+          "rotation": ["math.cos(query.anim_time * 55) * -20", 0, 0]
+        },
+        "head": {
+          "rotation": [
+            "math.cos(query.anim_time * 75) * -3",
+            "math.cos(query.anim_time * 75) * -3",
+            "math.cos(query.anim_time * 75) * -3"
+          ]
+        },
+        "upper_torso": {
+          "rotation": [
+            "math.cos(query.anim_time * 45) * 3",
+            "math.cos(query.anim_time * 65) * 3",
+            "math.cos(query.anim_time * 50) * 3"
+          ]
+        }
+      }
+    },
+    "animation.minere.vampire.run": {
+      "loop": true,
+      "anim_time_update": "query.modified_distance_moved * 0.6",
+      "bones": {
+        "left_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
+        },
+        "right_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
+        },
+        "lower_torso": {
+          "rotation": [
+            "math.cos(query.anim_time * 75) * -3",
+            "math.cos(query.anim_time * 60) * -3",
+            "math.cos(query.anim_time * 45) * -3"
+          ]
+        },
+        "right_arm": {
+          "rotation": ["-90 + math.cos(query.anim_time * 55) * 15", 0, 0]
+        },
+        "left_arm": {
+          "rotation": ["-90 + math.cos(query.anim_time * 55) * -15", 0, 0]
+        },
+        "head": {
+          "rotation": [
+            "math.cos(query.anim_time * 75) * -3",
+            "math.cos(query.anim_time * 75) * -3",
+            "math.cos(query.anim_time * 75) * -3"
+          ]
+        },
+        "upper_torso": {
+          "rotation": [
+            "math.cos(query.anim_time * 45) * 5",
+            "math.cos(query.anim_time * 65) * 5",
+            "math.cos(query.anim_time * 50) * 5"
+          ]
+        }
+      }
+    },
+    "animation.minere.vampire.fly": {
+      "loop": true,
+      "animation_length": 0.5,
+      "bones": {
+        "left_leg": {
+          "rotation": {
+            "0.0": [25, 0, 0],
+            "0.2917": [20, -3, -3],
+            "0.5": [25, 0, 0]
+          }
+        },
+        "right_leg": {
+          "rotation": {
+            "0.0": [20, 0, 0],
+            "0.1667": [25, 3, 3],
+            "0.5": [20, 0, 0]
+          }
+        },
+        "right_arm": {
+          "rotation": {
+            "0.0": [-97, 0, 0],
+            "0.2083": [-100, 3, 3],
+            "0.5": [-97, 0, 0]
+          }
+        },
+        "left_arm": {
+          "rotation": {
+            "0.0": [-100, 0, 0],
+            "0.2917": [-97, -3, -3],
+            "0.5": [-100, 0, 0]
+          }
+        },
+        "upper_torso": {
+          "rotation": {
+            "0.0": [15, 0, 0],
+            "0.1667": [17, 0, 0],
+            "0.25": [13, 0, 0],
+            "0.5": [15, 0, 0]
+          }
+        },
+        "left_wing": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [7, -15, -7],
+            "0.25": [7, 45, 7],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "left_wing_tip": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [0, -15, 0],
+            "0.25": [0, 45, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "right_wing": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [7, 15, 7],
+            "0.25": [7, -45, 7],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "right_wing_tip": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [0, 15, 0],
+            "0.25": [0, -45, 0],
+            "0.5": [0, 0, 0]
+          }
+        }
+      },
+      "sound_effects": {
+        "0.0": {
+          "effect": "flap"
+        }
+      }
+    },
+    "animation.minere.vampire.look_at_target": {
+      "loop": true,
+      "bones": {
+        "lower_torso": {
+          "rotation": [
+            "query.target_x_rotation * 0.1",
+            "query.target_y_rotation * 0.1",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "query.target_x_rotation * 0.7",
+            "query.target_y_rotation * 0.7",
+            0
+          ]
+        },
+        "upper_torso": {
+          "rotation": [
+            "query.target_x_rotation * 0.2",
+            "query.target_y_rotation * 0.2",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.ghost.move": {
+      "loop": true,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "math.cos(15 + query.anim_time * 45) * -3",
+            "math.cos(15 + query.anim_time * 55) * -3",
+            0
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * 3",
+            0,
+            "math.cos(query.anim_time * 45) * 3"
+          ]
+        },
+        "leg0": {
+          "rotation": ["math.cos(query.anim_time * 65) * 5", 0, 0]
+        }
+      }
+    },
+    "animation.minere.ghost.attack": {
+      "loop": true,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "-95 + math.cos(15 + query.anim_time * 145) * -5",
+            "12.5 + math.cos(15 + query.anim_time * 155) * -5",
+            "math.cos(15 + query.anim_time * 125) * -5"
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "-95 + math.cos(query.anim_time * 55) * 7",
+            "-12.5 + math.cos(query.anim_time * 155) * -5",
+            "math.cos(query.anim_time * 155) * -5"
+          ]
+        },
+        "leg0": {
+          "rotation": ["math.cos(query.anim_time * 165) * 5", 0, 0]
+        },
+        "body": {
+          "rotation": [
+            "15 + math.cos(query.anim_time * 55) * 3",
+            "math.cos(query.anim_time * 75) * 4",
+            "math.cos(query.anim_time * 55) * 4"
+          ],
+          "position": [
+            "math.cos(query.anim_time * 55) * 0.5",
+            "math.cos(query.anim_time * 35) * 0.5",
+            "math.cos(query.anim_time * 75) * 0.5"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-15 + math.cos(query.anim_time * 55) * 4",
+            "math.cos(query.anim_time * 75) * 4",
+            "math.cos(query.anim_time * 95) * 4"
+          ]
+        }
+      }
+    },
+    "animation.minere.ghost.look_at_target": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+        }
+      }
+    }
+  }
+}

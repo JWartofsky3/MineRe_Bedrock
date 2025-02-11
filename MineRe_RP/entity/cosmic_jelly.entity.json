@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:cosmic_jelly",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/cosmic_jelly"
+      },
+      "geometry": {
+        "default": "geometry.minere.cosmic_jelly"
+      },
+      "animations": {
+        "move": "animation.minere.cosmic_jelly.move"
+      },
+      "scripts": {
+        "scale": "5.0",
+        "animate": ["move"]
+      },
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#6d3c70",
+        "overlay_color": "#4599a7"
+      }
+    }
+  }
+}

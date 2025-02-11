@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:plasma_bolt",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/plasma_bolt"
+      },
+      "geometry": {
+        "default": "geometry.minere.plasma_bolt"
+      },
+      "particle_effects": {
+        "trail": "minere:plasma_bolt_particles"
+      },
+      "animations": {
+        "move": "animation.minere.plasma_bolt.move"
+      },
+      "scripts": {
+        "scale": "5.0",
+        "animate": ["move"]
+      },
+      "render_controllers": ["controller.render.minere.plasma_bolt"]
+    }
+  }
+}

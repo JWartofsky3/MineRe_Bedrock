@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.freeze": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["aim"],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking"
+            }
+          ]
+        },
+        "attacking": {
+          "particle_effects": [
+            {
+              "effect": "freeze_breath",
+              "locator": "locator"
+            }
+          ],
+          "animations": ["aim"],
+          "transitions": [
+            {
+              "default": "!query.is_delayed_attacking"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:bomb",
+      "materials": {
+        "default": "ghast"
+      },
+      "textures": {
+        "default": "textures/entity/minere/bomb/bomb_0",
+        "next": "textures/entity/minere/bomb/bomb",
+        "flash": "textures/entity/minere/bomb/bomb_flash"
+      },
+      "geometry": {
+        "default": "geometry.minere.bomb"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.textureframe = math.mod(math.floor(query.life_time * (20 * query.life_time/2.5)), 3 );"
+        ]
+      },
+      "render_controllers": ["controller.render.minere.bomb"]
+    }
+  }
+}

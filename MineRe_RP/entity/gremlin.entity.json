@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:gremlin",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "invisible": "enderman_invisible"
+      },
+      "textures": {
+        "cave": "textures/entity/minere/gremlin/cave_gremlin",
+        "nether": "textures/entity/minere/gremlin/nether_gremlin",
+        "ender": "textures/entity/minere/gremlin/ender_gremlin"
+      },
+      "geometry": {
+        "default": "geometry.minere.gremlin"
+      },
+      "spawn_egg": {
+        "base_color": "#340546",
+        "overlay_color": "#722952"
+      },
+      "scripts": {
+        "animate": ["controller"],
+        "scale": "1.5"
+      },
+      "animations": {
+        "look_at_target": "animation.minere.gremlin.look_at_target",
+        "walk": "animation.minere.gremlin.walk",
+        "idle": "animation.minere.gremlin.idle",
+        "attack": "animation.minere.gremlin.attack",
+        "controller": "controller.animation.minere.gremlin"
+      },
+      "render_controllers": ["controller.render.minere.gremlin"]
+    }
+  }
+}

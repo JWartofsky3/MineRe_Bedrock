@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:yeti",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/yeti/yeti",
+        "warm": "textures/entity/minere/yeti/yeti_warm"
+      },
+      "geometry": {
+        "default": "geometry.minere.yeti"
+      },
+      "render_controllers": ["controller.render.minere.yeti"],
+      "spawn_egg": {
+        "base_color": "#ffffff",
+        "overlay_color": "#a8a8ff"
+      },
+      "scripts": {
+        "scale": "1.45",
+        "animate": [
+          "controller",
+          {
+            "tame": "query.is_tamed"
+          },
+          {
+            "neutral": "!query.is_tamed"
+          }
+        ]
+      },
+      "animations": {
+        "walk": "animation.minere.yeti.walk",
+        "climb": "animation.minere.yeti.climb",
+        "berserk": "animation.minere.yeti.berserk",
+        "breathe": "animation.minere.yeti.breathe",
+        "attack": "animation.minere.yeti.attack",
+        "look_at_target": "animation.minere.yeti.look_at_target",
+        "tame": "animation.minere.yeti.tame",
+        "neutral": "animation.minere.yeti.neutral",
+        "sit": "animation.minere.yeti.sit",
+        "controller": "controller.animation.minere.yeti"
+      }
+    }
+  }
+}

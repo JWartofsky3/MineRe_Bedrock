@@ -1,0 +1,44 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.freeze": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.default", "Texture.attack", "Texture.empty"],
+          "Array.breath": [
+            "Texture.breath0",
+            "Texture.breath1",
+            "Texture.breath2"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[variable.is_attacking]"]
+    },
+    "controller.render.minere.freeze_breath": {
+      "arrays": {
+        "textures": {
+          "Array.breath": [
+            "Texture.breath0",
+            "Texture.breath1",
+            "Texture.breath2"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.emissive"
+        }
+      ],
+      "textures": [
+        "variable.is_attacking ? Array.breath[variable.textureframe] : Texture.empty"
+      ]
+    }
+  }
+}

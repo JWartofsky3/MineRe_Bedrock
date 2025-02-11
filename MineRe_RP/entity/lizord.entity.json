@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:lizord",
+      "materials": {
+        "default": "ghast"
+      },
+      "textures": {
+        "default": "textures/entity/minere/lizord/lizord",
+        "shooting": "textures/entity/minere/lizord/lizord_shooting"
+      },
+      "geometry": {
+        "default": "geometry.minere.lizord"
+      },
+      "spawn_egg": {
+        "base_color": "#428f7e",
+        "overlay_color": "#59565b"
+      },
+      "scripts": {
+        "scale": "1.9",
+        "animate": ["controller"],
+        "pre_animation": ["variable.ischarging = query.is_charged ? 1 : 0;"]
+      },
+      "animations": {
+        "walk": "animation.minere.lizord.walk",
+        "look_at_target": "animation.minere.lizord.look_at_target",
+        "attack": "animation.minere.lizord.attack",
+        "frills": "animation.minere.lizord.frills",
+        "controller": "controller.animation.minere.lizord"
+      },
+      "render_controllers": ["controller.render.minere.lizord"]
+    }
+  }
+}

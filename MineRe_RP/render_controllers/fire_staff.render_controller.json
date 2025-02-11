@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10",
+  "render_controllers": {
+    "controller.render.minere.fire_staff": {
+      "geometry": "geometry.default",
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.staff0",
+            "Texture.staff1",
+            "Texture.staff2",
+            "Texture.staff3",
+            "Texture.staff4"
+          ]
+        }
+      },
+      "materials": [
+        { "*": "variable.is_enchanted ? material.enchanted : material.default" }
+      ],
+      "textures": ["Array.skins[variable.textureframe]", "texture.enchanted"]
+    }
+  }
+}

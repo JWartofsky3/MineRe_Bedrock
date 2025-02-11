@@ -1,0 +1,42 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.demon_skull.fly": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            "math.cos(45 + query.anim_time * 625) * 7",
+            "math.cos(25 + query.anim_time * 525) * 7",
+            "math.cos(query.anim_time * 755) * 7"
+          ],
+          "position": [
+            "math.cos(query.anim_time * 575) * 1.5",
+            "math.cos(-15 + query.anim_time * 755) * -1.5",
+            "math.cos(query.anim_time * 675) * 1.5"
+          ]
+        },
+        "left_wing": {
+          "rotation": [
+            "math.cos(query.anim_time * 1000) * -10",
+            "math.cos(query.anim_time * 1000) * -5",
+            "math.cos(query.anim_time * 1000) * -30"
+          ]
+        },
+        "right_wing": {
+          "rotation": [
+            "math.cos(query.anim_time * 1000) * -10",
+            "math.cos(query.anim_time * 1000) * 5",
+            "math.cos(query.anim_time * 1000) * 30"
+          ]
+        }
+      },
+      "particle_effects": {
+        "0.0": {
+          "effect": "flame",
+          "locator": "particles"
+        }
+      }
+    }
+  }
+}

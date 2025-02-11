@@ -1,0 +1,116 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.blaster_staff.first_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [66, 60, -60],
+          "position": [3, 23, 0]
+        }
+      }
+    },
+    "animation.minere.blaster_staff.third_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [90, 0, 0],
+          "position": [0.5, 20.5, -7.5]
+        }
+      }
+    },
+    "animation.minere.blaster_staff.rotate": {
+      "loop": true,
+      "bones": {
+        "rotator": {
+          "rotation": [0, "query.anim_time * 55", 0]
+        },
+        "core": {
+          "rotation": [
+            "query.anim_time * 55",
+            "query.anim_time * 55",
+            "query.anim_time * 55"
+          ]
+        },
+        "orb": {
+          "position": [
+            "math.cos(query.anim_time * 55) * -5",
+            "math.cos(4 * query.anim_time * 55) * 1",
+            "math.sin(query.anim_time * 55) * -5"
+          ]
+        },
+        "orb1": {
+          "position": [
+            "math.cos(180 + (query.anim_time * 55)) * -5",
+            "math.cos(4 * query.anim_time * 45) * 1",
+            "math.sin(180 + (query.anim_time * 55)) * -5"
+          ]
+        },
+        "orb2": {
+          "position": [
+            "math.cos(90 + (query.anim_time * 55)) * -5",
+            "math.cos(4 * query.anim_time * 55) * -1",
+            "math.sin(90 + (query.anim_time * 55)) * -5"
+          ]
+        },
+        "orb3": {
+          "position": [
+            "math.cos(270 + (query.anim_time * 55)) * -5",
+            "math.cos(4 * query.anim_time * 55) * -1",
+            "math.sin(270 + (query.anim_time * 55)) * -5"
+          ]
+        },
+        "rotating_grip": {
+          "rotation": [0, "math.cos(query.anim_time * 55) * 180", 0]
+        }
+      }
+    },
+    "animation.minere.blaster_staff.charge": {
+      "loop": true,
+      "bones": {
+        "rotator": {
+          "rotation": [0, "query.anim_time * 155", 0]
+        },
+        "core": {
+          "rotation": [
+            "query.anim_time * 155",
+            "query.anim_time * 155",
+            "query.anim_time * 155"
+          ],
+          "scale": 1.5
+        },
+        "orb": {
+          "position": [
+            "math.cos(query.anim_time * 155) * -5",
+            "math.cos(4 * query.anim_time * 155) * 1",
+            "math.sin(query.anim_time * 155) * -5"
+          ]
+        },
+        "orb1": {
+          "position": [
+            "math.cos(180 + (query.anim_time * 155)) * -5",
+            "math.cos(4 * query.anim_time * 145) * 1",
+            "math.sin(180 + (query.anim_time * 155)) * -5"
+          ]
+        },
+        "orb2": {
+          "position": [
+            "math.cos(90 + (query.anim_time * 155)) * -5",
+            "math.cos(4 * query.anim_time * 155) * -1",
+            "math.sin(90 + (query.anim_time * 155)) * -5"
+          ]
+        },
+        "orb3": {
+          "position": [
+            "math.cos(270 + (query.anim_time * 155)) * -5",
+            "math.cos(4 * query.anim_time * 155) * -1",
+            "math.sin(270 + (query.anim_time * 155)) * -5"
+          ]
+        },
+        "rotating_grip": {
+          "rotation": [0, "math.cos(query.anim_time * 55) * 180", 0]
+        }
+      }
+    }
+  }
+}

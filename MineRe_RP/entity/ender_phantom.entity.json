@@ -1,0 +1,43 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:ender_phantom",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "invisible": "enderman_invisible"
+      },
+      "textures": {
+        "default": "textures/entity/minere/ender_phantom"
+      },
+      "geometry": {
+        "default": "geometry.minere.ender_phantom"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.runtimeid = 0;",
+          "variable.tailrotx = -5.0;",
+          "variable.wingrotz = 0.0;"
+        ],
+        "animate": ["phantom_base_pose_controller", "move"],
+        "scale": "2.5"
+      },
+      "animations": {
+        "phantom_base_pose": "animation.minere.ender_phantom.base_pose",
+        "phantom_base_pose_controller": "controller.animation.phantom.base_pose",
+        "move": "animation.minere.ender_phantom.move"
+      },
+      "particle_effects": {
+        "wing_dust": "minere:ender_phantom_particles"
+      },
+      "sound_effects": {
+        "flap": "mob.phantom.flap"
+      },
+      "render_controllers": ["controller.render.phantom"],
+      "spawn_egg": {
+        "base_color": "#150425",
+        "overlay_color": "#2a0351"
+      }
+    }
+  }
+}

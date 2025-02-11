@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.butterfly": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.blue",
+            "Texture.orange",
+            "Texture.pink",
+            "Texture.purple",
+            "Texture.yellow",
+            "Texture.white",
+            "Texture.red",
+            "Texture.green"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.variant]"]
+    }
+  }
+}

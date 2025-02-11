@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.dire_wolf": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at"
+          ],
+          "transitions": [
+            {
+              "attacking": "variable.attack_time > 0.0"
+            },
+            {
+              "running": "query.ground_speed > 5.0 && query.all_animations_finished"
+            },
+            {
+              "digging": "query.property('minere:is_digging')"
+            }
+          ],
+          "blend_transition": 0.1
+        },
+        "running": {
+          "animations": [
+            {
+              "run": "query.modified_move_speed"
+            },
+            "look_at"
+          ],
+          "transitions": [
+            {
+              "attacking": "variable.attack_time > 0.0"
+            },
+            {
+              "walking": "query.ground_speed <= 4.0 && query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.1
+        },
+        "attacking": {
+          "animations": ["attack", "look_at"],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            },
+            {
+              "digging": "query.property('minere:is_digging')"
+            }
+          ],
+          "blend_transition": 0.1
+        },
+        "digging": {
+          "animations": ["dig"]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:scorpion",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "spider",
+        "invisible": "spider_invisible"
+      },
+      "textures": {
+        "default": "textures/entity/minere/scorpion"
+      },
+      "geometry": {
+        "default": "geometry.minere.scorpion"
+      },
+      "animations": {
+        "default_leg_pose": "animation.minere.scorpion.default_leg_pose",
+        "walk": "animation.minere.scorpion.walk",
+        "attack": "animation.minere.scorpion.attack",
+        "look_at_target": "animation.spider.look_at_target",
+        "move": "controller.animation.spider.move",
+        "attack_controller": "controller.animation.minere.scorpion"
+      },
+      "scripts": {
+        "animate": ["move", "attack_controller"]
+      },
+      "render_controllers": ["controller.render.spider"],
+      "spawn_egg": {
+        "base_color": "#7f5d2d",
+        "overlay_color": "#682a00"
+      }
+    }
+  }
+}

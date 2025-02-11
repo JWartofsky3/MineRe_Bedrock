@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.vampire": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.default", "Texture.bat"]
+        },
+        "geometries": {
+          "Array.geos": ["Geometry.default", "Geometry.bat"]
+        }
+      },
+      "geometry": "Array.geos[query.variant]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.variant]"]
+    }
+  }
+}

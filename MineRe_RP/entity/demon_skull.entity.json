@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:demon_skull",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/demon_skull"
+      },
+      "geometry": {
+        "default": "geometry.minere.demon_skull"
+      },
+      "particle_effects": {
+        "flame": "minere:skull_particles"
+      },
+      "scripts": {
+        "animate": ["fly"]
+      },
+      "animations": {
+        "fly": "animation.minere.demon_skull.fly"
+      },
+      "render_controllers": ["controller.render.default"],
+      "sound_effects": {
+        "flap": "mob.phantom.flap"
+      },
+      "spawn_egg": {
+        "base_color": "#58686e",
+        "overlay_color": "#401201"
+      }
+    }
+  }
+}

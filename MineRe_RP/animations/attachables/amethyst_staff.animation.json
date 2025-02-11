@@ -1,0 +1,23 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.amethyst_staff.first_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [66, 60, -60],
+          "position": [3, 23, 0]
+        }
+      }
+    },
+    "animation.minere.amethyst_staff.third_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [90, 0, 0],
+          "position": [0.5, 20.5, -5.5]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:dire_wolf",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "brown": "textures/entity/minere/dire_wolf/brown",
+        "gray": "textures/entity/minere/dire_wolf/gray",
+        "white": "textures/entity/minere/dire_wolf/white"
+      },
+      "geometry": {
+        "default": "geometry.minere.dire_wolf"
+      },
+      "render_controllers": ["controller.render.minere.dire_wolf"],
+      "animations": {
+        "walk": "animation.minere.dire_wolf.walk",
+        "run": "animation.minere.dire_wolf.run",
+        "attack": "animation.minere.dire_wolf.attack",
+        "look_at": "animation.minere.dire_wolf.look_at",
+        "dig": "animation.minere.dire_wolf.dig",
+        "controller": "controller.animation.minere.dire_wolf"
+      },
+      "scripts": {
+        "animate": ["controller"]
+      },
+      "spawn_egg": {
+        "base_color": "#374548",
+        "overlay_color": "#bac2ca"
+      },
+      "sound_effects": {
+        "dig": "mob.dire_wolf.dig"
+      },
+      "particle_effects": {
+        "dig": "minecraft:warden_dig"
+      }
+    }
+  }
+}

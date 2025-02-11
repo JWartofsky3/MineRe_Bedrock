@@ -1,0 +1,77 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.ogre": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            "breathe",
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "running": "query.ground_speed > 6.0 && query.all_animations_finished"
+            },
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            },
+            {
+              "roaring": "query.is_roaring == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "running": {
+          "animations": [
+            "breathe",
+            {
+              "run": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "walking": "query.ground_speed <= 5.0 && query.all_animations_finished"
+            },
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            },
+            {
+              "roaring": "query.is_roaring == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            "look_at_target",
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "breathe"
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "roaring": {
+          "animations": ["roar"],
+          "transitions": [
+            {
+              "walking": "query.is_roaring == 0"
+            }
+          ],
+          "blend_transition": 0.25
+        }
+      }
+    }
+  }
+}

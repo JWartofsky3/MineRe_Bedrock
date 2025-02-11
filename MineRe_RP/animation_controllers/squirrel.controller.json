@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.squirrel": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "move": "query.modified_move_speed"
+            }
+          ],
+          "transitions": [
+            {
+              "sitting": "!query.ground_speed && variable.should_sit"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "sitting": {
+          "animations": ["sit"],
+          "transitions": [
+            {
+              "walking": "query.ground_speed"
+            }
+          ],
+          "blend_transition": 0.25
+        }
+      }
+    }
+  }
+}

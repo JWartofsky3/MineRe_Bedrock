@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:eagle",
+      "materials": {
+        "default": "phantom",
+        "invisible": "phantom_invisible"
+      },
+      "textures": {
+        "golden": "textures/entity/minere/eagle/golden_eagle",
+        "bald": "textures/entity/minere/eagle/bald_eagle"
+      },
+      "geometry": {
+        "default": "geometry.minere.eagle"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.runtimeid = 0;",
+          "variable.tailrotx = -5.0;",
+          "variable.wingrotz = 0.0;"
+        ],
+        "animate": ["phantom_base_pose_controller", "move", "look_at_target"]
+      },
+      "animations": {
+        "phantom_base_pose": "animation.minere.eagle.base_pose",
+        "phantom_base_pose_controller": "controller.animation.phantom.base_pose",
+        "move": "animation.minere.eagle.move",
+        "look_at_target": "animation.minere.eagle.look_at_target"
+      },
+      "sound_effects": {
+        "flap": "mob.phantom.flap"
+      },
+      "render_controllers": ["controller.render.minere.eagle"],
+      "spawn_egg": {
+        "base_color": "#535353",
+        "overlay_color": "#beab3d"
+      }
+    }
+  }
+}

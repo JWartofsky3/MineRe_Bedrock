@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10",
+  "render_controllers": {
+    "controller.render.minere.blaster_staff": {
+      "geometry": "geometry.default",
+      "arrays": {
+        "textures": {
+          "Array.frames": [
+            "Texture.frame0",
+            "Texture.frame1",
+            "Texture.frame2",
+            "Texture.frame3"
+          ]
+        }
+      },
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.frames[variable.textureframe]", "texture.enchanted"]
+    }
+  }
+}

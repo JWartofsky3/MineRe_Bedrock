@@ -1,0 +1,44 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.walker": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.default", "Texture.friendly"],
+          "Array.cracks": [
+            "Texture.cracked_high",
+            "Texture.cracked_low",
+            "Texture.cracked_none"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.walker_cracks": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.default", "Texture.friendly"],
+          "Array.cracks": [
+            "Texture.cracked_high",
+            "Texture.cracked_medium",
+            "Texture.cracked_low",
+            "Texture.cracked_none"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.cracks"
+        }
+      ],
+      "textures": ["Array.cracks[math.clamp(query.health / 37.5, 0, 3)]"]
+    }
+  }
+}

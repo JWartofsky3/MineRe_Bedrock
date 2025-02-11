@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:vampire",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/vampire",
+        "bat": "textures/entity/minere/vampire_bat"
+      },
+      "geometry": {
+        "default": "geometry.minere.vampire",
+        "bat": "geometry.minere.monster_bat"
+      },
+      "animations": {
+        "walk": "animation.minere.vampire.walk",
+        "run": "animation.minere.vampire.run",
+        "breathe": "animation.minere.vampire.breathe",
+        "fly": "animation.minere.vampire.fly",
+        "look_at_target": "animation.minere.vampire.look_at_target",
+        "controller": "controller.animation.minere.vampire",
+        "bat_flying": "animation.minere.monster_bat.flying"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "controller": "query.variant == 0"
+          },
+          {
+            "bat_flying": "query.variant == 1"
+          }
+        ],
+        "scale": "query.variant == 1 ? 0.75 : 1.0"
+      },
+      "render_controllers": ["controller.render.minere.vampire"],
+      "sound_effects": {
+        "flap": "mob.vampire.flap"
+      },
+      "spawn_egg": {
+        "base_color": "#3d2857",
+        "overlay_color": "#cd0000"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:netherzord",
+      "materials": {
+        "default": "ghast"
+      },
+      "textures": {
+        "default": "textures/entity/minere/netherzord/netherzord",
+        "shooting": "textures/entity/minere/netherzord/netherzord_shooting"
+      },
+      "geometry": {
+        "default": "geometry.minere.lizord"
+      },
+      "spawn_egg": {
+        "base_color": "#201417",
+        "overlay_color": "#FFF23D"
+      },
+      "scripts": {
+        "scale": "2.5",
+        "animate": ["controller"],
+        "pre_animation": ["variable.ischarging = query.is_charged ? 1 : 0;"]
+      },
+      "animations": {
+        "walk": "animation.minere.lizord.walk",
+        "look_at_target": "animation.minere.lizord.look_at_target",
+        "attack": "animation.minere.lizord.attack",
+        "frills": "animation.minere.lizord.frills",
+        "controller": "controller.animation.minere.lizord"
+      },
+      "render_controllers": ["controller.render.minere.lizord"]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:freeze",
+      "materials": {
+        "default": "entity_alphablend",
+        "emissive": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/freeze/freeze",
+        "attack": "textures/entity/minere/freeze/freeze_attack",
+        "breath0": "textures/entity/minere/freeze/breath0",
+        "breath1": "textures/entity/minere/freeze/breath1",
+        "breath2": "textures/entity/minere/freeze/breath2",
+        "empty": "textures/entity/minere/freeze/empty"
+      },
+      "geometry": {
+        "default": "geometry.minere.freeze"
+      },
+      "particle_effects": {
+        "freeze_breath": "minere:freeze_breath"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.is_attacking = query.is_delayed_attacking ? 1 : 0;",
+          "variable.textureframe = math.mod(query.life_time * 7, 3);"
+        ],
+        "animate": ["controller", "aim"]
+      },
+      "animations": {
+        "controller": "controller.animation.minere.freeze",
+        "aim": "animation.minere.freeze.aim"
+      },
+      "render_controllers": [
+        "controller.render.minere.freeze",
+        "controller.render.minere.freeze_breath"
+      ],
+      "spawn_egg": {
+        "base_color": "#c3fffa",
+        "overlay_color": "#94e6ff"
+      }
+    }
+  }
+}

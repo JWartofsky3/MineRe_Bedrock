@@ -1,0 +1,86 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.biter.swim": {
+      "anim_time_update": "query.modified_distance_moved",
+      "loop": true,
+      "bones": {
+        "tail": {
+          "rotation": [
+            "math.cos(25 + query.anim_time * 55) * 1.1",
+            "math.cos(query.anim_time * 55) * 25",
+            "math.cos(-25 + query.anim_time * 55) * 1.1"
+          ]
+        },
+        "left_fin": {
+          "rotation": [
+            0,
+            "math.cos(query.anim_time * 55) * -5",
+            "math.cos(query.anim_time * 55) * 10"
+          ]
+        },
+        "right_fin": {
+          "rotation": [
+            0,
+            "math.cos(query.anim_time * 55) * 5",
+            "math.cos(query.anim_time * 55) * -10"
+          ]
+        },
+        "dorsal_fin": {
+          "rotation": [0, "math.cos(25 + query.anim_time * 55) * 25", 0]
+        },
+        "head": {
+          "rotation": [
+            "math.cos(25 + query.anim_time * 55) * 1.1",
+            "math.cos(query.anim_time * 55) * 5",
+            "math.cos(-25 + query.anim_time * 55) * 1.1"
+          ]
+        },
+        "tail_body": {
+          "rotation": [
+            "math.cos(25 + query.anim_time * 55) * 1.1",
+            "math.cos(query.anim_time * 55) * -5",
+            "math.cos(-25 + query.anim_time * 55) * 1.1"
+          ]
+        }
+      }
+    },
+    "animation.minere.biter.float": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            "math.cos(-15 + query.anim_time * 55) * 0.25",
+            "math.cos(25 + query.anim_time * 55) * 0.25",
+            "math.cos(query.anim_time * 55) * 0.25"
+          ]
+        },
+        "right_fin": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * 10"]
+        },
+        "left_fin": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * -10"]
+        }
+      }
+    },
+    "animation.minere.biter.flop": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            0,
+            "math.cos(variable.animationamountblend * 45.0) * 4.0",
+            "variable.zrot"
+          ]
+        },
+        "tail_body": {
+          "rotation": [
+            0,
+            "math.cos(variable.animationamountblend * 45.0) * -21.75",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

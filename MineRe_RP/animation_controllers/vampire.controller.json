@@ -1,0 +1,58 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.vampire": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            "breathe",
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "running": "query.has_target && query.is_on_ground"
+            },
+            {
+              "flying": "!query.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "running": {
+          "animations": [
+            "breathe",
+            {
+              "run": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "walking": "!query.has_target && query.is_on_ground"
+            },
+            {
+              "flying": "!query.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "flying": {
+          "animations": ["fly", "look_at_target"],
+          "transitions": [
+            {
+              "walking": "query.is_on_ground && !query.has_target"
+            },
+            {
+              "running": "query.is_on_ground && query.has_target"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

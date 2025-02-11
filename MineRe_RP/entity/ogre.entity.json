@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:ogre",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/ogre/ogre",
+        "cave": "textures/entity/minere/ogre/cave_ogre"
+      },
+      "geometry": {
+        "default": "geometry.minere.ogre"
+      },
+      "render_controllers": ["controller.render.minere.ogre"],
+      "spawn_egg": {
+        "base_color": "#0c460d",
+        "overlay_color": "#2b2b6c"
+      },
+      "scripts": {
+        "scale": "1.4",
+        "animate": ["controller"]
+      },
+      "animations": {
+        "walk": "animation.minere.ogre.walk",
+        "run": "animation.minere.ogre.run",
+        "breathe": "animation.minere.ogre.breathe",
+        "attack": "animation.minere.ogre.club",
+        "roar": "animation.minere.ogre.roar",
+        "look_at_target": "animation.minere.ogre.look_at_target",
+        "controller": "controller.animation.minere.ogre"
+      }
+    }
+  }
+}

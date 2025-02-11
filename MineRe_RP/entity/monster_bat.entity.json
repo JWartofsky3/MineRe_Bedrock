@@ -1,0 +1,35 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:monster_bat",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "invisible": "spider_invisible"
+      },
+      "textures": {
+        "default": "textures/entity/minere/monster_bat"
+      },
+      "geometry": {
+        "default": "geometry.minere.monster_bat"
+      },
+      "scripts": {
+        "scale": "0.6"
+      },
+      "animations": {
+        "resting": "animation.minere.monster_bat.resting",
+        "flying": "animation.minere.monster_bat.flying"
+      },
+      "animation_controllers": [
+        {
+          "move": "controller.animation.bat.move"
+        }
+      ],
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#0e0e0e",
+        "overlay_color": "#2f1c1c"
+      }
+    }
+  }
+}

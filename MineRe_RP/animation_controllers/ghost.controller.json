@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.ghost": {
+      "initial_state": "wander",
+      "states": {
+        "wander": {
+          "animations": ["move", "look_at_target"],
+          "transitions": [
+            {
+              "attack": "query.has_target"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attack": {
+          "animations": ["attack", "look_at_target"],
+          "transitions": [
+            {
+              "wander": "!query.has_target"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

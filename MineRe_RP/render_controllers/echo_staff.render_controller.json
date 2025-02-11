@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10",
+  "render_controllers": {
+    "controller.render.minere.echo_staff": {
+      "geometry": "geometry.default",
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.default", "Texture.charged"]
+        }
+      },
+      "materials": [
+        { "*": "variable.is_enchanted ? material.enchanted : material.default" }
+      ],
+      "textures": [
+        "Array.skins[(query.cooldown_time_remaining > 3) ? 1 : 0]",
+        "texture.enchanted"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:whale",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/whale"
+      },
+      "geometry": {
+        "default": "geometry.minere.whale"
+      },
+      "animations": {
+        "move": "animation.minere.whale.move"
+      },
+      "scripts": {
+        "scale": "3.5"
+      },
+      "animation_controllers": [
+        {
+          "general": "controller.animation.dolphin.general"
+        }
+      ],
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#155872",
+        "overlay_color": "#91a19f"
+      }
+    }
+  }
+}

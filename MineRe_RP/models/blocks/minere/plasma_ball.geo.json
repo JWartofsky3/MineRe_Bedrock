@@ -1,0 +1,111 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.plasma_ball",
+        "texture_width": 44,
+        "texture_height": 44,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "block",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [16, 16, 16],
+              "uv": {
+                "north": { "uv": [0, 0], "uv_size": [16, 16] },
+                "east": { "uv": [0, 0], "uv_size": [16, 16] },
+                "south": { "uv": [0, 0], "uv_size": [16, 16] },
+                "west": { "uv": [0, 0], "uv_size": [16, 16] },
+                "up": { "uv": [16, 16], "uv_size": [-16, -16] },
+                "down": { "uv": [16, 16], "uv_size": [-16, -16] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "plasma_0",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-11, 0, 0],
+              "size": [22, 16, 0],
+              "pivot": [0, 0, 0],
+              "rotation": [0, -45, 0],
+              "uv": {
+                "north": { "uv": [22, 28], "uv_size": [-22, 16] },
+                "east": { "uv": [0, 0], "uv_size": [0, 11] },
+                "south": { "uv": [0, 28], "uv_size": [22, 16] },
+                "west": { "uv": [0, 0], "uv_size": [0, 11] },
+                "up": { "uv": [0, 0], "uv_size": [15.125, 0] },
+                "down": { "uv": [0, 0], "uv_size": [15.125, 0] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "plasma_1",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [0, 0, -11],
+              "size": [0, 16, 22],
+              "pivot": [0, 0, 0],
+              "rotation": [0, -45, 0],
+              "uv": {
+                "north": { "uv": [0, 0], "uv_size": [0, 11] },
+                "east": { "uv": [22, 28], "uv_size": [22, 16] },
+                "south": { "uv": [0, 0], "uv_size": [0, 11] },
+                "west": { "uv": [44, 28], "uv_size": [-22, 16] },
+                "up": { "uv": [0, 0], "uv_size": [0, 15.125] },
+                "down": { "uv": [0, 15.125], "uv_size": [0, -15.125] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "plasma_2",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 8, -8],
+              "size": [16, 0, 16],
+              "uv": {
+                "north": { "uv": [0, 0], "uv_size": [11, 0] },
+                "east": { "uv": [0, 0], "uv_size": [11, 0] },
+                "south": { "uv": [0, 0], "uv_size": [11, 0] },
+                "west": { "uv": [0, 0], "uv_size": [11, 0] },
+                "up": { "uv": [44, 16], "uv_size": [-16, -16] },
+                "down": { "uv": [44, 0], "uv_size": [-16, 16] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "core",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-2, 6, -2],
+              "size": [4, 4, 4],
+              "uv": {
+                "north": { "uv": [16, 0], "uv_size": [4, 4] },
+                "east": { "uv": [20, 8], "uv_size": [4, 4] },
+                "south": { "uv": [20, 12], "uv_size": [4, 4] },
+                "west": { "uv": [16, 12], "uv_size": [4, 4] },
+                "up": { "uv": [20, 12], "uv_size": [-4, -4] },
+                "down": { "uv": [20, 8], "uv_size": [-4, -4] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

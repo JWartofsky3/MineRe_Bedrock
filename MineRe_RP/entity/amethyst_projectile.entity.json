@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:amethyst_projectile",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/amethyst_projectile"
+      },
+      "geometry": {
+        "default": "geometry.minere.plasma_bolt"
+      },
+      "particle_effects": {
+        "trail": "minere:amethyst_trail_particles"
+      },
+      "animations": {
+        "move": "animation.minere.plasma_bolt.move"
+      },
+      "scripts": {
+        "scale": "2.5",
+        "animate": ["move"]
+      },
+      "render_controllers": ["controller.render.minere.plasma_bolt"]
+    }
+  }
+}

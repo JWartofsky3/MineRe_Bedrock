@@ -1,0 +1,177 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.owl.standing": {
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": [20, 0, 0]
+        },
+        "leg1": {
+          "rotation": [20, 0, 0]
+        }
+      }
+    },
+    "animation.minere.owl.flying": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [0, 0, 0]
+        },
+        "wing0": {
+          "rotation": [
+            15,
+            30,
+            "math.abs(math.cos(query.anim_time * 750)) * -90"
+          ]
+        },
+        "wing1": {
+          "rotation": [
+            15,
+            -30,
+            "math.abs(math.cos(query.anim_time * 750)) * 90"
+          ]
+        },
+        "head": {
+          "rotation": [-25, 0, 0],
+          "position": [
+            0,
+            "1 + math.abs(math.cos(25 + query.anim_time * 250)) * 0.5",
+            "-1 + math.abs(math.cos(15 + query.anim_time * 250)) * 0.5"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.abs(math.cos(15 + query.anim_time * 750)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "math.abs(math.cos(45 + query.anim_time * 450)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "math.abs(math.cos(25 + query.anim_time * 400)) * 25",
+            0,
+            0
+          ]
+        },
+        "root": {
+          "rotation": [30, 0, 0]
+        }
+      }
+    },
+    "animation.minere.owl.breathe": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            "math.abs(math.cos(15 + query.anim_time * 25)) * 0.25",
+            0
+          ]
+        },
+        "wing0": {
+          "rotation": [0, 0, "math.abs(math.cos(query.anim_time * 25)) * -5"]
+        },
+        "wing1": {
+          "rotation": [0, 0, "math.abs(math.cos(query.anim_time * 25)) * 5"]
+        },
+        "head": {
+          "position": [0, "math.abs(math.cos(query.anim_time * 25)) * 0.5", 0]
+        },
+        "tail": {
+          "rotation": ["math.cos(query.anim_time * 67) * 5", 0, 0]
+        },
+        "left_brow": {
+          "rotation": [
+            0,
+            "math.abs(math.cos(query.anim_time * 55)) * 5",
+            "math.cos(query.anim_time * 55) * -10"
+          ]
+        },
+        "right_brow": {
+          "rotation": [
+            0,
+            "math.abs(math.cos(query.anim_time * 55)) * -5",
+            "math.cos(query.anim_time * 55) * 10"
+          ]
+        }
+      }
+    },
+    "animation.minere.owl.look_at": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+        }
+      }
+    },
+    "animation.minere.owl.dance": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": ["math.cos(query.anim_time * 295) * -0.25", 0, 0]
+        },
+        "wing0": {
+          "rotation": [0, 0, "-80 + math.cos(query.anim_time * 525) * 15"]
+        },
+        "wing1": {
+          "rotation": [0, 0, "80 + math.cos(query.anim_time * 525) * -15"]
+        },
+        "head": {
+          "position": ["math.cos(query.anim_time * 295) * 0.5", 0, 0]
+        },
+        "left_brow": {
+          "rotation": [0, 0, "math.abs(math.cos(query.anim_time * 355)) * -25"]
+        },
+        "right_brow": {
+          "rotation": [0, 0, "math.abs(math.cos(query.anim_time * 355)) * 25"]
+        }
+      }
+    },
+    "animation.minere.owl.sit": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "position": [0, -2, 0]
+        },
+        "wing0": {
+          "rotation": [-10, 0, 0]
+        },
+        "wing1": {
+          "rotation": [-10, 0, 0]
+        },
+        "tail": {
+          "rotation": [20, 0, 0]
+        }
+      }
+    },
+    "animation.minere.owl.sleep": {
+      "loop": true,
+      "bones": {
+        "wing0": {
+          "rotation": [-10, 0, 0]
+        },
+        "wing1": {
+          "rotation": [-10, 0, 0]
+        },
+        "head": {
+          "rotation": [25, 180, 0],
+          "position": [0, 0, 1]
+        },
+        "left_brow": {
+          "rotation": [0, 0, 130]
+        },
+        "right_brow": {
+          "rotation": [0, 0, -130]
+        }
+      }
+    }
+  }
+}

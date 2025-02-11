@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.necromancer": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "transitions": [
+            {
+              "casting": "query.is_casting"
+            }
+          ],
+          "blend_transition": 0.1
+        },
+        "casting": {
+          "animations": ["casting"],
+          "transitions": [
+            {
+              "idle": "!query.is_casting"
+            }
+          ],
+          "blend_transition": 0.1
+        }
+      }
+    }
+  }
+}

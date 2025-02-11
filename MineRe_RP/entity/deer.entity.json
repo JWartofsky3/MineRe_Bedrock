@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:deer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/deer"
+      },
+      "geometry": {
+        "default": "geometry.minere.deer"
+      },
+      "spawn_egg": {
+        "base_color": "#ba9a80",
+        "overlay_color": "#c0bab1"
+      },
+      "scripts": {
+        "scale": "1.2",
+        "animate": [
+          "controller",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      },
+      "animations": {
+        "walk": "animation.minere.deer.walk",
+        "gallop": "animation.minere.deer.gallop",
+        "look_at_target": "animation.minere.deer.look_at_target",
+        "tail": "animation.minere.deer.tail",
+        "graze": "animation.minere.deer.graze",
+        "baby_transform": "animation.minere.deer.baby_transform",
+        "controller": "controller.animation.minere.deer"
+      },
+      "render_controllers": ["controller.render.cow"]
+    }
+  }
+}

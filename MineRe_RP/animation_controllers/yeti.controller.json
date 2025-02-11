@@ -1,0 +1,95 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.yeti": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            "breathe",
+            "look_at_target",
+            {
+              "walk": "query.modified_move_speed"
+            }
+          ],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            },
+            {
+              "climbing": "query.is_wall_climbing == 1"
+            },
+            {
+              "berserking": "query.ground_speed > 6.0 && query.all_animations_finished"
+            },
+            {
+              "sitting": "query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "berserking": {
+          "animations": [
+            {
+              "berserk": "query.modified_move_speed"
+            }
+          ],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            },
+            {
+              "walking": "query.ground_speed <= 5.0 && query.all_animations_finished"
+            },
+            {
+              "climbing": "query.is_wall_climbing == 1"
+            },
+            {
+              "sitting": "query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "climbing": {
+          "animations": ["climb", "look_at_target"],
+          "transitions": [
+            {
+              "walking": "query.is_wall_climbing == 0"
+            },
+            {
+              "sitting": "query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            "look_at_target",
+            {
+              "walk": "query.modified_move_speed * 0.7"
+            }
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished && !query.is_wall_climbing"
+            },
+            {
+              "climbing": "query.all_animations_finished && query.is_wall_climbing"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sitting": {
+          "animations": ["sit", "look_at_target", "breathe"],
+          "transitions": [
+            {
+              "walking": "!query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.75
+        }
+      }
+    }
+  }
+}
