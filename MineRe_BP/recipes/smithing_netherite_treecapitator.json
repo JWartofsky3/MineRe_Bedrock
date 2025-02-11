@@ -1,0 +1,13 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_smithing_transform": {
+    "description": {
+      "identifier": "minere:smithing_netherite_treecapitator"
+    },
+    "tags": ["smithing_table"],
+    "template": "minecraft:netherite_upgrade_smithing_template",
+    "base": "minere:diamond_treecapitator",
+    "addition": "minecraft:netherite_ingot",
+    "result": "minere:netherite_treecapitator"
+  }
+}

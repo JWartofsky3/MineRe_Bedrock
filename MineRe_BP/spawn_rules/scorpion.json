@@ -7,11 +7,9 @@
     },
     "conditions": [
       {
-        "minecraft:spawns_on_surface": {
-        },
-  
-        "minecraft:spawns_underground": {
-        },
+        "minecraft:spawns_on_surface": {},
+
+        "minecraft:spawns_underground": {},
 
         "minecraft:brightness_filter": {
           "min": 0,
@@ -25,26 +23,32 @@
         },
 
         "minecraft:weight": {
-          "default": 75
+          "default": 65
         },
 
         "minecraft:density_limit": {
           "surface": 6,
           "underground": 6
         },
-        
+
         "minecraft:biome_filter": {
           "any_of": [
             {
-              "test": "has_biome_tag", "operator":"==", "value": "desert"
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
             },
             {
-              "test": "has_biome_tag", "operator":"==", "value": "mesa"
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mesa"
             }
           ],
           "all_of": [
             {
-              "test": "has_biome_tag", "operator":"==", "value": "monster"
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "monster"
             }
           ]
         }

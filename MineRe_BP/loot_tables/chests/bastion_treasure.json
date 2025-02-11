@@ -632,7 +632,7 @@
               "function": "set_count",
               "count": {
                 "min": 2,
-                "max": 5
+                "max": 8
               }
             }
           ],

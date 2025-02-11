@@ -12,7 +12,7 @@ const healingItems = {
   "minecraft:mushroom_stew": 4.0,
   "minecraft:beetroot_soup": 4.0,
   "minecraft:suspicious_stew": 4.0,
-  "minecraft:rabbit_stew": 6.0,
+  "minecraft:rabbit_stew": 7.0,
 };
 
 export const healFromItem = (data: ItemCompleteUseAfterEvent) => {

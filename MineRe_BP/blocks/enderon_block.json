@@ -11,6 +11,7 @@
     "components": {
       "tag:minecraft:wood_tier_destructible": {},
       "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:stone": {},
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 4.0
       },

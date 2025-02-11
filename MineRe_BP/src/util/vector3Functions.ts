@@ -1,4 +1,4 @@
-import { Vector3, Dimension } from "@minecraft/server";
+import { Vector3, Dimension, Block } from "@minecraft/server";
 
 export const magnitudeVector3 = (vector: Vector3): number => {
   return Math.sqrt(
@@ -77,6 +77,21 @@ const getRandom = (offset: number): number => {
   return -1 * offset + Math.random() * offset * 2;
 };
 
+export function isValid(dimension: Dimension, vector3: Vector3): boolean {
+  if (vector3.y > dimension.heightRange.max) {
+    return false;
+  }
+  if (vector3.y < dimension.heightRange.min) {
+    return false;
+  }
+  try {
+    const block: Block = dimension.getBlock(vector3);
+    return block?.isValid();
+  } catch (ignored) {
+    return false;
+  }
+}
+
 export const getRandomAir = (
   start: Vector3,
   dimension: Dimension,
@@ -85,14 +100,24 @@ export const getRandomAir = (
 ): Vector3 => {
   for (let i = 0; i < tries; i++) {
     const randomPos = addVector3(start, randomVector3(offset));
-    if (
-      randomPos.y <= dimension.heightRange.min ||
-      randomPos.y >= dimension.heightRange.max
-    ) {
+    if (!isValid(dimension, randomPos)) {
       continue;
     }
     if (dimension.getBlock(randomPos).isAir) {
       return randomPos;
     }
   }
+};
+
+export const vector3ToString = (vector3: Vector3): string => {
+  return `${vector3.x},${vector3.y},${vector3.z}`;
+};
+
+export const vector3FromString = (string: string): Vector3 => {
+  const args = string.split(",");
+  return {
+    x: Number(args[0]),
+    y: Number(args[1]),
+    z: Number(args[2]),
+  };
 };

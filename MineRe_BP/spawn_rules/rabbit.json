@@ -88,7 +88,8 @@
           "max_size": 3
         },
         "minecraft:biome_filter": {
-          "test": "has_biome_tag", "value": "grove"
+          "test": "has_biome_tag",
+          "value": "grove"
         }
       },
       {

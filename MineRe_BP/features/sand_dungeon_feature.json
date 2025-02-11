@@ -8,18 +8,7 @@
     "adjustment_radius": 16,
     "facing_direction": "random",
     "constraints": {
-      "block_intersection": {
-        "block_allowlist": [
-          "minecraft:stone",
-          "minecraft:granite",
-          "minecraft:andesite",
-          "minecraft:diorite",
-          "minecraft:gravel",
-          "minecraft:dirt",
-          "minecraft:sandstone",
-          "minecraft:sand"
-        ]
-      }
+      "grounded": {}
     }
   }
 }

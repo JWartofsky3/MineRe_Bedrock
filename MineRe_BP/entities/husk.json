@@ -90,7 +90,7 @@
           "max": 24
         },
         "minecraft:knockback_resistance": {
-          "value": 0.25
+          "value": 0.1
         },
         "minecraft:attack": {
           "damage": 5,

@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_shovel"]
       },
-      "minecraft:custom_components": ["minere:ender_strike"],
+      "minecraft:custom_components": [
+        "minere:ender_strike",
+        "minere:custom_shovel"
+      ],
       "minecraft:cooldown": {
         "category": "enderStrike",
         "duration": 4.0
@@ -25,7 +28,7 @@
         "destroy_speeds": [
           {
             "block": {
-              "tags": "q.any_tag('dirt', 'sand', 'gravel', 'grass', 'snow')"
+              "tags": "q.any_tag('dirt', 'sand', 'gravel', 'grass', 'snow', 'is_shovel_item_destructible')"
             },
             "speed": 12
           },

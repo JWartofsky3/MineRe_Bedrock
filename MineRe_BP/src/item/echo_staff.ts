@@ -18,15 +18,15 @@ import {
 } from "util/vector3Functions";
 
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
-const SHADOW_TIME = 6 * 20;
-const SHADOW_XP_COST = 6;
+const SHADOW_TIME = 8 * 20;
+const SHADOW_XP_COST = 5;
 const SHADOW_DURABILITY_COST = 5;
-const SHADOW_RANGE = 10;
+const SHADOW_RANGE = 8;
 const SONIC_RANGE = 24;
 const SONIC_DAMAGE = 26;
 const SONIC_SPLASH_RANGE = 5;
 const SONIC_SPLASH_DAMAGE = 16;
-const SONIC_XP_COST = 6;
+const SONIC_XP_COST = 5;
 const SONIC_DURABILITY_COST = 5;
 const cooldownTime = 10;
 
@@ -68,8 +68,14 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           source.addEffect("invisibility", SHADOW_TIME, {
             showParticles: false,
           });
-          source.addEffect("speed", SHADOW_TIME, { showParticles: false });
-          source.addEffect("jump_boost", SHADOW_TIME, { showParticles: false });
+          source.addEffect("speed", SHADOW_TIME, {
+            showParticles: false,
+            amplifier: 2,
+          });
+          source.addEffect("jump_boost", SHADOW_TIME, {
+            showParticles: false,
+            amplifier: 3,
+          });
           source.addEffect("slow_falling", SHADOW_TIME, {
             showParticles: false,
           });
@@ -85,7 +91,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
             maxDistance: SHADOW_RANGE,
           });
           nearbyEntities.forEach((entity: Entity) => {
-            entity.addEffect("blindness", SHADOW_TIME, {
+            entity.addEffect("blindness", SHADOW_TIME / 2, {
               showParticles: false,
             });
           });

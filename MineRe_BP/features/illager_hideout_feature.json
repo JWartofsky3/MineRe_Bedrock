@@ -5,21 +5,9 @@
       "identifier": "minere:illager_hideout_feature"
     },
     "structure_name": "minere:illager_hideout",
-    "adjustment_radius": 16,
-    "facing_direction": "random",
+    "facing_direction": "south",
     "constraints": {
-      "block_intersection": {
-        "block_allowlist": [
-          "minecraft:stone",
-          "minecraft:andesite",
-          "minecraft:diorite",
-          "minecraft:granite",
-          "minecraft:gravel",
-          "minecraft:dirt",
-          "minecraft:sand",
-          "minecraft:sandstone"
-        ]
-      }
+      "grounded": {}
     }
   }
 }

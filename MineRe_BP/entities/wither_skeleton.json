@@ -22,9 +22,6 @@
         "value": 28,
         "max": 28
       },
-      "minecraft:knockback_resistance": {
-        "value": 0.15
-      },
       "minecraft:equip_item": {},
       "minecraft:collision_box": {
         "width": 0.72,

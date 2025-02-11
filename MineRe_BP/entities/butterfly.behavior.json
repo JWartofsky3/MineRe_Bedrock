@@ -414,7 +414,10 @@
           },
           {
             "add": {
-              "component_groups": ["minere:butterfly_walking", "minere:butterfly_adult"]
+              "component_groups": [
+                "minere:butterfly_walking",
+                "minere:butterfly_adult"
+              ]
             }
           }
         ]
@@ -429,14 +432,10 @@
       },
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": [
-            "minere:butterfly_baby"
-          ]
+          "component_groups": ["minere:butterfly_baby"]
         },
         "add": {
-          "component_groups": [
-            "minere:butterfly_adult"
-          ]
+          "component_groups": ["minere:butterfly_adult"]
         }
       },
       "start_flying": {

@@ -4,7 +4,6 @@ import {
   system,
   EntityComponentTypes,
   Player,
-  GameMode,
 } from "@minecraft/server";
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -26,7 +25,6 @@ import { fireInfintyBowAfter } from "item/infinity_bow";
 import { rollBecomeSummoner } from "mob/become_summoner";
 import { bombDamage } from "item/bomb_damage";
 import { handleItemDurability } from "item/handle_item_durability";
-import { onHoeUse } from "item/custom_hoe";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
 import { EnderStrike } from "item/ender_strike";
@@ -34,6 +32,11 @@ import { rollFreeze } from "mob/freeze";
 import { fireflyLamp } from "block/firefly_lamp";
 import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
+import { customOre } from "block/custom_ore";
+import { startAutoMiner, minerDie } from "machine/autoMiner";
+import { AutoMinerItem } from "item/auto_miner_item";
+import { treecapitator } from "item/treecapitator";
+import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
 
 export const DEFAULT_TICK = 20;
 
@@ -43,6 +46,10 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     EnderStrike,
   );
   data.itemComponentRegistry.registerCustomComponent(
+    "minere:auto_miner_item",
+    AutoMinerItem,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
     "minere:ice_dagger",
     IceDagger,
   );
@@ -50,9 +57,26 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:venom_shank",
     VenomShank,
   );
+  // TODO, use these once the custom components work
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_axe",
+  //   CustomAxe,
+  // );
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_hoe",
+  //   CustomHoe,
+  // );
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_shovel",
+  //   CustomShovel,
+  // );
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:custom_ore",
+    customOre,
   );
 });
 
@@ -84,12 +108,23 @@ world.afterEvents.itemUse.subscribe((data) => {
   usePhasedEnderPearl(data);
 });
 
+world.afterEvents.dataDrivenEntityTrigger.subscribe((data) => {
+  startAutoMiner(data.entity);
+});
+
+world.afterEvents.entityLoad.subscribe((data) => {
+  startAutoMiner(data.entity);
+});
+
 world.afterEvents.itemUseOn.subscribe((data) => {
   onHoeUse(data.source, data.itemStack, data.block);
+  onShovelUse(data.source, data.itemStack, data.block);
+  onAxeUse(data.source, data.itemStack, data.block);
 });
 
 world.afterEvents.entityDie.subscribe(function (data) {
   ogreLaugh(data?.damageSource?.damagingEntity);
+  minerDie(data.deadEntity);
 });
 
 world.afterEvents.entitySpawn.subscribe(function (data) {
@@ -103,6 +138,10 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
     rollBecomeSummoner(data.entity, 0.2);
   }
   handleEndSpawn(data.entity);
+});
+
+world.beforeEvents.playerBreakBlock.subscribe(function (data) {
+  treecapitator(data.player, data.block);
 });
 
 world.afterEvents.playerBreakBlock.subscribe(function (data) {

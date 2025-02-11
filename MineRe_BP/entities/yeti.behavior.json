@@ -15,6 +15,9 @@
       }
     },
     "component_groups": {
+      "minere:persistent": {
+        "minecraft:persistent": {}
+      },
       "minere:cold_yeti": {
         "minecraft:variant": {
           "value": 0
@@ -673,6 +676,14 @@
       "spawn_warm_yeti": {
         "add": {
           "component_groups": ["minere:warm_yeti"]
+        }
+      },
+      "cold_yeti_persistent": {
+        "add": {
+          "component_groups": [
+            "minere:cold_yeti",
+            "minere:cold_yeti_persistent"
+          ]
         }
       },
       "minere:yeti_become_hostile": {

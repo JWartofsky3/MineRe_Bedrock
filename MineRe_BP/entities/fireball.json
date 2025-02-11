@@ -62,7 +62,7 @@
               }
             }
           },
-          "power": 2.0,
+          "power": 1.8,
           "gravity": 0,
           "inertia": 1,
           "liquid_inertia": 1,

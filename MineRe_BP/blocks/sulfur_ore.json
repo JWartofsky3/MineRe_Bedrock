@@ -9,7 +9,9 @@
       }
     },
     "components": {
+      "minecraft:custom_components": ["minere:custom_ore"],
       "tag:minecraft:wood_tier_destructible": {},
+      "tag:stone": {},
       "tag:minecraft:is_pickaxe_item_destructible": {},
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 4.0
@@ -18,7 +20,7 @@
         "explosion_resistance": 30
       },
       "minecraft:map_color": "#EEF6B4",
-      "minecraft:loot": "loot_tables/blocks/sulfur_ore.json"
+      "minecraft:loot": "loot_tables/empty.json"
     }
   }
 }

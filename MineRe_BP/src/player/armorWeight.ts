@@ -1,5 +1,4 @@
 import {
-  world,
   Player,
   EntityAttributeComponent,
   EntityComponentTypes,

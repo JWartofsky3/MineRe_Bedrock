@@ -14,13 +14,16 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "roofed"
-            }
-          ],
-          "none_of": [
+            },
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "ocean"
+              "value": "roofed_forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "dark_forest"
             }
           ]
         }
@@ -30,13 +33,13 @@
       "iterations": 1,
       "x": -16,
       "y": {
-        "extent": [-15, 50],
+        "extent": [-15, 45],
         "distribution": "uniform"
       },
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 75
+        "denominator": 100
       }
     }
   }

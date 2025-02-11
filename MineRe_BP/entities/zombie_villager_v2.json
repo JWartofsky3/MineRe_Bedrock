@@ -44,9 +44,6 @@
         "minecraft:attack": {
           "damage": 5
         },
-        "minecraft:knockback_resistance": {
-          "value": 0.2
-        },
         "minecraft:health": {
           "value": 20,
           "max": 20

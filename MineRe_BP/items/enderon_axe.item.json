@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_axe"]
       },
-      "minecraft:custom_components": ["minere:ender_strike"],
+      "minecraft:custom_components": [
+        "minere:ender_strike",
+        "minere:custom_axe"
+      ],
       "minecraft:cooldown": {
         "category": "enderStrike",
         "duration": 5.0
@@ -25,20 +28,8 @@
         "destroy_speeds": [
           {
             "block": {
-              "tags": "query.any_tag('wood', 'pumpkin', 'plant', 'text_sign')"
+              "tags": "query.any_tag('wood', 'pumpkin', 'plant', 'text_sign', 'is_axe_item_destructible')"
             },
-            "speed": 12
-          },
-          {
-            "block": "minecraft:leaves",
-            "speed": 12
-          },
-          {
-            "block": "minecraft:leaves2",
-            "speed": 12
-          },
-          {
-            "block": "minecraft:azalea_leaves",
             "speed": 12
           },
           {

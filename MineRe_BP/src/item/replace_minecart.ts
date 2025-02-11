@@ -10,10 +10,14 @@ import {
 } from "@minecraft/server";
 import { getItem } from "./item_utils";
 
+const replaceMap = new Map<string, string>();
+replaceMap.set("minere:advanced_minecart", "minere:advanced_minecart");
+
 export const replaceMinecart = (data: EntityRemoveBeforeEvent) => {
-  if (data.removedEntity.typeId !== "minere:advanced_minecart") {
+  if (!replaceMap.has(data.removedEntity.typeId)) {
     return;
   }
+  const toReplaceWith = replaceMap.get(data.removedEntity.typeId);
 
   const dimension = world.getDimension(data.removedEntity.dimension.id);
   if (!dimension) {
@@ -29,7 +33,7 @@ export const replaceMinecart = (data: EntityRemoveBeforeEvent) => {
     const minecart = getItem(dimension, location, "minecraft:minecart");
     if (minecart) {
       minecart.remove();
-      const advancedMinecartItem = new ItemStack("minere:advanced_minecart", 1);
+      const advancedMinecartItem = new ItemStack(toReplaceWith, 1);
       dimension.spawnItem(advancedMinecartItem, location);
     }
   });

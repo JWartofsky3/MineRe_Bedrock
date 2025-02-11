@@ -19,6 +19,10 @@
         "minecraft:density_limit": {
           "surface": 3
         },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
           "operator": "==",
@@ -37,6 +41,10 @@
         },
         "minecraft:density_limit": {
           "surface": 2
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
         },
         "minecraft:biome_filter": {
           "any_of": [
@@ -102,6 +110,10 @@
         },
         "minecraft:weight": {
           "default": 14
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
         },
         "minecraft:density_limit": {
           "underground": 3

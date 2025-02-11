@@ -55,7 +55,7 @@
           {
             "cause": "projectile",
             "deals_damage": true,
-            "damage_multiplier": 0.33
+            "damage_multiplier": 0.5
           }
         ]
       },

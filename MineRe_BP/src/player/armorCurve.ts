@@ -7,13 +7,7 @@ import {
   EntityHealthComponent,
   EquipmentSlot,
   Player,
-  world,
   ItemEnchantableComponent,
-  EnchantmentTypes,
-  EntityMovementBasicComponent,
-  EntityBaseMovementComponent,
-  EntityMovementGenericComponent,
-  EntityAttributeComponent,
 } from "@minecraft/server";
 
 const defenseMap = new Map<string, number>();

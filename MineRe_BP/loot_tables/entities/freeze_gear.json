@@ -17,10 +17,8 @@
             },
             {
               "function": "specific_enchants",
-              "enchants": [
-                 "frost_walker"
-              ]
-           }
+              "enchants": ["frost_walker"]
+            }
           ]
         }
       ]

@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:custom_components": ["minere:custom_ore"],
       "tag:minecraft:iron_tier_destructible": {},
       "tag:minecraft:is_pickaxe_item_destructible": {},
       "minecraft:destructible_by_mining": {
@@ -18,7 +19,7 @@
         "explosion_resistance": 60
       },
       "minecraft:map_color": "#EEF6B4",
-      "minecraft:loot": "loot_tables/blocks/ender_plasma_ore.json"
+      "minecraft:loot": "loot_tables/empty.json"
     }
   }
 }

@@ -21,6 +21,10 @@
           "operator": "==",
           "value": "roofed"
         },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
         "minecraft:herd": {
           "min_size": 3,
           "max_size": 5
@@ -39,6 +43,10 @@
         "minecraft:herd": {
           "min_size": 3,
           "max_size": 5
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
         },
         "minecraft:biome_filter": {
           "none_of": [
@@ -105,6 +113,10 @@
           "test": "has_biome_tag",
           "operator": "==",
           "value": "monster"
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
         }
       }
     ]

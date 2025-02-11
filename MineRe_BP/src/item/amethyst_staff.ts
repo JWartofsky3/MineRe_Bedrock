@@ -2,6 +2,7 @@ import {
   system,
   world,
   Vector3,
+  Entity,
   ItemUseBeforeEvent,
   EntityComponentTypes,
   EntityProjectileComponent,
@@ -11,6 +12,11 @@ import {
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
+
+const SHIELD_RANGE = 4;
+const HEAL_DURATION = 5 * 20;
+const SHIELD_DURATION = 6 * 20;
+const SHIELD_DURABILITY = 4;
 
 export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -37,8 +43,24 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           source.playSound("item.amethyst_staff.error");
           return;
         }
-        generateShield(source.location, dimension, 4, 100);
-        reduceDurability(source, itemStack, 4);
+        const nearbyEntities = dimension.getEntities({
+          location: source.location,
+          maxDistance: SHIELD_RANGE,
+          excludeFamilies: ["monster", "item", "inanimate"],
+        });
+        nearbyEntities.forEach((nearbyEntity: Entity) => {
+          nearbyEntity.addEffect("regeneration", HEAL_DURATION, {
+            showParticles: false,
+            amplifier: 2.0,
+          });
+        });
+        generateShield(
+          source.location,
+          dimension,
+          SHIELD_RANGE,
+          SHIELD_DURATION,
+        );
+        reduceDurability(source, itemStack, SHIELD_DURABILITY);
       } else {
         if (
           !source.runCommand("clear @s[m=!c] amethyst_shard 0 1")

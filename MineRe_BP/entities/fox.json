@@ -618,7 +618,11 @@
                 },
                 { "test": "is_family", "subject": "other", "value": "bear" },
                 { "test": "is_family", "subject": "other", "value": "wolf" },
-                { "test": "is_family", "subject": "other", "value": "dire_wolf" }
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "dire_wolf"
+                }
               ]
             },
             "max_dist": 16,

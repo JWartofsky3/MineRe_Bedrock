@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_hoe"]
       },
-      "minecraft:custom_components": ["minere:ender_strike"],
+      "minecraft:custom_components": [
+        "minere:ender_strike",
+        "minere:custom_hoe"
+      ],
       "minecraft:cooldown": {
         "category": "enderStrike",
         "duration": 3.0
@@ -25,12 +28,8 @@
         "destroy_speeds": [
           {
             "block": {
-              "tags": "q.any_tag('mineable/hoe', 'leaves', 'leaves2', 'spruce_leaves', 'birch_leaves', 'jungle_leaves', 'acacia_leaves', 'dark_oak_leaves', 'mangrove_leaves', 'cherry_leaves', 'azalea_leaves', 'azalea_leaves_flowered', 'hay', 'haybale')"
+              "tags": "query.any_tag('leaves', 'leaves2', 'pumpkin', 'plant', 'is_hoe_item_destructible', 'minecraft:is_hoe_item_destructible')"
             },
-            "speed": 20
-          },
-          {
-            "block": "minecraft:hay_block",
             "speed": 12
           }
         ]

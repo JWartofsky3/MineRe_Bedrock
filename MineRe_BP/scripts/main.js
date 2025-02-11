@@ -1,4 +1,4 @@
-import { world, system, EntityComponentTypes, } from "@minecraft/server";
+import { world, system, EntityComponentTypes } from "@minecraft/server";
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
@@ -19,7 +19,6 @@ import { fireInfintyBowAfter } from "item/infinity_bow";
 import { rollBecomeSummoner } from "mob/become_summoner";
 import { bombDamage } from "item/bomb_damage";
 import { handleItemDurability } from "item/handle_item_durability";
-import { onHoeUse } from "item/custom_hoe";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
 import { EnderStrike } from "item/ender_strike";
@@ -27,165 +26,223 @@ import { rollFreeze } from "mob/freeze";
 import { fireflyLamp } from "block/firefly_lamp";
 import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
+import { customOre } from "block/custom_ore";
+import { startAutoMiner, minerDie } from "machine/autoMiner";
+import { AutoMinerItem } from "item/auto_miner_item";
+import { treecapitator } from "item/treecapitator";
+import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
 export const DEFAULT_TICK = 20;
 world.beforeEvents.worldInitialize.subscribe(function (data) {
-    data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", EnderStrike);
-    data.itemComponentRegistry.registerCustomComponent("minere:ice_dagger", IceDagger);
-    data.itemComponentRegistry.registerCustomComponent("minere:venom_shank", VenomShank);
-    data.blockComponentRegistry.registerCustomComponent("minere:firefly_lamp", fireflyLamp);
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ender_strike",
+    EnderStrike,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:auto_miner_item",
+    AutoMinerItem,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ice_dagger",
+    IceDagger,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:venom_shank",
+    VenomShank,
+  );
+  // TODO, use these once the custom components work
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_axe",
+  //   CustomAxe,
+  // );
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_hoe",
+  //   CustomHoe,
+  // );
+  // data.itemComponentRegistry.registerCustomComponent(
+  //   "minere:custom_shovel",
+  //   CustomShovel,
+  // );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:firefly_lamp",
+    fireflyLamp,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:custom_ore",
+    customOre,
+  );
 });
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
-    fireInfintyBowAfter(data);
+  fireInfintyBowAfter(data);
 });
 world.afterEvents.itemCompleteUse.subscribe(function (data) {
-    healFromItem(data);
+  healFromItem(data);
 });
 world.afterEvents.entityHealthChanged.subscribe(function (data) {
-    playerHungerHeal(data);
+  playerHungerHeal(data);
 });
 world.beforeEvents.entityRemove.subscribe(function (data) {
-    angerEndermen(data);
-    replaceMinecart(data);
+  angerEndermen(data);
+  replaceMinecart(data);
 });
 world.beforeEvents.itemUse.subscribe((data) => {
-    useAmethystStaff(data);
-    useEchoStaff(data);
-    useFireStaff(data);
-    useBlasterStaff(data);
+  useAmethystStaff(data);
+  useEchoStaff(data);
+  useFireStaff(data);
+  useBlasterStaff(data);
 });
 world.afterEvents.itemUse.subscribe((data) => {
-    usePhasedEnderPearl(data);
+  usePhasedEnderPearl(data);
+});
+world.afterEvents.dataDrivenEntityTrigger.subscribe((data) => {
+  startAutoMiner(data.entity);
+});
+world.afterEvents.entityLoad.subscribe((data) => {
+  startAutoMiner(data.entity);
 });
 world.afterEvents.itemUseOn.subscribe((data) => {
-    onHoeUse(data.source, data.itemStack, data.block);
+  onHoeUse(data.source, data.itemStack, data.block);
+  onShovelUse(data.source, data.itemStack, data.block);
+  onAxeUse(data.source, data.itemStack, data.block);
 });
 world.afterEvents.entityDie.subscribe(function (data) {
-    ogreLaugh(data?.damageSource?.damagingEntity);
+  ogreLaugh(data?.damageSource?.damagingEntity);
+  minerDie(data.deadEntity);
 });
 world.afterEvents.entitySpawn.subscribe(function (data) {
-    if (data?.entity == null) {
-        return;
-    }
-    if (data.entity.typeId == "minere:bomb") {
-        world.playSound("random.fuse", data.entity.location);
-    }
-    if (data.entity.typeId == "minere:demon") {
-        rollBecomeSummoner(data.entity, 0.2);
-    }
-    handleEndSpawn(data.entity);
+  if (data?.entity == null) {
+    return;
+  }
+  if (data.entity.typeId == "minere:bomb") {
+    world.playSound("random.fuse", data.entity.location);
+  }
+  if (data.entity.typeId == "minere:demon") {
+    rollBecomeSummoner(data.entity, 0.2);
+  }
+  handleEndSpawn(data.entity);
+});
+world.beforeEvents.playerBreakBlock.subscribe(function (data) {
+  treecapitator(data.player, data.block);
 });
 world.afterEvents.playerBreakBlock.subscribe(function (data) {
-    if (data.player === null) {
-        return;
-    }
-    handleItemDurability(data.player, data.block, data.itemStackBeforeBreak, data.itemStackAfterBreak);
+  if (data.player === null) {
+    return;
+  }
+  handleItemDurability(
+    data.player,
+    data.block,
+    data.itemStackBeforeBreak,
+    data.itemStackAfterBreak,
+  );
 });
 world.afterEvents.entityHurt.subscribe(function (data) {
-    if (data?.hurtEntity === null) {
-        return;
+  if (data?.hurtEntity === null) {
+    return;
+  }
+  if (data?.damageSource === null) {
+    return;
+  }
+  if (!data.hurtEntity.hasComponent(EntityComponentTypes.Health)) {
+    return;
+  }
+  const projectile = data.damageSource?.damagingEntity;
+  const attacker = data.damageSource?.damagingEntity;
+  const target = data.hurtEntity;
+  const dimension = world.getDimension(target.dimension.id);
+  if (!dimension) {
+    return;
+  }
+  if (target.typeId === "minecraft:player") {
+    armorCurve(target, data.damage, data.damageSource);
+  }
+  if (attacker?.typeId === "minere:bomb") {
+    bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
+  }
+  // throwing
+  if (
+    attacker?.typeId === "minere:yeti" ||
+    attacker?.typeId === "minere:walker"
+  ) {
+    throwBy(attacker, target, 5, 10);
+  }
+  // web spider shooting webs
+  if (attacker?.typeId === "minere:web_spider") {
+    rollWebAttack(attacker, target, 0.6);
+  }
+  if (target?.typeId === "minere:web_spider") {
+    rollWebAttack(target, attacker, 0.4);
+  }
+  // demon shooting fire
+  if (attacker?.typeId === "minere:demon") {
+    rollCastFire(attacker, target, 0.25);
+  }
+  if (target?.typeId === "minere:demon") {
+    if (projectile) {
+      rollCastFire(target, attacker, 0.33);
+      rollBecomeSummoner(target, 0.33);
+    } else {
+      rollCastFire(target, attacker, 0.25);
+      rollBecomeSummoner(target, 0.2);
     }
-    if (data?.damageSource === null) {
-        return;
+  }
+  // freeze freezing
+  if (attacker?.typeId === "minere:freeze") {
+    rollFreeze(target, attacker);
+  }
+  // ender phantom teleport target
+  if (attacker?.typeId === "minere:ender_phantom") {
+    enderRandomTeleport(target, 7, 0.35, 0);
+  }
+  // ender phantom teleport self
+  if (target?.typeId === "minere:ender_phantom") {
+    enderRandomTeleport(target, 40, 0.35, 4);
+  }
+  // enderman teleport target
+  if (attacker?.typeId === "minecraft:enderman") {
+    enderRandomTeleport(target, 5, 0.25, 0);
+  }
+  // ender dragon teleport target
+  if (attacker?.typeId === "minecraft:ender_dragon" && !projectile) {
+    enderRandomTeleport(target, 7, 0.5, 0);
+  }
+  if (attacker?.typeId === "minere:vampire") {
+    vampireHeal(attacker, target);
+  }
+  if (target?.typeId === "minere:vampire" || target.typeId == "minere:ghost") {
+    vampireHurt(target, attacker);
+    if ((!!projectile || !!attacker) && target?.typeId === "minere:vampire") {
+      rollBecomeBat(target, 0.2, 0.5);
     }
-    if (!data.hurtEntity.hasComponent(EntityComponentTypes.Health)) {
-        return;
-    }
-    const projectile = data.damageSource?.damagingEntity;
-    const attacker = data.damageSource?.damagingEntity;
-    const target = data.hurtEntity;
-    const dimension = world.getDimension(target.dimension.id);
-    if (!dimension) {
-        return;
-    }
-    if (target.typeId === "minecraft:player") {
-        armorCurve(target, data.damage, data.damageSource);
-    }
-    if (attacker?.typeId === "minere:bomb") {
-        bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
-    }
-    // throwing
-    if (attacker?.typeId === "minere:yeti" ||
-        attacker?.typeId === "minere:walker") {
-        throwBy(attacker, target, 5, 10);
-    }
-    // web spider shooting webs
-    if (attacker?.typeId === "minere:web_spider") {
-        rollWebAttack(attacker, target, 0.6);
-    }
-    if (target?.typeId === "minere:web_spider") {
-        rollWebAttack(target, attacker, 0.4);
-    }
-    // demon shooting fire
-    if (attacker?.typeId === "minere:demon") {
-        rollCastFire(attacker, target, 0.25);
-    }
-    if (target?.typeId === "minere:demon") {
-        if (projectile) {
-            rollCastFire(target, attacker, 0.33);
-            rollBecomeSummoner(target, 0.33);
-        }
-        else {
-            rollCastFire(target, attacker, 0.25);
-            rollBecomeSummoner(target, 0.2);
-        }
-    }
-    // freeze freezing
-    if (attacker?.typeId === "minere:freeze") {
-        rollFreeze(target, attacker);
-    }
-    // ender phantom teleport target
-    if (attacker?.typeId === "minere:ender_phantom") {
-        enderRandomTeleport(target, 7, 0.35, 0);
-    }
-    // ender phantom teleport self
-    if (target?.typeId === "minere:ender_phantom") {
-        enderRandomTeleport(target, 40, 0.35, 4);
-    }
-    // enderman teleport target
-    if (attacker?.typeId === "minecraft:enderman") {
-        enderRandomTeleport(target, 5, 0.25, 0);
-    }
-    // ender dragon teleport target
-    if (attacker?.typeId === "minecraft:ender_dragon" && !projectile) {
-        enderRandomTeleport(target, 7, 0.5, 0);
-    }
-    if (attacker?.typeId === "minere:vampire") {
-        vampireHeal(attacker, target);
-    }
-    if (target?.typeId === "minere:vampire" || target.typeId == "minere:ghost") {
-        vampireHurt(target, attacker);
-        if ((!!projectile || !!attacker) && target?.typeId === "minere:vampire") {
-            rollBecomeBat(target, 0.2, 0.5);
-        }
-    }
-    // DISABLED because it's buggy
-    // ender dragon teleport self
-    // if (target?.typeId === "minecraft:ender_dragon") {
-    //   if (target.hasComponent("minecraft:behavior.dragonlanding")) {
-    //     enderTeleport(target, 100, 0.1, 8);
-    //   } else {
-    //     enderTeleport(target, 100, 0.25, 8);
-    //   }
-    // }
-    // anger endermen
-    if (target.typeId === "minecraft:ender_crystal" &&
-        dimension.id == "minecraft:the_end") {
-        const endermen = dimension.getEntities({
-            type: "enderman",
-            closest: 4,
-            location: target.location,
-            maxDistance: 100,
-        });
-        endermen.forEach((enderman) => {
-            enderman.triggerEvent("minecraft:become_angry");
-            world.playSound("mob.endermen.scream", enderman.location, {
-                volume: 5.0,
-            });
-        });
-    }
+  }
+  // DISABLED because it's buggy
+  // ender dragon teleport self
+  // if (target?.typeId === "minecraft:ender_dragon") {
+  //   if (target.hasComponent("minecraft:behavior.dragonlanding")) {
+  //     enderTeleport(target, 100, 0.1, 8);
+  //   } else {
+  //     enderTeleport(target, 100, 0.25, 8);
+  //   }
+  // }
+  // anger endermen
+  if (
+    target.typeId === "minecraft:ender_crystal" &&
+    dimension.id == "minecraft:the_end"
+  ) {
+    const endermen = dimension.getEntities({
+      type: "enderman",
+      closest: 4,
+      location: target.location,
+      maxDistance: 100,
+    });
+    endermen.forEach((enderman) => {
+      enderman.triggerEvent("minecraft:become_angry");
+      world.playSound("mob.endermen.scream", enderman.location, {
+        volume: 5.0,
+      });
+    });
+  }
 });
 system.runInterval(() => {
-    world.getAllPlayers().forEach((player) => {
-        armorWeight(player);
-    });
+  world.getAllPlayers().forEach((player) => {
+    armorWeight(player);
+  });
 }, 1);
