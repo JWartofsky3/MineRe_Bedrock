@@ -16,6 +16,16 @@ import {
 } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
 
+const fireReplaceList = [
+  "air",
+  "tall_grass",
+  "short_grass",
+  "snow_layer",
+  "fern",
+  "crimson_roots",
+  "warped_roots"
+];
+
 export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
   const source = data.source;
@@ -115,19 +125,21 @@ function fireWall(
         volume: 0.5,
       });
       // z axis
-      dimension.runCommand(
-        `fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${spacing * i + position.z} fire replace air`,
-      );
-      dimension.runCommand(
-        `fill ${spacing * i + position.x} ${minY} ${-spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace air`,
-      );
-      // x axis
-      dimension.runCommand(
-        `fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace air`,
-      );
-      dimension.runCommand(
-        `fill ${-spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace air`,
-      );
+      fireReplaceList.forEach((replaceMe: string) => {
+        dimension.runCommand(
+          `fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${spacing * i + position.z} fire replace ${replaceMe}`,
+        );
+        dimension.runCommand(
+          `fill ${spacing * i + position.x} ${minY} ${-spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace ${replaceMe}`,
+        );
+        // x axis
+        dimension.runCommand(
+          `fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace ${replaceMe}`,
+        );
+        dimension.runCommand(
+          `fill ${-spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace ${replaceMe}`,
+        );
+      });
     }, timeout);
     timeout += 3;
   }

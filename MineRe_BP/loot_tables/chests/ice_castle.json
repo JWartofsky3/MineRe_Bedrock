@@ -458,21 +458,21 @@
       ]
     },
     {
-      "rolls": 1,
+      "rolls": 2,
       "entries": [
         {
           "type": "empty",
-          "weight": 5
+          "weight": 10
         },
         {
           "type": "item",
           "name": "minere:amethyst_staff",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "item",
           "name": "minere:ice_dagger",
-          "weight": 3
+          "weight": 9
         }
       ]
     },

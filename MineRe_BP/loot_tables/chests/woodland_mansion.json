@@ -270,7 +270,7 @@
       ]
     },
     {
-      "rolls": 1,
+      "rolls": 2,
       "entries": [
         {
           "type": "empty",
@@ -303,7 +303,7 @@
         },
         {
           "type": "item",
-          "weight": 1,
+          "weight": 2,
           "functions": [
             {
               "function": "specific_enchants",

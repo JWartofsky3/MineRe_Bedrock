@@ -28,7 +28,7 @@
         "destroy_speeds": [
           {
             "block": {
-              "tags": "query.any_tag('leaves', 'leaves2', 'pumpkin', 'plant', 'is_hoe_item_destructible', 'minecraft:is_hoe_item_destructible')"
+              "tags": "query.any_tag('leaves', 'leaves2', 'pumpkin', 'plant', 'minecraft:is_hoe_item_destructible')"
             },
             "speed": 12
           }

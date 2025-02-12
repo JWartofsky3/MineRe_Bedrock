@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.30",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
       "identifier": "minere:ice_dagger",
@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_sword"]
       },
-      "minecraft:custom_components": ["minere:ice_dagger"],
+      "minecraft:custom_components": [
+        "minere:ice_dagger",
+        "minere:custom_sword"
+      ],
       "minecraft:cooldown": {
         "category": "iceDagger",
         "duration": 8.0

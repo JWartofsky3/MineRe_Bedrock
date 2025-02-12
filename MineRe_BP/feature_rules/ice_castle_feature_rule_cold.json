@@ -15,13 +15,6 @@
               "operator": "==",
               "value": "cold"
             }
-          ],
-          "none_of": [
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "ocean"
-            }
           ]
         }
       ]
@@ -30,13 +23,13 @@
       "iterations": 1,
       "x": -16,
       "y": {
-        "extent": [0, 55],
+        "extent": [0, 70],
         "distribution": "uniform"
       },
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 250
+        "denominator": 180
       }
     }
   }

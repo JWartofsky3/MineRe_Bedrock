@@ -9,12 +9,15 @@ import {
   ItemStack,
   ItemComponentTypes,
   ItemDurabilityComponent,
+  EntityDamageCause,
 } from "@minecraft/server";
 import { findItemInContainer, findAnyPlanks } from "item/item_utils";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 
 const BASE_FUEL_COST = 2;
 const PICKUP_RANGE = 2;
+const DAMAGE_RANGE = 0.75;
+const DAMAGE = 2;
 const GOLDEN_RAIL_MAX_INDEX = 16;
 
 const threadMap = new Map<string, number>();
@@ -72,7 +75,8 @@ durableBlocks.set("minecraft:deepslate_gold_ore", 2);
 durableBlocks.set("minecraft:deepslate_redstone_ore", 2);
 durableBlocks.set("minecraft:deepslate_diamond_ore", 2);
 durableBlocks.set("minecraft:deepslate_emerald_ore", 2);
-durableBlocks.set("minecraft:endstone", 2);
+durableBlocks.set("minecraft:end_stone", 2);
+durableBlocks.set("minecraft:end_bricks", 2);
 durableBlocks.set("minere:enderon_ore", 2);
 durableBlocks.set("minere:ender_plasma_ore", 2);
 
@@ -295,6 +299,8 @@ export function startAutoMiner(entity: Entity) {
         }
       }
     }
+
+    // pickup items
     const itemEntities = dimension.getEntities({
       type: "minecraft:item",
       location: entity.location,
@@ -314,6 +320,22 @@ export function startAutoMiner(entity: Entity) {
         }
       }
     }
+
+    // damage entities
+    const mobEntities = dimension.getEntities({
+      excludeFamilies: ["inanimate", "item"],
+      excludeTypes: ["minecraft:item"],
+      location: addVector3(entity.location, entity.getViewDirection()),
+      maxDistance: DAMAGE_RANGE,
+    });
+    for (let i = 0; i < mobEntities.length; i++) {
+      mobEntities[i].applyDamage(DAMAGE, {
+        cause: EntityDamageCause.entityAttack,
+        damagingEntity: entity,
+      });
+    }
+
+    // update properties
     entity.setProperty(
       "minere:fuel",
       Math.max(0, fuel - (BASE_FUEL_COST + blocksBroken)),
@@ -334,6 +356,18 @@ export function startAutoMiner(entity: Entity) {
     }
   }, 3);
   threadMap.set(entity.id, runId);
+}
+
+export function stopAutoMiner(entity: Entity) {
+  if (
+    !entity ||
+    !entity.isValid ||
+    entity == undefined ||
+    entity.typeId != "minere:auto_miner"
+  ) {
+    return;
+  }
+  entity.setProperty("minere:is_on", false);
 }
 
 export function minerDie(entity: Entity) {

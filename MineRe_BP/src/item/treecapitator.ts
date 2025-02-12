@@ -11,25 +11,29 @@ import {
   ListBlockVolume,
   Dimension,
   ItemDurabilityComponent,
+  ItemStack,
   ItemComponentTypes,
+  ItemCustomComponent,
+  ItemComponentMineBlockEvent,
+  BlockPermutation,
+  PlayerBreakBlockAfterEvent,
 } from "@minecraft/server";
 import { Queue } from "util/queue";
 import { isValid, vector3ToString } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
+import { customToolHandleDurability } from "./custom_tools";
 
 const LEAF_HORIZONTAL_DISTANCE = 5;
 const LOG_HORIZONTAL_DISTANCE = 4;
 const MAX_VERTICAL_DISTANCE = 64;
-
 const HORIZONTAL_CHECK_DISTANCE = 8;
 const VERTICAL_CHECK_DISTANCE = 0;
-
 const ALTITUDE_BONUS_START = 12;
 const ALTITUDE_BONUS = 3;
-
 const REMAINING_DURABILITY_MULTIPLIER = 1.5;
+const TREE_BREAK_DELAY = 2;
 
-const logSet = new Set<string>();
+export const logSet = new Set<string>();
 // logs
 logSet.add("minecraft:log");
 logSet.add("minecraft:stripped_log");
@@ -103,7 +107,7 @@ function checkWidthWithOffset(
       logSet,
       ["log", "stem"],
     );
-    if (!log || log.permutation?.getState("pillar_axis") !== "y") {
+    if (!log) {
       break;
     }
     if (i > max_distance) {
@@ -122,7 +126,7 @@ function checkWidthWithOffset(
       logSet,
       ["log", "stem"],
     );
-    if (!log || log.permutation?.getState("pillar_axis") !== "y") {
+    if (!log) {
       break;
     }
     if (i > max_distance) {
@@ -141,7 +145,7 @@ function checkWidthWithOffset(
       logSet,
       ["log", "stem"],
     );
-    if (!log || log.permutation?.getState("pillar_axis") !== "y") {
+    if (!log) {
       break;
     }
     if (i > max_distance) {
@@ -160,7 +164,7 @@ function checkWidthWithOffset(
       logSet,
       ["log", "stem"],
     );
-    if (!log || log.permutation?.getState("pillar_axis") !== "y") {
+    if (!log) {
       break;
     }
     if (i > max_distance) {
@@ -188,7 +192,7 @@ function checkWidth(dimension: Dimension, origin: Vector3): number {
   return max;
 }
 
-function checkIsType(
+export function checkIsType(
   dimension: Dimension,
   location: Vector3,
   typeSet: Set<string>,
@@ -264,21 +268,20 @@ function checkRange(
 }
 
 function treecapitate(
-  origin: Block,
-  width: number,
+  dimension: Dimension,
+  origin: Vector3,
   durability: number,
 ): number {
   let highest = 0;
   const visited = new Set<string>();
   const queue = new Queue<Vector3>();
-  const dimension = origin.dimension;
   const logs = new Set<Vector3>();
   const leaves = new Set<Vector3>();
-  queue.enqueue(origin.location);
+  queue.enqueue(origin);
   while (!queue.isEmpty()) {
     const next = queue.dequeue();
-    if (next.y - origin.location.y > highest) {
-      highest = next.y - origin.location.y;
+    if (next.y - origin.y > highest) {
+      highest = next.y - origin.y;
     }
     visited.add(vector3ToString(next));
     const neighbors = getNeighbors(
@@ -302,10 +305,10 @@ function treecapitate(
         continue;
       }
       visited.add(neighborString);
-      const altitude = neighbor.y - origin.location.y;
+      const altitude = neighbor.y - origin.y;
       if (
         checkRange(
-          origin.location,
+          origin,
           neighbor,
           LOG_HORIZONTAL_DISTANCE +
             (altitude > ALTITUDE_BONUS_START ? ALTITUDE_BONUS : 0),
@@ -317,7 +320,7 @@ function treecapitate(
         queue.enqueue(neighbor);
       } else if (
         checkRange(
-          origin.location,
+          origin,
           neighbor,
           LEAF_HORIZONTAL_DISTANCE +
             (altitude > ALTITUDE_BONUS_START ? ALTITUDE_BONUS : 0),
@@ -335,18 +338,14 @@ function treecapitate(
     }
   }
 
-  if (width > highest) {
-    return;
-  }
-
   if (logs.size > REMAINING_DURABILITY_MULTIPLIER * durability) {
-    world.playSound("item.amethyst_staff.error", origin.location);
-    return;
+    world.playSound("item.amethyst_staff.error", origin);
+    return 0;
   }
 
   const logLevelToBreak = new Array<Array<Vector3>>(highest + 1);
   logs.forEach((logLocation: Vector3) => {
-    let i = logLocation.y - origin.location.y;
+    let i = logLocation.y - origin.y;
     if (!logLevelToBreak[i]) {
       logLevelToBreak[i] = new Array<Vector3>(0);
     }
@@ -363,7 +362,7 @@ function treecapitate(
           );
         }
       }
-    }, i * 2);
+    }, i * TREE_BREAK_DELAY);
   }
 
   // break leaves
@@ -397,7 +396,7 @@ function treecapitate(
       visited.add(neighborString);
       if (
         checkRange(
-          origin.location,
+          origin,
           neighbor,
           LEAF_HORIZONTAL_DISTANCE,
           MAX_VERTICAL_DISTANCE,
@@ -415,27 +414,81 @@ function treecapitate(
         }
       }
     }
-    system.runTimeout(
-      () => {
-        dimension.runCommand(
-          `setBlock ${next.x} ${next.y} ${next.z} air destroy`,
-        );
-      },
-      Math.floor(i / 5) + 2,
-    );
     i++;
   }
+  system.runTimeout(
+    () => {
+      leaves.forEach((leaf: Vector3) => {
+        dimension.runCommand(
+          `setBlock ${leaf.x} ${leaf.y} ${leaf.z} air destroy`,
+        );
+      });
+    },
+    highest * TREE_BREAK_DELAY + 3,
+  );
 
   return logs.size;
 }
 
-export function treecapitator(player: Player, blockBefore: Block) {
-  if (!player || !blockBefore) {
-    return;
+export function runTreecapitate(
+  player: Player,
+  location: Vector3,
+  blockPermutation: BlockPermutation,
+  treeCapitator: ItemStack,
+): number {
+  if (!player) {
+    return 0;
   }
   const dimension = player.dimension;
-  const location = blockBefore.location;
-  const equippable = player.getComponent(
+  const durability = treeCapitator.getComponent(
+    ItemComponentTypes.Durability,
+  ) as ItemDurabilityComponent;
+
+  // must start on a log
+  const logTypeId = blockPermutation?.getItemStack()?.typeId;
+  if (
+    !(
+      (logSet.has(logTypeId) ||
+        logTypeId.includes("log") ||
+        logTypeId.includes("stem")) &&
+      blockPermutation.getState("pillar_axis") === "y"
+    )
+  ) {
+    return 0;
+  }
+
+  // the log must be isolated
+  const neighbors = getNeighbors(
+    dimension,
+    location,
+    {
+      x: -1,
+      y: 0,
+      z: -1,
+    },
+    {
+      x: 1,
+      y: 0,
+      z: 1,
+    },
+  );
+  for (let i = 0; i < neighbors.length; i++) {
+    if (!!checkIsType(dimension, neighbors[i], logSet, ["log", "stem"])) {
+      return 0;
+    }
+  }
+
+  const logsBroken = treecapitate(
+    player.dimension,
+    location,
+    durability?.maxDurability - durability?.damage,
+  );
+
+  return logsBroken;
+}
+
+export function offHandTreecapitate(data: PlayerBreakBlockAfterEvent): boolean {
+  const equippable = data.player.getComponent(
     EntityComponentTypes.Equippable,
   ) as EntityEquippableComponent;
   const mainHand = equippable.getEquipment(EquipmentSlot.Mainhand);
@@ -453,30 +506,39 @@ export function treecapitator(player: Player, blockBefore: Block) {
       ? offHand
       : undefined;
   if (!treeCapitator) {
-    return;
+    return false;
   }
-
-  const durability = treeCapitator.getComponent(
-    ItemComponentTypes.Durability,
-  ) as ItemDurabilityComponent;
-
-  const width = checkWidth(dimension, blockBefore.location);
-  if (width > 1) {
-    return;
+  if (treeCapitatorSlot !== EquipmentSlot.Offhand) {
+    return false;
   }
-
-  const log = checkIsType(dimension, location, logSet, ["log", "stem"]);
-
-  if (!log) {
-    return;
-  }
-
-  system.runTimeout(() => {
-    const logsBroken = treecapitate(
-      blockBefore,
-      width,
-      durability?.maxDurability - durability?.damage,
-    );
-    reduceDurability(player, treeCapitator, logsBroken, treeCapitatorSlot);
-  });
+  const logsBroken = runTreecapitate(
+    data.player,
+    data.block.location,
+    data.brokenBlockPermutation,
+    treeCapitator,
+  );
+  reduceDurability(data.player, treeCapitator, logsBroken, treeCapitatorSlot);
 }
+
+export const Treecapitator: ItemCustomComponent = {
+  onMineBlock(event: ItemComponentMineBlockEvent) {
+    system.runTimeout(() => {
+      const logsBroken = runTreecapitate(
+        event.source as Player,
+        event.block.location,
+        event.minedBlockPermutation,
+        event.itemStack,
+      );
+      if (logsBroken > 0) {
+        reduceDurability(
+          event.source as Player,
+          event.itemStack,
+          logsBroken + 1,
+          EquipmentSlot.Mainhand,
+        );
+      } else {
+        customToolHandleDurability(event);
+      }
+    });
+  },
+};

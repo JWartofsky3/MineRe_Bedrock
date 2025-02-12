@@ -119,11 +119,13 @@ export const customOre: BlockCustomComponent = {
       bonus += getRandomIntInclusive(oreDef.fortune.min, oreDef.fortune.max);
     }
 
-    const itemStack = new ItemStack(
-      oreDef.ore,
-      getRandomIntInclusive(oreDef.count.min, oreDef.count.max) + bonus,
-    );
-    dimension.spawnItem(itemStack, location);
+    if (bonus > 0) {
+      const itemStack = new ItemStack(
+        oreDef.ore,
+        bonus,
+      );
+      dimension.spawnItem(itemStack, location);
+    }
 
     const xp = getRandomIntInclusive(
       oreDef.experience.min,

@@ -56,8 +56,8 @@
           "destroy_affected_by_griefing": false
         },
         "minecraft:projectile": {
-          "power": 0.8,
-          "gravity": 0.005,
+          "power": 0.85,
+          "gravity": 0.0025,
           "angle_offset": -20,
           "inertia": 0.995,
           "liquid_inertia": 0.5,
@@ -80,8 +80,8 @@
           "destroy_affected_by_griefing": true
         },
         "minecraft:projectile": {
-          "power": 0.8,
-          "gravity": 0,
+          "power": 0.85,
+          "gravity": 0.0025,
           "angle_offset": -20,
           "inertia": 0.995,
           "anchor": 2,
@@ -103,8 +103,8 @@
           "destroy_affected_by_griefing": true
         },
         "minecraft:projectile": {
-          "power": 0.8,
-          "gravity": 0,
+          "power": 0.85,
+          "gravity": 0.0025,
           "angle_offset": -20,
           "inertia": 0.995,
           "anchor": 2,

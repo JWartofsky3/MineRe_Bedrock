@@ -140,7 +140,7 @@
           "add_effects": [
             {
               "effect": "slow_falling",
-              "duration": 9999,
+              "duration": 99999,
               "amplifier": 0,
               "visible": false,
               "display_on_screen_animation": false

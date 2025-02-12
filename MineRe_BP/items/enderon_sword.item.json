@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_sword"]
       },
-      "minecraft:custom_components": ["minere:ender_strike"],
+      "minecraft:custom_components": [
+        "minere:ender_strike",
+        "minere:custom_sword"
+      ],
       "minecraft:cooldown": {
         "category": "enderStrike",
         "duration": 4.0
@@ -36,6 +39,12 @@
           {
             "block": "minecraft:bamboo",
             "speed": 60
+          },
+          {
+            "block": {
+              "tags": "q.any_tag('minecraft:is_hoe_item_destructible')"
+            },
+            "speed": 3
           }
         ]
       },

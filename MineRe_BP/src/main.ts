@@ -24,7 +24,6 @@ import { rollBecomeBat, vampireHeal, vampireHurt } from "mob/vampire";
 import { fireInfintyBowAfter } from "item/infinity_bow";
 import { rollBecomeSummoner } from "mob/become_summoner";
 import { bombDamage } from "item/bomb_damage";
-import { handleItemDurability } from "item/handle_item_durability";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
 import { EnderStrike } from "item/ender_strike";
@@ -33,10 +32,19 @@ import { fireflyLamp } from "block/firefly_lamp";
 import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
 import { customOre } from "block/custom_ore";
-import { startAutoMiner, minerDie } from "machine/autoMiner";
+import { startAutoMiner, minerDie, stopAutoMiner } from "machine/autoMiner";
 import { AutoMinerItem } from "item/auto_miner_item";
-import { treecapitator } from "item/treecapitator";
-import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
+import { Treecapitator, offHandTreecapitate } from "item/treecapitator";
+import {
+  onAxeUse,
+  onShovelUse,
+  onHoeUse,
+  CustomAxe,
+  CustomSword,
+  CustomShovel,
+  CustomPickaxe,
+  CustomHoe,
+} from "item/custom_tools";
 
 export const DEFAULT_TICK = 20;
 
@@ -57,19 +65,30 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:venom_shank",
     VenomShank,
   );
-  // TODO, use these once the custom components work
-  // data.itemComponentRegistry.registerCustomComponent(
-  //   "minere:custom_axe",
-  //   CustomAxe,
-  // );
-  // data.itemComponentRegistry.registerCustomComponent(
-  //   "minere:custom_hoe",
-  //   CustomHoe,
-  // );
-  // data.itemComponentRegistry.registerCustomComponent(
-  //   "minere:custom_shovel",
-  //   CustomShovel,
-  // );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_sword",
+    CustomSword,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_axe",
+    CustomAxe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_hoe",
+    CustomHoe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_shovel",
+    CustomShovel,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_pickaxe",
+    CustomPickaxe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:treecapitator",
+    Treecapitator,
+  );
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,
@@ -90,6 +109,10 @@ world.afterEvents.itemCompleteUse.subscribe(function (data) {
 
 world.afterEvents.entityHealthChanged.subscribe(function (data) {
   playerHungerHeal(data);
+});
+
+world.afterEvents.playerBreakBlock.subscribe(function (data) {
+  offHandTreecapitate(data);
 });
 
 world.beforeEvents.entityRemove.subscribe(function (data) {
@@ -113,7 +136,7 @@ world.afterEvents.dataDrivenEntityTrigger.subscribe((data) => {
 });
 
 world.afterEvents.entityLoad.subscribe((data) => {
-  startAutoMiner(data.entity);
+  stopAutoMiner(data.entity);
 });
 
 world.afterEvents.itemUseOn.subscribe((data) => {
@@ -138,22 +161,6 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
     rollBecomeSummoner(data.entity, 0.2);
   }
   handleEndSpawn(data.entity);
-});
-
-world.beforeEvents.playerBreakBlock.subscribe(function (data) {
-  treecapitator(data.player, data.block);
-});
-
-world.afterEvents.playerBreakBlock.subscribe(function (data) {
-  if (data.player === null) {
-    return;
-  }
-  handleItemDurability(
-    data.player,
-    data.block,
-    data.itemStackBeforeBreak,
-    data.itemStackAfterBreak,
-  );
 });
 
 world.afterEvents.entityHurt.subscribe(function (data) {
@@ -201,14 +208,14 @@ world.afterEvents.entityHurt.subscribe(function (data) {
 
   // demon shooting fire
   if (attacker?.typeId === "minere:demon") {
-    rollCastFire(attacker, target, 0.25);
+    rollCastFire(attacker, target, 0.25, 100);
   }
   if (target?.typeId === "minere:demon") {
     if (projectile) {
-      rollCastFire(target, attacker, 0.33);
+      rollCastFire(target, attacker, 0.33, 100);
       rollBecomeSummoner(target, 0.33);
     } else {
-      rollCastFire(target, attacker, 0.25);
+      rollCastFire(target, attacker, 0.25, 100);
       rollBecomeSummoner(target, 0.2);
     }
   }

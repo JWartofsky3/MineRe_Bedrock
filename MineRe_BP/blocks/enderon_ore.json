@@ -20,7 +20,7 @@
         "explosion_resistance": 60
       },
       "minecraft:map_color": "#EEF6B4",
-      "minecraft:loot": "loot_tables/empty.json"
+      "minecraft:loot": "loot_tables/blocks/enderon_ore.json"
     }
   }
 }

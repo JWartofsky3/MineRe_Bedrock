@@ -16,7 +16,8 @@
       "animations": {
         "walk": "animation.minere.demon.walk",
         "breathe": "animation.minere.demon.breathe",
-        "roar": "animation.minere.demon.roar",
+        "fire": "animation.minere.demon.fire",
+        "summon": "animation.minere.demon.summon",
         "attack": "animation.minere.demon.attack",
         "look_at_target": "animation.minere.demon.look_at_target",
         "controller": "controller.animation.minere.demon"

@@ -176,7 +176,7 @@
                   }
                 ]
               },
-              "event": "minere:refuel_900",
+              "event": "minere:refuel_1000",
               "target": "self"
             },
             "use_item": true,
@@ -199,7 +199,7 @@
                   }
                 ]
               },
-              "event": "minere:refuel_1800",
+              "event": "minere:refuel_3000",
               "target": "self"
             },
             "use_item": true,
@@ -315,11 +315,11 @@
           }
         ]
       },
-      "minere:refuel_900": {
+      "minere:refuel_1000": {
         "sequence": [
           {
             "set_property": {
-              "minere:fuel": "query.property('minere:fuel') + 900"
+              "minere:fuel": "query.property('minere:fuel') + 1000"
             }
           },
           {
@@ -334,11 +334,11 @@
           }
         ]
       },
-      "minere:refuel_1800": {
+      "minere:refuel_3000": {
         "sequence": [
           {
             "set_property": {
-              "minere:fuel": "query.property('minere:fuel') + 1800"
+              "minere:fuel": "query.property('minere:fuel') + 3000"
             }
           },
           {
@@ -355,7 +355,7 @@
       },
       "minere:repair": {
         "set_property": {
-          "minere:durability": "query.property('minere:durability') + 800"
+          "minere:durability": "query.property('minere:durability') + 1000"
         },
         "queue_command": {
           "command": "playsound machine.auto_miner.repair @a ~ ~ ~ 5.0"

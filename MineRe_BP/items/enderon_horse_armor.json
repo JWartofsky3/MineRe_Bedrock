@@ -5,7 +5,7 @@
       "identifier": "minere:enderon_horse_armor",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.horse_armor"
+        "group": "itemGroup.name.horseArmor"
       }
     },
     "components": {

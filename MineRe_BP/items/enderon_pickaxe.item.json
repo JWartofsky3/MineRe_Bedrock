@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_pickaxe"]
       },
-      "minecraft:custom_components": ["minere:ender_strike"],
+      "minecraft:custom_components": [
+        "minere:ender_strike",
+        "minere:custom_pickaxe"
+      ],
       "minecraft:cooldown": {
         "category": "enderStrike",
         "duration": 4.0

@@ -1,13 +1,10 @@
-import {
-  system,
-  EntityComponentTypes,
-  ItemStack,
-  ItemComponentTypes,
-} from "@minecraft/server";
+import { system, EntityComponentTypes, ItemStack, ItemComponentTypes, EntityDamageCause, } from "@minecraft/server";
 import { findItemInContainer, findAnyPlanks } from "item/item_utils";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 const BASE_FUEL_COST = 2;
 const PICKUP_RANGE = 2;
+const DAMAGE_RANGE = 0.75;
+const DAMAGE = 2;
 const GOLDEN_RAIL_MAX_INDEX = 16;
 const threadMap = new Map();
 const disallowedBlocks = new Set();
@@ -59,280 +56,267 @@ durableBlocks.set("minecraft:deepslate_gold_ore", 2);
 durableBlocks.set("minecraft:deepslate_redstone_ore", 2);
 durableBlocks.set("minecraft:deepslate_diamond_ore", 2);
 durableBlocks.set("minecraft:deepslate_emerald_ore", 2);
-durableBlocks.set("minecraft:endstone", 2);
+durableBlocks.set("minecraft:end_stone", 2);
+durableBlocks.set("minecraft:end_bricks", 2);
 durableBlocks.set("minere:enderon_ore", 2);
 durableBlocks.set("minere:ender_plasma_ore", 2);
 export function startAutoMiner(entity) {
-  if (
-    !entity ||
-    !entity.isValid ||
-    entity == undefined ||
-    entity.typeId != "minere:auto_miner"
-  ) {
-    return;
-  }
-  if (threadMap.has(entity.id)) {
-    system.clearRun(threadMap.get(entity.id));
-  }
-  const inventory = entity.getComponent(EntityComponentTypes.Inventory);
-  const container = inventory.container;
-  const rotation = entity.getRotation();
-  const dimension = entity.dimension;
-  const health = entity.getComponent(EntityComponentTypes.Health);
-  const runId = system.runInterval(() => {
-    if (
-      !entity ||
-      !entity.isValid ||
-      !container ||
-      !inventory ||
-      !dimension ||
-      !health ||
-      health?.currentValue <= 0 ||
-      entity.isInWater ||
-      entity.location.y < dimension.heightRange.min ||
-      entity.location.y > dimension.heightRange.max
-    ) {
-      return system.clearRun(runId);
+    if (!entity ||
+        !entity.isValid ||
+        entity == undefined ||
+        entity.typeId != "minere:auto_miner") {
+        return;
     }
-    const currentBlock = dimension.getBlock(entity.location);
-    if (currentBlock?.isValid && currentBlock.isLiquid) {
-      return system.clearRun(runId);
+    if (threadMap.has(entity.id)) {
+        system.clearRun(threadMap.get(entity.id));
     }
-    const fuel = entity.getProperty("minere:fuel");
-    const durability = entity.getProperty("minere:durability");
-    const is_on = entity.getProperty("minere:is_on");
-    const rail_placement_index = entity.getProperty("minere:rail_index");
-    if (!fuel || !is_on) {
-      return system.clearRun(runId);
-    }
-    // movement
-    entity.setRotation(rotation);
-    entity.applyImpulse(multiplyVector3Number(entity.getViewDirection(), 0.15));
-    let blocksBroken = 0;
-    for (let i = -1; i <= 1; i++) {
-      for (let j = -1; j <= 1; j++) {
-        for (let k = -1; k <= 1; k++) {
-          // validate
-          const pos = {
-            x: entity.location.x + i,
-            y: entity.location.y + j,
-            z: entity.location.z + k,
-          };
-          if (
-            pos.y < dimension.heightRange.min ||
-            pos.y > dimension.heightRange.max
-          ) {
-            continue;
-          }
-          const block = dimension.getBlock(pos);
-          if (!block || !block.isValid || !entity.isOnGround) {
-            continue;
-          }
-          // build bridge
-          if (j == -1) {
-            if (block.isAir || replaceableBlocks.has(block.typeId)) {
-              const planksIndex = findAnyPlanks(container);
-              if (planksIndex >= 0) {
-                const planks = container.getItem(planksIndex);
-                if (planks && planks.amount > 0) {
-                  block.setType(planks.typeId);
-                  if (planks.amount == 1) {
-                    container.setItem(planksIndex);
-                  } else {
-                    planks.amount -= 1;
-                    container.setItem(planksIndex, planks);
-                  }
+    const inventory = entity.getComponent(EntityComponentTypes.Inventory);
+    const container = inventory.container;
+    const rotation = entity.getRotation();
+    const dimension = entity.dimension;
+    const health = entity.getComponent(EntityComponentTypes.Health);
+    const runId = system.runInterval(() => {
+        if (!entity ||
+            !entity.isValid ||
+            !container ||
+            !inventory ||
+            !dimension ||
+            !health ||
+            health?.currentValue <= 0 ||
+            entity.isInWater ||
+            entity.location.y < dimension.heightRange.min ||
+            entity.location.y > dimension.heightRange.max) {
+            return system.clearRun(runId);
+        }
+        const currentBlock = dimension.getBlock(entity.location);
+        if (currentBlock?.isValid && currentBlock.isLiquid) {
+            return system.clearRun(runId);
+        }
+        const fuel = entity.getProperty("minere:fuel");
+        const durability = entity.getProperty("minere:durability");
+        const is_on = entity.getProperty("minere:is_on");
+        const rail_placement_index = entity.getProperty("minere:rail_index");
+        if (!fuel || !is_on) {
+            return system.clearRun(runId);
+        }
+        // movement
+        entity.setRotation(rotation);
+        entity.applyImpulse(multiplyVector3Number(entity.getViewDirection(), 0.15));
+        let blocksBroken = 0;
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                for (let k = -1; k <= 1; k++) {
+                    // validate
+                    const pos = {
+                        x: entity.location.x + i,
+                        y: entity.location.y + j,
+                        z: entity.location.z + k,
+                    };
+                    if (pos.y < dimension.heightRange.min ||
+                        pos.y > dimension.heightRange.max) {
+                        continue;
+                    }
+                    const block = dimension.getBlock(pos);
+                    if (!block || !block.isValid || !entity.isOnGround) {
+                        continue;
+                    }
+                    // build bridge
+                    if (j == -1) {
+                        if (block.isAir || replaceableBlocks.has(block.typeId)) {
+                            const planksIndex = findAnyPlanks(container);
+                            if (planksIndex >= 0) {
+                                const planks = container.getItem(planksIndex);
+                                if (planks && planks.amount > 0) {
+                                    block.setType(planks.typeId);
+                                    if (planks.amount == 1) {
+                                        container.setItem(planksIndex);
+                                    }
+                                    else {
+                                        planks.amount -= 1;
+                                        container.setItem(planksIndex, planks);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // destroy
+                    if (j >= 0) {
+                        if (disallowedBlocks.has(block.typeId) ||
+                            replaceableBlocks.has(block.typeId) ||
+                            blocksBroken >= durability) {
+                            continue;
+                        }
+                        if (durableBlocks.has(block.typeId)) {
+                            if (Math.random() > 1 / durableBlocks.get(block.typeId)) {
+                                continue;
+                            }
+                        }
+                        dimension.runCommand(`setBlock ${pos.x} ${pos.y} ${pos.z} air destroy`);
+                        blocksBroken += 1;
+                    }
                 }
-              }
             }
-          }
-          // destroy
-          if (j >= 0) {
-            if (
-              disallowedBlocks.has(block.typeId) ||
-              replaceableBlocks.has(block.typeId) ||
-              blocksBroken >= durability
-            ) {
-              continue;
+        }
+        // build rail
+        let hasPlacedRail = false;
+        if (entity.location.y > dimension.heightRange.min &&
+            entity.location.y < dimension.heightRange.max &&
+            entity.isOnGround) {
+            const block = dimension.getBlock(entity.location);
+            if (block &&
+                block.isValid &&
+                entity.isOnGround &&
+                (block.isAir || replaceableBlocks.has(block.typeId))) {
+                const railsIndex = findItemInContainer(container, "minecraft:rail");
+                const goldenRailsIndex = findItemInContainer(container, "minecraft:golden_rail");
+                const redstoneTorchIndex = findItemInContainer(container, "minecraft:redstone_torch");
+                const rails = railsIndex >= 0 ? container.getItem(railsIndex) : undefined;
+                const goldenRails = goldenRailsIndex >= 0
+                    ? container.getItem(goldenRailsIndex)
+                    : undefined;
+                const redstoneTorches = redstoneTorchIndex >= 0
+                    ? container.getItem(redstoneTorchIndex)
+                    : undefined;
+                // place rail
+                if (rails &&
+                    rails.amount > 0 &&
+                    (!goldenRails || rail_placement_index != 0)) {
+                    block.setType(rails.typeId);
+                    hasPlacedRail = true;
+                    if (rails.amount == 1) {
+                        container.setItem(railsIndex);
+                    }
+                    else {
+                        rails.amount -= 1;
+                        container.setItem(railsIndex, rails);
+                    }
+                }
+                // place golden rail
+                if (goldenRails &&
+                    goldenRails.amount > 0 &&
+                    (!rails || rail_placement_index == 0)) {
+                    block.setType(goldenRails.typeId);
+                    hasPlacedRail = true;
+                    if (goldenRails.amount == 1) {
+                        container.setItem(goldenRailsIndex);
+                    }
+                    else {
+                        goldenRails.amount -= 1;
+                        container.setItem(goldenRailsIndex, goldenRails);
+                    }
+                }
+                // redstone torches
+                // has golden rails and index == 0
+                if (goldenRails &&
+                    redstoneTorches &&
+                    redstoneTorches.amount > 0 &&
+                    rail_placement_index == 0) {
+                    const yRot = rotation.y >= 0 ? rotation.y : rotation.y + 360;
+                    let torchPos = addVector3(entity.location, { x: 0, y: 0, z: 0 });
+                    if (yRot > 315 || yRot <= 45) {
+                        torchPos = addVector3(entity.location, { x: -1, y: 0, z: 0 });
+                    }
+                    if (yRot > 45 && yRot <= 135) {
+                        torchPos = addVector3(entity.location, { x: 0, y: 0, z: -1 });
+                    }
+                    if (yRot > 135 && yRot <= 225) {
+                        torchPos = addVector3(entity.location, { x: 1, y: 0, z: 0 });
+                    }
+                    if (yRot > 225 && yRot <= 315) {
+                        torchPos = addVector3(entity.location, { x: 0, y: 0, z: 1 });
+                    }
+                    const torchBlock = dimension.getBlock(torchPos);
+                    if (torchBlock &&
+                        torchBlock.isValid &&
+                        (torchBlock.isAir || replaceableBlocks.has(torchBlock.typeId))) {
+                        torchBlock.setType(redstoneTorches.typeId);
+                        if (redstoneTorches.amount == 1) {
+                            container.setItem(redstoneTorchIndex);
+                        }
+                        else {
+                            redstoneTorches.amount -= 1;
+                            container.setItem(redstoneTorchIndex, redstoneTorches);
+                        }
+                    }
+                }
             }
-            if (durableBlocks.has(block.typeId)) {
-              if (Math.random() > 1 / durableBlocks.get(block.typeId)) {
-                continue;
-              }
+        }
+        // pickup items
+        const itemEntities = dimension.getEntities({
+            type: "minecraft:item",
+            location: entity.location,
+            maxDistance: PICKUP_RANGE,
+        });
+        for (let i = 0; i < itemEntities.length; i++) {
+            const itemEntity = itemEntities[i];
+            const item = itemEntity.getComponent(EntityComponentTypes.Item);
+            if (item && item.itemStack.maxAmount >= 64) {
+                const leftOver = container.addItem(item.itemStack);
+                if (leftOver) {
+                    item.itemStack.amount = leftOver.amount;
+                }
+                else {
+                    itemEntity.remove();
+                }
             }
-            dimension.runCommand(
-              `setBlock ${pos.x} ${pos.y} ${pos.z} air destroy`,
-            );
-            blocksBroken += 1;
-          }
         }
-      }
-    }
-    // build rail
-    let hasPlacedRail = false;
-    if (
-      entity.location.y > dimension.heightRange.min &&
-      entity.location.y < dimension.heightRange.max &&
-      entity.isOnGround
-    ) {
-      const block = dimension.getBlock(entity.location);
-      if (
-        block &&
-        block.isValid &&
-        entity.isOnGround &&
-        (block.isAir || replaceableBlocks.has(block.typeId))
-      ) {
-        const railsIndex = findItemInContainer(container, "minecraft:rail");
-        const goldenRailsIndex = findItemInContainer(
-          container,
-          "minecraft:golden_rail",
-        );
-        const redstoneTorchIndex = findItemInContainer(
-          container,
-          "minecraft:redstone_torch",
-        );
-        const rails =
-          railsIndex >= 0 ? container.getItem(railsIndex) : undefined;
-        const goldenRails =
-          goldenRailsIndex >= 0
-            ? container.getItem(goldenRailsIndex)
-            : undefined;
-        const redstoneTorches =
-          redstoneTorchIndex >= 0
-            ? container.getItem(redstoneTorchIndex)
-            : undefined;
-        // place rail
-        if (
-          rails &&
-          rails.amount > 0 &&
-          (!goldenRails || rail_placement_index != 0)
-        ) {
-          block.setType(rails.typeId);
-          hasPlacedRail = true;
-          if (rails.amount == 1) {
-            container.setItem(railsIndex);
-          } else {
-            rails.amount -= 1;
-            container.setItem(railsIndex, rails);
-          }
+        // damage entities
+        const mobEntities = dimension.getEntities({
+            excludeFamilies: ["inanimate", "item"],
+            excludeTypes: ["minecraft:item"],
+            location: addVector3(entity.location, entity.getViewDirection()),
+            maxDistance: DAMAGE_RANGE,
+        });
+        for (let i = 0; i < mobEntities.length; i++) {
+            mobEntities[i].applyDamage(DAMAGE, {
+                cause: EntityDamageCause.entityAttack,
+                damagingEntity: entity,
+            });
         }
-        // place golden rail
-        if (
-          goldenRails &&
-          goldenRails.amount > 0 &&
-          (!rails || rail_placement_index == 0)
-        ) {
-          block.setType(goldenRails.typeId);
-          hasPlacedRail = true;
-          if (goldenRails.amount == 1) {
-            container.setItem(goldenRailsIndex);
-          } else {
-            goldenRails.amount -= 1;
-            container.setItem(goldenRailsIndex, goldenRails);
-          }
-        }
-        // redstone torches
-        // has golden rails and index == 0
-        if (
-          goldenRails &&
-          redstoneTorches &&
-          redstoneTorches.amount > 0 &&
-          rail_placement_index == 0
-        ) {
-          const yRot = rotation.y >= 0 ? rotation.y : rotation.y + 360;
-          let torchPos = addVector3(entity.location, { x: 0, y: 0, z: 0 });
-          if (yRot > 315 || yRot <= 45) {
-            torchPos = addVector3(entity.location, { x: -1, y: 0, z: 0 });
-          }
-          if (yRot > 45 && yRot <= 135) {
-            torchPos = addVector3(entity.location, { x: 0, y: 0, z: -1 });
-          }
-          if (yRot > 135 && yRot <= 225) {
-            torchPos = addVector3(entity.location, { x: 1, y: 0, z: 0 });
-          }
-          if (yRot > 225 && yRot <= 315) {
-            torchPos = addVector3(entity.location, { x: 0, y: 0, z: 1 });
-          }
-          const torchBlock = dimension.getBlock(torchPos);
-          if (
-            torchBlock &&
-            torchBlock.isValid &&
-            (torchBlock.isAir || replaceableBlocks.has(torchBlock.typeId))
-          ) {
-            torchBlock.setType(redstoneTorches.typeId);
-            if (redstoneTorches.amount == 1) {
-              container.setItem(redstoneTorchIndex);
-            } else {
-              redstoneTorches.amount -= 1;
-              container.setItem(redstoneTorchIndex, redstoneTorches);
+        // update properties
+        entity.setProperty("minere:fuel", Math.max(0, fuel - (BASE_FUEL_COST + blocksBroken)));
+        entity.setProperty("minere:durability", Math.max(0, durability - blocksBroken));
+        if (hasPlacedRail) {
+            if (rail_placement_index <= 0) {
+                entity.setProperty("minere:rail_index", GOLDEN_RAIL_MAX_INDEX);
             }
-          }
+            else {
+                entity.setProperty("minere:rail_index", Math.max(0, rail_placement_index - 1));
+            }
         }
-      }
+    }, 3);
+    threadMap.set(entity.id, runId);
+}
+export function stopAutoMiner(entity) {
+    if (!entity ||
+        !entity.isValid ||
+        entity == undefined ||
+        entity.typeId != "minere:auto_miner") {
+        return;
     }
-    const itemEntities = dimension.getEntities({
-      type: "minecraft:item",
-      location: entity.location,
-      maxDistance: PICKUP_RANGE,
-    });
-    for (let i = 0; i < itemEntities.length; i++) {
-      const itemEntity = itemEntities[i];
-      const item = itemEntity.getComponent(EntityComponentTypes.Item);
-      if (item && item.itemStack.maxAmount >= 64) {
-        const leftOver = container.addItem(item.itemStack);
-        if (leftOver) {
-          item.itemStack.amount = leftOver.amount;
-        } else {
-          itemEntity.remove();
-        }
-      }
-    }
-    entity.setProperty(
-      "minere:fuel",
-      Math.max(0, fuel - (BASE_FUEL_COST + blocksBroken)),
-    );
-    entity.setProperty(
-      "minere:durability",
-      Math.max(0, durability - blocksBroken),
-    );
-    if (hasPlacedRail) {
-      if (rail_placement_index <= 0) {
-        entity.setProperty("minere:rail_index", GOLDEN_RAIL_MAX_INDEX);
-      } else {
-        entity.setProperty(
-          "minere:rail_index",
-          Math.max(0, rail_placement_index - 1),
-        );
-      }
-    }
-  }, 3);
-  threadMap.set(entity.id, runId);
+    entity.setProperty("minere:is_on", false);
 }
 export function minerDie(entity) {
-  if (
-    !entity ||
-    !entity.isValid ||
-    entity == undefined ||
-    entity.typeId != "minere:auto_miner"
-  ) {
-    return;
-  }
-  const dimension = entity.dimension;
-  const fuel = entity.getProperty("minere:fuel");
-  const durability = entity.getProperty("minere:durability");
-  const itemStack = new ItemStack("minere:auto_miner");
-  const durabilityComponent = itemStack.getComponent(
-    ItemComponentTypes.Durability,
-  );
-  durabilityComponent.damage = durabilityComponent.damage =
-    durabilityComponent.maxDurability - durability;
-  if (fuel > 0) {
-    itemStack.setDynamicProperty("minere:fuel", fuel);
-  }
-  dimension.spawnItem(itemStack, entity.location);
-  entity.teleport({
-    x: entity.location.x,
-    y: entity.location.y - 20,
-    z: entity.location.z,
-  });
+    if (!entity ||
+        !entity.isValid ||
+        entity == undefined ||
+        entity.typeId != "minere:auto_miner") {
+        return;
+    }
+    const dimension = entity.dimension;
+    const fuel = entity.getProperty("minere:fuel");
+    const durability = entity.getProperty("minere:durability");
+    const itemStack = new ItemStack("minere:auto_miner");
+    const durabilityComponent = itemStack.getComponent(ItemComponentTypes.Durability);
+    durabilityComponent.damage = durabilityComponent.damage =
+        durabilityComponent.maxDurability - durability;
+    if (fuel > 0) {
+        itemStack.setDynamicProperty("minere:fuel", fuel);
+    }
+    dimension.spawnItem(itemStack, entity.location);
+    entity.teleport({
+        x: entity.location.x,
+        y: entity.location.y - 20,
+        z: entity.location.z,
+    });
 }

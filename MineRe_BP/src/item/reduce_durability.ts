@@ -17,7 +17,12 @@ export function reduceDurability(
   amount: number,
   equipmentSlot: EquipmentSlot = EquipmentSlot.Mainhand,
 ) {
-  if (source === null || source.getGameMode() === "creative") {
+  if (
+    source === null ||
+    source.getGameMode() === "creative" ||
+    !item ||
+    !amount
+  ) {
     return;
   }
 
@@ -39,30 +44,32 @@ export function reduceDurability(
     "unbreaking",
     equipmentSlot,
   );
+  let damage = 0;
+
   if (amount > 10) {
-    durability.damage = Math.min(
-      durability.maxDurability,
-      durability.damage + amount / (1 + unbreakingLevel),
-    );
-    if (durability.damage == durability.maxDurability) {
-      world.playSound("random.break", source.location);
-      equippable.setEquipment(equipmentSlot, null);
-    } else {
-      equippable.setEquipment(equipmentSlot, item);
+    damage = Math.ceil(amount / (1.0 + unbreakingLevel));
+  } else {
+    for (let i = 0; i < amount; i++) {
+      if (Math.random() > 1.0 / (1.0 + unbreakingLevel)) {
+        continue;
+      }
+      damage += 1;
     }
+  }
+
+  durability.damage = Math.min(
+    durability.maxDurability,
+    durability.damage + damage,
+  );
+  if (durability.damage >= durability.maxDurability) {
+    world.playSound("random.break", source.location);
+    equippable.setEquipment(equipmentSlot, null);
     return;
   }
 
-  for (let i = 0; i < amount; i++) {
-    if (Math.random() > 1 / (1.0 + unbreakingLevel)) {
-      continue;
-    }
-    if (durability.damage == durability.maxDurability) {
-      world.playSound("random.break", source.location);
-      equippable.setEquipment(equipmentSlot, null);
-    } else {
-      durability.damage++;
-      equippable.setEquipment(equipmentSlot, item);
-    }
+  if (equipmentSlot === EquipmentSlot.Mainhand) {
+    inventory.container.setItem(source.selectedSlotIndex, item);
+  } else {
+    equippable.setEquipment(equipmentSlot, item);
   }
 }

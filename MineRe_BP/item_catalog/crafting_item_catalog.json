@@ -1,0 +1,25 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:crafting_items_catalog": {
+       "categories": [
+          {
+             "category_name": "equipment",
+             "groups": [
+                {
+                   "group_identifier": {
+                      "icon": "minere:copper_treecapitator",
+                      "name": "minere:itemGroup.name.treecapitator"
+                   },
+                   "items": [
+                      "minere:copper_treecapitator",
+                      "minere:iron_treecapitator",
+                      "minere:golden_treecapitator",
+                      "minere:diamond_treecapitator",
+                      "minere:netherite_treecapitator"
+                   ]
+                }
+             ]
+          }
+       ]
+    }
+ }

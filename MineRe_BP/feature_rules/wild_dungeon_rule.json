@@ -41,7 +41,7 @@
         "extent": [0, 16]
       },
       "y": {
-        "extent": [24, 60],
+        "extent": [16, 55],
         "distribution": "uniform"
       },
       "z": {

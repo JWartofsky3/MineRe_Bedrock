@@ -18,6 +18,10 @@
         "minecraft:weight": {
           "default": 2
         },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
         "minecraft:biome_filter": [
           {
             "test": "has_biome_tag",
@@ -37,6 +41,10 @@
         },
         "minecraft:weight": {
           "default": 8
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
         },
         "minecraft:biome_filter": [
           {

@@ -19,7 +19,8 @@
           "summon_choices": [
             {
               "weight": 1,
-              "cooldown_time": 40,
+              "cooldown_time": 40.0,
+              "min_activation_range": 4.0,
               "cast_duration": 1,
               "particle_color": "#05E0FE",
               "start_sound_event": "prepare.summon",
@@ -50,8 +51,8 @@
                   "delay_per_summon": 0.15,
                   "num_entities_spawned": 2,
                   "entity_type": "minere:demon_skull",
-                  "summon_cap": 3,
-                  "summon_cap_radius": 32,
+                  "summon_cap": 2,
+                  "summon_cap_radius": 32.0,
                   "size": 1.5,
                   "entity_lifespan": 32
                 }
@@ -108,7 +109,7 @@
       "minere:demon_roaring": {
         "minecraft:behavior.knockback_roar": {
           "priority": 0,
-          "duration": 1.5,
+          "duration": 1.25,
           "attack_time": 0.9,
           "knockback_damage": 5,
           "knockback_horizontal_strength": 2.5,
@@ -240,7 +241,45 @@
         "damage": [7, 11]
       },
       "minecraft:despawn": {
-        "despawn_from_distance": {}
+        "filters": {
+          "any_of": [
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 256
+                }
+              ]
+            },
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "inactivity_timer",
+                  "subject": "self",
+                  "value": 45
+                },
+                {
+                  "test": "random_chance",
+                  "value": 1200
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 128
+                }
+              ]
+            }
+          ]
+        }
       },
       "minecraft:behavior.float": {
         "priority": 0

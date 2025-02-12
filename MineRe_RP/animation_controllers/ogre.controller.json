@@ -66,7 +66,7 @@
           "animations": ["roar"],
           "transitions": [
             {
-              "walking": "query.is_roaring == 0"
+              "walking": "query.all_animations_finished"
             }
           ],
           "blend_transition": 0.25

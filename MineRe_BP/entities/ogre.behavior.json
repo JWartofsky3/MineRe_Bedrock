@@ -420,7 +420,45 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:despawn": {
-        "despawn_from_distance": {}
+        "filters": {
+          "any_of": [
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 256
+                }
+              ]
+            },
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "inactivity_timer",
+                  "subject": "self",
+                  "value": 45
+                },
+                {
+                  "test": "random_chance",
+                  "value": 1200
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 128
+                }
+              ]
+            }
+          ]
+        }
       },
       "minecraft:behavior.float": {
         "priority": 0
