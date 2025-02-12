@@ -8,20 +8,12 @@
     "textures": "pulsar",
     "sound": "stone"
   },
-  "firefly_lamp": {
-    "textures": "firefly_lamp",
-    "sound": "glass"
-  },
   "minere:enderon_block": {
     "textures": "enderon_block",
     "sound": "stone"
   },
   "minere:freeze_ice": {
     "textures": "ice",
-    "sound": "glass"
-  },
-  "minere:plasma_ball": {
-    "textures": "plasma_ball",
     "sound": "glass"
   },
   "minere:ender_plasma_ore": {

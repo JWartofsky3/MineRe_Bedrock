@@ -82,6 +82,7 @@ item.spawn_egg.entity.minere:ghost.name=Huevo generador de Fantasma
 entity.minere:ghost.name=Fantasma
 
 tile.minere:amethyst_shield.name=Cristal de amatista
+tile.minere:freeze_ice.name=Hielo congelado
 item.minere:enderon_gemstone=Gema de enderon
 tile.minere:ender_plasma_ore.name=Mineral de plasma del end
 item.ender_plasma.name=Extracto de plasma del end
@@ -115,3 +116,22 @@ entity.minere:squirrel.name=Ardilla
 item.spawn_egg.entity.minere:squirrel.name=Huevo generador de ardilla
 item.acorn.name=Bellota
 item.popcorn.name=Palomitas
+
+action.interact.add_fuel=Agregar combustible
+entity.minere:auto_miner.name=Minas automáticas
+item.minere:auto_miner=Minas automáticas
+tile.minere:nether_coal_ore.name=Mineral de carbón inferior
+item.nether_coal.name=Carbón inferior
+entity.minere:necromancer.name=Nigromante
+item.spawn_egg.entity.minere:necromancer.name=Huevo generador de nigromante
+item.minere:diamond_drill=Taladro de diamante
+action.hint.exit.minere:advanced_minecart=Pulsa espacio para salir
+
+item.minere:copper_treecapitator=Cortador de árboles de cobre
+item.minere:iron_treecapitator=Cortador de árboles de hierro
+item.minere:golden_treecapitator=Cortador de árboles de oro
+item.minere:diamond_treecapitator=Cortador de árboles de diamante
+item.minere:netherite_treecapitator=Cortador de árboles netherita
+item.minere:enderon_treecapitator=Cortador de árboles de enderon
+item.minere:enderon_horse_armor=Armadura de caballo Enderon
+minere:itemGroup.name.treecapitator=Cortadores de árboles

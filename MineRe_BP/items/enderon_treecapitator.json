@@ -4,8 +4,7 @@
     "description": {
       "identifier": "minere:enderon_treecapitator",
       "menu_category": {
-        "category": "equipment",
-        "group": "minere:itemGroup.name.treecapitator"
+        "category": "equipment"
       }
     },
     "components": {
