@@ -13,6 +13,12 @@
           "blend_transition": 0.1
         },
         "casting": {
+          "particle_effects": [
+            {
+              "effect": "spell",
+              "locator": "leftHand"
+            }
+          ],
           "animations": ["casting"],
           "transitions": [
             {

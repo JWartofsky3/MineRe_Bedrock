@@ -1,0 +1,28 @@
+{
+  "format_version": "1.16",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:teleporter"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["EEE", "CSP", "EEE"],
+    "key": {
+      "E": {
+        "item": "minere:enderon_gemstone"
+      },
+      "C": {
+        "item": "minecraft:comparator"
+      },
+      "P": {
+        "item": "minere:phased_ender_pearl"
+      },
+      "S": {
+        "item": "minecraft:calibrated_sculk_sensor"
+      }
+    },
+    "result": {
+      "item": "minere:teleporter",
+      "count": 1
+    }
+  }
+}

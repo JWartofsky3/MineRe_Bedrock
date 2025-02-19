@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:packed_ice_feature"
     },
-    "count": 64,
+    "count": 128,
     "replace_rules": [
       {
         "places_block": {

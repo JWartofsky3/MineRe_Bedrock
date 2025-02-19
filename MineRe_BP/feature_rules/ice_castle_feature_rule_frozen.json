@@ -29,7 +29,7 @@
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 90
+        "denominator": 100
       }
     }
   }

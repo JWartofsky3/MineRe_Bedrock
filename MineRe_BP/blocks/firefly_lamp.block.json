@@ -6,6 +6,11 @@
       "menu_category": {
         "category": "construction",
         "is_hidden_in_commands": false
+      },
+      "traits": {
+        "minecraft:placement_position": {
+          "enabled_states": ["minecraft:vertical_half"]
+        }
       }
     },
     "components": {
@@ -40,6 +45,24 @@
       "minecraft:map_color": "#EA42E3",
       "minecraft:light_dampening": 0,
       "minecraft:light_emission": 13
-    }
+    },
+    "permutations": [
+      {
+				"condition": "q.block_state('minecraft:vertical_half') == 'top'",
+				"components": {
+					"minecraft:transformation": {
+						"translation": [0, 0.4, 0]
+					}
+				}
+			},
+      {
+				"condition": "q.block_state('minecraft:vertical_half') == 'bottom'",
+				"components": {
+					"minecraft:transformation": {
+						"translation": [0, 0, 0]
+					}
+				}
+			}
+    ]
   }
 }

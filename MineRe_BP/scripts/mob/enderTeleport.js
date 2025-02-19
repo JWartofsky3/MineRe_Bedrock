@@ -43,13 +43,21 @@ export function enderTeleport(entity, end) {
         volume: 2.0,
     });
     for (let i = 0; i < 50; i++) {
-        dimension.spawnParticle("minecraft:end_chest", addVector3(entity.location, randomVector3(2)));
+        try {
+            dimension.spawnParticle("minecraft:end_chest", addVector3(entity.location, randomVector3(2)));
+        }
+        catch { }
     }
     entity.teleport(end);
-    world.playSound("mob.endermen.portal", entity.location, {
-        volume: 2.0,
-    });
-    for (let i = 0; i < 50; i++) {
-        dimension.spawnParticle("minecraft:end_chest", addVector3(end, randomVector3(2)));
-    }
+    system.runTimeout(() => {
+        world.playSound("mob.endermen.portal", end, {
+            volume: 2.0,
+        });
+        for (let i = 0; i < 50; i++) {
+            try {
+                dimension.spawnParticle("minecraft:end_chest", addVector3(entity.location, randomVector3(2)));
+            }
+            catch { }
+        }
+    }, 2);
 }

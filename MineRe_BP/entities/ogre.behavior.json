@@ -203,43 +203,43 @@
       "minere:ogre_roaring": {
         "minecraft:behavior.knockback_roar": {
           "priority": 0,
-          "duration": 1.5,
+          "duration": 1.0,
           "attack_time": 0.9,
           "knockback_damage": 4,
           "knockback_horizontal_strength": 3,
           "knockback_vertical_strength": 3,
           "knockback_range": 5,
           "knockback_filters": {
-            "any_of": [
+            "none_of": [
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "player"
+                "value": "zombie"
               },
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "villager"
+                "value": "skeleton"
               },
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "demon"
+                "value": "spider"
               },
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "piglin"
+                "value": "creeper"
               },
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "goblin"
+                "value": "undead"
               },
               {
                 "test": "is_family",
                 "subject": "other",
-                "value": "wolf"
+                "value": "witch"
               }
             ]
           },

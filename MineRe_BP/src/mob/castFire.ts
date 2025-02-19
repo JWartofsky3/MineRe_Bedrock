@@ -29,9 +29,22 @@ export function rollCastFire(
   if (!dimension) {
     return;
   }
+
+  const cooldown = caster.getDynamicProperty(FIRE_COOLDOWN);
+  if (
+    !!cooldown &&
+    typeof cooldown == "number" &&
+    system.currentTick - cooldown < cooldownTime * DEFAULT_TICK
+  ) {
+    return;
+  }
+  caster.setDynamicProperty(FIRE_COOLDOWN, system.currentTick);
+
   system.runTimeout(() => {
+    if (!caster || !caster.isValid) {
+      return;
+    }
     // actually shoot
-    caster.setDynamicProperty(FIRE_COOLDOWN, system.currentTick);
     caster.triggerEvent("minere:demon_start_roar");
 
     system.runTimeout(() => {
@@ -102,15 +115,6 @@ export function rollCastFire(
     }, 15);
   }, Math.random() * delay);
   if (distVector3(caster.location, target.location) > activationRange) {
-    return;
-  }
-  const cooldown = caster.getDynamicProperty(FIRE_COOLDOWN);
-
-  if (
-    !!cooldown &&
-    typeof cooldown == "number" &&
-    system.currentTick - cooldown < cooldownTime * DEFAULT_TICK
-  ) {
     return;
   }
 }

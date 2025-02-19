@@ -1,35 +1,39 @@
 {
-  "format_version": [1, 1, 0],
-  "minere:amethyst_shield": {
-    "textures": "amethyst_shield",
-    "sound": "glass"
-  },
-  "minere:pulsar": {
-    "textures": "pulsar",
-    "sound": "stone"
-  },
-  "minere:enderon_block": {
-    "textures": "enderon_block",
-    "sound": "stone"
-  },
-  "minere:freeze_ice": {
-    "textures": "ice",
-    "sound": "glass"
-  },
-  "minere:ender_plasma_ore": {
-    "textures": "ender_plasma_ore",
-    "sound": "stone"
-  },
-  "minere:enderon_ore": {
-    "textures": "enderon_ore",
-    "sound": "stone"
-  },
-  "minere:sulfur_ore": {
-    "textures": "sulfur_ore",
-    "sound": "stone"
-  },
-  "minere:nether_coal_ore": {
-    "textures": "nether_coal_ore",
-    "sound": "netherrack"
-  }
+	"format_version": [1, 21, 40],
+	"minere:amethyst_shield": {
+		"textures": "amethyst_shield",
+		"sound": "glass"
+	},
+	"minere:pulsar": {
+		"textures": "pulsar",
+		"sound": "stone"
+	},
+	"minere:enderon_block": {
+		"textures": "enderon_block",
+		"sound": "stone"
+	},
+	"minere:freeze_ice": {
+		"textures": "ice",
+		"sound": "glass"
+	},
+	"minere:ender_plasma_ore": {
+		"textures": "ender_plasma_ore",
+		"sound": "stone"
+	},
+	"minere:enderon_ore": {
+		"textures": "enderon_ore",
+		"sound": "stone"
+	},
+	"minere:sulfur_ore": {
+		"textures": "sulfur_ore",
+		"sound": "stone"
+	},
+	"minere:nether_coal_ore": {
+		"textures": "nether_coal_ore",
+		"sound": "netherrack"
+	},
+	"minere:teleporter": {
+		"sound": "metal",
+		"textures": "minere:teleporter_flat"
+	}
 }

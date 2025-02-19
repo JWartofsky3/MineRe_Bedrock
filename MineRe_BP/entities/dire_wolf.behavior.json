@@ -270,6 +270,11 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "fox"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "sheep"
                 }
               ]
             },

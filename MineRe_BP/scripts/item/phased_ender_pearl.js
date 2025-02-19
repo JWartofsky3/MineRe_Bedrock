@@ -2,6 +2,8 @@ import { EntityComponentTypes, EquipmentSlot, GameMode, ItemComponentTypes, } fr
 import { enderTeleport } from "mob/enderTeleport";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 const ENDERON = "enderon";
+const MULTIPLIER = 1.5;
+const GROUND_LOOK_DISTANCE = 16;
 export const usePhasedEnderPearl = (data) => {
     const player = data?.source;
     if (!player) {
@@ -52,7 +54,7 @@ export const usePhasedEnderPearl = (data) => {
         min += 2;
         max += 1;
     }
-    const offset = multiplyVector3Number(player.getViewDirection(), min + Math.random() * (max - min));
+    const offset = multiplyVector3Number(player.getViewDirection(), MULTIPLIER * (min + Math.random() * (max - min)));
     offset.y += 1;
     const targetPos = addVector3(player.location, offset);
     targetPos.y = Math.max(dimension.heightRange.min + 2, targetPos.y);
@@ -61,6 +63,36 @@ export const usePhasedEnderPearl = (data) => {
     const ridingComponent = player?.getComponent(EntityComponentTypes.Riding);
     if (ridingComponent && ridingComponent.entityRidingOn) {
         targetEntity = ridingComponent.entityRidingOn;
+    }
+    for (let i = 0; i <= GROUND_LOOK_DISTANCE; i++) {
+        const targetY = targetPos.y + i;
+        if (targetY >= dimension.heightRange.max) {
+            break;
+        }
+        const block = dimension.getBlock({
+            x: targetPos.x,
+            y: targetY,
+            z: targetPos.z
+        });
+        if (block.isValid && block.isAir) {
+            targetPos.y = targetY;
+            break;
+        }
+    }
+    for (let i = 1; i <= GROUND_LOOK_DISTANCE; i++) {
+        const targetY = targetPos.y - i;
+        if (targetY <= dimension.heightRange.min) {
+            break;
+        }
+        const block = dimension.getBlock({
+            x: targetPos.x,
+            y: targetY,
+            z: targetPos.z
+        });
+        if (block.isValid && !block.isAir) {
+            targetPos.y = targetY + 1;
+            break;
+        }
     }
     enderTeleport(targetEntity, targetPos);
 };

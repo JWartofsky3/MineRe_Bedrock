@@ -41,7 +41,7 @@
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 225
+        "denominator": 250
       }
     }
   }

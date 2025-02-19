@@ -6,6 +6,7 @@ import { armorCurve } from "player/armorCurve";
 import { throwBy } from "mob/throwBy";
 import { rollWebAttack } from "mob/shootWeb";
 import { ogreLaugh } from "mob/ogreLaugh";
+import { skeletonStrafe } from "mob/skeleton_strafe";
 import { useAmethystStaff } from "item/amethyst_staff";
 import { useEchoStaff } from "item/echo_staff";
 import { usePhasedEnderPearl } from "item/phased_ender_pearl";
@@ -26,16 +27,19 @@ import { fireflyLamp } from "block/firefly_lamp";
 import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
 import { customOre } from "block/custom_ore";
+import { teleporter } from "block/teleporter";
 import { startAutoMiner, minerDie, stopAutoMiner } from "machine/autoMiner";
 import { AutoMinerItem } from "item/auto_miner_item";
 import { Treecapitator, offHandTreecapitate } from "item/treecapitator";
 import { onAxeUse, onShovelUse, onHoeUse, CustomAxe, CustomSword, CustomShovel, CustomPickaxe, CustomHoe, } from "item/custom_tools";
+import { RoyalJelly } from "item/royal_jelly";
 export const DEFAULT_TICK = 20;
 world.beforeEvents.worldInitialize.subscribe(function (data) {
     data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", EnderStrike);
     data.itemComponentRegistry.registerCustomComponent("minere:auto_miner_item", AutoMinerItem);
     data.itemComponentRegistry.registerCustomComponent("minere:ice_dagger", IceDagger);
     data.itemComponentRegistry.registerCustomComponent("minere:venom_shank", VenomShank);
+    data.itemComponentRegistry.registerCustomComponent("minere:royal_jelly", RoyalJelly);
     data.itemComponentRegistry.registerCustomComponent("minere:custom_sword", CustomSword);
     data.itemComponentRegistry.registerCustomComponent("minere:custom_axe", CustomAxe);
     data.itemComponentRegistry.registerCustomComponent("minere:custom_hoe", CustomHoe);
@@ -44,6 +48,7 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     data.itemComponentRegistry.registerCustomComponent("minere:treecapitator", Treecapitator);
     data.blockComponentRegistry.registerCustomComponent("minere:firefly_lamp", fireflyLamp);
     data.blockComponentRegistry.registerCustomComponent("minere:custom_ore", customOre);
+    data.blockComponentRegistry.registerCustomComponent("minere:teleporter", teleporter);
 });
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
     fireInfintyBowAfter(data);
@@ -94,6 +99,9 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
     }
     if (data.entity.typeId == "minere:demon") {
         rollBecomeSummoner(data.entity, 0.2);
+    }
+    if (data.entity.typeId == "minecraft:arrow") {
+        skeletonStrafe(data.entity, 0.67);
     }
     handleEndSpawn(data.entity);
 });

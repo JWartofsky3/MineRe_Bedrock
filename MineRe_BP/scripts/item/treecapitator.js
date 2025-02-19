@@ -11,6 +11,7 @@ const VERTICAL_CHECK_DISTANCE = 0;
 const ALTITUDE_BONUS_START = 12;
 const ALTITUDE_BONUS = 3;
 const REMAINING_DURABILITY_MULTIPLIER = 1.5;
+const MINIMUM_BREAK_AMOUNT = 5;
 const TREE_BREAK_DELAY = 2;
 export const logSet = new Set();
 // logs
@@ -241,7 +242,7 @@ function treecapitate(dimension, origin, durability) {
             }
         }
     }
-    if (logs.size > REMAINING_DURABILITY_MULTIPLIER * durability) {
+    if (logs.size > (REMAINING_DURABILITY_MULTIPLIER * durability) + MINIMUM_BREAK_AMOUNT) {
         world.playSound("item.amethyst_staff.error", origin);
         return 0;
     }

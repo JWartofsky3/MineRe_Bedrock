@@ -56,6 +56,16 @@
         }
       ]
     },
+    "machine.teleporter.teleport": {
+      "category": "portal",
+      "sounds": [
+        {
+          "name": "sounds/machine/teleporter/teleport",
+          "pitch": 0.9,
+          "volume": 0.4
+        }
+      ]
+    },
     "item.amethyst_staff.error": {
       "category": "player",
       "sounds": [

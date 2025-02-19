@@ -37,12 +37,6 @@
             "-135.0 - this"
           ]
         }
-      },
-      "particle_effects": {
-        "0.0": {
-          "effect": "spell",
-          "locator": "leftHand"
-        }
       }
     },
     "animation.minere.necromancer.look_at": {

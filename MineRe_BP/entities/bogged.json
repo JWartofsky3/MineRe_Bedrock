@@ -17,7 +17,7 @@
           "priority": 0,
           "attack_interval_min": 3.5,
           "attack_interval_max": 3.5,
-          "attack_radius": 15
+          "attack_radius": 12
         },
         "minecraft:shooter": {
           "def": "minecraft:arrow",

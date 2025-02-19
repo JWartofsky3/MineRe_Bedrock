@@ -13,6 +13,8 @@ import { enderTeleport } from "mob/enderTeleport";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 
 const ENDERON = "enderon";
+const MULTIPLIER = 1.5;
+const GROUND_LOOK_DISTANCE = 16;
 
 export const usePhasedEnderPearl = (data: ItemUseAfterEvent) => {
   const player = data?.source;
@@ -79,7 +81,7 @@ export const usePhasedEnderPearl = (data: ItemUseAfterEvent) => {
 
   const offset = multiplyVector3Number(
     player.getViewDirection(),
-    min + Math.random() * (max - min),
+    MULTIPLIER * (min + Math.random() * (max - min)),
   );
   offset.y += 1;
   const targetPos = addVector3(player.location, offset);
@@ -91,6 +93,39 @@ export const usePhasedEnderPearl = (data: ItemUseAfterEvent) => {
   ) as EntityRidingComponent;
   if (ridingComponent && ridingComponent.entityRidingOn) {
     targetEntity = ridingComponent.entityRidingOn;
+  }
+
+  for (let i = 0; i <= GROUND_LOOK_DISTANCE; i++) {
+    const targetY = targetPos.y + i;
+    if (targetY >= dimension.heightRange.max) {
+      break;
+    }
+    const block = dimension.getBlock({
+      x: targetPos.x,
+      y: targetY,
+      z: targetPos.z
+    });
+    if (block.isValid && block.isAir) {
+      targetPos.y = targetY;
+      break;
+    }
+  }
+
+
+  for (let i = 1; i <= GROUND_LOOK_DISTANCE; i++) {
+    const targetY = targetPos.y - i;
+    if (targetY <= dimension.heightRange.min) {
+      break;
+    }
+    const block = dimension.getBlock({
+      x: targetPos.x,
+      y: targetY,
+      z: targetPos.z
+    });
+    if (block.isValid && !block.isAir) {
+      targetPos.y = targetY + 1;
+      break;
+    }
   }
   enderTeleport(targetEntity, targetPos);
 };
