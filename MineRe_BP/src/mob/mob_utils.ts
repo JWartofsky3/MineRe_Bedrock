@@ -22,7 +22,9 @@ export function isFamily(entity: Entity, families: Set<string>): boolean {
   if (!entity) {
     return false;
   }
-  const family = entity.getComponent(EntityComponentTypes.TypeFamily) as EntityTypeFamilyComponent;
+  const family = entity.getComponent(
+    EntityComponentTypes.TypeFamily,
+  ) as EntityTypeFamilyComponent;
   if (!family || family === null) {
     return false;
   }

@@ -31,21 +31,23 @@ export function runEarthquake(earthquake: Entity) {
     return;
   }
   const dimension = earthquake.dimension;
-  const markVariant = earthquake.getComponent(EntityComponentTypes.MarkVariant) as EntityMarkVariantComponent;
+  const markVariant = earthquake.getComponent(
+    EntityComponentTypes.MarkVariant,
+  ) as EntityMarkVariantComponent;
   const under: Block = getBlock(dimension, {
     x: earthquake.location.x,
     y: earthquake.location.y - 1,
-    z: earthquake.location.z
+    z: earthquake.location.z,
   });
   const at: Block = getBlock(dimension, {
     x: earthquake.location.x,
     y: earthquake.location.y,
-    z: earthquake.location.z
+    z: earthquake.location.z,
   });
 
   const check = (id: string) => {
-    return (under?.typeId === id || at?.typeId === id);
-  }
+    return under?.typeId === id || at?.typeId === id;
+  };
 
   // dimension checks
   if (dimension.id === "minecraft:overworld") {
@@ -79,10 +81,19 @@ export function runEarthquake(earthquake: Entity) {
   if (check("minecraft:red_sand")) {
     markVariant.value = 4;
   }
-  if (check("minecraft:snow") || check("minecraft:powdered_snow") || check("minecraft:snow_layer")) {
+  if (
+    check("minecraft:snow") ||
+    check("minecraft:powdered_snow") ||
+    check("minecraft:snow_layer")
+  ) {
     markVariant.value = 5;
   }
-  if (check("minecraft:ice") || check("minecraft:packed_ice") || check("minecraft:blue_ice") || check("minere:freeze_ice")) {
+  if (
+    check("minecraft:ice") ||
+    check("minecraft:packed_ice") ||
+    check("minecraft:blue_ice") ||
+    check("minere:freeze_ice")
+  ) {
     markVariant.value = 6;
   }
   if (check("minecraft:gravel")) {

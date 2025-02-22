@@ -353,7 +353,10 @@ export function startAutoMiner(entity: Entity) {
       Math.max(0, durability - blocksBroken),
     );
     if (blocksBroken >= durability && durability > 0) {
-      dimension.playSound("random.break", entity.location, { volume: 2.0, pitch: 0.75});
+      dimension.playSound("random.break", entity.location, {
+        volume: 2.0,
+        pitch: 0.75,
+      });
       stopAutoMiner(entity);
       return system.clearRun(runId);
     }

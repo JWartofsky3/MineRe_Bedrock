@@ -16,8 +16,8 @@ unbreakableBlocks.add("minecraft:command_block");
 unbreakableBlocks.add("minecraft:chain_command_block");
 unbreakableBlocks.add("minecraft:repeating_command_block");
 export function getBlock(dimension, location) {
-    if (!isValid(dimension, location)) {
-        return null;
-    }
-    return dimension.getBlock(location);
+  if (!isValid(dimension, location)) {
+    return null;
+  }
+  return dimension.getBlock(location);
 }

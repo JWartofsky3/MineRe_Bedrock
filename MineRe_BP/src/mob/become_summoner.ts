@@ -2,7 +2,11 @@ import { Entity } from "@minecraft/server";
 
 export const IS_SUMMONER = "is_summoner";
 
-export function rollBecomeSummoner(summoner: Entity, chance: number, ignoreProperty: boolean = false) {
+export function rollBecomeSummoner(
+  summoner: Entity,
+  chance: number,
+  ignoreProperty: boolean = false,
+) {
   if (!summoner) {
     return;
   }

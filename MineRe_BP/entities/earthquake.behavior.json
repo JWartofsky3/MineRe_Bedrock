@@ -8,7 +8,9 @@
       "is_experimental": false
     },
     "components": {
-      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": false }},
+      "minecraft:damage_sensor": {
+        "triggers": { "cause": "all", "deals_damage": false }
+      },
       "minecraft:mark_variant": {
         "value": 0
       }

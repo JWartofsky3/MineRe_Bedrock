@@ -1,5 +1,4 @@
 import {
-  world,
   Vector3,
   BlockComponentTickEvent,
   BlockCustomComponent,
@@ -7,19 +6,22 @@ import {
   EntityRidingComponent,
   BlockPermutation,
   Block,
-  Dimension,
-  Entity,
   EntityEquippableComponent,
   EquipmentSlot,
 } from "@minecraft/server";
 import { enderTeleport } from "mob/enderTeleport";
+import { isFamily } from "mob/mob_utils";
 import { randomVector3, addVector3 } from "util/vector3Functions";
 
-const TELEPORT_RANGE = 2.75;
+const TELEPORT_RANGE = 3.15;
 const PARTICLE_DISTANCE = 2;
 const PARTICLE_COUNT = 50;
 const TELEPORT_PER_POWER = 8;
 const BLOCK_COUNT_MAX = 4;
+
+const forbiddenEntities = new Set<string>();
+forbiddenEntities.add("minecraft:ender_dragon");
+forbiddenEntities.add("minecraft:wither");
 
 export const teleporter: BlockCustomComponent = {
   onTick(arg: BlockComponentTickEvent) {
@@ -108,12 +110,11 @@ export const teleporter: BlockCustomComponent = {
         };
       }
       if (direction === "south") {
-        (targetOffset = location),
-          {
-            x: 0,
-            y: 0,
-            z: TELEPORT_PER_POWER * redstonePower * blockMultiplier,
-          };
+        targetOffset = {
+          x: 0,
+          y: 0,
+          z: TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+        };
       }
       if (direction === "north") {
         targetOffset = {
@@ -147,6 +148,9 @@ export const teleporter: BlockCustomComponent = {
             "minecraft:carved_pumpkin"
         ) {
           continue;
+        }
+        if (forbiddenEntities.has(entity?.typeId)) {
+          return;
         }
         const targetPos = addVector3(entity.location, targetOffset);
         targetPos.y = Math.max(dimension.heightRange.min + 1, targetPos.y);
