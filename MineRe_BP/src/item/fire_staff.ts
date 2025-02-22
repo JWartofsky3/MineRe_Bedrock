@@ -23,7 +23,7 @@ const fireReplaceList = [
   "snow_layer",
   "fern",
   "crimson_roots",
-  "warped_roots"
+  "warped_roots",
 ];
 
 export const useFireStaff = (data: ItemUseBeforeEvent) => {

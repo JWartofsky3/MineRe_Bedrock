@@ -1,285 +1,274 @@
 {
-	"format_version": "1.21.2",
-	"minecraft:entity": {
-	  "description": {
-		"identifier": "minere:queen_bee",
-		"is_spawnable": true,
-		"is_summonable": true,
-		"is_experimental": false
-	  },
-	  "component_groups": {
-		"angry": {
-			"minecraft:angry": {
-				"duration": 25,
-				"broadcast_anger": true,
-				"broadcast_anger_on_attack": false,
-				"broadcast_anger_on_being_attacked": true,
-				"broadcast_range": 20,
-				"broadcast_filters": {
-					"all_of": [
-						{
-							"test": "is_family", "operator": "!=", "value": "pacified"
-						},
-						{
-							"test": "is_family", "operator": "!=", "value": "queen_bee"
-						}
-					]
-				},
-				"calm_event": {
-				  "event": "become_calm_event",
-				  "target": "self"
-				}
-			  }
-		},
-		"go_back_to_spawn": {
-		  "minecraft:behavior.go_home": {
-			"priority": 6,
-			"interval": 200,
-			"speed_multiplier": 0.6,
-			"goal_radius": 4,
-			"on_failed": [
-			  {
-				"event": "go_back_to_spawn_failed",
-				"target": "self"
-			  }
-			]
-		  }
-		}
-	  },
-	  "components": {
-		"minecraft:persistent": {},
-		"minecraft:type_family": {
-		  "family": [
-			"queen_bee",
-			"bee",
-			"mob",
-			"arthropod"
-		  ]
-		},
-		"minecraft:loot": {
-			"table": "loot_tables/entities/queen_bee.json"
-		},
-		"minecraft:ambient_sound_interval": {
-			"event_name": "ambient",
-			"range": 0.0,
-			"value": 0.0
-		  },
-		"minecraft:equipment": {
-		  "table": "loot_tables/entities/queen_bee.json"
-		},
-		"minecraft:experience_reward": {
-		  "on_death": "query.last_hit_by_player?10:0"
-		},
-		"minecraft:movement": {
-		  "value": 0.23
-		},
-		"minecraft:health": {
-		  "value": 30,
-		  "max": 30
-		},
-		"minecraft:home": {},
-		"minecraft:scale": {
-		  "value": 1.4
-		},
-		"minecraft:attack": {
-		  "damage": 4,
-		  "effect_name": "poison",
-		  "effect_duration": 10
-		},
-		"minecraft:flying_speed": {
-		  "value": 0.2
-		},
-		"minecraft:can_fly": {},
-		"minecraft:movement.hover": {},
-		"minecraft:navigation.hover": {
-		  "can_path_over_water": true,
-		  "can_sink": false,
-		  "can_pass_doors": false,
-		  "can_path_from_air": true,
-		  "avoid_water": true,
-		  "avoid_damage_blocks": true
-		},
-		"minecraft:breathable": {
-		  "total_supply": 15,
-		  "suffocate_time": 0
-		},
-		"minecraft:collision_box": {
-		  "width": 0.8,
-		  "height": 0.8
-		},
-		"minecraft:damage_sensor": {
-			"triggers": [
-			  {
-				"cause": "fall",
-				"damage_multiplier": 1.5,
-				"deals_damage": false
-			  }
-			]
-		  },
-		"minecraft:hurt_on_condition": {
-		  "damage_conditions": [
-			{
-			  "filters": {
-				"test": "in_lava",
-				"subject": "self",
-				"operator": "==",
-				"value": true
-			  },
-			  "cause": "lava",
-			  "damage_per_tick": 4
-			}
-		  ]
-		},
-		"minecraft:follow_range": {
-		  "value": 10,
-		  "max": 10
-		},
-		"minecraft:despawn": {
-		  "despawn_from_distance": {}
-		},
-		"minecraft:behavior.float": {
-		  "priority": 0
-		},
-		"minecraft:behavior.hurt_by_target": {
-		  "priority": 1
-		},
-		"minecraft:behavior.summon_entity": {
-		  "priority": 2,
-		  "summon_choices": [
-			{
-			  "weight": 1,
-			  "cooldown_time": 6,
-			  "cast_duration": 1,
-			  "start_sound_event": "prepare.summon",
-			  "sequence": [
-				{
-				  "shape": "circle",
-				  "target": "self",
-				  "delay_per_summon": 0.1,
-				  "num_entities_spawned": 1,
-				  "entity_type": "bee",
-				  "summon_cap": 8,
-				  "summon_cap_radius": 32,
-				  "entity_lifespan": -1
-				}
-			  ]
-			}
-		  ]
-		},
-		"minecraft:behavior.melee_box_attack": {
-			"priority": 3,
-			"speed_multiplier": 1
-		  },
-		  "minecraft:behavior.random_hover": {
-			"priority": 4,
-			"xz_dist": 8,
-			"y_dist": 8,
-			"y_offset": -1,
-			"interval": 1,
-			"hover_height": [
-			  1,
-			  4
-			]
-		  },
-		  "minecraft:on_target_acquired": {
-			"event": "become_angry_event",
-			"target": "self"
-		  },
-		"minecraft:behavior.nearest_attackable_target": {
-			"priority": 3,
-			"entity_types": [
-			  {
-				"filters": {
-				  "any_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "villager"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "monster"
-					}
-				  ],
-				  "none_of": [
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "bee"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "silverfish"
-					},
-					{
-					  "test": "is_family",
-					  "subject": "other",
-					  "value": "queen_bee"
-					}
-				  ]
-				},
-				"max_dist": 10
-			  }
-			],
-			"must_see": true
-		  },
-		"minecraft:behavior.look_at_target": {
-		  "priority": 6,
-		  "look_distance": 6,
-		  "probability": 0.02
-		},
-		"minecraft:behavior.look_at_player": {
-		  "priority": 7,
-		  "look_distance": 8
-		},
-		"minecraft:behavior.random_look_around": {
-		  "priority": 8
-		},
-		"minecraft:physics": {
-		  "has_gravity": true
-		},
-		"minecraft:conditional_bandwidth_optimization": {},
-		"minecraft:game_event_movement_tracking": {
-		  "emit_flap": true,
-		  "emit_move": false,
-		  "emit_swim": false
-		}
-	  },
-	  "events": {
-		"minecraft:entity_spawned": {
-		  "add": {
-			"component_groups": [
-			  "go_back_to_spawn"
-			]
-		  }
-		},
-		"become_angry_event": {
-		  "add": {
-			"component_groups": [
-			  "angry"
-			]
-		  }
-		},
-		"become_calm_event": {
-			"remove": {
-			  "component_groups": [
-				"angry"			  ]
-			}
-		  },
-		"go_back_to_spawn_failed": {
-		  "remove": {
-			"component_groups": [
-			  "go_back_to_spawn"
-			]
-		  }
-		}
-	  }
-	}
+  "format_version": "1.21.2",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:queen_bee",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "angry": {
+        "minecraft:angry": {
+          "duration": 25,
+          "broadcast_anger": true,
+          "broadcast_anger_on_attack": false,
+          "broadcast_anger_on_being_attacked": true,
+          "broadcast_range": 20,
+          "broadcast_filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "operator": "!=",
+                "value": "pacified"
+              },
+              {
+                "test": "is_family",
+                "operator": "!=",
+                "value": "queen_bee"
+              }
+            ]
+          },
+          "calm_event": {
+            "event": "become_calm_event",
+            "target": "self"
+          }
+        }
+      },
+      "go_back_to_spawn": {
+        "minecraft:behavior.go_home": {
+          "priority": 6,
+          "interval": 200,
+          "speed_multiplier": 0.6,
+          "goal_radius": 4,
+          "on_failed": [
+            {
+              "event": "go_back_to_spawn_failed",
+              "target": "self"
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:persistent": {},
+      "minecraft:type_family": {
+        "family": ["queen_bee", "bee", "mob", "arthropod"]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/queen_bee.json"
+      },
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 0.0,
+        "value": 0.0
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/queen_bee.json"
+      },
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player?10:0"
+      },
+      "minecraft:movement": {
+        "value": 0.23
+      },
+      "minecraft:health": {
+        "value": 30,
+        "max": 30
+      },
+      "minecraft:home": {},
+      "minecraft:scale": {
+        "value": 1.4
+      },
+      "minecraft:attack": {
+        "damage": 4,
+        "effect_name": "poison",
+        "effect_duration": 10
+      },
+      "minecraft:flying_speed": {
+        "value": 0.2
+      },
+      "minecraft:can_fly": {},
+      "minecraft:movement.hover": {},
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_sink": false,
+        "can_pass_doors": false,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.8,
+        "height": 0.8
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "damage_multiplier": 1.5,
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:follow_range": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.summon_entity": {
+        "priority": 2,
+        "summon_choices": [
+          {
+            "weight": 1,
+            "cooldown_time": 6,
+            "cast_duration": 1,
+            "start_sound_event": "prepare.summon",
+            "sequence": [
+              {
+                "shape": "circle",
+                "target": "self",
+                "delay_per_summon": 0.1,
+                "num_entities_spawned": 1,
+                "entity_type": "bee",
+                "summon_cap": 8,
+                "summon_cap_radius": 32,
+                "entity_lifespan": -1
+              }
+            ]
+          }
+        ]
+      },
+      "minecraft:behavior.melee_box_attack": {
+        "priority": 3,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.random_hover": {
+        "priority": 4,
+        "xz_dist": 8,
+        "y_dist": 8,
+        "y_offset": -1,
+        "interval": 1,
+        "hover_height": [1, 4]
+      },
+      "minecraft:on_target_acquired": {
+        "event": "become_angry_event",
+        "target": "self"
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 3,
+        "entity_types": [
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "monster"
+                }
+              ],
+              "none_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "bee"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "silverfish"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "queen_bee"
+                }
+              ]
+            },
+            "max_dist": 10
+          }
+        ],
+        "must_see": true
+      },
+      "minecraft:behavior.look_at_target": {
+        "priority": 6,
+        "look_distance": 6,
+        "probability": 0.02
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 8
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:physics": {
+        "has_gravity": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:game_event_movement_tracking": {
+        "emit_flap": true,
+        "emit_move": false,
+        "emit_swim": false
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": ["go_back_to_spawn"]
+        }
+      },
+      "become_angry_event": {
+        "add": {
+          "component_groups": ["angry"]
+        }
+      },
+      "become_calm_event": {
+        "remove": {
+          "component_groups": ["angry"]
+        }
+      },
+      "go_back_to_spawn_failed": {
+        "remove": {
+          "component_groups": ["go_back_to_spawn"]
+        }
+      }
+    }
   }
+}

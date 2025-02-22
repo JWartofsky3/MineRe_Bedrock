@@ -1,5 +1,5 @@
-const IS_SUMMONER = "is_summoner";
-export function rollBecomeSummoner(summoner, chance) {
+export const IS_SUMMONER = "is_summoner";
+export function rollBecomeSummoner(summoner, chance, ignoreProperty = false) {
     if (!summoner) {
         return;
     }
@@ -8,7 +8,11 @@ export function rollBecomeSummoner(summoner, chance) {
         return;
     }
     if (isSummoner?.valueOf() === 1) {
-        return;
+        if (ignoreProperty) {
+        }
+        else {
+            return;
+        }
     }
     summoner.setDynamicProperty(IS_SUMMONER, 1);
     summoner.triggerEvent("become_summoner");

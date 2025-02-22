@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.earthquake_particles": {
+      "initial_state": "particles",
+      "states": {
+        "idle": {},
+        "particles": {
+          "animations": ["particles"],
+          "particle_effects": [
+            {
+              "effect": "emerge",
+              "locator": "root",
+              "pre_effect_script": "variable.dig_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.dig_particle_texture_size = query.surface_particle_texture_size; variable.dig_particle_color = query.surface_particle_color;"
+            }
+          ],
+          "transitions": [
+            {
+              "idle": "query.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

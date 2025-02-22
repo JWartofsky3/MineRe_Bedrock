@@ -27,9 +27,14 @@
         "run": "animation.minere.ogre.run",
         "breathe": "animation.minere.ogre.breathe",
         "attack": "animation.minere.ogre.club",
+        "smash": "animation.minere.ogre.slam",
         "roar": "animation.minere.ogre.roar",
         "look_at_target": "animation.minere.ogre.look_at_target",
         "controller": "controller.animation.minere.ogre"
+      },
+      "sound_effects": {
+        "rear": "mob.ogre.rear",
+        "smash": "mob.ogre.smash"
       }
     }
   }

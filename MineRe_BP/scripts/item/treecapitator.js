@@ -242,7 +242,8 @@ function treecapitate(dimension, origin, durability) {
             }
         }
     }
-    if (logs.size > (REMAINING_DURABILITY_MULTIPLIER * durability) + MINIMUM_BREAK_AMOUNT) {
+    if (logs.size >
+        REMAINING_DURABILITY_MULTIPLIER * durability + MINIMUM_BREAK_AMOUNT) {
         world.playSound("item.amethyst_staff.error", origin);
         return 0;
     }

@@ -41,6 +41,10 @@ replaceableBlocks.add("minecraft:lava");
 replaceableBlocks.add("minecraft:flowing_lava");
 replaceableBlocks.add("minecraft:fire");
 replaceableBlocks.add("minecraft:tall_grass");
+replaceableBlocks.add("minecraft:short_grass");
+replaceableBlocks.add("minecraft:fern");
+replaceableBlocks.add("minecraft:glow_lichen");
+replaceableBlocks.add("minecraft:vine");
 replaceableBlocks.add("minecraft:warped_roots");
 replaceableBlocks.add("minecraft:crimson_roots");
 replaceableBlocks.add("minecraft:snow_layer");
@@ -56,6 +60,7 @@ durableBlocks.set("minecraft:deepslate_gold_ore", 2);
 durableBlocks.set("minecraft:deepslate_redstone_ore", 2);
 durableBlocks.set("minecraft:deepslate_diamond_ore", 2);
 durableBlocks.set("minecraft:deepslate_emerald_ore", 2);
+durableBlocks.set("minere:deepslate_amethyst_ore", 2);
 durableBlocks.set("minecraft:end_stone", 2);
 durableBlocks.set("minecraft:end_bricks", 2);
 durableBlocks.set("minere:enderon_ore", 2);
@@ -86,10 +91,12 @@ export function startAutoMiner(entity) {
             entity.isInWater ||
             entity.location.y < dimension.heightRange.min ||
             entity.location.y > dimension.heightRange.max) {
+            stopAutoMiner(entity);
             return system.clearRun(runId);
         }
         const currentBlock = dimension.getBlock(entity.location);
         if (currentBlock?.isValid && currentBlock.isLiquid) {
+            stopAutoMiner(entity);
             return system.clearRun(runId);
         }
         const fuel = entity.getProperty("minere:fuel");
@@ -97,6 +104,7 @@ export function startAutoMiner(entity) {
         const is_on = entity.getProperty("minere:is_on");
         const rail_placement_index = entity.getProperty("minere:rail_index");
         if (!fuel || !is_on) {
+            stopAutoMiner(entity);
             return system.clearRun(runId);
         }
         // movement
@@ -276,6 +284,11 @@ export function startAutoMiner(entity) {
         // update properties
         entity.setProperty("minere:fuel", Math.max(0, fuel - (BASE_FUEL_COST + blocksBroken)));
         entity.setProperty("minere:durability", Math.max(0, durability - blocksBroken));
+        if (blocksBroken >= durability && durability > 0) {
+            dimension.playSound("random.break", entity.location, { volume: 2.0, pitch: 0.75 });
+            stopAutoMiner(entity);
+            return system.clearRun(runId);
+        }
         if (hasPlacedRail) {
             if (rail_placement_index <= 0) {
                 entity.setProperty("minere:rail_index", GOLDEN_RAIL_MAX_INDEX);

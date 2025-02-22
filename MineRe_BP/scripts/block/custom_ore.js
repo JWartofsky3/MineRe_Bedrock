@@ -63,6 +63,21 @@ oreMap.set("minere:enderon_ore", {
         max: 6,
     },
 });
+oreMap.set("minere:deepslate_amethyst_ore", {
+    ore: "minecraft:amethyst_shard",
+    count: {
+        min: 1,
+        max: 2,
+    },
+    fortune: {
+        min: 0,
+        max: 1,
+    },
+    experience: {
+        min: 1,
+        max: 3,
+    },
+});
 export const customOre = {
     onPlayerDestroy(arg) {
         const player = arg.player;

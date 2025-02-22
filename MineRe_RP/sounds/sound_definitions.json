@@ -66,6 +66,24 @@
         }
       ]
     },
+    "environment.earthquake.attack": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        {
+          "name": "sounds/environment/earthquake_attack",
+          "pitch": 0.75       },
+        {
+          "name": "sounds/environment/earthquake_attack",
+          "pitch": 0.85       },
+        {
+          "name": "sounds/environment/earthquake_attack",
+          "pitch": 1.0        },
+        {
+          "name": "sounds/environment/earthquake_attack",
+          "pitch": 1.25        }
+      ]
+    },
     "item.amethyst_staff.error": {
       "category": "player",
       "sounds": [
@@ -662,6 +680,43 @@
         },
         {
           "name": "sounds/mob/ogre/attack1"
+        }
+      ]
+    },
+    "mob.ogre.rear": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        {
+          "name": "sounds/mob/ogre/attack0",
+          "pitch": 0.75,
+          "volume": 2.0
+        },
+        {
+          "name": "sounds/mob/ogre/attack1",
+          "pitch": 0.75,
+          "volume": 2.0
+        }
+      ]
+    },
+    "mob.ogre.smash": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        {
+          "name": "sounds/mob/ogre/slam",
+          "pitch": 0.85,
+          "volume": 2.0
+        },
+        {
+          "name": "sounds/mob/ogre/slam",
+          "pitch": 1.0,
+          "volume": 2.0
+        },
+        {
+          "name": "sounds/mob/ogre/slam",
+          "pitch": 1.15,
+          "volume": 2.0
         }
       ]
     },

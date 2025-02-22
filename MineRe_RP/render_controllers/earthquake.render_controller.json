@@ -1,0 +1,19 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.earthquake": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.stone", "Texture.deepslate", "Texture.dirt", "Texture.sand", "Texture.red_sand", "Texture.snow", "Texture.ice", "Texture.gravel", "Texture.netherrack", "Texture.endstone"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.mark_variant]"]
+    }
+  }
+}

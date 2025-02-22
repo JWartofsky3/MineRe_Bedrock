@@ -1,0 +1,71 @@
+{
+	"resource_pack_name": "minere",
+	"texture_name": "atlas.terrain",
+	"padding": 8,
+	"num_mip_levels": 4,
+	"texture_data": {
+		"firefly_lantern": {
+			"textures": "textures/blocks/minere/firefly_lantern"
+		},
+		"amethyst_shield": {
+			"textures": "textures/blocks/minere/amethyst_shield"
+		},
+		"firefly_lamp": {
+			"textures": "textures/blocks/minere/firefly_lamp"
+		},
+		"plasma_ball": {
+			"textures": "textures/blocks/minere/plasma_ball"
+		},
+		"pulsar": {
+			"textures": "textures/blocks/minere/pulsar"
+		},
+		"enderon_block": {
+			"textures": "textures/blocks/minere/enderon_block"
+		},
+		"ender_plasma_ore": {
+			"textures": "textures/blocks/minere/ender_plasma_ore"
+		},
+		"enderon_ore": {
+			"textures": "textures/blocks/minere/enderon_ore"
+		},
+		"sulfur_ore": {
+			"textures": "textures/blocks/minere/sulfur_ore"
+		},
+		"nether_coal_ore": {
+			"textures": "textures/blocks/minere/nether_coal_ore"
+		},
+		"deepslate_amethyst_ore": {
+			"textures": "textures/blocks/minere/deepslate_amethyst_ore"
+		},
+		"minere:teleporter_flat": {
+			"textures": "textures/blocks/minere/teleporter/flat.png"
+		},
+		"minere:teleporter_front": {
+			"textures": "textures/blocks/minere/teleporter/front.png"
+		},
+		"minere:teleporter_front_off": {
+			"textures": "textures/blocks/minere/teleporter/front_off.png"
+		},
+		"minere:teleporter_back": {
+			"textures": "textures/blocks/minere/teleporter/back.png"
+		},
+		"minere:teleporter_horizontal": {
+			"textures": "textures/blocks/minere/teleporter/horizontal.png"
+		},
+		"minere:teleporter_horizontal_reverse": {
+			"textures": "textures/blocks/minere/teleporter/horizontal_reverse.png"
+		},
+		"minere:teleporter_horizontal_off": {
+			"textures": "textures/blocks/minere/teleporter/horizontal_off.png"
+		},
+		"minere:teleporter_vertical": {
+			"textures": "textures/blocks/minere/teleporter/vertical.png"
+		},
+		"minere:teleporter_vertical_reverse": {
+			"textures": "textures/blocks/minere/teleporter/vertical_reverse.png"
+		},
+		"minere:teleporter_vertical_off": {
+			"textures": "textures/blocks/minere/teleporter/vertical_off.png"
+		}
+	}
+}

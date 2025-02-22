@@ -1,0 +1,57 @@
+[
+  {
+    "flipbook_texture": "textures/blocks/minere/amethyst_shield",
+    "atlas_tile": "amethyst_shield",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/pulsar",
+    "atlas_tile": "pulsar",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/plasma_ball",
+    "atlas_tile": "plasma_ball",
+    "frames": [0, 1, 2, 3, 4, 5, 6],
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp",
+    "atlas_tile": "firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/teleporter/front",
+    "atlas_tile": "minere:teleporter_front",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 4
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/teleporter/horizontal",
+    "atlas_tile": "minere:teleporter_horizontal",
+    "frames": [0, 1, 2, 3, 4, 5, 6],
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/teleporter/horizontal_reverse",
+    "atlas_tile": "minere:teleporter_horizontal_reverse",
+    "frames": [0, 1, 2, 3, 4, 5, 6],
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/teleporter/vertical",
+    "atlas_tile": "minere:teleporter_vertical",
+    "frames": [0, 1, 2, 3, 4, 5, 6],
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/teleporter/vertical_reverse",
+    "atlas_tile": "minere:teleporter_vertical_reverse",
+    "frames": [6, 5, 4, 3, 2, 1, 0],
+    "ticks_per_frame": 3
+  }
+]

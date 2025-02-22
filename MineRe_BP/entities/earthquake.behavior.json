@@ -1,0 +1,17 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:earthquake",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": false }},
+      "minecraft:mark_variant": {
+        "value": 0
+      }
+    }
+  }
+}

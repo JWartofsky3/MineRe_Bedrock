@@ -48,21 +48,21 @@
     },
     "permutations": [
       {
-				"condition": "q.block_state('minecraft:vertical_half') == 'top'",
-				"components": {
-					"minecraft:transformation": {
-						"translation": [0, 0.4, 0]
-					}
-				}
-			},
+        "condition": "q.block_state('minecraft:vertical_half') == 'top'",
+        "components": {
+          "minecraft:transformation": {
+            "translation": [0, 0.4, 0]
+          }
+        }
+      },
       {
-				"condition": "q.block_state('minecraft:vertical_half') == 'bottom'",
-				"components": {
-					"minecraft:transformation": {
-						"translation": [0, 0, 0]
-					}
-				}
-			}
+        "condition": "q.block_state('minecraft:vertical_half') == 'bottom'",
+        "components": {
+          "minecraft:transformation": {
+            "translation": [0, 0, 0]
+          }
+        }
+      }
     ]
   }
 }

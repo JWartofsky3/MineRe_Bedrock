@@ -38,16 +38,23 @@ export function rollCastFire(
   ) {
     return;
   }
+  if (distVector3(caster.location, target.location) > activationRange) {
+    return;
+  }
   caster.setDynamicProperty(FIRE_COOLDOWN, system.currentTick);
 
   system.runTimeout(() => {
     if (!caster || !caster.isValid) {
       return;
     }
+
     // actually shoot
     caster.triggerEvent("minere:demon_start_roar");
 
     system.runTimeout(() => {
+      if (!caster?.isValid()) {
+        return;
+      }
       const dir = directionVector3(target.location, caster.location);
 
       for (let i = 1; i <= maxRange; i++) {
@@ -114,7 +121,4 @@ export function rollCastFire(
       }
     }, 15);
   }, Math.random() * delay);
-  if (distVector3(caster.location, target.location) > activationRange) {
-    return;
-  }
 }

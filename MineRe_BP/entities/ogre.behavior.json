@@ -48,6 +48,58 @@
           "table": "loot_tables/entities/ogre/cave_ogre.json"
         }
       },
+      "minere:ogre_summoner": {
+        "minecraft:behavior.summon_entity": {
+          "priority": 2,
+          "summon_choices": [
+            {
+              "min_activation_range": 3,
+              "max_activation_range": 6,
+              "weight": 3,
+              "cooldown_time": 15,
+              "cast_duration": 1,
+              "sequence": [
+                {
+                  "shape": "line",
+                  "target": "self",
+                  "base_delay": 0.65,
+                  "delay_per_summon": 0.05,
+                  "num_entities_spawned": 10,
+                  "entity_type": "minere:earthquake",
+                  "size": 12,
+                  "entity_lifespan": 2.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "minere:cave_ogre_summoner": {
+        "minecraft:behavior.summon_entity": {
+          "priority": 2,
+          "summon_choices": [
+            {
+              "min_activation_range": 4,
+              "max_activation_range": 10,
+              "weight": 3,
+              "cooldown_time": 10,
+              "cast_duration": 1,
+              "sequence": [
+                {
+                  "shape": "line",
+                  "target": "self",
+                  "base_delay": 0.65,
+                  "delay_per_summon": 0.05,
+                  "num_entities_spawned": 12,
+                  "entity_type": "minere:earthquake",
+                  "size": 14,
+                  "entity_lifespan": 2.0
+                }
+              ]
+            }
+          ]
+        }
+      },
       "minere:ogre_neutral": {
         "minecraft:environment_sensor": {
           "triggers": {
@@ -205,7 +257,7 @@
           "priority": 0,
           "duration": 1.0,
           "attack_time": 0.9,
-          "knockback_damage": 4,
+          "knockback_damage": 3,
           "knockback_horizontal_strength": 3,
           "knockback_vertical_strength": 3,
           "knockback_range": 5,
@@ -240,6 +292,74 @@
                 "test": "is_family",
                 "subject": "other",
                 "value": "witch"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "ogre"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "yeti"
+              }
+            ]
+          },
+          "on_roar_end": {
+            "event": "minere:ogre_end_roar"
+          }
+        }
+      },
+      "minere:cave_ogre_roaring": {
+        "minecraft:behavior.knockback_roar": {
+          "priority": 0,
+          "duration": 1.0,
+          "attack_time": 0.9,
+          "knockback_damage": 5,
+          "knockback_horizontal_strength": 5,
+          "knockback_vertical_strength": 5,
+          "knockback_range": 6,
+          "knockback_filters": {
+            "none_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "zombie"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "skeleton"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "spider"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "creeper"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "undead"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "witch"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "ogre"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "yeti"
               }
             ]
           },
@@ -252,15 +372,6 @@
         "minecraft:movement": {
           "value": 0.26
         }
-      },
-      "minere:roar_cooldown": {
-        "minecraft:attack_cooldown": {
-          "attack_cooldown_complete_event": {
-            "event": "minere:end_roar_cooldown",
-            "target": "self"
-          },
-          "attack_cooldown_time": 6
-        }
       }
     },
     "components": {
@@ -271,48 +382,6 @@
       },
       "minecraft:damage_sensor": {
         "triggers": [
-          {
-            "on_damage": {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "target_distance",
-                    "subject": "self",
-                    "operator": "<=",
-                    "value": 5
-                  },
-                  {
-                    "test": "random_chance",
-                    "subject": "self",
-                    "value": 5
-                  }
-                ],
-                "none_of": [
-                  {
-                    "test": "has_component",
-                    "subject": "self",
-                    "value": "minecraft:behavior.knockback_roar"
-                  },
-                  {
-                    "test": "has_component",
-                    "subject": "self",
-                    "value": "minecraft:attack_cooldown"
-                  },
-                  {
-                    "test": "has_component",
-                    "subject": "self",
-                    "value": "behavior.knockback_roar"
-                  },
-                  {
-                    "test": "has_component",
-                    "subject": "self",
-                    "value": "attack_cooldown"
-                  }
-                ]
-              },
-              "event": "minere:ogre_start_roar"
-            }
-          },
           {
             "cause": "suffocation",
             "on_damage": {
@@ -554,6 +623,28 @@
           "component_groups": ["minere:ogre_neutral"]
         }
       },
+      "become_summoner": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_variant",
+              "value": 0
+            },
+            "add": {
+              "component_groups": ["minere:ogre_summoner"]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "value": 1
+            },
+            "add": {
+              "component_groups": ["minere:cave_ogre_summoner"]
+            }
+          }
+        ]
+      },
       "minere:ogre_become_angry": {
         "sequence": [
           {
@@ -639,7 +730,9 @@
                 "minere:ogre_angry",
                 "minere:ogre_berserk",
                 "minere:ogre_hostile",
-                "minere:ogre_mobile"
+                "minere:ogre_mobile",
+                "minere:ogre_summoner",
+                "minere:cave_ogre_summoner"
               ]
             }
           },
@@ -653,11 +746,36 @@
           }
         ]
       },
+      "minere:cave_ogre_start_roar": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:ogre_angry",
+                "minere:ogre_berserk",
+                "minere:ogre_hostile",
+                "minere:ogre_mobile"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:cave_ogre_roaring",
+                "minere:roar_cooldown"
+              ]
+            }
+          }
+        ]
+      },
       "minere:ogre_end_roar": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:ogre_roaring"]
+              "component_groups": [
+                "minere:ogre_roaring",
+                "minere:cave_ogre_roaring"
+              ]
             }
           },
           {
@@ -682,11 +800,6 @@
             ]
           }
         ]
-      },
-      "minere:end_roar_cooldown": {
-        "remove": {
-          "component_groups": ["minere:roar_cooldown"]
-        }
       },
       "killed_enemy_event": {
         "queue_command": {

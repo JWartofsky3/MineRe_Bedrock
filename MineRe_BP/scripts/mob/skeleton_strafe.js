@@ -1,4 +1,5 @@
-import { EntityComponentTypes, system } from '@minecraft/server';
+import { EntityComponentTypes, system, } from "@minecraft/server";
+import { isFamily } from "./mob_utils";
 const IS_STRAFING = "minere:is_strafing";
 const STRAFE_FORCE = 0.06;
 const ANGLE_CHANGE = 3;
@@ -21,15 +22,7 @@ export function skeletonStrafe(entity, chance) {
         return;
     }
     // validate shooter belongs to a valid family
-    const family = owner.getComponent(EntityComponentTypes.TypeFamily);
-    let isFamilyMatch = false;
-    for (let i = 0; i < family.getTypeFamilies().length; i++) {
-        if (validFamilies.has(family.getTypeFamilies()[i])) {
-            isFamilyMatch = true;
-            break;
-        }
-    }
-    if (!isFamilyMatch) {
+    if (!isFamily(owner, validFamilies)) {
         return;
     }
     // check if shooter is already strafing
@@ -42,6 +35,9 @@ export function skeletonStrafe(entity, chance) {
     let angle = Math.random() * 360;
     const dir = Math.random() > 0.5 ? 1 : -1;
     const runner = system.runInterval(() => {
+        if (!owner.isValid) {
+            return;
+        }
         const strafeDirRadians = angle * (Math.PI / 180);
         owner.applyImpulse({
             x: Math.cos(strafeDirRadians) * STRAFE_FORCE,
@@ -54,5 +50,5 @@ export function skeletonStrafe(entity, chance) {
     system.runTimeout(() => {
         system.clearRun(runner);
         owner.setDynamicProperty(IS_STRAFING, false);
-    }, (20 * DURATION_MIN) + (20 * DURATION_MAX * Math.random()));
+    }, 20 * DURATION_MIN + 20 * DURATION_MAX * Math.random());
 }

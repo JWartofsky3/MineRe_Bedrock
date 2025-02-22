@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.80",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
       "identifier": "minere:royal_jelly",
@@ -16,9 +16,7 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_food"]
       },
-      "minecraft:custom_components": [
-        "minere:royal_jelly"
-      ],
+      "minecraft:custom_components": ["minere:royal_jelly"],
       "minecraft:use_modifiers": {
         "use_duration": 2.0,
         "movement_modifier": 0.35

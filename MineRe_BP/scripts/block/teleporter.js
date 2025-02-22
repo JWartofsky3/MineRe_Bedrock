@@ -1,4 +1,4 @@
-import { EntityComponentTypes, BlockPermutation, EquipmentSlot } from "@minecraft/server";
+import { EntityComponentTypes, BlockPermutation, EquipmentSlot, } from "@minecraft/server";
 import { enderTeleport } from "mob/enderTeleport";
 import { randomVector3, addVector3 } from "util/vector3Functions";
 const TELEPORT_RANGE = 2.75;
@@ -22,7 +22,8 @@ export const teleporter = {
         blocks.push(arg.block.south(1));
         blocks.forEach((block) => {
             if (block.isValid()) {
-                if (block.typeId === "minecraft:redstone_block" || block.typeId === "minecraft:redstone_torch") {
+                if (block.typeId === "minecraft:redstone_block" ||
+                    block.typeId === "minecraft:redstone_torch") {
                     redstonePower = 15;
                 }
                 if (block.typeId === "minere:enderon_block") {
@@ -30,7 +31,7 @@ export const teleporter = {
                 }
             }
         });
-        blockMultiplier = Math.min(blockMultiplier, 4);
+        blockMultiplier = Math.min(blockMultiplier, BLOCK_COUNT_MAX);
         arg.block.setPermutation(BlockPermutation.resolve(arg.block.typeId, {
             ...arg.block.permutation.getAllStates(),
             "minere:powered": redstonePower > 0 ? true : false,
@@ -46,25 +47,50 @@ export const teleporter = {
             let targetOffset = {
                 x: 0,
                 y: 0,
-                z: 0
+                z: 0,
             };
             if (direction === "up") {
-                targetOffset = { x: 0, y: TELEPORT_PER_POWER * redstonePower * blockMultiplier, z: 0 };
+                targetOffset = {
+                    x: 0,
+                    y: TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                    z: 0,
+                };
             }
             if (direction === "down") {
-                targetOffset = { x: 0, y: -TELEPORT_PER_POWER * redstonePower * blockMultiplier, z: 0 };
+                targetOffset = {
+                    x: 0,
+                    y: -TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                    z: 0,
+                };
             }
             if (direction === "east") {
-                targetOffset = { x: TELEPORT_PER_POWER * redstonePower * blockMultiplier, y: 0, z: 0 };
+                targetOffset = {
+                    x: TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                    y: 0,
+                    z: 0,
+                };
             }
             if (direction === "west") {
-                targetOffset = { x: -TELEPORT_PER_POWER * redstonePower * blockMultiplier, y: 0, z: 0 };
+                targetOffset = {
+                    x: -TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                    y: 0,
+                    z: 0,
+                };
             }
             if (direction === "south") {
-                targetOffset = location, { x: 0, y: 0, z: TELEPORT_PER_POWER * redstonePower * blockMultiplier };
+                (targetOffset = location),
+                    {
+                        x: 0,
+                        y: 0,
+                        z: TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                    };
             }
             if (direction === "north") {
-                targetOffset = { x: 0, y: 0, z: -TELEPORT_PER_POWER * redstonePower * blockMultiplier };
+                targetOffset = {
+                    x: 0,
+                    y: 0,
+                    z: -TELEPORT_PER_POWER * redstonePower * blockMultiplier,
+                };
             }
             const entities = dimension.getEntities({
                 location: location,
@@ -79,7 +105,9 @@ export const teleporter = {
                 }
                 // don't teleport entities wearing pumpkins
                 const equippable = entity?.getComponent(EntityComponentTypes.Equippable);
-                if (equippable && equippable.getEquipment(EquipmentSlot.Head)?.typeId === "minecraft:carved_pumpkin") {
+                if (equippable &&
+                    equippable.getEquipment(EquipmentSlot.Head)?.typeId ===
+                        "minecraft:carved_pumpkin") {
                     continue;
                 }
                 const targetPos = addVector3(entity.location, targetOffset);

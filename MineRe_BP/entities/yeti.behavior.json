@@ -625,12 +625,12 @@
       },
       "minecraft:behavior.jump_to_block": {
         "priority": 5,
-        "search_width": 7,
-        "search_height": 6,
-        "minimum_path_length": 8,
+        "search_width": 10,
+        "search_height": 10,
+        "minimum_path_length": 6,
         "minimum_distance": 1,
         "scale_factor": 0.6,
-        "cooldown_range": [30, 60]
+        "cooldown_range": [20, 60]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,

@@ -48,6 +48,9 @@ import {
   CustomHoe,
 } from "item/custom_tools";
 import { RoyalJelly } from "item/royal_jelly";
+import { runEarthquake } from "mob/earthquake";
+import { rollOgreRoar } from "mob/ogreRoar";
+import { rollLeap } from "mob/yetiLeap";
 
 export const DEFAULT_TICK = 20;
 
@@ -71,7 +74,7 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:royal_jelly",
     RoyalJelly,
-  )
+  );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:custom_sword",
     CustomSword,
@@ -107,7 +110,7 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
   data.blockComponentRegistry.registerCustomComponent(
     "minere:teleporter",
     teleporter,
-  )
+  );
 });
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
@@ -165,14 +168,18 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
   if (data?.entity == null) {
     return;
   }
+  runEarthquake(data.entity);
   if (data.entity.typeId == "minere:bomb") {
     world.playSound("random.fuse", data.entity.location);
   }
-  if (data.entity.typeId == "minere:demon") {
+  if (
+    data.entity.typeId == "minere:demon" ||
+    data.entity.typeId == "minere:ogre"
+  ) {
     rollBecomeSummoner(data.entity, 0.2);
   }
   if (data.entity.typeId == "minecraft:arrow") {
-    skeletonStrafe(data.entity, 0.67);
+    skeletonStrafe(data.entity, 0.5);
   }
   handleEndSpawn(data.entity);
 });
@@ -212,11 +219,25 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     throwBy(attacker, target, 5, 10);
   }
 
+  // yeti leap
+  if (attacker?.typeId === "minere:yeti") {
+    rollLeap(attacker, target, 3, 24, 1, 1, 20, 6, 0.4, 0.2);
+  }
+  if (target?.typeId === "minere:yeti") {
+    rollLeap(target, attacker, 3, 24, 1, 1, 20, 6, 0.4, 0.2);
+  }
+
   // web spider shooting webs
-  if (attacker?.typeId === "minere:web_spider") {
+  if (
+    attacker?.typeId === "minere:web_spider" &&
+    target?.typeId === "minecraft:player"
+  ) {
     rollWebAttack(attacker, target, 0.6);
   }
-  if (target?.typeId === "minere:web_spider") {
+  if (
+    target?.typeId === "minere:web_spider" &&
+    attacker?.typeId === "minecraft:player"
+  ) {
     rollWebAttack(target, attacker, 0.4);
   }
 
@@ -230,6 +251,29 @@ world.afterEvents.entityHurt.subscribe(function (data) {
       rollBecomeSummoner(target, 0.33);
     } else {
       rollCastFire(target, attacker, 0.25, 100);
+      rollBecomeSummoner(target, 0.2);
+    }
+  }
+
+  // ogre roar
+  if (target?.typeId === "minere:ogre") {
+    if (projectile) {
+      rollOgreRoar(
+        target,
+        attacker,
+        0.33,
+        20,
+        attacker?.typeId === "minecraft:player",
+      );
+      rollBecomeSummoner(target, 0.33);
+    } else {
+      rollOgreRoar(
+        target,
+        attacker,
+        0.25,
+        20,
+        attacker?.typeId === "minecraft:player",
+      );
       rollBecomeSummoner(target, 0.2);
     }
   }

@@ -21,9 +21,12 @@
             },
             {
               "roaring": "query.is_roaring == 1"
+            },
+            {
+              "smashing": "query.is_casting == 1"
             }
           ],
-          "blend_transition": 0.25
+          "blend_transition": 0.3
         },
         "running": {
           "animations": [
@@ -42,9 +45,12 @@
             },
             {
               "roaring": "query.is_roaring == 1"
+            },
+            {
+              "smashing": "query.is_casting == 1"
             }
           ],
-          "blend_transition": 0.25
+          "blend_transition": 0.3
         },
         "attacking": {
           "animations": [
@@ -58,9 +64,12 @@
           "transitions": [
             {
               "walking": "query.all_animations_finished"
+            },
+            {
+              "smashing": "query.is_casting == 1"
             }
           ],
-          "blend_transition": 0.25
+          "blend_transition": 0.3
         },
         "roaring": {
           "animations": ["roar"],
@@ -69,7 +78,19 @@
               "walking": "query.all_animations_finished"
             }
           ],
-          "blend_transition": 0.25
+          "blend_transition": 0.3
+        },
+        "smashing": {
+          "animations": ["smash"],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            },
+            {
+              "roaring": "query.is_roaring == 1"
+            }
+          ],
+          "blend_transition": 0.3
         }
       }
     }

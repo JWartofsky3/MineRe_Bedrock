@@ -1,0 +1,41 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minere:earthquake",
+			"materials": {
+				"default": "entity_alphablend"
+			},
+			"textures": {
+				"stone": "textures/blocks/stone",
+				"deepslate": "textures/blocks/deepslate/deepslate",
+				"dirt": "textures/blocks/dirt",
+				"sand": "textures/blocks/sand",
+				"red_sand": "textures/blocks/red_sand",
+				"snow": "textures/blocks/snow",
+				"ice": "textures/blocks/ice",
+				"gravel": "textures/blocks/gravel",
+				"netherrack": "textures/blocks/netherrack",
+				"endstone": "textures/blocks/endstone"
+			},
+			"geometry": {
+				"default": "geometry.minere.earthquake"
+			},
+			"animations": {
+				"run": "animation.minere.earthquake.run",
+				"particles": "animation.minere.earthquake.particles",
+				"particle_runner": "controller.animation.minere.earthquake_particles"
+			},
+			"render_controllers": ["controller.render.minere.earthquake"],
+			"scripts": {
+				"animate": ["run", "particle_runner"]
+			},
+			"particle_effects": {
+				"emerge": "minecraft:warden_dig"
+			},
+			"sound_effects": {
+				"emerge": "environment.earthquake.attack"
+			}
+		}
+	}
+}

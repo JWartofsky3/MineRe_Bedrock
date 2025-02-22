@@ -22,6 +22,9 @@ export function rollCastFire(caster, target, chance, delay = 0) {
         system.currentTick - cooldown < cooldownTime * DEFAULT_TICK) {
         return;
     }
+    if (distVector3(caster.location, target.location) > activationRange) {
+        return;
+    }
     caster.setDynamicProperty(FIRE_COOLDOWN, system.currentTick);
     system.runTimeout(() => {
         if (!caster || !caster.isValid) {
@@ -30,6 +33,9 @@ export function rollCastFire(caster, target, chance, delay = 0) {
         // actually shoot
         caster.triggerEvent("minere:demon_start_roar");
         system.runTimeout(() => {
+            if (!caster?.isValid()) {
+                return;
+            }
             const dir = directionVector3(target.location, caster.location);
             for (let i = 1; i <= maxRange; i++) {
                 system.runTimeout(() => {
@@ -83,7 +89,4 @@ export function rollCastFire(caster, target, chance, delay = 0) {
             }
         }, 15);
     }, Math.random() * delay);
-    if (distVector3(caster.location, target.location) > activationRange) {
-        return;
-    }
 }

@@ -290,7 +290,7 @@
       },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 3,
-        "must_see": false,
+        "must_see": true,
         "must_see_forget_duration": 15,
         "persist_time": 15,
         "attack_interval": 2,

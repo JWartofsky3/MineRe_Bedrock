@@ -20,7 +20,7 @@
               "climbing": "query.is_wall_climbing == 1"
             },
             {
-              "berserking": "query.ground_speed > 6.0 && query.all_animations_finished"
+              "berserking": "query.ground_speed > 6.0"
             },
             {
               "sitting": "query.is_sitting"
@@ -60,7 +60,7 @@
               "sitting": "query.is_sitting"
             }
           ],
-          "blend_transition": 0.3
+          "blend_transition": 0.5
         },
         "attacking": {
           "animations": [

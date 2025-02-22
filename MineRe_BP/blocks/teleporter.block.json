@@ -1,291 +1,311 @@
 {
-	"format_version": "1.21.50",
-	"minecraft:block": {
-		"description": {
-			"identifier": "minere:teleporter",
-			"menu_category": {
-				"category": "construction"
-			},
-			"traits": {
-				"minecraft:placement_direction": {
-					"enabled_states": ["minecraft:facing_direction"]
-				}
-			},
-			"states": {
-				"minere:powered": [true, false]
-			}
-		},
-		"components": {
-			"minecraft:collision_box": true,
-			"minecraft:selection_box": true,
-			"minecraft:custom_components": ["minere:teleporter"],
-			"tag:minecraft:is_pickaxe_item_destructible": {},
-			"tag:stone": {},
-			"tag:metal": {},
-			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 6
-			},
-			"minecraft:destructible_by_explosion": {
-				"explosion_resistance": 130
-			},
-			"minecraft:light_emission": 5,
-			"minecraft:map_color": "#183b30",
-			"minecraft:redstone_conductivity": {
-				"redstone_conductor": true,
-				"allows_wire_to_step_down": true
-			},
-			"minecraft:tick": {
-    			"interval_range": [20, 20],
-    			"looping": true
-			},
-			"minecraft:geometry": "minecraft:geometry.full_block",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "minere:teleporter_flat"
-				}
-			}
-		},
-		"permutations": [
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'north' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"north": {
-							"texture": "minere:teleporter_front"
-						},
-						"south": {
-							"texture": "minere:teleporter_back"
-						},
-						"east": {
-							"texture": "minere:teleporter_horizontal"
-						},
-						"west": {
-							"texture": "minere:teleporter_horizontal_reverse"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'north' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"north": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"south": {
-							"texture": "minere:teleporter_back"
-						},
-						"east": {
-							"texture": "minere:teleporter_horizontal_off"
-						},
-						"west": {
-							"texture": "minere:teleporter_horizontal_off"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'south' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"south": {
-							"texture": "minere:teleporter_front"
-						},
-						"north": {
-							"texture": "minere:teleporter_back"
-						},
-						"west": {
-							"texture": "minere:teleporter_horizontal"
-						},
-						"east": {
-							"texture": "minere:teleporter_horizontal_reverse"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'south' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"south": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"north": {
-							"texture": "minere:teleporter_back"
-						},
-						"west": {
-							"texture": "minere:teleporter_horizontal_off"
-						},
-						"east": {
-							"texture": "minere:teleporter_horizontal_off"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'east' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"east": {
-							"texture": "minere:teleporter_front"
-						},
-						"west": {
-							"texture": "minere:teleporter_back"
-						},
-						"south": {
-							"texture": "minere:teleporter_horizontal"
-						},
-						"north": {
-							"texture": "minere:teleporter_horizontal_reverse"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'east' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"east": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"west": {
-							"texture": "minere:teleporter_back"
-						},
-						"south": {
-							"texture": "minere:teleporter_horizontal_off"
-						},
-						"north": {
-							"texture": "minere:teleporter_horizontal_off"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'west' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"west": {
-							"texture": "minere:teleporter_front"
-						},
-						"east": {
-							"texture": "minere:teleporter_back"
-						},
-						"north": {
-							"texture": "minere:teleporter_horizontal"
-						},
-						"south": {
-							"texture": "minere:teleporter_horizontal_reverse"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'west' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_flat"
-						},
-						"west": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"east": {
-							"texture": "minere:teleporter_back"
-						},
-						"south": {
-							"texture": "minere:teleporter_horizontal_off"
-						},
-						"north": {
-							"texture": "minere:teleporter_horizontal_off"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'up' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_vertical"
-						},
-						"up": {
-							"texture": "minere:teleporter_front"
-						},
-						"down": {
-							"texture": "minere:teleporter_back"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'up' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_vertical_off"
-						},
-						"up": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"down": {
-							"texture": "minere:teleporter_back"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'down' && q.block_state('minere:powered') == true",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_vertical_reverse"
-						},
-						"down": {
-							"texture": "minere:teleporter_front"
-						},
-						"up": {
-							"texture": "minere:teleporter_back"
-						}
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:facing_direction') == 'down' && q.block_state('minere:powered') == false",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "minere:teleporter_vertical_off"
-						},
-						"down": {
-							"texture": "minere:teleporter_front_off"
-						},
-						"up": {
-							"texture": "minere:teleporter_back"
-						}
-					}
-				}
-			}
-		]
-	}
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:teleporter",
+      "menu_category": {
+        "category": "construction"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:facing_direction"]
+        }
+      },
+      "states": {
+        "minere:powered": [false, true]
+      }
+    },
+    "components": {
+      "minecraft:item_visual": {
+        "geometry": "minecraft:geometry.full_block",
+        "material_instances": {
+          "*": {
+            "texture": "minere:teleporter_flat"
+          },
+          "west": {
+            "texture": "minere:teleporter_front"
+          },
+          "east": {
+            "texture": "minere:teleporter_back"
+          },
+          "north": {
+            "texture": "minere:teleporter_horizontal"
+          },
+          "south": {
+            "texture": "minere:teleporter_horizontal_reverse"
+          }
+        }
+      },
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:custom_components": ["minere:teleporter"],
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:stone": {},
+      "tag:metal": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 130
+      },
+      "minecraft:light_emission": 5,
+      "minecraft:map_color": "#183b30",
+      "minecraft:redstone_conductivity": {
+        "redstone_conductor": true,
+        "allows_wire_to_step_down": true
+      },
+      "minecraft:tick": {
+        "interval_range": [20, 20],
+        "looping": true
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "minere:teleporter_flat"
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'north' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "north": {
+              "texture": "minere:teleporter_front"
+            },
+            "south": {
+              "texture": "minere:teleporter_back"
+            },
+            "east": {
+              "texture": "minere:teleporter_horizontal"
+            },
+            "west": {
+              "texture": "minere:teleporter_horizontal_reverse"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'north' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "north": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "south": {
+              "texture": "minere:teleporter_back"
+            },
+            "east": {
+              "texture": "minere:teleporter_horizontal_off"
+            },
+            "west": {
+              "texture": "minere:teleporter_horizontal_off"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'south' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "south": {
+              "texture": "minere:teleporter_front"
+            },
+            "north": {
+              "texture": "minere:teleporter_back"
+            },
+            "west": {
+              "texture": "minere:teleporter_horizontal"
+            },
+            "east": {
+              "texture": "minere:teleporter_horizontal_reverse"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'south' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "south": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "north": {
+              "texture": "minere:teleporter_back"
+            },
+            "west": {
+              "texture": "minere:teleporter_horizontal_off"
+            },
+            "east": {
+              "texture": "minere:teleporter_horizontal_off"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'east' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "east": {
+              "texture": "minere:teleporter_front"
+            },
+            "west": {
+              "texture": "minere:teleporter_back"
+            },
+            "south": {
+              "texture": "minere:teleporter_horizontal"
+            },
+            "north": {
+              "texture": "minere:teleporter_horizontal_reverse"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'east' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "east": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "west": {
+              "texture": "minere:teleporter_back"
+            },
+            "south": {
+              "texture": "minere:teleporter_horizontal_off"
+            },
+            "north": {
+              "texture": "minere:teleporter_horizontal_off"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'west' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "west": {
+              "texture": "minere:teleporter_front"
+            },
+            "east": {
+              "texture": "minere:teleporter_back"
+            },
+            "north": {
+              "texture": "minere:teleporter_horizontal"
+            },
+            "south": {
+              "texture": "minere:teleporter_horizontal_reverse"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'west' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_flat"
+            },
+            "west": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "east": {
+              "texture": "minere:teleporter_back"
+            },
+            "south": {
+              "texture": "minere:teleporter_horizontal_off"
+            },
+            "north": {
+              "texture": "minere:teleporter_horizontal_off"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'up' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_vertical"
+            },
+            "up": {
+              "texture": "minere:teleporter_front"
+            },
+            "down": {
+              "texture": "minere:teleporter_back"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'up' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_vertical_off"
+            },
+            "up": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "down": {
+              "texture": "minere:teleporter_back"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'down' && q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_vertical_reverse"
+            },
+            "down": {
+              "texture": "minere:teleporter_front"
+            },
+            "up": {
+              "texture": "minere:teleporter_back"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'down' && q.block_state('minere:powered') == false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:teleporter_vertical_off"
+            },
+            "down": {
+              "texture": "minere:teleporter_front_off"
+            },
+            "up": {
+              "texture": "minere:teleporter_back"
+            }
+          }
+        }
+      }
+    ]
+  }
 }

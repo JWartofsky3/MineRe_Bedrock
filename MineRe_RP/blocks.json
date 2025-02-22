@@ -32,6 +32,10 @@
 		"textures": "nether_coal_ore",
 		"sound": "netherrack"
 	},
+	"minere:deepslate_amethyst_ore": {
+		"textures": "deepslate_amethyst_ore",
+		"sound": "deepslate"
+	},
 	"minere:teleporter": {
 		"sound": "metal",
 		"textures": "minere:teleporter_flat"

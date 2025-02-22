@@ -7,7 +7,6 @@
     "structure_name": "minere:small_bee_hive",
     "adjustment_radius": 8,
     "facing_direction": "random",
-    "constraints": {
-    }
+    "constraints": {}
   }
 }

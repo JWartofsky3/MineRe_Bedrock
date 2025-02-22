@@ -40,6 +40,8 @@
         "tame": "animation.minere.yeti.tame",
         "neutral": "animation.minere.yeti.neutral",
         "sit": "animation.minere.yeti.sit",
+        "leap": "animation.minere.yeti.leap",
+        "delay": "animation.minere.yeti.delay",
         "controller": "controller.animation.minere.yeti"
       }
     }

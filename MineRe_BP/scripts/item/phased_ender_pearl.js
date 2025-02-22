@@ -4,6 +4,7 @@ import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 const ENDERON = "enderon";
 const MULTIPLIER = 1.5;
 const GROUND_LOOK_DISTANCE = 16;
+const CONSUME_CHANCE = 0.5;
 export const usePhasedEnderPearl = (data) => {
     const player = data?.source;
     if (!player) {
@@ -21,7 +22,9 @@ export const usePhasedEnderPearl = (data) => {
     }
     const dimension = player.dimension;
     if (player.getGameMode() != GameMode.creative) {
-        player.runCommand("clear @s[m=!c] minere:phased_ender_pearl 0 1");
+        if (Math.random() <= CONSUME_CHANCE) {
+            player.runCommand("clear @s[m=!c] minere:phased_ender_pearl 0 1");
+        }
     }
     const equippable = player.getComponent(EntityComponentTypes.Equippable);
     let min = 12;
@@ -72,9 +75,9 @@ export const usePhasedEnderPearl = (data) => {
         const block = dimension.getBlock({
             x: targetPos.x,
             y: targetY,
-            z: targetPos.z
+            z: targetPos.z,
         });
-        if (block.isValid && block.isAir) {
+        if (block.isValid && (block.isAir || block.isLiquid)) {
             targetPos.y = targetY;
             break;
         }
@@ -87,7 +90,7 @@ export const usePhasedEnderPearl = (data) => {
         const block = dimension.getBlock({
             x: targetPos.x,
             y: targetY,
-            z: targetPos.z
+            z: targetPos.z,
         });
         if (block.isValid && !block.isAir) {
             targetPos.y = targetY + 1;
