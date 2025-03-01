@@ -31,7 +31,7 @@
         "extent": [0, 16]
       },
       "y": {
-        "extent": [16, 55],
+        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 6"],
         "distribution": "uniform"
       },
       "z": {

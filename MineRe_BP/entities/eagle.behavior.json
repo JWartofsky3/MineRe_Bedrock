@@ -213,7 +213,8 @@
                 }
               ]
             },
-            "max_dist": 64
+            "max_dist": 64,
+            "must_see": true
           }
         ]
       },

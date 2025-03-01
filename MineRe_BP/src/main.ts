@@ -16,7 +16,6 @@ import { skeletonStrafe } from "mob/skeleton_strafe";
 import { useAmethystStaff } from "item/amethyst_staff";
 import { useEchoStaff } from "item/echo_staff";
 import { usePhasedEnderPearl } from "item/phased_ender_pearl";
-import { replaceMinecart } from "item/replace_minecart";
 import { angerEndermen } from "mob/angerEndermen";
 import { enderRandomTeleport } from "mob/enderTeleport";
 import { handleEndSpawn } from "mob/endSpawns";
@@ -34,8 +33,6 @@ import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
 import { customOre } from "block/custom_ore";
 import { teleporter } from "block/teleporter";
-import { startAutoMiner, minerDie, stopAutoMiner } from "machine/autoMiner";
-import { AutoMinerItem } from "item/auto_miner_item";
 import { Treecapitator, offHandTreecapitate } from "item/treecapitator";
 import {
   onAxeUse,
@@ -51,6 +48,9 @@ import { RoyalJelly } from "item/royal_jelly";
 import { runEarthquake } from "mob/earthquake";
 import { rollOgreRoar } from "mob/ogreRoar";
 import { rollLeap } from "mob/yetiLeap";
+import { Illumina } from "item/illumina";
+import { endSand } from "block/end_sand";
+import { endCrystalline } from "block/end_crystalline";
 
 export const DEFAULT_TICK = 20;
 
@@ -60,8 +60,8 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     EnderStrike,
   );
   data.itemComponentRegistry.registerCustomComponent(
-    "minere:auto_miner_item",
-    AutoMinerItem,
+    "minere:illumina",
+    Illumina,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:ice_dagger",
@@ -111,6 +111,14 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:teleporter",
     teleporter,
   );
+  // data.blockComponentRegistry.registerCustomComponent(
+  //   "minere:end_sand",
+  //   endSand,
+  // );
+  // data.blockComponentRegistry.registerCustomComponent(
+  //   "minere:end_crystalline",
+  //   endCrystalline,
+  // );
 });
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
@@ -131,7 +139,6 @@ world.afterEvents.playerBreakBlock.subscribe(function (data) {
 
 world.beforeEvents.entityRemove.subscribe(function (data) {
   angerEndermen(data);
-  replaceMinecart(data);
 });
 
 world.beforeEvents.itemUse.subscribe((data) => {
@@ -145,14 +152,6 @@ world.afterEvents.itemUse.subscribe((data) => {
   usePhasedEnderPearl(data);
 });
 
-world.afterEvents.dataDrivenEntityTrigger.subscribe((data) => {
-  startAutoMiner(data.entity);
-});
-
-world.afterEvents.entityLoad.subscribe((data) => {
-  stopAutoMiner(data.entity);
-});
-
 world.afterEvents.itemUseOn.subscribe((data) => {
   onHoeUse(data.source, data.itemStack, data.block);
   onShovelUse(data.source, data.itemStack, data.block);
@@ -161,7 +160,6 @@ world.afterEvents.itemUseOn.subscribe((data) => {
 
 world.afterEvents.entityDie.subscribe(function (data) {
   ogreLaugh(data?.damageSource?.damagingEntity);
-  minerDie(data.deadEntity);
 });
 
 world.afterEvents.entitySpawn.subscribe(function (data) {
@@ -172,10 +170,7 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
   if (data.entity.typeId == "minere:bomb") {
     world.playSound("random.fuse", data.entity.location);
   }
-  if (
-    data.entity.typeId == "minere:demon" ||
-    data.entity.typeId == "minere:ogre"
-  ) {
+  if (data.entity.typeId == "minere:demon") {
     rollBecomeSummoner(data.entity, 0.2);
   }
   if (data.entity.typeId == "minecraft:arrow") {
@@ -195,7 +190,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     return;
   }
 
-  const projectile = data.damageSource?.damagingEntity;
+  const projectile = data.damageSource?.damagingProjectile;
   const attacker = data.damageSource?.damagingEntity;
   const target = data.hurtEntity;
   const dimension = world.getDimension(target.dimension.id);
@@ -256,26 +251,16 @@ world.afterEvents.entityHurt.subscribe(function (data) {
   }
 
   // ogre roar
+  if (attacker?.typeId === "minere:ogre") {
+    rollOgreRoar(attacker, target, 0.25, target?.typeId === "minecraft:player");
+  }
   if (target?.typeId === "minere:ogre") {
-    if (projectile) {
-      rollOgreRoar(
-        target,
-        attacker,
-        0.33,
-        20,
-        attacker?.typeId === "minecraft:player",
-      );
-      rollBecomeSummoner(target, 0.33);
-    } else {
-      rollOgreRoar(
-        target,
-        attacker,
-        0.25,
-        20,
-        attacker?.typeId === "minecraft:player",
-      );
-      rollBecomeSummoner(target, 0.2);
-    }
+    rollOgreRoar(
+      target,
+      attacker,
+      0.25,
+      attacker?.typeId === "minecraft:player",
+    );
   }
 
   // freeze freezing

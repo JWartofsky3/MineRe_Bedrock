@@ -17,7 +17,7 @@
           "seat_count": 1,
           "family_types": ["skeleton"],
           "seats": {
-            "position": [0, 0.54, 0]
+            "position": [0, 0.8, 0]
           }
         }
       },
@@ -29,7 +29,7 @@
           "seat_count": 1,
           "family_types": ["skeleton"],
           "seats": {
-            "position": [0, 0.7, 0]
+            "position": [0, 0.8, 0]
           }
         }
       },
@@ -41,7 +41,7 @@
           "seat_count": 1,
           "family_types": ["skeleton"],
           "seats": {
-            "position": [0, 0.7, 0]
+            "position": [0, 0.8, 0]
           }
         }
       },

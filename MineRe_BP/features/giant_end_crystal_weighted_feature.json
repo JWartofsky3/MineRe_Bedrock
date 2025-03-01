@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minere:giant_end_crystal_weighted_feature"
+    },
+    "features": [
+      ["minere:large_end_crystal_feature", 2],
+      ["minere:medium_end_crystal_feature", 3],
+      ["minere:small_end_crystal_feature", 4]
+    ]
+  }
+}

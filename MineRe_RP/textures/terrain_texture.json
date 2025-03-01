@@ -31,8 +31,14 @@
 		"sulfur_ore": {
 			"textures": "textures/blocks/minere/sulfur_ore"
 		},
+		"deepslate_sulfur_ore": {
+			"textures": "textures/blocks/minere/deepslate_sulfur_ore"
+		},
 		"nether_coal_ore": {
 			"textures": "textures/blocks/minere/nether_coal_ore"
+		},
+		"amethyst_ore": {
+			"textures": "textures/blocks/minere/amethyst_ore"
 		},
 		"deepslate_amethyst_ore": {
 			"textures": "textures/blocks/minere/deepslate_amethyst_ore"
@@ -66,6 +72,12 @@
 		},
 		"minere:teleporter_vertical_off": {
 			"textures": "textures/blocks/minere/teleporter/vertical_off.png"
+		},
+		"minere:end_sand": {
+			"textures": "textures/blocks/minere/end_sand.png"
+		},
+		"minere:end_crystalline": {
+			"textures": "textures/blocks/minere/end_crystalline.png"
 		}
 	}
 }

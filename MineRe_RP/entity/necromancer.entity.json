@@ -14,8 +14,8 @@
         "default": "geometry.minere.necromancer"
       },
       "spawn_egg": {
-        "texture": "spawn_egg",
-        "texture_index": 27
+        "base_color": "#ACBABD",
+        "overlay_color": "#351770"
       },
       "scripts": {
         "pre_animation": [

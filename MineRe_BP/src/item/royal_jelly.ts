@@ -3,7 +3,7 @@ import { ItemCustomComponent } from "@minecraft/server";
 export const RoyalJelly: ItemCustomComponent = {
   onCompleteUse(arg) {
     const player = arg.source;
-    player.addEffect("absorption", 1800 * 20, {
+    player.addEffect("absorption", 900 * 20, {
       amplifier: 3,
       showParticles: false,
     });

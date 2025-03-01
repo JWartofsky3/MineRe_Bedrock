@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minere:end_crater_weighted_feature"
+    },
+    "features": [
+      ["minere:small_crater_feature", 11],
+      ["minere:crater_no_meteorite_feature", 6],
+      ["minere:crater_meteorite_feature", 3]
+    ]
+  }
+}

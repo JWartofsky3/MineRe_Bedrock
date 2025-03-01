@@ -227,18 +227,6 @@
                     "test": "is_family",
                     "subject": "other",
                     "operator": "==",
-                    "value": "goblin"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "piglin"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
                     "value": "villager"
                   }
                 ]
@@ -401,7 +389,7 @@
       },
       "melee_mode": {
         "minecraft:attack": {
-          "damage": 11
+          "damage": 8
         },
         "minecraft:behavior.delayed_attack": {
           "priority": 3,
@@ -428,6 +416,15 @@
       "minecraft:health": {
         "value": 150,
         "max": 150
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/ogre/ogre_gear.json",
+        "slot_drop_chance": [
+          {
+            "slot": "slot.weapon.mainhand",
+            "drop_chance": 0.0
+          }
+        ]
       },
       "minecraft:damage_sensor": {
         "triggers": [

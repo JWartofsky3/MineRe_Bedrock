@@ -6,7 +6,7 @@
       "places_feature": "minere:packed_ice_feature"
     },
     "conditions": {
-      "placement_pass": "underground_pass",
+      "placement_pass": "before_underground_pass",
       "minecraft:biome_filter": [
         {
           "test": "has_biome_tag",

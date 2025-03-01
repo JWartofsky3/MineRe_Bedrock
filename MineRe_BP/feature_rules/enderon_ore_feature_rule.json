@@ -20,7 +20,7 @@
       ]
     },
     "distribution": {
-      "iterations": 10,
+      "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : 10",
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",

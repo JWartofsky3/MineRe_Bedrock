@@ -232,13 +232,43 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
       },
-      "minecraft:behavior.nearest_attackable_target": {
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
         "priority": 2,
         "must_see_forget_duration": 10,
         "persist_time": 10,
         "attack_interval": 2,
         "entity_types": [
           {
+            "priority": 0,
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "snowgolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                }
+              ]
+            },
+            "must_see": true,
+            "max_dist": 24
+          },
+          {
+            "priority": 1,
             "filters": {
               "any_of": [
                 {
@@ -275,49 +305,30 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "sheep"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "deer"
                 }
               ]
             },
             "must_see": true,
-            "max_dist": 24
+            "max_dist": 12
           },
           {
+            "priority": 2,
             "filters": {
               "any_of": [
                 {
                   "test": "is_family",
                   "subject": "other",
                   "value": "player"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "villager"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "snowgolem"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "irongolem"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "wolf"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "fox"
                 }
               ]
             },
             "must_see": false,
-            "max_dist": 10
+            "max_dist": 8
           }
         ]
       },

@@ -31,14 +31,6 @@
 				"pitch": 1,
 				"volume": 0.6
 			},
-			"minere:auto_miner": {
-				"events": {
-					"death": "machine.auto_miner.hit",
-					"hurt": "machine.auto_miner.hit"
-				},
-				"pitch": [0.8, 1.2],
-				"volume": 1
-			},
 			"minere:necromancer": {
 				"events": {
 					"ambient": "mob.skeleton.say",

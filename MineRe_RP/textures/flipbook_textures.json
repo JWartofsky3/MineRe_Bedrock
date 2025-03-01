@@ -12,6 +12,12 @@
     "ticks_per_frame": 3
   },
   {
+    "flipbook_texture": "textures/blocks/minere/ender_plasma_ore",
+    "atlas_tile": "ender_plasma_ore",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 3
+  },
+  {
     "flipbook_texture": "textures/blocks/minere/plasma_ball",
     "atlas_tile": "plasma_ball",
     "frames": [0, 1, 2, 3, 4, 5, 6],

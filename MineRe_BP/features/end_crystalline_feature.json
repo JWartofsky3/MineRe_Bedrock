@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:growing_plant_feature": {
+    "description": {
+      "identifier": "minere:end_crystalline_feature"
+    },
+    "height_distribution": [
+      [{ "range_min": 1, "range_max": 13 }, 2],
+      [{ "range_min": 1, "range_max": 2 }, 3],
+      [{ "range_min": 1, "range_max": 7 }, 10]
+    ],
+    "growth_direction": "UP",
+    "age": { "range_min": 17, "range_max": 26 },
+    "body_blocks": [["minere:end_crystalline", 4]],
+    "head_blocks": [["minere:end_crystalline", 4]],
+    "allow_water": true
+  }
+}

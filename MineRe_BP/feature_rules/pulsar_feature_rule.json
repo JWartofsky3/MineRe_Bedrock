@@ -20,10 +20,10 @@
       ]
     },
     "distribution": {
-      "iterations": 1,
+      "iterations": "(Math.abs(v.originz) < 1000 && Math.abs(v.originx) < 1000) ? 0 : 1",
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 500
+        "denominator": 150
       },
       "coordinate_eval_order": "zyx",
       "x": {

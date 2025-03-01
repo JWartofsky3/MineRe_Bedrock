@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:end_sand",
+      "menu_category": {
+        "is_hidden_in_commands": false,
+        "category": "nature"
+      }
+    },
+    "components": {
+      "tag:minecraft:wood_tier_destructible": {},
+      "tag:stone": {},
+      "tag:minecraft:is_shovel_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:map_color": "#DDE3B0"
+    }
+  }
+}

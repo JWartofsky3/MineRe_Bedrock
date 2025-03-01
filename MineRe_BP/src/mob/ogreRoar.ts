@@ -2,7 +2,6 @@ import {
   Entity,
   world,
   system,
-  EntityComponent,
   EntityComponentTypes,
   EntityVariantComponent,
   Vector3,
@@ -10,7 +9,6 @@ import {
 import { distVector3 } from "util/vector3Functions";
 import { DEFAULT_TICK } from "main";
 import { unbreakableBlocks } from "block/blockUtils";
-import { IS_SUMMONER, rollBecomeSummoner } from "./become_summoner";
 
 const ROAR_TIME = 20;
 
@@ -18,7 +16,6 @@ export function rollOgreRoar(
   caster: Entity,
   target: Entity,
   chance: number,
-  delay: number = 0,
   canBreakBlocks = false,
 ) {
   if (!caster || !target) {
@@ -56,66 +53,53 @@ export function rollOgreRoar(
     return;
   }
   caster.setDynamicProperty(ROAR_COOLDOWN, system.currentTick);
+  // actually roar
+  if (isCaveOgre) {
+    caster.triggerEvent("minere:cave_ogre_start_roar");
+  } else {
+    caster.triggerEvent("minere:ogre_start_roar");
+  }
 
-  system.runTimeout(() => {
-    if (!caster || !caster.isValid) {
+  if (canBreakBlocks) {
+    if (dimension.id === "minecraft:overworld" && caster.location.y > 63) {
       return;
     }
-    // actually roar
-    if (isCaveOgre) {
-      caster.triggerEvent("minere:cave_ogre_start_roar");
-    } else {
-      caster.triggerEvent("minere:ogre_start_roar");
+    if (caster.isInWater) {
+      return;
     }
-
-    if (canBreakBlocks) {
-      if (dimension.id === "minecraft:overworld" && caster.location.y > 63) {
+    system.runTimeout(() => {
+      if (!caster?.isValid()) {
         return;
       }
-      if (caster.isInWater) {
-        return;
-      }
-      system.runTimeout(() => {
-        if (!caster?.isValid()) {
-          return;
-        }
-        const breakDistance = isCaveOgre ? 6 : 5;
-        const verticalBreakDistance = isCaveOgre ? 4 : 3;
-        for (let x = breakDistance / -2; x <= breakDistance / 2; x += 0.5) {
-          for (let y = 0; y <= verticalBreakDistance; y++) {
-            for (let z = breakDistance / -2; z <= breakDistance / 2; z += 0.5) {
-              const pos: Vector3 = {
-                x: caster.location.x + x,
-                y: caster.location.y + y,
-                z: caster.location.z + z,
-              };
-              if (
-                pos.y >= dimension.heightRange.max ||
-                pos.y <= dimension.heightRange.min
-              ) {
-                continue;
-              }
-              const block = dimension.getBlock(pos);
-              if (!block?.isValid()) {
-                continue;
-              }
-              if (unbreakableBlocks.has(block.typeId)) {
-                continue;
-              }
-              dimension.runCommand(
-                `setBlock ${pos.x} ${pos.y} ${pos.z} air destroy`,
-              );
+      const breakDistance = isCaveOgre ? 6 : 5;
+      const verticalBreakDistance = isCaveOgre ? 4 : 3;
+      for (let x = breakDistance / -2; x <= breakDistance / 2; x += 0.5) {
+        for (let y = 0; y <= verticalBreakDistance; y++) {
+          for (let z = breakDistance / -2; z <= breakDistance / 2; z += 0.5) {
+            const pos: Vector3 = {
+              x: caster.location.x + x,
+              y: caster.location.y + y,
+              z: caster.location.z + z,
+            };
+            if (
+              pos.y >= dimension.heightRange.max ||
+              pos.y <= dimension.heightRange.min
+            ) {
+              continue;
             }
+            const block = dimension.getBlock(pos);
+            if (!block?.isValid()) {
+              continue;
+            }
+            if (unbreakableBlocks.has(block.typeId)) {
+              continue;
+            }
+            dimension.runCommand(
+              `setBlock ${pos.x} ${pos.y} ${pos.z} air destroy`,
+            );
           }
         }
-      }, ROAR_TIME);
-      system.runTimeout(() => {
-        if (!caster?.isValid()) {
-          return;
-        }
-        caster.setDynamicProperty(IS_SUMMONER, 0);
-        rollBecomeSummoner(caster, 0.33, true);
-      }, ROAR_TIME + 3);
-    }
-  }, Math.random() * delay);
+      }
+    }, ROAR_TIME);
+  }
 }

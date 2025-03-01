@@ -67,7 +67,7 @@ export function reduceDurability(
     return;
   }
 
-  if (equipmentSlot === EquipmentSlot.Mainhand) {
+  if (equipmentSlot === EquipmentSlot.Mainhand || !equipmentSlot) {
     inventory.container.setItem(source.selectedSlotIndex, item);
   } else {
     equippable.setEquipment(equipmentSlot, item);

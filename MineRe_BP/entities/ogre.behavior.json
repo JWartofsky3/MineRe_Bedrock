@@ -26,6 +26,30 @@
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/ogre/ogre.json"
+        },
+        "minecraft:behavior.summon_entity": {
+          "priority": 1,
+          "summon_choices": [
+            {
+              "min_activation_range": 3,
+              "max_activation_range": 6,
+              "weight": 3,
+              "cooldown_time": 8,
+              "cast_duration": 1,
+              "sequence": [
+                {
+                  "shape": "line",
+                  "target": "self",
+                  "base_delay": 0.65,
+                  "delay_per_summon": 0.05,
+                  "num_entities_spawned": 12,
+                  "entity_type": "minere:earthquake",
+                  "size": 12,
+                  "entity_lifespan": 2.0
+                }
+              ]
+            }
+          ]
         }
       },
       "minere:cave_ogre": {
@@ -33,7 +57,7 @@
           "value": 1
         },
         "minecraft:scale": {
-          "value": 1.1
+          "value": 1.05
         },
         "minecraft:health": {
           "value": 150
@@ -46,43 +70,15 @@
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/ogre/cave_ogre.json"
-        }
-      },
-      "minere:ogre_summoner": {
+        },
         "minecraft:behavior.summon_entity": {
-          "priority": 2,
-          "summon_choices": [
-            {
-              "min_activation_range": 3,
-              "max_activation_range": 6,
-              "weight": 3,
-              "cooldown_time": 15,
-              "cast_duration": 1,
-              "sequence": [
-                {
-                  "shape": "line",
-                  "target": "self",
-                  "base_delay": 0.65,
-                  "delay_per_summon": 0.05,
-                  "num_entities_spawned": 10,
-                  "entity_type": "minere:earthquake",
-                  "size": 12,
-                  "entity_lifespan": 2.0
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "minere:cave_ogre_summoner": {
-        "minecraft:behavior.summon_entity": {
-          "priority": 2,
+          "priority": 1,
           "summon_choices": [
             {
               "min_activation_range": 4,
               "max_activation_range": 10,
               "weight": 3,
-              "cooldown_time": 10,
+              "cooldown_time": 8,
               "cast_duration": 1,
               "sequence": [
                 {
@@ -90,9 +86,9 @@
                   "target": "self",
                   "base_delay": 0.65,
                   "delay_per_summon": 0.05,
-                  "num_entities_spawned": 12,
+                  "num_entities_spawned": 16,
                   "entity_type": "minere:earthquake",
-                  "size": 14,
+                  "size": 16,
                   "entity_lifespan": 2.0
                 }
               ]
@@ -572,9 +568,7 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "add": {
-              "component_groups": ["minere:ogre_neutral", "minere:ogre_mobile"]
-            }
+            "trigger": "spawn_green_ogre"
           },
           {
             "filters": {
@@ -595,8 +589,15 @@
         ]
       },
       "spawn_cave_ogre": {
+        "remove": {
+          "component_groups": ["minere:green_ogre"]
+        },
         "add": {
-          "component_groups": ["minere:cave_ogre"]
+          "component_groups": [
+            "minere:cave_ogre",
+            "minere:ogre_neutral",
+            "minere:ogre_mobile"
+          ]
         }
       },
       "spawn_green_ogre": {
@@ -604,7 +605,11 @@
           "component_groups": ["minere:cave_ogre"]
         },
         "add": {
-          "component_groups": ["minere:green_ogre"]
+          "component_groups": [
+            "minere:green_ogre",
+            "minere:ogre_neutral",
+            "minere:ogre_mobile"
+          ]
         }
       },
       "minere:ogre_become_hostile": {
@@ -622,28 +627,6 @@
         "add": {
           "component_groups": ["minere:ogre_neutral"]
         }
-      },
-      "become_summoner": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_variant",
-              "value": 0
-            },
-            "add": {
-              "component_groups": ["minere:ogre_summoner"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_variant",
-              "value": 1
-            },
-            "add": {
-              "component_groups": ["minere:cave_ogre_summoner"]
-            }
-          }
-        ]
       },
       "minere:ogre_become_angry": {
         "sequence": [
@@ -730,9 +713,7 @@
                 "minere:ogre_angry",
                 "minere:ogre_berserk",
                 "minere:ogre_hostile",
-                "minere:ogre_mobile",
-                "minere:ogre_summoner",
-                "minere:cave_ogre_summoner"
+                "minere:ogre_mobile"
               ]
             }
           },

@@ -154,8 +154,8 @@
               {
                 "shape": "circle",
                 "target": "self",
-                "delay_per_summon": 0.1,
-                "num_entities_spawned": 1,
+                "delay_per_summon": 0.5,
+                "num_entities_spawned": 3,
                 "entity_type": "bee",
                 "summon_cap": 8,
                 "summon_cap_radius": 32,

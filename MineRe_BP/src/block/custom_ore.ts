@@ -44,6 +44,7 @@ oreMap.set("minere:sulfur_ore", {
     max: 2,
   },
 });
+oreMap.set("minere:deepslate_sulfur_ore", oreMap.get("minere:sulfur_ore"));
 oreMap.set("minere:nether_coal_ore", {
   ore: "minere:nether_coal",
   count: {
@@ -89,7 +90,7 @@ oreMap.set("minere:enderon_ore", {
     max: 6,
   },
 });
-oreMap.set("minere:deepslate_amethyst_ore", {
+oreMap.set("minere:amethyst_ore", {
   ore: "minecraft:amethyst_shard",
   count: {
     min: 1,
@@ -104,6 +105,7 @@ oreMap.set("minere:deepslate_amethyst_ore", {
     max: 3,
   },
 });
+oreMap.set("minere:deepslate_amethyst_ore", oreMap.get("minere:amethyst_ore"));
 
 export const customOre: BlockCustomComponent = {
   onPlayerDestroy(arg: BlockComponentPlayerDestroyEvent) {

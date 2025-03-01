@@ -1,0 +1,64 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "minere:underground_sulfur_ore",
+      "places_feature": "minere:sulfur_ore_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": [
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "warm"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "lush_caves"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 16,
+      "coordinate_eval_order": "zyx",
+      "x": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      },
+      "y": {
+        "distribution": "uniform",
+        "extent": [-20, 72]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      }
+    }
+  }
+}

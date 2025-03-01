@@ -19,7 +19,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 60
       },
-      "minecraft:map_color": "#EEF6B4",
+      "minecraft:map_color": "#DDE3B0",
       "minecraft:loot": "loot_tables/blocks/enderon_ore.json"
     }
   }

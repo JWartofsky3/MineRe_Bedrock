@@ -28,9 +28,17 @@
 		"textures": "sulfur_ore",
 		"sound": "stone"
 	},
+	"minere:deepslate_sulfur_ore": {
+		"textures": "deepslate_sulfur_ore",
+		"sound": "deepslate"
+	},
 	"minere:nether_coal_ore": {
 		"textures": "nether_coal_ore",
 		"sound": "netherrack"
+	},
+	"minere:amethyst_ore": {
+		"textures": "amethyst_ore",
+		"sound": "stone"
 	},
 	"minere:deepslate_amethyst_ore": {
 		"textures": "deepslate_amethyst_ore",
@@ -39,5 +47,13 @@
 	"minere:teleporter": {
 		"sound": "metal",
 		"textures": "minere:teleporter_flat"
+	},
+	"minere:end_sand": {
+		"sound": "sand",
+		"textures": "minere:end_sand"
+	},
+	"minere:end_crystalline": {
+		"sound" : "amethyst_block",
+		"textures": "minere:end_crystalline"
 	}
 }

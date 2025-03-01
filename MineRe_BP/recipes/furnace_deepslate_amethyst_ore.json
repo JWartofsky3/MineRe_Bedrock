@@ -1,0 +1,12 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "minere:furnace_deepslate_amethyst_ore"
+    },
+
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:deepslate_amethyst_ore",
+    "output": "minecraft:amethyst_shard"
+  }
+}

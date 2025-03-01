@@ -13,19 +13,24 @@
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "overworld"
+              "value": "cold"
             },
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "overworld_generation"
+              "value": "frozen"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "deep_dark"
             }
           ]
         }
       ]
     },
     "distribution": {
-      "iterations": 6,
+      "iterations": 15,
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",
@@ -33,7 +38,7 @@
       },
       "y": {
         "distribution": "uniform",
-        "extent": [-63, 0]
+        "extent": [-63, 48]
       },
       "z": {
         "distribution": "uniform",

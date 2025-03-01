@@ -1,0 +1,57 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "minere:giant_beehive_feature_rule_jungle",
+      "places_feature": "minere:giant_beehive_weighted_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": [
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "flower_forest"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 1,
+      "x": {
+        "distribution": "uniform",
+        "extent": [-8, 8]
+      },
+      "y": {
+        "extent": [16, "query.heightmap(variable.worldx, variable.worldz)"],
+        "distribution": "uniform"
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [-8, 8]
+      },
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 50
+      }
+    }
+  }
+}

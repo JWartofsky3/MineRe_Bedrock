@@ -1,0 +1,64 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:illumina",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.illumina",
+      "minecraft:tags": {
+        "tags": ["minecraft:is_sword"]
+      },
+      "minecraft:custom_components": ["minere:illumina", "minere:custom_sword"],
+      "minecraft:cooldown": {
+        "category": "illumina",
+        "duration": 5.0
+      },
+      "minecraft:use_modifiers": {},
+      "minecraft:damage": 6,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 25
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:bamboo",
+            "speed": 60
+          }
+        ]
+      },
+      "minecraft:durability": {
+        "max_durability": 900
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minere:illumina"],
+            "repair_amount": 900
+          },
+          {
+            "items": ["minecraft:diamond"],
+            "repair_amount": 900
+          },
+          {
+            "items": ["minecraft:amethyst_shard", "minecraft:iron_ingot"],
+            "repair_amount": 225
+          }
+        ]
+      }
+    }
+  }
+}

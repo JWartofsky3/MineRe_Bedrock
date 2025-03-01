@@ -10,7 +10,6 @@
           "particle_effects": [
             {
               "effect": "emerge",
-              "locator": "root",
               "pre_effect_script": "variable.dig_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.dig_particle_texture_size = query.surface_particle_texture_size; variable.dig_particle_color = query.surface_particle_color;"
             }
           ],

@@ -1,0 +1,15 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "minere:end_spire_feature"
+    },
+    "structure_name": "minere:end_spire",
+    "adjustment_radius": 8,
+    "facing_direction": "random",
+    "constraints": {
+      "grounded": {},
+      "unburied": {}
+    }
+  }
+}

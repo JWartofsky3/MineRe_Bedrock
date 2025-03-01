@@ -8,7 +8,10 @@
     "conditions": [
       {
         "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_on_block_filter": { "name": "minecraft:end_stone" },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:end_stone",
+          "minere:end_sand"
+        ],
         "minecraft:weight": {
           "default": 1
         },

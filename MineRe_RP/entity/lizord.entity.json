@@ -14,8 +14,8 @@
         "default": "geometry.minere.lizord"
       },
       "spawn_egg": {
-        "base_color": "#428f7e",
-        "overlay_color": "#59565b"
+        "base_color": "#EED66F",
+        "overlay_color": "#C0ECD2"
       },
       "scripts": {
         "scale": "1.9",

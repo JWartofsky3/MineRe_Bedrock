@@ -1,0 +1,30 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "minere:end_crystalline_ore_feature"
+    },
+    "count": 64,
+    "replace_rules": [
+      {
+        "places_block": {
+          "name": "minere:end_crystalline"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:end_stone"
+          },
+          {
+            "name": "minere:end_sand"
+          },
+          {
+            "name": "minere:enderon_ore"
+          },
+          {
+            "name": "minere:ender_plasma_ore"
+          }
+        ]
+      }
+    ]
+  }
+}

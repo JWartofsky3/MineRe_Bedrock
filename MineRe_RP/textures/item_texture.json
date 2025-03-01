@@ -6,15 +6,6 @@
     "minere.popcorn": {
       "textures": "textures/items/minere/popcorn.png"
     },
-    "minere.advanced_minecart": {
-      "textures": "textures/items/minere/advanced_minecart.png"
-    },
-    "minere.auto_miner": {
-      "textures": "textures/items/minere/auto_miner.png"
-    },
-    "minere.diamond_drill": {
-      "textures": "textures/items/minere/diamond_drill.png"
-    },
     "minere.ender_plasma": {
       "textures": "textures/items/minere/ender_plasma.png"
     },
@@ -92,6 +83,9 @@
     },
     "minere.ice_dagger": {
       "textures": "textures/items/minere/ice_dagger.png"
+    },
+    "minere.illumina": {
+      "textures": "textures/items/minere/illumina.png"
     },
     "minere.venom_shank": {
       "textures": "textures/items/minere/venom_shank.png"

@@ -1,0 +1,15 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "minere:crater_no_meteorite_feature"
+    },
+    "structure_name": "minere:crater_no_meteorite",
+    "adjustment_radius": 8,
+    "facing_direction": "random",
+    "constraints": {
+      "grounded": {},
+      "unburied": {}
+    }
+  }
+}

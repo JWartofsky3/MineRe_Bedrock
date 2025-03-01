@@ -297,6 +297,11 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "ogre"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "bomb"
                   }
                 ]
               },
@@ -401,6 +406,11 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "ogre"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "demon"
                   }
                 ]
               },
@@ -493,6 +503,45 @@
       }
     },
     "components": {
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 2,
+        "remove_target": true,
+        "entity_types": [
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "bomb"
+                }
+              ]
+            },
+            "max_dist": 3
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "zoglin"
+                }
+              ]
+            },
+            "max_dist": 6
+          }
+        ],
+        "on_escape_event": {
+          "event": "become_calm_event",
+          "target": "self"
+        },
+        "avoid_mob_sound": "retreat",
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 5
+        }
+      },
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:equip_item": {},
       "minecraft:admire_item": {

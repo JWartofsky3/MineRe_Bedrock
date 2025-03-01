@@ -43,7 +43,7 @@
         ],
         "pre_animation": [
           "variable.is_charging = query.is_charged || query.is_charging ? 1 : 0;",
-          "variable.is_blinking = math.mod(query.life_time * 3, 24) >= 22;"
+          "variable.is_blinking = math.mod(query.life_time * 2, 24) >= 21;"
         ]
       },
       "animations": {

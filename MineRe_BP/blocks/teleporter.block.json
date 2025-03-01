@@ -48,7 +48,6 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 130
       },
-      "minecraft:light_emission": 5,
       "minecraft:map_color": "#183b30",
       "minecraft:redstone_conductivity": {
         "redstone_conductor": true,
@@ -69,6 +68,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'north' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_flat"
@@ -113,6 +113,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'south' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_flat"
@@ -157,6 +158,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'east' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_flat"
@@ -201,6 +203,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'west' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_flat"
@@ -245,6 +248,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'up' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_vertical"
@@ -277,6 +281,7 @@
       {
         "condition": "q.block_state('minecraft:facing_direction') == 'down' && q.block_state('minere:powered') == true",
         "components": {
+          "minecraft:light_emission": 5,
           "minecraft:material_instances": {
             "*": {
               "texture": "minere:teleporter_vertical_reverse"

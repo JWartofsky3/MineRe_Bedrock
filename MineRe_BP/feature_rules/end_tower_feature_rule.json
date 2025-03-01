@@ -1,0 +1,45 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "minere:end_tower_feature_rule",
+      "places_feature": "minere:end_tower_weighted_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": [
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "the_end"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : (t.noise > 0.65) ? 1 : 0;",
+      "x": {
+        "distribution": "uniform",
+        "extent": [-16, 0]
+      },
+      "y": {
+        "distribution": "uniform",
+        "extent": [
+          "query.heightmap(variable.worldx, variable.worldz) - 12",
+          "query.heightmap(variable.worldx, variable.worldz)"
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [-16, 0]
+      },
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 7
+      }
+    }
+  }
+}

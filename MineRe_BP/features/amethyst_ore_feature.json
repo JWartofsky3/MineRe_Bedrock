@@ -5,8 +5,16 @@
       "identifier": "minere:amethyst_ore_feature"
     },
     "count": 8,
-    "discard_chance_on_air_exposure": 0.25,
+    "discard_chance_on_air_exposure": 0.5,
     "replace_rules": [
+      {
+        "places_block": "minere:amethyst_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:stone"
+          }
+        ]
+      },
       {
         "places_block": "minere:deepslate_amethyst_ore",
         "may_replace": [

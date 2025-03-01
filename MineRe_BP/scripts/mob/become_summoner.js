@@ -1,18 +1,16 @@
 export const IS_SUMMONER = "is_summoner";
-export function rollBecomeSummoner(summoner, chance, ignoreProperty = false) {
-  if (!summoner) {
-    return;
-  }
-  const isSummoner = summoner.getDynamicProperty(IS_SUMMONER);
-  if (Math.random() > chance) {
-    return;
-  }
-  if (isSummoner?.valueOf() === 1) {
-    if (ignoreProperty) {
-    } else {
-      return;
+export function rollBecomeSummoner(summoner, chance) {
+    if (!summoner) {
+        return;
     }
-  }
-  summoner.setDynamicProperty(IS_SUMMONER, 1);
-  summoner.triggerEvent("become_summoner");
+    const isSummoner = summoner.getDynamicProperty(IS_SUMMONER);
+    if (Math.random() > chance) {
+        return;
+    }
+    if (isSummoner?.valueOf() === 1) {
+        return;
+    }
+    summoner.setDynamicProperty(IS_SUMMONER, 1);
+    // DO NOT REMOVE THIS DUMB DUMB
+    summoner.triggerEvent("become_summoner");
 }

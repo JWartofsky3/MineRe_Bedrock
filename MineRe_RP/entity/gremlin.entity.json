@@ -16,7 +16,7 @@
         "default": "geometry.minere.gremlin"
       },
       "spawn_egg": {
-        "base_color": "#340546",
+        "base_color": "#4B7C25",
         "overlay_color": "#722952"
       },
       "scripts": {

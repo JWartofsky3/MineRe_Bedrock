@@ -1,5 +1,4 @@
 action.interact.reprogram=Reprogram
-entity.minere:advanced_minecart.name=Enchanted Minecart
 entity.minere:amethyst_projectile.name=Amethyst
 entity.minere:biter.name=Biter
 entity.minere:black_bear.name=Black Bear
@@ -37,7 +36,6 @@ item.diamond_shard.name=Diamond Shard
 item.emerald_shard.name=Emerald Shard
 item.ender_plasma.name=Ender Plasma
 item.phased_ender_pearl.name=Phased Ender Pearl
-item.minere:advanced_minecart=Enchanted Minecart
 item.minere:amethyst_staff=Amethyst Staff
 item.minere:fire_staff=Fire Staff
 item.minere:echo_staff=Echo Staff
@@ -92,6 +90,7 @@ action.interact.catch=Catch
 entity.minere:scorpion.name=Scorpion
 item.spawn_egg.entity.minere:scorpion.name=Spawn Scorpion
 item.minere:ice_dagger=Ice Dagger
+item.minere:illumina=Illumina
 item.minere:venom_shank=Venomshank
 entity.minere:owl.name=Owl
 item.spawn_egg.entity.minere:owl.name=Spawn Owl
@@ -104,18 +103,12 @@ item.spawn_egg.entity.minere:squirrel.name=Spawn Squirrel
 item.acorn.name=Acorn
 item.popcorn.name=Popcorn
 
-action.interact.add_fuel=Add Fuel
-entity.minere:auto_miner.name=Auto Miner
-item.minere:auto_miner=Auto Miner
 tile.minere:nether_coal_ore.name=Nether Coal Ore
 item.nether_coal.name=Nether Coal
 entity.minere:necromancer.name=Necromancer
 item.spawn_egg.entity.minere:necromancer.name=Spawn Necromancer
 entity.minere:necromancer.name=Necromancer
 item.spawn_egg.entity.minere:necromancer.name=Spawn Necromancer
-entity.minere:auto_miner.name=Auto Miner
-item.minere:diamond_drill=Diamond Drill
-action.hint.exit.minere:advanced_minecart=Press SPACE to Exit
 
 item.minere:copper_treecapitator=Copper Treecapitator
 item.minere:iron_treecapitator=Iron Treecapitator
@@ -133,8 +126,14 @@ item.royal_jelly.name=Royal Jelly
 tile.minere:teleporter.name=Teleporter
 
 entity.minere:earthquake.name=Earthquake
+tile.minere:amethyst_ore.name=Amethyst Ore
 tile.minere:deepslate_amethyst_ore.name=Deepslate Amethyst Ore
 item.minere:enderon_helmet=Enderon Helmet
 item.minere:enderon_chestplate=Enderon Chestplate
 item.minere:enderon_leggings=Enderon Leggings
 item.minere:enderon_boots=Enderon Boots
+
+action.interact.set_wander=Play
+tile.minere:deepslate_sulfur_ore.name=Deepslate Sulfur Ore
+tile.minere:end_sand.name=End Sand
+tile.minere:end_crystalline.name=End Crystalline

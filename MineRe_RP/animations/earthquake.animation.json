@@ -17,7 +17,7 @@
 			}
 		},
 		"animation.minere.earthquake.particles": {
-			"animation_length": 0.5,
+			"animation_length": 0.25,
 			"sound_effects": {
 				"0.0": {
 					"effect": "emerge"

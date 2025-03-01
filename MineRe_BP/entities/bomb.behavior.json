@@ -123,7 +123,7 @@
         }
       },
       "minecraft:type_family": {
-        "family": ["tnt", "inanimate"]
+        "family": ["bomb", "inanimate"]
       },
       "minecraft:projectile": {
         "power": 0.8,

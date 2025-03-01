@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "minere:end_crater_feature_rule",
+      "places_feature": "minere:end_crater_weighted_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": [
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "the_end"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : 1",
+      "x": {
+        "distribution": "uniform",
+        "extent": [-8, 8]
+      },
+      "y": "query.heightmap(variable.worldx, variable.worldz) - 1",
+      "z": {
+        "distribution": "uniform",
+        "extent": [-8, 8]
+      },
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 50
+      }
+    }
+  }
+}

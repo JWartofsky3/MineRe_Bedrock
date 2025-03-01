@@ -15,6 +15,18 @@
               "operator": "==",
               "value": "cold"
             }
+          ],
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "ocean"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "river"
+            }
           ]
         }
       ]
@@ -23,13 +35,13 @@
       "iterations": 1,
       "x": -16,
       "y": {
-        "extent": [0, 70],
+        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 1"],
         "distribution": "uniform"
       },
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 200
+        "denominator": 180
       }
     }
   }

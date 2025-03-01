@@ -1,0 +1,14 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minere:end_tower_weighted_feature"
+    },
+    "features": [
+      ["minere:end_spire_feature", 40],
+      ["minere:small_end_spire_feature", 40],
+      ["minere:end_brick_pillar_feature", 13],
+      ["minere:ender_phantom_tower_feature", 7]
+    ]
+  }
+}
