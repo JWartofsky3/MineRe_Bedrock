@@ -55,6 +55,20 @@
         },
         {
           "type": "item",
+          "name": "minecraft:beetroot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 6,
+                "max": 12
+              }
+            }
+          ],
+          "weight": 100
+        },
+        {
+          "type": "item",
           "name": "minecraft:diamond",
           "functions": [
             {

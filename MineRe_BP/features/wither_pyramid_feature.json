@@ -5,20 +5,7 @@
       "identifier": "minere:wither_pyramid_feature"
     },
     "structure_name": "minere:generate_wither_pyramid",
-    "adjustment_radius": 16,
     "facing_direction": "south",
-    "constraints": {
-      "block_intersection": {
-        "block_allowlist": [
-          "minecraft:netherrack",
-          "minecraft:soul_sand",
-          "minecraft:soul_soil",
-          "minecraft:basalt",
-          "minecraft:lava",
-          "minecraft:gravel",
-          "minecraft:air"
-        ]
-      }
-    }
+    "constraints": {}
   }
 }

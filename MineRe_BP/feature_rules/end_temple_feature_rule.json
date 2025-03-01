@@ -22,11 +22,11 @@
     "distribution": {
       "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : 1;",
       "x": -16,
-      "y": "query.heightmap(variable.worldx, variable.worldz)",
+      "y": "query.heightmap(variable.worldx, variable.worldz) - 3",
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 500
+        "denominator": 400
       }
     }
   }
