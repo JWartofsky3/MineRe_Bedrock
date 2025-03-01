@@ -265,7 +265,7 @@
         },
         {
           "type": "item",
-          "weight": 2,
+          "weight": 4,
           "functions": [
             {
               "function": "specific_enchants",
@@ -298,7 +298,29 @@
               "treasure": true
             }
           ],
-          "name": "minecraft:pickaxe"
+          "name": "minecraft:iron_pickaxe"
+        },
+        {
+          "type": "item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_randomly",
+              "treasure": true
+            }
+          ],
+          "name": "minere:enderon_shovel"
+        },
+        {
+          "type": "item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_randomly",
+              "treasure": true
+            }
+          ],
+          "name": "minere:enderon_pickaxe"
         }
       ]
     }
