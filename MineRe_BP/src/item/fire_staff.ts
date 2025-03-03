@@ -15,16 +15,7 @@ import {
   randomVector3,
 } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
-
-const fireReplaceList = [
-  "air",
-  "tall_grass",
-  "short_grass",
-  "snow_layer",
-  "fern",
-  "crimson_roots",
-  "warped_roots",
-];
+import { replaceableBlocks } from "block/blockUtils";
 
 export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -125,7 +116,7 @@ function fireWall(
         volume: 0.5,
       });
       // z axis
-      fireReplaceList.forEach((replaceMe: string) => {
+      replaceableBlocks.forEach((replaceMe: string) => {
         dimension.runCommand(
           `fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${spacing * i + position.z} fire replace ${replaceMe}`,
         );

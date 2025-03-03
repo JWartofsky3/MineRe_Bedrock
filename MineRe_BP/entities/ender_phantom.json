@@ -3,7 +3,6 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:ender_phantom",
-      "runtime_identifier": "minecraft:phantom",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
@@ -107,7 +106,45 @@
         "max": 64
       },
       "minecraft:despawn": {
-        "despawn_from_distance": {}
+        "filters": {
+          "any_of": [
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 512
+                }
+              ]
+            },
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "inactivity_timer",
+                  "subject": "self",
+                  "value": 30
+                },
+                {
+                  "test": "random_chance",
+                  "value": 800
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 256
+                }
+              ]
+            }
+          ]
+        }
       },
       "minecraft:behavior.avoid_mob_type": {
         "priority": 0,

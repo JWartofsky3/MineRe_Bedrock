@@ -109,7 +109,10 @@
       "textures": "textures/items/minere/enderon_treecapitator.png"
     },
     "minere.royal_jelly": {
-      "textures": "textures/items/minere/royal_jelly"
+      "textures": "textures/items/minere/royal_jelly.png"
+    },
+    "minere.end_path": {
+      "textures": "textures/items/minere/end_path.png"
     }
   },
   "resource_pack_name": "MineRe Resources",

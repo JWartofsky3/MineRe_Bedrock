@@ -7,6 +7,6 @@
 
     "tags": ["furnace", "blast_furnace"],
     "input": "minere:end_sand",
-    "output": "minecraft:sand"
+    "output": "minecraft:glass"
   }
 }

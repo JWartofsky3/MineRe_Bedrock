@@ -1,15 +1,7 @@
 import { system, world, EntityComponentTypes, ItemComponentTypes, } from "@minecraft/server";
 import { multiplyVector3Number, addVector3, randomVector3, } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
-const fireReplaceList = [
-    "air",
-    "tall_grass",
-    "short_grass",
-    "snow_layer",
-    "fern",
-    "crimson_roots",
-    "warped_roots",
-];
+import { replaceableBlocks } from "block/blockUtils";
 export const useFireStaff = (data) => {
     const itemStack = data.itemStack;
     const source = data.source;
@@ -79,7 +71,7 @@ function fireWall(position, dimension, rings, spacing, height) {
                 volume: 0.5,
             });
             // z axis
-            fireReplaceList.forEach((replaceMe) => {
+            replaceableBlocks.forEach((replaceMe) => {
                 dimension.runCommand(`fill ${spacing * i + position.x} ${minY} ${spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${spacing * i + position.z} fire replace ${replaceMe}`);
                 dimension.runCommand(`fill ${spacing * i + position.x} ${minY} ${-spacing * i + position.z} ${-spacing * i + position.x} ${maxY} ${-spacing * i + position.z} fire replace ${replaceMe}`);
                 // x axis

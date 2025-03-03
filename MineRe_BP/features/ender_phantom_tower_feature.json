@@ -9,7 +9,18 @@
     "facing_direction": "south",
     "constraints": {
       "grounded": {},
-      "unburied": {}
+      "unburied": {},
+      "block_intersection": {
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:end_stone",
+          "minecraft:chorus_plant",
+          "minecraft:chorus_flower",
+          "minere:end_sand",
+          "minere:enderon_ore",
+          "minere:ender_plasma_ore"
+        ]
+      }
     }
   }
 }

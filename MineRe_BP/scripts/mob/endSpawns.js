@@ -39,15 +39,6 @@ export const handleEndSpawn = (entity) => {
                         return;
                     }
                     entity.remove();
-                    if (Math.random() <= 0.9) {
-                        dimension.spawnEntity("minecraft:enderman", location);
-                    }
-                    else {
-                        dimension.spawnEntity("minere:ender_phantom", location);
-                    }
-                }
-                else {
-                    entity.remove();
                     dimension.spawnEntity("minecraft:enderman", location);
                 }
             }

@@ -137,3 +137,6 @@ action.interact.set_wander=Play
 tile.minere:deepslate_sulfur_ore.name=Deepslate Sulfur Ore
 tile.minere:end_sand.name=End Sand
 tile.minere:end_crystalline.name=End Crystalline
+
+item.minere:end_path=End Path
+item.end_path.name=End Path

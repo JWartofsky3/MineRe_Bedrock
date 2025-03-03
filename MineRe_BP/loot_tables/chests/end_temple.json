@@ -167,6 +167,20 @@
         },
         {
           "type": "item",
+          "name": "minere:end_path",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4,
+                "max": 16
+              }
+            }
+          ],
+          "weight": 100
+        },
+        {
+          "type": "item",
           "name": "minecraft:book",
           "functions": [
             {
@@ -241,6 +255,31 @@
       ]
     },
     {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:illumina",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "specific_enchants",
+              "enchants": [
+                {
+                  "id": "smite",
+                  "level": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "rolls": 2,
       "entries": [
         {
@@ -303,23 +342,11 @@
         {
           "type": "item",
           "weight": 1,
-          "functions": [
-            {
-              "function": "enchant_randomly",
-              "treasure": true
-            }
-          ],
           "name": "minere:enderon_shovel"
         },
         {
           "type": "item",
           "weight": 1,
-          "functions": [
-            {
-              "function": "enchant_randomly",
-              "treasure": true
-            }
-          ],
           "name": "minere:enderon_pickaxe"
         }
       ]

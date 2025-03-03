@@ -13,7 +13,7 @@
           "minere:end_sand"
         ],
         "minecraft:weight": {
-          "default": 2
+          "default": 1
         },
         "minecraft:density_limit": {
           "surface": 4,

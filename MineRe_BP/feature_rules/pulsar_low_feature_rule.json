@@ -1,35 +1,30 @@
 {
-  "format_version": "1.13.0",
+  "format_version": "1.20.20",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "minere:sand_patch_rule",
-      "places_feature": "minere:sand_patch"
+      "identifier": "minere:pulsar_low_feature_rule",
+      "places_feature": "minere:pulsar_feature"
     },
     "conditions": {
-      "placement_pass": "first_pass",
+      "placement_pass": "underground_pass",
       "minecraft:biome_filter": [
         {
           "any_of": [
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "forest"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "jungle"
+              "value": "the_end"
             }
           ]
         }
       ]
     },
     "distribution": {
+      "iterations": "(Math.abs(v.originz) < 1000 && Math.abs(v.originx) < 1000) ? 0 : 1",
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 25
+        "denominator": 250
       },
-      "iterations": 1,
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",
@@ -37,7 +32,7 @@
       },
       "y": {
         "distribution": "uniform",
-        "extent": [62, 64]
+        "extent": [0, 24]
       },
       "z": {
         "distribution": "uniform",

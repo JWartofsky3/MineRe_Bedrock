@@ -1,5 +1,6 @@
 import { system, EntityComponentTypes, EquipmentSlot, } from "@minecraft/server";
 import { isAlive } from "./mob_utils";
+import { replaceableBlocks } from "block/blockUtils";
 const MAX_SLOWNESS = 4;
 export function rollFreeze(target, attacker) {
     if (!target || !attacker) {
@@ -60,8 +61,9 @@ export function freezeEntity(target, duration) {
     dimension.playSound("mob.freeze.freeze", target?.location);
     for (let i = -1; i < 3; i++) {
         system.runTimeout(() => {
-            dimension.runCommand(`fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace air`);
-            dimension.runCommand(`fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace snow_layer`);
+            replaceableBlocks.forEach((replaceMe) => {
+                dimension.runCommand(`fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace ${replaceMe}`);
+            });
             if (i == 0 || i == 1) {
                 dimension.runCommand(`fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`);
             }

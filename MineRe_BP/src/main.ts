@@ -51,6 +51,7 @@ import { rollLeap } from "mob/yetiLeap";
 import { Illumina } from "item/illumina";
 import { endSand } from "block/end_sand";
 import { endCrystalline } from "block/end_crystalline";
+import { PlatformPath } from "item/platform_path";
 
 export const DEFAULT_TICK = 20;
 
@@ -99,6 +100,10 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:treecapitator",
     Treecapitator,
   );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:path", 
+    PlatformPath
+  )
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,

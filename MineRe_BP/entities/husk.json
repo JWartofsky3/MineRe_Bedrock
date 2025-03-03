@@ -124,7 +124,6 @@
     },
     "components": {
       "minecraft:is_hidden_when_invisible": {},
-      "minecraft:burns_in_daylight": {},
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0,

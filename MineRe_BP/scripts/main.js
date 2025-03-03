@@ -34,6 +34,7 @@ import { runEarthquake } from "mob/earthquake";
 import { rollOgreRoar } from "mob/ogreRoar";
 import { rollLeap } from "mob/yetiLeap";
 import { Illumina } from "item/illumina";
+import { PlatformPath } from "item/platform_path";
 export const DEFAULT_TICK = 20;
 world.beforeEvents.worldInitialize.subscribe(function (data) {
     data.itemComponentRegistry.registerCustomComponent("minere:ender_strike", EnderStrike);
@@ -47,6 +48,7 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     data.itemComponentRegistry.registerCustomComponent("minere:custom_shovel", CustomShovel);
     data.itemComponentRegistry.registerCustomComponent("minere:custom_pickaxe", CustomPickaxe);
     data.itemComponentRegistry.registerCustomComponent("minere:treecapitator", Treecapitator);
+    data.itemComponentRegistry.registerCustomComponent("minere:path", PlatformPath);
     data.blockComponentRegistry.registerCustomComponent("minere:firefly_lamp", fireflyLamp);
     data.blockComponentRegistry.registerCustomComponent("minere:custom_ore", customOre);
     data.blockComponentRegistry.registerCustomComponent("minere:teleporter", teleporter);

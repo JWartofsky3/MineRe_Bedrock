@@ -110,6 +110,10 @@
         },
         "minecraft:attack": {
           "damage": [2, 3]
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.5
         }
       },
       "minere:cave_gremlin": {
