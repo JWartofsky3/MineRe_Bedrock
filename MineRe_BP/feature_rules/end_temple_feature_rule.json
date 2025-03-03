@@ -20,12 +20,12 @@
       ]
     },
     "distribution": {
-      "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : 1",
+      "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : query.heightmap(v.originx, v.originz) < 60 ? 0 : 1",
       "x": -16,
       "y": {
         "distribution": "uniform",
         "extent": [
-          58,
+          "query.heightmap(variable.worldx, variable.worldz) - 2",
           "query.heightmap(variable.worldx, variable.worldz)"
         ]
       },
