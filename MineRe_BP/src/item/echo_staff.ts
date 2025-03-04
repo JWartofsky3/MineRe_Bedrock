@@ -22,14 +22,14 @@ import {
 
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
 const SHADOW_TIME = 8 * 20;
-const SHADOW_XP_COST = 24; // xp
+const SHADOW_XP_COST = 10; // xp
 const SHADOW_DURABILITY_COST = 5;
 const SHADOW_RANGE = 8;
 const SONIC_RANGE = 24;
 const SONIC_DAMAGE = 26;
 const SONIC_SPLASH_RANGE = 5;
 const SONIC_SPLASH_DAMAGE = 16;
-const SONIC_XP_COST = 24; // xp
+const SONIC_XP_COST = 10; // xp
 const SONIC_DURABILITY_COST = 5;
 const cooldownTime = 10;
 
