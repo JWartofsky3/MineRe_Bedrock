@@ -9,6 +9,17 @@
     },
 
     "component_groups": {
+      "minere:cat_go_home": {
+        "minecraft:home": {},
+        "minecraft:behavior.go_home": {
+          "priority": 0,
+          "interval": 120,
+          "goal_radius": 4
+        },
+        "minecraft:behavior.move_towards_home_restriction": {
+          "priority": 1
+        }
+      },
       "minere:cat_following": {
         "minecraft:behavior.follow_owner": {
           "priority": 4,
@@ -723,10 +734,16 @@
       "minere:follow": {
         "add": {
           "component_groups": ["minere:cat_following"]
+        },
+        "remove": {
+          "component_groups": ["minere:cat_go_home"]
         }
       },
 
       "minere:go_play": {
+        "add": {
+          "component_groups": ["minere:cat_go_home"]
+        },
         "remove": {
           "component_groups": ["minere:cat_following"]
         }

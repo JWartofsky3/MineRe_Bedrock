@@ -240,6 +240,18 @@
         }
       },
 
+      "minere:wolf_go_home": {
+        "minecraft:home": {},
+        "minecraft:behavior.go_home": {
+          "priority": 0,
+          "interval": 120,
+          "goal_radius": 4
+        },
+        "minecraft:behavior.move_towards_home_restriction": {
+          "priority": 1
+        }
+      },
+
       "minecraft:wolf_tame": {
         "minecraft:is_tamed": {},
         "minecraft:behavior.nearest_attackable_target": {
@@ -1089,6 +1101,9 @@
       },
 
       "minere:follow": {
+        "remove": {
+          "component_groups": ["minere:wolf_go_home"]
+        },
         "add": {
           "component_groups": ["minere:wolf_following"]
         }
@@ -1097,6 +1112,9 @@
       "minere:go_play": {
         "remove": {
           "component_groups": ["minere:wolf_following"]
+        },
+        "add": {
+          "component_groups": ["minere:wolf_go_home"]
         }
       }
     }

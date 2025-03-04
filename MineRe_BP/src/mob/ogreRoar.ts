@@ -41,6 +41,20 @@ export function rollOgreRoar(
     return;
   }
 
+  function isEdge(x: number, y: number, z: number, distance: number) {
+    const halfDistance = distance / 2;
+    if (Math.abs(x) === halfDistance && Math.abs(y) === halfDistance) {
+      return true;
+    }
+    if (Math.abs(x) === halfDistance && Math.abs(z) === halfDistance) {
+      return true;
+    }
+    if (Math.abs(y) === halfDistance && Math.abs(z) === halfDistance) {
+      return true;
+    }
+    return false;
+  }
+
   const cooldown = caster.getDynamicProperty(ROAR_COOLDOWN);
   if (
     !!cooldown &&
@@ -85,6 +99,9 @@ export function rollOgreRoar(
               pos.y >= dimension.heightRange.max ||
               pos.y <= dimension.heightRange.min
             ) {
+              continue;
+            }
+            if (isEdge(x, y, z, breakDistance)) {
               continue;
             }
             const block = dimension.getBlock(pos);

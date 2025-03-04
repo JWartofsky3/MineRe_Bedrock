@@ -176,7 +176,7 @@
             "arrow_effect": {}
           },
           "hit_sound": "bow.hit",
-          "power": 4,
+          "power": 4.5,
           "gravity": 0.05,
           "uncertainty_base": 1,
           "uncertainty_multiplier": 0,
@@ -203,7 +203,7 @@
             "arrow_effect": {}
           },
           "hit_sound": "bow.hit",
-          "power": 4.5,
+          "power": 5.0,
           "gravity": 0.05,
           "uncertainty_base": 1,
           "uncertainty_multiplier": 0,

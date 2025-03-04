@@ -33,7 +33,7 @@
           "speed_multiplier": 1.5,
           "attack_interval_min": 1,
           "attack_interval_max": 1,
-          "attack_radius": 20
+          "attack_radius": 15
         },
         "minecraft:shooter": {
           "def": "minecraft:arrow"

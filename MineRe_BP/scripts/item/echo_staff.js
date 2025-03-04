@@ -1,18 +1,18 @@
-import { system, world, EntityDamageCause, ItemComponentTypes, } from "@minecraft/server";
+import { system, world, EntityDamageCause, ItemComponentTypes, EntityComponentTypes, EquipmentSlot, } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
 import { DEFAULT_TICK } from "main";
 import { consumeXp } from "player/consumeXp";
 import { addVector3, distVector3, multiplyVector3Number, } from "util/vector3Functions";
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
 const SHADOW_TIME = 8 * 20;
-const SHADOW_XP_COST = 10;
+const SHADOW_XP_COST = 24; // xp
 const SHADOW_DURABILITY_COST = 5;
 const SHADOW_RANGE = 8;
 const SONIC_RANGE = 24;
 const SONIC_DAMAGE = 26;
 const SONIC_SPLASH_RANGE = 5;
 const SONIC_SPLASH_DAMAGE = 16;
-const SONIC_XP_COST = 8;
+const SONIC_XP_COST = 24; // xp
 const SONIC_DURABILITY_COST = 5;
 const cooldownTime = 10;
 export const useEchoStaff = (data) => {
@@ -110,6 +110,12 @@ export const useEchoStaff = (data) => {
                 cooldownComponent.startCooldown(source);
                 source.playSound("mob.warden.sonic_charge");
                 system.runTimeout(() => {
+                    const equippable = source.getComponent(EntityComponentTypes.Equippable);
+                    if (equippable?.getEquipment(EquipmentSlot.Mainhand)?.typeId !==
+                        itemStack.typeId) {
+                        source.playSound("item.amethyst_staff.error");
+                        return;
+                    }
                     // get direct hits
                     const raycastHits = source.getEntitiesFromViewDirection({
                         maxDistance: SONIC_RANGE,

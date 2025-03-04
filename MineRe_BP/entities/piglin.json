@@ -56,7 +56,7 @@
           "priority": 8,
           "attack_interval_min": 1,
           "attack_interval_max": 1,
-          "attack_radius": 20,
+          "attack_radius": 15,
           "attack_radius_min": 4,
           "speed_multiplier": 1,
           "target_in_sight_time": 0.1

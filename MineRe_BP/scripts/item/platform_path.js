@@ -27,7 +27,9 @@ export const PlatformPath = {
                     z: location.z + z,
                 };
                 const blockAt = dimension.getBlock(targetPos);
-                if (!blockAt || blockAt.isAir || replaceableBlocks.has(blockAt?.typeId)) {
+                if (!blockAt ||
+                    blockAt.isAir ||
+                    replaceableBlocks.has(blockAt?.typeId)) {
                     dimension.setBlockType(targetPos, "minere:end_crystalline");
                 }
             }
@@ -36,5 +38,5 @@ export const PlatformPath = {
         if (player.getGameMode() !== "creative") {
             player.runCommand("clear @s[m=!c] minere:end_path 0 1");
         }
-    }
+    },
 };

@@ -561,7 +561,7 @@
         "suffocate_time": 0
       },
       "minecraft:attack": {
-        "damage": 1
+        "damage": 2
       },
       "minecraft:health": {
         "value": 14,

@@ -18,3 +18,14 @@ export const consumeXp = (player, amount) => {
     }
     return true;
 };
+export const consumeLevels = (player, amount) => {
+    let level = player.level;
+    for (let i = 0; i < amount; i++) {
+        if (level <= 0) {
+            return false;
+        }
+        player.addLevels(-1);
+        level -= 1;
+    }
+    return true;
+};

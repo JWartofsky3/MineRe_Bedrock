@@ -101,9 +101,9 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     Treecapitator,
   );
   data.itemComponentRegistry.registerCustomComponent(
-    "minere:path", 
-    PlatformPath
-  )
+    "minere:path",
+    PlatformPath,
+  );
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,

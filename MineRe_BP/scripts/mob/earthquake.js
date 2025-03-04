@@ -11,6 +11,8 @@ earthquakeSummoners.add("yeti");
 const earthquakeTargets = new Set();
 earthquakeTargets.add("player");
 earthquakeTargets.add("iron_golem");
+earthquakeTargets.add("irongolem");
+earthquakeTargets.add("coppergolem");
 earthquakeTargets.add("villager");
 earthquakeTargets.add("goblin");
 earthquakeTargets.add("wolf");
@@ -107,10 +109,14 @@ export function runEarthquake(earthquake) {
         });
         for (let i = 0; i < entities.length; i++) {
             const target = entities[i];
+            if (target.typeId === earthquake.typeId) {
+                continue;
+            }
             if (!target.isValid()) {
                 continue;
             }
-            if (!isFamily(target, earthquakeTargets)) {
+            if (!isFamily(target, earthquakeTargets) &&
+                isFamily(target, new Set("monster"))) {
                 continue;
             }
             target.applyDamage(EARTHQUAKE_DAMAGE, {

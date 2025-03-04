@@ -1,4 +1,4 @@
-import { Entity, Vector3 } from "@minecraft/server";
+import { Entity } from "@minecraft/server";
 import {
   addVector3,
   directionVector3,

@@ -19,3 +19,15 @@ export const consumeXp = (player: Player, amount: number): boolean => {
   }
   return true;
 };
+
+export const consumeLevels = (player: Player, amount: number): boolean => {
+  let level = player.level;
+  for (let i = 0; i < amount; i++) {
+    if (level <= 0) {
+      return false;
+    }
+    player.addLevels(-1);
+    level -= 1;
+  }
+  return true;
+};

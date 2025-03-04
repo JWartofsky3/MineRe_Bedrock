@@ -6,6 +6,8 @@ import {
   EntityProjectileComponent,
   ItemComponentTypes,
   ItemCooldownComponent,
+  EntityEquippableComponent,
+  EquipmentSlot,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
@@ -30,6 +32,16 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
         pitch: 1.0,
       });
       system.runTimeout(() => {
+        const equippable = source.getComponent(
+          EntityComponentTypes.Equippable,
+        ) as EntityEquippableComponent;
+        if (
+          equippable?.getEquipment(EquipmentSlot.Mainhand)?.typeId !==
+          itemStack.typeId
+        ) {
+          source.playSound("item.amethyst_staff.error");
+          return;
+        }
         if (
           !source.runCommand("clear @s[m=!c] minere:ender_plasma 0 1")
             .successCount &&

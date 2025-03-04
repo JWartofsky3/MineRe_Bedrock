@@ -148,5 +148,5 @@ tile.minere:deepslate_sulfur_ore.name=Mineral de azufre de pizarra profunda
 tile.minere:end_sand.name=Arena final
 tile.minere:end_crystalline.name=Final cristalino
 
-item.minere:end_path=Camino final
-item.end_path.name=Camino final
+item.minere:end_path=Plataforma cristalina
+item.end_path.name=Plataforma cristalina
