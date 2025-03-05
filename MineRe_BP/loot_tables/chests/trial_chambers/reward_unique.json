@@ -26,7 +26,7 @@
               "function": "set_count",
               "count": {
                 "min": 2,
-                "max": 3
+                "max": 4
               }
             }
           ]
@@ -56,7 +56,7 @@
               "enchants": [
                 {
                   "id": "smite",
-                  "level": 3
+                  "level": 5
                 }
               ]
             }

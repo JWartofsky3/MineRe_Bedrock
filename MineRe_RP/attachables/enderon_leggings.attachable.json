@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.21.60",
   "minecraft:attachable": {
     "description": {
       "identifier": "minere:enderon_leggings",
@@ -9,7 +9,25 @@
       },
       "textures": {
         "enchanted": "textures/misc/enchanted_actor_glint",
-        "default": "textures/models/minere/armor/enderon_legs"
+        "default": "textures/models/minere/armor/enderon_legs",
+        "sentry_trim": "textures/trims/sentry_leggings",
+        "vex_trim": "textures/trims/vex_leggings",
+        "wild_trim": "textures/trims/wild_leggings",
+        "dune_trim": "textures/trims/dune_leggings",
+        "coast_trim": "textures/trims/coast_leggings",
+        "wayfinder_trim": "textures/trims/wayfinder_leggings",
+        "raiser_trim": "textures/trims/raiser_leggings",
+        "shaper_trim": "textures/trims/shaper_leggings",
+        "host_trim": "textures/trims/host_leggings",
+        "ward_trim": "textures/trims/ward_leggings",
+        "silence_trim": "textures/trims/silence_leggings",
+        "tide_trim": "textures/trims/tide_leggings",
+        "snout_trim": "textures/trims/snout_leggings",
+        "rib_trim": "textures/trims/rib_leggings",
+        "eye_trim": "textures/trims/eye_leggings",
+        "spire_trim": "textures/trims/spire_leggings",
+        "flow_trim": "textures/trims/flow_leggings",
+        "bolt_trim": "textures/trims/bolt_leggings"
       },
       "geometry": {
         "default": "geometry.humanoid.armor.leggings"

@@ -16,6 +16,7 @@
         "slot": "shield",
         "value": 15
       },
+      "minecraft:rarity": "rare",
       "minecraft:durability": {
         "max_durability": 2048
       },

@@ -12,15 +12,7 @@
         "nutrition": 6,
         "saturation_modifier": "normal",
         "using_converts_to": "bowl",
-        "can_always_eat": true,
-        "effects": [
-          {
-            "name": "speed",
-            "chance": 0.5,
-            "duration": 5,
-            "amplifier": 0
-          }
-        ]
+        "can_always_eat": true
       }
     }
   }

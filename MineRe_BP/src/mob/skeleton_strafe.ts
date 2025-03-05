@@ -54,7 +54,8 @@ export function skeletonStrafe(entity: Entity, chance: number) {
       !owner.isOnGround ||
       owner.isInWater ||
       owner.isClimbing ||
-      owner.location.y <= owner.dimension.heightRange.min
+      owner.location.y <= owner.dimension.heightRange.min ||
+      !owner.getDynamicProperty(IS_STRAFING)
     ) {
       system.clearRun(runner);
       owner.setDynamicProperty(IS_STRAFING, false);

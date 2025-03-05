@@ -1,11 +1,11 @@
 {
-  "format_version": "1.21.10",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "description": {
       "identifier": "minere:enderon_helmet",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.helmet"
+        "group": "minecraft:itemGroup.name.helmet"
       }
     },
     "components": {
@@ -32,6 +32,9 @@
       },
       "minecraft:durability": {
         "max_durability": 297
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_armor", "minecraft:trimmable_armors"]
       }
     }
   }

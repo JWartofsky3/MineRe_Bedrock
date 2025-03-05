@@ -10,7 +10,7 @@
         "minecraft:spawns_underground": {},
         "minecraft:height_filter": {
           "min": -63,
-          "max": -40
+          "max": 8
         },
         "minecraft:brightness_filter": {
           "min": 0,
@@ -27,6 +27,10 @@
         "minecraft:density_limit": {
           "surface": 4,
           "underground": 4
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",

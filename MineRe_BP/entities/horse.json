@@ -473,7 +473,7 @@
       "minecraft:movement": {
         "value": {
           "range_min": 0.1725,
-          "range_max": 0.3375
+          "range_max": 0.375
         }
       },
       "minecraft:navigation.walk": {
@@ -487,7 +487,7 @@
       "minecraft:horse.jump_strength": {
         "value": {
           "range_min": 0.6,
-          "range_max": 1.0
+          "range_max": 1.2
         }
       },
       "minecraft:leashable": {

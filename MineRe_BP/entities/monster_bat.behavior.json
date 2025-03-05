@@ -75,7 +75,7 @@
         "effect_duration": 3
       },
       "minecraft:flying_speed": {
-        "value": 0.33
+        "value": 0.275
       },
       "minecraft:can_fly": {},
       "minecraft:movement.hover": {},

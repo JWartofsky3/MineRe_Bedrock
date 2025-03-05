@@ -1,0 +1,17 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:cosmic_jelly_placeholder",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 7,
+        "height": 7
+      }
+    }
+  }
+}

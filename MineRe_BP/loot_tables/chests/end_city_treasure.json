@@ -148,11 +148,6 @@
         },
         {
           "type": "item",
-          "name": "minere:amethyst_staff",
-          "weight": 3
-        },
-        {
-          "type": "item",
           "name": "minecraft:amethyst_shard",
           "functions": [
             {
@@ -164,7 +159,7 @@
               }
             }
           ],
-          "weight": 5
+          "weight": 7
         },
         {
           "type": "item",
@@ -187,7 +182,7 @@
             {
               "function": "set_count",
               "count": {
-                "min": 2,
+                "min": 1,
                 "max": 4
               }
             }

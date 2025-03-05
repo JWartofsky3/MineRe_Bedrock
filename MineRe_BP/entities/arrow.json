@@ -176,9 +176,9 @@
             "arrow_effect": {}
           },
           "hit_sound": "bow.hit",
-          "power": 4.5,
+          "power": 4.75,
           "gravity": 0.05,
-          "uncertainty_base": 1,
+          "uncertainty_base": 0.25,
           "uncertainty_multiplier": 0,
           "anchor": 1,
           "should_bounce": true,
@@ -203,9 +203,9 @@
             "arrow_effect": {}
           },
           "hit_sound": "bow.hit",
-          "power": 5.0,
+          "power": 5.25,
           "gravity": 0.05,
-          "uncertainty_base": 1,
+          "uncertainty_base": 0.25,
           "uncertainty_multiplier": 0,
           "anchor": 1,
           "should_bounce": true,

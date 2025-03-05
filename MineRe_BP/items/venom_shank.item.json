@@ -25,6 +25,7 @@
         "slot": "sword",
         "value": 15
       },
+      "minecraft:rarity": "uncommon",
       "minecraft:digger": {
         "use_efficiency": true,
         "destroy_speeds": [

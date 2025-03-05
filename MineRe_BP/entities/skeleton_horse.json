@@ -18,6 +18,34 @@
         "minecraft:addrider": {
           "entity_type": "minecraft:stray"
         }
+      },
+      "circling": {
+        "minecraft:behavior.move_around_target": {
+          "priority": 2,
+          "destination_position_range": [7, 10],
+          "movement_speed": 1.5,
+          "destination_pos_spread_degrees": 360,
+          "filters": {
+            "all_of": [
+              {
+                "test": "on_ground",
+                "value": true
+              },
+              {
+                "test": "target_distance",
+                "subject": "self",
+                "value": 24,
+                "operator": "<="
+              },
+              {
+                "test": "target_distance",
+                "subject": "self",
+                "value": 3,
+                "operator": ">="
+              }
+            ]
+          }
+        }
       }
     },
     "components": {
@@ -62,6 +90,21 @@
         "can_pass_doors": true,
         "can_walk": true,
         "can_break_doors": true
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 1,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "wolf"
+            },
+            "max_dist": 6,
+            "walk_speed_multiplier": 1.2,
+            "sprint_speed_multiplier": 1.2
+          }
+        ]
       },
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
@@ -196,7 +239,15 @@
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
-      "minecraft:conditional_bandwidth_optimization": {}
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:timer": {
+        "looping": true,
+        "randomInterval": true,
+        "time": [2, 8],
+        "time_down_event": {
+          "event": "change_mode"
+        }
+      }
     },
     "events": {
       "minecraft:entity_spawned": {
@@ -207,7 +258,7 @@
               "value": false
             },
             "add": {
-              "component_groups": ["minere:skeleton_cavalry"]
+              "component_groups": ["minere:skeleton_cavalry", "circling"]
             }
           },
           {
@@ -216,7 +267,23 @@
               "value": true
             },
             "add": {
-              "component_groups": ["minere:snow_skeleton_cavalry"]
+              "component_groups": ["minere:snow_skeleton_cavalry", "circling"]
+            }
+          }
+        ]
+      },
+      "change_mode": {
+        "randomize": [
+          {
+            "weight": 1,
+            "remove": {
+              "component_groups": ["circling"]
+            }
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["circling"]
             }
           }
         ]

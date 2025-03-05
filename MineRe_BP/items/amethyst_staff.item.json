@@ -16,6 +16,7 @@
         "slot": "sword",
         "value": 15
       },
+      "minecraft:rarity": "uncommon",
       "minecraft:durability": {
         "max_durability": 384
       },

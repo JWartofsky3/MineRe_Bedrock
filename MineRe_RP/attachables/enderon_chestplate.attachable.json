@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.21.60",
   "minecraft:attachable": {
     "description": {
       "identifier": "minere:enderon_chestplate",
@@ -9,7 +9,25 @@
       },
       "textures": {
         "default": "textures/models/minere/armor/enderon_main",
-        "enchanted": "textures/misc/enchanted_actor_glint"
+        "enchanted": "textures/misc/enchanted_actor_glint",
+        "sentry_trim": "textures/trims/sentry",
+        "vex_trim": "textures/trims/vex",
+        "wild_trim": "textures/trims/wild",
+        "dune_trim": "textures/trims/dune",
+        "coast_trim": "textures/trims/coast",
+        "wayfinder_trim": "textures/trims/wayfinder",
+        "raiser_trim": "textures/trims/raiser",
+        "shaper_trim": "textures/trims/shaper",
+        "host_trim": "textures/trims/host",
+        "ward_trim": "textures/trims/ward",
+        "silence_trim": "textures/trims/silence",
+        "tide_trim": "textures/trims/tide",
+        "snout_trim": "textures/trims/snout",
+        "rib_trim": "textures/trims/rib",
+        "eye_trim": "textures/trims/eye",
+        "spire_trim": "textures/trims/spire",
+        "flow_trim": "textures/trims/flow",
+        "bolt_trim": "textures/trims/bolt"
       },
       "geometry": {
         "default": "geometry.player.armor.chestplate"

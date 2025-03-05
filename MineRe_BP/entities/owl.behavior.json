@@ -8,6 +8,18 @@
       "is_experimental": false
     },
     "component_groups": {
+      "quiet": {
+        "minecraft:ambient_sound_interval": {
+          "range": 160.0,
+          "value": 80.0
+        }
+      },
+      "awake": {
+        "minecraft:ambient_sound_interval": {
+          "range": 8.0,
+          "value": 4.0
+        }
+      },
       "minecraft:owl_brown": {
         "minecraft:variant": {
           "value": 0
@@ -87,10 +99,6 @@
       }
     },
     "components": {
-      "minecraft:ambient_sound_interval": {
-        "range": 8.0,
-        "value": 4.0
-      },
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0
@@ -186,6 +194,24 @@
       },
       "minecraft:loot": {
         "table": "loot_tables/entities/owl.json"
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "test": "is_daytime",
+              "value": true
+            },
+            "event": "go_sleep"
+          },
+          {
+            "filters": {
+              "test": "is_daytime",
+              "value": false
+            },
+            "event": "wake_up"
+          }
+        ]
       }
     },
     "events": {
@@ -219,6 +245,22 @@
         },
         "add": {
           "component_groups": ["minecraft:owl_tame"]
+        }
+      },
+      "wake_up": {
+        "remove": {
+          "component_groups": ["quiet"]
+        },
+        "add": {
+          "component_groups": ["awake"]
+        }
+      },
+      "go_sleep": {
+        "remove": {
+          "component_groups": ["awake"]
+        },
+        "add": {
+          "component_groups": ["quiet"]
         }
       }
     }

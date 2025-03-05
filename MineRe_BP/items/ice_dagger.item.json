@@ -22,6 +22,7 @@
         "category": "iceDagger",
         "duration": 8.0
       },
+      "minecraft:rarity": "uncommon",
       "minecraft:damage": 3,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,

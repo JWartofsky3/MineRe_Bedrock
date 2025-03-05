@@ -17,13 +17,13 @@
         "effects": [
           {
             "name": "strength",
-            "chance": 0.4,
+            "chance": 0.5,
             "duration": 7,
             "amplifier": 0
           },
           {
             "name": "haste",
-            "chance": 0.4,
+            "chance": 0.5,
             "duration": 7,
             "amplifier": 0
           }

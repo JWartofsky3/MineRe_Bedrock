@@ -172,7 +172,7 @@
         "minecraft:behavior.melee_attack": {
           "priority": 3,
           "track_target": true,
-          "speed_multiplier": 1.4,
+          "speed_multiplier": 1.333,
           "reach_multiplier": 0.85
         }
       }
@@ -242,7 +242,7 @@
       },
       "minecraft:behavior.mount_pathing": {
         "priority": 5,
-        "speed_multiplier": 1.4,
+        "speed_multiplier": 1.333,
         "target_dist": 0,
         "track_target": true
       },

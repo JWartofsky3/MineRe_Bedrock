@@ -9,10 +9,15 @@
       "is_summonable": true,
       "is_experimental": false
     },
+    "component_groups": {
+      "instant_despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
     "components": {
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player ? 5 : 0"
+        "on_death": "query.last_hit_by_player ? 7 : 0"
       },
       "minecraft:nameable": {},
       "minecraft:type_family": {
@@ -24,9 +29,6 @@
       },
       "minecraft:attack": {
         "damage": 6
-      },
-      "minecraft:loot": {
-        "table": "loot_tables/entities/ghost.json"
       },
       "minecraft:burns_in_daylight": {},
       "minecraft:collision_box": {
@@ -80,6 +82,16 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
       },
+      "minecraft:environment_sensor": {
+        "triggers": {
+          "filters": {
+            "test": "is_brightness",
+            "operator": ">",
+            "value": 0.5
+          },
+          "event": "disappear"
+        }
+      },
       "minecraft:physics": {
         "has_gravity": false,
         "has_collision": false
@@ -88,6 +100,25 @@
       "minecraft:game_event_movement_tracking": {
         "emit_move": false,
         "emit_swim": false
+      }
+    },
+    "events": {
+      "disappear": {
+        "sequence": [
+          {
+            "queue_command": {
+              "command": "playsound mob.ghost.die @a ~ ~ ~ 5.0"
+            }
+          },
+          {
+            "queue_command": {
+              "command": "particle minere:big_smoke ~ ~0.25 ~"
+            },
+            "add": {
+              "component_groups": ["instant_despawn"]
+            }
+          }
+        ]
       }
     }
   }

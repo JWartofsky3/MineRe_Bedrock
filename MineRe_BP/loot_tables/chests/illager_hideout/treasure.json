@@ -157,8 +157,8 @@
             {
               "function": "set_count",
               "count": {
-                "min": 1,
-                "max": 2
+                "min": 2,
+                "max": 3
               }
             }
           ]
@@ -397,6 +397,29 @@
               "destination": "mansion"
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:emerald_block",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minecraft:ender_pearl",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minecraft:totem_of_undying"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:enchanted_golden_apple"
         }
       ]
     }

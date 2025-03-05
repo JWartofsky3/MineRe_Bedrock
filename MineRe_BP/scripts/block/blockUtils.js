@@ -28,8 +28,8 @@ replaceableBlocks.add("minecraft:fern");
 replaceableBlocks.add("minecraft:crimson_roots");
 replaceableBlocks.add("minecraft:warped_roots");
 export function getBlock(dimension, location) {
-    if (!isValid(dimension, location)) {
-        return null;
-    }
-    return dimension.getBlock(location);
+  if (!isValid(dimension, location)) {
+    return null;
+  }
+  return dimension.getBlock(location);
 }

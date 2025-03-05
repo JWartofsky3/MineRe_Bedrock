@@ -6,7 +6,7 @@ import {
 } from "@minecraft/server";
 import { consumeXp } from "player/consumeXp";
 
-const XP_COST = 1;
+const XP_COST = 2;
 
 export const fireInfintyBowAfter = (data: ItemReleaseUseAfterEvent) => {
   const dimension = data.source.dimension;
@@ -22,16 +22,6 @@ export const fireInfintyBowAfter = (data: ItemReleaseUseAfterEvent) => {
   if (consumeXp(data.source, XP_COST)) {
     return;
   } else {
-    const items = dimension.getEntities({
-      type: "arrow",
-      closest: 1,
-      location: data.source.location,
-      maxDistance: 5,
-    }) as Entity[];
-    if (items.length) {
-      dimension.spawnParticle("minecraft:dust_plume", items[0].location);
-      items[0].remove();
-    }
-    data.source.playSound("item.amethyst_staff.error");
+    data.source.runCommand("clear @s[m=!c] arrow 0 1");
   }
 };
