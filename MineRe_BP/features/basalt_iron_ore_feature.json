@@ -1,0 +1,19 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "minere:basalt_iron_ore_feature"
+    },
+    "count": 12,
+    "replace_rules": [
+      {
+        "places_block": "minere:basalt_iron_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:basalt"
+          }
+        ]
+      }
+    ]
+  }
+}

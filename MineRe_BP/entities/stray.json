@@ -48,7 +48,7 @@
           ]
         }
       },
-      "minecraft:melee_attack": {
+      "minecraft:melee_box_attack": {
         "minecraft:behavior.melee_attack": {
           "priority": 4,
           "track_target": true,
@@ -181,6 +181,12 @@
             "priority": 1
           },
           {
+            "item": "minere:enderon_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
             "item": "minecraft:iron_sword",
             "want_amount": 1,
             "surplus_amount": 1,
@@ -215,6 +221,12 @@
             "want_amount": 1,
             "surplus_amount": 1,
             "priority": 0
+          },
+          {
+            "item": "minere:enderon_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
           },
           {
             "item": "minecraft:diamond_helmet",
@@ -277,6 +289,12 @@
             "priority": 0
           },
           {
+            "item": "minere:enderon_chestplate",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
             "item": "minecraft:diamond_chestplate",
             "want_amount": 1,
             "surplus_amount": 1,
@@ -313,6 +331,12 @@
             "priority": 0
           },
           {
+            "item": "minere:enderon_leggings",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
             "item": "minecraft:diamond_leggings",
             "want_amount": 1,
             "surplus_amount": 1,
@@ -347,6 +371,12 @@
             "want_amount": 1,
             "surplus_amount": 1,
             "priority": 0
+          },
+          {
+            "item": "minere:enderon_boots",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
           },
           {
             "item": "minecraft:diamond_boots",

@@ -15,6 +15,18 @@
               "operator": "==",
               "value": "bee_habitat"
             }
+          ],
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "dripstone_caves"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "deep_dark"
+            }
           ]
         }
       ]
@@ -26,7 +38,7 @@
         "extent": [-8, 8]
       },
       "y": {
-        "extent": [20, "query.heightmap(variable.worldx, variable.worldz)"],
+        "extent": [24, "query.heightmap(variable.worldx, variable.worldz)"],
         "distribution": "uniform"
       },
       "z": {
@@ -35,7 +47,7 @@
       },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 120
+        "denominator": 200
       }
     }
   }

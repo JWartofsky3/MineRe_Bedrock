@@ -25,7 +25,7 @@
       },
       "ranged_mode": {
         "minecraft:shooter": {
-          "def": "minecraft:fireball"
+          "def": "minere:lizord_fireball"
         },
         "minecraft:behavior.ranged_attack": {
           "priority": 3,

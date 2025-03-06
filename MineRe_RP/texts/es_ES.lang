@@ -150,3 +150,5 @@ tile.minere:end_crystalline.name=Final cristalino
 
 item.minere:end_path=Plataforma cristalina
 item.end_path.name=Plataforma cristalina
+
+tile.minere:basalt_iron_ore.name=Mineral de hierro basáltico

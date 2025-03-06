@@ -106,6 +106,21 @@ oreMap.set("minere:amethyst_ore", {
   },
 });
 oreMap.set("minere:deepslate_amethyst_ore", oreMap.get("minere:amethyst_ore"));
+oreMap.set("minere:basalt_iron_ore", {
+  ore: "minecraft:iron_nugget",
+  count: {
+    min: 2,
+    max: 6,
+  },
+  fortune: {
+    min: 0,
+    max: 2,
+  },
+  experience: {
+    min: 0,
+    max: 1,
+  },
+});
 
 export const customOre: BlockCustomComponent = {
   onPlayerDestroy(arg: BlockComponentPlayerDestroyEvent) {

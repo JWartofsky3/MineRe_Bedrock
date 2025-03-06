@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:basalt_iron_ore",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:custom_components": ["minere:custom_ore"],
+      "tag:stone": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 50
+      },
+      "minecraft:map_color": "#183b30",
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "minere:basalt_iron_ore_side"
+        },
+        "up": {
+          "texture": "minere:basalt_iron_ore_top"
+        },
+        "down": {
+          "texture": "minere:basalt_iron_ore_top"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/basalt_iron_ore.json"
+    }
+  }
+}

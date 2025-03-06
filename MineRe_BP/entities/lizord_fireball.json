@@ -1,0 +1,135 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:lizord_fireball",
+      "runtime_identifier": "minecraft:fireball",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "minecraft:exploding": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 1,
+          "causes_fire": true,
+          "fire_affected_by_griefing": true,
+          "destroy_affected_by_griefing": true
+        }
+      },
+      "minere:lizord_fireball": {
+        "minecraft:projectile": {
+          "on_hit": {
+            "impact_damage": {
+              "damage": 8,
+              "knockback": false,
+              "semi_random_diff_damage": false
+            },
+            "definition_event": {
+              "affect_projectile": true,
+              "event_trigger": {
+                "event": "minecraft:explode",
+                "target": "self"
+              }
+            }
+          },
+          "power": 1.8,
+          "gravity": 0,
+          "inertia": 1,
+          "liquid_inertia": 1,
+          "uncertainty_base": 0,
+          "uncertainty_multiplier": 0,
+          "anchor": 1,
+          "offset": [
+            "1 * math.sin(query.body_y_rotation)",
+            -0.875,
+            "1 * math.sin(query.body_y_rotation - 90)"
+          ],
+          "reflect_on_hurt": true,
+          "catch_fire": true
+        }
+      },
+      "minere:netherzord_fireball": {
+        "minecraft:projectile": {
+          "on_hit": {
+            "impact_damage": {
+              "damage": 8,
+              "knockback": false,
+              "semi_random_diff_damage": false
+            },
+            "definition_event": {
+              "affect_projectile": true,
+              "event_trigger": {
+                "event": "minecraft:explode",
+                "target": "self"
+              }
+            }
+          },
+          "power": 1.8,
+          "gravity": 0.05,
+          "inertia": 1,
+          "liquid_inertia": 1,
+          "uncertainty_base": 8,
+          "uncertainty_multiplier": 4,
+          "anchor": 1,
+          "offset": [
+            "1 * math.sin(query.body_y_rotation)",
+            -0.875,
+            "1 * math.sin(query.body_y_rotation - 90)"
+          ],
+          "reflect_on_hurt": false,
+          "catch_fire": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 1,
+        "height": 1
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 80,
+          "max_dropped_ticks": 7,
+          "use_motion_prediction_hints": true
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": ["minere:lizord_fireball"]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "netherzord"
+            },
+            "remove": {
+              "component_groups": ["minere:lizord_fireball"]
+            },
+            "add": {
+              "component_groups": ["minere:netherzord_fireball"]
+            }
+          }
+        ]
+      },
+      "minecraft:explode": {
+        "add": {
+          "component_groups": ["minecraft:exploding"]
+        }
+      }
+    }
+  }
+}

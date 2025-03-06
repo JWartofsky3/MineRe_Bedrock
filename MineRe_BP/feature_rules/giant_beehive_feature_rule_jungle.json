@@ -14,21 +14,6 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "jungle"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "swamp"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "mangrove_swamp"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "flower_forest"
             }
           ]
         }
@@ -41,7 +26,7 @@
         "extent": [-8, 8]
       },
       "y": {
-        "extent": [16, "query.heightmap(variable.worldx, variable.worldz)"],
+        "extent": [24, "query.heightmap(variable.worldx, variable.worldz)"],
         "distribution": "uniform"
       },
       "z": {
@@ -50,7 +35,7 @@
       },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 50
+        "denominator": 75
       }
     }
   }

@@ -140,3 +140,5 @@ tile.minere:end_crystalline.name=End Crystalline
 
 item.minere:end_path=Crystalline Platform
 item.end_path.name=Crystalline Platform
+
+tile.minere:basalt_iron_ore.name=Basalt Iron Ore

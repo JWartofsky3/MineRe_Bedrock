@@ -35,14 +35,14 @@
           "value": 1.5
         },
         "minecraft:health": {
-          "value": 32,
-          "max": 32
+          "value": 26,
+          "max": 26
         },
         "minecraft:attack": {
           "damage": [6, 7]
         },
         "minecraft:knockback_resistance": {
-          "value": 0.6
+          "value": 0.5
         },
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 3,
@@ -84,14 +84,11 @@
           "on_death": "query.last_hit_by_player ? 3 : 0"
         },
         "minecraft:health": {
-          "value": 18,
-          "max": 18
+          "value": 16,
+          "max": 16
         },
         "minecraft:attack": {
           "damage": [4, 5]
-        },
-        "minecraft:knockback_resistance": {
-          "value": 0.15
         }
       },
       "minere:small_gremlin": {
@@ -105,8 +102,8 @@
           "value": 0.75
         },
         "minecraft:health": {
-          "value": 10,
-          "max": 10
+          "value": 8,
+          "max": 8
         },
         "minecraft:attack": {
           "damage": [2, 3]

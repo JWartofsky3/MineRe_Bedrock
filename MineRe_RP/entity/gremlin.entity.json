@@ -21,7 +21,7 @@
       },
       "scripts": {
         "animate": ["controller"],
-        "scale": "1.5"
+        "scale": "1.25"
       },
       "animations": {
         "look_at_target": "animation.minere.gremlin.look_at_target",

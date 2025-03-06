@@ -35,7 +35,7 @@
       },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 3000
+        "denominator": 4000
       }
     }
   }

@@ -55,5 +55,16 @@
 	"minere:end_crystalline": {
 		"sound" : "amethyst_block",
 		"textures": "minere:end_crystalline"
+	},
+	"minere:basalt_iron_ore": {
+		"sound" : "basalt",
+		"textures": { 
+			"up": "minere:basalt_iron_ore_top", 
+			"down": "minere:basalt_iron_ore_top", 
+			"north": "minere:basalt_iron_ore_side", 
+			"south": "minere:basalt_iron_ore_side", 
+			"east": "minere:basalt_iron_ore_side", 
+			"west": "minere:basalt_iron_ore_side" 
+		}
 	}
 }

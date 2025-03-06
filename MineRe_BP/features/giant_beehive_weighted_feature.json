@@ -6,7 +6,7 @@
     },
     "features": [
       ["minere:big_beehive_feature", 1],
-      ["minere:small_beehive_feature", 4]
+      ["minere:small_beehive_feature", 7]
     ]
   }
 }

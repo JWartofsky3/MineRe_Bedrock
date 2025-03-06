@@ -83,7 +83,7 @@
         }
       },
       "minecraft:melee_mode": {
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "priority": 3,
           "speed_multiplier": 1.25,
           "track_target": false,
@@ -192,6 +192,12 @@
             "want_amount": 1,
             "surplus_amount": 1,
             "priority": 2
+          },
+          {
+            "item": "minere:enderon_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
           },
           {
             "item": "minecraft:diamond_sword",

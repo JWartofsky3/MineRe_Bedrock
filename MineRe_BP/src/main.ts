@@ -49,8 +49,6 @@ import { runEarthquake } from "mob/earthquake";
 import { rollOgreRoar } from "mob/ogreRoar";
 import { rollLeap } from "mob/yetiLeap";
 import { Illumina } from "item/illumina";
-import { endSand } from "block/end_sand";
-import { endCrystalline } from "block/end_crystalline";
 import { PlatformPath } from "item/platform_path";
 
 export const DEFAULT_TICK = 20;
@@ -209,6 +207,13 @@ world.afterEvents.entityHurt.subscribe(function (data) {
 
   if (attacker?.typeId === "minere:bomb") {
     bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
+  }
+
+  // creaking damage
+  if (attacker?.typeId === "minecraft:creaking") {
+    if (Math.random() < 0.5) {
+      target.addEffect("wither", 60);
+    }
   }
 
   // throwing

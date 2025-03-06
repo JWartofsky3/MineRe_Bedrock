@@ -6,7 +6,8 @@
     },
     "features": [
       ["minere:small_crater_feature", 11],
-      ["minere:crater_no_meteorite_feature", 7],
+      ["minere:crater_no_meteorite_feature", 6],
+      ["minere:crater_round_feature", 5],
       ["minere:crater_meteorite_feature", 4]
     ]
   }

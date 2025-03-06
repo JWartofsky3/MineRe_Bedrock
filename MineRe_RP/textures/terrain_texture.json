@@ -78,6 +78,12 @@
 		},
 		"minere:end_crystalline": {
 			"textures": "textures/blocks/minere/end_crystalline.png"
+		},
+		"minere:basalt_iron_ore_side": {
+			"textures": "textures/blocks/minere/basalt_iron_ore_side.png"
+		},
+		"minere:basalt_iron_ore_top": {
+			"textures": "textures/blocks/minere/basalt_iron_ore_top.png"
 		}
 	}
 }
