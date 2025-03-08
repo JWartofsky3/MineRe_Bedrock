@@ -18,7 +18,6 @@
         "overlay_color": "#C0ECD2"
       },
       "scripts": {
-        "scale": "1.9",
         "animate": ["controller"],
         "pre_animation": ["variable.ischarging = query.is_charged ? 1 : 0;"]
       },

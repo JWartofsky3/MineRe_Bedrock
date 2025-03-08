@@ -14,11 +14,11 @@
         "default": "geometry.minere.lizord"
       },
       "spawn_egg": {
-        "base_color": "#ffea4f",
-        "overlay_color": "#FFF23D"
+        "base_color": "#20150B",
+        "overlay_color": "#FFBB0F"
       },
       "scripts": {
-        "scale": "2.5",
+        "scale": "1.33",
         "animate": ["controller"],
         "pre_animation": ["variable.ischarging = query.is_charged ? 1 : 0;"]
       },

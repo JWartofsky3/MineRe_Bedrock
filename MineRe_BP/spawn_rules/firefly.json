@@ -105,6 +105,16 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "jungle"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "plains"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "savanna"
             }
           ]
         }

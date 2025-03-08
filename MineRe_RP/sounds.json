@@ -312,10 +312,6 @@
 						"sound": "mob.lizord.shoot",
 						"volume": 5
 					},
-					"attack.strong": {
-						"sound": "mob.lizord.shoot",
-						"volume": 1
-					},
 					"warn": {
 						"sound": "mob.lizord.warn",
 						"volume": 5
@@ -334,10 +330,6 @@
 					"shoot": {
 						"sound": "mob.lizord.shoot",
 						"volume": 5
-					},
-					"attack.strong": {
-						"sound": "mob.lizord.shoot",
-						"volume": 1
 					},
 					"warn": {
 						"sound": "mob.lizord.warn",

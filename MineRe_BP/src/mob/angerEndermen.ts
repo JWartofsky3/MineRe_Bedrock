@@ -42,9 +42,6 @@ export const angerEndermen = (data: EntityRemoveBeforeEvent) => {
       typeId === "minecraft:ender_crystal" &&
       dimension.id == "minecraft:the_end"
     ) {
-      dimension.runCommand(
-        `summon minere:ender_phantom ${location.x} ${location.y + VERTICAL_OFFSET} ${location.z} 90 0 minere:spawn_persistent`,
-      );
       const endermen = dimension.getEntities({
         type: "enderman",
         closest: 4,
@@ -57,6 +54,12 @@ export const angerEndermen = (data: EntityRemoveBeforeEvent) => {
           volume: 10.0,
         });
       });
+
+      system.runTimeout(() => {
+        dimension.runCommand(
+          `summon minere:ender_phantom ${location.x} ${location.y + VERTICAL_OFFSET} ${location.z} 90 0 minere:spawn_persistent`,
+        );
+      }, LIGHTNING_BASE_DELAY + LIGHTNING_DELAY);
 
       spawnLightning(
         dimension,

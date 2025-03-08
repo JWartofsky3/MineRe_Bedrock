@@ -39,7 +39,7 @@
           "max": 26
         },
         "minecraft:attack": {
-          "damage": [6, 7]
+          "damage": 6
         },
         "minecraft:knockback_resistance": {
           "value": 0.5
@@ -88,7 +88,7 @@
           "max": 16
         },
         "minecraft:attack": {
-          "damage": [4, 5]
+          "damage": 4
         }
       },
       "minere:small_gremlin": {
@@ -106,7 +106,7 @@
           "max": 8
         },
         "minecraft:attack": {
-          "damage": [2, 3]
+          "damage": 2
         },
         "minecraft:behavior.panic": {
           "priority": 1,
