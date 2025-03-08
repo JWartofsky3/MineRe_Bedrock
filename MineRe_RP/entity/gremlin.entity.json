@@ -20,8 +20,7 @@
         "overlay_color": "#722952"
       },
       "scripts": {
-        "animate": ["controller"],
-        "scale": "1.33"
+        "animate": ["controller"]
       },
       "animations": {
         "look_at_target": "animation.minere.gremlin.look_at_target",

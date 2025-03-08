@@ -32,7 +32,7 @@
           "on_death": "query.last_hit_by_player ? 6 : 0"
         },
         "minecraft:scale": {
-          "value": 1.5
+          "value": 1.25
         },
         "minecraft:health": {
           "value": 26,
@@ -157,7 +157,7 @@
       },
       "minecraft:collision_box": {
         "width": 0.9,
-        "height": 1.2
+        "height": 1.4
       },
       "minecraft:movement": {
         "value": 0.23
