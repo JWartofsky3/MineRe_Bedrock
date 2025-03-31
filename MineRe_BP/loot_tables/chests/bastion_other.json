@@ -22,7 +22,7 @@
         },
         {
           "type": "item",
-          "weight": 6,
+          "weight": 3,
           "functions": [
             {
               "function": "enchant_randomly"
@@ -32,8 +32,37 @@
         },
         {
           "type": "item",
-          "weight": 6,
+          "weight": 3,
           "name": "minecraft:diamond_shovel"
+        },
+        {
+          "type": "item",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "name": "minecraft:diamond"
+        },
+        {
+          "type": "item",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ],
+          "name": "minecraft:golden_pickaxe"
+        },
+        {
+          "type": "item",
+          "weight": 3,
+          "name": "minecraft:golden_shovel"
         },
         {
           "type": "item",
@@ -325,7 +354,7 @@
     {
       "rolls": {
         "min": 3,
-        "max": 5
+        "max": 6
       },
       "entries": [
         {
@@ -453,6 +482,20 @@
             }
           ],
           "name": "minecraft:arrow"
+        },
+        {
+          "type": "item",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 3,
+                "max": 5
+              }
+            }
+          ],
+          "name": "minere:firebomb"
         },
         {
           "type": "item",

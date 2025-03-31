@@ -295,7 +295,7 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 4
+                "max": 3
               },
               "add": false
             }
@@ -309,13 +309,27 @@
             {
               "function": "set_count",
               "count": {
-                "min": 1,
+                "min": 2,
                 "max": 4
               },
               "add": false
             }
           ],
           "name": "minere:bomb"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 19
+        },
+        {
+          "type": "item",
+          "name": "minere:ghost_pot",
+          "weight": 1
         }
       ]
     }

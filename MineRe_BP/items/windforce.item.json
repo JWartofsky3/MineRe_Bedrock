@@ -1,0 +1,65 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:windforce",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.windforce",
+      "minecraft:tags": {
+        "tags": ["minecraft:is_sword"]
+      },
+      "minecraft:custom_components": [
+        "minere:windforce",
+        "minere:custom_sword"
+      ],
+      "minecraft:damage": 7,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 15
+      },
+      "minecraft:cooldown": {
+        "category": "windforce",
+        "duration": 3.0
+      },
+      "minecraft:rarity": "rare",
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:bamboo",
+            "speed": 60
+          },
+          {
+            "block": {
+              "tags": "q.any_tag('minecraft:is_hoe_item_destructible')"
+            },
+            "speed": 3
+          }
+        ]
+      },
+      "minecraft:durability": {
+        "max_durability": 1280
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:iron_ingot", "minecraft:wind_charge"],
+            "repair_amount": 320
+          }
+        ]
+      }
+    }
+  }
+}

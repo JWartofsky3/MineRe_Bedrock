@@ -22,7 +22,7 @@
         "controller": "controller.animation.minere.squirrel"
       },
       "scripts": {
-        "scale": "0.8",
+        "scale": "0.85",
         "pre_animation": [
           "variable.should_sit = math.mod(query.life_time, 32) >= 12;"
         ],

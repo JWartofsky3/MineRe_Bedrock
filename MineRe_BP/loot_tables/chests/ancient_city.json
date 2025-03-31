@@ -516,7 +516,7 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 75
+          "weight": 65
         },
         {
           "type": "item",
@@ -584,6 +584,20 @@
             }
           ],
           "name": "minecraft:echo_shard"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:ghost_pot",
+          "weight": 1
         }
       ]
     }

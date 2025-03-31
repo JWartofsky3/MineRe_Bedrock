@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.80",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
       "identifier": "minere:phased_ender_pearl",
@@ -13,10 +13,12 @@
       "minecraft:display_name": {
         "value": "item.phased_ender_pearl.name"
       },
+      "minecraft:custom_components": ["minere:phased_ender_pearl"],
       "minecraft:cooldown": {
         "category": "phasedEnderPearl",
         "duration": 2.0
-      }
+      },
+      "minecraft:use_modifiers": {}
     }
   }
 }

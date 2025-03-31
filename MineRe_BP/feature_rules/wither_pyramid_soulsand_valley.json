@@ -20,7 +20,7 @@
       ]
     },
     "distribution": {
-      "iterations": 1,
+      "iterations": "(Math.abs(v.originz) < 200 && Math.abs(v.originx) < 200) ? 0 : 1",
       "x": -16,
       "y": {
         "extent": [85, 90],

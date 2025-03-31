@@ -100,6 +100,24 @@
               "trader_exp": 1,
               "max_uses": 12,
               "reward_exp": true
+            },
+            {
+              "wants": [
+                {
+                  "item": "minere:emerald_shard",
+                  "quantity": 11,
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:copper_treecapitator",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 1,
+              "max_uses": 12,
+              "reward_exp": true
             }
           ]
         }
@@ -189,7 +207,7 @@
           ]
         },
         {
-          "num_to_select": 1,
+          "num_to_select": 2,
           "trades": [
             {
               "wants": [
@@ -279,32 +297,32 @@
               "wants": [
                 {
                   "item": "minecraft:emerald",
-                  "quantity": 4,
-                  "price_multiplier": 0.2
-                },
-                {
-                  "item": "minere:diamond_shard",
-                  "quantity": {
-                    "min": 10,
-                    "max": 12
-                  },
+                  "quantity": 3,
                   "price_multiplier": 0.2
                 }
               ],
               "gives": [
                 {
-                  "item": "minecraft:diamond_hoe",
-                  "quantity": 1,
-                  "functions": [
-                    {
-                      "function": "enchant_with_levels",
-                      "treasure": false,
-                      "levels": {
-                        "min": 7,
-                        "max": 15
-                      }
-                    }
-                  ]
+                  "item": "minere:iron_treecapitator",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 10,
+              "max_uses": 3,
+              "reward_exp": true
+            },
+            {
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 3,
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:iron_hoe",
+                  "quantity": 1
                 }
               ],
               "trader_exp": 10,
@@ -371,6 +389,42 @@
                       "levels": {
                         "min": 10,
                         "max": 25
+                      }
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 15,
+              "max_uses": 3,
+              "reward_exp": true
+            },
+            {
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 12,
+                  "price_multiplier": 0.2
+                },
+                {
+                  "item": "minere:diamond_shard",
+                  "quantity": {
+                    "min": 15,
+                    "max": 18
+                  },
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:diamond_treecapitator",
+                  "quantity": 1,
+                  "functions": [
+                    {
+                      "function": "enchant_with_levels",
+                      "treasure": false,
+                      "levels": {
+                        "min": 5,
+                        "max": 15
                       }
                     }
                   ]

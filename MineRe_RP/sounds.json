@@ -126,7 +126,7 @@
 					},
 					"ambient": {
 						"pitch": [0.9, 1.1],
-						"sound": "mob.bee.pollinate",
+						"sound": "block.firefly_bush.ambient",
 						"volume": 0.6
 					}
 				},
@@ -336,7 +336,7 @@
 						"volume": 5
 					}
 				},
-				"pitch": [0.6, 0.9],
+				"pitch": [0.7, 1.1],
 				"volume": 2.5
 			},
 			"minere:walker": {

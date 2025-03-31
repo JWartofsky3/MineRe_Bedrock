@@ -86,45 +86,17 @@
           "entity_types": [
             {
               "filters": {
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "player"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "villager"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "snowgolem"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "irongolem"
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
               },
               "max_dist": 24
             },
             {
               "filters": {
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "player"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "villager"
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
               },
               "must_see": false,
               "max_dist": 10

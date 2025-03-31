@@ -10,12 +10,29 @@ import { replaceableBlocks } from "block/blockUtils";
 
 const MAX_SLOWNESS = 4;
 
-export function rollFreeze(target: Entity, attacker: Entity) {
+const CANNOT_BE_FROZEN = new Set<string>();
+CANNOT_BE_FROZEN.add("minere:freeze");
+CANNOT_BE_FROZEN.add("minere:monster_bat");
+CANNOT_BE_FROZEN.add("minere:ghost");
+CANNOT_BE_FROZEN.add("minecraft:vex");
+CANNOT_BE_FROZEN.add("minecraft:bat");
+CANNOT_BE_FROZEN.add("minecraft:ghast");
+CANNOT_BE_FROZEN.add("minecraft:wither");
+CANNOT_BE_FROZEN.add("minecraft:ender_dragon");
+
+export function rollFreeze(
+  target: Entity,
+  attacker: Entity,
+  bonus: number = 0,
+) {
   if (!target || !attacker) {
     return;
   }
   if (!isAlive(target) || !isAlive(attacker)) {
     return false;
+  }
+  if (CANNOT_BE_FROZEN.has(target.typeId) || !target.isOnGround) {
+    return;
   }
 
   const slownessEffect = target.getEffect("slowness");
@@ -35,8 +52,8 @@ export function rollFreeze(target: Entity, attacker: Entity) {
     slownessAmp + (hasLeather ? 1 : 2),
     MAX_SLOWNESS,
   );
-  const snowChance = 0.25 + targetSlowness * 0.15;
-  const iceChance = -0.25 + targetSlowness * 0.2;
+  const snowChance = bonus + 0.25 + targetSlowness * 0.15;
+  const iceChance = bonus + -0.1 + targetSlowness * 0.2;
   target.addEffect("slowness", 8 * 20, {
     amplifier: targetSlowness - 1,
   });
@@ -63,6 +80,9 @@ export function freezeEntity(target: Entity, duration: number) {
   }
   const dimension = target.dimension;
   if (!dimension) {
+    return;
+  }
+  if (CANNOT_BE_FROZEN.has(target.typeId)) {
     return;
   }
   target.addEffect("mining_fatigue", 80, {

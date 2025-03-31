@@ -21,7 +21,7 @@
       },
       "minecraft:rarity": "rare",
       "minecraft:use_modifiers": {},
-      "minecraft:damage": 6,
+      "minecraft:damage": 7,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,
       "minecraft:enchantable": {
@@ -42,21 +42,17 @@
         ]
       },
       "minecraft:durability": {
-        "max_durability": 900
+        "max_durability": 1280
       },
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": ["minere:illumina"],
-            "repair_amount": 900
-          },
-          {
             "items": ["minecraft:diamond"],
-            "repair_amount": 900
+            "repair_amount": 640
           },
           {
             "items": ["minecraft:amethyst_shard", "minecraft:iron_ingot"],
-            "repair_amount": 225
+            "repair_amount": 320
           }
         ]
       }

@@ -1,12 +1,12 @@
 {
-  "format_version": "1.12.0",
+  "format_version": "1.21.40",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:fireball",
       "is_spawnable": false,
-      "is_summonable": false,
-      "is_experimental": false
+      "is_summonable": true
     },
+
     "component_groups": {
       "minecraft:exploding": {
         "minecraft:explode": {
@@ -17,209 +17,60 @@
           "fire_affected_by_griefing": true,
           "destroy_affected_by_griefing": true
         }
-      },
-      "minere:vanilla_fireball": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "impact_damage": {
-              "damage": 8,
-              "knockback": false,
-              "semi_random_diff_damage": false
-            },
-            "definition_event": {
-              "affect_projectile": true,
-              "event_trigger": {
-                "event": "minecraft:explode",
-                "target": "self"
-              }
-            }
-          },
-          "power": 2.0,
-          "gravity": 0,
-          "inertia": 1,
-          "liquid_inertia": 1,
-          "uncertainty_base": 0,
-          "uncertainty_multiplier": 0,
-          "anchor": 2,
-          "offset": [0, -0.1, 0],
-          "reflect_on_hurt": true,
-          "catch_fire": true
-        }
-      },
-      "minecraft:ghast_fireball": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "impact_damage": {
-              "damage": 8,
-              "knockback": false,
-              "semi_random_diff_damage": false
-            },
-            "definition_event": {
-              "affect_projectile": true,
-              "event_trigger": {
-                "event": "minecraft:explode",
-                "target": "self"
-              }
-            }
-          },
-          "power": 1.8,
-          "gravity": 0,
-          "inertia": 1,
-          "liquid_inertia": 1,
-          "uncertainty_base": 0,
-          "uncertainty_multiplier": 0,
-          "anchor": 2,
-          "offset": [
-            "2 * math.sin(query.body_y_rotation)",
-            -3.25,
-            "2 * math.sin(query.body_y_rotation - 90)"
-          ],
-          "reflect_on_hurt": true,
-          "catch_fire": true
-        }
-      },
-      "minere:lizord_fireball": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "impact_damage": {
-              "damage": 8,
-              "knockback": false,
-              "semi_random_diff_damage": false
-            },
-            "definition_event": {
-              "affect_projectile": true,
-              "event_trigger": {
-                "event": "minecraft:explode",
-                "target": "self"
-              }
-            }
-          },
-          "power": 1.8,
-          "gravity": 0,
-          "inertia": 1,
-          "liquid_inertia": 1,
-          "uncertainty_base": 0,
-          "uncertainty_multiplier": 0,
-          "anchor": 1,
-          "offset": [
-            "1 * math.sin(query.body_y_rotation)",
-            -0.875,
-            "1 * math.sin(query.body_y_rotation - 90)"
-          ],
-          "reflect_on_hurt": true,
-          "catch_fire": true
-        }
-      },
-      "minere:netherzord_fireball": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "impact_damage": {
-              "damage": 8,
-              "knockback": false,
-              "semi_random_diff_damage": false
-            },
-            "definition_event": {
-              "affect_projectile": true,
-              "event_trigger": {
-                "event": "minecraft:explode",
-                "target": "self"
-              }
-            }
-          },
-          "power": 1.8,
-          "gravity": 0.05,
-          "inertia": 1,
-          "liquid_inertia": 1,
-          "uncertainty_base": 8,
-          "uncertainty_multiplier": 4,
-          "anchor": 1,
-          "offset": [
-            "1 * math.sin(query.body_y_rotation)",
-            -0.875,
-            "1 * math.sin(query.body_y_rotation - 90)"
-          ],
-          "reflect_on_hurt": false,
-          "catch_fire": true
-        }
       }
     },
+
     "components": {
       "minecraft:collision_box": {
-        "width": 1,
-        "height": 1
+        "width": 1.0,
+        "height": 1.0
+      },
+      "minecraft:projectile": {
+        "on_hit": {
+          "impact_damage": {
+            "damage": 8,
+            "knockback": false,
+            "semi_random_diff_damage": false
+          },
+          "definition_event": {
+            "affect_projectile": true,
+            "event_trigger": {
+              "event": "minecraft:explode",
+              "target": "self"
+            }
+          }
+        },
+        "power": 1.8,
+        "gravity": 0.0,
+        "inertia": 1,
+        "liquid_inertia": 1,
+        "uncertainty_base": 0,
+        "uncertainty_multiplier": 0,
+        "anchor": 2,
+        "offset": [
+          "2 * math.sin(query.body_y_rotation)",
+          -3.25,
+          "2 * math.sin(query.body_y_rotation - 90)"
+        ],
+        "reflect_on_hurt": true,
+        "catch_fire": true
       },
       "minecraft:physics": {},
+      "minecraft:dimension_bound": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
       "minecraft:conditional_bandwidth_optimization": {
         "default_values": {
-          "max_optimized_distance": 80,
+          "max_optimized_distance": 80.0,
           "max_dropped_ticks": 7,
           "use_motion_prediction_hints": true
         }
       }
     },
+
     "events": {
-      "minecraft:entity_spawned": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "value": "ghast"
-            },
-            "add": {
-              "component_groups": ["minecraft:ghast_fireball"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "value": "lizord"
-            },
-            "add": {
-              "component_groups": ["minere:lizord_fireball"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "value": "netherzord"
-            },
-            "add": {
-              "component_groups": ["minere:netherzord_fireball"]
-            }
-          },
-          {
-            "filters": {
-              "none_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "ghast"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "lizord"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "netherzord"
-                }
-              ]
-            },
-            "add": {
-              "component_groups": ["minere:vanilla_fireball"]
-            }
-          }
-        ]
-      },
       "minecraft:explode": {
         "add": {
           "component_groups": ["minecraft:exploding"]

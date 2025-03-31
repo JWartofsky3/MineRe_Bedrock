@@ -111,21 +111,6 @@
                         "value": "goblin"
                       }
                     ]
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "snowgolem"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "irongolem"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "chicken"
                   }
                 ]
               },
@@ -143,7 +128,7 @@
                   {
                     "test": "is_family",
                     "subject": "other",
-                    "value": "villager"
+                    "value": "chicken"
                   }
                 ]
               },

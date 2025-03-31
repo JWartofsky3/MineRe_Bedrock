@@ -142,3 +142,14 @@ item.minere:end_path=Crystalline Platform
 item.end_path.name=Crystalline Platform
 
 tile.minere:basalt_iron_ore.name=Basalt Iron Ore
+
+item.ice_charge.name=Ice Charge
+entity.minere:ice_charge.name=Ice Charge
+tile.minere:ghost_pot.name=Cursed Pot
+item.minere:firebrand=Firebrand
+item.minere:darkheart=Darkheart
+item.minere:windforce=Windforce
+entity.minere:lizord_fireball.name=Fireball
+entity.minere:firebrand_fireball.name=Fireball
+entity.minere:firebomb.name=Fire Bomb
+item.minere:firebomb=Fire Bomb

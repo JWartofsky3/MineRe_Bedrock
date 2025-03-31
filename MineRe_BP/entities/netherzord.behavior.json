@@ -32,7 +32,7 @@
           "attack_radius": 32,
           "burst_shots": 3,
           "burst_interval": 0.4,
-          "charge_shoot_trigger": 2.25,
+          "charge_shoot_trigger": 2.0,
           "charge_charged_trigger": 1
         }
       },
@@ -60,11 +60,11 @@
         "on_death": "query.last_hit_by_player ? 25 : 0"
       },
       "minecraft:health": {
-        "value": 100,
-        "max": 100
+        "value": 120,
+        "max": 120
       },
       "minecraft:attack": {
-        "damage": 9
+        "damage": [9, 12]
       },
       "minecraft:knockback_resistance": {
         "value": 1
@@ -111,26 +111,10 @@
         "entity_types": [
           {
             "filters": {
-              "any_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "operator": "==",
-                  "value": "player"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "operator": "==",
-                  "value": "villager"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "operator": "==",
-                  "value": "irongolem"
-                }
-              ]
+              "test": "is_family",
+              "subject": "other",
+              "operator": "==",
+              "value": "player"
             },
             "max_dist": 48
           }

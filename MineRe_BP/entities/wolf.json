@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.80",
+  "format_version": "1.21.70",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:wolf",
@@ -16,13 +16,20 @@
           "type": "bool",
           "client_sync": false,
           "default": false
+        },
+        "minecraft:sound_variant": {
+          "type": "enum",
+          "values": [ "default", "big", "cute", "grumpy", "mad", "puglin", "sad" ],
+          "default": "default",
+          "client_sync": true
         }
       }
     },
 
     "component_groups": {
       "minecraft:wolf_baby": {
-        "minecraft:is_baby": {},
+        "minecraft:is_baby": {
+        },
         "minecraft:scale": {
           "value": 0.5
         },
@@ -35,20 +42,22 @@
             "cooked_beef",
             "muttonRaw",
             "muttonCooked",
+            "minere:venison",
+            "minere:cooked_venison",
             "porkchop",
             "cooked_porkchop",
             "rabbit",
             "cooked_rabbit",
-            "rotten_flesh",
-            "minere:blubber",
-            "minere:whacon",
-            "minere:venison",
-            "minere:cooked_venison"
+            "rotten_flesh"
           ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
           }
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.25
         }
       },
 
@@ -63,6 +72,7 @@
         "minecraft:breedable": {
           "require_tame": true,
           "require_full_health": true,
+          "combine_parent_colors": true,
           "breeds_with": {
             "mate_type": "minecraft:wolf",
             "baby_type": "minecraft:wolf",
@@ -78,15 +88,13 @@
             "cooked_beef",
             "muttonRaw",
             "muttonCooked",
+            "minere:venison",
+            "minere:cooked_venison",
             "porkchop",
             "cooked_porkchop",
             "rabbit",
             "cooked_rabbit",
-            "rotten_flesh",
-            "minere:blubber",
-            "minere:whacon",
-            "minere:venison",
-            "minere:cooked_venison"
+            "rotten_flesh"
           ]
         }
       },
@@ -96,17 +104,21 @@
           "duration": 25,
           "broadcast_anger": true,
           "broadcast_range": 20,
+          "broadcast_anger_when_dying": false,
           "calm_event": {
             "event": "minecraft:on_calm",
             "target": "self"
           }
         },
-        "minecraft:on_target_acquired": {},
+        "minecraft:on_target_acquired": {
+        },
         "minecraft:rideable": {
           "seat_count": 1,
-          "family_types": ["zombie"],
+          "family_types": [
+            "zombie"
+          ],
           "seats": {
-            "position": [0.0, 0.675, -0.1]
+            "position": [ 0.0, 0.675, -0.1 ]
           }
         }
       },
@@ -149,26 +161,21 @@
                     "subject": "other",
                     "value": "skeleton"
                   },
-                  { "test": "is_family", "subject": "other", "value": "sheep" },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "sheep"
+                  },
                   {
                     "test": "is_family",
                     "subject": "other",
                     "value": "rabbit"
                   },
-                  { "test": "is_family", "subject": "other", "value": "fox" },
                   {
                     "test": "is_family",
                     "subject": "other",
-                    "value": "squirrel"
-                  },
-                  { "test": "is_family", "subject": "other", "value": "duck" },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "raccoon"
-                  },
-                  { "test": "is_family", "subject": "other", "value": "mouse" },
-                  { "test": "is_family", "subject": "other", "value": "rat" }
+                    "value": "fox"
+                  }
                 ]
               },
               "max_dist": 16
@@ -217,17 +224,12 @@
         },
         "minecraft:rideable": {
           "seat_count": 1,
-          "family_types": ["zombie"],
+          "family_types": [
+            "zombie"
+          ],
           "seats": {
-            "position": [0.0, 0.675, -0.1]
+            "position": [ 0.0, 0.675, -0.1 ]
           }
-        }
-      },
-
-      "minecraft:wolf_increased_max_health": {
-        "minecraft:health": {
-          "value": 40,
-          "max": 40
         }
       },
 
@@ -252,8 +254,35 @@
         }
       },
 
+      "minecraft:wolf_increased_max_health": {
+        "minecraft:health": {
+          "value": 40,
+          "max": 40
+        }
+      },
+
+      "minecraft:on_tame_collar_color": {
+        "minecraft:color": {
+          "value": 14
+        }
+      },
+
       "minecraft:wolf_tame": {
-        "minecraft:is_tamed": {},
+        "minecraft:is_tamed": {
+        },
+        "minecraft:attack": {
+          "damage": 6
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.breed": {
+          "priority": 2,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 5,
           "must_see": true,
@@ -265,45 +294,42 @@
                 "value": "skeleton"
               },
               "max_dist": 16
-            },
-            {
-              "filters": {
-                "test": "is_family",
-                "subject": "other",
-                "value": "squirrel"
-              },
-              "max_dist": 8
             }
           ]
         },
-        "minecraft:color": {
-          "value": 14
-        },
-        "minecraft:attack": {
-          "damage": 4
-        },
-        "minecraft:behavior.breed": {
-          "priority": 2,
-          "speed_multiplier": 1.0
-        },
-        "minecraft:behavior.owner_hurt_by_target": {
+        "minecraft:behavior.teleport_to_owner": {
           "priority": 1,
-          "sprint_speed_multiplier": 1.5,
-          "walk_speed_multiplier": 1.5
-        },
-        "minecraft:behavior.owner_hurt_target": {
-          "priority": 2,
-          "sprint_speed_multiplier": 1.5,
-          "walk_speed_multiplier": 1.5
+          "filters": {
+            "any_of": [
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 12
+                  },
+                  { "test": "is_panicking" }
+                ]
+              },
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 24
+                  },
+                  { "test": "has_target" }
+                ]
+              }
+            ]
+          }
         },
         "minecraft:sittable": {
-          "stand_event": {
-            "event": "minere:follow",
-            "target": "self"
-          },
           "sit_event": {
-            "event": "minere:follow",
-            "target": "self"
+            "event": "minere:follow"
+          },
+          "stand_event": {
+            "event": "minere:follow"
           }
         },
         "minecraft:is_dyeable": {
@@ -336,7 +362,11 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    { "test": "is_owner", "subject": "other", "value": true },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
                     {
                       "test": "is_sneak_held",
                       "subject": "other",
@@ -346,7 +376,7 @@
                 },
                 "target": "self"
               },
-              "equip_item_slot": "slot.armor.chest",
+              "equip_item_slot": "slot.armor.body",
               "play_sounds": "armor.equip_wolf",
               "interact_text": "action.interact.equipwolfarmor"
             },
@@ -371,7 +401,11 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    { "test": "is_owner", "subject": "other", "value": true },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
                     {
                       "test": "is_sneak_held",
                       "subject": "other",
@@ -382,7 +416,7 @@
                 "target": "self"
               },
               "hurt_item": 1,
-              "drop_item_slot": "slot.armor.chest",
+              "drop_item_slot": "slot.armor.body",
               "play_sounds": "armor.unequip_wolf",
               "interact_text": "action.interact.removewolfarmor",
               "vibration": "shear"
@@ -391,7 +425,10 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    { "test": "is_sitting", "subject": "self" },
+                    {
+                      "test": "is_sitting",
+                      "subject": "self"
+                    },
                     {
                       "test": "has_damaged_equipment",
                       "subject": "self",
@@ -403,7 +440,11 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    { "test": "is_owner", "subject": "other", "value": true },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
                     {
                       "test": "is_sneak_held",
                       "subject": "other",
@@ -420,7 +461,7 @@
                 "target": "self"
               },
               "repair_entity_item": {
-                "slot": "slot.armor.chest",
+                "slot": "slot.armor.body",
                 "amount": 8
               },
               "use_item": true,
@@ -536,10 +577,12 @@
       "minecraft:balloonable": {
         "mass": 0.8
       },
-      "minecraft:is_hidden_when_invisible": {},
-      "minecraft:nameable": {},
+      "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:nameable": {
+      },
       "minecraft:type_family": {
-        "family": ["wolf", "mob"]
+        "family": [ "wolf", "mob" ]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -574,9 +617,12 @@
         "can_path_over_water": true,
         "avoid_damage_blocks": true
       },
-      "minecraft:movement.basic": {},
-      "minecraft:jump.static": {},
-      "minecraft:can_climb": {},
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:attack": {
         "damage": 4
       },
@@ -620,14 +666,6 @@
           },
           {
             "item": "cooked_beef",
-            "heal_amount": 16
-          },
-          {
-            "item": "minere:blubber",
-            "heal_amount": 6
-          },
-          {
-            "item": "minere:whacon",
             "heal_amount": 16
           },
           {
@@ -685,7 +723,10 @@
                   "operator": "!=",
                   "domain": "minecraft:has_increased_max_health"
                 },
-                { "test": "has_component", "value": "minecraft:is_tamed" }
+                {
+                  "test": "has_component",
+                  "value": "minecraft:is_tamed"
+                }
               ]
             },
             "event": "minecraft:increase_max_health"
@@ -700,7 +741,10 @@
                   "operator": "!=",
                   "domain": "minecraft:is_armorable"
                 },
-                { "test": "has_component", "value": "minecraft:is_tamed" }
+                {
+                  "test": "has_component",
+                  "value": "minecraft:is_tamed"
+                }
               ]
             },
             "event": "minecraft:become_armorable"
@@ -709,6 +753,14 @@
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {
       },
       "minecraft:behavior.float": {
         "priority": 0
@@ -719,30 +771,39 @@
         "target_dist": 0,
         "track_target": true
       },
+      "minecraft:behavior.panic": {
+        "priority": 2,
+        "speed_multiplier": 1.25,
+        "damage_sources": [ "campfire", "fire", "fire_tick", "freezing", "lightning", "lava", "magma", "temperature", "soul_campfire" ],
+        "ignore_mob_damage": true
+      },
       "minecraft:behavior.stay_while_sitting": {
+        "priority": 3
+      },
+      "minecraft:behavior.hurt_by_target": {
         "priority": 3
       },
       "minecraft:behavior.leap_at_target": {
         "priority": 4,
         "yd": 0.4
       },
-      "minecraft:behavior.melee_attack": {
+      "minecraft:behavior.melee_box_attack": {
         "priority": 5,
         "speed_multiplier": 1.4
-      },
-      "minecraft:behavior.random_stroll": {
-        "priority": 8,
-        "speed_multiplier": 1.0
       },
       "minecraft:behavior.look_at_player": {
         "priority": 6,
         "target_distance": 6.0,
         "probability": 0.02
       },
+      "minecraft:behavior.random_stroll": {
+        "priority": 8,
+        "speed_multiplier": 1.0
+      },
       "minecraft:behavior.beg": {
         "priority": 9,
         "look_distance": 8,
-        "look_time": [2, 4],
+        "look_time": [ 2, 4 ],
         "items": [
           "bone",
           "porkchop",
@@ -754,24 +815,12 @@
           "rotten_flesh",
           "muttonraw",
           "muttoncooked",
-          "rabbit",
-          "cooked_rabbit",
-          "minere:blubber",
-          "minere:whacon",
           "minere:venison",
-          "minere:cooked_venison"
+          "minere:cooked_venison",
+          "rabbit",
+          "cooked_rabbit"
         ]
-      },
-
-      "minecraft:behavior.hurt_by_target": {
-        "priority": 3
-      },
-      "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
-      "minecraft:conditional_bandwidth_optimization": {}
+      }
     },
 
     "events": {
@@ -784,9 +833,20 @@
             // Pale Wolf: every non-cold Taiga, except Old Growth Pine Taiga and Old Growth Spruce Taiga.
             "filters": {
               "all_of": [
-                { "test": "has_biome_tag", "value": "taiga" },
-                { "test": "has_biome_tag", "operator": "not", "value": "cold" },
-                { "test": "has_biome_tag", "operator": "not", "value": "mega" },
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "not",
+                  "value": "mega"
+                },
                 {
                   "test": "has_biome_tag",
                   "operator": "not",
@@ -795,28 +855,47 @@
               ]
             },
             "add": {
-              "component_groups": ["minecraft:wolf_pale"]
+              "component_groups": [
+                "minecraft:wolf_pale"
+              ]
             }
           },
           {
             // Ashen Wolf: every cold Taiga.
             "filters": {
               "all_of": [
-                { "test": "has_biome_tag", "value": "taiga" },
-                { "test": "has_biome_tag", "value": "cold" }
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                }
               ]
             },
             "add": {
-              "component_groups": ["minecraft:wolf_ashen"]
+              "component_groups": [
+                "minecraft:wolf_ashen"
+              ]
             }
           },
           {
             // Black Wolf: Old Growth Pine Taiga only.
             "filters": {
               "all_of": [
-                { "test": "has_biome_tag", "value": "mega" },
-                { "test": "has_biome_tag", "value": "taiga" },
-                { "test": "has_biome_tag", "value": "forest" },
+                {
+                  "test": "has_biome_tag",
+                  "value": "mega"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "forest"
+                },
                 {
                   "test": "has_biome_tag",
                   "operator": "not",
@@ -825,21 +904,37 @@
               ]
             },
             "add": {
-              "component_groups": ["minecraft:wolf_black"]
+              "component_groups": [
+                "minecraft:wolf_black"
+              ]
             }
           },
           {
             // Chestnut Wolf: Old Growth Spruce Taiga only.
             "filters": {
               "all_of": [
-                { "test": "has_biome_tag", "value": "mega" },
-                { "test": "has_biome_tag", "value": "taiga" },
-                { "test": "has_biome_tag", "value": "forest" },
-                { "test": "has_biome_tag", "value": "mutated" }
+                {
+                  "test": "has_biome_tag",
+                  "value": "mega"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "forest"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "mutated"
+                }
               ]
             },
             "add": {
-              "component_groups": ["minecraft:wolf_chestnut"]
+              "component_groups": [
+                "minecraft:wolf_chestnut"
+              ]
             }
           },
           {
@@ -849,7 +944,9 @@
               "value": "jungle"
             },
             "add": {
-              "component_groups": ["minecraft:wolf_rusty"]
+              "component_groups": [
+                "minecraft:wolf_rusty"
+              ]
             }
           },
           {
@@ -859,7 +956,9 @@
               "value": "grove"
             },
             "add": {
-              "component_groups": ["minecraft:wolf_snowy"]
+              "component_groups": [
+                "minecraft:wolf_snowy"
+              ]
             }
           },
           {
@@ -869,7 +968,9 @@
               "value": "savanna"
             },
             "add": {
-              "component_groups": ["minecraft:wolf_spotted"]
+              "component_groups": [
+                "minecraft:wolf_spotted"
+              ]
             }
           },
           {
@@ -879,14 +980,19 @@
               "value": "mesa"
             },
             "add": {
-              "component_groups": ["minecraft:wolf_striped"]
+              "component_groups": [
+                "minecraft:wolf_striped"
+              ]
             }
           },
           {
             // Woods Wolf: Forest only.
             "filters": {
               "all_of": [
-                { "test": "has_biome_tag", "value": "forest" },
+                {
+                  "test": "has_biome_tag",
+                  "value": "forest"
+                },
                 {
                   "test": "has_biome_tag",
                   "operator": "not",
@@ -915,7 +1021,9 @@
               ]
             },
             "add": {
-              "component_groups": ["minecraft:wolf_woods"]
+              "component_groups": [
+                "minecraft:wolf_woods"
+              ]
             }
           }
         ]
@@ -927,63 +1035,81 @@
 
       "minecraft:spawn_wild_pale": {
         "add": {
-          "component_groups": ["minecraft:wolf_pale"]
+          "component_groups": [
+            "minecraft:wolf_pale"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_ashen": {
         "add": {
-          "component_groups": ["minecraft:wolf_ashen"]
+          "component_groups": [
+            "minecraft:wolf_ashen"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_black": {
         "add": {
-          "component_groups": ["minecraft:wolf_black"]
+          "component_groups": [
+            "minecraft:wolf_black"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_chestnut": {
         "add": {
-          "component_groups": ["minecraft:wolf_chestnut"]
+          "component_groups": [
+            "minecraft:wolf_chestnut"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_rusty": {
         "add": {
-          "component_groups": ["minecraft:wolf_rusty"]
+          "component_groups": [
+            "minecraft:wolf_rusty"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_snowy": {
         "add": {
-          "component_groups": ["minecraft:wolf_snowy"]
+          "component_groups": [
+            "minecraft:wolf_snowy"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_spotted": {
         "add": {
-          "component_groups": ["minecraft:wolf_spotted"]
+          "component_groups": [
+            "minecraft:wolf_spotted"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_striped": {
         "add": {
-          "component_groups": ["minecraft:wolf_striped"]
+          "component_groups": [
+            "minecraft:wolf_striped"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
 
       "minecraft:spawn_wild_woods": {
         "add": {
-          "component_groups": ["minecraft:wolf_woods"]
+          "component_groups": [
+            "minecraft:wolf_woods"
+          ]
         },
         "trigger": "minecraft:spawn_wild_baby_or_adult"
       },
@@ -1007,14 +1133,22 @@
 
       "minecraft:spawn_wild_baby": {
         "add": {
-          "component_groups": ["minecraft:wolf_baby", "minecraft:wolf_wild"]
-        }
+          "component_groups": [
+            "minecraft:wolf_baby",
+            "minecraft:wolf_wild"
+          ]
+        },
+        "trigger": "minecraft:randomize_sound_variant"
       },
 
       "minecraft:spawn_wild_adult": {
         "add": {
-          "component_groups": ["minecraft:wolf_adult", "minecraft:wolf_wild"]
-        }
+          "component_groups": [
+            "minecraft:wolf_adult",
+            "minecraft:wolf_wild"
+          ]
+        },
+        "trigger": "minecraft:randomize_sound_variant"
       },
 
       "minecraft:spawn_tame_baby": {
@@ -1024,7 +1158,8 @@
             "minecraft:wolf_tame",
             "minere:wolf_following"
           ]
-        }
+        },
+        "trigger": "minecraft:randomize_sound_variant"
       },
 
       "minecraft:spawn_tame_adult": {
@@ -1034,39 +1169,56 @@
             "minecraft:wolf_tame",
             "minere:wolf_following"
           ]
-        }
+        },
+        "trigger": "minecraft:randomize_sound_variant"
       },
 
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": ["minecraft:wolf_baby"]
+          "component_groups": [
+            "minecraft:wolf_baby"
+          ]
         },
         "add": {
-          "component_groups": ["minecraft:wolf_adult"]
+          "component_groups": [
+            "minecraft:wolf_adult"
+          ]
         }
       },
 
       "minecraft:ageable_set_baby": {
         "remove": {
-          "component_groups": ["minecraft:wolf_adult"]
+          "component_groups": [
+            "minecraft:wolf_adult"
+          ]
         },
         "add": {
-          "component_groups": ["minecraft:wolf_baby"]
+          "component_groups": [
+            "minecraft:wolf_baby"
+          ]
         }
       },
 
       "minecraft:on_tame": {
         "remove": {
-          "component_groups": ["minecraft:wolf_wild"]
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
         },
         "add": {
-          "component_groups": ["minecraft:wolf_tame", "minere:wolf_following"]
+          "component_groups": [
+            "minecraft:wolf_tame",
+            "minecraft:on_tame_collar_color",
+            "minere:wolf_following"
+          ]
         }
       },
 
       "minecraft:increase_max_health": {
         "add": {
-          "component_groups": ["minecraft:wolf_increased_max_health"]
+          "component_groups": [
+            "minecraft:wolf_increased_max_health"
+          ]
         },
         "set_property": {
           "minecraft:has_increased_max_health": true
@@ -1075,28 +1227,95 @@
 
       "minecraft:become_angry": {
         "remove": {
-          "component_groups": ["minecraft:wolf_wild"]
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
         },
         "add": {
-          "component_groups": ["minecraft:wolf_angry"]
+          "component_groups": [
+            "minecraft:wolf_angry"
+          ]
         }
       },
 
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": ["minecraft:wolf_angry"]
+          "component_groups": [
+            "minecraft:wolf_angry"
+          ]
         },
         "add": {
-          "component_groups": ["minecraft:wolf_wild"]
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
         }
       },
 
       "minecraft:become_armorable": {
         "add": {
-          "component_groups": ["minecraft:wolf_armorable"]
+          "component_groups": [
+            "minecraft:wolf_armorable"
+          ]
         },
         "set_property": {
           "minecraft:is_armorable": true
+        }
+      },
+
+      "minecraft:randomize_sound_variant": {
+        "randomize": [
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "default"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "big"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "cute"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "grumpy"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "mad"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "puglin"
+            }
+          },
+          {
+            "weight": 1,
+            "set_property": {
+              "minecraft:sound_variant": "sad"
+            }
+          }
+        ]
+      },
+
+      
+      "minere:go_play": {
+        "remove": {
+          "component_groups": ["minere:wolf_following"]
+        },
+        "add": {
+          "component_groups": ["minere:wolf_go_home"]
         }
       },
 
@@ -1106,15 +1325,6 @@
         },
         "add": {
           "component_groups": ["minere:wolf_following"]
-        }
-      },
-
-      "minere:go_play": {
-        "remove": {
-          "component_groups": ["minere:wolf_following"]
-        },
-        "add": {
-          "component_groups": ["minere:wolf_go_home"]
         }
       }
     }

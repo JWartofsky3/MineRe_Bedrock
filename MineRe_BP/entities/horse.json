@@ -541,7 +541,8 @@
         "despawn_from_distance": {}
       },
       "minecraft:behavior.float": {
-        "priority": 0
+        "priority": 0,
+        "sink_with_passengers": false
       },
       "minecraft:behavior.panic": {
         "priority": 3,

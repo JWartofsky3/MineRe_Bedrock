@@ -1,0 +1,14 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "minere:ancient_tomb_feature"
+    },
+    "structure_name": "minere:ancient_tomb",
+    "adjustment_radius": 8,
+    "facing_direction": "random",
+    "constraints": {
+      "grounded": {}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:ice_charge_from_fire_charge"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BBB", "BFB", "BBB"],
+    "key": {
+      "B": "minecraft:blue_ice",
+      "F": "minecraft:fire_charge"
+    },
+    "result": {
+      "item": "minere:ice_charge",
+      "count": 4
+    }
+  }
+}

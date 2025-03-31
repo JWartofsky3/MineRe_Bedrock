@@ -14,7 +14,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 14
+          "default": 12
         },
         "minecraft:density_limit": {
           "surface": 2
@@ -81,11 +81,6 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "desert"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "mesa"
             }
           ],
           "all_of": [

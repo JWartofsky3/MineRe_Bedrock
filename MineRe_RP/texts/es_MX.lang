@@ -152,3 +152,14 @@ item.minere:end_path=Plataforma cristalina
 item.end_path.name=Plataforma cristalina
 
 tile.minere:basalt_iron_ore.name=Mineral de hierro basáltico
+
+item.ice_charge.name=Carga de hielo
+entity.minere:ice_charge.name=Carga de hielo
+tile.minere:ghost_pot.name=Olla maldita
+item.minere:firebrand=Espada de fuego
+item.minere:darkheart=Corazón oscuro
+item.minere:windforce=Fuerza del viento
+entity.minere:lizord_fireball.name=Bola de fuego
+entity.minere:firebrand_fireball.name=Bola de fuego
+entity.minere:firebomb.name=Bomba de fuego
+item.minere:firebomb=Bomba de fuego

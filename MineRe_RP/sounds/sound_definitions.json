@@ -55,6 +55,24 @@
         }
       ]
     },
+    "item.ice_charge.frost": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/ice_charge/frost",
+          "volume": 0.5
+        }
+      ]
+    },
+    "item.ice_charge.blast": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/ice_charge/blast",
+          "volume": 0.5
+        }
+      ]
+    },
     "item.fire_staff.cast": {
       "category": "player",
       "sounds": [
@@ -541,7 +559,10 @@
       "sounds": ["sounds/mob/owl/hurt0", "sounds/mob/owl/hurt1"]
     },
     "mob.dire_wolf.howl": {
+      "__use_legacy_max_distance": "true",
       "category": "hostile",
+      "max_distance": 48.0,
+      "min_distance": 0.0,
       "sounds": [
         "sounds/mob/dire_wolf/howl0",
         "sounds/mob/dire_wolf/howl1",

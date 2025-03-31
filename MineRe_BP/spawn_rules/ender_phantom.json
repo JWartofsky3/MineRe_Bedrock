@@ -1,0 +1,42 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:ender_phantom",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:end_stone",
+          "minecraft:purpur_block",
+          "minecraft:purpur_pillar",
+          "minere:end_sand",
+          "minere:end_crystalline"
+        ],
+        "minecraft:height_filter": {
+          "min": 80
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:density_limit": {
+          "surface": 3,
+          "underground": 3
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "the_end"
+          }
+        ]
+      }
+    ]
+  }
+}

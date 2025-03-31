@@ -48,6 +48,9 @@
     "minere.bomb": {
       "textures": "textures/items/minere/bomb"
     },
+    "minere.firebomb": {
+      "textures": "textures/items/minere/firebomb"
+    },
     "minere.emerald_shard": {
       "textures": "textures/items/minere/emerald_shard"
     },
@@ -84,11 +87,20 @@
     "minere.ice_dagger": {
       "textures": "textures/items/minere/ice_dagger.png"
     },
+    "minere.venom_shank": {
+      "textures": "textures/items/minere/venom_shank.png"
+    },
     "minere.illumina": {
       "textures": "textures/items/minere/illumina.png"
     },
-    "minere.venom_shank": {
-      "textures": "textures/items/minere/venom_shank.png"
+    "minere.windforce": {
+      "textures": "textures/items/minere/windforce.png"
+    },
+    "minere.firebrand": {
+      "textures": "textures/items/minere/firebrand.png"
+    },
+    "minere.darkheart": {
+      "textures": "textures/items/minere/darkheart.png"
     },
     "minere.copper_treecapitator": {
       "textures": "textures/items/minere/copper_treecapitator.png"
@@ -113,6 +125,9 @@
     },
     "minere.end_path": {
       "textures": "textures/items/minere/end_path.png"
+    },
+    "minere.ice_charge": {
+      "textures": "textures/items/minere/ice_charge.png"
     }
   },
   "resource_pack_name": "MineRe Resources",

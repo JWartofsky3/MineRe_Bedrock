@@ -14,7 +14,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 15
+          "default": 8
         },
         "minecraft:height_filter": {
           "min": 100
@@ -50,7 +50,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 12
+          "default": 8
         },
         "minecraft:biome_filter": {
           "none_of": [

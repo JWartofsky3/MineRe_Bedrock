@@ -15,7 +15,7 @@ import { ogreLaugh } from "mob/ogreLaugh";
 import { skeletonStrafe } from "mob/skeleton_strafe";
 import { useAmethystStaff } from "item/amethyst_staff";
 import { useEchoStaff } from "item/echo_staff";
-import { usePhasedEnderPearl } from "item/phased_ender_pearl";
+import { PhasedEnderPearl } from "item/phased_ender_pearl";
 import { angerEndermen } from "mob/angerEndermen";
 import { enderRandomTeleport } from "mob/enderTeleport";
 import { handleEndSpawn } from "mob/endSpawns";
@@ -50,6 +50,12 @@ import { rollOgreRoar } from "mob/ogreRoar";
 import { rollLeap } from "mob/yetiLeap";
 import { Illumina } from "item/illumina";
 import { PlatformPath } from "item/platform_path";
+import { iceCharge, iceChargeRunner } from "item/ice_charge";
+import { ghostPot } from "block/ghost_pot";
+import { Windforce } from "item/windforce";
+import { Firebrand } from "item/firebrand";
+import { Darkheart } from "item/darkheart";
+import { horseRemoveChest } from "mob/horseCleanup";
 
 export const DEFAULT_TICK = 20;
 
@@ -69,6 +75,18 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:venom_shank",
     VenomShank,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:windforce",
+    Windforce,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:firebrand",
+    Firebrand,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:darkheart",
+    Darkheart,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:royal_jelly",
@@ -102,6 +120,10 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:path",
     PlatformPath,
   );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:phased_ender_pearl",
+    PhasedEnderPearl,
+  );
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,
@@ -114,14 +136,10 @@ world.beforeEvents.worldInitialize.subscribe(function (data) {
     "minere:teleporter",
     teleporter,
   );
-  // data.blockComponentRegistry.registerCustomComponent(
-  //   "minere:end_sand",
-  //   endSand,
-  // );
-  // data.blockComponentRegistry.registerCustomComponent(
-  //   "minere:end_crystalline",
-  //   endCrystalline,
-  // );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:ghost_pot",
+    ghostPot,
+  );
 });
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
@@ -144,15 +162,17 @@ world.beforeEvents.entityRemove.subscribe(function (data) {
   angerEndermen(data);
 });
 
+world.afterEvents.projectileHitBlock.subscribe(function (data) {
+  if (data.projectile.typeId === "minere:ice_charge") {
+    iceCharge(data.dimension, data.location, 3);
+  }
+});
+
 world.beforeEvents.itemUse.subscribe((data) => {
   useAmethystStaff(data);
   useEchoStaff(data);
   useFireStaff(data);
   useBlasterStaff(data);
-});
-
-world.afterEvents.itemUse.subscribe((data) => {
-  usePhasedEnderPearl(data);
 });
 
 world.afterEvents.itemUseOn.subscribe((data) => {
@@ -163,15 +183,23 @@ world.afterEvents.itemUseOn.subscribe((data) => {
 
 world.afterEvents.entityDie.subscribe(function (data) {
   ogreLaugh(data?.damageSource?.damagingEntity);
+  horseRemoveChest(data);
 });
 
 world.afterEvents.entitySpawn.subscribe(function (data) {
   if (data?.entity == null) {
     return;
   }
+  data.cause;
   runEarthquake(data.entity);
-  if (data.entity.typeId == "minere:bomb") {
+  if (
+    data.entity.typeId == "minere:bomb" ||
+    data.entity.typeId == "minere:firebomb"
+  ) {
     world.playSound("random.fuse", data.entity.location);
+  }
+  if (data.entity.typeId == "minere:ice_charge") {
+    world.playSound("item.ice_charge.frost", data.entity.location);
   }
   if (data.entity.typeId == "minere:demon") {
     rollBecomeSummoner(data.entity, 0.2);
@@ -180,6 +208,7 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
     skeletonStrafe(data.entity, 0.5);
   }
   handleEndSpawn(data.entity);
+  iceChargeRunner(data.entity);
 });
 
 world.afterEvents.entityHurt.subscribe(function (data) {
@@ -205,7 +234,10 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     armorCurve(target as Player, data.damage, data.damageSource);
   }
 
-  if (attacker?.typeId === "minere:bomb") {
+  if (
+    attacker?.typeId === "minere:bomb" ||
+    attacker?.typeId == "minere:firebomb"
+  ) {
     bombDamage(data?.hurtEntity, data?.damage, data?.damageSource);
   }
 
@@ -221,7 +253,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     attacker?.typeId === "minere:yeti" ||
     attacker?.typeId === "minere:walker"
   ) {
-    throwBy(attacker, target, 5, 10);
+    throwBy(attacker, target, 1.0, 1.0);
   }
 
   // yeti leap
@@ -277,6 +309,9 @@ world.afterEvents.entityHurt.subscribe(function (data) {
   if (attacker?.typeId === "minere:freeze") {
     rollFreeze(target, attacker);
   }
+  if (projectile?.typeId === "minere:ice_charge") {
+    rollFreeze(target, attacker, 0.05);
+  }
 
   // ender phantom teleport target
   if (attacker?.typeId === "minere:ender_phantom") {
@@ -307,35 +342,6 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     if ((!!projectile || !!attacker) && target?.typeId === "minere:vampire") {
       rollBecomeBat(target, 0.2, 0.5);
     }
-  }
-
-  // DISABLED because it's buggy
-  // ender dragon teleport self
-  // if (target?.typeId === "minecraft:ender_dragon") {
-  //   if (target.hasComponent("minecraft:behavior.dragonlanding")) {
-  //     enderTeleport(target, 100, 0.1, 8);
-  //   } else {
-  //     enderTeleport(target, 100, 0.25, 8);
-  //   }
-  // }
-
-  // anger endermen
-  if (
-    target.typeId === "minecraft:ender_crystal" &&
-    dimension.id == "minecraft:the_end"
-  ) {
-    const endermen = dimension.getEntities({
-      type: "enderman",
-      closest: 4,
-      location: target.location,
-      maxDistance: 100,
-    }) as Entity[];
-    endermen.forEach((enderman: Entity) => {
-      enderman.triggerEvent("minecraft:become_angry");
-      world.playSound("mob.endermen.scream", enderman.location, {
-        volume: 5.0,
-      });
-    });
   }
 });
 

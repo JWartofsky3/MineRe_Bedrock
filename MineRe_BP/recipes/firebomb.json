@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "minere:firebomb"
+    },
+
+    "tags": ["crafting_table"],
+    "ingredients": [
+      {
+        "item": "minecraft:fire_charge"
+      },
+      {
+        "item": "minere:bomb"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "minere:bomb"
+      }
+    ],
+    "result": {
+      "item": "minere:firebomb"
+    }
+  }
+}

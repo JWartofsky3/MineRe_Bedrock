@@ -84,6 +84,9 @@
 		},
 		"minere:basalt_iron_ore_top": {
 			"textures": "textures/blocks/minere/basalt_iron_ore_top.png"
+		},
+		"minere:ghost_pot": {
+			"textures": "textures/blocks/minere/ghost_pot.png"
 		}
 	}
 }

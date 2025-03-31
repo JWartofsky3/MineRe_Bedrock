@@ -15,6 +15,22 @@ const LIGHT_ARMOR_MULT = 1.05;
 const SPRINT_MULT = 1.3;
 const SNEAK_MULT = 0.3;
 
+const lightArmorKeyWords: string[] = [
+  "leather",
+  "chain",
+  "enderon",
+  "elytra",
+  "cap",
+  "fur",
+  "wolf",
+  "hat",
+  "hide",
+  "fur",
+  "light",
+  "straw",
+  "paper",
+];
+
 export function armorWeight(player: Player) {
   if (!player) {
     return;
@@ -57,13 +73,10 @@ function getItemWeight(item: ItemStack): number {
   if (!item.getComponent(ItemComponentTypes.Enchantable)) {
     return 0;
   }
-  if (
-    item.typeId.includes("leather") ||
-    item.typeId.includes("chain") ||
-    item.typeId.includes("elytra") ||
-    item.typeId.includes("enderon")
-  ) {
-    return 0;
+  for (let i = 0; i < lightArmorKeyWords.length; i++) {
+    if (item.typeId.includes(lightArmorKeyWords[i])) {
+      return 0;
+    }
   }
   return 1;
 }

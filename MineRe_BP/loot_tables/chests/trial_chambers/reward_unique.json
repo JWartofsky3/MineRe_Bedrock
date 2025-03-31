@@ -48,19 +48,8 @@
         },
         {
           "type": "item",
-          "name": "minere:illumina",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "specific_enchants",
-              "enchants": [
-                {
-                  "id": "smite",
-                  "level": 5
-                }
-              ]
-            }
-          ]
+          "name": "minere:windforce",
+          "weight": 1
         }
       ]
     }

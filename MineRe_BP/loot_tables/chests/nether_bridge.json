@@ -93,37 +93,37 @@
         {
           "type": "item",
           "name": "minecraft:golden_sword",
-          "weight": 5
+          "weight": 3
         },
         {
           "type": "item",
           "name": "minecraft:golden_pickaxe",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "item",
           "name": "minecraft:golden_shovel",
-          "weight": 3
+          "weight": 1
         },
         {
           "type": "item",
           "name": "minecraft:golden_helmet",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "item",
           "name": "minecraft:golden_chestplate",
-          "weight": 5
+          "weight": 3
         },
         {
           "type": "item",
           "name": "minecraft:golden_leggings",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "item",
           "name": "minecraft:golden_boots",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "item",
@@ -179,9 +179,26 @@
           "functions": [
             {
               "function": "set_count",
-              "count": 3
+              "count": {
+                "min": 2,
+                "max": 3
+              }
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "minere:firebrand",
+          "weight": 1
         }
       ]
     }

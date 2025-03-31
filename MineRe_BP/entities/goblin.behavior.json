@@ -302,6 +302,11 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "bomb"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "tnt"
                   }
                 ]
               },
@@ -514,6 +519,11 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "bomb"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "tnt"
                 }
               ]
             },

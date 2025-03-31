@@ -88,7 +88,7 @@
           "max": 18
         },
         "minecraft:attack": {
-          "damage": [5, 6]
+          "damage": [4, 5]
         }
       },
       "minere:small_gremlin": {
@@ -106,7 +106,7 @@
           "max": 10
         },
         "minecraft:attack": {
-          "damage": [3, 4]
+          "damage": [2, 3]
         },
         "minecraft:behavior.panic": {
           "priority": 1,

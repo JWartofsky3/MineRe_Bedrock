@@ -1493,7 +1493,7 @@
       ]
     },
     {
-      "total_exp_required": 30,
+      "total_exp_required": 25,
       "groups": [
         {
           "num_to_select": 2,
@@ -1540,7 +1540,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 5,
               "reward_exp": true
             },
             {
@@ -1585,7 +1585,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 5,
               "reward_exp": true
             },
             {
@@ -1720,7 +1720,7 @@
                 }
               ],
               "trader_exp": 4,
-              "max_uses": 5,
+              "max_uses": 2,
               "reward_exp": true
             },
             {
@@ -1761,7 +1761,7 @@
                 }
               ],
               "trader_exp": 5,
-              "max_uses": 5,
+              "max_uses": 2,
               "reward_exp": true
             },
             {
@@ -1802,7 +1802,7 @@
                 }
               ],
               "trader_exp": 5,
-              "max_uses": 5,
+              "max_uses": 2,
               "reward_exp": true
             },
             {
@@ -1847,15 +1847,74 @@
                 }
               ],
               "trader_exp": 4,
-              "max_uses": 5,
+              "max_uses": 2,
               "reward_exp": true
+            }
+          ]
+        },
+        {
+          "num_to_select": 1,
+          "trades": [
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:wind_charge",
+                  "quantity": {
+                    "min": 2,
+                    "max": 4
+                  }
+                }
+              ],
+              "max_uses": 5
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:ice_charge",
+                  "quantity": {
+                    "min": 2,
+                    "max": 4
+                  }
+                }
+              ],
+              "max_uses": 5
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:fire_charge",
+                  "quantity": {
+                    "min": 3,
+                    "max": 5
+                  }
+                }
+              ],
+              "max_uses": 5
             }
           ]
         }
       ]
     },
     {
-      "total_exp_required": 50,
+      "total_exp_required": 40,
       "groups": [
         {
           "num_to_select": 2,
@@ -1920,24 +1979,6 @@
               ],
               "gives": [
                 {
-                  "item": "minecraft:wind_charge",
-                  "quantity": {
-                    "min": 2,
-                    "max": 4
-                  }
-                }
-              ],
-              "max_uses": 5
-            },
-            {
-              "weight": 1,
-              "wants": [
-                {
-                  "item": "minecraft:emerald"
-                }
-              ],
-              "gives": [
-                {
                   "item": "minecraft:ender_pearl"
                 }
               ],
@@ -1957,38 +1998,6 @@
               "gives": [
                 {
                   "item": "minere:phased_ender_pearl"
-                }
-              ],
-              "max_uses": 5
-            },
-            {
-              "weight": 1,
-              "wants": [
-                {
-                  "item": "minecraft:emerald"
-                }
-              ],
-              "gives": [
-                {
-                  "item": "minecraft:blaze_powder"
-                }
-              ],
-              "max_uses": 3
-            },
-            {
-              "weight": 1,
-              "wants": [
-                {
-                  "item": "minecraft:emerald"
-                }
-              ],
-              "gives": [
-                {
-                  "item": "minecraft:fire_charge",
-                  "quantity": {
-                    "min": 4,
-                    "max": 16
-                  }
                 }
               ],
               "max_uses": 5

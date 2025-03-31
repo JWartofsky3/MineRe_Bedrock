@@ -45,7 +45,7 @@ export function getItem(
 ): Entity | undefined {
   const allItems = dimension.getEntities({
     type: "minecraft:item",
-    closest: 1,
+    closest: 8,
     location: location,
     maxDistance: 2,
   }) as Entity[];

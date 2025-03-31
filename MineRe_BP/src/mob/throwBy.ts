@@ -21,5 +21,5 @@ export const throwBy = (
     ),
     { x: 0, y: vAddition, z: 0 },
   );
-  target.applyKnockback(throwForce.x, throwForce.z, 1, 1);
+  target.applyKnockback(throwForce.x, throwForce.z, scale, vAddition);
 };
