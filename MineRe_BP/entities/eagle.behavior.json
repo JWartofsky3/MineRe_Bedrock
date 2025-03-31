@@ -3,7 +3,6 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:eagle",
-      "runtime_identifier": "minecraft:phantom",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
