@@ -397,7 +397,7 @@
           {
             "randomize": [
               {
-                "weight": 40,
+                "weight": 45,
                 "add": {
                   "component_groups": ["adult", "scale_small"]
                 }
@@ -409,7 +409,7 @@
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["adult", "scale_large"]
                 }

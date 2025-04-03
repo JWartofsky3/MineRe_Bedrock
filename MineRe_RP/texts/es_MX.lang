@@ -163,3 +163,6 @@ entity.minere:lizord_fireball.name=Bola de fuego
 entity.minere:firebrand_fireball.name=Bola de fuego
 entity.minere:firebomb.name=Bomba de fuego
 item.minere:firebomb=Bomba de fuego
+
+item.minere:jump_boots=Botas de salto
+minere:itemGroup.name.magic_sword=Espadas magicas

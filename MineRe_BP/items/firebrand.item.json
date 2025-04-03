@@ -18,7 +18,11 @@
         "minere:firebrand",
         "minere:custom_sword"
       ],
-      "minecraft:damage": 12,
+      "minecraft:damage": 7,
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 15
+      },
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,
       "minecraft:rarity": "rare",
@@ -46,17 +50,13 @@
         "duration": 6.0
       },
       "minecraft:durability": {
-        "max_durability": 5000
+        "max_durability": 1280
       },
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": ["minecraft:netherite_ingot"],
-            "repair_amount": 3000
-          },
-          {
             "items": ["minecraft:blaze_rod"],
-            "repair_amount": 1250
+            "repair_amount": 320
           }
         ]
       }

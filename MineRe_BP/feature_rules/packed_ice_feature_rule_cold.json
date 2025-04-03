@@ -18,9 +18,9 @@
     "distribution": {
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 20
+        "denominator": 10
       },
-      "iterations": 1,
+      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < -0.6) ? 6 : (t.noise < -0.3) ? 3 : (t.noise < 0.3) ? 1 : 0;",
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",

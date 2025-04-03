@@ -173,6 +173,18 @@
       "category": "hostile",
       "sounds": ["sounds/mob/freeze/freeze"]
     },
+    "mob.gremlin.ambient": {
+      "category": "hostile",
+      "sounds": ["sounds/mob/gremlin/ambient0","sounds/mob/gremlin/ambient1","sounds/mob/gremlin/ambient2","sounds/mob/gremlin/ambient3","sounds/mob/gremlin/ambient4"]
+    },
+    "mob.gremlin.hurt": {
+      "category": "hostile",
+      "sounds": ["sounds/mob/gremlin/hurt0","sounds/mob/gremlin/hurt1","sounds/mob/gremlin/hurt2","sounds/mob/gremlin/hurt3","sounds/mob/gremlin/hurt4"]
+    },
+    "mob.gremlin.die": {
+      "category": "hostile",
+      "sounds": ["sounds/mob/gremlin/death0", "sounds/mob/gremlin/death1", "sounds/mob/gremlin/death2"]
+    },
     "mob.ghast.fireball": {
       "__use_legacy_max_distance": "true",
       "category": "hostile",

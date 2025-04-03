@@ -1,4 +1,4 @@
-import { EntityComponentTypes, EquipmentSlot, GameMode, ItemComponentTypes, world, } from "@minecraft/server";
+import { EntityComponentTypes, EquipmentSlot, GameMode, ItemComponentTypes, } from "@minecraft/server";
 import { enderTeleport } from "mob/enderTeleport";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 const ENDERON = "enderon";
@@ -7,7 +7,6 @@ const GROUND_LOOK_DISTANCE = 16;
 const CONSUME_CHANCE = 0.5;
 export const PhasedEnderPearl = {
     onUse(data) {
-        world.sendMessage("here");
         const player = data.source;
         if (!player) {
             return;

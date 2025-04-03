@@ -405,6 +405,10 @@
       "entries": [
         {
           "type": "item",
+          "name": "minere:jump_boots"
+        },
+        {
+          "type": "item",
           "name": "minecraft:emerald_block",
           "weight": 2
         },

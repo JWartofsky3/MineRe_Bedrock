@@ -40,7 +40,7 @@
         {
           "type": "item",
           "name": "minecraft:book",
-          "weight": 2,
+          "weight": 4,
           "functions": [
             {
               "function": "enchant_book_for_trading",
@@ -57,7 +57,7 @@
         {
           "type": "item",
           "name": "minere:windforce",
-          "weight": 2,
+          "weight": 4,
           "functions": [
             {
               "function": "specific_enchants",
@@ -73,7 +73,7 @@
         {
           "type": "item",
           "name": "minere:illumina",
-          "weight": 1,
+          "weight": 2,
           "functions": [
             {
               "function": "specific_enchants",
@@ -89,7 +89,18 @@
         {
           "type": "item",
           "name": "minecraft:heavy_core",
-          "weight": 3
+          "weight": 6
+        },
+        {
+          "type": "item",
+          "name": "minere:jump_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_randomly",
+              "treasure": true
+            }
+          ]
         }
       ]
     }

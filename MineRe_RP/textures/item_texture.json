@@ -128,6 +128,9 @@
     },
     "minere.ice_charge": {
       "textures": "textures/items/minere/ice_charge.png"
+    },
+    "minere.jump_boots": {
+      "textures": "textures/items/minere/jump_boots"
     }
   },
   "resource_pack_name": "MineRe Resources",

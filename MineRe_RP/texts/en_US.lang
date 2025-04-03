@@ -153,3 +153,6 @@ entity.minere:lizord_fireball.name=Fireball
 entity.minere:firebrand_fireball.name=Fireball
 entity.minere:firebomb.name=Fire Bomb
 item.minere:firebomb=Fire Bomb
+
+item.minere:jump_boots=Jump Boots
+minere:itemGroup.name.magic_sword=Magic Swords

@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "minere:ice_charge",
-      "category": "Items"
+      "category": "Equipment"
     },
     "components": {
       "minecraft:icon": {

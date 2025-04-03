@@ -238,7 +238,7 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:attack": {
-        "damage": [7, 11]
+        "damage": [8, 12]
       },
       "minecraft:despawn": {
         "filters": {

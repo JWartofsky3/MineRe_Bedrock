@@ -41,7 +41,10 @@ export function rollWebAttack(spider, target, chance) {
             }
             const block = dimension.getBlock(pos);
             if (block.isAir) {
-                target.dimension.runCommand(`setblock ${pos.x} ${pos.y} ${pos.z} web`);
+                dimension.runCommand(`setblock ${pos.x} ${pos.y} ${pos.z} web`);
+                system.runTimeout(() => {
+                    dimension.runCommand(`fill ${pos.x} ${pos.y} ${pos.z} ${pos.x} ${pos.y} ${pos.z} air replace web`);
+                }, (400 + Math.random() * 200));
             }
         }, i * 3);
     }

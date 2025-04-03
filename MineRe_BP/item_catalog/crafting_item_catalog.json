@@ -17,6 +17,20 @@
               "minere:diamond_treecapitator",
               "minere:netherite_treecapitator"
             ]
+          },
+          {
+            "group_identifier": {
+              "icon": "minere:firebrand",
+              "name": "minere:itemGroup.name.magic_sword"
+            },
+            "items": [
+              "minere:venom_shank",
+              "minere:ice_dagger",
+              "minere:windforce",
+              "minere:illumina",
+              "minere:firebrand",
+              "minere:darkheart"
+            ]
           }
         ]
       }

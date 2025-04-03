@@ -2,7 +2,7 @@
   "format_version": "1.20.20",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "minere:ice_dungeon_rule",
+      "identifier": "minere:ice_dungeon_rule_frozen",
       "places_feature": "minere:ice_dungeon_feature"
     },
     "conditions": {
@@ -14,18 +14,13 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "frozen"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "cold"
             }
           ]
         }
       ]
     },
     "distribution": {
-      "iterations": 1,
+      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < 0.3) ? 1 : 0;",
       "x": {
         "distribution": "uniform",
         "extent": [0, 16]
@@ -40,7 +35,7 @@
       },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 60
+        "denominator": 50
       }
     }
   }

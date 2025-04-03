@@ -1,6 +1,7 @@
 import { ItemComponentTypes, EntityComponentTypes, } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
 import { multiplyVector3Number } from "util/vector3Functions";
+import { getEnchantmentLevel } from "./item_utils";
 const DURABILITY_COST = 3;
 const RESISTANCE_DURATION = 3;
 export const Firebrand = {
@@ -8,7 +9,8 @@ export const Firebrand = {
         if (!arg.hadEffect) {
             return;
         }
-        arg.hitEntity.setOnFire(10);
+        const fireAspectLevel = getEnchantmentLevel(arg.attackingEntity, "fire_aspect");
+        arg.hitEntity.setOnFire(8 + (fireAspectLevel * 4));
     },
     onUse(arg) {
         const cooldownComponent = arg.itemStack?.getComponent(ItemComponentTypes.Cooldown);
@@ -31,6 +33,7 @@ export const Firebrand = {
         });
         const proj = fireball.getComponent(EntityComponentTypes.Projectile);
         proj.owner = arg.source;
-        fireball.applyImpulse(multiplyVector3Number(arg.source.getViewDirection(), 3.0));
+        const fireAspectLevel = getEnchantmentLevel(arg.source, "fire_aspect");
+        fireball.applyImpulse(multiplyVector3Number(arg.source.getViewDirection(), 1.5 + (fireAspectLevel * 0.75)));
     },
 };

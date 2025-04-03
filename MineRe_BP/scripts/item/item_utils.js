@@ -76,11 +76,11 @@ export const hasSilkTouchOrShears = (player) => {
     }
     return false;
 };
-export const getEnchantmentLevel = (player, enchantmentId, equipmentSlot = EquipmentSlot.Mainhand) => {
-    if (player == null) {
+export const getEnchantmentLevel = (entity, enchantmentId, equipmentSlot = EquipmentSlot.Mainhand) => {
+    if (entity == null) {
         return 0;
     }
-    const equipment = player.getComponent(EntityComponentTypes.Equippable);
+    const equipment = entity.getComponent(EntityComponentTypes.Equippable);
     if (!equipment) {
         return 0;
     }

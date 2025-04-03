@@ -2,8 +2,8 @@
   "format_version": "1.20.20",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "minere:ice_castle_feature_rule_frozen",
-      "places_feature": "minere:ice_castle_feature"
+      "identifier": "minere:ice_dungeon_rule_cold",
+      "places_feature": "minere:ice_dungeon_feature"
     },
     "conditions": {
       "placement_pass": "underground_pass",
@@ -13,19 +13,7 @@
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "frozen"
-            }
-          ],
-          "none_of": [
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "ocean"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "river"
+              "value": "cold"
             }
           ]
         }
@@ -33,15 +21,21 @@
     },
     "distribution": {
       "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < 0.3) ? 1 : 0;",
-      "x": -16,
+      "x": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      },
       "y": {
-        "extent": [16, "query.heightmap(variable.worldx, variable.worldz) - 1"],
+        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 8"],
         "distribution": "uniform"
       },
-      "z": -16,
+      "z": {
+        "distribution": "uniform",
+        "extent": [0, 16]
+      },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 125
+        "denominator": 75
       }
     }
   }

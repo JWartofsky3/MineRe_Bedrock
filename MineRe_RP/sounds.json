@@ -391,10 +391,9 @@
 			},
 			"minere:gremlin": {
 				"events": {
-					"ambient": "mob.strider.idle",
-					"death": "mob.strider.death",
-					"eat": "mob.strider.eat",
-					"hurt": "mob.strider.hurt",
+					"ambient": "mob.gremlin.ambient",
+					"death": "mob.gremlin.die",
+					"hurt": "mob.gremlin.hurt",
 					"panic": "mob.strider.panic",
 					"step": {
 						"pitch": 1,
@@ -408,7 +407,7 @@
 					},
 					"tempt": "mob.strider.tempt"
 				},
-				"pitch": [0.9, 1.4],
+				"pitch": [0.8, 1.2],
 				"volume": 1
 			},
 			"minere:monster_bat": {
