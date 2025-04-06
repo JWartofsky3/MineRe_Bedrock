@@ -164,5 +164,9 @@ entity.minere:firebrand_fireball.name=Bola de fuego
 entity.minere:firebomb.name=Bomba de fuego
 item.minere:firebomb=Bomba de fuego
 
-item.minere:jump_boots=Botas de salto
-minere:itemGroup.name.magic_sword=Espadas magicas
+item.minere:jump_boots=Botas de Salto
+minere:itemGroup.name.magic_sword=Espadas Mágicas
+tile.minere:short_icicle.name=Carámbano Corto
+tile.minere:tall_icicle.name=Carámbano Alto
+tile.minere:thick_icicle.name=Carámbano Grueso
+tile.minere:thin_icicle.name=Carámbano Delgado

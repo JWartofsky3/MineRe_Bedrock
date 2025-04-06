@@ -6,7 +6,7 @@
       "places_feature": "minere:monolith_feature"
     },
     "conditions": {
-      "placement_pass": "underground_pass",
+      "placement_pass": "surface_pass",
       "minecraft:biome_filter": [
         {
           "any_of": [

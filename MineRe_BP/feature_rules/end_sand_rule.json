@@ -6,7 +6,7 @@
       "places_feature": "minere:end_sand_patch"
     },
     "conditions": {
-      "placement_pass": "first_pass",
+      "placement_pass": "underground_pass",
       "minecraft:biome_filter": [
         {
           "any_of": [

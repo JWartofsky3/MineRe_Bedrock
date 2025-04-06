@@ -175,7 +175,7 @@
     },
     "mob.gremlin.ambient": {
       "category": "hostile",
-      "sounds": ["sounds/mob/gremlin/ambient0","sounds/mob/gremlin/ambient1","sounds/mob/gremlin/ambient2","sounds/mob/gremlin/ambient3","sounds/mob/gremlin/ambient4"]
+      "sounds": ["sounds/mob/gremlin/ambient0","sounds/mob/gremlin/ambient1","sounds/mob/gremlin/ambient2","sounds/mob/gremlin/ambient3","sounds/mob/gremlin/ambient4","sounds/mob/gremlin/ambient5"]
     },
     "mob.gremlin.hurt": {
       "category": "hostile",

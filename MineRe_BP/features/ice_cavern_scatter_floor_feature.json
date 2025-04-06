@@ -1,0 +1,24 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:scatter_feature": {
+      "description": {
+        "identifier": "minere:ice_cavern_scatter_floor_feature"
+      },
+      "places_feature": "minere:ice_cavern_snap_to_floor_feature",
+      "distribution": {
+        "iterations": 4,
+        "x": {
+          "distribution": "uniform",
+          "extent": [ 0, 15 ]
+        },
+        "y": {
+            "distribution": "uniform",
+            "extent": [ 0, 15 ]
+          },
+        "z": {
+          "distribution": "uniform",
+          "extent": [ 0, 15 ]
+        }
+      }
+    }
+  }

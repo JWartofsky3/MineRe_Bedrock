@@ -139,14 +139,7 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "irongolem"
-                }
-              ]
-            },
-            "max_dist": 48
-          },
-          {
-            "filters": {
-              "any_of": [
+                },
                 {
                   "test": "is_family",
                   "subject": "other",
@@ -159,8 +152,7 @@
                 }
               ]
             },
-            "max_dist": 48,
-            "must_see": false
+            "max_dist": 48
           },
           {
             "filters": {

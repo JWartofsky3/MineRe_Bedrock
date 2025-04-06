@@ -26,6 +26,21 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "deep_dark"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "ocean"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "river"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "beach"
             }
           ]
         }
@@ -38,7 +53,7 @@
         "extent": [-8, 8]
       },
       "y": {
-        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 1"],
+        "extent": [16, "query.heightmap(variable.worldx, variable.worldz) - 1"],
         "distribution": "uniform"
       },
       "z": {

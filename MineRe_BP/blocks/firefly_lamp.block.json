@@ -44,7 +44,14 @@
       },
       "minecraft:map_color": "#EA42E3",
       "minecraft:light_dampening": 0,
-      "minecraft:light_emission": 13
+      "minecraft:light_emission": 13,
+      "minecraft:placement_filter": {
+				"conditions": [
+					{
+						"allowed_faces": ["up", "down"]
+					}
+				]
+			}
     },
     "permutations": [
       {

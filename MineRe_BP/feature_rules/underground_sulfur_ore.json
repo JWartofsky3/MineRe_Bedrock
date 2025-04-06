@@ -39,6 +39,11 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "lush_caves"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "savanna"
             }
           ]
         }

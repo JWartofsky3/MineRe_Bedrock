@@ -156,3 +156,7 @@ item.minere:firebomb=Fire Bomb
 
 item.minere:jump_boots=Jump Boots
 minere:itemGroup.name.magic_sword=Magic Swords
+tile.minere:short_icicle.name=Short Icicle
+tile.minere:tall_icicle.name=Tall Icicle
+tile.minere:thick_icicle.name=Thick Icicle
+tile.minere:thin_icicle.name=Thin Icicle

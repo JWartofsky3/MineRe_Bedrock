@@ -6,27 +6,42 @@
       "places_feature": "minere:ice_dungeon_feature"
     },
     "conditions": {
-      "placement_pass": "underground_pass",
-      "minecraft:biome_filter": [
-        {
-          "any_of": [
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "cold"
-            }
-          ]
-        }
-      ]
+      "placement_pass": "after_underground_pass",
+      "minecraft:biome_filter": {
+        "any_of": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "cold"
+          }
+        ],
+        "none_of": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "ocean"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "river"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "beach"
+          }
+        ]
+      }
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < 0.3) ? 1 : 0;",
+      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < -0.4) ? 1 : 0;",
       "x": {
         "distribution": "uniform",
         "extent": [0, 16]
       },
       "y": {
-        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 8"],
+        "extent": [0, "query.heightmap(variable.worldx, variable.worldz) - 8"],
         "distribution": "uniform"
       },
       "z": {
@@ -35,7 +50,7 @@
       },
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 75
+        "denominator": 60
       }
     }
   }

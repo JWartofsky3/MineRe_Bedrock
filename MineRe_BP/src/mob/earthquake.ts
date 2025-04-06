@@ -149,7 +149,7 @@ export function runEarthquake(earthquake: Entity) {
         damagingEntity: damagingEntity,
         cause: EntityDamageCause.entityAttack,
       });
-      throwBy(earthquake, target, 1.0, 3.0);
+      throwBy(earthquake, target, 1.0, 1.0);
     }
   }, 8);
   system.runTimeout(() => {

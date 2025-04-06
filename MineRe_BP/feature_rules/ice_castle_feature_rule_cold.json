@@ -32,16 +32,16 @@
       ]
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < 0.3) ? 1 : 0;",
+      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); return (t.noise < -0.4) ? 1 : 0;",
       "x": -16,
       "y": {
-        "extent": [24, "query.heightmap(variable.worldx, variable.worldz) - 1"],
+        "extent": [0, "query.heightmap(variable.worldx, variable.worldz) - 1"],
         "distribution": "uniform"
       },
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 250
+        "denominator": 125
       }
     }
   }

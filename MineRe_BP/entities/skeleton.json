@@ -186,6 +186,13 @@
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/custom_skeleton/melee_skeleton.json"
+        },
+        "minecraft:health": {
+          "value": 24,
+          "max": 24
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0.2
         }
       },
       "minere:melee_skeleton_rider": {

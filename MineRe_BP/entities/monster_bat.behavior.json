@@ -147,6 +147,16 @@
                   "value": "player"
                 },
                 {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                },
+                {
                   "all_of": [
                     {
                       "test": "is_family",

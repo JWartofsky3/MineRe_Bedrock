@@ -12,6 +12,9 @@
         "has_gravity": true,
         "has_collision": true
       },
+      "minecraft:type_family": {
+        "family": ["freeze", "monster"]
+      },
       "minecraft:collision_box": {
         "width": 1.1,
         "height": 1.8
@@ -143,9 +146,23 @@
           {
             "reevaluate_description": true,
             "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "value": "player"
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                }
+              ]
             },
             "max_dist": 24
           }

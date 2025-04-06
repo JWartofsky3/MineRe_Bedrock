@@ -194,6 +194,11 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
                 }
               ]
             },

@@ -1296,7 +1296,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1323,7 +1323,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1350,7 +1350,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1377,7 +1377,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1404,7 +1404,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1431,7 +1431,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1458,7 +1458,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1485,7 +1485,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 3,
+              "max_uses": 1,
               "reward_exp": true
             }
           ]
@@ -1499,7 +1499,7 @@
           "num_to_select": 2,
           "trades": [
             {
-              "weight": 2,
+              "weight": 4,
               "wants": [
                 {
                   "item": "minecraft:emerald",
@@ -1540,11 +1540,11 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 5,
+              "max_uses": 3,
               "reward_exp": true
             },
             {
-              "weight": 1,
+              "weight": 3,
               "wants": [
                 {
                   "item": "minecraft:emerald",
@@ -1585,11 +1585,11 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 5,
+              "max_uses": 3,
               "reward_exp": true
             },
             {
-              "weight": 1,
+              "weight": 3,
               "wants": [
                 {
                   "item": "minecraft:emerald",
@@ -1630,11 +1630,11 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 5,
+              "max_uses": 3,
               "reward_exp": true
             },
             {
-              "weight": 1,
+              "weight": 3,
               "wants": [
                 {
                   "item": "minecraft:emerald",
@@ -1675,7 +1675,7 @@
                 }
               ],
               "trader_exp": 3,
-              "max_uses": 5,
+              "max_uses": 3,
               "reward_exp": true
             },
             {
@@ -1720,7 +1720,52 @@
                 }
               ],
               "trader_exp": 4,
-              "max_uses": 2,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 10,
+                    "max": 15
+                  },
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:golden_helmet",
+                  "quantity": 1,
+                  "functions": [
+                    {
+                      "function": "specific_enchants",
+                      "enchants": [
+                        {
+                          "id": "fire_protection",
+                          "level": 4
+                        },
+                        {
+                          "id": "aqua_affinity",
+                          "level": 1
+                        },
+                        {
+                          "id": "unbreaking",
+                          "level": 3
+                        },
+                        {
+                          "id": "mending",
+                          "level": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 4,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1729,8 +1774,8 @@
                 {
                   "item": "minecraft:emerald",
                   "quantity": {
-                    "min": 10,
-                    "max": 15
+                    "min": 12,
+                    "max": 18
                   },
                   "price_multiplier": 0.2
                 }
@@ -1748,6 +1793,43 @@
                           "level": 4
                         },
                         {
+                          "id": "unbreaking",
+                          "level": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 2,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 12,
+                    "max": 18
+                  },
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:golden_chestplate",
+                  "quantity": 1,
+                  "functions": [
+                    {
+                      "function": "specific_enchants",
+                      "enchants": [
+                        {
+                          "id": "blast_protection",
+                          "level": 4
+                        },
+                        {
                           "id": "mending",
                           "level": 1
                         },
@@ -1761,7 +1843,7 @@
                 }
               ],
               "trader_exp": 5,
-              "max_uses": 2,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1802,7 +1884,52 @@
                 }
               ],
               "trader_exp": 5,
-              "max_uses": 2,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 10,
+                    "max": 15
+                  },
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:golden_leggings",
+                  "quantity": 1,
+                  "functions": [
+                    {
+                      "function": "specific_enchants",
+                      "enchants": [
+                        {
+                          "id": "mending",
+                          "level": 1
+                        },
+                        {
+                          "id": "protection",
+                          "level": 1
+                        },
+                        {
+                          "id": "swift_sneak",
+                          "level": 1
+                        },
+                        {
+                          "id": "unbreaking",
+                          "level": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1,
               "reward_exp": true
             },
             {
@@ -1847,7 +1974,52 @@
                 }
               ],
               "trader_exp": 4,
-              "max_uses": 2,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 10,
+                    "max": 15
+                  },
+                  "price_multiplier": 0.2
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:golden_boots",
+                  "quantity": 1,
+                  "functions": [
+                    {
+                      "function": "specific_enchants",
+                      "enchants": [
+                        {
+                          "id": "fire_protection",
+                          "level": 4
+                        },
+                        {
+                          "id": "feather_falling",
+                          "level": 3
+                        },
+                        {
+                          "id": "unbreaking",
+                          "level": 3
+                        },
+                        {
+                          "id": "mending",
+                          "level": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 4,
+              "max_uses": 1,
               "reward_exp": true
             }
           ]

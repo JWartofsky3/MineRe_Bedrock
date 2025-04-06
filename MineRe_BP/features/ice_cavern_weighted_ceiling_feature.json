@@ -1,0 +1,14 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minere:ice_cavern_weighted_ceiling_feature"
+    },
+    "features": [
+      ["minere:short_icicle_feature", 5],
+      ["minere:tall_icicle_feature", 3],
+      ["minere:icicle_stalagtite_feature", 2],
+      ["minere:ice_cavern_blocks_feature", 2]
+    ]
+  }
+}

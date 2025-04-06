@@ -19,8 +19,8 @@
         "breathes_water": true
       },
       "minecraft:health": {
-        "value": 28,
-        "max": 28
+        "value": 24,
+        "max": 24
       },
       "minecraft:equip_item": {},
       "minecraft:collision_box": {

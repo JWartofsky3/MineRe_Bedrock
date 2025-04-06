@@ -1,0 +1,15 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "minere:tall_icicle_feature"
+    },
+    "may_replace": ["minecraft:air"],
+    "may_attach_to": {
+      "top": ["minecraft:stone", "minecraft:deepslate", "minecraft:ice", "minecraft:packed_ice", "minecraft:blue_ice"]
+    },
+    "places_block": "minere:tall_icicle",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true
+  }
+}

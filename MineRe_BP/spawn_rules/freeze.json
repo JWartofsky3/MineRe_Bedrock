@@ -8,7 +8,6 @@
     "conditions": [
       {
         "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_underground": {},
         "minecraft:spawns_on_block_filter": [
           "minecraft:ice",
           "minecraft:packed_ice",
@@ -51,12 +50,14 @@
       },
       {
         "minecraft:spawns_underground": {},
-        "minecraft:height_filter": {
-          "min": 16
-        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:ice",
+          "minecraft:packed_ice",
+          "minecraft:blue_ice"
+        ],
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 5,
+          "max": 7,
           "adjust_for_weather": true
         },
         "minecraft:difficulty_filter": {
@@ -64,7 +65,7 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 15
+          "default": 300
         },
         "minecraft:herd": {
           "min_size": 2,
@@ -76,6 +77,11 @@
         },
         "minecraft:biome_filter": {
           "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cold"
+            },
             {
               "test": "has_biome_tag",
               "operator": "==",
