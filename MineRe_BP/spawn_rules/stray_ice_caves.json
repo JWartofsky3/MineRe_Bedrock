@@ -19,6 +19,10 @@
         "minecraft:weight": {
           "default": 250
         },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
         "minecraft:spawns_on_block_filter": [
           "minecraft:ice",
           "minecraft:packed_ice",

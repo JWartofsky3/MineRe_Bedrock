@@ -101,7 +101,7 @@
       {
         "minecraft:spawns_underground": {},
         "minecraft:height_filter": {
-          "min": 24
+          "min": -16
         },
         "minecraft:brightness_filter": {
           "min": 0,
@@ -173,7 +173,7 @@
       {
         "minecraft:spawns_underground": {},
         "minecraft:height_filter": {
-          "min": 24
+          "min": -16
         },
         "minecraft:brightness_filter": {
           "min": 0,
@@ -181,7 +181,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 75
+          "default": 100
         },
         "minecraft:spawns_on_block_filter": [
           "minecraft:ice",
