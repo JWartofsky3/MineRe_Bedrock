@@ -15,7 +15,9 @@ export const handleEndSpawn = (entity) => {
             entity.typeId == "minere:cosmic_jelly" ||
             entity.typeId == "minere:cosmic_jelly_placeholder" ||
             entity.typeId == "minere:ender_phantom" ||
-            entity.typeId == "minere:gremlin")) {
+            entity.typeId == "minere:gremlin" ||
+            entity.typeId == "minere:stomp" ||
+            entity.typeId == "minere:sand_stomp")) {
             return;
         }
         const dimension = world.getDimension(entity?.dimension?.id);
@@ -30,7 +32,9 @@ export const handleEndSpawn = (entity) => {
         // replace walkers, comsic_jellies, and gremlins on the main island
         if (distance < 1000) {
             if (entity.typeId == "minere:walker" ||
-                entity.typeId == "minere:cosmic_jelly_placeholder") {
+                entity.typeId == "minere:cosmic_jelly_placeholder" ||
+                entity.typeId == "minere:stomp" ||
+                entity.typeId == "minere:sand_stomp") {
                 entity.remove();
                 dimension.spawnEntity("minecraft:enderman", location);
             }

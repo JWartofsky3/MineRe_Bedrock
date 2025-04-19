@@ -81,7 +81,10 @@
         "max": 64
       },
       "minecraft:despawn": {
-        "despawn_from_distance": {}
+        "despawn_from_distance": {
+          "max_distance": 200,
+          "min_distance": 64
+        }
       },
       "minecraft:behavior.avoid_mob_type": {
         "priority": 0,
@@ -111,7 +114,7 @@
         "priority": 1,
         "reselect_targets": true,
         "scan_interval": 20,
-        "within_radius": 64,
+        "within_radius": 100,
         "must_see_forget_duration": 0.5,
         "target_search_height": 100,
         "entity_types": [

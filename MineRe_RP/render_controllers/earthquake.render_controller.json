@@ -4,7 +4,18 @@
     "controller.render.minere.earthquake": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.stone", "Texture.deepslate", "Texture.dirt", "Texture.sand", "Texture.red_sand", "Texture.snow", "Texture.ice", "Texture.gravel", "Texture.netherrack", "Texture.endstone"]
+          "Array.skins": [
+            "Texture.stone",
+            "Texture.deepslate",
+            "Texture.dirt",
+            "Texture.sand",
+            "Texture.red_sand",
+            "Texture.snow",
+            "Texture.ice",
+            "Texture.gravel",
+            "Texture.netherrack",
+            "Texture.endstone"
+          ]
         }
       },
       "geometry": "Geometry.default",

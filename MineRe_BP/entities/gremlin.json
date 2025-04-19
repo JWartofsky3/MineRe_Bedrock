@@ -139,6 +139,10 @@
       }
     },
     "components": {
+      "minecraft:ambient_sound_interval": {
+        "range": 8.0,
+        "value": 4.0
+      },
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? 3 : 0"

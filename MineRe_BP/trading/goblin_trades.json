@@ -1052,7 +1052,7 @@
       ]
     },
     {
-      "total_exp_required": 15,
+      "total_exp_required": 10,
       "groups": [
         {
           "num_to_select": 1,
@@ -1493,7 +1493,7 @@
       ]
     },
     {
-      "total_exp_required": 25,
+      "total_exp_required": 20,
       "groups": [
         {
           "num_to_select": 2,
@@ -2086,7 +2086,7 @@
       ]
     },
     {
-      "total_exp_required": 40,
+      "total_exp_required": 30,
       "groups": [
         {
           "num_to_select": 3,
@@ -2178,6 +2178,24 @@
               "weight": 1,
               "wants": [
                 {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 8,
+                    "max": 16
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:ender_chest"
+                }
+              ],
+              "max_uses": 2
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
                   "item": "minecraft:ghast_tear"
                 }
               ],
@@ -2194,7 +2212,7 @@
                 {
                   "item": "minecraft:emerald",
                   "quantity": {
-                    "min": 8,
+                    "min": 12,
                     "max": 16
                   }
                 }
@@ -2213,8 +2231,8 @@
                 {
                   "item": "minecraft:emerald",
                   "quantity": {
-                    "min": 7,
-                    "max": 14
+                    "min": 12,
+                    "max": 16
                   }
                 }
               ],
@@ -2232,8 +2250,8 @@
                 {
                   "item": "minecraft:emerald",
                   "quantity": {
-                    "min": 7,
-                    "max": 14
+                    "min": 12,
+                    "max": 16
                   }
                 }
               ],

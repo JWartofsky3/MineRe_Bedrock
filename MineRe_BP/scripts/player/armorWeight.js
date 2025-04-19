@@ -30,7 +30,8 @@ export function armorWeight(player) {
         return;
     }
     // JUMP BOOTS
-    if (equippable.isValid() && equippable.getEquipment(EquipmentSlot.Feet)?.typeId === "minere:jump_boots") {
+    if (equippable.isValid() &&
+        equippable.getEquipment(EquipmentSlot.Feet)?.typeId === "minere:jump_boots") {
         player.addEffect("jump_boost", 20, { showParticles: false, amplifier: 2 });
     }
     const heavyCount = getItemWeight(equippable.getEquipment(EquipmentSlot.Head)) +

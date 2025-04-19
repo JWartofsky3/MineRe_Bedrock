@@ -71,10 +71,6 @@
         "minecraft:movement": {
           "value": 0.29
         },
-        "minecraft:health": {
-          "value": 17,
-          "max": 17
-        },
         "minecraft:attack": {
           "damage": 3,
           "effect_name": "hunger",
@@ -84,10 +80,6 @@
       "minecraft:zombie_husk_adult": {
         "minecraft:movement": {
           "value": 0.23
-        },
-        "minecraft:health": {
-          "value": 24,
-          "max": 24
         },
         "minecraft:knockback_resistance": {
           "value": 0.1
@@ -107,7 +99,7 @@
         },
         "minecraft:behavior.mount_pathing": {
           "priority": 2,
-          "speed_multiplier": 1.25,
+          "speed_multiplier": 1.2,
           "target_dist": 0,
           "track_target": true
         }
@@ -123,6 +115,10 @@
       }
     },
     "components": {
+      "minecraft:health": {
+        "value": 24,
+        "max": 24
+      },
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:breathable": {
         "total_supply": 15,
@@ -142,7 +138,7 @@
         "family": ["husk", "zombie", "undead", "monster", "mob"]
       },
       "minecraft:loot": {
-        "table": "loot_tables/entities/husk.json"
+        "table": "loot_tables/entities/zombie.json"
       },
       "minecraft:equipment": {
         "table": "loot_tables/entities/zombie_equipment.json"
@@ -444,7 +440,7 @@
       },
       "minecraft:behavior.melee_box_attack": {
         "priority": 3,
-        "speed_multiplier": 1.25
+        "speed_multiplier": 1.2
       },
       "minecraft:behavior.stomp_turtle_egg": {
         "priority": 4,

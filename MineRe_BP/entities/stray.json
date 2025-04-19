@@ -135,7 +135,7 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:equipment": {
-        "table": "loot_tables/entities/skeleton_gear.json"
+        "table": "loot_tables/entities/custom_skeleton/nether_skeleton_gear.json"
       },
       "minecraft:shooter": {
         "def": "minecraft:arrow",

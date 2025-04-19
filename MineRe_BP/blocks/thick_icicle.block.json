@@ -1,56 +1,56 @@
 {
-	"format_version": "1.21.60",
-	"minecraft:block": {
-		"description": {
-			"identifier": "minere:thick_icicle",
-			"menu_category": {
-				"category": "nature"
-			}
-		},
-		"components": {
-			"minecraft:collision_box": {
-				"origin": [-3, 0, -3],
-				"size": [6, 16, 6]
-			},
-			"minecraft:selection_box": {
-				"origin": [-3, 0, -3],
-				"size": [6, 16, 6]
-			},
-			"tag:minecraft:wood_tier_destructible": {},
-			"tag:ice": {},
-			"tag:minecraft:is_pickaxe_item_destructible": {},
-			"minecraft:destructible_by_explosion": {
-				"explosion_resistance": 0
-			},
-			"minecraft:friction": 0.01,
-			"minecraft:geometry": "geometry.minere.thick_icicle",
-			"minecraft:material_instances": {
-				"*": {
-				  "texture": "ice",
-				  "ambient_occlusion": false,
-				  "face_dimming": false,
-				  "render_method": "blend"
-				}
-			  },
-			"minecraft:light_dampening": 0,
-			"minecraft:map_color": "#92B9FE",
-			"minecraft:loot": "loot_tables/empty.json",
-			"minecraft:liquid_detection": {
-				"detection_rules": [
-					{
-						"liquid_type": "water",
-						"can_contain_liquid": true,
-						"on_liquid_touches": "no_reaction"
-					}
-				]
-			},
-			"minecraft:placement_filter": {
-				"conditions": [
-					{
-						"allowed_faces": ["up", "down"]
-					}
-				]
-			}
-		}
-	}
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:thick_icicle",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "origin": [-3, 0, -3],
+        "size": [6, 16, 6]
+      },
+      "minecraft:selection_box": {
+        "origin": [-3, 0, -3],
+        "size": [6, 16, 6]
+      },
+      "tag:minecraft:wood_tier_destructible": {},
+      "tag:ice": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0
+      },
+      "minecraft:friction": 0.01,
+      "minecraft:geometry": "geometry.minere.thick_icicle",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "blue_ice",
+          "ambient_occlusion": false,
+          "face_dimming": false,
+          "render_method": "blend"
+        }
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#92B9FE",
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": true,
+            "on_liquid_touches": "no_reaction"
+          }
+        ]
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": ["up", "down"]
+          }
+        ]
+      }
+    }
+  }
 }

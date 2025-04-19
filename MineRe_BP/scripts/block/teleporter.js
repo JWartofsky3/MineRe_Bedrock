@@ -10,6 +10,21 @@ const forbiddenEntities = new Set();
 forbiddenEntities.add("minecraft:ender_dragon");
 forbiddenEntities.add("minecraft:wither");
 export const teleporter = {
+    onPlace(arg) {
+        const direction = arg.block.permutation.getState("minecraft:facing_direction");
+        if (direction === "down") {
+            arg.block.setPermutation(BlockPermutation.resolve(arg.block.typeId, {
+                ...arg.block.permutation.getAllStates(),
+                "minecraft:facing_direction": "up",
+            }));
+        }
+        if (direction === "up") {
+            arg.block.setPermutation(BlockPermutation.resolve(arg.block.typeId, {
+                ...arg.block.permutation.getAllStates(),
+                "minecraft:facing_direction": "down",
+            }));
+        }
+    },
     onTick(arg) {
         let redstonePower = arg.block?.getRedstonePower();
         const location = arg.block.location;
@@ -25,9 +40,16 @@ export const teleporter = {
         blocks.push(arg.block.south(1));
         blocks.forEach((block) => {
             if (block.isValid()) {
-                if (block.typeId === "minecraft:redstone_block" ||
-                    block.typeId === "minecraft:redstone_torch") {
+                if (block.typeId === "minecraft:redstone_block") {
                     redstonePower = 15;
+                }
+                if (block.location.y <= arg.block.location.y) {
+                    if (block.typeId === "minecraft:redstone_torch") {
+                        redstonePower = 15;
+                    }
+                    if (block?.getRedstonePower() > 0) {
+                        redstonePower = 15;
+                    }
                 }
                 if (block.typeId === "minere:enderon_block") {
                     blockMultiplier += 1;

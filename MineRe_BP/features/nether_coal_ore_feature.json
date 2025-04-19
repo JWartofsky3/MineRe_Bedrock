@@ -14,6 +14,14 @@
             "name": "minecraft:netherrack"
           }
         ]
+      },
+      {
+        "places_block": "minere:basalt_nether_coal_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:basalt"
+          }
+        ]
       }
     ]
   }

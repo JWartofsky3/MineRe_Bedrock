@@ -30,19 +30,24 @@
             "test": "has_biome_tag",
             "operator": "==",
             "value": "beach"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "lush_caves"
           }
         ]
       }
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/160,v.originx/160); t.mult = 1 + (query.heightmap(v.originx, v.originz) - 64)/64; return (t.noise < -0.6) ? (50 * t.mult) : (t.noise < -0.45) ? (25 * t.mult) : (t.noise < -0.3) ? (12 * t.mult) : 0;",
+      "iterations": "t.noise = q.noise(v.originz/200,v.originx/200); t.mult = 1 + (query.heightmap(v.originx, v.originz) - 64)/64; return (t.noise < -0.6) ? (250 * t.mult) : (t.noise < -0.45) ? (120 * t.mult) : (t.noise < -0.3) ? (60 * t.mult) : 0;",
       "x": {
         "distribution": "uniform",
         "extent": [0, 16]
       },
       "y": {
         "distribution": "uniform",
-        "extent": [0, "query.heightmap(variable.worldx, variable.worldz) - 20"]
+        "extent": [-8, "query.heightmap(variable.worldx, variable.worldz) - 24"]
       },
       "z": {
         "distribution": "uniform",

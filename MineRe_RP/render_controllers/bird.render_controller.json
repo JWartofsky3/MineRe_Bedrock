@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.bird": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.blue_jay",
+            "Texture.cardinal",
+            "Texture.tufted_titmouse",
+            "Texture.crow",
+            "Texture.robin",
+            "Texture.oropendola",
+            "Texture.piha",
+            "Texture.goldfinch"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.variant]"]
+    }
+  }
+}

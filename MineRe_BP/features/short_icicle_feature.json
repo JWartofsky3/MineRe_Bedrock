@@ -6,7 +6,13 @@
     },
     "may_replace": ["minecraft:air"],
     "may_attach_to": {
-      "top": ["minecraft:stone", "minecraft:deepslate", "minecraft:ice", "minecraft:packed_ice", "minecraft:blue_ice"]
+      "top": [
+        "minecraft:stone",
+        "minecraft:deepslate",
+        "minecraft:ice",
+        "minecraft:packed_ice",
+        "minecraft:blue_ice"
+      ]
     },
     "places_block": "minere:short_icicle",
     "enforce_placement_rules": true,

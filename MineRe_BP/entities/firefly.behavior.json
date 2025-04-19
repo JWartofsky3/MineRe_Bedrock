@@ -11,6 +11,26 @@
     "component_groups": {
       "instant_despawn": {
         "minecraft:instant_despawn": {}
+      },
+      "minere:green_firefly": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:yellow_firefly": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "minere:purple_firefly": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "minere:blue_firefly": {
+        "minecraft:variant": {
+          "value": 3
+        }
       }
     },
     "components": {
@@ -96,6 +116,11 @@
                     "value": "player"
                   },
                   {
+                    "test": "is_variant",
+                    "subject": "self",
+                    "value": 0
+                  },
+                  {
                     "any_of": [
                       {
                         "test": "has_equipment",
@@ -118,6 +143,141 @@
             },
             "use_item": true,
             "transform_to_item": "minere:firefly_lamp",
+            "play_sounds": "saddle",
+            "interact_text": "action.interact.catch",
+            "particle_on_start": {
+              "particle_type": "smoke",
+              "particle_y_offset": 0.25,
+              "particle_offset_towards_interactor": true
+            }
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_variant",
+                    "subject": "self",
+                    "value": 1
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass_bottle"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "event": "despawn",
+              "target": "self"
+            },
+            "use_item": true,
+            "transform_to_item": "minere:yellow_firefly_lamp",
+            "play_sounds": "saddle",
+            "interact_text": "action.interact.catch",
+            "particle_on_start": {
+              "particle_type": "smoke",
+              "particle_y_offset": 0.25,
+              "particle_offset_towards_interactor": true
+            }
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_variant",
+                    "subject": "self",
+                    "value": 2
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass_bottle"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "event": "despawn",
+              "target": "self"
+            },
+            "use_item": true,
+            "transform_to_item": "minere:purple_firefly_lamp",
+            "play_sounds": "saddle",
+            "interact_text": "action.interact.catch",
+            "particle_on_start": {
+              "particle_type": "smoke",
+              "particle_y_offset": 0.25,
+              "particle_offset_towards_interactor": true
+            }
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_variant",
+                    "subject": "self",
+                    "value": 3
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "domain": "hand",
+                        "subject": "other",
+                        "value": "glass_bottle"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "event": "despawn",
+              "target": "self"
+            },
+            "use_item": true,
+            "transform_to_item": "minere:blue_firefly_lamp",
             "play_sounds": "saddle",
             "interact_text": "action.interact.catch",
             "particle_on_start": {
@@ -167,8 +327,69 @@
             "add": {
               "component_groups": ["minere:firefly_walking"]
             }
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "mangrove_swamp"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "jungle"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "savanna"
+                }
+              ]
+            },
+            "trigger": "spawn_yellow"
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                }
+              ]
+            },
+            "trigger": "spawn_blue"
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "warped_forest"
+            },
+            "trigger": "spawn_purple"
           }
         ]
+      },
+      "spawn_green": {
+        "add": {
+          "component_groups": ["minere:green_firefly"]
+        }
+      },
+      "spawn_yellow": {
+        "add": {
+          "component_groups": ["minere:yellow_firefly"]
+        }
+      },
+      "spawn_purple": {
+        "add": {
+          "component_groups": ["minere:purple_firefly"]
+        }
+      },
+      "spawn_blue": {
+        "add": {
+          "component_groups": ["minere:blue_firefly"]
+        }
       },
       "start_flying": {
         "sequence": [

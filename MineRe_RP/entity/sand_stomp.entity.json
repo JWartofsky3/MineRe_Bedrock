@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:sand_stomp",
+      "materials": {
+        "default": "entity_alphablend"
+      },
+      "textures": {
+        "default": "textures/entity/minere/sand_stomp/sand_stomp",
+        "red": "textures/entity/minere/sand_stomp/red_sand_stomp",
+        "end": "textures/entity/minere/sand_stomp/end_stomp"
+      },
+      "geometry": {
+        "default": "geometry.minere.sand_stomp"
+      },
+      "render_controllers": ["controller.render.minere.sand_stomp"],
+      "spawn_egg": {
+        "base_color": "#79ea4a",
+        "overlay_color": "#405b9a"
+      }
+    }
+  }
+}

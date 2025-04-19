@@ -1,53 +1,53 @@
 {
-	"format_version": "1.21.60",
-	"minecraft:block": {
-		"description": {
-			"identifier": "minere:short_icicle",
-			"menu_category": {
-				"category": "nature"
-			}
-		},
-		"components": {
-			"minecraft:collision_box": {
-				"origin": [0, 0, 0],
-				"size": [0, 0, 0]
-			},
-			"minecraft:selection_box": true,
-			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 0.0
-			},
-			"minecraft:destructible_by_explosion": {
-				"explosion_resistance": 0
-			},
-			"minecraft:friction": 0.1,
-			"minecraft:geometry": "geometry.minere.icicle",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "minere:short_icicle",
-					"ambient_occlusion": false,
-					"face_dimming": false,
-					"render_method": "alpha_test"
-				}
-			},
-			"minecraft:light_dampening": 0,
-			"minecraft:map_color": "#92B9FE",
-			"minecraft:loot": "loot_tables/empty.json",
-			"minecraft:liquid_detection": {
-				"detection_rules": [
-					{
-						"liquid_type": "water",
-						"can_contain_liquid": true,
-						"on_liquid_touches": "no_reaction"
-					}
-				]
-			},
-			"minecraft:placement_filter": {
-				"conditions": [
-					{
-						"allowed_faces": ["down"]
-					}
-				]
-			}
-		}
-	}
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:short_icicle",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "origin": [0, 0, 0],
+        "size": [0, 0, 0]
+      },
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0
+      },
+      "minecraft:friction": 0.1,
+      "minecraft:geometry": "geometry.minere.icicle",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "minere:short_icicle",
+          "ambient_occlusion": false,
+          "face_dimming": false,
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#92B9FE",
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": true,
+            "on_liquid_touches": "no_reaction"
+          }
+        ]
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": ["down"]
+          }
+        ]
+      }
+    }
+  }
 }

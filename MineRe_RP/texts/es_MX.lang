@@ -170,3 +170,15 @@ tile.minere:short_icicle.name=Carámbano Corto
 tile.minere:tall_icicle.name=Carámbano Alto
 tile.minere:thick_icicle.name=Carámbano Grueso
 tile.minere:thin_icicle.name=Carámbano Delgado
+entity.minere:sand_stomp.name=Pisotón de arena
+item.spawn_egg.entity.minere:sand_stomp.name=Huevo generador de Pisotón de arena
+
+entity.minere:bird.name=Pájaro
+item.spawn_egg.entity.minere:bird.name=Huevo generador de pájaro
+
+tile.minere:blackstone_iron_ore.name=Mineral de hierro de Blackstone
+tile.minere:basalt_nether_coal_ore.name=Mineral de carbón basalto inferior
+tile.minere:firefly_lamp.name=Lámpara de luciérnaga verde
+tile.minere:yellow_firefly_lamp.name=Lámpara de luciérnaga amarilla
+tile.minere:purple_firefly_lamp.name=Lámpara de luciérnaga morada
+tile.minere:blue_firefly_lamp.name=Lámpara de luciérnaga azul

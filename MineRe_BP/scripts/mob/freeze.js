@@ -6,6 +6,8 @@ const CANNOT_BE_FROZEN = new Set();
 CANNOT_BE_FROZEN.add("minere:freeze");
 CANNOT_BE_FROZEN.add("minere:monster_bat");
 CANNOT_BE_FROZEN.add("minere:ghost");
+CANNOT_BE_FROZEN.add("minere:walker");
+CANNOT_BE_FROZEN.add("minere:cosmic_jelly");
 CANNOT_BE_FROZEN.add("minecraft:vex");
 CANNOT_BE_FROZEN.add("minecraft:bat");
 CANNOT_BE_FROZEN.add("minecraft:ghast");

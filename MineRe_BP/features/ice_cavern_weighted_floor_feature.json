@@ -5,7 +5,7 @@
       "identifier": "minere:ice_cavern_weighted_floor_feature"
     },
     "features": [
-      ["minere:icicle_stalagmite_feature", 7],
+      ["minere:icicle_stalagmite_feature", 3],
       ["minere:ice_cavern_blocks_feature", 5]
     ]
   }

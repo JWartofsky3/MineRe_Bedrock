@@ -172,9 +172,6 @@
       },
       {
         "minecraft:spawns_underground": {},
-        "minecraft:height_filter": {
-          "min": -16
-        },
         "minecraft:brightness_filter": {
           "min": 0,
           "max": 7,

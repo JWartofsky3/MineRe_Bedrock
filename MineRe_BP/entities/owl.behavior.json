@@ -3,6 +3,7 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:owl",
+      "runtime_identifier": "minecraft:parrot",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false

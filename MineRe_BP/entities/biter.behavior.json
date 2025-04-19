@@ -41,7 +41,7 @@
       },
       "scale_medium": {
         "minecraft:scale": {
-          "value": 1.5
+          "value": 1.25
         },
         "minecraft:knockback_resistance": {
           "value": 0.15
@@ -62,7 +62,7 @@
       },
       "scale_large": {
         "minecraft:scale": {
-          "value": 2
+          "value": 1.6
         },
         "minecraft:knockback_resistance": {
           "value": 0.6

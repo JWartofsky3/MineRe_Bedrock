@@ -1,0 +1,72 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.bird": {
+      "initial_state": "dancing",
+      "states": {
+        "dancing": {
+          "animations": ["dance"],
+          "transitions": [
+            {
+              "flying": "variable.state == 0"
+            },
+            {
+              "standing": "variable.state == 1"
+            },
+            {
+              "sitting": "variable.state == 2"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "flying": {
+          "animations": ["fly"],
+          "transitions": [
+            {
+              "standing": "variable.state == 1"
+            },
+            {
+              "sitting": "variable.state == 2"
+            },
+            {
+              "dancing": "variable.state == 3"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sitting": {
+          "animations": ["sit", "breathe"],
+          "transitions": [
+            {
+              "flying": "variable.state == 0"
+            },
+            {
+              "standing": "variable.state == 1"
+            },
+            {
+              "dancing": "variable.state == 3"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "standing": {
+          "animations": ["breathe",             {
+            "walk": "query.modified_move_speed"
+          }],
+          "transitions": [
+            {
+              "flying": "variable.state == 0"
+            },
+            {
+              "sitting": "variable.state == 2"
+            },
+            {
+              "dancing": "variable.state == 3"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

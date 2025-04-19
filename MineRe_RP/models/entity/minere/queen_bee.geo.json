@@ -1,87 +1,89 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.minere.queen_bee",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 4,
-				"visible_bounds_height": 3,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
-			"bones": [
-				{
-					"name": "body",
-					"pivot": [0.5, 5, 0],
-					"cubes": [
-						{"origin": [-3.5, 1.5, 2], "size": [8, 8, 13], "uv": [0, 0]}
-					],
-					"locators": {
-						"lead": [0, 4, -1]
-					}
-				},
-				{
-					"name": "stinger",
-					"parent": "body",
-					"pivot": [0.5, 6, 11],
-					"cubes": [
-						{"origin": [0.5, 5, 15], "size": [0, 2, 4], "uv": [40, -2]}
-					]
-				},
-				{
-					"name": "rightwing_bone",
-					"parent": "body",
-					"pivot": [-1, 9, -3],
-					"rotation": [15, -15, 0],
-					"cubes": [
-						{"origin": [-8.44709, 7.5, 2.59808], "size": [9, 0, 10], "uv": [0, 21]}
-					]
-				},
-				{
-					"name": "leftwing_bone",
-					"parent": "body",
-					"pivot": [2, 9, -3],
-					"rotation": [15, 15, 0],
-					"cubes": [
-						{"origin": [0.44709, 7.5, 2.59808], "size": [9, 0, 10], "uv": [0, 31]}
-					]
-				},
-				{
-					"name": "leg_front",
-					"parent": "body",
-					"pivot": [2, 2, 3],
-					"cubes": [
-						{"origin": [-3, 0, 3], "size": [7, 2, 0], "uv": [10, 41]}
-					]
-				},
-				{
-					"name": "leg_mid",
-					"parent": "body",
-					"pivot": [2, 2, 5],
-					"cubes": [
-						{"origin": [-3, 0, 5], "size": [7, 2, 0], "uv": [24, 41]}
-					]
-				},
-				{
-					"name": "leg_back",
-					"parent": "body",
-					"pivot": [2, 2, 7],
-					"cubes": [
-						{"origin": [-3, 0, 7], "size": [7, 2, 0], "uv": [38, 41]}
-					]
-				},
-				{
-					"name": "head",
-					"parent": "body",
-					"pivot": [0, 5, 2],
-					"cubes": [
-						{"origin": [-2, 7, -7], "size": [1, 2, 4], "uv": [0, 41]},
-						{"origin": [2, 7, -7], "size": [1, 2, 4], "uv": [38, 35]},
-						{"origin": [-3, 2, -3], "size": [7, 7, 7], "uv": [36, 50]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.queen_bee",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 4,
+        "visible_bounds_height": 3,
+        "visible_bounds_offset": [0, 0.5, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0.5, 5, 0],
+          "cubes": [
+            { "origin": [-3.5, 1.5, 2], "size": [8, 8, 13], "uv": [0, 0] }
+          ],
+          "locators": {
+            "lead": [0, 4, -1]
+          }
+        },
+        {
+          "name": "stinger",
+          "parent": "body",
+          "pivot": [0.5, 6, 11],
+          "cubes": [
+            { "origin": [0.5, 5, 15], "size": [0, 2, 4], "uv": [40, -2] }
+          ]
+        },
+        {
+          "name": "rightwing_bone",
+          "parent": "body",
+          "pivot": [-1, 9, -3],
+          "rotation": [15, -15, 0],
+          "cubes": [
+            {
+              "origin": [-8.44709, 7.5, 2.59808],
+              "size": [9, 0, 10],
+              "uv": [0, 21]
+            }
+          ]
+        },
+        {
+          "name": "leftwing_bone",
+          "parent": "body",
+          "pivot": [2, 9, -3],
+          "rotation": [15, 15, 0],
+          "cubes": [
+            {
+              "origin": [0.44709, 7.5, 2.59808],
+              "size": [9, 0, 10],
+              "uv": [0, 31]
+            }
+          ]
+        },
+        {
+          "name": "leg_front",
+          "parent": "body",
+          "pivot": [2, 2, 3],
+          "cubes": [{ "origin": [-3, 0, 3], "size": [7, 2, 0], "uv": [10, 41] }]
+        },
+        {
+          "name": "leg_mid",
+          "parent": "body",
+          "pivot": [2, 2, 5],
+          "cubes": [{ "origin": [-3, 0, 5], "size": [7, 2, 0], "uv": [24, 41] }]
+        },
+        {
+          "name": "leg_back",
+          "parent": "body",
+          "pivot": [2, 2, 7],
+          "cubes": [{ "origin": [-3, 0, 7], "size": [7, 2, 0], "uv": [38, 41] }]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 5, 2],
+          "cubes": [
+            { "origin": [-2, 7, -7], "size": [1, 2, 4], "uv": [0, 41] },
+            { "origin": [2, 7, -7], "size": [1, 2, 4], "uv": [38, 35] },
+            { "origin": [-3, 2, -3], "size": [7, 7, 7], "uv": [36, 50] }
+          ]
+        }
+      ]
+    }
+  ]
 }

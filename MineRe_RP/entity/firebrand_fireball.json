@@ -17,13 +17,9 @@
       },
       "scripts": {
         "scale": "1.5",
-        "animate": [
-          "face_player"
-        ]
+        "animate": ["face_player"]
       },
-      "render_controllers": [
-        "controller.render.fireball"
-      ]
+      "render_controllers": ["controller.render.fireball"]
     }
   }
 }

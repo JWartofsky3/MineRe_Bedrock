@@ -1,0 +1,107 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.minere.bird.fly": {
+			"loop": true,
+			"bones": {
+				"left_wing": {
+					"rotation": [-90, 0, "-90 + Math.cos(query.anim_time * 1000) * 80"],
+					"position": [0, 0, 2]
+				},
+				"right_wing": {
+					"rotation": [-90, 0, "90 + Math.cos(query.anim_time * 1000) * -80"],
+					"position": [0, 0, 2]
+				},
+				"tail": {
+					"rotation": ["Math.cos(query.anim_time * 1000) * 16", 0, 0]
+				},
+				"right_leg": {
+					"rotation": ["25 + Math.cos(query.anim_time * 250) * -8", 0, 0]
+				},
+				"left_leg": {
+					"rotation": ["25 + Math.cos(query.anim_time * 250) * 8", 0, 0]
+				}
+			}
+		},
+		"animation.minere.bird.look_at": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["query.target_x_rotation", "query.target_y_rotation * 0.7", 0]
+				},
+				"body": {
+					"rotation": [0, "query.target_y_rotation * 0.3", 0]
+				}
+			}
+		},
+		"animation.minere.bird.dance": {
+			"loop": true,
+			"bones": {
+				"left_wing": {
+					"rotation": ["Math.cos(query.anim_time * 500) * 25", "Math.abs(Math.cos(query.anim_time * 400)) * 50", 0]
+				},
+				"right_wing": {
+					"rotation": ["Math.cos(query.anim_time * 500) * 25", "Math.abs(Math.cos(query.anim_time * 400)) * -50", 0]
+				},
+				"tail": {
+					"rotation": ["Math.cos(query.anim_time * 800) * 45", 0, 0]
+				},
+				"head": {
+					"rotation": [0, "Math.cos(query.anim_time * 600) * -15", "Math.cos(query.anim_time * 400) * 15"],
+					"position": [0, "Math.cos(query.anim_time * 800) * 0.5", "Math.cos(query.anim_time * 400) * 0.5"]
+				},
+				"body": {
+					"rotation": [0, "Math.cos(query.anim_time * 600) * 15", 0]
+				}
+			}
+		},
+		"animation.minere.bird.sit": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 0]
+					}
+				}
+			}
+		},
+		"animation.minere.bird.breathe": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, "math.cos(query.anim_time * 55) * 0.1", 0]
+				},
+				"left_wing": {
+					"rotation": ["math.cos(query.anim_time * 55) * 4", "Math.abs(math.sin(query.anim_time * 55)) * 4", 0]
+				},
+				"right_wing": {
+					"rotation": ["math.cos(query.anim_time * 55) * 4", "Math.abs(math.sin(query.anim_time * 55)) * -4", 0]
+				},
+				"tail": {
+					"rotation": ["math.cos(query.anim_time * 55) * 7", 0, 0]
+				}
+			}
+		},
+		"animation.minere.bird.is_baby": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"scale": 1.45
+				}
+			}
+		},
+		"animation.minere.bird.walk": {
+			"loop": true,
+			"bones": {
+				"right_leg": {
+					"rotation": ["math.cos(query.anim_time * 155) * -35", 0, 0]
+				},
+				"left_leg": {
+					"rotation": ["math.cos(query.anim_time * 155) * 35", 0, 0]
+				}
+			}
+		}
+	}
+}

@@ -59,11 +59,11 @@
         "on_death": "query.last_hit_by_player ? 16 : 0"
       },
       "minecraft:health": {
-        "value": 60,
-        "max": 60
+        "value": 70,
+        "max": 70
       },
       "minecraft:attack": {
-        "damage": 7
+        "damage": [7, 9]
       },
       "minecraft:knockback_resistance": {
         "value": 0.85

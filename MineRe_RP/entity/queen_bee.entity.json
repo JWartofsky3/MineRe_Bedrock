@@ -1,41 +1,42 @@
 {
-	"format_version": "1.10.0",
-	"minecraft:client_entity": {
-		"description": {
-			"identifier": "minere:queen_bee",
-			"materials": {
-				"default": "entity_alphatest"
-			},
-			"textures": {
-				"default": "textures/entity/minere/queen_bee/queen_bee",
-				"angry": "textures/entity/minere/queen_bee/angry"
-			},
-			"geometry": {
-				"default": "geometry.minere.queen_bee"
-			},
-			"animations": {
-				"flying": "animation.minere.queen_bee.flying",
-				"look_at": "animation.minere.queen_bee.look_at",
-				"controller_bee_sting": "controller.animation.bee.sting",
-				"bee_sting": "animation.minere.queen_bee.sting",
-				"bee_no_stinger": "animation.minere.queen_bee.no_stinger",
-				"bee_fly_bobbing": "animation.minere.queen_bee.fly.bobbing",
-				"bee_root_controller": "controller.animation.bee.root"
-			},
-			"scripts": {
-				"animate": [
-					"look_at",
-					"bee_root_controller",
-					{
-						"bee_no_stinger": "query.mark_variant == 1"
-					}
-				]
-			},
-			"render_controllers": ["controller.render.minere.queen_bee"],
-			"spawn_egg": {
-				"base_color": "#ffe500",
-				"overlay_color": "#000000"
-			}
-		}
-	}
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:queen_bee",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/minere/queen_bee/queen_bee",
+        "angry": "textures/entity/minere/queen_bee/angry"
+      },
+      "geometry": {
+        "default": "geometry.minere.queen_bee"
+      },
+      "animations": {
+        "flying": "animation.minere.queen_bee.flying",
+        "drip": "controller.animation.bee.drip",
+        "look_at": "animation.minere.queen_bee.look_at",
+        "controller_bee_sting": "controller.animation.bee.sting",
+        "bee_sting": "animation.minere.queen_bee.sting",
+        "bee_no_stinger": "animation.minere.queen_bee.no_stinger",
+        "bee_fly_bobbing": "animation.minere.queen_bee.fly.bobbing",
+        "bee_root_controller": "controller.animation.bee.root"
+      },
+      "scripts": {
+        "animate": [
+          "look_at",
+          "bee_root_controller",
+          {
+            "bee_no_stinger": "query.mark_variant == 1"
+          }
+        ]
+      },
+      "render_controllers": ["controller.render.minere.queen_bee"],
+      "spawn_egg": {
+        "base_color": "#ffe500",
+        "overlay_color": "#000000"
+      }
+    }
+  }
 }

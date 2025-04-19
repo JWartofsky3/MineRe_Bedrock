@@ -1,0 +1,529 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:bird",
+      "runtime_identifier": "minecraft:parrot",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "minecraft:sound_variant": {
+          "type": "enum",
+          "values": [
+            "default",
+            "blue_jay",
+            "cardinal",
+            "tufted_titmouse",
+            "crow",
+            "robin",
+            "oropendola",
+            "piha",
+            "goldfinch"
+          ],
+          "default": "default",
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "quiet": {
+        "minecraft:ambient_sound_interval": {
+          "range": 16000.0,
+          "value": 8000.0
+        }
+      },
+      "awake": {
+        "minecraft:ambient_sound_interval": {
+          "range": 6.0,
+          "value": 3.0
+        }
+      },
+      "minere:blue_jay": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:cardinal": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "minere:tufted_titmouse": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "minere:crow": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "minere:robin": {
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
+      "minere:oropendola": {
+        "minecraft:variant": {
+          "value": 5
+        }
+      },
+      "minere:piha": {
+        "minecraft:variant": {
+          "value": 6
+        }
+      },
+      "minere:goldfinch": {
+        "minecraft:variant": {
+          "value": 7
+        }
+      },
+      "minecraft:bird_adult": {
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/bird.json"
+        }
+      },
+      "minecraft:bird_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:ageable": {
+          "duration": 1200,
+          "feed_items": [
+            "wheat_seeds",
+            "pumpkin_seeds",
+            "melon_seeds",
+            "beetroot_seeds"
+          ],
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.5
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 4,
+          "speed_multiplier": 1.25
+        }
+      },
+      "minecraft:bird_wild": {
+        "minecraft:type_family": {
+          "family": ["bird", "bird_wild", "mob"]
+        },
+        "minecraft:tameable": {
+          "probability": 0.33,
+          "tame_items": [
+            "wheat_seeds",
+            "pumpkin_seeds",
+            "melon_seeds",
+            "beetroot_seeds"
+          ],
+          "tame_event": {
+            "event": "minecraft:on_tame",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.random_fly": {
+          "priority": 2,
+          "xz_dist": 15,
+          "y_dist": 1,
+          "y_offset": 0,
+          "speed_multiplier": 1.5,
+          "can_land_on_trees": true,
+          "avoid_damage_blocks": true
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 2,
+          "xz_dist": 4,
+          "y_dist": 1
+        },
+        "minecraft:behavior.follow_mob": {
+          "priority": 3,
+          "speed_multiplier": 1,
+          "stop_distance": 3,
+          "search_range": 20
+        }
+      },
+      "minecraft:bird_tame": {
+        "minecraft:type_family": {
+          "family": ["bird", "bird_tame", "mob"]
+        },
+        "minecraft:is_tamed": {},
+        "minecraft:behavior.follow_owner": {
+          "priority": 2,
+          "speed_multiplier": 1,
+          "start_distance": 5,
+          "stop_distance": 1
+        },
+        "minecraft:sittable": {},
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 1
+        },
+        "minecraft:behavior.find_mount": {
+          "priority": 3,
+          "within_radius": 16,
+          "avoid_water": true,
+          "start_delay": 100,
+          "target_needed": false,
+          "mount_distance": 2
+        }
+      }
+    },
+    "components": {
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 1
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "test": "is_daytime",
+              "value": true
+            },
+            "event": "wake_up"
+          },
+          {
+            "filters": {
+              "test": "is_daytime",
+              "value": false
+            },
+            "event": "go_sleep"
+          }
+        ]
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0.4
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "fall",
+          "deals_damage": false
+        }
+      },
+      "minecraft:jump.static": {},
+      "minecraft:can_fly": {},
+      "minecraft:navigation.fly": {
+        "can_path_over_water": true,
+        "can_path_from_air": true
+      },
+      "minecraft:movement.fly": {},
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.panic": {
+        "priority": 0,
+        "speed_multiplier": 1.25
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 1,
+        "look_distance": 8
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:healable": {
+        "force_use": true,
+        "filters": {
+          "test": "is_riding",
+          "operator": "!=",
+          "value": true
+        },
+        "items": [
+          {
+            "item": "cookie",
+            "heal_amount": 0,
+            "effects": [
+              {
+                "name": "fatal_poison",
+                "chance": 1,
+                "duration": 1000,
+                "amplifier": 0
+              }
+            ]
+          }
+        ]
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4,
+        "hard_distance": 6,
+        "max_distance": 10
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "minecraft:bird_wild",
+                "minecraft:bird_adult",
+                "awake"
+              ]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_blue_jay"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_cardinal"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_tufted_titmouse"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_crow"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_robin"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_goldfinch"
+              }
+            ]
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cherry_grove"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "meadow"
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "weight": 1,
+                "trigger": "minere:spawn_blue_jay"
+              },
+              {
+                "weight": 1,
+                "trigger": "minere:spawn_cardinal"
+              },
+              {
+                "weight": 1,
+                "trigger": "minere:spawn_tufted_titmouse"
+              },
+              {
+                "weight": 1,
+                "trigger": "minere:spawn_robin"
+              }
+            ]
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "jungle"
+            },
+            "randomize": [
+              {
+                "weight": 4,
+                "trigger": "minere:spawn_goldfinch"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_oropendola"
+              },
+              {
+                "weight": 10,
+                "trigger": "minere:spawn_piha"
+              }
+            ]
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "pale_garden"
+            },
+            "trigger": "minere:spawn_crow"
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "roofed_forest"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "swamp"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "mangrove_swamp"
+                }
+              ],
+              "all_of": [
+                {
+                  "test": "random_chance",
+                  "value": 3
+                }
+              ]
+            },
+            "trigger": "minere:spawn_crow"
+          },
+          {
+            "filters": {
+              "test": "random_chance",
+              "value": 9
+            },
+            "trigger": "spawn_baby"
+          }
+        ]
+      },
+      "minecraft:ageable_grow_up": {
+        "remove": {
+          "component_groups": ["minecraft:bird_baby"]
+        },
+        "add": {
+          "component_groups": ["minecraft:bird_adult"]
+        }
+      },
+      "spawn_baby": {
+        "add": {
+          "component_groups": "minecraft:bird_baby"
+        },
+        "remove": {
+          "component_groups": "minecraft:bird_adult"
+        }
+      },
+      "minere:spawn_blue_jay": {
+        "add": {
+          "component_groups": "minere:blue_jay"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "blue_jay"
+        }
+      },
+      "minere:spawn_cardinal": {
+        "add": {
+          "component_groups": "minere:cardinal"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "cardinal"
+        }
+      },
+      "minere:spawn_tufted_titmouse": {
+        "add": {
+          "component_groups": "minere:tufted_titmouse"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "tufted_titmouse"
+        }
+      },
+      "minere:spawn_crow": {
+        "add": {
+          "component_groups": "minere:crow"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "crow"
+        }
+      },
+      "minere:spawn_robin": {
+        "add": {
+          "component_groups": "minere:robin"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "robin"
+        }
+      },
+      "minere:spawn_oropendola": {
+        "add": {
+          "component_groups": "minere:oropendola"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "oropendola"
+        }
+      },
+      "minere:spawn_piha": {
+        "add": {
+          "component_groups": "minere:piha"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "piha"
+        }
+      },
+      "minere:spawn_goldfinch": {
+        "add": {
+          "component_groups": "minere:goldfinch"
+        },
+        "set_property": {
+          "minecraft:sound_variant": "goldfinch"
+        }
+      },
+      "minecraft:on_tame": {
+        "remove": {
+          "component_groups": ["minecraft:bird_wild"]
+        },
+        "add": {
+          "component_groups": ["minecraft:bird_tame"]
+        }
+      },
+      "wake_up": {
+        "remove": {
+          "component_groups": ["quiet"]
+        },
+        "add": {
+          "component_groups": ["awake"]
+        }
+      },
+      "go_sleep": {
+        "remove": {
+          "component_groups": ["awake"]
+        },
+        "add": {
+          "component_groups": ["quiet"]
+        }
+      }
+    }
+  }
+}

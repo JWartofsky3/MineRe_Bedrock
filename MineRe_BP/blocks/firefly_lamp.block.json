@@ -33,7 +33,7 @@
       },
       "minecraft:material_instances": {
         "*": {
-          "texture": "firefly_lamp",
+          "texture": "green_firefly_lamp",
           "ambient_occlusion": false,
           "face_dimming": false,
           "render_method": "blend"
@@ -46,12 +46,12 @@
       "minecraft:light_dampening": 0,
       "minecraft:light_emission": 13,
       "minecraft:placement_filter": {
-				"conditions": [
-					{
-						"allowed_faces": ["up", "down"]
-					}
-				]
-			}
+        "conditions": [
+          {
+            "allowed_faces": ["up", "down"]
+          }
+        ]
+      }
     },
     "permutations": [
       {

@@ -18,10 +18,6 @@
         },
         "minecraft:attack": {
           "damage": 3
-        },
-        "minecraft:health": {
-          "value": 14,
-          "max": 14
         }
       },
       "adult": {
@@ -37,16 +33,12 @@
         },
         "minecraft:behavior.mount_pathing": {
           "priority": 5,
-          "speed_multiplier": 1.25,
+          "speed_multiplier": 1.2,
           "target_dist": 0,
           "track_target": true
         },
         "minecraft:attack": {
           "damage": 5
-        },
-        "minecraft:health": {
-          "value": 20,
-          "max": 20
         }
       },
       "jockey": {
@@ -387,6 +379,10 @@
       }
     },
     "components": {
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:navigation.walk": {
         "is_amphibious": true,
@@ -707,7 +703,7 @@
       },
       "minecraft:behavior.melee_box_attack": {
         "priority": 6,
-        "speed_multiplier": 1.25
+        "speed_multiplier": 1.2
       },
       "minecraft:behavior.equip_item": {
         "priority": 3

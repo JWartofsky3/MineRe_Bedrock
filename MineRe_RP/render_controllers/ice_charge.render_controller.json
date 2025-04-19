@@ -4,7 +4,12 @@
     "controller.render.minere.ice_charge": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.texture0", "Texture.texture1", "Texture.texture2", "Texture.texture3"]
+          "Array.skins": [
+            "Texture.texture0",
+            "Texture.texture1",
+            "Texture.texture2",
+            "Texture.texture3"
+          ]
         }
       },
       "geometry": "Geometry.default",

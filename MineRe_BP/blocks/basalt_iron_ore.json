@@ -32,7 +32,7 @@
           "texture": "minere:basalt_iron_ore_top"
         }
       },
-      "minecraft:loot": "loot_tables/blocks/basalt_iron_ore.json"
+      "minecraft:loot": "loot_tables/blocks/nether_iron_ore.json"
     }
   }
 }

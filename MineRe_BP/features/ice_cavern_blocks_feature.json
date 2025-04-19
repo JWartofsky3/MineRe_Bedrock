@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:ice_cavern_blocks_feature"
     },
-    "count": 50,
+    "count": 40,
     "replace_rules": [
       {
         "places_block": {
@@ -15,13 +15,7 @@
             "name": "minecraft:stone"
           },
           {
-            "name": "minecraft:granite"
-          },
-          {
-            "name": "minecraft:andesite"
-          },
-          {
-            "name": "minecraft:tuff"
+            "name": "minecraft:deepslate"
           }
         ]
       },
@@ -31,7 +25,10 @@
         },
         "may_replace": [
           {
-            "name": "minecraft:deepslate"
+            "name": "minecraft:tuff"
+          },
+          {
+            "name": "minecraft:granite"
           },
           {
             "name": "minecraft:diorite"
@@ -43,7 +40,7 @@
       },
       {
         "places_block": {
-          "name": "minecraft:budding_amethyst"
+          "name": "minecraft:amethyst_block"
         },
         "may_replace": [
           {
@@ -56,6 +53,9 @@
           "name": "minecraft:snow"
         },
         "may_replace": [
+          {
+            "name": "minecraft:andesite"
+          },
           {
             "name": "minecraft:dirt"
           },
@@ -95,17 +95,7 @@
       },
       {
         "places_block": {
-          "name": "minecraft:obsidian"
-        },
-        "may_replace": [
-          {
-            "name": "minecraft:lava"
-          }
-        ]
-      },
-      {
-        "places_block": {
-          "name": "air"
+          "name": "minecraft:budding_amethyst"
         },
         "may_replace": [
           {

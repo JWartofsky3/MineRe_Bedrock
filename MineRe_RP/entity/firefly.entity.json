@@ -7,8 +7,14 @@
         "default": "entity_emissive_alpha"
       },
       "textures": {
-        "off": "textures/entity/minere/firefly/firefly_off",
-        "on": "textures/entity/minere/firefly/firefly_on"
+        "green": "textures/entity/minere/firefly/green",
+        "green_off": "textures/entity/minere/firefly/green_off",
+        "yellow": "textures/entity/minere/firefly/yellow",
+        "yellow_off": "textures/entity/minere/firefly/yellow_off",
+        "purple": "textures/entity/minere/firefly/purple",
+        "purple_off": "textures/entity/minere/firefly/purple_off",
+        "blue": "textures/entity/minere/firefly/blue",
+        "blue_off": "textures/entity/minere/firefly/blue_off"
       },
       "geometry": {
         "default": "geometry.minere.firefly"

@@ -22,7 +22,7 @@
         "repair_items": [
           {
             "items": ["minecraft:iron_ingot"],
-            "repair_amount": 49
+            "repair_amount": 75
           }
         ]
       },
@@ -31,7 +31,7 @@
         "protection": 2
       },
       "minecraft:durability": {
-        "max_durability": 195
+        "max_durability": 300
       },
       "minecraft:tags": {
         "tags": ["minecraft:is_armor"]

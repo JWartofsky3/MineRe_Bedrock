@@ -8,9 +8,9 @@ import {
   Block,
   EntityEquippableComponent,
   EquipmentSlot,
+  BlockComponentOnPlaceEvent,
 } from "@minecraft/server";
 import { enderTeleport } from "mob/enderTeleport";
-import { isFamily } from "mob/mob_utils";
 import { randomVector3, addVector3 } from "util/vector3Functions";
 
 const TELEPORT_RANGE = 3.15;
@@ -24,6 +24,27 @@ forbiddenEntities.add("minecraft:ender_dragon");
 forbiddenEntities.add("minecraft:wither");
 
 export const teleporter: BlockCustomComponent = {
+  onPlace(arg: BlockComponentOnPlaceEvent) {
+    const direction = arg.block.permutation.getState(
+      "minecraft:facing_direction",
+    );
+    if (direction === "down") {
+      arg.block.setPermutation(
+        BlockPermutation.resolve(arg.block.typeId, {
+          ...arg.block.permutation.getAllStates(),
+          "minecraft:facing_direction": "up",
+        }),
+      );
+    }
+    if (direction === "up") {
+      arg.block.setPermutation(
+        BlockPermutation.resolve(arg.block.typeId, {
+          ...arg.block.permutation.getAllStates(),
+          "minecraft:facing_direction": "down",
+        }),
+      );
+    }
+  },
   onTick(arg: BlockComponentTickEvent) {
     let redstonePower = arg.block?.getRedstonePower();
 
@@ -44,11 +65,16 @@ export const teleporter: BlockCustomComponent = {
 
     blocks.forEach((block: Block) => {
       if (block.isValid()) {
-        if (
-          block.typeId === "minecraft:redstone_block" ||
-          block.typeId === "minecraft:redstone_torch"
-        ) {
+        if (block.typeId === "minecraft:redstone_block") {
           redstonePower = 15;
+        }
+        if (block.location.y <= arg.block.location.y) {
+          if (block.typeId === "minecraft:redstone_torch") {
+            redstonePower = 15;
+          }
+          if (block?.getRedstonePower() > 0) {
+            redstonePower = 15;
+          }
         }
         if (block.typeId === "minere:enderon_block") {
           blockMultiplier += 1;

@@ -1,86 +1,108 @@
 {
-	"format_version": [1, 21, 40],
-	"minere:thick_icicle": {
-		"sound": "glass"
-	},
-	"minere:thin_icicle": {
-		"sound": "glass"
-	},
-	"minere:short_icicle": {
-		"sound": "glass"
-	},
-	"minere:tall_icicle": {
-		"sound": "glass"
-	},
-	"minere:amethyst_shield": {
-		"textures": "amethyst_shield",
-		"sound": "glass"
-	},
-	"minere:pulsar": {
-		"textures": "pulsar",
-		"sound": "stone"
-	},
-	"minere:enderon_block": {
-		"textures": "enderon_block",
-		"sound": "stone"
-	},
-	"minere:freeze_ice": {
-		"textures": "ice",
-		"sound": "glass"
-	},
-	"minere:ender_plasma_ore": {
-		"textures": "ender_plasma_ore",
-		"sound": "stone"
-	},
-	"minere:enderon_ore": {
-		"textures": "enderon_ore",
-		"sound": "stone"
-	},
-	"minere:sulfur_ore": {
-		"textures": "sulfur_ore",
-		"sound": "stone"
-	},
-	"minere:deepslate_sulfur_ore": {
-		"textures": "deepslate_sulfur_ore",
-		"sound": "deepslate"
-	},
-	"minere:nether_coal_ore": {
-		"textures": "nether_coal_ore",
-		"sound": "netherrack"
-	},
-	"minere:amethyst_ore": {
-		"textures": "amethyst_ore",
-		"sound": "stone"
-	},
-	"minere:deepslate_amethyst_ore": {
-		"textures": "deepslate_amethyst_ore",
-		"sound": "deepslate"
-	},
-	"minere:teleporter": {
-		"sound": "metal",
-		"textures": "minere:teleporter_flat"
-	},
-	"minere:end_sand": {
-		"sound": "sand",
-		"textures": "minere:end_sand"
-	},
-	"minere:end_crystalline": {
-		"sound": "amethyst_block",
-		"textures": "minere:end_crystalline"
-	},
-	"minere:basalt_iron_ore": {
-		"sound": "basalt",
-		"textures": {
-			"up": "minere:basalt_iron_ore_top",
-			"down": "minere:basalt_iron_ore_top",
-			"north": "minere:basalt_iron_ore_side",
-			"south": "minere:basalt_iron_ore_side",
-			"east": "minere:basalt_iron_ore_side",
-			"west": "minere:basalt_iron_ore_side"
-		}
-	},
-	"minere:ghost_pot": {
-		"textures": "minere:ghost_pot",
-		"sound": "decorated_pot"
-	}
+  "format_version": [1, 21, 40],
+  "minere:thick_icicle": {
+    "sound": "glass"
+  },
+  "minere:thin_icicle": {
+    "sound": "glass"
+  },
+  "minere:short_icicle": {
+    "sound": "glass"
+  },
+  "minere:tall_icicle": {
+    "sound": "glass"
+  },
+  "minere:amethyst_shield": {
+    "textures": "amethyst_shield",
+    "sound": "glass"
+  },
+  "minere:pulsar": {
+    "textures": "pulsar",
+    "sound": "stone"
+  },
+  "minere:enderon_block": {
+    "textures": "enderon_block",
+    "sound": "stone"
+  },
+  "minere:freeze_ice": {
+    "textures": "ice",
+    "sound": "glass"
+  },
+  "minere:ender_plasma_ore": {
+    "textures": "ender_plasma_ore",
+    "sound": "stone"
+  },
+  "minere:enderon_ore": {
+    "textures": "enderon_ore",
+    "sound": "stone"
+  },
+  "minere:sulfur_ore": {
+    "textures": "sulfur_ore",
+    "sound": "stone"
+  },
+  "minere:deepslate_sulfur_ore": {
+    "textures": "deepslate_sulfur_ore",
+    "sound": "deepslate"
+  },
+  "minere:nether_coal_ore": {
+    "textures": "nether_coal_ore",
+    "sound": "netherrack"
+  },
+  "minere:basalt_nether_coal_ore": {
+    "sound": "basalt",
+    "textures": {
+      "up": "minere:basalt_nether_coal_ore_top",
+      "down": "minere:basalt_nether_coal_ore_top",
+      "north": "minere:basalt_nether_coal_ore_side",
+      "south": "minere:basalt_nether_coal_ore_side",
+      "east": "minere:basalt_nether_coal_ore_side",
+      "west": "minere:basalt_nether_coal_ore_side"
+    }
+  },
+  "minere:amethyst_ore": {
+    "textures": "amethyst_ore",
+    "sound": "stone"
+  },
+  "minere:deepslate_amethyst_ore": {
+    "textures": "deepslate_amethyst_ore",
+    "sound": "deepslate"
+  },
+  "minere:teleporter": {
+    "sound": "metal",
+    "textures": "minere:teleporter_flat"
+  },
+  "minere:end_sand": {
+    "sound": "sand",
+    "textures": "minere:end_sand"
+  },
+  "minere:end_crystalline": {
+    "sound": "amethyst_block",
+    "textures": "minere:end_crystalline"
+  },
+  "minere:blackstone_iron_ore": {
+    "sound": "stone",
+    "textures": {
+      "up": "minere:blackstone_iron_ore_top",
+      "down": "minere:blackstone_iron_ore",
+      "north": "minere:blackstone_iron_ore",
+      "south": "minere:blackstone_iron_ore",
+      "east": "minere:blackstone_iron_ore",
+      "west": "minere:blackstone_iron_ore"
+    }
+  },
+  "minere:basalt_iron_ore": {
+    "sound": "basalt",
+    "textures": {
+      "up": "minere:basalt_iron_ore_top",
+      "down": "minere:basalt_iron_ore_top",
+      "north": "minere:basalt_iron_ore_side",
+      "south": "minere:basalt_iron_ore_side",
+      "east": "minere:basalt_iron_ore_side",
+      "west": "minere:basalt_iron_ore_side"
+    }
+  },
+  "minere:ghost_pot": {
+    "textures": "minere:ghost_pot",
+    "sound": "decorated_pot"
+  }
 }

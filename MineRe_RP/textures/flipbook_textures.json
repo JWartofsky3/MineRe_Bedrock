@@ -25,12 +25,6 @@
     "blend_frames": false
   },
   {
-    "flipbook_texture": "textures/blocks/minere/firefly_lamp",
-    "atlas_tile": "firefly_lamp",
-    "frames": [0, 1, 2, 3],
-    "ticks_per_frame": 2
-  },
-  {
     "flipbook_texture": "textures/blocks/minere/teleporter/front",
     "atlas_tile": "minere:teleporter_front",
     "frames": [0, 1, 2, 3],
@@ -59,5 +53,29 @@
     "atlas_tile": "minere:teleporter_vertical_reverse",
     "frames": [6, 5, 4, 3, 2, 1, 0],
     "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp/green",
+    "atlas_tile": "green_firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp/yellow",
+    "atlas_tile": "yellow_firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp/purple",
+    "atlas_tile": "purple_firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp/blue",
+    "atlas_tile": "blue_firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
   }
 ]

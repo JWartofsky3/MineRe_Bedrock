@@ -34,6 +34,7 @@ oreMap.set("minere:nether_coal_ore", {
         max: 2,
     },
 });
+oreMap.set("minere:basalt_nether_coal_ore", oreMap.get("minere:nether_coal_ore"));
 oreMap.set("minere:ender_plasma_ore", {
     ore: "minere:ender_plasma",
     count: {
@@ -95,6 +96,7 @@ oreMap.set("minere:basalt_iron_ore", {
         max: 1,
     },
 });
+oreMap.set("minere:blackstone_iron_ore", oreMap.get("minere:basalt_iron_ore"));
 export const customOre = {
     onPlayerDestroy(arg) {
         const player = arg.player;

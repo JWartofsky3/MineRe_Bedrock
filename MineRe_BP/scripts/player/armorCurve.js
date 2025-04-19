@@ -1,4 +1,5 @@
 import { EntityComponentTypes, EntityDamageCause, ItemComponentTypes, EquipmentSlot, } from "@minecraft/server";
+import { getEnchantmentLevel } from "item/item_utils";
 const defenseMap = new Map();
 // helmets
 defenseMap.set("minecraft:leather_helmet", 1);
@@ -25,7 +26,14 @@ defenseMap.set("minecraft:golden_boots", 1);
 defenseMap.set("minecraft:chainmail_boots", 1);
 defenseMap.set("minecraft:iron_boots", 2);
 defenseMap.set("minecraft:diamond_boots", 3);
+defenseMap.set("minere:jump_boots", 2);
 const MAX_REDUCTION_CAP = 32;
+const bonusMap = new Map();
+bonusMap.set("iron", 2);
+bonusMap.set("jump", 2);
+bonusMap.set("gold", 1);
+bonusMap.set("chain", 1);
+bonusMap.set("copper", 2);
 export const armorCurve = (player, damage, damageSource) => {
     const cause = damageSource.cause;
     if (cause == EntityDamageCause.void ||
@@ -35,6 +43,9 @@ export const armorCurve = (player, damage, damageSource) => {
         cause == EntityDamageCause.sonicBoom ||
         cause == EntityDamageCause.override ||
         cause == EntityDamageCause.suicide) {
+        return;
+    }
+    if (getEnchantmentLevel(damageSource.damagingEntity, "breach")) {
         return;
     }
     const health = player.getComponent(EntityComponentTypes.Health);
@@ -211,7 +222,13 @@ function getDefenseDifference(equippable, slot) {
     if (!defenseMap.has(item.typeId)) {
         return 0;
     }
-    const materialBonus = item.typeId.includes("iron") ? 2 : 0;
+    let materialBonus = 0;
+    for (const [key, value] of bonusMap) {
+        if (item.typeId.includes(key)) {
+            materialBonus = value;
+        }
+        break;
+    }
     switch (slot) {
         case EquipmentSlot.Head:
             return (defenseMap.get("minecraft:diamond_helmet") -

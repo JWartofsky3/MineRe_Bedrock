@@ -1,0 +1,227 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:bird",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 5
+        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:leaves",
+          "minecraft:oak_leaves",
+          "minecraft:dark_oak_leaves",
+          "minecraft:pale_oak_leaves",
+          "minecraft:azalea_leaves",
+          "minecraft:cherry_leaves",
+          "minecraft:birch_leaves",
+          "minecraft:spruce_leaves",
+          "minecraft:acacia_leaves",
+          "minecraft:jungle_leaves"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 40
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "taiga"
+            }
+          ],
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cold"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "frozen"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 4
+        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:leaves",
+          "minecraft:oak_leaves",
+          "minecraft:dark_oak_leaves",
+          "minecraft:pale_oak_leaves",
+          "minecraft:azalea_leaves",
+          "minecraft:cherry_leaves",
+          "minecraft:birch_leaves",
+          "minecraft:spruce_leaves",
+          "minecraft:acacia_leaves",
+          "minecraft:jungle_leaves"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 15
+        },
+        "minecraft:biome_filter": {
+          "all_of": [
+            {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "frozen"
+                }
+              ]
+            },
+            {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "forest"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "taiga"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 5
+        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:leaves",
+          "minecraft:oak_leaves",
+          "minecraft:dark_oak_leaves",
+          "minecraft:pale_oak_leaves",
+          "minecraft:azalea_leaves",
+          "minecraft:cherry_leaves",
+          "minecraft:birch_leaves",
+          "minecraft:spruce_leaves",
+          "minecraft:acacia_leaves",
+          "minecraft:jungle_leaves"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 20
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 5
+        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:leaves",
+          "minecraft:oak_leaves",
+          "minecraft:dark_oak_leaves",
+          "minecraft:pale_oak_leaves",
+          "minecraft:azalea_leaves",
+          "minecraft:cherry_leaves",
+          "minecraft:birch_leaves",
+          "minecraft:spruce_leaves",
+          "minecraft:acacia_leaves",
+          "minecraft:jungle_leaves"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 10
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cherry_grove"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "meadow"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "pale_garden"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

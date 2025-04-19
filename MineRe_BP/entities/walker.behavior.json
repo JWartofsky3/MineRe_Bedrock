@@ -56,6 +56,11 @@
         "minecraft:variant": {
           "value": 1
         },
+        "minecraft:leashable": {
+          "soft_distance": 12,
+          "hard_distance": 20,
+          "max_distance": 32
+        },
         "minecraft:type_family": {
           "family": ["walker", "mob"]
         },
@@ -160,11 +165,6 @@
         "minecraft:movement.basic": {},
         "minecraft:jump.static": {},
         "minecraft:can_climb": {},
-        "minecraft:leashable": {
-          "soft_distance": 6,
-          "hard_distance": 8,
-          "max_distance": 20
-        },
         "minecraft:behavior.random_stroll": {
           "priority": 7,
           "speed_multiplier": 1
@@ -331,7 +331,7 @@
             },
             {
               "priority": 1,
-              "max_dist": 64,
+              "max_dist": 8,
               "reevaluate_description": true,
               "filters": {
                 "all_of": [
@@ -346,11 +346,6 @@
                     "subject": "other",
                     "operator": "==",
                     "value": "enderman"
-                  },
-                  {
-                    "test": "has_component",
-                    "subject": "other",
-                    "value": "angry"
                   }
                 ]
               }

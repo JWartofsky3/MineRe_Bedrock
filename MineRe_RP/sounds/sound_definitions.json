@@ -23,7 +23,7 @@
         {
           "name": "sounds/environment/earthquake_attack",
           "pitch": 0.85,
-          "volume": 0.75   
+          "volume": 0.75
         },
         {
           "name": "sounds/environment/earthquake_attack",
@@ -101,6 +101,123 @@
         }
       ]
     },
+    "mob.cardinal.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/cardinal/short0",
+        "sounds/mob/bird/cardinal/short1",
+        "sounds/mob/bird/cardinal/short2"
+      ]
+    },
+    "mob.cardinal.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/cardinal/long0",
+        "sounds/mob/bird/cardinal/long1",
+        "sounds/mob/bird/cardinal/long2",
+        "sounds/mob/bird/cardinal/medium0",
+        "sounds/mob/bird/cardinal/medium1",
+        "sounds/mob/bird/cardinal/medium2",
+        "sounds/mob/bird/cardinal/medium0",
+        "sounds/mob/bird/cardinal/medium1",
+        "sounds/mob/bird/cardinal/medium2",
+        "sounds/mob/bird/cardinal/short0",
+        "sounds/mob/bird/cardinal/short1",
+        "sounds/mob/bird/cardinal/short2"
+      ]
+    },
+    "mob.blue_jay.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/blue_jay/ambient0",
+        "sounds/mob/bird/blue_jay/ambient1",
+        "sounds/mob/bird/blue_jay/ambient2",
+        "sounds/mob/bird/blue_jay/ambient3",
+        "sounds/mob/bird/blue_jay/ambient4",
+        "sounds/mob/bird/blue_jay/ambient5",
+        "sounds/mob/bird/blue_jay/ambient6",
+        "sounds/mob/bird/blue_jay/ambient7",
+        "sounds/mob/bird/blue_jay/ambient8"
+      ]
+    },
+    "mob.goldfinch.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/goldfinch/short0",
+        "sounds/mob/bird/goldfinch/short1"
+      ]
+    },
+    "mob.goldfinch.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/goldfinch/short0",
+        "sounds/mob/bird/goldfinch/short1",
+                "sounds/mob/bird/goldfinch/medium0",
+        "sounds/mob/bird/goldfinch/medium1",
+                "sounds/mob/bird/goldfinch/medium2",
+                        "sounds/mob/bird/goldfinch/long0"
+      ]
+    },
+    "mob.tufted_titmouse.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/tufted_titmouse/ambient0",
+        "sounds/mob/bird/tufted_titmouse/ambient1",
+        "sounds/mob/bird/tufted_titmouse/ambient2",
+        "sounds/mob/bird/tufted_titmouse/ambient3",
+        "sounds/mob/bird/tufted_titmouse/ambient4",
+        "sounds/mob/bird/tufted_titmouse/ambient5",
+        "sounds/mob/bird/tufted_titmouse/ambient6"
+      ]
+    },
+    "mob.crow.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/crow/ambient0",
+        "sounds/mob/bird/crow/ambient1",
+        "sounds/mob/bird/crow/ambient2",
+        "sounds/mob/bird/crow/ambient3",
+        "sounds/mob/bird/crow/ambient4",
+        "sounds/mob/bird/crow/ambient5",
+        "sounds/mob/bird/crow/ambient6"
+      ]
+    },
+    "mob.robin.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/robin/ambient0",
+        "sounds/mob/bird/robin/ambient1",
+        "sounds/mob/bird/robin/ambient2",
+        "sounds/mob/bird/robin/ambient3",
+        "sounds/mob/bird/robin/ambient4",
+        "sounds/mob/bird/robin/ambient5",
+        "sounds/mob/bird/robin/ambient6",
+        "sounds/mob/bird/robin/ambient7",
+        "sounds/mob/bird/robin/ambient8"
+      ]
+    },
+    "mob.piha.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/piha/scream0",
+        "sounds/mob/bird/piha/scream1",
+        "sounds/mob/bird/piha/scream2",
+        "sounds/mob/bird/tropical/kingbird0",
+        "sounds/mob/bird/tropical/kingbird1"
+      ]
+    },
+    "mob.oropendola.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/bird/oropendola/squak0",
+        "sounds/mob/bird/oropendola/techno0",
+        "sounds/mob/bird/oropendola/techno1",
+        "sounds/mob/bird/oropendola/techno2",
+        "sounds/mob/bird/oropendola/tweeting0",
+        "sounds/mob/bird/toucan/toucan0",
+        "sounds/mob/bird/toucan/toucan1"
+      ]
+    },
     "mob.butterfly.squish": {
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]
@@ -175,15 +292,33 @@
     },
     "mob.gremlin.ambient": {
       "category": "hostile",
-      "sounds": ["sounds/mob/gremlin/ambient0","sounds/mob/gremlin/ambient1","sounds/mob/gremlin/ambient2","sounds/mob/gremlin/ambient3","sounds/mob/gremlin/ambient4","sounds/mob/gremlin/ambient5"]
+      "sounds": [
+        "sounds/mob/gremlin/ambient0",
+        "sounds/mob/gremlin/ambient1",
+        "sounds/mob/gremlin/ambient2",
+        "sounds/mob/gremlin/ambient3",
+        "sounds/mob/gremlin/ambient4",
+        "sounds/mob/gremlin/ambient5",
+        "sounds/mob/gremlin/ambient6"
+      ]
     },
     "mob.gremlin.hurt": {
       "category": "hostile",
-      "sounds": ["sounds/mob/gremlin/hurt0","sounds/mob/gremlin/hurt1","sounds/mob/gremlin/hurt2","sounds/mob/gremlin/hurt3","sounds/mob/gremlin/hurt4"]
+      "sounds": [
+        "sounds/mob/gremlin/hurt0",
+        "sounds/mob/gremlin/hurt1",
+        "sounds/mob/gremlin/hurt2",
+        "sounds/mob/gremlin/hurt3",
+        "sounds/mob/gremlin/hurt4"
+      ]
     },
     "mob.gremlin.die": {
       "category": "hostile",
-      "sounds": ["sounds/mob/gremlin/death0", "sounds/mob/gremlin/death1", "sounds/mob/gremlin/death2"]
+      "sounds": [
+        "sounds/mob/gremlin/death0",
+        "sounds/mob/gremlin/death1",
+        "sounds/mob/gremlin/death2"
+      ]
     },
     "mob.ghast.fireball": {
       "__use_legacy_max_distance": "true",
@@ -244,10 +379,33 @@
       "min_distance": 0
     },
     "mob.web_spider.shoot": {
+      "category": "hostile",
       "sounds": [
         {
           "name": "sounds/mob/web_spider/webs",
           "volume": 2
+        }
+      ]
+    },
+    "mob.stomp.sand": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/stomp/sand0"
+        },
+        {
+          "name": "sounds/mob/stomp/sand1"
+        },
+        {
+          "name": "sounds/mob/stomp/sand2"
+        }
+      ]
+    },
+    "mob.stomp.stone": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/stomp/stone0"
         }
       ]
     },
@@ -563,7 +721,8 @@
         "sounds/mob/owl/ambient0",
         "sounds/mob/owl/ambient1",
         "sounds/mob/owl/ambient2",
-        "sounds/mob/owl/ambient3"
+        "sounds/mob/owl/ambient3",
+        "sounds/mob/owl/ambient4"
       ]
     },
     "mob.owl.hurt": {

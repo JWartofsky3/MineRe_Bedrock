@@ -1,0 +1,12 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "minere:furnace_basalt_nether_coal"
+    },
+
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:basalt_nether_coal_ore",
+    "output": "minere:nether_coal"
+  }
+}

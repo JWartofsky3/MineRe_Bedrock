@@ -1,0 +1,106 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "minere:ice_cavern_blocks_feature"
+    },
+    "count": 64,
+    "discard_chance_on_air_exposure": 1.0,
+    "replace_rules": [
+      {
+        "places_block": {
+          "name": "minecraft:stone"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:packed_ice"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:blue_ice"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:tuff"
+          },
+          {
+            "name": "minecraft:granite"
+          },
+          {
+            "name": "minecraft:diorite"
+          },
+          {
+            "name": "minecraft:magma"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:amethyst_block"
+        },
+        "may_replace": [
+          {
+            "name": "minere:amethyst_ore"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:snow"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:andesite"
+          },
+          {
+            "name": "minecraft:dirt"
+          },
+          {
+            "name": "minecraft:podzol"
+          },
+          {
+            "name": "minecraft:grass"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:powder_snow"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:gravel"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:ice"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:water"
+          },
+          {
+            "name": "minecraft:kelp"
+          },
+          {
+            "name": "minecraft:seagrass"
+          }
+        ]
+      },
+      {
+        "places_block": {
+          "name": "minecraft:budding_amethyst"
+        },
+        "may_replace": [
+          {
+            "name": "minecraft:glow_lichen"
+          }
+        ]
+      }
+    ]
+  }
+}

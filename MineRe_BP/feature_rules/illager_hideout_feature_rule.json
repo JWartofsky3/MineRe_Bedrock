@@ -6,7 +6,7 @@
       "places_feature": "minere:illager_hideout_feature"
     },
     "conditions": {
-      "placement_pass": "after_underground_pass",
+      "placement_pass": "before_surface_pass",
       "minecraft:biome_filter": [
         {
           "any_of": [
@@ -35,10 +35,7 @@
       "iterations": 1,
       "x": -16,
       "y": {
-        "extent": [
-          -15,
-          45
-        ],
+        "extent": [-15, 45],
         "distribution": "uniform"
       },
       "z": -16,

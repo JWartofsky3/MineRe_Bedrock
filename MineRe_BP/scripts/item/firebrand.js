@@ -10,7 +10,7 @@ export const Firebrand = {
             return;
         }
         const fireAspectLevel = getEnchantmentLevel(arg.attackingEntity, "fire_aspect");
-        arg.hitEntity.setOnFire(8 + (fireAspectLevel * 4));
+        arg.hitEntity.setOnFire(8 + fireAspectLevel * 4);
     },
     onUse(arg) {
         const cooldownComponent = arg.itemStack?.getComponent(ItemComponentTypes.Cooldown);
@@ -34,6 +34,6 @@ export const Firebrand = {
         const proj = fireball.getComponent(EntityComponentTypes.Projectile);
         proj.owner = arg.source;
         const fireAspectLevel = getEnchantmentLevel(arg.source, "fire_aspect");
-        fireball.applyImpulse(multiplyVector3Number(arg.source.getViewDirection(), 1.5 + (fireAspectLevel * 0.75)));
+        fireball.applyImpulse(multiplyVector3Number(arg.source.getViewDirection(), 1.5 + fireAspectLevel * 0.75));
     },
 };

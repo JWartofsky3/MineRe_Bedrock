@@ -310,7 +310,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     rollFreeze(target, attacker);
   }
   if (projectile?.typeId === "minere:ice_charge") {
-    rollFreeze(target, attacker, 0.05);
+    rollFreeze(target, attacker, 0.075);
   }
 
   // ender phantom teleport target

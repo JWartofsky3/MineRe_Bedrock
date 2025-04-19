@@ -20,7 +20,8 @@
           "min": 100
         },
         "minecraft:density_limit": {
-          "surface": 3
+          "surface": 2,
+          "underground": 2
         },
         "minecraft:biome_filter": {
           "none_of": [
@@ -30,11 +31,21 @@
               "value": "frozen"
             }
           ],
-          "all_of": [
+          "any_of": [
             {
               "test": "has_biome_tag",
               "operator": "==",
               "value": "animal"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mountain"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mountains"
             }
           ]
         }
@@ -42,7 +53,8 @@
       {
         "minecraft:spawns_on_surface": {},
         "minecraft:density_limit": {
-          "surface": 3
+          "surface": 2,
+          "underground": 2
         },
         "minecraft:brightness_filter": {
           "min": 7,
@@ -51,6 +63,9 @@
         },
         "minecraft:weight": {
           "default": 10
+        },
+        "minecraft:height_filter": {
+          "max": 100
         },
         "minecraft:biome_filter": {
           "none_of": [
@@ -74,12 +89,72 @@
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "mesa"
+              "value": "river"
             },
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "river"
+              "value": "stone_beach"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 2,
+          "underground": 2
+        },
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 3
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mesa"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "surface": 2,
+          "underground": 2
+        },
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 5
+        },
+        "minecraft:biome_filter": {
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "frozen"
+            }
+          ],
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "plains"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "savanna"
             }
           ]
         }

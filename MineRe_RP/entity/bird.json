@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:bird",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "blue_jay": "textures/entity/minere/birds/blue_jay",
+        "cardinal": "textures/entity/minere/birds/cardinal",
+        "tufted_titmouse": "textures/entity/minere/birds/tufted_titmouse",
+        "crow": "textures/entity/minere/birds/crow",
+        "robin": "textures/entity/minere/birds/robin",
+        "oropendola": "textures/entity/minere/birds/oropendola",
+        "piha": "textures/entity/minere/birds/piha",
+        "goldfinch": "textures/entity/minere/birds/goldfinch"
+      },
+      "geometry": {
+        "default": "geometry.minere.bird"
+      },
+      "animations": {
+        "fly": "animation.minere.bird.fly",
+        "breathe": "animation.minere.bird.breathe",
+        "look_at": "animation.minere.bird.look_at",
+        "sit": "animation.minere.bird.sit",
+        "walk": "animation.minere.bird.walk",
+        "dance": "animation.minere.bird.dance",
+        "is_baby": "animation.minere.bird.is_baby",
+        "controller": "controller.animation.minere.bird"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.state = query.is_dancing ? 3 : (query.is_sitting ? 2 : (!query.is_on_ground && !query.is_jumping && !query.is_riding ? 0 : 1));",
+          "variable.sleeping = variable.state == 2 && query.time_of_day > 0.25 && query.time_of_day < 0.75;"
+        ],
+        "animate": [
+          "controller",
+          "look_at",
+          {
+            "is_baby": "query.is_baby"
+          }
+        ]
+      },
+      "render_controllers": ["controller.render.minere.bird"],
+      "spawn_egg": {
+        "base_color": "#1a4789",
+        "overlay_color": "#ffffff"
+      }
+    }
+  }
+}

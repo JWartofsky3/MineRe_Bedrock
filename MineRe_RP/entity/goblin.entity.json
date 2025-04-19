@@ -15,8 +15,8 @@
         "default": "geometry.minere.goblin"
       },
       "spawn_egg": {
-        "base_color": "#0c4a24",
-        "overlay_color": "#4c075d"
+        "base_color": "#33cc33",
+        "overlay_color": "#3399ff"
       },
       "scripts": {
         "scale": "0.75",

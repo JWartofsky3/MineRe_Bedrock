@@ -23,12 +23,7 @@
         },
 
         "minecraft:weight": {
-          "default": 75
-        },
-
-        "minecraft:density_limit": {
-          "surface": 6,
-          "underground": 6
+          "default": 100
         },
 
         "minecraft:biome_filter": {

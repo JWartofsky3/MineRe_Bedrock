@@ -19,8 +19,8 @@
         "default": "geometry.minere.walker"
       },
       "spawn_egg": {
-        "base_color": "#428f7e",
-        "overlay_color": "#59565b"
+        "base_color": "#ffffcc",
+        "overlay_color": "#003300"
       },
       "scripts": {
         "scale": "1.9",
