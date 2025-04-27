@@ -24,6 +24,10 @@
         "minecraft:weight": {
           "default": 12
         },
+        "minecraft:density_limit": {
+          "surface": 3,
+          "underground": 3
+        },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
           "operator": "==",
@@ -47,6 +51,10 @@
         },
         "minecraft:weight": {
           "default": 24
+        },
+        "minecraft:density_limit": {
+          "surface": 3,
+          "underground": 3
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
