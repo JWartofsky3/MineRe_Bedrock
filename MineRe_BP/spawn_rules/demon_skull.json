@@ -10,7 +10,7 @@
         "minecraft:spawns_underground": {},
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 11,
+          "max": 7,
           "adjust_for_weather": true
         },
         "minecraft:difficulty_filter": {
@@ -25,8 +25,8 @@
           "underground": 5
         },
         "minecraft:herd": {
-          "min_size": 1,
-          "max_size": 3
+          "min_size": 2,
+          "max_size": 4
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",

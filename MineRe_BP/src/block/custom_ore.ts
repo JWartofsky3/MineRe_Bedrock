@@ -60,7 +60,10 @@ oreMap.set("minere:nether_coal_ore", {
     max: 2,
   },
 });
-oreMap.set("minere:basalt_nether_coal_ore", oreMap.get("minere:nether_coal_ore"));
+oreMap.set(
+  "minere:basalt_nether_coal_ore",
+  oreMap.get("minere:nether_coal_ore"),
+);
 oreMap.set("minere:ender_plasma_ore", {
   ore: "minere:ender_plasma",
   count: {

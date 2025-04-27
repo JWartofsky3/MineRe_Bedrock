@@ -35,8 +35,8 @@
       },
       "awake": {
         "minecraft:ambient_sound_interval": {
-          "range": 6.0,
-          "value": 3.0
+          "range": 8.0,
+          "value": 4.0
         }
       },
       "minere:blue_jay": {

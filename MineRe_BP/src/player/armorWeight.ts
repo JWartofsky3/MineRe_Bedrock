@@ -31,6 +31,9 @@ const lightArmorKeyWords: string[] = [
   "paper",
 ];
 
+const lightArmorSet: Set<string> = new Set();
+const heavyArmorSet: Set<string> = new Set();
+
 export function armorWeight(player: Player) {
   if (!player) {
     return;
@@ -72,8 +75,14 @@ export function armorWeight(player: Player) {
 }
 
 function getItemWeight(item: ItemStack): number {
-  if (!item) {
+  if (!item?.typeId) {
     return 0;
+  }
+  if (lightArmorSet.has(item.typeId)) {
+    return 0;
+  }
+  if (heavyArmorSet.has(item.typeId)) {
+    return 1;
   }
   if (!item.getComponent(ItemComponentTypes.Durability)) {
     return 0;
@@ -83,9 +92,11 @@ function getItemWeight(item: ItemStack): number {
   }
   for (let i = 0; i < lightArmorKeyWords.length; i++) {
     if (item.typeId.includes(lightArmorKeyWords[i])) {
+      lightArmorSet.add(item.typeId);
       return 0;
     }
   }
+  heavyArmorSet.add(item.typeId);
   return 1;
 }
 

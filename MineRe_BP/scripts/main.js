@@ -28,6 +28,7 @@ import { VenomShank } from "item/venom_shank";
 import { customOre } from "block/custom_ore";
 import { teleporter } from "block/teleporter";
 import { Treecapitator, offHandTreecapitate } from "item/treecapitator";
+import { blockDropItem } from "block/blockDropItem";
 import { onAxeUse, onShovelUse, onHoeUse, CustomAxe, CustomSword, CustomShovel, CustomPickaxe, CustomHoe, } from "item/custom_tools";
 import { RoyalJelly } from "item/royal_jelly";
 import { runEarthquake } from "mob/earthquake";
@@ -75,6 +76,7 @@ world.afterEvents.entityHealthChanged.subscribe(function (data) {
 });
 world.afterEvents.playerBreakBlock.subscribe(function (data) {
     offHandTreecapitate(data);
+    blockDropItem(data);
 });
 world.beforeEvents.entityRemove.subscribe(function (data) {
     angerEndermen(data);
@@ -148,7 +150,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     // creaking damage
     if (attacker?.typeId === "minecraft:creaking") {
         if (Math.random() < 0.5) {
-            target.addEffect("wither", 60);
+            target.addEffect("wither", 80);
         }
     }
     // throwing

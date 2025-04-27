@@ -5,7 +5,7 @@
       "identifier": "minecraft:leather_horse_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["H  ", "#W#", "L#L"],
+    "pattern": ["#  ", "#W#", "L#L"],
     "key": {
       "W": {
         "item": "minecraft:wool"

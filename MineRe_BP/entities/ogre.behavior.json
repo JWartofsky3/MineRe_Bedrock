@@ -66,7 +66,7 @@
           "damage": [5, 10]
         },
         "minecraft:experience_reward": {
-          "on_death": "query.last_hit_by_player?25:0"
+          "on_death": "query.last_hit_by_player?35:0"
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/ogre/cave_ogre.json"
@@ -446,7 +446,7 @@
         "height": 2.9
       },
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player?20:0"
+        "on_death": "query.last_hit_by_player?25:0"
       },
       "minecraft:health": {
         "value": 120,
@@ -485,45 +485,7 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:despawn": {
-        "filters": {
-          "any_of": [
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 256
-                }
-              ]
-            },
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "inactivity_timer",
-                  "subject": "self",
-                  "value": 45
-                },
-                {
-                  "test": "random_chance",
-                  "value": 1200
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 128
-                }
-              ]
-            }
-          ]
-        }
+        "despawn_from_distance": {}
       },
       "minecraft:behavior.float": {
         "priority": 0

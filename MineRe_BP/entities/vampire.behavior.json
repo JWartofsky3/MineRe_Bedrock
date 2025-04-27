@@ -107,7 +107,8 @@
         },
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
-          "speed_multiplier": 1.5
+          "speed_multiplier": 1.5,
+          "horizontal_reach": 0.55
         },
         "minecraft:behavior.random_hover": {
           "priority": 4,

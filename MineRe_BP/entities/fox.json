@@ -616,6 +616,11 @@
                     }
                   ]
                 },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "polarbear"
+                },
                 { "test": "is_family", "subject": "other", "value": "bear" },
                 { "test": "is_family", "subject": "other", "value": "wolf" },
                 {

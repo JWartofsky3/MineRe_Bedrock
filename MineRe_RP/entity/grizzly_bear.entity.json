@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "minere:grizzly_bear",
@@ -10,25 +10,45 @@
         "default": "textures/entity/minere/grizzly_bear"
       },
       "geometry": {
-        "default": "geometry.polarbear"
+        "default": "geometry.minere.grizzly_bear"
       },
       "animations": {
-        "walk": "animation.quadruped.walk",
-        "move": "animation.polarbear.move",
-        "look_at_target": "animation.common.look_at_target",
-        "baby_transform": "animation.polarbear.baby_transform"
+        "walk": "animation.minere.grizzly_bear.walk",
+        "run": "animation.minere.grizzly_bear.run",
+        "attack": "animation.minere.grizzly_bear.attack",
+        "look_at": "animation.minere.grizzly_bear.look_at",
+        "baby_transform": "animation.minere.grizzly_bear.baby_transform",
+        "bite": "animation.minere.grizzly_bear.bite",
+        "jaw_closed": "animation.minere.grizzly_bear.jaw_closed",
+        "controller": "controller.animation.minere.grizzly_bear",
+        "tame": "animation.minere.grizzly_bear.tamed",
+        "wild": "animation.minere.grizzly_bear.wild",
+        "sit": "animation.minere.grizzly_bear.sit"
       },
       "scripts": {
-        "scale": "1.2"
+        "animate": [
+          "controller",
+          "look_at",
+          {
+            "tame": "query.is_tamed"
+          },
+          {
+            "wild": "!query.is_tamed"
+          },
+          {
+            "bite": "query.is_delayed_attacking"
+          },
+          {
+            "jaw_closed": "!query.is_delayed_attacking"
+          },
+          {
+            "baby_transform": "query.is_baby"
+          },
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
       },
-      "animation_controllers": [
-        {
-          "move": "controller.animation.polarbear.move"
-        },
-        {
-          "baby": "controller.animation.polarbear.baby"
-        }
-      ],
       "render_controllers": ["controller.render.polarbear"],
       "spawn_egg": {
         "base_color": "#402102",

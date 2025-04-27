@@ -34,7 +34,7 @@
         "fly": "animation.minere.butterfly.fly",
         "land": "animation.minere.butterfly.land",
         "look_at_target": "animation.minere.butterfly.look_at_target",
-        "baby_transform": "animation.minere.butterfly.is_baby"
+        "baby_transform": "animation.minere.butterfly.baby_transform"
       },
       "render_controllers": ["controller.render.minere.butterfly"],
       "spawn_egg": {

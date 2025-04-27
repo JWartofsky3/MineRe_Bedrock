@@ -309,7 +309,6 @@
         "events": {
           "admire": "mob.goblin.admire",
           "ambient": "mob.goblin.ambient",
-          "attack": "mob.goblin.hurt",
           "shoot": "random.bow",
           "celebrate": "mob.goblin.laugh",
           "death": "mob.goblin.die",

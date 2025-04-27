@@ -3,16 +3,16 @@
   "header": {
     "description": "MineRe Resources",
     "min_engine_version": [1, 21, 20],
-    "name": "MineRe Resources [1.11.6]",
+    "name": "MineRe Resources [1.11.8]",
     "uuid": "134cbd38-1b56-49ea-bba2-53ff270865c0",
-    "version": [1, 11, 6]
+    "version": [1, 11, 8]
   },
   "modules": [
     {
       "description": "MineRe Resources",
       "type": "resources",
       "uuid": "89039f1e-6256-41fb-b294-86d1396a8ced",
-      "version": [1, 11, 6]
+      "version": [1, 11, 8]
     }
   ],
   "metadata": {

@@ -3,7 +3,6 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:grizzly_bear",
-      "runtime_identifier": "minecraft:polar_bear",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
@@ -19,6 +18,26 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
+          "feed_items": [
+            "cod",
+            "cooked_cod",
+            "salmon",
+            "cooked_salmon",
+            "beef",
+            "cooked_beef",
+            "minere:venison",
+            "minere:cooked_venison",
+            "minere:blubber",
+            "minere:whacon",
+            "porkchop",
+            "cooked_porkchop",
+            "mutton",
+            "cooked_mutton",
+            "honeycomb",
+            "glow_berries",
+            "sweet_berries",
+            "rotten_flesh"
+          ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -34,6 +53,33 @@
         }
       },
       "minecraft:baby_wild": {
+        "minecraft:tameable": {
+          "probability": 0.33,
+          "tame_items": [
+            "cod",
+            "cooked_cod",
+            "salmon",
+            "cooked_salmon",
+            "beef",
+            "cooked_beef",
+            "minere:venison",
+            "minere:cooked_venison",
+            "minere:blubber",
+            "minere:whacon",
+            "porkchop",
+            "cooked_porkchop",
+            "mutton",
+            "cooked_mutton",
+            "honeycomb",
+            "glow_berries",
+            "sweet_berries",
+            "rotten_flesh"
+          ],
+          "tame_event": {
+            "event": "on_tame_baby",
+            "target": "self"
+          }
+        },
         "minecraft:on_target_acquired": {
           "event": "minecraft:on_scared",
           "target": "self"
@@ -84,11 +130,14 @@
         "minecraft:knockback_resistance": {
           "value": 0.7
         },
+        "minecraft:attack": {
+          "damage": 7
+        },
         "minecraft:loot": {
-          "table": "loot_tables/entities/polar_bear.json"
+          "table": "loot_tables/entities/grizzly_bear.json"
         }
       },
-      "minecraft:adult_wild": {
+      "minere:adult_wild": {
         "minecraft:on_target_acquired": {
           "event": "minecraft:on_anger",
           "target": "self"
@@ -96,6 +145,32 @@
         "minecraft:on_friendly_anger": {
           "event": "minecraft:on_anger",
           "target": "self"
+        },
+        "minecraft:tameable": {
+          "probability": 0.15,
+          "tame_items": [
+            "cod",
+            "cooked_cod",
+            "salmon",
+            "cooked_salmon",
+            "beef",
+            "cooked_beef",
+            "minere:venison",
+            "minere:cooked_venison",
+            "minere:blubber",
+            "minere:whacon",
+            "porkchop",
+            "cooked_porkchop",
+            "mutton",
+            "cooked_mutton",
+            "honeycomb",
+            "glow_berries",
+            "sweet_berries"
+          ],
+          "tame_event": {
+            "event": "on_tame_adult",
+            "target": "self"
+          }
         },
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 4,
@@ -117,6 +192,11 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "pig"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "salmon"
                   }
                 ]
               },
@@ -126,32 +206,294 @@
           "must_see": true
         }
       },
-      "minecraft:adult_hostile": {
-        "minecraft:attack": {
-          "damage": [6, 7]
+      "minere:tame": {
+        "minecraft:persistent": {},
+        "minecraft:is_tamed": {},
+        "minecraft:follow_range": {
+          "value": 32,
+          "max": 32
         },
+        "minecraft:health": {
+          "value": 120
+        },
+        "minecraft:attack": {
+          "damage": 11
+        },
+        "minecraft:healable": {
+          "items": [
+            {
+              "item": "porkchop",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_porkchop",
+              "heal_amount": 16
+            },
+            {
+              "item": "fish",
+              "heal_amount": 4
+            },
+            {
+              "item": "salmon",
+              "heal_amount": 4
+            },
+            {
+              "item": "clownfish",
+              "heal_amount": 2
+            },
+            {
+              "item": "pufferfish",
+              "heal_amount": 2
+            },
+            {
+              "item": "cooked_fish",
+              "heal_amount": 10
+            },
+            {
+              "item": "cooked_salmon",
+              "heal_amount": 12
+            },
+            {
+              "item": "beef",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_beef",
+              "heal_amount": 16
+            },
+            {
+              "item": "chicken",
+              "heal_amount": 4
+            },
+            {
+              "item": "cooked_chicken",
+              "heal_amount": 12
+            },
+            {
+              "item": "muttonRaw",
+              "heal_amount": 4
+            },
+            {
+              "item": "muttonCooked",
+              "heal_amount": 12
+            },
+            {
+              "item": "minere:venison",
+              "heal_amount": 4
+            },
+            {
+              "item": "minere:cooked_venison",
+              "heal_amount": 12
+            },
+            {
+              "item": "honeycomb",
+              "heal_amount": 12
+            },
+            {
+              "item": "rabbit",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_rabbit",
+              "heal_amount": 10
+            },
+            {
+              "item": "rabbit_stew",
+              "heal_amount": 20
+            },
+            {
+              "item": "rabbit_stew",
+              "heal_amount": 20
+            },
+            {
+              "item": "sweet_berries",
+              "heal_amount": 4
+            },
+            {
+              "item": "glow_berries",
+              "heal_amount": 4
+            },
+            {
+              "item": "melon_slice",
+              "heal_amount": 4
+            },
+            {
+              "item": "glistering_melon",
+              "heal_amount": 10
+            },
+            {
+              "item": "rotten_flesh",
+              "heal_amount": 4
+            }
+          ]
+        },
+        "minecraft:behavior.teleport_to_owner": {
+          "priority": 1,
+          "filters": {
+            "any_of": [
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 16
+                  }
+                ]
+              },
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 32
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 3
+        },
+        "minecraft:sittable": {},
+        "minecraft:behavior.follow_owner": {
+          "priority": 4,
+          "speed_multiplier": 1.4,
+          "start_distance": 12,
+          "max_distance": 16,
+          "stop_distance": 6
+        },
+        "minecraft:leashable": {
+          "soft_distance": 4.0,
+          "hard_distance": 6.0,
+          "max_distance": 10.0
+        }
+      },
+      "minere:adult_tame": {
+        "minecraft:behavior.delayed_attack": {
+          "priority": 1,
+          "attack_duration": 0.5,
+          "attack_once": false,
+          "cooldown_time": 0.0,
+          "track_target": true,
+          "require_complete_path": false,
+          "random_stop_interval": 0,
+          "reach_multiplier": 2.0,
+          "speed_multiplier": 1.5,
+          "hit_delay_pct": 0.5
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.breed": {
+          "priority": 1,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:breedable": {
+          "require_tame": false,
+          "breed_items": ["minecraft:honey_block"],
+          "breeds_with": {
+            "mate_type": "minere:grizzly_bear",
+            "baby_type": "minere:grizzly_bear",
+            "breed_event": {
+              "event": "minere:entity_born_tame",
+              "target": "baby"
+            }
+          }
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 5,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "monster"
+                  }
+                ],
+                "none_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "yeti"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "ogre"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "goblin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "enderman"
+                  }
+                ]
+              },
+              "max_dist": 10
+            }
+          ],
+          "must_see": true
+        }
+      },
+      "minecraft:adult_hostile": {
         "minecraft:angry": {
           "duration": 400,
-          "broadcast_anger": false,
+          "broadcast_anger": true,
           "broadcast_range": 20,
           "calm_event": {
             "event": "minecraft:on_calm",
             "target": "self"
           }
-        },
-        "minecraft:behavior.stomp_attack": {
-          "speed_multiplier": 1.5,
-          "priority": 1,
-          "track_target": true,
-          "require_complete_path": true,
-          "stomp_range_multiplier": 2,
-          "no_damage_range_multiplier": 2
         }
       }
     },
     "components": {
       "minecraft:type_family": {
-        "family": ["grizzly_bear", "mob", "bear", "polarbear"]
+        "family": ["grizzly_bear", "mob", "bear"]
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 2,
+        "speed_multiplier": 1.0,
+        "items": [
+          "cod",
+          "cooked_cod",
+          "salmon",
+          "cooked_salmon",
+          "beef",
+          "cooked_beef",
+          "minere:venison",
+          "minere:cooked_venison",
+          "minere:blubber",
+          "minere:whacon",
+          "porkchop",
+          "cooked_porkchop",
+          "mutton",
+          "cooked_mutton",
+          "honeycomb"
+        ],
+        "can_tempt_while_ridden": true
+      },
+      "minecraft:behavior.delayed_attack": {
+        "priority": 1,
+        "attack_duration": 0.5,
+        "attack_once": false,
+        "cooldown_time": 0.0,
+        "track_target": true,
+        "require_complete_path": false,
+        "random_stop_interval": 0,
+        "reach_multiplier": 1.65,
+        "speed_multiplier": 1.5,
+        "hit_delay_pct": 0.5
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -159,7 +501,7 @@
       },
       "minecraft:nameable": {},
       "minecraft:health": {
-        "value": 54
+        "value": 60
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -176,7 +518,7 @@
         ]
       },
       "minecraft:collision_box": {
-        "width": 1.3,
+        "width": 1.4,
         "height": 1.4
       },
       "minecraft:movement": {
@@ -202,15 +544,15 @@
         "priority": 1
       },
       "minecraft:behavior.random_stroll": {
-        "priority": 5
+        "priority": 6
       },
       "minecraft:behavior.look_at_player": {
-        "priority": 6,
+        "priority": 7,
         "target_distance": 6,
         "probability": 0.02
       },
       "minecraft:behavior.random_look_around": {
-        "priority": 7
+        "priority": 8
       },
       "minecraft:physics": {},
       "minecraft:pushable": {
@@ -230,7 +572,7 @@
           {
             "weight": 9,
             "add": {
-              "component_groups": ["minecraft:adult", "minecraft:adult_wild"]
+              "component_groups": ["minecraft:adult", "minere:adult_wild"]
             }
           },
           {
@@ -246,29 +588,60 @@
           "component_groups": ["minecraft:baby", "minecraft:baby_wild"]
         }
       },
-      "minecraft:ageable_grow_up": {
-        "remove": {
-          "component_groups": [
-            "minecraft:baby",
-            "minecraft:baby_wild",
-            "minecraft:baby_scared"
-          ]
-        },
+      "minere:entity_born_tame": {
         "add": {
-          "component_groups": ["minecraft:adult", "minecraft:adult_wild"]
+          "component_groups": ["minecraft:baby", "minere:tame"]
         }
+      },
+      "minecraft:ageable_grow_up": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minecraft:baby",
+                "minecraft:baby_wild",
+                "minecraft:baby_scared"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minecraft:adult"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_component",
+              "value": "minecraft:is_tamed"
+            },
+            "add": {
+              "component_groups": ["minere:adult_tame"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_component",
+              "subject": "self",
+              "operator": "!=",
+              "value": "minecraft:is_tamed"
+            },
+            "add": {
+              "component_groups": ["minere:adult_wild"]
+            }
+          }
+        ]
       },
       "minecraft:on_calm": {
         "remove": {
           "component_groups": ["minecraft:adult_hostile"]
         },
         "add": {
-          "component_groups": ["minecraft:adult_wild"]
+          "component_groups": ["minere:adult_wild"]
         }
       },
       "minecraft:on_anger": {
         "remove": {
-          "component_groups": ["minecraft:adult_wild"]
+          "component_groups": ["minere:adult_wild"]
         },
         "add": {
           "component_groups": ["minecraft:adult_hostile"]
@@ -289,6 +662,34 @@
         "add": {
           "component_groups": ["minecraft:baby_scared"]
         }
+      },
+      "on_tame_adult": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:adult_wild"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:tame", "minere:adult_tame"]
+            }
+          }
+        ]
+      },
+      "on_tame_baby": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:baby_wild", "minere:baby_scared"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:tame"]
+            }
+          }
+        ]
       }
     }
   }

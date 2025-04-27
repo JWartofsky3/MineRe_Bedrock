@@ -39,11 +39,7 @@ export const fireflyLamp: BlockCustomComponent = {
       ItemComponentTypes.Enchantable,
     ) as ItemEnchantableComponent;
     if (!enchantable || !enchantable.hasEnchantment("silk_touch")) {
-      const fireflyLamp = getItem(
-        dimension,
-        arg.block.location,
-        typeId,
-      );
+      const fireflyLamp = getItem(dimension, arg.block.location, typeId);
       let spawnEvent = "spawn green";
       switch (typeId) {
         case "minere:yellow_firefly_lamp":

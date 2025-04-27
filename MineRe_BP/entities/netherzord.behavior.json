@@ -45,7 +45,7 @@
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
-          "reach_multiplier": 1.2,
+          "reach_multiplier": 1.25,
           "speed_multiplier": 1.4,
           "hit_delay_pct": 0.5
         }
@@ -57,7 +57,7 @@
         "table": "loot_tables/entities/netherzord.json"
       },
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player ? 25 : 0"
+        "on_death": "query.last_hit_by_player ? 30 : 0"
       },
       "minecraft:health": {
         "value": 120,
@@ -170,44 +170,9 @@
         "max_distance": 10
       },
       "minecraft:despawn": {
-        "filters": {
-          "any_of": [
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 54
-                }
-              ]
-            },
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "inactivity_timer",
-                  "subject": "self",
-                  "value": 30
-                },
-                {
-                  "test": "random_chance",
-                  "value": 800
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 32
-                }
-              ]
-            }
-          ]
+        "despawn_from_distance": {
+          "max_distance": 128,
+          "min_distance": 64
         }
       },
       "minecraft:physics": {},

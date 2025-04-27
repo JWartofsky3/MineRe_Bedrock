@@ -10,7 +10,10 @@
     },
     "components": {
       "minecraft:experience_reward": {
-        "on_death": "10"
+        "on_death": "query.last_hit_by_player?10:0"
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
       },
       "minecraft:burns_in_daylight": {},
       "minecraft:type_family": {

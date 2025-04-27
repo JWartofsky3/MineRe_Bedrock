@@ -8,7 +8,32 @@
     "conditions": [
       {
         "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_on_block_filter": "minecraft:grass",
+        "minecraft:spawns_on_block_filter": "minecraft:grass_block",
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 3
+        },
+        "minecraft:density_limit": {
+          "surface": 3
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3,
+          "event": "minecraft:entity_born",
+          "event_skip_count": 1
+        },
+
+        "minecraft:biome_filter": [
+          { "test": "has_biome_tag", "operator": "==", "value": "taiga" }
+        ]
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": "minecraft:grass_block",
         "minecraft:brightness_filter": {
           "min": 7,
           "max": 15,
@@ -17,19 +42,25 @@
         "minecraft:weight": {
           "default": 6
         },
+        "minecraft:density_limit": {
+          "surface": 3
+        },
         "minecraft:herd": {
           "min_size": 1,
-          "max_size": 4
+          "max_size": 3,
+          "event": "minecraft:entity_born",
+          "event_skip_count": 1
         },
-        "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "taiga"
-        }
+
+        "minecraft:biome_filter": [
+          { "test": "has_biome_tag", "operator": "==", "value": "forest" },
+          { "test": "has_biome_tag", "operator": "!=", "value": "taiga" },
+          { "test": "has_biome_tag", "operator": "!=", "value": "roofed" }
+        ]
       },
       {
         "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_on_block_filter": "minecraft:grass",
+        "minecraft:spawns_on_block_filter": "minecraft:grass_block",
         "minecraft:brightness_filter": {
           "min": 7,
           "max": 15,
@@ -38,36 +69,19 @@
         "minecraft:weight": {
           "default": 8
         },
-        "minecraft:herd": {
-          "min_size": 1,
-          "max_size": 4
-        },
-        "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "roofed"
-        }
-      },
-      {
-        "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_on_block_filter": "minecraft:grass",
-        "minecraft:brightness_filter": {
-          "min": 7,
-          "max": 15,
-          "adjust_for_weather": false
-        },
-        "minecraft:weight": {
-          "default": 6
+        "minecraft:density_limit": {
+          "surface": 3
         },
         "minecraft:herd": {
           "min_size": 1,
-          "max_size": 4
+          "max_size": 3,
+          "event": "minecraft:entity_born",
+          "event_skip_count": 1
         },
-        "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "forest"
-        }
+
+        "minecraft:biome_filter": [
+          { "test": "has_biome_tag", "operator": "==", "value": "roofed" }
+        ]
       }
     ]
   }

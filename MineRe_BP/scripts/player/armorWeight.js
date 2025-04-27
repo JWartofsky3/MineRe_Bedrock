@@ -19,6 +19,8 @@ const lightArmorKeyWords = [
     "straw",
     "paper",
 ];
+const lightArmorSet = new Set();
+const heavyArmorSet = new Set();
 export function armorWeight(player) {
     if (!player) {
         return;
@@ -49,8 +51,14 @@ export function armorWeight(player) {
     movementCopmonent.setCurrentValue(finalSpeedValue);
 }
 function getItemWeight(item) {
-    if (!item) {
+    if (!item?.typeId) {
         return 0;
+    }
+    if (lightArmorSet.has(item.typeId)) {
+        return 0;
+    }
+    if (heavyArmorSet.has(item.typeId)) {
+        return 1;
     }
     if (!item.getComponent(ItemComponentTypes.Durability)) {
         return 0;
@@ -60,9 +68,11 @@ function getItemWeight(item) {
     }
     for (let i = 0; i < lightArmorKeyWords.length; i++) {
         if (item.typeId.includes(lightArmorKeyWords[i])) {
+            lightArmorSet.add(item.typeId);
             return 0;
         }
     }
+    heavyArmorSet.add(item.typeId);
     return 1;
 }
 function getSoulSpeedMultiplier(player) {

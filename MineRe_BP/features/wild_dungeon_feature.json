@@ -5,7 +5,7 @@
       "identifier": "minere:wild_dungeon_feature"
     },
     "structure_name": "minere:wild_dungeon",
-    "adjustment_radius": 16,
+    "adjustment_radius": 8,
     "facing_direction": "random",
     "constraints": {
       "grounded": {}

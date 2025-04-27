@@ -152,7 +152,7 @@
     "components": {
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player?25:0"
+        "on_death": "query.last_hit_by_player?30:0"
       },
       "minecraft:variant": {
         "value": 0
@@ -241,45 +241,7 @@
         "damage": [8, 12]
       },
       "minecraft:despawn": {
-        "filters": {
-          "any_of": [
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 256
-                }
-              ]
-            },
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "inactivity_timer",
-                  "subject": "self",
-                  "value": 45
-                },
-                {
-                  "test": "random_chance",
-                  "value": 1200
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 128
-                }
-              ]
-            }
-          ]
-        }
+        "despawn_from_distance": {}
       },
       "minecraft:behavior.float": {
         "priority": 0

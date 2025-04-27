@@ -51,10 +51,10 @@
         "breathes_water": true
       },
       "minecraft:movement": {
-        "value": 0.2
+        "value": 0.16
       },
       "minecraft:underwater_movement": {
-        "value": 0.2
+        "value": 0.16
       },
       "minecraft:navigation.generic": {
         "is_amphibious": false,

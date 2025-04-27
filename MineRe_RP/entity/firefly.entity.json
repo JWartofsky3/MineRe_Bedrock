@@ -21,7 +21,8 @@
       },
       "animations": {
         "flying": "animation.minere.firefly.flying",
-        "look_at_target": "animation.minere.firefly.look_at_target"
+        "look_at_target": "animation.minere.firefly.look_at_target",
+        "baby_transform": "animation.minere.firefly.baby_transform"
       },
       "particle_effects": {
         "nectar_dripping": "minecraft:nectar_drip_particle"
@@ -30,7 +31,9 @@
         "pre_animation": [
           "variable.textureframe = math.mod(query.life_time, 5) < 3 ? 0 : 1;"
         ],
-        "animate": ["flying", "look_at_target"]
+        "animate": ["flying", "look_at_target",           {
+          "baby_transform": "query.is_baby"
+        }]
       },
       "render_controllers": ["controller.render.minere.firefly"],
       "spawn_egg": {

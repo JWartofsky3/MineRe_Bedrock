@@ -47,16 +47,17 @@
           ]
         }
       },
-      "minecraft:melee_box_attack": {
+      "minecraft:melee_attack": {
         "minecraft:behavior.melee_box_attack": {
-          "priority": 4,
+          "priority": 1,
+          "horizontal_reach": 0.55,
           "track_target": true,
           "speed_multiplier": 1.25
         },
         "minecraft:attack": {
-          "damage": 3,
-          "effect_name": "slowness",
-          "effect_duration": 10
+          "damage": 2,
+          "effect_name": "poison",
+          "effect_duration": 3
         },
         "minecraft:environment_sensor": {
           "triggers": [
@@ -139,7 +140,7 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:equipment": {
-        "table": "loot_tables/entities/skeleton_gear.json"
+        "table": "loot_tables/entities/nether_skeleton_gear.json"
       },
       "minecraft:environment_sensor": {
         "triggers": [

@@ -19,6 +19,7 @@
         "sit": "animation.minere.squirrel.sit",
         "look_at": "animation.minere.squirrel.look_at",
         "baby_transform": "animation.minere.squirrel.baby_transform",
+        "admire": "animation.minere.squirrel.admire",
         "controller": "controller.animation.minere.squirrel"
       },
       "scripts": {

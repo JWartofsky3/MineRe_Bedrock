@@ -60,6 +60,28 @@
         {
           "type": "item",
           "name": "minecraft:potion",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 22
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 22
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:potion",
           "weight": 10,
           "functions": [
             {

@@ -17,6 +17,7 @@
       "aggressive": {
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
+          "horizontal_reach": 0.2,
           "speed_multiplier": 1,
           "on_attack": {
             "filters": {

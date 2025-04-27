@@ -13,6 +13,9 @@
           "transitions": [
             {
               "sitting": "!query.ground_speed && variable.should_sit"
+            },
+            {
+              "admiring": "query.is_admiring"
             }
           ],
           "blend_transition": 0.25
@@ -22,6 +25,18 @@
           "transitions": [
             {
               "walking": "query.ground_speed"
+            },
+            {
+              "admiring": "query.is_admiring"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "admiring": {
+          "animations": ["admire"],
+          "transitions": [
+            {
+              "walking": "!query.is_admiring"
             }
           ],
           "blend_transition": 0.25

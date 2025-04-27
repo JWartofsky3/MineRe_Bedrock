@@ -125,7 +125,7 @@
       },
       "minecraft:adult_hostile": {
         "minecraft:attack": {
-          "damage": 7
+          "damage": [7, 8]
         },
         "minecraft:angry": {
           "duration": 500,
