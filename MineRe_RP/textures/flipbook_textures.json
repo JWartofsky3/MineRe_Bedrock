@@ -1,25 +1,25 @@
 [
   {
     "flipbook_texture": "textures/blocks/minere/amethyst_shield",
-    "atlas_tile": "amethyst_shield",
+    "atlas_tile": "minere:amethyst_shield",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 3
   },
   {
     "flipbook_texture": "textures/blocks/minere/pulsar",
-    "atlas_tile": "pulsar",
+    "atlas_tile": "minere:pulsar",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 3
   },
   {
     "flipbook_texture": "textures/blocks/minere/ender_plasma_ore",
-    "atlas_tile": "ender_plasma_ore",
+    "atlas_tile": "minere:ender_plasma_ore",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 3
   },
   {
     "flipbook_texture": "textures/blocks/minere/plasma_ball",
-    "atlas_tile": "plasma_ball",
+    "atlas_tile": "minere:plasma_ball",
     "frames": [0, 1, 2, 3, 4, 5, 6],
     "ticks_per_frame": 3,
     "blend_frames": false
@@ -56,25 +56,25 @@
   },
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/green",
-    "atlas_tile": "green_firefly_lamp",
+    "atlas_tile": "minere:green_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
   },
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/yellow",
-    "atlas_tile": "yellow_firefly_lamp",
+    "atlas_tile": "minere:yellow_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
   },
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/purple",
-    "atlas_tile": "purple_firefly_lamp",
+    "atlas_tile": "minere:purple_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
   },
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/blue",
-    "atlas_tile": "blue_firefly_lamp",
+    "atlas_tile": "minere:blue_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
   }

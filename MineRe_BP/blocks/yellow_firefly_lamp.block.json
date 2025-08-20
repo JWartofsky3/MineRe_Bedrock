@@ -33,7 +33,7 @@
       },
       "minecraft:material_instances": {
         "*": {
-          "texture": "yellow_firefly_lamp",
+          "texture": "minere:yellow_firefly_lamp",
           "ambient_occlusion": false,
           "face_dimming": false,
           "render_method": "blend"

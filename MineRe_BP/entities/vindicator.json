@@ -310,7 +310,7 @@
         ]
       },
       "minecraft:behavior.melee_box_attack": {
-        "horizontal_reach": 0.55,
+        "horizontal_reach": 0.5,
         "priority": 3
       },
       "minecraft:behavior.random_stroll": {

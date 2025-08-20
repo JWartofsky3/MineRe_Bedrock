@@ -12,6 +12,11 @@ export function rollWebAttack(spider: Entity, target: Entity, chance: number) {
   if (!spider || !target) {
     return;
   }
+  const dimension = world.getDimension(spider.dimension.id);
+  if (!dimension) {
+    return;
+  }
+
   const WEB_COOLDOWN = "webCooldown";
   const activationRange = 5; // min range to activate
   const maxRange = 6; // range webs will generate
@@ -34,13 +39,9 @@ export function rollWebAttack(spider: Entity, target: Entity, chance: number) {
   }
   // actually shoot
   spider.setDynamicProperty(WEB_COOLDOWN, system.currentTick);
-  world.playSound("mob.web_spider.shoot", spider.location);
+  dimension.playSound("mob.web_spider.shoot", spider.location);
 
   const dir = directionVector3(target.location, spider.location);
-  const dimension = world.getDimension(spider.dimension.id);
-  if (!dimension) {
-    return;
-  }
 
   for (let i = 1; i <= maxRange; i++) {
     const pos = addVector3(

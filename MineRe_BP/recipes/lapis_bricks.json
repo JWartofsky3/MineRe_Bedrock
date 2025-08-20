@@ -1,0 +1,22 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:lapis_bricks"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BL", "LB"],
+    "key": {
+      "L": {
+        "item": "minecraft:lapis_lazuli"
+      },
+      "B": {
+        "item": "minecraft:brick"
+      }
+    },
+    "result": {
+      "item": "minere:lapis_bricks",
+      "count": 1
+    }
+  }
+}

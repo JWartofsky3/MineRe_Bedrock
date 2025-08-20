@@ -59,6 +59,10 @@
           "type": "item",
           "name": "minecraft:ender_eye",
           "weight": 1
+        },
+        {
+          "type": "empty",
+          "weight": 1
         }
       ]
     }

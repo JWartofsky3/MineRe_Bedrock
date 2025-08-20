@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "minere:stonecutter_granite_bricks"
+    },
+
+    "tags": ["stonecutter"],
+    "priority": 0,
+    "ingredients": [
+      {
+        "item": "minecraft:polished_granite"
+      },
+      {
+        "item": "minecraft:granite"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "minecraft:granite"
+      }
+    ],
+    "result": {
+      "item": "minere:granite_bricks"
+    }
+  }
+}

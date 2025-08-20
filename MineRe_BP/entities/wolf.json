@@ -491,12 +491,6 @@
                       "domain": "hand",
                       "subject": "other",
                       "value": "stick"
-                    },
-                    {
-                      "test": "has_equipment",
-                      "domain": "hand",
-                      "subject": "other",
-                      "value": "bone"
                     }
                   ]
                 },
@@ -619,7 +613,12 @@
       },
       "minecraft:navigation.walk": {
         "can_path_over_water": true,
-        "avoid_damage_blocks": true
+        "avoid_damage_blocks": true,
+        "blocks_to_avoid": [
+          {
+            "name": "minecraft:powder_snow"
+          }
+        ]
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},

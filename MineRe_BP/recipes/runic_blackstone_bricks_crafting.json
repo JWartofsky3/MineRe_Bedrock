@@ -1,0 +1,22 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:runic_blackstone_bricks_crafting"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BD", "DB"],
+    "key": {
+      "B": {
+        "item": "minecraft:polished_blackstone_bricks"
+      },
+      "D": {
+        "item": "minere:diamond_shard"
+      }
+    },
+    "result": {
+      "item": "minere:runic_blackstone_bricks",
+      "count": 2
+    }
+  }
+}

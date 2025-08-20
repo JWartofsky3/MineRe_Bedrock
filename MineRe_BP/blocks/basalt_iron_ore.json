@@ -17,7 +17,7 @@
         "seconds_to_destroy": 3
       },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 50
+        "explosion_resistance": 21
       },
       "minecraft:map_color": "#183b30",
       "minecraft:geometry": "minecraft:geometry.full_block",

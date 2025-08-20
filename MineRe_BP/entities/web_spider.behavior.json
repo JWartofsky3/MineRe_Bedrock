@@ -2,8 +2,8 @@
   "format_version": "1.18.20",
   "minecraft:entity": {
     "description": {
-      "runtime_identifier": "minecraft:spider",
       "identifier": "minere:web_spider",
+      "runtime_identifier": "minecraft:spider",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
@@ -119,18 +119,17 @@
           "must_be_on_ground": false,
           "speed_multiplier": 2
         },
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "priority": 3,
-          "track_target": true,
-          "speed_multiplier": 1.25,
-          "reach_multiplier": 0.8
+          "horizontal_reach": 0.5,
+          "speed_multiplier": 1.25
         }
       }
     },
     "components": {
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player?5:0"
+        "on_death": "query.last_hit_by_player?10:0"
       },
       "minecraft:nameable": {},
       "minecraft:type_family": {

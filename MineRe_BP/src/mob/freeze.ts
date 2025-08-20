@@ -4,6 +4,7 @@ import {
   EntityComponentTypes,
   EntityEquippableComponent,
   EquipmentSlot,
+  Vector2,
 } from "@minecraft/server";
 import { isAlive } from "./mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
@@ -21,6 +22,26 @@ CANNOT_BE_FROZEN.add("minecraft:bat");
 CANNOT_BE_FROZEN.add("minecraft:ghast");
 CANNOT_BE_FROZEN.add("minecraft:wither");
 CANNOT_BE_FROZEN.add("minecraft:ender_dragon");
+
+const sizes = new Map<string, Vector2>();
+sizes.set("minere:vampire", { x: 1, y: 2.5 });
+sizes.set("minere:ogre", { x: 2, y: 3 });
+sizes.set("minere:yeti", { x: 2, y: 3 });
+sizes.set("minere:demon", { x: 2, y: 3 });
+sizes.set("minere:scorpion", { x: 2, y: 1 });
+sizes.set("minecraft:spider", { x: 2, y: 1 });
+sizes.set("minecraft:iron_golem", { x: 2, y: 3 });
+sizes.set("minecraft:silverfish", { x: 1, y: 1 });
+sizes.set("minecraft:endermite", { x: 1, y: 1 });
+sizes.set("minere:lizord", { x: 3, y: 3 });
+sizes.set("minere:netherzord", { x: 4, y: 3.25 });
+sizes.set("minecraft:ghast", { x: 5, y: 5 });
+sizes.set("minere:cosmic_jelly", { x: 7, y: 7 });
+sizes.set("minere:grizzly_bear", { x: 2, y: 2 });
+sizes.set("minecraft:polar_bear", { x: 2, y: 2 });
+sizes.set("minecraft:enderman", { x: 1, y: 3 });
+sizes.set("minere:black_bear", { x: 2, y: 2 });
+sizes.set("minere:dire_wolf", { x: 1.4, y: 1.5 });
 
 export function rollFreeze(
   target: Entity,
@@ -101,20 +122,38 @@ export function freezeEntity(target: Entity, duration: number) {
     z: Math.round(target.location.z),
   };
   dimension.playSound("mob.freeze.freeze", target?.location);
-  for (let i = -1; i < 3; i++) {
+
+  const size = sizes.get(target.typeId) ?? { x: 1, y: 2 };
+
+  // Outer shell (ice) width
+  const outerWidth = Math.ceil(size.x + 2);
+  const halfOuter = Math.floor(outerWidth / 2);
+
+  // Inner (open space) width
+  const innerWidth = outerWidth - 2;
+  const halfInner = Math.floor(innerWidth / 2);
+
+  const height = Math.ceil(size.y);
+
+  for (let i = -1; i <= height; i++) {
     system.runTimeout(
       () => {
-        replaceableBlocks.forEach((replaceMe: string) => {
+        // Outer ice shell
+        replaceableBlocks.forEach((replaceMe) => {
           dimension.runCommand(
-            `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace ${replaceMe}`,
+            `fill ${location.x - halfOuter} ${location.y + i} ${location.z - halfOuter} ${location.x + halfOuter} ${location.y + i} ${location.z + halfOuter} minere:freeze_ice replace ${replaceMe}`,
           );
         });
-        if (i == 0 || i == 1) {
+
+        // Interior: powder snow on floor, air above
+        if (i >= 0 && i < height) {
           dimension.runCommand(
-            `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`,
+            `fill ${location.x - halfInner} ${location.y + i} ${location.z - halfInner} ${location.x + halfInner} ${location.y + i} ${location.z + halfInner} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`,
           );
         }
-        if (i == 0) {
+
+        // Center teleport (only once at floor level)
+        if (i === 0 || i === 1) {
           target.teleport({
             x: location.x + 0.5,
             y: location.y,
@@ -126,17 +165,17 @@ export function freezeEntity(target: Entity, duration: number) {
     );
   }
 
-  //cleanup
+  // Cleanup
   system.runTimeout(() => {
-    for (let i = -1; i < 3; i++) {
+    for (let i = -1; i <= height; i++) {
       system.runTimeout(
         () => {
           dimension.runCommand(
-            `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} air replace minere:freeze_ice`,
+            `fill ${location.x - halfOuter} ${location.y + i} ${location.z - halfOuter} ${location.x + halfOuter} ${location.y + i} ${location.z + halfOuter} air replace minere:freeze_ice`,
           );
-          if (i == 0) {
+          if (i >= 0 && i < height) {
             dimension.runCommand(
-              `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} air replace powder_snow`,
+              `fill ${location.x - halfInner} ${location.y + i} ${location.z - halfInner} ${location.x + halfInner} ${location.y + i} ${location.z + halfInner} air replace ${i === 0 ? "powder_snow" : "air"}`,
             );
           }
         },
@@ -144,6 +183,52 @@ export function freezeEntity(target: Entity, duration: number) {
       );
     }
   }, duration * 20);
+
+  // const size = sizes.get(target.typeId) ?? { x: 1, y: 2};
+
+  // for (let i = -1; i < 3; i++) {
+  //   system.runTimeout(
+  //     () => {
+  //       replaceableBlocks.forEach((replaceMe: string) => {
+  //         dimension.runCommand(
+  //           `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} minere:freeze_ice replace ${replaceMe}`,
+  //         );
+  //       });
+  //       if (i == 0 || i == 1) {
+  //         dimension.runCommand(
+  //           `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} ${i === 0 ? "powder_snow" : "air"} replace minere:freeze_ice`,
+  //         );
+  //       }
+  //       if (i == 0) {
+  //         target.teleport({
+  //           x: location.x + 0.5,
+  //           y: location.y,
+  //           z: location.z + 0.5,
+  //         });
+  //       }
+  //     },
+  //     3 + i * 3,
+  //   );
+  // }
+
+  // //cleanup
+  // system.runTimeout(() => {
+  //   for (let i = -1; i < 3; i++) {
+  //     system.runTimeout(
+  //       () => {
+  //         dimension.runCommand(
+  //           `fill ${location.x - 1} ${location.y + i} ${location.z - 1} ${location.x + 1} ${location.y + i} ${location.z + 1} air replace minere:freeze_ice`,
+  //         );
+  //         if (i == 0) {
+  //           dimension.runCommand(
+  //             `fill ${location.x} ${location.y + i} ${location.z} ${location.x} ${location.y + i} ${location.z} air replace powder_snow`,
+  //           );
+  //         }
+  //       },
+  //       12 - i * 3,
+  //     );
+  //   }
+  // }, duration * 20);
 }
 
 function applySnow(entity: Entity) {

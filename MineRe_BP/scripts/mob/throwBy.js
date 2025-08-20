@@ -1,8 +1,25 @@
-import { addVector3, directionVector3, multiplyVector3Number, } from "util/vector3Functions";
-export const throwBy = (thrower, target, scale, vAddition) => {
-    if (!throwBy || !target || !scale) {
-        return;
-    }
-    const throwForce = addVector3(multiplyVector3Number(directionVector3(target.location, thrower.location), scale), { x: 0, y: vAddition, z: 0 });
-    target.applyKnockback(throwForce.x, throwForce.z, scale, vAddition);
-};
+export function throwBy(thrower, target, scale, vAddition) {
+  if (!thrower || !target || !scale) {
+    return;
+  }
+  // Calculate the direction vector from the thrower to the target.
+  const direction = {
+    x: target.location.x - thrower.location.x,
+    z: target.location.z - thrower.location.z,
+  };
+  // Normalize the direction vector to get a unit vector.
+  const magnitude = Math.sqrt(
+    direction.x * direction.x + direction.z * direction.z,
+  );
+  const normalizedDirection = {
+    x: direction.x / magnitude,
+    z: direction.z / magnitude,
+  };
+  // Create the horizontal force vector by multiplying the normalized direction by the scale.
+  const horizontalForce = {
+    x: normalizedDirection.x * scale,
+    z: normalizedDirection.z * scale,
+  };
+  // Apply the knockback with the new parameter structure.
+  target.applyKnockback(horizontalForce, vAddition);
+}

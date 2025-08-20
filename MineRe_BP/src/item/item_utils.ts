@@ -29,6 +29,9 @@ export function findItemInContainer(
   container: Container,
   typeId: string,
 ): number {
+  if (!container || !typeId) {
+    return -1;
+  }
   for (let i = 0; i < container.size; i++) {
     const item = container.getItem(i);
     if (item && item.typeId == typeId) {
@@ -160,4 +163,22 @@ export const hasPickaxe = (player: Player): boolean => {
   }
 
   return item.typeId.includes("pickaxe");
+};
+
+export const canPickupPot = (player: Player): boolean => {
+  const equipment = player.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!equipment) {
+    return true;
+  }
+  const item = equipment.getEquipmentSlot(EquipmentSlot.Mainhand)?.getItem();
+  if (!item) {
+    return true;
+  }
+  const durability = item.getComponent(ItemComponentTypes.Durability);
+  if (!durability) {
+    return true;
+  }
+  return getEnchantmentLevel(player, "silk_touch") > 0;
 };

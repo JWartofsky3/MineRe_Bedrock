@@ -1,12 +1,18 @@
 import {
+  world,
   EntityHealthChangedAfterEvent,
   EntityHealthComponent,
   EntityComponentTypes,
 } from "@minecraft/server";
+import { REDUCED_HEALTH_REGEN } from "settings";
 
 // makes the player heal half as much from hunger. It is disabled while player has Regeneration effect.
 export const playerHungerHeal = (data: EntityHealthChangedAfterEvent) => {
   if (data.entity.typeId !== "minecraft:player") {
+    return;
+  }
+
+  if (!world?.getDynamicProperty(REDUCED_HEALTH_REGEN)?.valueOf()) {
     return;
   }
 
@@ -16,6 +22,7 @@ export const playerHungerHeal = (data: EntityHealthChangedAfterEvent) => {
   ) {
     return;
   }
+
   const diff = data.newValue - data.oldValue;
   if (diff > 0.5 && diff <= 1.0) {
     const health: EntityHealthComponent = data.entity.getComponent(

@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minere:walker",
+      "identifier": "minere:walker_placeholder",
       "population_control": "monster"
     },
     "conditions": [
@@ -12,6 +12,10 @@
           "minecraft:end_stone",
           "minere:end_sand"
         ],
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7
+        },
         "minecraft:weight": {
           "default": 1
         },

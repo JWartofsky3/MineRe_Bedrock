@@ -1,0 +1,24 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:diamond_bear_armor"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["IBH", "II "],
+    "key": {
+      "B": {
+        "item": "minecraft:diamond_block"
+      },
+      "I": {
+        "item": "minecraft:diamond"
+      },
+      "H": {
+        "item": "minecraft:diamond_helmet"
+      }
+    },
+    "result": {
+      "item": "minere:diamond_bear_armor"
+    }
+  }
+}

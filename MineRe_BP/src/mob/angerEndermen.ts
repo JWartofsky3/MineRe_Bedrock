@@ -50,7 +50,7 @@ export const angerEndermen = (data: EntityRemoveBeforeEvent) => {
       }) as Entity[];
       endermen.forEach((enderman: Entity) => {
         enderman.triggerEvent("minere:start_search");
-        world.playSound("mob.endermen.scream", enderman.location, {
+        dimension.playSound("mob.endermen.scream", enderman.location, {
           volume: 10.0,
         });
       });

@@ -173,7 +173,7 @@
       },
       "minecraft:behavior.swoop_attack": {
         "priority": 2,
-        "damage_reach": 0.2,
+        "damage_reach": 0.15,
         "speed_multiplier": 1.5,
         "delay_range": [5, 10]
       },

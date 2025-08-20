@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minere:sand_stomp",
+      "identifier": "minere:sand_stomp_placeholder",
       "population_control": "monster"
     },
     "conditions": [
@@ -24,10 +24,6 @@
 
         "minecraft:weight": {
           "default": 50
-        },
-        "minecraft:herd": {
-          "min_size": 1,
-          "max_size": 3
         },
 
         "minecraft:height_filter": {
@@ -58,13 +54,16 @@
       },
       {
         "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:end_stone",
+          "minere:end_sand"
+        ],
 
         "minecraft:spawns_underground": {},
 
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 7,
-          "adjust_for_weather": true
+          "max": 7
         },
 
         "minecraft:difficulty_filter": {
@@ -73,21 +72,38 @@
         },
 
         "minecraft:weight": {
-          "default": 3
-        },
-        "minecraft:herd": {
-          "min_size": 1,
-          "max_size": 3
-        },
-
-        "minecraft:height_filter": {
-          "min": 0
+          "default": 8
         },
 
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
           "operator": "==",
           "value": "the_end"
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+
+        "minecraft:spawns_underground": {},
+
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7
+        },
+
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+
+        "minecraft:weight": {
+          "default": 15
+        },
+
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "soulsand_valley"
         }
       }
     ]

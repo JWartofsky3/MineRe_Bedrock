@@ -39,8 +39,8 @@
         "on_death": "query.last_hit_by_player ? 7:0"
       },
       "minecraft:health": {
-        "value": 32,
-        "max": 32
+        "value": 30,
+        "max": 30
       },
       "minecraft:attack": {
         "damage": 4

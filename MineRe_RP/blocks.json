@@ -13,15 +13,15 @@
     "sound": "glass"
   },
   "minere:amethyst_shield": {
-    "textures": "amethyst_shield",
+    "textures": "minere:amethyst_shield",
     "sound": "glass"
   },
   "minere:pulsar": {
-    "textures": "pulsar",
+    "textures": "minere:pulsar",
     "sound": "stone"
   },
   "minere:enderon_block": {
-    "textures": "enderon_block",
+    "textures": "minere:enderon_block",
     "sound": "stone"
   },
   "minere:freeze_ice": {
@@ -29,23 +29,27 @@
     "sound": "glass"
   },
   "minere:ender_plasma_ore": {
-    "textures": "ender_plasma_ore",
+    "textures": "minere:ender_plasma_ore",
     "sound": "stone"
   },
   "minere:enderon_ore": {
-    "textures": "enderon_ore",
+    "textures": "minere:enderon_ore",
     "sound": "stone"
   },
   "minere:sulfur_ore": {
-    "textures": "sulfur_ore",
+    "textures": "minere:sulfur_ore",
     "sound": "stone"
   },
   "minere:deepslate_sulfur_ore": {
-    "textures": "deepslate_sulfur_ore",
+    "textures": "minere:deepslate_sulfur_ore",
     "sound": "deepslate"
   },
   "minere:nether_coal_ore": {
-    "textures": "nether_coal_ore",
+    "textures": "minere:nether_coal_ore",
+    "sound": "netherrack"
+  },
+    "minere:nether_coal_block": {
+    "textures": "minere:nether_coal_block",
     "sound": "netherrack"
   },
   "minere:basalt_nether_coal_ore": {
@@ -60,11 +64,11 @@
     }
   },
   "minere:amethyst_ore": {
-    "textures": "amethyst_ore",
+    "textures": "minere:amethyst_ore",
     "sound": "stone"
   },
   "minere:deepslate_amethyst_ore": {
-    "textures": "deepslate_amethyst_ore",
+    "textures": "minere:deepslate_amethyst_ore",
     "sound": "deepslate"
   },
   "minere:teleporter": {
@@ -104,5 +108,29 @@
   "minere:ghost_pot": {
     "textures": "minere:ghost_pot",
     "sound": "decorated_pot"
+  },
+    "minere:runic_blackstone": {
+    "textures": "minere:runic_blackstone",
+    "sound": "stone"
+  },
+    "minere:runic_blackstone_bricks": {
+    "textures": "minere:runic_blackstone_bricks",
+    "sound": "stone"
+  },
+      "minere:lapis_bricks": {
+    "textures": "minere:lapis_bricks",
+    "sound": "stone"
+  },
+        "minere:andesite_bricks": {
+    "textures": "minere:andesite_bricks",
+    "sound": "stone"
+  },
+        "minere:granite_bricks": {
+    "textures": "minere:granite_bricks",
+    "sound": "stone"
+  },
+        "minere:diorite_bricks": {
+    "textures": "minere:diorite_bricks",
+    "sound": "stone"
   }
 }

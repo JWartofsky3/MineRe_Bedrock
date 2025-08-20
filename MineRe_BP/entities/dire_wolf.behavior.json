@@ -311,7 +311,7 @@
       "minecraft:behavior.melee_box_attack": {
         "priority": 3,
         "speed_multiplier": 1.4,
-        "horizontal_reach": 0.7,
+        "horizontal_reach": 0.5,
         "track_target": true,
         "on_attack": {
           "event": "change_mode",

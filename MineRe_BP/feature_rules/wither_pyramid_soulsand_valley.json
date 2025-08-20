@@ -20,7 +20,7 @@
       ]
     },
     "distribution": {
-      "iterations": "(Math.abs(v.originz) < 200 && Math.abs(v.originx) < 200) ? 0 : 1",
+      "iterations": "(Math.abs(v.originz) < 250 && Math.abs(v.originx) < 250) ? 0 : 1",
       "x": -16,
       "y": {
         "extent": [85, 90],
@@ -29,7 +29,7 @@
       "z": -16,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 200
+        "denominator": 225
       }
     }
   }

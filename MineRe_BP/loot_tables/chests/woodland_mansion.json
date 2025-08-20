@@ -24,12 +24,52 @@
         {
           "type": "item",
           "name": "minecraft:record_13",
-          "weight": 75
+          "weight": 20
         },
         {
           "type": "item",
           "name": "minecraft:record_cat",
-          "weight": 75
+          "weight": 20
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_blocks",
+          "weight": 20
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_chirp",
+          "weight": 20
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_far",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_mall",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_strad",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_ward",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_11",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minecraft:record_wait",
+          "weight": 10
         },
         {
           "type": "item",
@@ -324,6 +364,20 @@
             }
           ],
           "name": "minecraft:book"
+        }
+      ]
+    },
+    {
+      "rolls": 4,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
         }
       ]
     }

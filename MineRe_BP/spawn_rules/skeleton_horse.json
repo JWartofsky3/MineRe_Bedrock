@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minecraft:skeleton_horse",
+      "identifier": "minere:skeleton_horse_placeholder",
       "population_control": "monster"
     },
     "conditions": [

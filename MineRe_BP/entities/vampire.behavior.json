@@ -108,7 +108,7 @@
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
           "speed_multiplier": 1.5,
-          "horizontal_reach": 0.55
+          "horizontal_reach": 0.5
         },
         "minecraft:behavior.random_hover": {
           "priority": 4,
@@ -190,8 +190,8 @@
         "value": 0.23
       },
       "minecraft:health": {
-        "value": 36,
-        "max": 36
+        "value": 40,
+        "max": 40
       },
       "minecraft:attack": {
         "damage": [6, 7],

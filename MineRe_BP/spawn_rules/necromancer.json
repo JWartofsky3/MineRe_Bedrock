@@ -13,7 +13,7 @@
 
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 5,
+          "max": 7,
           "adjust_for_weather": true
         },
 
@@ -23,7 +23,7 @@
         },
 
         "minecraft:weight": {
-          "default": 4
+          "default": 5
         },
 
         "minecraft:density_limit": {

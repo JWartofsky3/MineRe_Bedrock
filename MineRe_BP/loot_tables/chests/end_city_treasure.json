@@ -448,6 +448,20 @@
           ]
         }
       ]
+    },
+    {
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
+        }
+      ]
     }
   ]
 }

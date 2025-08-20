@@ -5,19 +5,13 @@
       "identifier": "minecraft:iron_horse_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["#  ", "#W#", "L#L"],
+    "pattern": ["I I", "IBI", "I I"],
     "key": {
-      "W": {
-        "item": "minecraft:wool"
-      },
-      "#": {
+      "I": {
         "item": "minecraft:iron_ingot"
       },
-      "H": {
-        "item": "minecraft:iron_helmet"
-      },
-      "L": {
-        "item": "minecraft:iron_leggings"
+      "B": {
+        "item": "minecraft:iron_block"
       }
     },
     "result": {

@@ -11,6 +11,7 @@ import {
   BlockComponentOnPlaceEvent,
 } from "@minecraft/server";
 import { enderTeleport } from "mob/enderTeleport";
+import { spawnParticleCloud } from "particles/particleCloud";
 import { randomVector3, addVector3 } from "util/vector3Functions";
 
 const TELEPORT_RANGE = 3.15;
@@ -64,7 +65,7 @@ export const teleporter: BlockCustomComponent = {
     blocks.push(arg.block.south(1));
 
     blocks.forEach((block: Block) => {
-      if (block.isValid()) {
+      if (block.isValid) {
         if (block.typeId === "minecraft:redstone_block") {
           redstonePower = 15;
         }
@@ -92,14 +93,13 @@ export const teleporter: BlockCustomComponent = {
     );
 
     if (redstonePower) {
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        try {
-          dimension.spawnParticle(
-            "minecraft:end_chest",
-            addVector3(location, randomVector3(PARTICLE_DISTANCE)),
-          );
-        } catch {}
-      }
+      spawnParticleCloud(
+        "minecraft:end_chest",
+        location,
+        PARTICLE_DISTANCE,
+        PARTICLE_COUNT,
+        dimension,
+      );
       dimension.playSound("machine.teleporter.teleport", location);
 
       let targetOffset: Vector3 = {

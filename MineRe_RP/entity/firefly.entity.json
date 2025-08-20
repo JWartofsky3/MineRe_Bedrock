@@ -31,9 +31,13 @@
         "pre_animation": [
           "variable.textureframe = math.mod(query.life_time, 5) < 3 ? 0 : 1;"
         ],
-        "animate": ["flying", "look_at_target",           {
-          "baby_transform": "query.is_baby"
-        }]
+        "animate": [
+          "flying",
+          "look_at_target",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
       },
       "render_controllers": ["controller.render.minere.firefly"],
       "spawn_egg": {

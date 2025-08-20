@@ -28,7 +28,7 @@ export const PhasedEnderPearl: ItemCustomComponent = {
     ) as ItemCooldownComponent;
     cooldown.startCooldown(player);
     const dimension = player.dimension;
-    if (player.getGameMode() != GameMode.creative) {
+    if (player.getGameMode() != GameMode.Creative) {
       if (Math.random() <= CONSUME_CHANCE) {
         player.runCommand("clear @s[m=!c] minere:phased_ender_pearl 0 1");
       }

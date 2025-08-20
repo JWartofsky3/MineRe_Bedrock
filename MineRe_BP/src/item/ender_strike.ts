@@ -113,12 +113,13 @@ function getNearbyEntities(
 }
 
 function enderEffects(entity: Entity) {
-  world.playSound("mob.endermen.portal", entity.location, {
+  const dimension = entity.dimension;
+  dimension.playSound("mob.endermen.portal", entity.location, {
     volume: 2.0,
     pitch: 1.25,
   });
   for (let k = 0; k < 30; k++) {
-    entity?.dimension.spawnParticle(
+    dimension.spawnParticle(
       "minecraft:end_chest",
       addVector3(entity.location, randomVector3(1)),
     );

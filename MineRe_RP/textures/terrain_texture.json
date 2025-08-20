@@ -10,37 +10,40 @@
     "minere:tall_icicle": {
       "textures": "textures/blocks/minere/tall_icicle"
     },
-    "amethyst_shield": {
+    "minere:amethyst_shield": {
       "textures": "textures/blocks/minere/amethyst_shield"
     },
-    "plasma_ball": {
+    "minere:plasma_ball": {
       "textures": "textures/blocks/minere/plasma_ball"
     },
-    "pulsar": {
+    "minere:pulsar": {
       "textures": "textures/blocks/minere/pulsar"
     },
-    "enderon_block": {
+    "minere:enderon_block": {
       "textures": "textures/blocks/minere/enderon_block"
     },
-    "ender_plasma_ore": {
+    "minere:ender_plasma_ore": {
       "textures": "textures/blocks/minere/ender_plasma_ore"
     },
-    "enderon_ore": {
+    "minere:enderon_ore": {
       "textures": "textures/blocks/minere/enderon_ore"
     },
-    "sulfur_ore": {
+    "minere:sulfur_ore": {
       "textures": "textures/blocks/minere/sulfur_ore"
     },
-    "deepslate_sulfur_ore": {
+    "minere:deepslate_sulfur_ore": {
       "textures": "textures/blocks/minere/deepslate_sulfur_ore"
     },
-    "nether_coal_ore": {
+    "minere:nether_coal_ore": {
       "textures": "textures/blocks/minere/nether_coal_ore"
     },
-    "amethyst_ore": {
+        "minere:nether_coal_block": {
+      "textures": "textures/blocks/minere/nether_coal_block"
+    },
+    "minere:amethyst_ore": {
       "textures": "textures/blocks/minere/amethyst_ore"
     },
-    "deepslate_amethyst_ore": {
+    "minere:deepslate_amethyst_ore": {
       "textures": "textures/blocks/minere/deepslate_amethyst_ore"
     },
     "minere:teleporter_flat": {
@@ -100,17 +103,35 @@
     "minere:ghost_pot": {
       "textures": "textures/blocks/minere/ghost_pot.png"
     },
-    "green_firefly_lamp": {
+    "minere:green_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/green"
     },
-    "yellow_firefly_lamp": {
+    "minere:yellow_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/yellow"
     },
-    "purple_firefly_lamp": {
+    "minere:purple_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/purple"
     },
-    "blue_firefly_lamp": {
+    "minere:blue_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/blue"
+    },
+        "minere:runic_blackstone": {
+      "textures": "textures/blocks/minere/runic_blackstone"
+    },
+        "minere:runic_blackstone_bricks": {
+      "textures": "textures/blocks/minere/runic_blackstone_bricks"
+    },
+            "minere:andesite_bricks": {
+      "textures": "textures/blocks/minere/andesite_bricks"
+    },
+                "minere:granite_bricks": {
+      "textures": "textures/blocks/minere/granite_bricks"
+    },
+                "minere:diorite_bricks": {
+      "textures": "textures/blocks/minere/diorite_bricks"
+    },
+                "minere:lapis_bricks": {
+      "textures": "textures/blocks/minere/lapis_bricks"
     }
   }
 }

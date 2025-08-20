@@ -82,7 +82,7 @@ export function rollOgreRoar(
       return;
     }
     system.runTimeout(() => {
-      if (!caster?.isValid()) {
+      if (!caster?.isValid) {
         return;
       }
       const breakDistance = isCaveOgre ? 6 : 5;
@@ -105,7 +105,7 @@ export function rollOgreRoar(
               continue;
             }
             const block = dimension.getBlock(pos);
-            if (!block?.isValid()) {
+            if (!block?.isValid) {
               continue;
             }
             if (unbreakableBlocks.has(block.typeId)) {

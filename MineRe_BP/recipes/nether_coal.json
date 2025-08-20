@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:nether_coal"
+    },
+
+    "tags": ["crafting_table"],
+    "pattern": ["#"],
+    "key": {
+      "#": {
+        "item": "minere:nether_coal_block"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minere:nether_coal"
+      }
+    ],
+    "result": {
+      "item": "minere:nether_coal",
+      "count": 9
+    }
+  }
+}

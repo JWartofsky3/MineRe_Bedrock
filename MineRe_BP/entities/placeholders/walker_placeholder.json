@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:walker_placeholder",
+      "runtime_identifier": "minecraft:skeleton",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 3,
+        "height": 8
+      },
+      "minecraft:timer": {
+        "time": 2.0,
+        "looping": false,
+        "time_down_event": {
+          "event": "despawn_self",
+          "target": "self"
+        }
+      }
+    },
+    "events": {
+      "despawn_self": {
+        "add": {
+          "component_groups": ["despawn_now"]
+        }
+      }
+    },
+    "component_groups": {
+      "despawn_now": {
+        "minecraft:instant_despawn": {}
+      }
+    }
+  }
+}

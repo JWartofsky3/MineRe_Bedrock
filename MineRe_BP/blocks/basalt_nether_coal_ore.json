@@ -17,7 +17,7 @@
         "seconds_to_destroy": 3.0
       },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 50
+        "explosion_resistance": 21
       },
       "minecraft:map_color": "#EEF6B4",
       "minecraft:loot": "loot_tables/blocks/nether_coal_ore.json"

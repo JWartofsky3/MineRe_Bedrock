@@ -16,7 +16,7 @@
       },
       "minecraft:material_instances": {
         "*": {
-          "texture": "plasma_ball",
+          "texture": "minere:plasma_ball",
           "ambient_occlusion": false,
           "face_dimming": false,
           "render_method": "blend"

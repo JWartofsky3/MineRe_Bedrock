@@ -3,7 +3,7 @@ import {
   ItemComponentTypes,
   Player,
   BlockCustomComponent,
-  BlockComponentPlayerDestroyEvent,
+  BlockComponentPlayerBreakEvent,
   EntityEquippableComponent,
   EquipmentSlot,
   ItemEnchantableComponent,
@@ -12,13 +12,13 @@ import {
 import { getItem } from "item/item_utils";
 
 export const fireflyLamp: BlockCustomComponent = {
-  onPlayerDestroy(arg: BlockComponentPlayerDestroyEvent) {
+  onPlayerBreak(arg: BlockComponentPlayerBreakEvent) {
     const player: Player = arg.player;
     if (!player) {
       return;
     }
     const dimension = player.dimension;
-    const typeId = arg.destroyedBlockPermutation.getItemStack().typeId;
+    const typeId = arg.brokenBlockPermutation.getItemStack().typeId;
     const equipment = player.getComponent(
       EntityComponentTypes.Equippable,
     ) as EntityEquippableComponent;

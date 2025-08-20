@@ -276,6 +276,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:dried_ghast",
+          "weight": 10
         }
       ]
     }

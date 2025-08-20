@@ -42,7 +42,7 @@
             "radius_on_use": 0,
             "potion": 23,
             "particle": "dragonbreath",
-            "duration": 20,
+            "duration": 10,
             "color": [220, 0, 239],
             "affect_owner": false,
             "reapplication_delay": 15

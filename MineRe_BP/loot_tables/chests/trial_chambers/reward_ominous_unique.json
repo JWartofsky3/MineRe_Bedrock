@@ -49,6 +49,11 @@
                   "name": "wind_burst",
                   "min": 1,
                   "max": 3
+                },
+                {
+                  "name": "unbreaking",
+                  "min": 1,
+                  "max": 3
                 }
               ]
             }

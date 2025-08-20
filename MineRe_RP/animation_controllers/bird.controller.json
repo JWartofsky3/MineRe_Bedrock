@@ -50,9 +50,12 @@
           "blend_transition": 0.5
         },
         "standing": {
-          "animations": ["breathe",             {
-            "walk": "query.modified_move_speed"
-          }],
+          "animations": [
+            "breathe",
+            {
+              "walk": "query.modified_move_speed"
+            }
+          ],
           "transitions": [
             {
               "flying": "variable.state == 0"

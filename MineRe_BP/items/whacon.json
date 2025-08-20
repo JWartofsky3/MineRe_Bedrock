@@ -13,7 +13,11 @@
         "value": "item.whacon.name"
       },
       "minecraft:tags": {
-        "tags": ["minecraft:is_food"]
+        "tags": [
+          "minecraft:is_food",
+          "minecraft:is_meat",
+          "minecraft:is_cooked"
+        ]
       },
       "minecraft:use_modifiers": {
         "use_duration": 2.0,

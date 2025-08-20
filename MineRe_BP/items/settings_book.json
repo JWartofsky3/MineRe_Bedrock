@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:settings_book",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "minere.settings_book",
+      "minecraft:max_stack_size": 1,
+      "minecraft:custom_components": ["minere:settings_book"],
+      "minecraft:cooldown": {
+        "category": "minere:settings_book",
+        "duration": 1.0
+      },
+      "minecraft:rarity": "epic"
+    }
+  }
+}

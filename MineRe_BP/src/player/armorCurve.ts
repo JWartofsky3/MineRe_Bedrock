@@ -10,10 +10,12 @@ import {
   ItemEnchantableComponent,
 } from "@minecraft/server";
 import { getEnchantmentLevel } from "item/item_utils";
+import { getSettings } from "settings";
 
 const defenseMap = new Map<string, number>();
 // helmets
 defenseMap.set("minecraft:leather_helmet", 1);
+defenseMap.set("minecraft:copper_helmet", 2);
 defenseMap.set("minecraft:golden_helmet", 2);
 defenseMap.set("minecraft:chainmail_helmet", 2);
 defenseMap.set("minecraft:iron_helmet", 2);
@@ -22,6 +24,7 @@ defenseMap.set("minecraft:diamond_helmet", 3);
 
 // chestplates
 defenseMap.set("minecraft:leather_chestplate", 3);
+defenseMap.set("minecraft:copper_chestplate", 4);
 defenseMap.set("minecraft:golden_chestplate", 5);
 defenseMap.set("minecraft:chainmail_chestplate", 5);
 defenseMap.set("minecraft:iron_chestplate", 6);
@@ -29,6 +32,7 @@ defenseMap.set("minecraft:diamond_chestplate", 8);
 
 // leggings
 defenseMap.set("minecraft:leather_leggings", 2);
+defenseMap.set("minecraft:copper_leggings", 3);
 defenseMap.set("minecraft:golden_leggings", 3);
 defenseMap.set("minecraft:chainmail_leggings", 4);
 defenseMap.set("minecraft:iron_leggings", 5);
@@ -36,6 +40,7 @@ defenseMap.set("minecraft:diamond_leggings", 6);
 
 // boots
 defenseMap.set("minecraft:leather_boots", 1);
+defenseMap.set("minecraft:copper_boots", 3);
 defenseMap.set("minecraft:golden_boots", 1);
 defenseMap.set("minecraft:chainmail_boots", 1);
 defenseMap.set("minecraft:iron_boots", 2);
@@ -64,10 +69,12 @@ export const armorCurve = (
     cause == EntityDamageCause.temperature ||
     cause == EntityDamageCause.sonicBoom ||
     cause == EntityDamageCause.override ||
-    cause == EntityDamageCause.suicide
+    cause == EntityDamageCause.selfDestruct
   ) {
     return;
   }
+
+  const settings = getSettings();
 
   if (getEnchantmentLevel(damageSource.damagingEntity, "breach")) {
     return;
@@ -87,8 +94,12 @@ export const armorCurve = (
     return;
   }
 
-  const armorCurveDiff = getArmorCurveDiff(equippable, damage, cause);
-  const protectionDiff = getProtectionDiff(equippable, damage, cause);
+  const armorCurveDiff = settings.armorCurve
+    ? getArmorCurveDiff(equippable, damage, cause)
+    : 0;
+  const protectionDiff = settings.protectionNerf
+    ? getProtectionDiff(equippable, damage, cause)
+    : 0;
 
   health.setCurrentValue(
     Math.min(

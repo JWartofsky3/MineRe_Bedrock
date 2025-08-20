@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minecraft:rib_armor_trim_smithing_template_duplicate"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["#D#", "#S#", "#D#"],
+    "key": {
+      "#": {
+        "item": "minecraft:netherrack"
+      },
+      "D": {
+        "item": "minecraft:diamond"
+      },
+      "S": {
+        "item": "minecraft:rib_armor_trim_smithing_template"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:rib_armor_trim_smithing_template"
+      }
+    ],
+    "result": {
+      "item": "minecraft:rib_armor_trim_smithing_template",
+      "count": 3
+    }
+  }
+}

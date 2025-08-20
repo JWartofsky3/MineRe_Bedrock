@@ -152,10 +152,10 @@
       "sounds": [
         "sounds/mob/bird/goldfinch/short0",
         "sounds/mob/bird/goldfinch/short1",
-                "sounds/mob/bird/goldfinch/medium0",
+        "sounds/mob/bird/goldfinch/medium0",
         "sounds/mob/bird/goldfinch/medium1",
-                "sounds/mob/bird/goldfinch/medium2",
-                        "sounds/mob/bird/goldfinch/long0"
+        "sounds/mob/bird/goldfinch/medium2",
+        "sounds/mob/bird/goldfinch/long0"
       ]
     },
     "mob.tufted_titmouse.ambient": {
@@ -570,12 +570,12 @@
         }
       ]
     },
-    "mob.walker.attack": {
+    "mob.walker.kick": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
       "sounds": [
         {
-          "name": "sounds/mob/walker/attack"
+          "name": "sounds/mob/walker/kick"
         }
       ]
     },

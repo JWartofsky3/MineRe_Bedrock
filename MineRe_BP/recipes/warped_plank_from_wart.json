@@ -1,0 +1,18 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:warped_plank_from_wart"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["###", "###", "###"],
+    "key": {
+      "#": {
+        "item": "minecraft:warped_wart_block"
+      }
+    },
+    "result": {
+      "item": "minecraft:warped_planks"
+    }
+  }
+}

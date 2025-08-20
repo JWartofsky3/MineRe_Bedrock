@@ -7,7 +7,7 @@
         "groups": [
           {
             "group_identifier": {
-              "icon": "minere:copper_treecapitator",
+              "icon": "minere:diamond_treecapitator",
               "name": "minere:itemGroup.name.treecapitator"
             },
             "items": [
@@ -15,7 +15,8 @@
               "minere:iron_treecapitator",
               "minere:golden_treecapitator",
               "minere:diamond_treecapitator",
-              "minere:netherite_treecapitator"
+              "minere:netherite_treecapitator",
+              "minere:enderon_treecapitator"
             ]
           },
           {
@@ -30,6 +31,20 @@
               "minere:illumina",
               "minere:firebrand",
               "minere:darkheart"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "minere:diamond_bear_armor",
+              "name": "minere:itemGroup.name.bear_armor"
+            },
+            "items": [
+              "minere:copper_bear_armor",
+              "minere:iron_bear_armor",
+              "minere:gold_bear_armor",
+              "minere:diamond_bear_armor",
+              "minere:netherite_bear_armor",
+              "minere:enderon_bear_armor"
             ]
           }
         ]

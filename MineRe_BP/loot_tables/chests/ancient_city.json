@@ -553,7 +553,7 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 10
+          "weight": 9
         },
         {
           "type": "item",
@@ -572,7 +572,7 @@
         },
         {
           "type": "item",
-          "weight": 2,
+          "weight": 3,
           "functions": [
             {
               "function": "set_count",
@@ -588,6 +588,25 @@
       ]
     },
     {
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minere:ghost_pot",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 4
+        }
+      ]
+    },
+    {
       "rolls": 1,
       "entries": [
         {
@@ -596,7 +615,7 @@
         },
         {
           "type": "item",
-          "name": "minere:ghost_pot",
+          "name": "minere:amethyst_staff",
           "weight": 1
         }
       ]

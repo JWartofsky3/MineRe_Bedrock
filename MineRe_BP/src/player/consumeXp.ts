@@ -4,7 +4,7 @@ export const consumeXp = (player: Player, amount: number): boolean => {
   if (!player || !amount) {
     return false;
   }
-  if (player.getGameMode() === GameMode.creative) {
+  if (player.getGameMode() === GameMode.Creative) {
     return true;
   }
   if (player.getTotalXp() < amount) {

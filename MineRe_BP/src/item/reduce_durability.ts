@@ -8,6 +8,7 @@ import {
   ItemStack,
   EntityEquippableComponent,
   EquipmentSlot,
+  GameMode,
 } from "@minecraft/server";
 import { getEnchantmentLevel } from "./item_utils";
 
@@ -19,12 +20,13 @@ export function reduceDurability(
 ) {
   if (
     source === null ||
-    source.getGameMode() === "creative" ||
+    source.getGameMode() === GameMode.Creative ||
     !item ||
     !amount
   ) {
     return;
   }
+  const dimension = source.dimension;
 
   const durability = item.getComponent(
     ItemComponentTypes.Durability,
@@ -62,7 +64,7 @@ export function reduceDurability(
     durability.damage + damage,
   );
   if (durability.damage >= durability.maxDurability) {
-    world.playSound("random.break", source.location);
+    dimension.playSound("random.break", source.location);
     equippable.setEquipment(equipmentSlot, null);
     return;
   }

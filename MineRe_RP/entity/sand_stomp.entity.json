@@ -4,12 +4,13 @@
     "description": {
       "identifier": "minere:sand_stomp",
       "materials": {
-        "default": "entity_alphablend"
+        "default": "entity_emissive_alpha"
       },
       "textures": {
         "default": "textures/entity/minere/sand_stomp/sand_stomp",
         "red": "textures/entity/minere/sand_stomp/red_sand_stomp",
-        "end": "textures/entity/minere/sand_stomp/end_stomp"
+        "end": "textures/entity/minere/sand_stomp/end_stomp",
+        "soul": "textures/entity/minere/sand_stomp/soul_stomp"
       },
       "geometry": {
         "default": "geometry.minere.sand_stomp"

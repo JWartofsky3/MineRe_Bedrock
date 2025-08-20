@@ -1,0 +1,24 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:gold_bear_armor"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["IBH", "II "],
+    "key": {
+      "B": {
+        "item": "minecraft:gold_block"
+      },
+      "I": {
+        "item": "minecraft:gold_ingot"
+      },
+      "H": {
+        "item": "minecraft:golden_helmet"
+      }
+    },
+    "result": {
+      "item": "minere:gold_bear_armor"
+    }
+  }
+}

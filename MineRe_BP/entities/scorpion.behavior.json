@@ -127,8 +127,8 @@
         "height": 0.9
       },
       "minecraft:health": {
-        "value": 32,
-        "max": 32
+        "value": 30,
+        "max": 30
       },
       "minecraft:follow_range": {
         "value": 32,

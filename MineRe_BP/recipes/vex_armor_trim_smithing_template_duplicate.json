@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minecraft:vex_armor_trim_smithing_template_duplicate"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["#D#", "#S#", "#D#"],
+    "key": {
+      "#": {
+        "item": "minecraft:cobblestone"
+      },
+      "D": {
+        "item": "minecraft:diamond"
+      },
+      "S": {
+        "item": "minecraft:vex_armor_trim_smithing_template"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:vex_armor_trim_smithing_template"
+      }
+    ],
+    "result": {
+      "item": "minecraft:vex_armor_trim_smithing_template",
+      "count": 3
+    }
+  }
+}

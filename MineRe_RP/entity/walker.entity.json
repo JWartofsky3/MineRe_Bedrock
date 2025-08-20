@@ -64,6 +64,7 @@
       ],
       "sound_effects": {
         "emerge": "mob.walker.emerge",
+        "kick": "mob.walker.kick",
         "reprogram": "mob.walker.reprogram"
       },
       "particle_effects": {

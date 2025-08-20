@@ -1,30 +1,31 @@
 {
-  "format_version": "1.12.0",
+  "format_version": "1.21.40",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:dragon_fireball",
+      "runtime_identifier": "minecraft:dragon_fireball",
       "is_spawnable": false,
-      "is_summonable": false,
-      "is_experimental": false
+      "is_summonable": true
     },
+
     "component_groups": {
-      "minere:dragon_fireball_exploding": {
+      "minecraft:exploding": {
         "minecraft:explode": {
           "fuse_length": 0,
           "fuse_lit": true,
-          "power": 2.25,
+          "power": 3,
           "causes_fire": true,
           "fire_affected_by_griefing": true,
           "destroy_affected_by_griefing": true
         }
       }
     },
+
     "components": {
       "minecraft:collision_box": {
         "width": 0.31,
         "height": 0.31
       },
-
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {
@@ -35,48 +36,48 @@
           "definition_event": {
             "affect_projectile": true,
             "event_trigger": {
-              "event": "minere:dragon_fireball_explode",
+              "event": "minecraft:explode",
               "target": "self"
             }
-          },
-          "spawn_aoe_cloud": {
-            "radius": 6.0,
-            "radius_on_use": 0,
-            "potion": 23,
-            "particle": "dragonbreath",
-            "duration": 30,
-            "color": [220, 0, 239],
-            "affect_owner": false,
-            "reapplication_delay": 15
           }
         },
         "power": 2.0,
-        "gravity": 0.01,
+        "gravity": 0.0,
         "inertia": 1,
         "anchor": 2,
         "offset": [0, 0.5, 0],
-        "semi_random_diff_damage": true,
-        "uncertainty_base": 10.0,
         "reflect_on_hurt": true,
-        "hit_sound": "explode"
+        "catch_fire": false,
+        "spawn_aoe_cloud": {
+          "radius": 6.0,
+          "radius_on_use": 0,
+          "potion": 23,
+          "particle": "dragonbreath",
+          "duration": 20,
+          "color": [220, 0, 239],
+          "affect_owner": false,
+          "reapplication_delay": 15
+        }
+      },
+      "minecraft:physics": {},
+      "minecraft:dimension_bound": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 80.0,
+          "max_dropped_ticks": 7,
+          "use_motion_prediction_hints": true
+        }
       }
     },
-    "minecraft:physics": {},
-    "minecraft:pushable": {
-      "is_pushable": true,
-      "is_pushable_by_piston": true
-    },
-    "minecraft:conditional_bandwidth_optimization": {
-      "default_values": {
-        "max_optimized_distance": 80.0,
-        "max_dropped_ticks": 7,
-        "use_motion_prediction_hints": true
-      }
-    },
+
     "events": {
-      "minere:dragon_fireball_explode": {
+      "minecraft:explode": {
         "add": {
-          "component_groups": ["minere:dragon_fireball_exploding"]
+          "component_groups": ["minecraft:exploding"]
         }
       }
     }

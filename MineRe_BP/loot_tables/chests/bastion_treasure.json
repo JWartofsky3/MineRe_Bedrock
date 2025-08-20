@@ -654,7 +654,7 @@
             {
               "function": "set_count",
               "count": {
-                "min": 2,
+                "min": 4,
                 "max": 8
               }
             }

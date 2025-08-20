@@ -16,7 +16,7 @@
         "seconds_to_destroy": 4.0
       },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 60
+        "explosion_resistance": 45
       },
       "minecraft:map_color": "#DDE3B0",
       "minecraft:loot": "loot_tables/blocks/ender_plasma_ore.json"

@@ -1,0 +1,120 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minecraft:stray",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+
+        "minecraft:spawn_event": {
+          "event": "change_to_skeleton"
+        },
+
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+
+        "minecraft:weight": {
+          "default": 120
+        },
+
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+
+        "minecraft:biome_filter": [
+          { "test": "has_biome_tag", "operator": "==", "value": "frozen" },
+          { "test": "has_biome_tag", "operator": "!=", "value": "ocean" }
+        ]
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underground": {},
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+
+        "minecraft:spawn_event": {
+          "event": "change_to_skeleton"
+        },
+
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+
+        "minecraft:height_filter": {
+          "min": 60,
+          "max": 66
+        },
+
+        "minecraft:weight": {
+          "default": 120
+        },
+
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+
+        "minecraft:biome_filter": [
+          { "test": "has_biome_tag", "operator": "==", "value": "frozen" },
+          { "test": "has_biome_tag", "operator": "==", "value": "ocean" }
+        ]
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:height_filter": {
+          "min": 24
+        },
+        "minecraft:brightness_filter": {
+          "max": 0,
+          "adjust_for_weather": true
+        },
+        "minecraft:weight": {
+          "default": 250
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:ice",
+          "minecraft:packed_ice",
+          "minecraft:blue_ice",
+          "minecraft:snow"
+        ],
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cold"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "frozen"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -42,7 +42,7 @@
             },
             {
               "function": "enchant_with_levels",
-              "levels": 10,
+              "levels": 15,
               "treasure": true
             }
           ]
@@ -273,7 +273,7 @@
           "functions": [
             {
               "function": "enchant_with_levels",
-              "levels": 10,
+              "levels": 30,
               "treasure": true
             }
           ]

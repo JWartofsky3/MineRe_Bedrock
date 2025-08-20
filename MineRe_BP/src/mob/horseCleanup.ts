@@ -1,8 +1,6 @@
 import {
   world,
   system,
-  Entity,
-  EntityRemoveBeforeEvent,
   EntityComponentTypes,
   ItemStack,
   Vector3,
@@ -35,7 +33,7 @@ export const horseRemoveChest = (data: EntityDieAfterEvent) => {
       const itemComponent = item.getComponent(
         EntityComponentTypes.Item,
       ) as EntityItemComponent;
-      if (!itemComponent?.isValid()) {
+      if (!itemComponent?.isValid) {
         return;
       }
       const amount = itemComponent.itemStack.amount;

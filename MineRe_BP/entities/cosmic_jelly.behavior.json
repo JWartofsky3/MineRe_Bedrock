@@ -3,6 +3,7 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:cosmic_jelly",
+      "runtime_identifier": "minecraft:ghast",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
@@ -33,7 +34,7 @@
     "components": {
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player?30:0"
+        "on_death": "query.last_hit_by_player?40:0"
       },
       "minecraft:breathable": {
         "total_supply": 15,

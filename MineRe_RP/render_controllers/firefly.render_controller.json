@@ -4,7 +4,16 @@
     "controller.render.minere.firefly": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.green", "Texture.green_off", "Texture.yellow", "Texture.yellow_off", "Texture.purple", "Texture.purple_off", "Texture.blue", "Texture.blue_off"]
+          "Array.skins": [
+            "Texture.green",
+            "Texture.green_off",
+            "Texture.yellow",
+            "Texture.yellow_off",
+            "Texture.purple",
+            "Texture.purple_off",
+            "Texture.blue",
+            "Texture.blue_off"
+          ]
         }
       },
       "geometry": "Geometry.default",

@@ -367,11 +367,11 @@
       ]
     },
     {
-      "rolls": 1,
+      "rolls": 3,
       "entries": [
         {
           "type": "empty",
-          "weight": 14
+          "weight": 13
         },
         {
           "type": "item",
@@ -424,6 +424,28 @@
         {
           "type": "item",
           "name": "minecraft:enchanted_golden_apple"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
         }
       ]
     }

@@ -32,6 +32,15 @@
           "table": "loot_tables/entities/sand_stomp/end_stomp.json"
         }
       },
+      "minere:soul_stomp": {
+        "minecraft:variant": {
+          "value": 3
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/sand_stomp/soul_stomp.json"
+        },
+        "minecraft:fire_immune": {}
+      },
       "minere:calm": {
         "minecraft:movement.jump": {
           "jump_delay": [4, 6]
@@ -48,8 +57,8 @@
         "value": 0.6
       },
       "minecraft:health": {
-        "value": 36,
-        "max": 36
+        "value": 40,
+        "max": 40
       },
       "minecraft:collision_box": {
         "width": 2.08,
@@ -62,7 +71,7 @@
         "on_death": "query.last_hit_by_player ? 5"
       },
       "minecraft:type_family": {
-        "family": ["slime", "monster", "mob"]
+        "family": ["stomp", "monster", "mob"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -85,12 +94,89 @@
       },
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
+
       "minecraft:damage_sensor": {
         "triggers": [
           {
             "cause": "fall",
             "deals_damage": true,
             "damage_modifier": -7
+          },
+          {
+            "cause": "entity_explosion",
+            "damage_multiplier": 2.5
+          },
+          {
+            "cause": "block_explosion",
+            "damage_multiplier": 2.5
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "wooden_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "stone_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "iron_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "golden_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "diamond_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "netherite_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "mace"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
+                        "value": "minere:enderon_pickaxe"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "cause": "entity_attack",
+            "damage_multiplier": 3.0,
+            "damage_modifier": 0
           }
         ]
       },
@@ -227,6 +313,18 @@
             },
             "add": {
               "component_groups": ["minere:end_stomp"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "nether"
+            },
+            "remove": {
+              "component_groups": ["minere:sand_stomp"]
+            },
+            "add": {
+              "component_groups": ["minere:soul_stomp"]
             }
           }
         ]

@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minere:scorpion",
+      "identifier": "minere:scorpion_placeholder",
       "population_control": "monster"
     },
     "conditions": [
@@ -37,6 +37,11 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "mesa"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "savanna"
             }
           ],
           "all_of": [

@@ -8,6 +8,7 @@ import {
   ItemCooldownComponent,
   EntityEquippableComponent,
   EquipmentSlot,
+  GameMode,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
@@ -45,7 +46,7 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
         if (
           !source.runCommand("clear @s[m=!c] minere:ender_plasma 0 1")
             .successCount &&
-          source.getGameMode() !== "creative"
+          source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
@@ -72,7 +73,7 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
         plasmaBolt.applyImpulse(
           multiplyVector3Number(source.getViewDirection(), 7.0),
         );
-        if (source.getGameMode() === "creative") {
+        if (source.getGameMode() === GameMode.Creative) {
           return;
         }
         reduceDurability(source, itemStack, 4);

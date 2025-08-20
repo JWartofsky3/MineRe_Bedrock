@@ -224,7 +224,7 @@
           "functions": [
             {
               "function": "enchant_with_levels",
-              "levels": 30,
+              "levels": 50,
               "treasure": true
             }
           ]
@@ -283,18 +283,19 @@
       "rolls": 2,
       "entries": [
         {
-          "type": "empty",
-          "weight": 2
+          "type": "item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 1
         },
         {
           "type": "item",
-          "name": "minecraft:emerald",
-          "weight": 2
+          "name": "minecraft:golden_apple",
+          "weight": 4
         },
         {
           "type": "item",
           "name": "minecraft:book",
-          "weight": 1,
+          "weight": 4,
           "functions": [
             {
               "function": "enchant_randomly",
@@ -304,7 +305,7 @@
         },
         {
           "type": "item",
-          "weight": 4,
+          "weight": 1,
           "functions": [
             {
               "function": "specific_enchants",
@@ -319,35 +320,15 @@
         },
         {
           "type": "item",
-          "weight": 2,
+          "name": "minecraft:book",
+          "weight": 1,
           "functions": [
             {
-              "function": "enchant_randomly",
+              "function": "enchant_with_levels",
+              "levels": 30,
               "treasure": true
             }
-          ],
-          "name": "minecraft:iron_shovel"
-        },
-        {
-          "type": "item",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "enchant_randomly",
-              "treasure": true
-            }
-          ],
-          "name": "minecraft:iron_pickaxe"
-        },
-        {
-          "type": "item",
-          "weight": 1,
-          "name": "minere:enderon_shovel"
-        },
-        {
-          "type": "item",
-          "weight": 1,
-          "name": "minere:enderon_pickaxe"
+          ]
         }
       ]
     },
@@ -425,6 +406,20 @@
               "data": 30
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
         }
       ]
     }

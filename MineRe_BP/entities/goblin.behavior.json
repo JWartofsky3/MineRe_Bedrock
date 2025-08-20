@@ -36,11 +36,10 @@
         }
       },
       "grunt_unit": {
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "priority": 5,
-          "speed_multiplier": 1,
-          "reach_multiplier": 0.85,
-          "track_target": true
+          "horizontal_reach": 0.75,
+          "speed_multiplier": 1.0
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/goblin/goblin_grunt.json"
@@ -101,11 +100,10 @@
         }
       },
       "melee_unit": {
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "priority": 5,
-          "speed_multiplier": 1,
-          "reach_multiplier": 0.85,
-          "track_target": true
+          "horizontal_reach": 0.75,
+          "speed_multiplier": 1.0
         },
         "minecraft:equipment": {
           "table": "loot_tables/entities/goblin/goblin_gear_melee.json"
@@ -139,11 +137,10 @@
           "value": 16,
           "max": 16
         },
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "priority": 5,
-          "speed_multiplier": 1,
-          "reach_multiplier": 0.85,
-          "track_target": true
+          "horizontal_reach": 0.75,
+          "speed_multiplier": 1.0
         },
         "minecraft:equipment": {
           "table": "loot_tables/entities/goblin/goblin_gear_trader.json"

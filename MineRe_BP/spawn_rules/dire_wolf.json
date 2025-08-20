@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minere:dire_wolf",
+      "identifier": "minere:dire_wolf_placeholder",
       "population_control": "monster"
     },
     "conditions": [
@@ -11,7 +11,7 @@
         "minecraft:brightness_filter": {
           "min": 0,
           "max": 7,
-          "adjust_for_weather": false
+          "adjust_for_weather": true
         },
         "minecraft:density_limit": {
           "surface": 4
@@ -64,7 +64,7 @@
         "minecraft:brightness_filter": {
           "min": 0,
           "max": 7,
-          "adjust_for_weather": false
+          "adjust_for_weather": true
         },
         "minecraft:density_limit": {
           "surface": 4

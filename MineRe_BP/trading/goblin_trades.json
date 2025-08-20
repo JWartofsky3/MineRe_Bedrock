@@ -1046,6 +1046,78 @@
               "trader_exp": 2,
               "max_uses": 3,
               "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 4
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:chainmail_helmet",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 3,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 6
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:chainmail_chestplate",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 3,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 5
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:chainmail_leggings",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 3,
+              "max_uses": 1,
+              "reward_exp": true
+            },
+            {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 4
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minecraft:chainmail_boots",
+                  "quantity": 1
+                }
+              ],
+              "trader_exp": 3,
+              "max_uses": 1,
+              "reward_exp": true
             }
           ]
         }

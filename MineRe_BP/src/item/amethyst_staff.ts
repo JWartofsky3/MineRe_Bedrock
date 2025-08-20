@@ -9,14 +9,18 @@ import {
   Dimension,
   ItemComponentTypes,
   ItemCooldownComponent,
+  EntityInventoryComponent,
+  GameMode,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
+import { findItemInContainer } from "./item_utils";
 
 const SHIELD_RANGE = 4;
 const HEAL_DURATION = 5 * 20;
 const SHIELD_DURATION = 6 * 20;
 const SHIELD_DURABILITY = 4;
+const AMMO_CONSUME_CHANCE = 0.6;
 
 export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -36,9 +40,9 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           cooldownComponent.startCooldown(source);
         }
         if (
-          !source.runCommand("clear @s[m=!c] amethyst_shard 0 4")
+          !source.runCommand("clear @s[m=!c] amethyst_shard 0 2")
             .successCount &&
-          source.getGameMode() !== "creative"
+          source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
@@ -50,7 +54,6 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
         });
         nearbyEntities.forEach((nearbyEntity: Entity) => {
           nearbyEntity.addEffect("regeneration", HEAL_DURATION, {
-            showParticles: false,
             amplifier: 2.0,
           });
         });
@@ -63,12 +66,21 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
         reduceDurability(source, itemStack, SHIELD_DURABILITY);
       } else {
         if (
-          !source.runCommand("clear @s[m=!c] amethyst_shard 0 1")
-            .successCount &&
-          source.getGameMode() !== "creative"
+          source.getGameMode() !== GameMode.Creative &&
+          findItemInContainer(
+            (
+              source.getComponent(
+                EntityComponentTypes.Inventory,
+              ) as EntityInventoryComponent
+            )?.container,
+            "minecraft:amethyst_shard",
+          ) === -1
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
+        }
+        if (Math.random() < AMMO_CONSUME_CHANCE) {
+          source.runCommand("clear @s[m=!c] amethyst_shard 0 1");
         }
 
         dimension.playSound("step.amethyst_block", source.location);
@@ -92,7 +104,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
         fireball.applyImpulse(
           multiplyVector3Number(source.getViewDirection(), 3.0),
         );
-        if (source.getGameMode() === "creative") {
+        if (source.getGameMode() === GameMode.Creative) {
           return;
         }
         reduceDurability(source, itemStack, 1);

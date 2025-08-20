@@ -32,7 +32,7 @@
         },
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
-          "horizontal_reach": 0.55
+          "horizontal_reach": 0.5
         }
       },
 

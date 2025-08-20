@@ -19,7 +19,7 @@
           "min": 80
         },
         "minecraft:weight": {
-          "default": 8
+          "default": 15
         },
         "minecraft:density_limit": {
           "surface": 3,

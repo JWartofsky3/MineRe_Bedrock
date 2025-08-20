@@ -3,7 +3,7 @@
   "minecraft:feature_rules": {
     "description": {
       "identifier": "minere:underground_emerald_ore_extra",
-      "places_feature": "minere:emerald_ore_feature_extra"
+      "places_feature": "minecraft:emerald_ore_feature"
     },
     "conditions": {
       "placement_pass": "underground_pass",

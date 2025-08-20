@@ -4,10 +4,22 @@
     "description": {
       "identifier": "minere:grizzly_bear",
       "materials": {
-        "default": "polar_bear"
+        "default": "entity_alphablend",
+        "armor": "entity_emissive_alpha"
       },
       "textures": {
-        "default": "textures/entity/minere/grizzly_bear"
+        "brown": "textures/entity/minere/grizzly_bear/brown",
+        "light": "textures/entity/minere/grizzly_bear/light",
+        "gray": "textures/entity/minere/grizzly_bear/gray",
+        "red": "textures/entity/minere/grizzly_bear/red",
+        "blue": "textures/entity/minere/grizzly_bear/blue",
+        "copper_armor": "textures/entity/minere/grizzly_bear/copper_armor",
+        "iron_armor": "textures/entity/minere/grizzly_bear/iron_armor",
+        "gold_armor": "textures/entity/minere/grizzly_bear/gold_armor",
+        "diamond_armor": "textures/entity/minere/grizzly_bear/diamond_armor",
+        "netherite_armor": "textures/entity/minere/grizzly_bear/netherite_armor",
+        "enderon_armor": "textures/entity/minere/grizzly_bear/enderon_armor",
+        "empty": "textures/entity/minere/grizzly_bear/empty"
       },
       "geometry": {
         "default": "geometry.minere.grizzly_bear"
@@ -26,6 +38,7 @@
         "sit": "animation.minere.grizzly_bear.sit"
       },
       "scripts": {
+        "pre_animation": ["variable.armor_type = query.mark_variant;"],
         "animate": [
           "controller",
           "look_at",
@@ -49,7 +62,10 @@
           }
         ]
       },
-      "render_controllers": ["controller.render.polarbear"],
+      "render_controllers": [
+        "controller.render.minere.grizzly_bear",
+        "controller.render.minere.grizzly_bear_armor"
+      ],
       "spawn_egg": {
         "base_color": "#402102",
         "overlay_color": "#352601"

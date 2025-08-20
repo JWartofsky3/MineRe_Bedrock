@@ -1,4 +1,4 @@
-import { world, ItemCustomComponent } from "@minecraft/server";
+import { world, ItemCustomComponent, GameMode } from "@minecraft/server";
 import { replaceableBlocks } from "block/blockUtils";
 
 export const PlatformPath: ItemCustomComponent = {
@@ -39,7 +39,7 @@ export const PlatformPath: ItemCustomComponent = {
       }
     }
     player.teleport(player.location);
-    if (player.getGameMode() !== "creative") {
+    if (player.getGameMode() !== GameMode.Creative) {
       player.runCommand("clear @s[m=!c] minere:end_path 0 1");
     }
   },

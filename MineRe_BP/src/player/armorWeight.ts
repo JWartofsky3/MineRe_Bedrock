@@ -51,7 +51,7 @@ export function armorWeight(player: Player) {
 
   // JUMP BOOTS
   if (
-    equippable.isValid() &&
+    equippable.isValid &&
     equippable.getEquipment(EquipmentSlot.Feet)?.typeId === "minere:jump_boots"
   ) {
     player.addEffect("jump_boost", 20, { showParticles: false, amplifier: 2 });

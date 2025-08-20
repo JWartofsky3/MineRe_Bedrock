@@ -23,16 +23,22 @@ import { isValid, vector3ToString } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
 import { customToolHandleDurability } from "./custom_tools";
 
-const LEAF_HORIZONTAL_DISTANCE = 5;
-const LOG_HORIZONTAL_DISTANCE = 4;
-const MAX_VERTICAL_DISTANCE = 64;
-const HORIZONTAL_CHECK_DISTANCE = 8;
-const VERTICAL_CHECK_DISTANCE = 0;
+// --- Constants (ADJUSTED FOR NON-SPREADING BEHAVIOR) ---
+// These control the overall bounding box of the tree from the origin block
+const LEAF_HORIZONTAL_DISTANCE = 12; // Maximum horizontal distance for leaves from the origin
+const MAX_VERTICAL_DISTANCE = 35; // Maximum vertical distance (height) from the origin
+
+// NEW CONSTANT: This is crucial for preventing spread to adjacent trees.
+// It defines the horizontal search radius for finding *connected* logs in the BFS.
+// Make this smaller if trees are very close together. A value of 3-5 is usually good for preventing spread.
+const LOG_BFS_HORIZONTAL_LIMIT = 5; // Limiting horizontal spread of log detection from the origin
+
 const ALTITUDE_BONUS_START = 12;
 const ALTITUDE_BONUS = 3;
 const REMAINING_DURABILITY_MULTIPLIER = 1.5;
 const MINIMUM_BREAK_AMOUNT = 5;
-const TREE_BREAK_DELAY = 2;
+const TREE_BREAK_DELAY = 2; // In ticks
+const LEAF_BREAK_RADIUS = 3; // Leaves will break if within this many blocks of a broken log
 
 export const logSet = new Set<string>();
 // logs
@@ -63,6 +69,7 @@ logSet.add("minecraft:crimson_stem");
 logSet.add("minecraft:stripped_crimson_stem");
 logSet.add("minecraft:warped_stem");
 logSet.add("minecraft:stripped_warped_stem");
+
 // leaves
 const leavesSet = new Set<string>();
 leavesSet.add("minecraft:leaves");
@@ -77,6 +84,7 @@ leavesSet.add("minecraft:azalea_leaves");
 leavesSet.add("minecraft:azalea_leaves_flowered");
 leavesSet.add("minecraft:cherry_leaves");
 leavesSet.add("minecraft:mangrove_leaves");
+
 // mushroom_blocks
 const mushroomSet = new Set<string>();
 mushroomSet.add("minecraft:red_mushroom_block");
@@ -84,127 +92,22 @@ mushroomSet.add("minecraft:brown_mushroom_block");
 mushroomSet.add("minecraft:nether_wart_block");
 mushroomSet.add("minecraft:crimson_wart_block");
 mushroomSet.add("minecraft:warped_wart_block");
-mushroomSet.add("shroomlight");
-mushroomSet.add("minecraft:shroomlight");
-mushroomSet.add("minecraft:shroom_light");
+mushroomSet.add("minecraft:shroomlight"); // Corrected to standard Minecraft ID
 
-const leavesAndMushrooms = new Set<string>(...leavesSet, ...mushroomSet);
-
-function checkWidthWithOffset(
-  dimension: Dimension,
-  origin: Vector3,
-  yOffset: number,
-): number {
-  let max_distance = 0;
-  // check X+
-  for (let i = 0; i <= HORIZONTAL_CHECK_DISTANCE; i++) {
-    const log = checkIsType(
-      dimension,
-      {
-        x: origin.x + i,
-        y: origin.y + yOffset,
-        z: origin.z,
-      },
-      logSet,
-      ["log", "stem"],
-    );
-    if (!log) {
-      break;
-    }
-    if (i > max_distance) {
-      max_distance = i;
-    }
-  }
-  // check X-
-  for (let i = 0; i <= HORIZONTAL_CHECK_DISTANCE; i++) {
-    const log = checkIsType(
-      dimension,
-      {
-        x: origin.x - i,
-        y: origin.y + yOffset,
-        z: origin.z,
-      },
-      logSet,
-      ["log", "stem"],
-    );
-    if (!log) {
-      break;
-    }
-    if (i > max_distance) {
-      max_distance = i;
-    }
-  }
-  // check Z+
-  for (let i = 0; i <= HORIZONTAL_CHECK_DISTANCE; i++) {
-    const log = checkIsType(
-      dimension,
-      {
-        x: origin.x,
-        y: origin.y + yOffset,
-        z: origin.z + i,
-      },
-      logSet,
-      ["log", "stem"],
-    );
-    if (!log) {
-      break;
-    }
-    if (i > max_distance) {
-      max_distance = i;
-    }
-  }
-  // check Z-
-  for (let i = 0; i <= HORIZONTAL_CHECK_DISTANCE; i++) {
-    const log = checkIsType(
-      dimension,
-      {
-        x: origin.x,
-        y: origin.y + yOffset,
-        z: origin.z - i,
-      },
-      logSet,
-      ["log", "stem"],
-    );
-    if (!log) {
-      break;
-    }
-    if (i > max_distance) {
-      max_distance = i;
-    }
-    if (i > max_distance) {
-      max_distance = i;
-    }
-  }
-  return max_distance + 1;
-}
-
-function checkWidth(dimension: Dimension, origin: Vector3): number {
-  let max = 0;
-  for (
-    let i = -1 * VERTICAL_CHECK_DISTANCE;
-    i <= VERTICAL_CHECK_DISTANCE;
-    i++
-  ) {
-    const size = checkWidthWithOffset(dimension, origin, i);
-    if (size > max) {
-      max = size;
-    }
-  }
-  return max;
-}
+const leavesAndMushrooms = new Set<string>([...leavesSet, ...mushroomSet]);
 
 export function checkIsType(
   dimension: Dimension,
   location: Vector3,
   typeSet: Set<string>,
   typeNames: string[],
-): Block {
+): Block | undefined {
   if (!isValid(dimension, location)) {
-    return;
+    return undefined;
   }
   const block = dimension.getBlock(location);
   if (!block?.typeId) {
-    return;
+    return undefined;
   }
   if (typeSet.has(block.typeId)) {
     return block;
@@ -214,7 +117,7 @@ export function checkIsType(
       return block;
     }
   }
-  return;
+  return undefined;
 }
 
 function getNeighbors(
@@ -242,7 +145,12 @@ function getNeighbors(
   const iterator = listBlockVolume.getBlockLocationIterator();
   let next = iterator.next();
   while (!next.done) {
-    if (next.value !== location) {
+    // Ensure we don't add the origin block itself as a neighbor
+    if (
+      next.value.x !== location.x ||
+      next.value.y !== location.y ||
+      next.value.z !== location.z
+    ) {
       neighbors.push(next.value);
     }
     next = iterator.next();
@@ -268,6 +176,13 @@ function checkRange(
   return true;
 }
 
+function distance(loc1: Vector3, loc2: Vector3): number {
+  const dx = loc1.x - loc2.x;
+  const dy = loc1.y - loc2.y;
+  const dz = loc1.z - loc2.z;
+  return Math.sqrt(dx * dx + dy * dy + dz * dz);
+}
+
 function treecapitate(
   dimension: Dimension,
   origin: Vector3,
@@ -277,41 +192,53 @@ function treecapitate(
   const visited = new Set<string>();
   const queue = new Queue<Vector3>();
   const logs = new Set<Vector3>();
-  const leaves = new Set<Vector3>();
+  const initialLeaves = new Set<Vector3>();
+  const brokenLogs = new Set<Vector3>();
+
   queue.enqueue(origin);
+  visited.add(vector3ToString(origin)); // Add origin to visited immediately
+
   while (!queue.isEmpty()) {
     const next = queue.dequeue();
+
     if (next.y - origin.y > highest) {
       highest = next.y - origin.y;
     }
-    visited.add(vector3ToString(next));
+
+    // Refined search volume for logs - relatively small local search,
+    // the global limit is enforced by checkRange with LOG_BFS_HORIZONTAL_LIMIT
     const neighbors = getNeighbors(
       dimension,
       next,
       {
-        x: -1,
-        y: 0,
+        x: -1, // Look one block in each direction from the current log
+        y: -1, // Look one block below for branching logs
         z: -1,
       },
       {
-        x: 1,
-        y: 1,
+        x: 1, // Look one block in each direction from the current log
+        y: 1, // Look one block above for branching logs
         z: 1,
       },
     );
+
     for (let i = 0; i < neighbors.length; i++) {
       const neighbor = neighbors[i];
       const neighborString = vector3ToString(neighbors[i]);
+
       if (visited.has(neighborString)) {
         continue;
       }
       visited.add(neighborString);
+
       const altitude = neighbor.y - origin.y;
+      // Crucial change: Apply a *stricter* horizontal check for logs here
+      // using LOG_BFS_HORIZONTAL_LIMIT, relative to the ORIGIN.
       if (
         checkRange(
           origin,
           neighbor,
-          LOG_HORIZONTAL_DISTANCE +
+          LOG_BFS_HORIZONTAL_LIMIT + // Use the stricter limit here
             (altitude > ALTITUDE_BONUS_START ? ALTITUDE_BONUS : 0),
           MAX_VERTICAL_DISTANCE,
         ) &&
@@ -320,6 +247,7 @@ function treecapitate(
         logs.add(neighbor);
         queue.enqueue(neighbor);
       } else if (
+        // Leaves still use the broader LEAF_HORIZONTAL_DISTANCE for their initial collection
         checkRange(
           origin,
           neighbor,
@@ -334,7 +262,7 @@ function treecapitate(
           "shroomlight",
         ])
       ) {
-        leaves.add(neighbor);
+        initialLeaves.add(neighbor);
       }
     }
   }
@@ -343,7 +271,7 @@ function treecapitate(
     logs.size >
     REMAINING_DURABILITY_MULTIPLIER * durability + MINIMUM_BREAK_AMOUNT
   ) {
-    world.playSound("item.amethyst_staff.error", origin);
+    dimension.playSound("item.amethyst_staff.error", origin);
     return 0;
   }
 
@@ -356,6 +284,7 @@ function treecapitate(
     logLevelToBreak[i].push(logLocation);
   });
 
+  // Schedule log breaking sequentially
   for (let i = 0; i < logLevelToBreak.length; i++) {
     system.runTimeout(() => {
       for (let j = 0; j < logLevelToBreak[i]?.length; j++) {
@@ -364,69 +293,100 @@ function treecapitate(
           dimension.runCommand(
             `setBlock ${logPos.x} ${logPos.y} ${logPos.z} air destroy`,
           );
+          brokenLogs.add(logPos); // Add to brokenLogs after being destroyed
         }
       }
     }, i * TREE_BREAK_DELAY);
   }
 
-  // break leaves
-  leaves.forEach((leaf: Vector3) => {
-    queue.enqueue(leaf);
-  });
-  let i = 0;
-  while (!queue.isEmpty()) {
-    const next = queue.dequeue();
-    visited.add(vector3ToString(next));
-    const neighbors = getNeighbors(
-      dimension,
-      next,
-      {
-        x: -1,
-        y: -1,
-        z: -1,
-      },
-      {
-        x: 1,
-        y: 1,
-        z: 1,
-      },
-    );
-    for (let i = 0; i < neighbors.length; i++) {
-      const neighbor = neighbors[i];
-      const neighborString = vector3ToString(neighbors[i]);
-      if (visited.has(neighborString)) {
-        continue;
-      }
-      visited.add(neighborString);
-      if (
-        checkRange(
-          origin,
-          neighbor,
-          LEAF_HORIZONTAL_DISTANCE,
-          MAX_VERTICAL_DISTANCE,
-        ) &&
-        checkIsType(dimension, neighbor, leavesAndMushrooms, [
-          "leaves",
-          "shroom_block",
-          "wart_block",
-        ])
-      ) {
-        const block = dimension.getBlock(neighbor);
-        if (!block.permutation.getState("persistent_bit")) {
-          leaves.add(neighbor);
-          queue.enqueue(neighbor);
-        }
-      }
-    }
-    i++;
-  }
+  // Schedule leaf breaking AFTER logs have had time to break and populate brokenLogs
   system.runTimeout(
     () => {
-      leaves.forEach((leaf: Vector3) => {
-        dimension.runCommand(
-          `setBlock ${leaf.x} ${leaf.y} ${leaf.z} air destroy`,
-        );
+      const finalLeavesToBreak = new Set<Vector3>();
+      initialLeaves.forEach((leaf: Vector3) => {
+        let shouldBreak = false;
+        for (const brokenLog of brokenLogs) {
+          if (distance(leaf, brokenLog) <= LEAF_BREAK_RADIUS) {
+            shouldBreak = true;
+            break;
+          }
+        }
+        if (shouldBreak) {
+          finalLeavesToBreak.add(leaf);
+        }
       });
+
+      // Break leaves with a BFS traversal from the filtered set
+      const leafQueue = new Queue<Vector3>();
+      const visitedLeaves = new Set<string>(); // Separate visited set for leaf BFS
+
+      finalLeavesToBreak.forEach((leaf: Vector3) => {
+        leafQueue.enqueue(leaf);
+        visitedLeaves.add(vector3ToString(leaf)); // Add to visited for leaves
+      });
+
+      while (!leafQueue.isEmpty()) {
+        const nextLeaf = leafQueue.dequeue();
+
+        const block = dimension.getBlock(nextLeaf);
+        if (
+          checkIsType(dimension, nextLeaf, leavesAndMushrooms, [
+            "leaves",
+            "shroom_block",
+            "wart_block",
+            "shroomlight",
+          ]) &&
+          block &&
+          !block.permutation.getState("persistent_bit")
+        ) {
+          dimension.runCommand(
+            `setBlock ${nextLeaf.x} ${nextLeaf.y} ${nextLeaf.z} air destroy`,
+          );
+        }
+
+        // Check neighbors of the current leaf to find more connected leaves
+        const leafNeighbors = getNeighbors(
+          dimension,
+          nextLeaf,
+          { x: -1, y: -1, z: -1 },
+          { x: 1, y: 1, z: 1 },
+        );
+
+        for (const neighbor of leafNeighbors) {
+          const neighborString = vector3ToString(neighbor);
+          if (visitedLeaves.has(neighborString)) {
+            continue;
+          }
+          visitedLeaves.add(neighborString);
+
+          // Check if the potential leaf neighbor is close to any of the broken logs
+          let isCloseToBrokenLog = false;
+          for (const brokenLog of brokenLogs) {
+            if (distance(neighbor, brokenLog) <= LEAF_BREAK_RADIUS) {
+              isCloseToBrokenLog = true;
+              break;
+            }
+          }
+
+          if (
+            isCloseToBrokenLog &&
+            checkIsType(dimension, neighbor, leavesAndMushrooms, [
+              "leaves",
+              "shroom_block",
+              "wart_block",
+              "shroomlight",
+            ])
+          ) {
+            const neighborBlock = dimension.getBlock(neighbor);
+            if (
+              neighborBlock &&
+              !neighborBlock.permutation.getState("persistent_bit")
+            ) {
+              leafQueue.enqueue(neighbor);
+            }
+          }
+        }
+      }
     },
     highest * TREE_BREAK_DELAY + 3,
   );
@@ -461,7 +421,8 @@ export function runTreecapitate(
     return 0;
   }
 
-  // the log must be isolated
+  // the log must be isolated - this check is crucial for preventing spread to adjacent trees
+  // if they are extremely close. It assumes a 1x1 base.
   const neighbors = getNeighbors(
     dimension,
     location,
@@ -478,7 +439,7 @@ export function runTreecapitate(
   );
   for (let i = 0; i < neighbors.length; i++) {
     if (!!checkIsType(dimension, neighbors[i], logSet, ["log", "stem"])) {
-      return 0;
+      return 0; // If any immediate horizontal neighbor is a log, it's not isolated.
     }
   }
 
@@ -522,6 +483,7 @@ export function offHandTreecapitate(data: PlayerBreakBlockAfterEvent): boolean {
     treeCapitator,
   );
   reduceDurability(data.player, treeCapitator, logsBroken, treeCapitatorSlot);
+  return logsBroken > 0;
 }
 
 export const Treecapitator: ItemCustomComponent = {
@@ -537,7 +499,7 @@ export const Treecapitator: ItemCustomComponent = {
         reduceDurability(
           event.source as Player,
           event.itemStack,
-          logsBroken + 1,
+          logsBroken + 1, // +1 for the initial block broken
           EquipmentSlot.Mainhand,
         );
       } else {

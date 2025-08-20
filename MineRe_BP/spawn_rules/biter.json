@@ -2,7 +2,7 @@
   "format_version": "1.8.0",
   "minecraft:spawn_rules": {
     "description": {
-      "identifier": "minere:biter",
+      "identifier": "minere:biter_placeholder",
       "population_control": "monster"
     },
     "conditions": [
@@ -11,8 +11,8 @@
         "minecraft:spawns_underwater": {},
 
         "minecraft:brightness_filter": {
-          "min": 0,
-          "max": 1
+          "max": 0,
+          "adjust_for_weather": true
         },
         "minecraft:height_filter": {
           "min": -64,
@@ -49,8 +49,7 @@
         "minecraft:spawns_underwater": {},
 
         "minecraft:brightness_filter": {
-          "min": 0,
-          "max": 7,
+          "max": 0,
           "adjust_for_weather": true
         },
 

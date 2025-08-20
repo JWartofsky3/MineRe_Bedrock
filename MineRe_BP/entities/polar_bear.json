@@ -69,7 +69,7 @@
         "minecraft:angry": {
           "duration": 1,
           "broadcast_anger": true,
-          "broadcast_range": 41,
+          "broadcast_range": 25,
           "calm_event": {
             "event": "minecraft:baby_on_calm",
             "target": "self"
@@ -128,7 +128,7 @@
           "damage": [7, 8]
         },
         "minecraft:angry": {
-          "duration": 500,
+          "duration": 30,
           "broadcast_anger": false,
           "broadcast_range": 20,
           "calm_event": {

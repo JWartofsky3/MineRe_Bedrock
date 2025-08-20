@@ -418,7 +418,12 @@
       "minecraft:navigation.walk": {
         "can_float": true,
         "avoid_water": true,
-        "avoid_damage_blocks": true
+        "avoid_damage_blocks": true,
+        "blocks_to_avoid": [
+          {
+            "name": "minecraft:powder_snow"
+          }
+        ]
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},

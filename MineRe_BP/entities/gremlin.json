@@ -43,40 +43,6 @@
         },
         "minecraft:knockback_resistance": {
           "value": 0.5
-        },
-        "minecraft:behavior.nearest_attackable_target": {
-          "priority": 3,
-          "must_see": true,
-          "within_radius": 4,
-          "entity_types": [
-            {
-              "filters": {
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "player"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "endermite"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "silverfish"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "goblin"
-                  }
-                ]
-              },
-              "max_dist": 5
-            }
-          ]
         }
       },
       "minere:medium_gremlin": {
@@ -186,10 +152,6 @@
           }
         ]
       },
-      "minecraft:follow_range": {
-        "value": 10,
-        "max": 10
-      },
       "minecraft:attack": {
         "damage": 4
       },
@@ -229,7 +191,7 @@
                 }
               ]
             },
-            "max_dist": 5
+            "max_dist": 8
           }
         ]
       },

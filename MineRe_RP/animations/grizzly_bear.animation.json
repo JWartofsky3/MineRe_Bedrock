@@ -1,220 +1,248 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"animation.minere.grizzly_bear.walk": {
-			"loop": true,
-			"anim_time_update": "query.modified_distance_moved",
-			"bones": {
-				"rear_left_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
-				},
-				"rear_right_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
-				},
-				"front": {
-					"rotation": [0, 0, "math.cos(query.anim_time * 55) * -3"]
-				},
-				"head": {
-					"rotation": [0, 0, "math.cos(15 + query.anim_time * 55) * 2"]
-				},
-				"front_left_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
-				},
-				"front_right_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
-				},
-				"rear": {
-					"rotation": [0, 0, "math.cos(query.anim_time * 55) * 3"]
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.run": {
-			"loop": true,
-			"anim_time_update": "query.modified_distance_moved",
-			"bones": {
-				"rear_left_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * 40", 0, "math.cos(query.anim_time * 55) * -7"]
-				},
-				"rear_right_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * 40", 0, "math.cos(query.anim_time * 55) * 7"]
-				},
-				"front": {
-					"rotation": ["math.cos(query.anim_time * 55) * -4", 0, "math.cos(query.anim_time * 75) * -3"]
-				},
-				"head": {
-					"rotation": ["math.cos(15+ query.anim_time * 55) * 4", 0, "math.cos(25 + query.anim_time * 75) * -3"]
-				},
-				"front_left_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * -40", 0, "math.cos(query.anim_time * 55) * -7"]
-				},
-				"front_right_leg": {
-					"rotation": ["math.cos(query.anim_time * 55) * -40", 0, "math.cos(query.anim_time * 55) * 7"]
-				},
-				"rear": {
-					"rotation": ["math.cos(query.anim_time * 55) * 4", 0, "math.cos(query.anim_time * 75) * 3"]
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.attack": {
-			"animation_length": 0.5,
-			"bones": {
-				"root": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.1667": [0, 4, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"rear_left_leg": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [25, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"rear_right_leg": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [25, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"front": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [-45, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"head": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [75, 0, 0],
-						"0.5": [0, 0, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.1667": [0, 2, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"front_left_leg": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [-45, -25, -5],
-						"0.3333": [-75, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"front_right_leg": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [-75, 25, 5],
-						"0.3333": [-45, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				},
-				"rear": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.1667": [-35, 0, 0],
-						"0.5": [0, 0, 0]
-					}
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.look_at": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.baby_transform": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"position": [0, 1.5, 0],
-					"scale": 1.25
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.bite": {
-			"loop": true,
-			"bones": {
-				"attacking": {
-					"scale": 1
-				},
-				"neutral": {
-					"scale": 0
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.jaw_closed": {
-			"loop": true,
-			"bones": {
-				"attacking": {
-					"scale": 0
-				},
-				"neutral": {
-					"scale": 1
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.tamed": {
-			"loop": true,
-			"bones": {
-				"wild": {
-					"scale": 0
-				},
-				"tamed": {
-					"scale": 1
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.wild": {
-			"loop": true,
-			"bones": {
-				"wild": {
-					"scale": 1
-				},
-				"tamed": {
-					"scale": 0
-				}
-			}
-		},
-		"animation.minere.grizzly_bear.sit": {
-			"loop": true,
-			"bones": {
-				"root": {
-					"position": [0, -3.67, 0]
-				},
-				"front": {
-					"rotation": [-15, 0, 0]
-				},
-				"head": {
-					"rotation": [15, 0, 0],
-					"position": [0, 2, 0]
-				},
-				"front_left_leg": {
-					"rotation": [15, 8, 0]
-				},
-				"front_right_leg": {
-					"rotation": [15, -8, 0]
-				},
-				"rear": {
-					"rotation": [-45, 0, 0]
-				},
-				"rear_left_leg": {
-					"rotation": [-50, -15, -15],
-					"position": [1, 1, 3]
-				},
-				"rear_right_leg": {
-					"rotation": [-50, 15, 15],
-					"position": [-1, 1, 3]
-				}
-			}
-		}
-	}
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.grizzly_bear.walk": {
+      "loop": true,
+      "anim_time_update": "query.modified_distance_moved",
+      "bones": {
+        "rear_left_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
+        },
+        "rear_right_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
+        },
+        "front": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * -3"]
+        },
+        "head": {
+          "rotation": [0, 0, "math.cos(15 + query.anim_time * 55) * 2"]
+        },
+        "front_left_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * 30", 0, 0]
+        },
+        "front_right_leg": {
+          "rotation": ["math.cos(query.anim_time * 55) * -30", 0, 0]
+        },
+        "rear": {
+          "rotation": [0, 0, "math.cos(query.anim_time * 55) * 3"]
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.run": {
+      "loop": true,
+      "anim_time_update": "query.modified_distance_moved",
+      "bones": {
+        "rear_left_leg": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * 40",
+            0,
+            "math.cos(query.anim_time * 55) * -7"
+          ]
+        },
+        "rear_right_leg": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * 40",
+            0,
+            "math.cos(query.anim_time * 55) * 7"
+          ]
+        },
+        "front": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * -4",
+            0,
+            "math.cos(query.anim_time * 75) * -3"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.cos(15+ query.anim_time * 55) * 4",
+            0,
+            "math.cos(25 + query.anim_time * 75) * -3"
+          ]
+        },
+        "front_left_leg": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * -40",
+            0,
+            "math.cos(query.anim_time * 55) * -7"
+          ]
+        },
+        "front_right_leg": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * -40",
+            0,
+            "math.cos(query.anim_time * 55) * 7"
+          ]
+        },
+        "rear": {
+          "rotation": [
+            "math.cos(query.anim_time * 55) * 4",
+            0,
+            "math.cos(query.anim_time * 75) * 3"
+          ]
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.attack": {
+      "animation_length": 0.5,
+      "bones": {
+        "root": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1667": [0, 4, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "rear_left_leg": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [25, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "rear_right_leg": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [25, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "front": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [-45, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [75, 0, 0],
+            "0.5": [0, 0, 0]
+          },
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1667": [0, 2, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "front_left_leg": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [-45, -25, -5],
+            "0.3333": [-75, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "front_right_leg": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [-75, 25, 5],
+            "0.3333": [-45, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        },
+        "rear": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.1667": [-35, 0, 0],
+            "0.5": [0, 0, 0]
+          }
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.look_at": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.baby_transform": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "position": [0, 1.5, 0],
+          "scale": 1.25
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.bite": {
+      "loop": true,
+      "bones": {
+        "attacking": {
+          "scale": 1
+        },
+        "neutral": {
+          "scale": 0
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.jaw_closed": {
+      "loop": true,
+      "bones": {
+        "attacking": {
+          "scale": 0
+        },
+        "neutral": {
+          "scale": 1
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.tamed": {
+      "loop": true,
+      "bones": {
+        "wild": {
+          "scale": 0
+        },
+        "tamed": {
+          "scale": 1
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.wild": {
+      "loop": true,
+      "bones": {
+        "wild": {
+          "scale": 1
+        },
+        "tamed": {
+          "scale": 0
+        }
+      }
+    },
+    "animation.minere.grizzly_bear.sit": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "position": [0, -3.67, 0]
+        },
+        "front": {
+          "rotation": [-15, 0, 0]
+        },
+        "head": {
+          "rotation": [15, 0, 0],
+          "position": [0, 2, 0]
+        },
+        "front_left_leg": {
+          "rotation": [15, 8, 0]
+        },
+        "front_right_leg": {
+          "rotation": [15, -8, 0]
+        },
+        "rear": {
+          "rotation": [-45, 0, 0]
+        },
+        "rear_left_leg": {
+          "rotation": [-50, -15, -15],
+          "position": [1, 1, 3]
+        },
+        "rear_right_leg": {
+          "rotation": [-50, 15, 15],
+          "position": [-1, 1, 3]
+        }
+      }
+    }
+  }
 }

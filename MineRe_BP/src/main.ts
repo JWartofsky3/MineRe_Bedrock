@@ -1,9 +1,10 @@
 import {
   world,
-  Entity,
   system,
   EntityComponentTypes,
   Player,
+  EntityDamageCause,
+  StartupEvent,
 } from "@minecraft/server";
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -15,10 +16,8 @@ import { ogreLaugh } from "mob/ogreLaugh";
 import { skeletonStrafe } from "mob/skeleton_strafe";
 import { useAmethystStaff } from "item/amethyst_staff";
 import { useEchoStaff } from "item/echo_staff";
-import { PhasedEnderPearl } from "item/phased_ender_pearl";
 import { angerEndermen } from "mob/angerEndermen";
 import { enderRandomTeleport } from "mob/enderTeleport";
-import { handleEndSpawn } from "mob/endSpawns";
 import { rollCastFire } from "mob/castFire";
 import { rollBecomeBat, vampireHeal, vampireHurt } from "mob/vampire";
 import { fireInfintyBowAfter } from "item/infinity_bow";
@@ -26,122 +25,33 @@ import { rollBecomeSummoner } from "mob/become_summoner";
 import { bombDamage } from "item/bomb_damage";
 import { useFireStaff } from "item/fire_staff";
 import { useBlasterStaff } from "item/blaster_staff";
-import { EnderStrike } from "item/ender_strike";
 import { rollFreeze } from "mob/freeze";
-import { fireflyLamp } from "block/firefly_lamp";
-import { IceDagger } from "item/ice_dagger";
-import { VenomShank } from "item/venom_shank";
-import { customOre } from "block/custom_ore";
-import { teleporter } from "block/teleporter";
-import { Treecapitator, offHandTreecapitate } from "item/treecapitator";
+import { offHandTreecapitate } from "item/treecapitator";
 import { blockDropItem } from "block/blockDropItem";
-import {
-  onAxeUse,
-  onShovelUse,
-  onHoeUse,
-  CustomAxe,
-  CustomSword,
-  CustomShovel,
-  CustomPickaxe,
-  CustomHoe,
-} from "item/custom_tools";
-import { RoyalJelly } from "item/royal_jelly";
+import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
 import { runEarthquake } from "mob/earthquake";
 import { rollOgreRoar } from "mob/ogreRoar";
 import { rollLeap } from "mob/yetiLeap";
-import { Illumina } from "item/illumina";
-import { PlatformPath } from "item/platform_path";
 import { iceCharge, iceChargeRunner } from "item/ice_charge";
-import { ghostPot } from "block/ghost_pot";
-import { Windforce } from "item/windforce";
-import { Firebrand } from "item/firebrand";
-import { Darkheart } from "item/darkheart";
 import { horseRemoveChest } from "mob/horseCleanup";
+import { runEndStorms } from "weather/end_storm";
+import { registerBlocks, registerItems } from "registry";
+import {
+  ARMOR_WEIGHT,
+  giveOutSettingsBook,
+  initializeWorldSettings,
+} from "settings";
+import { replacePlaceholder } from "mob/replacePlaceholderEntities";
 
 export const DEFAULT_TICK = 20;
 
-world.beforeEvents.worldInitialize.subscribe(function (data) {
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:ender_strike",
-    EnderStrike,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:illumina",
-    Illumina,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:ice_dagger",
-    IceDagger,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:venom_shank",
-    VenomShank,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:windforce",
-    Windforce,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:firebrand",
-    Firebrand,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:darkheart",
-    Darkheart,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:royal_jelly",
-    RoyalJelly,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:custom_sword",
-    CustomSword,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:custom_axe",
-    CustomAxe,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:custom_hoe",
-    CustomHoe,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:custom_shovel",
-    CustomShovel,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:custom_pickaxe",
-    CustomPickaxe,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:treecapitator",
-    Treecapitator,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:path",
-    PlatformPath,
-  );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:phased_ender_pearl",
-    PhasedEnderPearl,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:firefly_lamp",
-    fireflyLamp,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:custom_ore",
-    customOre,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:teleporter",
-    teleporter,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:ghost_pot",
-    ghostPot,
-  );
+system.beforeEvents.startup.subscribe(function (data: StartupEvent) {
+  registerItems(data);
+  registerBlocks(data);
+  initializeWorldSettings();
 });
+
+giveOutSettingsBook();
 
 world.afterEvents.itemReleaseUse.subscribe(function (data) {
   fireInfintyBowAfter(data);
@@ -177,31 +87,34 @@ world.beforeEvents.itemUse.subscribe((data) => {
   useBlasterStaff(data);
 });
 
-world.afterEvents.itemUseOn.subscribe((data) => {
-  onHoeUse(data.source, data.itemStack, data.block);
-  onShovelUse(data.source, data.itemStack, data.block);
-  onAxeUse(data.source, data.itemStack, data.block);
+world.afterEvents.playerInteractWithBlock.subscribe((data) => {
+  onHoeUse(data.player, data.itemStack, data.block);
+  onShovelUse(data.player, data.itemStack, data.block);
+  onAxeUse(data.player, data.itemStack, data.block);
 });
 
 world.afterEvents.entityDie.subscribe(function (data) {
-  ogreLaugh(data?.damageSource?.damagingEntity);
+  ogreLaugh(data?.damageSource?.damagingEntity, data.deadEntity);
   horseRemoveChest(data);
 });
 
 world.afterEvents.entitySpawn.subscribe(function (data) {
-  if (data?.entity == null) {
+  if (!data?.entity?.isValid) {
     return;
   }
-  data.cause;
+  const dimension = data?.entity?.dimension;
+  if (!dimension) {
+    return;
+  }
   runEarthquake(data.entity);
   if (
     data.entity.typeId == "minere:bomb" ||
     data.entity.typeId == "minere:firebomb"
   ) {
-    world.playSound("random.fuse", data.entity.location);
+    dimension.playSound("random.fuse", data.entity.location);
   }
   if (data.entity.typeId == "minere:ice_charge") {
-    world.playSound("item.ice_charge.frost", data.entity.location);
+    dimension.playSound("item.ice_charge.frost", data.entity.location);
   }
   if (data.entity.typeId == "minere:demon") {
     rollBecomeSummoner(data.entity, 0.2);
@@ -209,8 +122,12 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
   if (data.entity.typeId == "minecraft:arrow") {
     skeletonStrafe(data.entity, 0.5);
   }
-  handleEndSpawn(data.entity);
+  replacePlaceholder(data.entity);
   iceChargeRunner(data.entity);
+});
+
+world.afterEvents.entityLoad.subscribe(function (data) {
+  replacePlaceholder(data.entity);
 });
 
 world.afterEvents.entityHurt.subscribe(function (data) {
@@ -226,6 +143,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
 
   const projectile = data.damageSource?.damagingProjectile;
   const attacker = data.damageSource?.damagingEntity;
+  const cause = data.damageSource?.cause;
   const target = data.hurtEntity;
   const dimension = world.getDimension(target.dimension.id);
   if (!dimension) {
@@ -252,8 +170,9 @@ world.afterEvents.entityHurt.subscribe(function (data) {
 
   // throwing
   if (
-    attacker?.typeId === "minere:yeti" ||
-    attacker?.typeId === "minere:walker"
+    (attacker?.typeId === "minere:yeti" ||
+      attacker?.typeId === "minere:walker") &&
+    cause === EntityDamageCause.entityAttack
   ) {
     throwBy(attacker, target, 1.0, 1.0);
   }
@@ -342,13 +261,18 @@ world.afterEvents.entityHurt.subscribe(function (data) {
   if (target?.typeId === "minere:vampire" || target.typeId == "minere:ghost") {
     vampireHurt(target, attacker);
     if ((!!projectile || !!attacker) && target?.typeId === "minere:vampire") {
-      rollBecomeBat(target, 0.2, 0.5);
+      rollBecomeBat(target, 0.25, 0.5);
     }
   }
 });
 
 system.runInterval(() => {
+  if (!world?.getDynamicProperty(ARMOR_WEIGHT)?.valueOf()) {
+    return;
+  }
   world.getAllPlayers().forEach((player: Player) => {
     armorWeight(player);
   });
 }, 1);
+
+runEndStorms();

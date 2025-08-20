@@ -6,6 +6,7 @@ import {
   EntityComponentTypes,
   EntityHealthComponent,
 } from "@minecraft/server";
+import { spawnParticleCloud } from "particles/particleCloud";
 import { addVector3, randomVector3 } from "util/vector3Functions";
 
 export const enderRandomTeleport = (
@@ -62,29 +63,21 @@ export function enderTeleport(entity: Entity, end: Vector3) {
   if (!dimension) {
     return;
   }
-  world.playSound("mob.endermen.portal", entity.location, {
+  dimension.playSound("mob.endermen.portal", entity.location, {
     volume: 2.0,
   });
-  for (let i = 0; i < 50; i++) {
-    try {
-      dimension.spawnParticle(
-        "minecraft:end_chest",
-        addVector3(entity.location, randomVector3(2)),
-      );
-    } catch {}
-  }
+  spawnParticleCloud("minecraft:end_chest", entity.location, 2, 50, dimension);
   entity.teleport(end);
   system.runTimeout(() => {
-    world.playSound("mob.endermen.portal", end, {
+    dimension.playSound("mob.endermen.portal", end, {
       volume: 2.0,
     });
-    for (let i = 0; i < 50; i++) {
-      try {
-        dimension.spawnParticle(
-          "minecraft:end_chest",
-          addVector3(entity.location, randomVector3(2)),
-        );
-      } catch {}
-    }
+    spawnParticleCloud(
+      "minecraft:end_chest",
+      entity.location,
+      2,
+      50,
+      dimension,
+    );
   }, 2);
 }

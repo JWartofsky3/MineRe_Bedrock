@@ -72,12 +72,12 @@ export function iceCharge(
 }
 
 export function iceChargeRunner(entity: Entity) {
-  if (entity?.typeId !== "minere:ice_charge" || !entity?.isValid()) {
+  if (entity?.typeId !== "minere:ice_charge" || !entity?.isValid) {
     return;
   }
   const dimension = entity.dimension;
   const runner = system.runInterval(() => {
-    if (entity?.isValid() && entity?.isInWater) {
+    if (entity?.isValid && entity?.isInWater) {
       iceCharge(dimension, entity.location, 3);
       system.runTimeout(() => {
         entity.remove();

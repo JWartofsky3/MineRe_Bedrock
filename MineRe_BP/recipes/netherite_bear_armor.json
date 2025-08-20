@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "minere:netherite_bear_armor"
+    },
+
+    "tags": ["crafting_table"],
+    "ingredients": [
+      {
+        "item": "minere:diamond_bear_armor"
+      },
+      {
+        "item": "minecraft:netherite_upgrade_smithing_template"
+      },
+      {
+        "item": "minecraft:netherite_ingot"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "minecraft:netherite_ingot"
+      }
+    ],
+    "result": {
+      "item": "minere:netherite_bear_armor"
+    }
+  }
+}

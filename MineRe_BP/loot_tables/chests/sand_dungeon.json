@@ -139,8 +139,17 @@
         },
         {
           "type": "item",
-          "name": "minecraft:saddle",
-          "weight": 20
+          "name": "minecraft:leather",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ]
         },
         {
           "type": "item",
@@ -414,6 +423,20 @@
               "data": 27
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
         }
       ]
     }

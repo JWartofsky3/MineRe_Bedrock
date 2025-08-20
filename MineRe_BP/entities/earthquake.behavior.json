@@ -7,12 +7,96 @@
       "is_summonable": true,
       "is_experimental": false
     },
+    "component_groups": {
+      "minere:variant_0": {
+        "minecraft:mark_variant": {
+          "value": 0
+        }
+      },
+      "minere:variant_1": {
+        "minecraft:mark_variant": {
+          "value": 1
+        }
+      },
+      "minere:variant_2": {
+        "minecraft:mark_variant": {
+          "value": 2
+        }
+      },
+      "minere:variant_3": {
+        "minecraft:mark_variant": {
+          "value": 3
+        }
+      },
+      "minere:variant_4": {
+        "minecraft:mark_variant": {
+          "value": 4
+        }
+      },
+      "minere:variant_5": {
+        "minecraft:mark_variant": {
+          "value": 5
+        }
+      },
+      "minere:variant_6": {
+        "minecraft:mark_variant": {
+          "value": 6
+        }
+      },
+      "minere:variant_7": {
+        "minecraft:mark_variant": {
+          "value": 7
+        }
+      },
+      "minere:variant_8": {
+        "minecraft:mark_variant": {
+          "value": 8
+        }
+      },
+      "minere:variant_9": {
+        "minecraft:mark_variant": {
+          "value": 9
+        }
+      }
+    },
     "components": {
       "minecraft:damage_sensor": {
         "triggers": { "cause": "all", "deals_damage": false }
       },
       "minecraft:mark_variant": {
         "value": 0
+      }
+    },
+    "events": {
+      "minere:set_variant_0": {
+        "add": { "component_groups": ["minere:variant_0"] }
+      },
+      "minere:set_variant_1": {
+        "add": { "component_groups": ["minere:variant_1"] }
+      },
+      "minere:set_variant_2": {
+        "add": { "component_groups": ["minere:variant_2"] }
+      },
+      "minere:set_variant_3": {
+        "add": { "component_groups": ["minere:variant_3"] }
+      },
+      "minere:set_variant_4": {
+        "add": { "component_groups": ["minere:variant_4"] }
+      },
+      "minere:set_variant_5": {
+        "add": { "component_groups": ["minere:variant_5"] }
+      },
+      "minere:set_variant_6": {
+        "add": { "component_groups": ["minere:variant_6"] }
+      },
+      "minere:set_variant_7": {
+        "add": { "component_groups": ["minere:variant_7"] }
+      },
+      "minere:set_variant_8": {
+        "add": { "component_groups": ["minere:variant_8"] }
+      },
+      "minere:set_variant_9": {
+        "add": { "component_groups": ["minere:variant_9"] }
       }
     }
   }

@@ -1,7 +1,7 @@
 import {
   Player,
   BlockCustomComponent,
-  BlockComponentPlayerDestroyEvent,
+  BlockComponentPlayerBreakEvent,
   ItemStack,
 } from "@minecraft/server";
 import {
@@ -128,7 +128,7 @@ oreMap.set("minere:basalt_iron_ore", {
 oreMap.set("minere:blackstone_iron_ore", oreMap.get("minere:basalt_iron_ore"));
 
 export const customOre: BlockCustomComponent = {
-  onPlayerDestroy(arg: BlockComponentPlayerDestroyEvent) {
+  onPlayerBreak(arg: BlockComponentPlayerBreakEvent) {
     const player: Player = arg.player;
     if (!player) {
       return;
@@ -144,7 +144,7 @@ export const customOre: BlockCustomComponent = {
       z: 0.5,
     });
     const oreDef: OreDefinition = oreMap.get(
-      arg.destroyedBlockPermutation.type.id,
+      arg.brokenBlockPermutation.type.id,
     );
     if (!oreDef) {
       return;

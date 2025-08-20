@@ -511,6 +511,20 @@
           "name": "minecraft:book"
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 6
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
+        }
+      ]
     }
   ]
 }

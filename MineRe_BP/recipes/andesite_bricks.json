@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:andesite_bricks"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["##", "##"],
+    "key": {
+      "#": {
+        "item": "minecraft:polished_andesite"
+      }
+    },
+    "result": {
+      "item": "minere:andesite_bricks",
+      "count": 4
+    }
+  }
+}

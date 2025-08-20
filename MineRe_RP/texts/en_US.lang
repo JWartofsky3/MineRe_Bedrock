@@ -170,3 +170,46 @@ tile.minere:firefly_lamp.name=Green Firefly Lamp
 tile.minere:yellow_firefly_lamp.name=Yellow Firefly Lamp
 tile.minere:purple_firefly_lamp.name=Purple Firefly Lamp
 tile.minere:blue_firefly_lamp.name=Blue Firefly Lamp
+
+item.minere:copper_bear_armor=Copper Bear Armor
+item.minere:iron_bear_armor=Iron Bear Armor
+item.minere:gold_bear_armor=Golden Bear Armor
+item.minere:diamond_bear_armor=Diamond Bear Armor
+item.minere:netherite_bear_armor=Netherite Bear Armor
+item.minere:enderon_bear_armor=Enderon Bear Armor
+minere:itemGroup.name.bear_armor=Bear Armor
+
+tile.minere:nether_coal_block.name=Block of Nether Coal
+entity.minere:staff_fireball.name=Fireball
+item.elixir_of_experience.name=Elixir of Experience
+item.minere:elixir_of_experience=Elixir of Experience
+tile.minere:runic_blackstone.name=Runic Blackstone
+tile.minere:runic_blackstone_bricks.name=Runic Blackstone Bricks
+tile.minere:lapis_bricks.name=Lapis Bricks
+tile.minere:andesite_bricks.name=Andesite Bricks
+tile.minere:granite_bricks.name=Granite Bricks
+tile.minere:diorite_bricks.name=Diorite Bricks
+
+tile.minere:andesite_brick_slab.name=Andesite Brick SLab
+tile.minere:granite_brick_slab.name=Granite Brick Slab
+tile.minere:diorite_brick_slab.name=Diorite Brick Slab
+
+item.minere:settings_book=MineRe Settings
+settings.minere.title=MineRe World Settings
+settings.minere.toggle.reduced_health_regen=Reduced Health Regeneration
+settings.minere.toggle.healing_from_soup=Healing from Soup, Milk, and Stew
+settings.minere.toggle.armor_weight=Armor Weight
+settings.minere.toggle.armor_curve=Armor Curve
+settings.minere.toggle.protection_nerf=Protection Nerf
+settings.minere.toggle.end_storms=End Storms
+
+settings.minere.tooltip.reduced_health_regen=Reduces health regeneration from hunger by half.
+settings.minere.tooltip.healing_from_soup=Heal some hearts from eating soup, milk, and stew.
+settings.minere.tooltip.armor_weight=Move faster with light armor and slower with heavy armor.
+settings.minere.tooltip.armor_curve=Increases the protection of low tier armor sets.
+settings.minere.tooltip.protection_nerf=Reduces damage resistance from the Protection enchantment.\n\nDoes not apply to Fire, Blast, and Projectile protection.
+settings.minere.tooltip.end_storms=Enables lightning storms in the outer End islands.\n\nStorms have a 25% chance of occuring every 10 minutes and last 2 to 4 minutes.\n\nLightning will frequently strike airborne players.
+
+item.minere:helper0=Helper 0
+item.minere:helper1=Helper 1
+item.minere:helper2=Helper 2

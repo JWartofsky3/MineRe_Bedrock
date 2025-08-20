@@ -5,7 +5,6 @@ import {
   EntityHealthComponent,
   EntityTypeFamilyComponent,
 } from "@minecraft/server";
-import { isValid } from "util/vector3Functions";
 
 export function isAlive(entity: Entity): boolean {
   if (!entity) {
@@ -39,7 +38,7 @@ export function isFamily(entity: Entity, families: Set<string>): boolean {
 }
 
 export function isLoaded(entity: Entity): boolean {
-  if (!entity.isValid() || !entity?.dimension) {
+  if (!entity.isValid || !entity?.dimension) {
     return false;
   }
   const entities: Entity[] = entity.dimension.getEntities({

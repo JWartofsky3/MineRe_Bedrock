@@ -1,13 +1,8 @@
-import { Player, Block, ItemStack, GameMode } from "@minecraft/server";
+import { Player, ItemStack, GameMode } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
 
-export function handleItemDurability(
-  player: Player,
-  block: Block,
-  itemBefore: ItemStack,
-  itemAfter: ItemStack,
-) {
-  if (player.getGameMode() === GameMode.creative) {
+export function handleItemDurability(player: Player, itemAfter: ItemStack) {
+  if (player.getGameMode() === GameMode.Creative) {
     return;
   }
   if (!itemAfter?.typeId) {

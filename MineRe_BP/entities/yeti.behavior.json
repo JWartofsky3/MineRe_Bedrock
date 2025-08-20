@@ -678,7 +678,8 @@
         "add": {
           "component_groups": [
             "minere:cold_yeti",
-            "minere:cold_yeti_persistent"
+            "minere:yeti_neutral",
+            "minere:persistent"
           ]
         }
       },

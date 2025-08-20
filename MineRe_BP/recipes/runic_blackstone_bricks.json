@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:runic_blackstone_bricks"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BB", "BB"],
+    "key": {
+      "B": {
+        "item": "minere:runic_blackstone"
+      }
+    },
+    "result": {
+      "item": "minere:runic_blackstone_bricks",
+      "count": 4
+    }
+  }
+}

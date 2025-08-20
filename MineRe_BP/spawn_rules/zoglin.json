@@ -10,8 +10,7 @@
         "minecraft:spawns_underground": {},
         "minecraft:brightness_filter": {
           "min": 0,
-          "max": 11,
-          "adjust_for_weather": true
+          "max": 7
         },
         "minecraft:difficulty_filter": {
           "min": "easy",

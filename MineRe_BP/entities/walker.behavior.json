@@ -76,7 +76,7 @@
           }
         },
         "minecraft:behavior.tempt": {
-          "priority": 3,
+          "priority": 0,
           "speed_multiplier": 1.5,
           "items": ["ender_eye"]
         },
@@ -150,11 +150,11 @@
           "is_pushable_by_piston": true
         },
         "minecraft:movement": {
-          "value": 0.25
+          "value": 0.27
         },
         "minecraft:follow_range": {
-          "value": 64,
-          "max": 64
+          "value": 48,
+          "max": 48
         },
         "minecraft:navigation.walk": {
           "is_amphibious": true,
@@ -167,7 +167,8 @@
         "minecraft:can_climb": {},
         "minecraft:behavior.random_stroll": {
           "priority": 7,
-          "speed_multiplier": 1
+          "speed_multiplier": 1,
+          "xz_dist": 24
         },
         "minecraft:behavior.look_at_player": {
           "priority": 8,
@@ -184,7 +185,7 @@
           "entity_types": [
             {
               "priority": 0,
-              "max_dist": 64,
+              "max_dist": 48,
               "reevaluate_description": true,
               "filters": {
                 "all_of": [
@@ -199,35 +200,6 @@
                     "subject": "other",
                     "operator": "==",
                     "value": "player"
-                  }
-                ]
-              }
-            },
-            {
-              "priority": 0,
-              "max_dist": 48,
-              "reevaluate_description": true,
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 0
-                  }
-                ],
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "irongolem"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "villager"
                   }
                 ]
               }
@@ -261,7 +233,6 @@
             },
             {
               "priority": 0,
-              "max_dist": 64,
               "reevaluate_description": true,
               "filters": {
                 "all_of": [
@@ -288,7 +259,7 @@
             },
             {
               "priority": 1,
-              "max_dist": 64,
+              "max_dist": 48,
               "reevaluate_description": true,
               "filters": {
                 "all_of": [
@@ -325,6 +296,12 @@
                     "subject": "other",
                     "operator": "==",
                     "value": "shulker"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "stomp"
                   }
                 ]
               }
@@ -346,6 +323,12 @@
                     "subject": "other",
                     "operator": "==",
                     "value": "enderman"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "stomp"
                   }
                 ]
               }
@@ -356,8 +339,8 @@
       },
       "mode_switcher": {
         "minecraft:target_nearby_sensor": {
-          "inside_range": 4.5,
-          "outside_range": 5,
+          "inside_range": 5,
+          "outside_range": 6,
           "must_see": true,
           "on_inside_range": {
             "event": "switch_to_melee",
@@ -370,6 +353,19 @@
         }
       },
       "ranged_mode": {
+        "minecraft:shooter": {
+          "def": "minere:plasma_bolt"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "attack_radius": 32,
+          "burst_shots": 2,
+          "burst_interval": 0.5,
+          "charge_shoot_trigger": 1.5,
+          "charge_charged_trigger": 1
+        }
+      },
+      "ranged_mode_friendly": {
         "minecraft:shooter": {
           "def": "minere:plasma_bolt"
         },
@@ -388,15 +384,15 @@
         },
         "minecraft:behavior.delayed_attack": {
           "priority": 3,
-          "attack_duration": 1,
+          "attack_duration": 1.5,
           "attack_once": false,
-          "cooldown_time": 2,
+          "cooldown_time": 0.5,
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
           "reach_multiplier": 2,
           "speed_multiplier": 1.25,
-          "hit_delay_pct": 0.25
+          "hit_delay_pct": 0.5
         }
       }
     },
@@ -404,13 +400,6 @@
       "minecraft:nameable": {},
       "minecraft:loot": {
         "table": "loot_tables/entities/walker.json"
-      },
-      "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player ? 40 : 0"
-      },
-      "minecraft:health": {
-        "value": 150,
-        "max": 150
       },
       "minecraft:equipment": {
         "table": "loot_tables/entities/ogre/ogre_gear.json",
@@ -420,6 +409,13 @@
             "drop_chance": 0.0
           }
         ]
+      },
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? 50 : 0"
+      },
+      "minecraft:health": {
+        "value": 150,
+        "max": 150
       },
       "minecraft:damage_sensor": {
         "triggers": [
@@ -471,7 +467,7 @@
                 {
                   "test": "distance_to_nearest_player",
                   "operator": ">",
-                  "value": 256
+                  "value": 128
                 }
               ]
             },
@@ -484,16 +480,16 @@
                 {
                   "test": "inactivity_timer",
                   "subject": "self",
-                  "value": 45
+                  "value": 25
                 },
                 {
                   "test": "random_chance",
-                  "value": 1200
+                  "value": 600
                 },
                 {
                   "test": "distance_to_nearest_player",
                   "operator": ">",
-                  "value": 128
+                  "value": 64
                 }
               ]
             }
@@ -573,19 +569,42 @@
       },
       "switch_to_melee": {
         "remove": {
-          "component_groups": ["ranged_mode"]
+          "component_groups": ["ranged_mode", "ranged_mode_friendly"]
         },
         "add": {
           "component_groups": ["melee_mode"]
         }
       },
       "switch_to_ranged": {
-        "remove": {
-          "component_groups": ["melee_mode"]
-        },
-        "add": {
-          "component_groups": ["ranged_mode"]
-        }
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["melee_mode"]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "self",
+              "operator": "==",
+              "value": 0
+            },
+            "add": {
+              "component_groups": ["ranged_mode"]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "self",
+              "operator": "==",
+              "value": 1
+            },
+            "add": {
+              "component_groups": ["ranged_mode_friendly"]
+            }
+          }
+        ]
       },
       "minecraft:spawn_emerging": {
         "add": {

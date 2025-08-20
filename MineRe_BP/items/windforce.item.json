@@ -54,7 +54,7 @@
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": ["minecraft:iron_ingot", "minecraft:wind_charge"],
+            "items": ["minecraft:breeze_rod"],
             "repair_amount": 320
           }
         ]

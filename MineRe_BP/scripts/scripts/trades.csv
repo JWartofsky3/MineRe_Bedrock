@@ -1,0 +1,28 @@
+Enchantment	Weight	Item	Min	Max	Separator	Item Min	Item Max	Item Separator	Max Level
+sharpness	100	lapis_lazuli	1	3	1	1	1	0	5
+efficiency	100	lapis_lazuli	1	3	1	1	1	0	5
+unbreaking	70	amethyst_shard	2	4	1	1	2	1	3
+piercing, breach, impaling	50	quartz	1	3	1	1	2	0	4,4,5
+mending	30	echo_shard	12	18	0	2	2	0	1
+respiration	20	pufferfish	3	5	0	1	1	0	3
+thorns	10	cactus	3	4	1	1	2	1	3
+protection	100	lapis_lazuli	2	3	2	1	2	0	4
+blast_protection,density	50	iron_ingot	2	3	1	1	1	0	4,5
+fire_protection	50	magma_cream	2	3	1	1	1	0	4
+projectile_protection,piercing	50	flint	2	3	1	1	1	1	4,4
+depth_strider,riptide,aqua_affinity	20	prismarine_shard	4	5	1	1	1	1	3,3,1
+feather_falling	40	phantom_membrane	2	3	1	1	1	0	4
+frost_walker	20	minere:ice_charge	4	5	0	2	3	0	2
+bane_of_arthropods	50	spider_eye	1	2	1	1	1	0	5
+smite	50	bone	1	3	1	1	2	0	5
+channeling,multishot,quick_charge	15	redstone	8	14	0	6	12	0	1,1,1
+fire_aspect,flame	25	blaze_powder	3	4	1	2	3	0	2,1
+knockback,punch	40	wind_charge	3	4	1	2	3	0	2,2
+power	100	lapis_lazuli	1	3	1	1	1	0	5
+quick_charge	50	lapis_lazuli	1	3	1	1	1	0	3
+infinity	10	ender_eye	12	18	0	1	3	0	1
+silk_touch	30	gold_ingot	12	18	0	3	6	0	1
+loyalty,looting	30	gold_ingot	3	4	1	1	2	1	3
+luck_of_the_sea	30	nautilus_shell	2	3	1	1	2	0	3
+lure,aqua_affinity	30	cod	2	3	1	1	2	0	3,1
+fortune	30	diamond	4	5	1	1	2	1	3

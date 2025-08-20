@@ -52,7 +52,7 @@ export function rollCastFire(
     caster.triggerEvent("minere:demon_start_roar");
 
     system.runTimeout(() => {
-      if (!caster?.isValid()) {
+      if (!caster?.isValid) {
         return;
       }
       const dir = directionVector3(target.location, caster.location);
@@ -105,7 +105,7 @@ export function rollCastFire(
                 !below.isLiquid &&
                 below.typeId !== "minecraft:fire"
               ) {
-                world.playSound("mob.ghast.fireball", pos, {
+                dimension.playSound("mob.ghast.fireball", pos, {
                   volume: 0.25,
                   pitch: 1.25,
                 });

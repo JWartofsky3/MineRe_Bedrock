@@ -96,7 +96,7 @@ export const CustomSword: ItemCustomComponent = {
 };
 
 export function onHoeUse(player: Player, item: ItemStack, block: Block) {
-  if (item.typeId === "minere:enderon_hoe") {
+  if (item?.typeId === "minere:enderon_hoe") {
     reduceDurability(player, item, 1);
     player.playSound("dig.gravel", {
       location: player.location ?? player.location,
@@ -105,7 +105,7 @@ export function onHoeUse(player: Player, item: ItemStack, block: Block) {
 }
 
 export function onShovelUse(player: Player, item: ItemStack, block: Block) {
-  if (item.typeId === "minere:enderon_shovel") {
+  if (item?.typeId === "minere:enderon_shovel") {
     reduceDurability(player, item, 1);
     player.playSound("dig.gravel", {
       location: player.location ?? player.location,
@@ -114,7 +114,7 @@ export function onShovelUse(player: Player, item: ItemStack, block: Block) {
 }
 
 export function onAxeUse(player: Player, item: ItemStack, block: Block) {
-  if (item.typeId === "minere:enderon_axe") {
+  if (item?.typeId === "minere:enderon_axe") {
     reduceDurability(player, item, 1);
     player.playSound("dig.wood", {
       location: player.location ?? player.location,

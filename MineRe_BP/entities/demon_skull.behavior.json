@@ -3,6 +3,7 @@
   "minecraft:entity": {
     "description": {
       "identifier": "minere:demon_skull",
+      "runtime_identifier": "minecraft:skeleton",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
@@ -10,7 +11,7 @@
     "component_groups": {
       "minere:demon_skull_angry": {
         "minecraft:movement": {
-          "value": 3
+          "value": 2.5
         },
         "minecraft:physics": {
           "has_gravity": false
@@ -24,12 +25,12 @@
           "min_distance": 2,
           "success_rate": 0.25
         },
-        "minecraft:behavior.melee_attack": {
+        "minecraft:behavior.melee_box_attack": {
           "require_complete_path": false,
           "priority": 4,
           "melee_fov": 120,
           "cooldown_time": 0.7,
-          "reach_multiplier": 2.2
+          "horizontal_reach": 0.25
         }
       },
       "minere:demon_skull_passive": {
@@ -51,6 +52,64 @@
           "random_reselect": true,
           "float_duration": [0.1, 0.35]
         }
+      },
+      "minere:summoned_skull": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "piglin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "villager"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "goblin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "yeti"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "ogre"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "irongolem"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zoglin"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ],
+          "must_see": true
+        },
+        "minecraft:follow_range": {
+          "value": 32
+        }
       }
     },
     "components": {
@@ -68,8 +127,8 @@
         "event": "switch_to_aggressive"
       },
       "minecraft:health": {
-        "value": 8,
-        "max": 8
+        "value": 6,
+        "max": 6
       },
       "minecraft:attack": {
         "damage": 3
@@ -101,10 +160,6 @@
             "damage_per_tick": 4
           }
         ]
-      },
-      "minecraft:follow_range": {
-        "value": 25,
-        "max": 25
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
@@ -166,7 +221,7 @@
                 }
               ]
             },
-            "max_dist": 25
+            "max_dist": 16
           }
         ],
         "must_see": true

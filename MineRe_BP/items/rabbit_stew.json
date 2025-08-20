@@ -17,14 +17,32 @@
         "effects": [
           {
             "name": "strength",
-            "chance": 0.4,
-            "duration": 7,
+            "chance": 0.33,
+            "duration": 15,
             "amplifier": 0
           },
           {
             "name": "haste",
-            "chance": 0.4,
-            "duration": 7,
+            "chance": 0.33,
+            "duration": 15,
+            "amplifier": 0
+          },
+          {
+            "name": "regeneration",
+            "chance": 0.33,
+            "duration": 15,
+            "amplifier": 0
+          },
+          {
+            "name": "saturation",
+            "chance": 0.33,
+            "duration": 5,
+            "amplifier": 0
+          },
+          {
+            "name": "absorption",
+            "chance": 0.33,
+            "duration": 15,
             "amplifier": 0
           }
         ]

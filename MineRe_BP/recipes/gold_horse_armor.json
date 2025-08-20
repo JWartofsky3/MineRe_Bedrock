@@ -5,19 +5,13 @@
       "identifier": "minecraft:gold_horse_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["#  ", "#W#", "L#L"],
+    "pattern": ["I I", "IBI", "I I"],
     "key": {
-      "W": {
-        "item": "minecraft:wool"
-      },
-      "#": {
+      "I": {
         "item": "minecraft:gold_ingot"
       },
-      "H": {
-        "item": "minecraft:golden_helmet"
-      },
-      "L": {
-        "item": "minecraft:golden_leggings"
+      "B": {
+        "item": "minecraft:gold_block"
       }
     },
     "result": {

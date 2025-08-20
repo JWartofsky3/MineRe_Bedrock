@@ -10,7 +10,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@minecraft/server": "^1.17.0",
-    "prettier": "^3.2.5"
+    "@minecraft/server": "2.1.0",
+    "@minecraft/server-ui": "^2.0.0",
+    "csv-parser": "^3.2.0",
+    "prettier": "^3.2.5",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0"
   }
 }

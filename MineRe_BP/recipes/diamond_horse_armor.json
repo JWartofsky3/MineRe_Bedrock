@@ -5,19 +5,13 @@
       "identifier": "minecraft:diamond_horse_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["#  ", "#W#", "L#L"],
+    "pattern": ["I I", "IBI", "I I"],
     "key": {
-      "W": {
-        "item": "minecraft:wool"
-      },
-      "#": {
+      "I": {
         "item": "minecraft:diamond"
       },
-      "H": {
-        "item": "minecraft:diamond_helmet"
-      },
-      "L": {
-        "item": "minecraft:diamond_leggings"
+      "B": {
+        "item": "minecraft:diamond_block"
       }
     },
     "result": {

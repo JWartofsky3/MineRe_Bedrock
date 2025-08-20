@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:granite_bricks"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["##", "##"],
+    "key": {
+      "#": {
+        "item": "minecraft:polished_granite"
+      }
+    },
+    "result": {
+      "item": "minere:granite_bricks",
+      "count": 4
+    }
+  }
+}

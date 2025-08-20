@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.grizzly_bear": {
+            "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.brown", "Texture.light", "Texture.gray", "Texture.red", "Texture.blue"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.grizzly_bear_armor": {
+      "arrays": {
+        "textures": {
+          "Array.armor": ["Texture.empty", "Texture.copper_armor", "Texture.iron_armor", "Texture.gold_armor", "Texture.diamond_armor", "Texture.netherite_armor", "Texture.enderon_armor"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.armor" }],
+      "textures": ["Array.armor[query.mark_variant]"]
+    }
+  }
+}

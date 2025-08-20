@@ -8,6 +8,594 @@
       "is_experimental": false
     },
     "component_groups": {
+      "minere:brown_bear": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:light_bear": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "minere:gray_bear": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "minere:red_bear": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "minere:blue_bear": {
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
+      "minere:armorless": {
+        "minecraft:mark_variant": {
+          "value": 0
+        }
+      },
+      "minere:armorable": {
+        "minecraft:mark_variant": {
+          "value": 0
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:copper_bear_armor"
+                },
+                "event": "equip_copper_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:iron_bear_armor"
+                },
+                "event": "equip_iron_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:gold_bear_armor"
+                },
+                "event": "equip_gold_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:diamond_bear_armor"
+                },
+                "event": "equip_diamond_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:netherite_bear_armor"
+                },
+                "event": "equip_netherite_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:enderon_bear_armor"
+                },
+                "event": "equip_enderon_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            }
+          ]
+        }
+      },
+      "minere:copper_armor": {
+        "minecraft:mark_variant": {
+          "value": 1
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            },
+            {
+              "cause": "magic",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/copper_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:iron_armor": {
+        "minecraft:mark_variant": {
+          "value": 2
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.48
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/iron_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:gold_armor": {
+        "minecraft:mark_variant": {
+          "value": 3
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": true,
+              "damage_multiplier": 0.6
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/gold_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:diamond_armor": {
+        "minecraft:mark_variant": {
+          "value": 4
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "lava",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/diamond_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:netherite_armor": {
+        "minecraft:mark_variant": {
+          "value": 5
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "fire_tick",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            },
+            {
+              "cause": "lava",
+              "deals_damage": true,
+              "damage_multiplier": 0.32
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/netherite_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:enderon_armor": {
+        "minecraft:mark_variant": {
+          "value": 6
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "fall",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.4
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/enderon_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        },
+        "minecraft:teleport": {
+          "random_teleports": true,
+          "max_random_teleport_time": 30,
+          "random_teleport_cube": [32, 32, 32],
+          "target_distance": 16,
+          "target_teleport_chance": 0.05,
+          "light_teleport_chance": 0.01,
+          "dark_teleport_chance": 0.01
+        }
+      },
       "minecraft:baby": {
         "minecraft:health": {
           "value": 30
@@ -25,18 +613,25 @@
             "cooked_salmon",
             "beef",
             "cooked_beef",
-            "minere:venison",
-            "minere:cooked_venison",
-            "minere:blubber",
-            "minere:whacon",
             "porkchop",
             "cooked_porkchop",
             "mutton",
             "cooked_mutton",
+            "chicken",
+            "cooked_chicken",
+            "rabbit",
+            "cooked_rabbit",
+            "minere:venison",
+            "minere:cooked_venison",
+            "minere:blubber",
+            "minere:whacon",
             "honeycomb",
             "glow_berries",
             "sweet_berries",
-            "rotten_flesh"
+            "apple",
+            "golden_apple",
+            "enchanted_golden_apple",
+            "honey_bottle"
           ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
@@ -54,7 +649,7 @@
       },
       "minecraft:baby_wild": {
         "minecraft:tameable": {
-          "probability": 0.33,
+          "probability": 0.25,
           "tame_items": [
             "cod",
             "cooked_cod",
@@ -62,18 +657,26 @@
             "cooked_salmon",
             "beef",
             "cooked_beef",
-            "minere:venison",
-            "minere:cooked_venison",
-            "minere:blubber",
-            "minere:whacon",
             "porkchop",
             "cooked_porkchop",
             "mutton",
             "cooked_mutton",
+            "chicken",
+            "cooked_chicken",
+            "rabbit",
+            "cooked_rabbit",
+            "minere:venison",
+            "minere:cooked_venison",
+            "minere:blubber",
+            "minere:whacon",
             "honeycomb",
             "glow_berries",
             "sweet_berries",
-            "rotten_flesh"
+            "apple",
+            "golden_apple",
+            "enchanted_golden_apple",
+            "honey_bottle",
+            "honey_block"
           ],
           "tame_event": {
             "event": "on_tame_baby",
@@ -116,7 +719,7 @@
         "minecraft:angry": {
           "duration": 1,
           "broadcast_anger": true,
-          "broadcast_range": 41,
+          "broadcast_range": 25,
           "calm_event": {
             "event": "minecraft:baby_on_calm",
             "target": "self"
@@ -134,7 +737,7 @@
           "damage": 7
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/grizzly_bear.json"
+          "table": "loot_tables/entities/grizzly_bear/bear.json"
         }
       },
       "minere:adult_wild": {
@@ -147,25 +750,15 @@
           "target": "self"
         },
         "minecraft:tameable": {
-          "probability": 0.15,
+          "probability": 0.5,
           "tame_items": [
-            "cod",
-            "cooked_cod",
             "salmon",
             "cooked_salmon",
-            "beef",
-            "cooked_beef",
-            "minere:venison",
-            "minere:cooked_venison",
-            "minere:blubber",
-            "minere:whacon",
-            "porkchop",
-            "cooked_porkchop",
-            "mutton",
-            "cooked_mutton",
+            "cod",
+            "cooked_cod",
             "honeycomb",
-            "glow_berries",
-            "sweet_berries"
+            "honey_block",
+            "honey_bottle"
           ],
           "tame_event": {
             "event": "on_tame_adult",
@@ -202,8 +795,7 @@
               },
               "max_dist": 16
             }
-          ],
-          "must_see": true
+          ]
         }
       },
       "minere:tame": {
@@ -217,37 +809,21 @@
           "value": 120
         },
         "minecraft:attack": {
-          "damage": 11
+          "damage": [12, 16]
         },
         "minecraft:healable": {
           "items": [
             {
-              "item": "porkchop",
-              "heal_amount": 6
-            },
-            {
-              "item": "cooked_porkchop",
-              "heal_amount": 16
-            },
-            {
-              "item": "fish",
+              "item": "cod",
               "heal_amount": 4
+            },
+            {
+              "item": "cooked_cod",
+              "heal_amount": 10
             },
             {
               "item": "salmon",
               "heal_amount": 4
-            },
-            {
-              "item": "clownfish",
-              "heal_amount": 2
-            },
-            {
-              "item": "pufferfish",
-              "heal_amount": 2
-            },
-            {
-              "item": "cooked_fish",
-              "heal_amount": 10
             },
             {
               "item": "cooked_salmon",
@@ -262,31 +838,27 @@
               "heal_amount": 16
             },
             {
+              "item": "porkchop",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_porkchop",
+              "heal_amount": 16
+            },
+            {
+              "item": "mutton",
+              "heal_amount": 4
+            },
+            {
+              "item": "cooked_mutton",
+              "heal_amount": 12
+            },
+            {
               "item": "chicken",
               "heal_amount": 4
             },
             {
               "item": "cooked_chicken",
-              "heal_amount": 12
-            },
-            {
-              "item": "muttonRaw",
-              "heal_amount": 4
-            },
-            {
-              "item": "muttonCooked",
-              "heal_amount": 12
-            },
-            {
-              "item": "minere:venison",
-              "heal_amount": 4
-            },
-            {
-              "item": "minere:cooked_venison",
-              "heal_amount": 12
-            },
-            {
-              "item": "honeycomb",
               "heal_amount": 12
             },
             {
@@ -298,28 +870,48 @@
               "heal_amount": 10
             },
             {
-              "item": "rabbit_stew",
-              "heal_amount": 20
-            },
-            {
-              "item": "rabbit_stew",
-              "heal_amount": 20
-            },
-            {
-              "item": "sweet_berries",
+              "item": "minere:venison",
               "heal_amount": 4
+            },
+            {
+              "item": "minere:cooked_venison",
+              "heal_amount": 12
+            },
+            {
+              "item": "minere:blubber",
+              "heal_amount": 8
+            },
+            {
+              "item": "minere:whacon",
+              "heal_amount": 14
+            },
+            {
+              "item": "honeycomb",
+              "heal_amount": 12
             },
             {
               "item": "glow_berries",
               "heal_amount": 4
             },
             {
-              "item": "melon_slice",
+              "item": "sweet_berries",
               "heal_amount": 4
             },
             {
-              "item": "glistering_melon",
-              "heal_amount": 10
+              "item": "apple",
+              "heal_amount": 4
+            },
+            {
+              "item": "golden_apple",
+              "heal_amount": 40
+            },
+            {
+              "item": "enchanted_golden_apple",
+              "heal_amount": 120
+            },
+            {
+              "item": "honey_bottle",
+              "heal_amount": 7
             },
             {
               "item": "rotten_flesh",
@@ -436,18 +1028,32 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "enderman"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "grizzly_bear"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "piglin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zombified_piglin"
                   }
                 ]
               },
-              "max_dist": 10
+              "max_dist": 12
             }
-          ],
-          "must_see": true
+          ]
         }
       },
-      "minecraft:adult_hostile": {
+      "minere:adult_hostile": {
         "minecraft:angry": {
-          "duration": 400,
+          "duration": 30,
           "broadcast_anger": true,
           "broadcast_range": 20,
           "calm_event": {
@@ -465,21 +1071,13 @@
         "priority": 2,
         "speed_multiplier": 1.0,
         "items": [
-          "cod",
-          "cooked_cod",
           "salmon",
           "cooked_salmon",
-          "beef",
-          "cooked_beef",
-          "minere:venison",
-          "minere:cooked_venison",
-          "minere:blubber",
-          "minere:whacon",
-          "porkchop",
-          "cooked_porkchop",
-          "mutton",
-          "cooked_mutton",
-          "honeycomb"
+          "cod",
+          "cooked_cod",
+          "honeycomb",
+          "honey_block",
+          "honey_bottle"
         ],
         "can_tempt_while_ridden": true
       },
@@ -526,7 +1124,12 @@
       },
       "minecraft:navigation.walk": {
         "can_path_over_water": true,
-        "avoid_damage_blocks": true
+        "avoid_damage_blocks": true,
+        "blocks_to_avoid": [
+          {
+            "name": "minecraft:powder_snow"
+          }
+        ]
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
@@ -568,18 +1171,56 @@
     },
     "events": {
       "minecraft:entity_spawned": {
-        "randomize": [
+        "sequence": [
           {
-            "weight": 9,
-            "add": {
-              "component_groups": ["minecraft:adult", "minere:adult_wild"]
-            }
+            "randomize": [
+              {
+                "weight": 9,
+                "add": {
+                  "component_groups": ["minecraft:adult", "minere:adult_wild"]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": ["minecraft:baby", "minecraft:baby_wild"]
+                }
+              }
+            ]
           },
           {
-            "weight": 1,
-            "add": {
-              "component_groups": ["minecraft:baby", "minecraft:baby_wild"]
-            }
+            "randomize": [
+              {
+                "weight": 50,
+                "add": {
+                  "component_groups": ["minere:brown_bear"]
+                }
+              },
+              {
+                "weight": 20,
+                "add": {
+                  "component_groups": ["minere:light_bear"]
+                }
+              },
+              {
+                "weight": 20,
+                "add": {
+                  "component_groups": ["minere:gray_bear"]
+                }
+              },
+              {
+                "weight": 5,
+                "add": {
+                  "component_groups": ["minere:red_bear"]
+                }
+              },
+              {
+                "weight": 5,
+                "add": {
+                  "component_groups": ["minere:blue_bear"]
+                }
+              }
+            ]
           }
         ]
       },
@@ -590,7 +1231,11 @@
       },
       "minere:entity_born_tame": {
         "add": {
-          "component_groups": ["minecraft:baby", "minere:tame"]
+          "component_groups": [
+            "minecraft:baby",
+            "minere:tame",
+            "minere:armorless"
+          ]
         }
       },
       "minecraft:ageable_grow_up": {
@@ -615,7 +1260,7 @@
               "value": "minecraft:is_tamed"
             },
             "add": {
-              "component_groups": ["minere:adult_tame"]
+              "component_groups": ["minere:adult_tame", "minere:armorable"]
             }
           },
           {
@@ -633,7 +1278,7 @@
       },
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": ["minecraft:adult_hostile"]
+          "component_groups": ["minere:adult_hostile"]
         },
         "add": {
           "component_groups": ["minere:adult_wild"]
@@ -644,7 +1289,7 @@
           "component_groups": ["minere:adult_wild"]
         },
         "add": {
-          "component_groups": ["minecraft:adult_hostile"]
+          "component_groups": ["minere:adult_hostile"]
         }
       },
       "minecraft:baby_on_calm": {
@@ -672,7 +1317,11 @@
           },
           {
             "add": {
-              "component_groups": ["minere:tame", "minere:adult_tame"]
+              "component_groups": [
+                "minere:tame",
+                "minere:adult_tame",
+                "minere:armorable"
+              ]
             }
           }
         ]
@@ -687,6 +1336,111 @@
           {
             "add": {
               "component_groups": ["minere:tame"]
+            }
+          }
+        ]
+      },
+      "equip_copper_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:copper_armor"]
+            }
+          }
+        ]
+      },
+      "equip_iron_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:iron_armor"]
+            }
+          }
+        ]
+      },
+      "equip_gold_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:gold_armor"]
+            }
+          }
+        ]
+      },
+      "equip_diamond_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:diamond_armor"]
+            }
+          }
+        ]
+      },
+      "equip_netherite_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:netherite_armor"]
+            }
+          }
+        ]
+      },
+      "equip_enderon_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:enderon_armor"]
+            }
+          }
+        ]
+      },
+      "on_unarmored": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:copper_armor",
+                "minere:iron_armor",
+                "minere:gold_armor",
+                "minere:diamond_armor",
+                "minere:netherite_armor",
+                "minere:enderon_armor"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:armorable"]
             }
           }
         ]

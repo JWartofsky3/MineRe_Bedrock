@@ -86,7 +86,7 @@ export function isValid(dimension: Dimension, vector3: Vector3): boolean {
   }
   try {
     const block: Block = dimension.getBlock(vector3);
-    return block?.isValid();
+    return block?.isValid;
   } catch (ignored) {
     return false;
   }

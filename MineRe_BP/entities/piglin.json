@@ -81,7 +81,7 @@
       "melee_unit": {
         "minecraft:behavior.melee_box_attack": {
           "priority": 8,
-          "horizontal_reach": 0.55,
+          "horizontal_reach": 0.5,
           "speed_multiplier": 1.0,
           "track_target": true
         },

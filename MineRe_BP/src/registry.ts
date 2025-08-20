@@ -1,0 +1,125 @@
+import { StartupEvent, system, world } from "@minecraft/server";
+import { PhasedEnderPearl } from "item/phased_ender_pearl";
+import { EnderStrike } from "item/ender_strike";
+import { fireflyLamp } from "block/firefly_lamp";
+import { IceDagger } from "item/ice_dagger";
+import { VenomShank } from "item/venom_shank";
+import { customOre } from "block/custom_ore";
+import { teleporter } from "block/teleporter";
+import { Treecapitator } from "item/treecapitator";
+import {
+  CustomAxe,
+  CustomSword,
+  CustomShovel,
+  CustomPickaxe,
+  CustomHoe,
+} from "item/custom_tools";
+import { RoyalJelly } from "item/royal_jelly";
+import { Illumina } from "item/illumina";
+import { PlatformPath } from "item/platform_path";
+import { ghostPot } from "block/ghost_pot";
+import { Windforce } from "item/windforce";
+import { Firebrand } from "item/firebrand";
+import { Darkheart } from "item/darkheart";
+import { ElixirOfExperience } from "item/elixir_of_experience";
+import { SettingsBook } from "item/settings_book";
+import { Helper0 } from "item/helpers/helper0";
+import { Helper1 } from "item/helpers/helper1";
+import { Helper2 } from "item/helpers/helper2";
+
+export function registerItems(data: StartupEvent) {
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:elixir_of_experience",
+    ElixirOfExperience,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ender_strike",
+    EnderStrike,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:illumina",
+    Illumina,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ice_dagger",
+    IceDagger,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:venom_shank",
+    VenomShank,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:windforce",
+    Windforce,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:firebrand",
+    Firebrand,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:darkheart",
+    Darkheart,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:royal_jelly",
+    RoyalJelly,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_sword",
+    CustomSword,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_axe",
+    CustomAxe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_hoe",
+    CustomHoe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_shovel",
+    CustomShovel,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:custom_pickaxe",
+    CustomPickaxe,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:treecapitator",
+    Treecapitator,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:path",
+    PlatformPath,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:phased_ender_pearl",
+    PhasedEnderPearl,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:settings_book",
+    SettingsBook,
+  );
+  data.itemComponentRegistry.registerCustomComponent("minere:helper0", Helper0);
+  data.itemComponentRegistry.registerCustomComponent("minere:helper1", Helper1);
+  data.itemComponentRegistry.registerCustomComponent("minere:helper2", Helper2);
+}
+
+export function registerBlocks(data: StartupEvent) {
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:firefly_lamp",
+    fireflyLamp,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:custom_ore",
+    customOre,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:teleporter",
+    teleporter,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:ghost_pot",
+    ghostPot,
+  );
+}

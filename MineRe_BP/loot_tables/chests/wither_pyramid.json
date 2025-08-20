@@ -163,7 +163,7 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 4
+          "weight": 3
         },
         {
           "type": "item",
@@ -371,6 +371,20 @@
               "data": 36
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "minere:elixir_of_experience",
+          "weight": 1
         }
       ]
     }

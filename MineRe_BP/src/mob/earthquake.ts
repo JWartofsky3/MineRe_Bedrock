@@ -29,13 +29,15 @@ earthquakeTargets.add("wolf");
 earthquakeTargets.add("demon");
 
 export function runEarthquake(earthquake: Entity) {
-  if (earthquake.typeId !== "minere:earthquake" || !earthquake.isValid()) {
+  if (earthquake.typeId !== "minere:earthquake" || !earthquake.isValid) {
     return;
   }
   const dimension = earthquake.dimension;
-  const markVariant = earthquake.getComponent(
-    EntityComponentTypes.MarkVariant,
-  ) as EntityMarkVariantComponent;
+  // You no longer need to get the component since you're using events.
+  // const markVariant = earthquake.getComponent(
+  //   EntityComponentTypes.MarkVariant,
+  // ) as EntityMarkVariantComponent;
+
   const under: Block = getBlock(dimension, {
     x: earthquake.location.x,
     y: earthquake.location.y - 1,
@@ -51,44 +53,47 @@ export function runEarthquake(earthquake: Entity) {
     return under?.typeId === id || at?.typeId === id;
   };
 
+  // The logic for determining the variant remains the same, but the implementation changes.
+  let variantToSet = 0;
+
   // dimension checks
   if (dimension.id === "minecraft:overworld") {
     if (earthquake.location.y < 0) {
-      markVariant.value = 1;
+      variantToSet = 1;
     }
     if (earthquake.location.y > 62) {
-      markVariant.value = 2;
+      variantToSet = 2;
     }
   }
   if (dimension.id === "minecraft:the_nether") {
-    markVariant.value = 8;
+    variantToSet = 8;
   }
   if (dimension.id === "minecraft:the_end") {
-    markVariant.value = 9;
+    variantToSet = 9;
   }
 
-  // block checks
+  // block checks - these will override the dimension checks if a block is found
   if (check("minecraft:stone")) {
-    markVariant.value = 0;
+    variantToSet = 0;
   }
-  if (check("minecraft: deepslate")) {
-    markVariant.value = 1;
+  if (check("minecraft:deepslate")) {
+    variantToSet = 1;
   }
   if (check("minecraft:dirt") || check("minecraft:grass_block")) {
-    markVariant.value = 2;
+    variantToSet = 2;
   }
   if (check("minecraft:sand")) {
-    markVariant.value = 3;
+    variantToSet = 3;
   }
   if (check("minecraft:red_sand")) {
-    markVariant.value = 4;
+    variantToSet = 4;
   }
   if (
     check("minecraft:snow") ||
     check("minecraft:powdered_snow") ||
     check("minecraft:snow_layer")
   ) {
-    markVariant.value = 5;
+    variantToSet = 5;
   }
   if (
     check("minecraft:ice") ||
@@ -96,17 +101,20 @@ export function runEarthquake(earthquake: Entity) {
     check("minecraft:blue_ice") ||
     check("minere:freeze_ice")
   ) {
-    markVariant.value = 6;
+    variantToSet = 6;
   }
   if (check("minecraft:gravel")) {
-    markVariant.value = 7;
+    variantToSet = 7;
   }
   if (check("minecraft:netherrack")) {
-    markVariant.value = 8;
+    variantToSet = 8;
   }
   if (check("minecraft:end_stone")) {
-    markVariant.value = 9;
+    variantToSet = 9;
   }
+
+  // Finally, trigger the appropriate event based on the determined variant.
+  earthquake.triggerEvent(`minere:set_variant_${variantToSet}`);
 
   // trace damage to summoner
   let damagingEntity = earthquake;
@@ -136,7 +144,7 @@ export function runEarthquake(earthquake: Entity) {
       if (target.typeId === earthquake.typeId) {
         continue;
       }
-      if (!target.isValid()) {
+      if (!target.isValid) {
         continue;
       }
       if (
@@ -153,7 +161,7 @@ export function runEarthquake(earthquake: Entity) {
     }
   }, 8);
   system.runTimeout(() => {
-    if (earthquake?.isValid()) {
+    if (earthquake?.isValid) {
       earthquake.remove();
     }
   }, 30);

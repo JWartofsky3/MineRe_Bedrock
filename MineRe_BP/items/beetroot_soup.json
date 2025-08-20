@@ -12,7 +12,27 @@
         "nutrition": 6,
         "saturation_modifier": "normal",
         "using_converts_to": "bowl",
-        "can_always_eat": true
+        "can_always_eat": true,
+        "effects": [
+          {
+            "name": "night_vision",
+            "chance": 0.25,
+            "duration": 15,
+            "amplifier": 0
+          },
+          {
+            "name": "speed",
+            "chance": 0.25,
+            "duration": 15,
+            "amplifier": 0
+          },
+          {
+            "name": "jump_boost",
+            "chance": 0.25,
+            "duration": 15,
+            "amplifier": 0
+          }
+        ]
       }
     }
   }

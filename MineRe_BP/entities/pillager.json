@@ -90,6 +90,9 @@
           "value": 2,
           "range": 4,
           "event_name": "ambient.in.raid"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/pillager_raid.json"
         }
       },
       "minecraft:raid_persistence": {

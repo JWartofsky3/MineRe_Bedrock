@@ -5,9 +5,11 @@ import {
   ItemUseBeforeEvent,
   EntityComponentTypes,
   EntityProjectileComponent,
+  EntityInventoryComponent,
   Dimension,
   ItemComponentTypes,
   ItemCooldownComponent,
+  GameMode,
 } from "@minecraft/server";
 import {
   multiplyVector3Number,
@@ -16,6 +18,9 @@ import {
 } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
 import { replaceableBlocks } from "block/blockUtils";
+import { findItemInContainer } from "./item_utils";
+
+const AMMO_CONSUME_CHANCE = 0.6;
 
 export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -36,7 +41,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
         }
         if (
           !source.runCommand("clear @s[m=!c] fire_charge 0 4").successCount &&
-          source.getGameMode() !== "creative"
+          source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
@@ -48,11 +53,21 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
         reduceDurability(source, itemStack, 6);
       } else {
         if (
-          !source.runCommand("clear @s[m=!c] fire_charge 0 1").successCount &&
-          source.getGameMode() !== "creative"
+          source.getGameMode() !== GameMode.Creative &&
+          findItemInContainer(
+            (
+              source.getComponent(
+                EntityComponentTypes.Inventory,
+              ) as EntityInventoryComponent
+            )?.container,
+            "minecraft:fire_charge",
+          ) === -1
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
+        }
+        if (Math.random() < AMMO_CONSUME_CHANCE) {
+          source.runCommand("clear @s[m=!c] fire_charge 0 1");
         }
 
         dimension.playSound("mob.ghast.fireball", source.location, {
@@ -84,7 +99,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
             randomVector3(0.05),
           ),
         );
-        if (source.getGameMode() === "creative") {
+        if (source.getGameMode() === GameMode.Creative) {
           return;
         }
         reduceDurability(source, itemStack, 1);

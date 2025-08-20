@@ -21,7 +21,7 @@
               "weight": 1,
               "cooldown_time": 40.0,
               "min_activation_range": 4.0,
-              "cast_duration": 1,
+              "cast_duration": 1.5,
               "particle_color": "#05E0FE",
               "start_sound_event": "prepare.summon",
               "filters": {
@@ -47,10 +47,11 @@
                 {
                   "shape": "circle",
                   "target": "self",
-                  "base_delay": 0.5,
+                  "base_delay": 1.0,
                   "delay_per_summon": 0.15,
                   "num_entities_spawned": 2,
                   "entity_type": "minere:demon_skull",
+                  "summon_event": "minere:summoned_skull",
                   "summon_cap": 2,
                   "summon_cap_radius": 32.0,
                   "size": 1.5,

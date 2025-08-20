@@ -24,14 +24,12 @@ entity.minere:whale.name=Ballena
 entity.minere:wither_skeleton_horse.name=Caballo wither
 entity.minere:yeti.name=Yeti
 entity.villageguards:archer<>.name=Arquero
-
 item.minere:amethyst_staff=Báculo de amatista
 item.minere:echo_staff=Báculo de eco
 item.minere:fire_staff=Báculo de fuego
 item.minere:blaster_staff=Báculo de blaster
 item.blubber.name=Grasa
 item.minere:bomb=Bomba
-
 item.diamond_shard.name=Fragmento de diamante
 item.emerald_shard.name=Fragmento de esmeralda
 item.minere:enderon_axe=Hacha de Enderon
@@ -40,13 +38,11 @@ item.minere:enderon_hoe=Azada de Enderon
 item.minere:enderon_pickaxe=Pico de Enderon
 item.minere:enderon_shovel=Pala de Enderon
 item.minere:enderon_sword=Espada de enderon
-
-item.minere:enderon_helmet=Casco de enderon
-item.minere:enderon_chestplate=Coraza de enderon 
-item.minere:enderon_leggings=Mallas de enderon 
-item.minere:enderon_boots=Botas de enderon
-item.minere:enderon_horse_armor=Armadura de caballo de enderon
-
+item.minere:enderon_helmet=Casco Enderon
+item.minere:enderon_chestplate=Placa de ajedrez Enderon
+item.minere:enderon_leggings=Pantalones Enderon
+item.minere:enderon_boots=Botas Enderon
+item.minere:enderon_horse_armor=Armadura de caballo Enderon
 item.cooked_venison.name=Venado cocinado
 item.venison.name=Venado montés
 item.whacon.name=Carne
@@ -77,8 +73,6 @@ entity.minere:vampire.name=Vampiro
 item.spawn_egg.entity.minere:vampire.name=Huevo generador de vampiro
 entity.minere:ghost.name=Fantasma
 item.spawn_egg.entity.minere:ghost.name=Huevo generador de Fantasma
-entity.minere:ghost.name=Fantasma
-
 tile.minere:amethyst_shield.name=Cristal de amatista
 tile.minere:freeze_ice.name=Hielo congelado
 item.minere:enderon_gemstone=Gema de enderon
@@ -94,10 +88,9 @@ entity.minere:butterfly.name=Mariposa
 item.spawn_egg.entity.minere:butterfly.name=Huevo generador de mariposa
 entity.minere:firefly.name=Luciérnaga
 item.spawn_egg.entity.minere:firefly.name=Huevo generador de luciérnaga
-
 entity.minere:freeze.name=Congelar
 item.spawn_egg.entity.minere:freeze.name=Huevo generador de congelar
-tile.minere:firefly_lamp.name=Lámpara de luciérnaga
+tile.minere:firefly_lamp.name=Lámpara de luciérnaga verde
 action.interact.catch=Atrapar
 entity.minere:scorpion.name=Escorpión
 item.spawn_egg.entity.minere:scorpion.name=Huevo generador de escorpión
@@ -107,52 +100,38 @@ entity.minere:owl.name=Búho
 item.spawn_egg.entity.minere:owl.name=Huevo generador de búho
 entity.minere:eagle.name=Águila
 item.spawn_egg.entity.minere:eagle.name=Huevo generador de águila
-
 entity.minere:dire_wolf.name=Lobo terrible
 item.spawn_egg.entity.minere:dire_wolf.name=Huevo generador de lobo terrible
 entity.minere:squirrel.name=Ardilla
 item.spawn_egg.entity.minere:squirrel.name=Huevo generador de ardilla
 item.acorn.name=Bellota
 item.popcorn.name=Palomitas
-
 tile.minere:nether_coal_ore.name=Mineral de carbón inferior
 item.nether_coal.name=Carbón inferior
 entity.minere:necromancer.name=Nigromante
 item.spawn_egg.entity.minere:necromancer.name=Huevo generador de nigromante
-
 item.minere:copper_treecapitator=Cortador de árboles de cobre
 item.minere:iron_treecapitator=Cortador de árboles de hierro
 item.minere:golden_treecapitator=Cortador de árboles de oro
 item.minere:diamond_treecapitator=Cortador de árboles de diamante
 item.minere:netherite_treecapitator=Cortador de árboles netherita
 item.minere:enderon_treecapitator=Cortador de árboles de enderon
-item.minere:enderon_horse_armor=Armadura de caballo Enderon
 minere:itemGroup.name.treecapitator=Cortadores de árboles
-
 entity.minere:queen_bee.name=Abeja reina
 item.spawn_egg.entity.minere:queen_bee.name=Huevo generador de abeja reina
 item.minere:royal_jelly.name=Jalea real
 item.royal_jelly.name=Jalea real
 tile.minere:teleporter.name=Teletransportador
-
 entity.minere:earthquake.name=Terremoto
 tile.minere:amethyst_ore.name=Mineral de amatista
 tile.minere:deepslate_amethyst_ore.name=Mineral de amatista de pizarra profunda
-item.minere:enderon_helmet=Casco Enderon
-item.minere:enderon_chestplate=Placa de ajedrez Enderon
-item.minere:enderon_leggings=Pantalones Enderon
-item.minere:enderon_boots=Botas Enderon
-
 action.interact.set_wander=Jugar
 tile.minere:deepslate_sulfur_ore.name=Mineral de azufre de pizarra profunda
 tile.minere:end_sand.name=Arena final
 tile.minere:end_crystalline.name=Final cristalino
-
 item.minere:end_path=Plataforma cristalina
 item.end_path.name=Plataforma cristalina
-
 tile.minere:basalt_iron_ore.name=Mineral de hierro basáltico
-
 item.ice_charge.name=Carga de hielo
 entity.minere:ice_charge.name=Carga de hielo
 tile.minere:ghost_pot.name=Olla maldita
@@ -163,7 +142,6 @@ entity.minere:lizord_fireball.name=Bola de fuego
 entity.minere:firebrand_fireball.name=Bola de fuego
 entity.minere:firebomb.name=Bomba de fuego
 item.minere:firebomb=Bomba de fuego
-
 item.minere:jump_boots=Botas de Salto
 minere:itemGroup.name.magic_sword=Espadas Mágicas
 tile.minere:short_icicle.name=Carámbano Corto
@@ -172,13 +150,55 @@ tile.minere:thick_icicle.name=Carámbano Grueso
 tile.minere:thin_icicle.name=Carámbano Delgado
 entity.minere:sand_stomp.name=Pisotón de arena
 item.spawn_egg.entity.minere:sand_stomp.name=Huevo generador de Pisotón de arena
-
 entity.minere:bird.name=Pájaro
 item.spawn_egg.entity.minere:bird.name=Huevo generador de pájaro
-
 tile.minere:blackstone_iron_ore.name=Mineral de hierro de Blackstone
 tile.minere:basalt_nether_coal_ore.name=Mineral de carbón basalto inferior
-tile.minere:firefly_lamp.name=Lámpara de luciérnaga verde
 tile.minere:yellow_firefly_lamp.name=Lámpara de luciérnaga amarilla
 tile.minere:purple_firefly_lamp.name=Lámpara de luciérnaga morada
 tile.minere:blue_firefly_lamp.name=Lámpara de luciérnaga azul
+action.interact.reprogram=Reprogram
+item.minere:illumina=Illumina
+
+item.minere:copper_bear_armor=Armadura de oso de cobre
+item.minere:iron_bear_armor=Armadura de oso de hierro
+item.minere:gold_bear_armor=Armadura de oso de oro
+item.minere:diamond_bear_armor=Armadura de oso de diamante
+item.minere:netherite_bear_armor=Armadura de oso de netherita
+item.minere:enderon_bear_armor=Armadura de oso de enderon
+minere:itemGroup.name.bear_armor=Armaduras de oso
+
+tile.minere:nether_coal_block.name=Bloque de carbón del nether
+entity.minere:staff_fireball.name=Bola de fuego
+item.elixir_of_experience.name=Elixir de experiencia
+item.minere:elixir_of_experience=Elixir de experiencia
+tile.minere:runic_blackstone.name=Piedra negra rúnica
+tile.minere:runic_blackstone_bricks.name=Ladrillos de piedra negra rúnica
+tile.minere:lapis_bricks.name=Ladrillos de lapislázuli
+tile.minere:andesite_bricks.name=Ladrillos de andesita
+tile.minere:granite_bricks.name=Ladrillos de granito
+tile.minere:diorite_bricks.name=Ladrillos de diorita
+
+tile.minere:andesite_brick_slab.name=Losa de ladrillos de andesita
+tile.minere:granite_brick_slab.name=Losa de ladrillos de granito
+tile.minere:diorite_brick_slab.name=Losa de ladrillos de diorita
+
+item.minere:settings_book=Ajustes de MineRe
+settings.minere.title=Configuración del mundo de MineRe
+settings.minere.toggle.reduced_health_regen=Regeneración de salud reducida
+settings.minere.toggle.healing_from_soup=Curación con sopas, leche y estofados
+settings.minere.toggle.armor_weight=Peso de la armadura
+settings.minere.toggle.armor_curve=Curva de la armadura
+settings.minere.toggle.protection_nerf=Reducción de protección
+settings.minere.toggle.end_storms=Tormentas en el End
+
+settings.minere.tooltip.reduced_health_regen=Reduce a la mitad la regeneración de salud por hambre.
+settings.minere.tooltip.healing_from_soup=Cura algunos corazones al comer sopas, leche y estofados.
+settings.minere.tooltip.armor_weight=Muévete más rápido con armaduras ligeras y más lento con armaduras pesadas.
+settings.minere.tooltip.armor_curve=Aumenta la protección de los conjuntos de armadura de bajo nivel.
+settings.minere.tooltip.protection_nerf=Reduce la resistencia al daño del encantamiento de protección.\n\nNo se aplica a protección contra fuego, explosiones ni proyectiles.
+settings.minere.tooltip.end_storms=Habilita tormentas eléctricas en las islas exteriores del End.\n\nLas tormentas tienen un 25% de probabilidad de ocurrir cada 10 minutos y duran de 2 a 4 minutos.\n\nLos rayos golpearán frecuentemente a los jugadores en el aire.
+
+item.minere:helper0=Ayudante 0
+item.minere:helper1=Ayudante 1
+item.minere:helper2=Ayudante 2

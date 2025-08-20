@@ -4,7 +4,12 @@
     "controller.render.minere.sand_stomp": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.default", "Texture.red", "Texture.end"]
+          "Array.skins": [
+            "Texture.default",
+            "Texture.red",
+            "Texture.end",
+            "Texture.soul"
+          ]
         }
       },
       "geometry": "Geometry.default",
