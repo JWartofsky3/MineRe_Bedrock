@@ -10,6 +10,7 @@ import {
   distVector3,
   multiplyVector3Number,
 } from "util/vector3Functions";
+import { isAlive } from "./mob_utils";
 
 const IS_LEAPING = "is_leaping";
 
@@ -28,13 +29,7 @@ export function rollLeap(
   if (Math.random() > initialChance) {
     return;
   }
-  if (!attacker.isValid || !target.isValid) {
-    return;
-  }
-  const health = attacker.getComponent(
-    EntityComponentTypes.Health,
-  ) as EntityHealthComponent;
-  if (health.currentValue <= 0) {
+  if (!isAlive(attacker) || !isAlive(target)) {
     return;
   }
   if (attacker.getDynamicProperty(IS_LEAPING)) {
@@ -53,13 +48,7 @@ export function rollLeap(
     if (Math.random() > chance) {
       return;
     }
-    if (!attacker?.isValid || !target?.isValid) {
-      return cleanup(attacker, run);
-    }
-    const health = attacker.getComponent(
-      EntityComponentTypes.Health,
-    ) as EntityHealthComponent;
-    if (health.currentValue <= 0) {
+    if (!isAlive(attacker) || !isAlive(target)) {
       return cleanup(attacker, run);
     }
     if (!attacker.isOnGround) {

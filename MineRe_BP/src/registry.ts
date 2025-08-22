@@ -26,6 +26,7 @@ import { SettingsBook } from "item/settings_book";
 import { Helper0 } from "item/helpers/helper0";
 import { Helper1 } from "item/helpers/helper1";
 import { Helper2 } from "item/helpers/helper2";
+import { Ghostwalker } from "item/ghostwalker";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -59,6 +60,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:darkheart",
     Darkheart,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:ghostwalker",
+    Ghostwalker,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:royal_jelly",

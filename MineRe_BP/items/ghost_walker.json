@@ -1,0 +1,63 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:ghostwalker",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.ghostwalker",
+      "minecraft:tags": {
+        "tags": ["minecraft:is_sword"]
+      },
+      "minecraft:custom_components": [
+        "minere:ghostwalker",
+        "minere:custom_sword"
+      ],
+      "minecraft:cooldown": {
+        "category": "ghostwalker",
+        "duration": 10.0
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:use_modifiers": {},
+      "minecraft:damage": 7,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 25
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:bamboo",
+            "speed": 60
+          }
+        ]
+      },
+      "minecraft:durability": {
+        "max_durability": 1800
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:diamond", "minecraft:echo_shard"],
+            "repair_amount": 900
+          },
+          {
+            "items": ["minecraft:iron_ingot", "minecraft:phantom_membrane"],
+            "repair_amount": 450
+          }
+        ]
+      }
+    }
+  }
+}

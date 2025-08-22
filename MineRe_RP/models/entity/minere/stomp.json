@@ -3,7 +3,7 @@
   "minecraft:geometry": [
     {
       "description": {
-        "identifier": "geometry.minere.sand_stomp",
+        "identifier": "geometry.minere.stomp",
         "texture_width": 128,
         "texture_height": 128,
         "visible_bounds_width": 5,

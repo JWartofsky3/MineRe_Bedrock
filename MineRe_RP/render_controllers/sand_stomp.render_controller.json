@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.minere.sand_stomp": {
+    "controller.render.minere.stomp": {
       "arrays": {
         "textures": {
           "Array.skins": [

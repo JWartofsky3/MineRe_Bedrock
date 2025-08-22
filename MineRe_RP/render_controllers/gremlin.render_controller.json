@@ -4,7 +4,17 @@
     "controller.render.minere.gremlin": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.cave", "Texture.nether", "Texture.ender"]
+          "Array.default": ["Texture.cave", "Texture.nether", "Texture.ender"],
+          "Array.angry": [
+            "Texture.cave_angry",
+            "Texture.nether_angry",
+            "Texture.ender_angry"
+          ],
+          "Array.scared": [
+            "Texture.cave_scared",
+            "Texture.nether_scared",
+            "Texture.ender_scared"
+          ]
         }
       },
       "geometry": "Geometry.default",
@@ -13,7 +23,9 @@
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.skins[query.variant]"]
+      "textures": [
+        "((query.is_scared || query.is_avoiding_mobs || query.is_avoiding_block) ? Array.scared[query.variant] : query.is_angry ? Array.angry[query.variant] : Array.default[query.variant])"
+      ]
     }
   }
 }

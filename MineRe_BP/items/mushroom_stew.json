@@ -18,31 +18,31 @@
           {
             "name": "strength",
             "chance": 0.15,
-            "duration": 15,
+            "duration": 10,
             "amplifier": 0
           },
           {
             "name": "haste",
             "chance": 0.15,
-            "duration": 15,
+            "duration": 10,
             "amplifier": 0
           },
           {
             "name": "regeneration",
             "chance": 0.15,
-            "duration": 15,
+            "duration": 10,
             "amplifier": 0
           },
           {
             "name": "saturation",
             "chance": 0.15,
-            "duration": 5,
+            "duration": 2,
             "amplifier": 0
           },
           {
             "name": "absorption",
             "chance": 0.15,
-            "duration": 15,
+            "duration": 5,
             "amplifier": 0
           }
         ]

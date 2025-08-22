@@ -4,7 +4,7 @@ import {
   EntityProjectileComponent,
   system,
 } from "@minecraft/server";
-import { isFamily } from "./mob_utils";
+import { isFamilySet } from "./mob_utils";
 
 const IS_STRAFING = "minere:is_strafing";
 const STRAFE_FORCE = 0.06;
@@ -34,7 +34,7 @@ export function skeletonStrafe(entity: Entity, chance: number) {
   }
 
   // validate shooter belongs to a valid family
-  if (!isFamily(owner, validFamilies)) {
+  if (!isFamilySet(owner, validFamilies)) {
     return;
   }
 

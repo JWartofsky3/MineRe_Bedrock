@@ -7,6 +7,7 @@ import {
   randomVector3,
 } from "util/vector3Functions";
 import { DEFAULT_TICK } from "main";
+import { isAlive } from "./mob_utils";
 
 export function rollCastFire(
   caster: Entity,
@@ -14,7 +15,7 @@ export function rollCastFire(
   chance: number,
   delay: number = 0,
 ) {
-  if (!caster || !target) {
+  if (!isAlive(caster) || !isAlive(target)) {
     return;
   }
   const FIRE_COOLDOWN = "fireCooldown";

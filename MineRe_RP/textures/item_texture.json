@@ -123,19 +123,19 @@
     "minere.copper_bear_armor": {
       "textures": "textures/items/minere/copper_bear_armor.png"
     },
-        "minere.iron_bear_armor": {
+    "minere.iron_bear_armor": {
       "textures": "textures/items/minere/iron_bear_armor.png"
     },
-        "minere.gold_bear_armor": {
+    "minere.gold_bear_armor": {
       "textures": "textures/items/minere/gold_bear_armor.png"
     },
-        "minere.diamond_bear_armor": {
+    "minere.diamond_bear_armor": {
       "textures": "textures/items/minere/diamond_bear_armor.png"
     },
-        "minere.netherite_bear_armor": {
+    "minere.netherite_bear_armor": {
       "textures": "textures/items/minere/netherite_bear_armor.png"
     },
-        "minere.enderon_bear_armor": {
+    "minere.enderon_bear_armor": {
       "textures": "textures/items/minere/enderon_bear_armor.png"
     },
     "minere.royal_jelly": {
@@ -150,20 +150,23 @@
     "minere.jump_boots": {
       "textures": "textures/items/minere/jump_boots"
     },
-        "minere.elixir_of_experience": {
+    "minere.elixir_of_experience": {
       "textures": "textures/items/minere/elixir_of_experience"
     },
-            "minere.settings_book": {
+    "minere.settings_book": {
       "textures": "textures/items/minere/settings_book"
     },
-                "minere.helper0": {
+    "minere.helper0": {
       "textures": "textures/items/minere/helper0"
     },
-                "minere.helper1": {
+    "minere.helper1": {
       "textures": "textures/items/minere/helper1"
     },
-                    "minere.helper2": {
+    "minere.helper2": {
       "textures": "textures/items/minere/helper2"
+    },
+    "minere.ghostwalker": {
+      "textures": "textures/items/minere/ghostwalker"
     }
   },
   "resource_pack_name": "MineRe Resources",

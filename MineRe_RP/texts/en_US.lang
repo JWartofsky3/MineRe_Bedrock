@@ -159,8 +159,8 @@ tile.minere:short_icicle.name=Short Icicle
 tile.minere:tall_icicle.name=Tall Icicle
 tile.minere:thick_icicle.name=Thick Icicle
 tile.minere:thin_icicle.name=Thin Icicle
-entity.minere:sand_stomp.name=Sand Stomp
-item.spawn_egg.entity.minere:sand_stomp.name=Spawn Sand Stomp
+entity.minere:stomp.name=Sand Stomp
+item.spawn_egg.entity.minere:stomp.name=Spawn Sand Stomp
 entity.minere:bird.name=Bird
 item.spawn_egg.entity.minere:bird.name=Spawn Bird
 
@@ -202,14 +202,18 @@ settings.minere.toggle.armor_weight=Armor Weight
 settings.minere.toggle.armor_curve=Armor Curve
 settings.minere.toggle.protection_nerf=Protection Nerf
 settings.minere.toggle.end_storms=End Storms
+settings.minere.toggle.gremlin_breaks_torches=Gremlin Breaks Torches
 
 settings.minere.tooltip.reduced_health_regen=Reduces health regeneration from hunger by half.
 settings.minere.tooltip.healing_from_soup=Heal some hearts from eating soup, milk, and stew.
 settings.minere.tooltip.armor_weight=Move faster with light armor and slower with heavy armor.
 settings.minere.tooltip.armor_curve=Increases the protection of low tier armor sets.
 settings.minere.tooltip.protection_nerf=Reduces damage resistance from the Protection enchantment.\n\nDoes not apply to Fire, Blast, and Projectile protection.
-settings.minere.tooltip.end_storms=Enables lightning storms in the outer End islands.\n\nStorms have a 25% chance of occuring every 10 minutes and last 2 to 4 minutes.\n\nLightning will frequently strike airborne players.
+settings.minere.tooltip.end_storms=Enables lightning storms in the outer End islands.\n\nLightning will frequently strike airborne players.
+settings.minere.tooltip.gremlin_breaks_torches=Allows Gremlins to break torches.
 
 item.minere:helper0=Helper 0
 item.minere:helper1=Helper 1
 item.minere:helper2=Helper 2
+
+item.minere:ghostwalker=Ghostwalker

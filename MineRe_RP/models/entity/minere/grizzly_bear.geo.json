@@ -1,121 +1,121 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.minere.grizzly_bear",
-				"texture_width": 128,
-				"texture_height": 128,
-				"visible_bounds_width": 5,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
-			},
-			"bones": [
-				{
-					"name": "root",
-					"pivot": [0, 0, 0]
-				},
-				{
-					"name": "front",
-					"parent": "root",
-					"pivot": [0, 18, 6],
-					"cubes": [
-						{"origin": [-10, 12, -12], "size": [20, 15, 18], "uv": [0, 0]}
-					]
-				},
-				{
-					"name": "head",
-					"parent": "front",
-					"pivot": [0, 18, -13],
-					"cubes": [
-						{"origin": [-8, 22, -17], "size": [5, 4, 2], "uv": [76, 22]},
-						{"origin": [3, 22, -17], "size": [5, 4, 2], "uv": [0, 82]}
-					]
-				},
-				{
-					"name": "attacking",
-					"parent": "head",
-					"pivot": [0, 18, -13],
-					"cubes": [
-						{"origin": [-5, 12, -27], "size": [10, 7, 5], "uv": [80, 89]}
-					]
-				},
-				{
-					"name": "neutral",
-					"parent": "head",
-					"pivot": [0, 18, -13],
-					"cubes": [
-						{"origin": [-5, 12, -27], "size": [10, 7, 5], "uv": [80, 77]}
-					]
-				},
-				{
-					"name": "wild",
-					"parent": "head",
-					"pivot": [0, 18, -13],
-					"cubes": [
-						{"origin": [-6, 12, -22], "size": [12, 12, 10], "uv": [0, 60]}
-					]
-				},
-				{
-					"name": "tamed",
-					"parent": "head",
-					"pivot": [0, 18, -13],
-					"cubes": [
-						{
-							"origin": [-6, 12, -22],
-							"size": [12, 12, 10],
-							"uv": {
-								"north": {"uv": [14, 82], "uv_size": [12, 12]},
-								"east": {"uv": [0, 70], "uv_size": [10, 12]},
-								"south": {"uv": [32, 70], "uv_size": [12, 12]},
-								"west": {"uv": [22, 70], "uv_size": [10, 12]},
-								"up": {"uv": [10, 60], "uv_size": [12, 10]},
-								"down": {"uv": [22, 70], "uv_size": [12, -10]}
-							}
-						}
-					]
-				},
-				{
-					"name": "front_left_leg",
-					"parent": "front",
-					"pivot": [6, 12, -7],
-					"cubes": [
-						{"origin": [2, 0, -12], "size": [8, 12, 10], "uv": [44, 60]}
-					]
-				},
-				{
-					"name": "front_right_leg",
-					"parent": "front",
-					"pivot": [-6, 12, -7],
-					"cubes": [
-						{"origin": [-10, 0, -12], "size": [8, 12, 10], "uv": [76, 0]}
-					]
-				},
-				{
-					"name": "rear",
-					"parent": "root",
-					"pivot": [0, 17, 6],
-					"cubes": [
-						{"origin": [-9, 12, 6], "size": [18, 12, 15], "uv": [0, 33]}
-					]
-				},
-				{
-					"name": "rear_left_leg",
-					"parent": "rear",
-					"pivot": [6, 12, 15],
-					"cubes": [
-						{"origin": [2, 0, 10], "size": [8, 12, 10], "uv": [66, 33]}
-					]
-				},
-				{
-					"name": "rear_right_leg",
-					"parent": "rear",
-					"pivot": [-6, 12, 15],
-					"cubes": [
-						{"origin": [-10, 0, 10], "size": [8, 12, 10], "uv": [80, 55]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.grizzly_bear",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 5,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [0, 1.25, 0]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [0, 0, 0]
+        },
+        {
+          "name": "front",
+          "parent": "root",
+          "pivot": [0, 18, 6],
+          "cubes": [
+            { "origin": [-10, 12, -12], "size": [20, 15, 18], "uv": [0, 0] }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "front",
+          "pivot": [0, 18, -13],
+          "cubes": [
+            { "origin": [-8, 22, -17], "size": [5, 4, 2], "uv": [76, 22] },
+            { "origin": [3, 22, -17], "size": [5, 4, 2], "uv": [0, 82] }
+          ]
+        },
+        {
+          "name": "attacking",
+          "parent": "head",
+          "pivot": [0, 18, -13],
+          "cubes": [
+            { "origin": [-5, 12, -27], "size": [10, 7, 5], "uv": [80, 89] }
+          ]
+        },
+        {
+          "name": "neutral",
+          "parent": "head",
+          "pivot": [0, 18, -13],
+          "cubes": [
+            { "origin": [-5, 12, -27], "size": [10, 7, 5], "uv": [80, 77] }
+          ]
+        },
+        {
+          "name": "wild",
+          "parent": "head",
+          "pivot": [0, 18, -13],
+          "cubes": [
+            { "origin": [-6, 12, -22], "size": [12, 12, 10], "uv": [0, 60] }
+          ]
+        },
+        {
+          "name": "tamed",
+          "parent": "head",
+          "pivot": [0, 18, -13],
+          "cubes": [
+            {
+              "origin": [-6, 12, -22],
+              "size": [12, 12, 10],
+              "uv": {
+                "north": { "uv": [14, 82], "uv_size": [12, 12] },
+                "east": { "uv": [0, 70], "uv_size": [10, 12] },
+                "south": { "uv": [32, 70], "uv_size": [12, 12] },
+                "west": { "uv": [22, 70], "uv_size": [10, 12] },
+                "up": { "uv": [10, 60], "uv_size": [12, 10] },
+                "down": { "uv": [22, 70], "uv_size": [12, -10] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "front_left_leg",
+          "parent": "front",
+          "pivot": [6, 12, -7],
+          "cubes": [
+            { "origin": [2, 0, -12], "size": [8, 12, 10], "uv": [44, 60] }
+          ]
+        },
+        {
+          "name": "front_right_leg",
+          "parent": "front",
+          "pivot": [-6, 12, -7],
+          "cubes": [
+            { "origin": [-10, 0, -12], "size": [8, 12, 10], "uv": [76, 0] }
+          ]
+        },
+        {
+          "name": "rear",
+          "parent": "root",
+          "pivot": [0, 17, 6],
+          "cubes": [
+            { "origin": [-9, 12, 6], "size": [18, 12, 15], "uv": [0, 33] }
+          ]
+        },
+        {
+          "name": "rear_left_leg",
+          "parent": "rear",
+          "pivot": [6, 12, 15],
+          "cubes": [
+            { "origin": [2, 0, 10], "size": [8, 12, 10], "uv": [66, 33] }
+          ]
+        },
+        {
+          "name": "rear_right_leg",
+          "parent": "rear",
+          "pivot": [-6, 12, 15],
+          "cubes": [
+            { "origin": [-10, 0, 10], "size": [8, 12, 10], "uv": [80, 55] }
+          ]
+        }
+      ]
+    }
+  ]
 }

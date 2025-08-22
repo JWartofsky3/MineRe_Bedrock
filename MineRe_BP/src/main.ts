@@ -5,6 +5,9 @@ import {
   Player,
   EntityDamageCause,
   StartupEvent,
+  EntityDataDrivenTriggerEventOptions,
+  DataDrivenEntityTriggerAfterEventSignal,
+  DataDrivenEntityTriggerAfterEvent,
 } from "@minecraft/server";
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -42,6 +45,9 @@ import {
   initializeWorldSettings,
 } from "settings";
 import { replacePlaceholder } from "mob/replacePlaceholderEntities";
+import { getBlock } from "block/blockUtils";
+import { breakTorches } from "mob/breakTorches";
+import { giveExtraXP } from "player/goldXP";
 
 export const DEFAULT_TICK = 20;
 
@@ -95,6 +101,7 @@ world.afterEvents.playerInteractWithBlock.subscribe((data) => {
 
 world.afterEvents.entityDie.subscribe(function (data) {
   ogreLaugh(data?.damageSource?.damagingEntity, data.deadEntity);
+  giveExtraXP(data?.damageSource?.damagingEntity, data?.deadEntity);
   horseRemoveChest(data);
 });
 
@@ -122,12 +129,12 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
   if (data.entity.typeId == "minecraft:arrow") {
     skeletonStrafe(data.entity, 0.5);
   }
-  replacePlaceholder(data.entity);
+  replacePlaceholder(data.entity, true);
   iceChargeRunner(data.entity);
 });
 
 world.afterEvents.entityLoad.subscribe(function (data) {
-  replacePlaceholder(data.entity);
+  replacePlaceholder(data.entity, false);
 });
 
 world.afterEvents.entityHurt.subscribe(function (data) {
@@ -265,6 +272,14 @@ world.afterEvents.entityHurt.subscribe(function (data) {
     }
   }
 });
+
+world.afterEvents.dataDrivenEntityTrigger.subscribe(
+  (data: DataDrivenEntityTriggerAfterEvent) => {
+    if (data.eventId === "minere:break_torches") {
+      breakTorches(data.entity, 2);
+    }
+  },
+);
 
 system.runInterval(() => {
   if (!world?.getDynamicProperty(ARMOR_WEIGHT)?.valueOf()) {

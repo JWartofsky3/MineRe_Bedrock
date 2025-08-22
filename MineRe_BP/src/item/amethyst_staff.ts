@@ -20,7 +20,7 @@ const SHIELD_RANGE = 4;
 const HEAL_DURATION = 5 * 20;
 const SHIELD_DURATION = 6 * 20;
 const SHIELD_DURABILITY = 4;
-const AMMO_CONSUME_CHANCE = 0.6;
+const AMMO_CONSUME_CHANCE = 0.64;
 
 export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;

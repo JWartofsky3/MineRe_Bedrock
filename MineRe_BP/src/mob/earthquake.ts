@@ -1,12 +1,5 @@
-import {
-  system,
-  Block,
-  Entity,
-  EntityComponentTypes,
-  EntityDamageCause,
-  EntityMarkVariantComponent,
-} from "@minecraft/server";
-import { isFamily } from "./mob_utils";
+import { system, Block, Entity, EntityDamageCause } from "@minecraft/server";
+import { isFamily, isFamilySet } from "./mob_utils";
 import { distVector3 } from "util/vector3Functions";
 import { throwBy } from "./throwBy";
 import { getBlock } from "block/blockUtils";
@@ -123,7 +116,7 @@ export function runEarthquake(earthquake: Entity) {
     maxDistance: 24,
   });
   summoners.forEach((summoner: Entity) => {
-    if (isFamily(summoner, earthquakeSummoners)) {
+    if (isFamilySet(summoner, earthquakeSummoners)) {
       if (
         damagingEntity === earthquake ||
         distVector3(summoner.location, earthquake.location) <
@@ -148,8 +141,8 @@ export function runEarthquake(earthquake: Entity) {
         continue;
       }
       if (
-        !isFamily(target, earthquakeTargets) &&
-        isFamily(target, new Set<string>("monster"))
+        !isFamilySet(target, earthquakeTargets) &&
+        isFamily(target, "monster")
       ) {
         continue;
       }

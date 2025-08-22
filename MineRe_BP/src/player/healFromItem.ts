@@ -36,6 +36,8 @@ export const healFromItem = (data: ItemCompleteUseAfterEvent) => {
   const itemId = data.itemStack.typeId;
   if (!!health && !!healingItems[itemId]) {
     const healingAmount = healingItems[itemId];
-    health.setCurrentValue(health.currentValue + healingAmount);
+    health.setCurrentValue(
+      Math.min(health.effectiveMax, health.currentValue + healingAmount),
+    );
   }
 };

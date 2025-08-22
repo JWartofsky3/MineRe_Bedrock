@@ -9,9 +9,6 @@
       "is_experimental": false
     },
     "component_groups": {
-      "immediate_despawn": {
-        "minecraft:instant_despawn": {}
-      },
       "attack_cooldown": {
         "minecraft:attack_cooldown": {
           "attack_cooldown_complete_event": {
@@ -90,45 +87,6 @@
         "width": 1,
         "height": 1
       },
-      "minecraft:environment_sensor": {
-        "triggers": {
-          "filters": {
-            "all_of": [
-              {
-                "test": "is_brightness",
-                "operator": ">",
-                "value": 0.5
-              },
-              { "test": "has_nametag", "value": false },
-              {
-                "test": "is_altitude",
-                "subject": "self",
-                "operator": ">",
-                "value": 30
-              },
-              {
-                "test": "is_daytime",
-                "value": true
-              },
-              {
-                "any_of": [
-                  {
-                    "test": "hourly_clock_time",
-                    "operator": "<",
-                    "value": 1000
-                  },
-                  {
-                    "test": "hourly_clock_time",
-                    "operator": ">",
-                    "value": 23000
-                  }
-                ]
-              }
-            ]
-          },
-          "event": "disappear"
-        }
-      },
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0,
@@ -174,9 +132,75 @@
         "is_pushable_by_piston": true
       },
       "minecraft:despawn": {
-        "despawn_from_distance": {
-          "min_distance": 32,
-          "max_distance": 40
+        "filters": {
+          "any_of": [
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 64
+                }
+              ]
+            },
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "inactivity_timer",
+                  "subject": "self",
+                  "value": 30
+                },
+                {
+                  "test": "random_chance",
+                  "value": 400
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 32
+                }
+              ]
+            },
+            {
+              "all_of": [
+                {
+                  "test": "is_persistent",
+                  "value": false
+                },
+                {
+                  "test": "is_daytime"
+                },
+                {
+                  "test": "inactivity_timer",
+                  "subject": "self",
+                  "value": 30
+                },
+                {
+                  "test": "random_chance",
+                  "value": 100
+                },
+                {
+                  "test": "distance_to_nearest_player",
+                  "operator": ">",
+                  "value": 16
+                },
+                {
+                  "test": "is_altitude",
+                  "subject": "self",
+                  "operator": ">",
+                  "value": 40
+                }
+              ]
+            }
+          ]
         }
       },
       "minecraft:inventory": {
@@ -416,24 +440,6 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_daytime"
-                },
-                {
-                  "test": "is_altitude",
-                  "subject": "self",
-                  "operator": ">",
-                  "value": 30
-                }
-              ]
-            },
-            "add": {
-              "component_groups": ["immediate_despawn"]
-            }
-          },
-          {
             "randomize": [
               {
                 "weight": 45,
@@ -465,14 +471,6 @@
       "attack_cooldown_complete_event": {
         "remove": {
           "component_groups": ["attack_cooldown"]
-        }
-      },
-      "disappear": {
-        "queue_command": {
-          "command": "particle minere:big_smoke ~ ~0.25 ~"
-        },
-        "add": {
-          "component_groups": ["immediate_despawn"]
         }
       }
     }

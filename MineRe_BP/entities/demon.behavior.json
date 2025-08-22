@@ -172,22 +172,6 @@
             }
           },
           {
-            "cause": "entity_explosion",
-            "damage_multiplier": 1.5,
-            "on_damage": {
-              "event": "minere:demon_start_berserking",
-              "target": "self"
-            }
-          },
-          {
-            "cause": "block_explosion",
-            "damage_multiplier": 1.5,
-            "on_damage": {
-              "event": "minere:demon_start_berserking",
-              "target": "self"
-            }
-          },
-          {
             "cause": "projectile",
             "on_damage": {
               "event": "projectile_roll",
@@ -198,6 +182,20 @@
             "cause": "entity_attack",
             "on_damage": {
               "event": "melee_roll",
+              "target": "self"
+            }
+          },
+          {
+            "cause": "entity_explosion",
+            "on_damage": {
+              "event": "minere:demon_start_berserking",
+              "target": "self"
+            }
+          },
+          {
+            "cause": "block_explosion",
+            "on_damage": {
+              "event": "minere:demon_start_berserking",
               "target": "self"
             }
           }

@@ -35,6 +35,10 @@ export const SettingsBook: ItemCustomComponent = {
       .toggle("settings.minere.toggle.end_storms", {
         defaultValue: currentSettings.endStorms,
         tooltip: "settings.minere.tooltip.end_storms",
+      })
+      .toggle("settings.minere.toggle.gremlin_breaks_torches", {
+        defaultValue: currentSettings.gremlinBreaksTorches,
+        tooltip: "settings.minere.tooltip.gremlin_breaks_torches",
       });
 
     // Show the form to the player.
@@ -48,7 +52,7 @@ export const SettingsBook: ItemCustomComponent = {
         // The formValues array holds the state of the toggles.
         const formValues = response.formValues;
 
-        if (formValues && formValues.length === 6) {
+        if (formValues && formValues.length === 7) {
           // Map the form values back to a settings object.
           const newSettings: WorldSettings = {
             reducedHealthRegen: formValues[0] as boolean,
@@ -57,11 +61,14 @@ export const SettingsBook: ItemCustomComponent = {
             armorCurve: formValues[3] as boolean,
             protectionNerf: formValues[4] as boolean,
             endStorms: formValues[5] as boolean,
+            gremlinBreaksTorches: formValues[6] as boolean,
           };
 
           // Save the new settings to the world's dynamic properties.
           saveSettings(newSettings);
           player.sendMessage(`§aMineRe settings updated successfully!`);
+        } else {
+          player.sendMessage(`§cFailed to update settings!`);
         }
       })
       .catch((error) => {

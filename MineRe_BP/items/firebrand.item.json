@@ -49,13 +49,13 @@
         "duration": 6.0
       },
       "minecraft:durability": {
-        "max_durability": 1500
+        "max_durability": 2000
       },
       "minecraft:repairable": {
         "repair_items": [
           {
             "items": ["minecraft:blaze_rod"],
-            "repair_amount": 375
+            "repair_amount": 500
           }
         ]
       }

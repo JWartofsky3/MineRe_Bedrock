@@ -20,7 +20,7 @@ import { reduceDurability } from "./reduce_durability";
 import { replaceableBlocks } from "block/blockUtils";
 import { findItemInContainer } from "./item_utils";
 
-const AMMO_CONSUME_CHANCE = 0.6;
+const AMMO_CONSUME_CHANCE = 0.64;
 
 export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;

@@ -152,8 +152,8 @@ tile.minere:short_icicle.name=Короткая сосулька
 tile.minere:tall_icicle.name=Длинная сосулька
 tile.minere:thick_icicle.name=Толстая сосулька
 tile.minere:thin_icicle.name=Тонкая сосулька
-entity.minere:sand_stomp.name=Песчаный топот
-item.spawn_egg.entity.minere:sand_stomp.name=Призвать песчаный топот
+entity.minere:stomp.name=Песчаный топот
+item.spawn_egg.entity.minere:stomp.name=Призвать песчаный топот
 entity.minere:bird.name=Птица
 item.spawn_egg.entity.minere:bird.name=Призвать птицу
 
@@ -201,8 +201,12 @@ settings.minere.tooltip.healing_from_soup=Восстанавливает нем�
 settings.minere.tooltip.armor_weight=Быстрее движение в лёгкой броне и медленнее в тяжёлой.
 settings.minere.tooltip.armor_curve=Повышает защиту у комплектов низкоуровневой брони.
 settings.minere.tooltip.protection_nerf=Уменьшает сопротивление урона от зачарования «Защита».\n\nНе влияет на огнестойкость, взрывоустойчивость и защиту от снарядов.
-settings.minere.tooltip.end_storms=Включает грозы на внешних островах Энда.\n\nБури имеют 25% шанс появления каждые 10 минут и длятся от 2 до 4 минут.\n\nМолнии часто будут поражать игроков в воздухе.
+settings.minere.tooltip.end_storms=Включает грозы на внешних островах Энда.\n\nМолнии часто будут поражать игроков в воздухе.
+settings.minere.toggle.gremlin_breaks_torches=Гремлины ломают факелы
+settings.minere.tooltip.gremlin_breaks_torches=Позволяет гремлинам ломать факелы.
 
 item.minere:helper0=Помощник 0
 item.minere:helper1=Помощник 1
 item.minere:helper2=Помощник 2
+
+item.minere:ghostwalker=Призрачный Странник

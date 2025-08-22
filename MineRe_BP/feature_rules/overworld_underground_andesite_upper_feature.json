@@ -20,18 +20,6 @@
               "operator": "==",
               "value": "overworld_generation"
             }
-          ],
-          "none_of": [
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "desert"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "warm"
-            }
           ]
         }
       ]

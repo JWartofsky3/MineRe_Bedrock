@@ -1,23 +1,30 @@
-import { EntityComponentTypes } from "@minecraft/server";
-export function bombDamage(entity, damage, damageSource) {
-  const health = entity?.getComponent(EntityComponentTypes.Health);
-  if (!health) {
-    return;
-  }
-  const proj = damageSource.damagingProjectile?.getComponent(
-    EntityComponentTypes.Projectile,
-  );
-  if (entity.typeId === "minecraft:player") {
-    entity.applyDamage(damage * 1.5, {
-      cause: damageSource?.cause,
-      damagingEntity: proj?.owner,
-      damagingProjectile: damageSource?.damagingProjectile,
+import { EntityComponentTypes, } from "@minecraft/server";
+import { isAlive } from "mob/mob_utils";
+/**
+ * Calculates the damage multiplier based on max health.
+ */
+function damageMultiplier(maxHealth) {
+    const multiplier = maxHealth / 180 + 17 / 9;
+    return Math.max(1.5, Math.min(4, multiplier));
+}
+/**
+ * Applies bomb/explosive damage to an entity.
+ */
+export function bombDamage(entity, baseDamage, damageSource) {
+    if (!isAlive(entity)) {
+        return;
+    }
+    const health = entity.getComponent(EntityComponentTypes.Health);
+    if (!health)
+        return;
+    const maxHealth = health.effectiveMax;
+    const projectile = damageSource.damagingProjectile?.getComponent(EntityComponentTypes.Projectile);
+    const finalDamage = entity.typeId === "minecraft:player"
+        ? baseDamage * 1.5
+        : baseDamage * damageMultiplier(maxHealth);
+    entity.applyDamage(finalDamage, {
+        cause: damageSource?.cause,
+        damagingEntity: projectile?.owner,
+        damagingProjectile: damageSource?.damagingProjectile,
     });
-  } else {
-    entity.applyDamage(damage * 2.0, {
-      cause: damageSource?.cause,
-      damagingEntity: proj?.owner,
-      damagingProjectile: damageSource?.damagingProjectile,
-    });
-  }
 }

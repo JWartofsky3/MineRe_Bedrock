@@ -18,39 +18,21 @@
     },
     "animation.minere.gremlin.walk": {
       "loop": true,
-      "animation_length": 1.2,
       "bones": {
         "right_leg": {
-          "rotation": {
-            "0.0": [0, 0, 0],
-            "0.3": [-30, 0, 0],
-            "0.9": [30, 0, 0],
-            "1.2": [0, 0, 0]
-          }
+          "rotation": ["35 * Math.cos(query.anim_time * 500)", 0, 0]
         },
         "left_leg": {
-          "rotation": {
-            "0.0": [0, 0, 0],
-            "0.3": [30, 0, 0],
-            "0.9": [-30, 0, 0],
-            "1.2": [0, 0, 0]
-          }
+          "rotation": ["-35 * Math.cos(query.anim_time * 500)", 0, 0]
         },
         "left_arm": {
-          "rotation": {
-            "0.0": [0, 0, 0],
-            "0.3": [-30, 0, 0],
-            "0.9": [30, 0, 0],
-            "1.2": [0, 0, 0]
-          }
+          "rotation": ["25 * Math.cos(query.anim_time * 500)", 0, 0]
         },
         "right_arm": {
-          "rotation": {
-            "0.0": [0, 0, 0],
-            "0.3": [30, 0, 0],
-            "0.9": [-30, 0, 0],
-            "1.2": [0, 0, 0]
-          }
+          "rotation": ["-25 * Math.cos(query.anim_time * 500)", 0, 0]
+        },
+        "body": {
+          "rotation": [0, 0, "-2 * Math.cos(15 + query.anim_time * 500)"]
         }
       }
     },
@@ -90,6 +72,17 @@
             "0.0833": [-125, 0, 0],
             "0.5": [0, 0, 0]
           }
+        }
+      }
+    },
+    "animation.minere.gremlin.panic": {
+      "loop": true,
+      "bones": {
+        "left_arm": {
+          "rotation": ["-180 + Math.cos(query.anim_time * 250) * -45", 0, 0]
+        },
+        "right_arm": {
+          "rotation": ["-180 + Math.cos(query.anim_time * 200) * 45", 0, 0]
         }
       }
     }

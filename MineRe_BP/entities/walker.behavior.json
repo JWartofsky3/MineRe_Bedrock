@@ -420,14 +420,6 @@
       "minecraft:damage_sensor": {
         "triggers": [
           {
-            "cause": "entity_explosion",
-            "damage_multiplier": 1.5
-          },
-          {
-            "cause": "block_explosion",
-            "damage_multiplier": 1.5
-          },
-          {
             "cause": "projectile",
             "damage_multiplier": 0.75
           }

@@ -9,6 +9,7 @@ import {
 import { distVector3 } from "util/vector3Functions";
 import { DEFAULT_TICK } from "main";
 import { unbreakableBlocks } from "block/blockUtils";
+import { isAlive } from "./mob_utils";
 
 const ROAR_TIME = 20;
 
@@ -18,7 +19,7 @@ export function rollOgreRoar(
   chance: number,
   canBreakBlocks = false,
 ) {
-  if (!caster || !target) {
+  if (!isAlive(caster) || !isAlive(target)) {
     return;
   }
   const isCaveOgre: boolean =

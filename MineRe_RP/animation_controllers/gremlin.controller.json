@@ -5,40 +5,60 @@
       "initial_state": "idle",
       "states": {
         "idle": {
-          "animations": ["idle", "look_at_target"],
+          "animations": ["idle"],
           "transitions": [
             {
-              "walking": "query.ground_speed"
-            },
-            {
-              "attacking": "variable.attack_time > 0.0"
+              "walking": "query.ground_speed > 0.5"
             }
           ],
           "blend_transition": 0.2
         },
         "walking": {
-          "animations": ["walk", "look_at_target"],
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            }
+          ],
           "transitions": [
             {
-              "idle": "!query.ground_speed"
-            },
-            {
-              "attacking": "variable.has_target && variable.attack_time > 0.0"
+              "idle": "query.ground_speed < 0.4"
             }
           ],
           "blend_transition": 0.2
-        },
-        "attacking": {
-          "animations": ["attack", "look_at_target"],
+        }
+      }
+    },
+    "controller.animation.minere.gremlin_attack": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
           "transitions": [
             {
-              "idle": "query.all_animations_finished && !query.ground_speed"
+              "attacking": "variable.attack_time > 0.0"
             },
             {
-              "walking": "query.all_animations_finished && query.ground_speed"
+              "panicing": "(query.is_scared || query.is_avoiding_mobs || query.is_avoiding_block) && query.ground_speed > 0.6"
             }
           ],
-          "blend_transition": 1.0
+          "blend_transition": 0.1
+        },
+        "attacking": {
+          "animations": ["attack"],
+          "transitions": [
+            {
+              "idle": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.1
+        },
+        "panicing": {
+          "animations": ["panic"],
+          "transitions": [
+            {
+              "idle": "!(query.is_scared || query.is_avoiding_mobs || query.is_avoiding_block) || query.ground_speed < 0.5"
+            }
+          ],
+          "blend_transition": 0.1
         }
       }
     }

@@ -151,8 +151,8 @@ tile.minere:short_icicle.name=Stalaktit pendek
 tile.minere:tall_icicle.name=Stalaktit tinggi
 tile.minere:thick_icicle.name=Stalaktit tebal
 tile.minere:thin_icicle.name=Stalaktit tipis
-entity.minere:sand_stomp.name=Hentakan pasir
-item.spawn_egg.entity.minere:sand_stomp.name=Telur pemanggil Hentakan pasir
+entity.minere:stomp.name=Hentakan pasir
+item.spawn_egg.entity.minere:stomp.name=Telur pemanggil Hentakan pasir
 entity.minere:bird.name=Burung
 item.spawn_egg.entity.minere:bird.name=Telur pemanggil Burung
 
@@ -200,8 +200,12 @@ settings.minere.tooltip.healing_from_soup=Menyembuhkan beberapa hati dengan mema
 settings.minere.tooltip.armor_weight=Bergerak lebih cepat dengan zirah ringan dan lebih lambat dengan zirah berat.
 settings.minere.tooltip.armor_curve=Meningkatkan perlindungan dari set zirah tingkat rendah.
 settings.minere.tooltip.protection_nerf=Mengurangi ketahanan kerusakan dari pesona Perlindungan.\n\nTidak berlaku untuk perlindungan Api, Ledakan, dan Proyektil.
-settings.minere.tooltip.end_storms=Mengaktifkan badai petir di pulau luar End.\n\nBadai memiliki peluang 25% terjadi setiap 10 menit dan berlangsung 2 hingga 4 menit.\n\nPetir akan sering menyambar pemain yang berada di udara.
+settings.minere.tooltip.end_storms=Mengaktifkan badai petir di pulau luar End.\n\nPetir akan sering menyambar pemain yang berada di udara.
+settings.minere.toggle.gremlin_breaks_torches=Gremlin Memecahkan Obor
+settings.minere.tooltip.gremlin_breaks_torches=Memungkinkan gremlin untuk memecahkan obor.
 
 item.minere:helper0=Asisten 0
 item.minere:helper1=Asisten 1
 item.minere:helper2=Asisten 2
+
+item.minere:ghostwalker=Pengembara Hantu

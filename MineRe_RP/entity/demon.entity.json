@@ -28,7 +28,8 @@
         "overlay_color": "#af0000"
       },
       "particle_effects": {
-        "spell": "minecraft:evoker_spell"
+        "spell": "minecraft:evoker_spell",
+        "flame": "minere:summon_demon_skull_particles"
       },
       "sound_effects": {
         "magic": "mob.demon.magic"

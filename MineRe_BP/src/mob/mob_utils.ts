@@ -4,10 +4,12 @@ import {
   EntityComponentTypes,
   EntityHealthComponent,
   EntityTypeFamilyComponent,
+  world,
 } from "@minecraft/server";
+import { getBlock, isSolid, oceanBlocks } from "block/blockUtils";
 
 export function isAlive(entity: Entity): boolean {
-  if (!entity) {
+  if (!entity || !entity?.isValid) {
     return false;
   }
   const health = entity?.getComponent(
@@ -19,7 +21,7 @@ export function isAlive(entity: Entity): boolean {
   return health.currentValue > 0;
 }
 
-export function isFamily(entity: Entity, families: Set<string>): boolean {
+export function isFamilySet(entity: Entity, families: Set<string>): boolean {
   if (!entity) {
     return false;
   }
@@ -31,6 +33,26 @@ export function isFamily(entity: Entity, families: Set<string>): boolean {
   }
   for (let i = 0; i < family.getTypeFamilies().length; i++) {
     if (families.has(family.getTypeFamilies()[i])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export function isFamily(entity: Entity, target: string): boolean {
+  if (!entity) {
+    return false;
+  }
+  const familyComponent = entity.getComponent(
+    EntityComponentTypes.TypeFamily,
+  ) as EntityTypeFamilyComponent;
+  if (!familyComponent || familyComponent === null) {
+    return false;
+  }
+  const families = familyComponent.getTypeFamilies();
+  for (let i = 0; i < families.length; i++) {
+    const family = families[i];
+    if (family.trim().toLowerCase() === target.trim().toLocaleLowerCase()) {
       return true;
     }
   }
@@ -52,6 +74,24 @@ export function isLoaded(entity: Entity): boolean {
   });
   for (let i = 0; i < entities.length; i++) {
     if (entities[i].id === entity.id) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export function isUnderground(entity: Entity, distance?: number) {
+  if (!distance) {
+    distance = 32;
+  }
+  const dimension = entity.dimension;
+  for (let i = 0; i < distance; i++) {
+    const block = getBlock(dimension, {
+      x: entity.location.x,
+      y: entity.location.y + i,
+      z: entity.location.z,
+    });
+    if (isSolid(block)) {
       return true;
     }
   }

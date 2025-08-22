@@ -10,6 +10,7 @@ import {
   ItemEnchantableComponent,
 } from "@minecraft/server";
 import { getEnchantmentLevel } from "item/item_utils";
+import { isAlive } from "mob/mob_utils";
 import { getSettings } from "settings";
 
 const defenseMap = new Map<string, number>();
@@ -61,6 +62,10 @@ export const armorCurve = (
   damage: number,
   damageSource: EntityDamageSource,
 ) => {
+  if (!isAlive(player)) {
+    return;
+  }
+
   const cause = damageSource.cause;
   if (
     cause == EntityDamageCause.void ||

@@ -37,7 +37,7 @@
     "minere:nether_coal_ore": {
       "textures": "textures/blocks/minere/nether_coal_ore"
     },
-        "minere:nether_coal_block": {
+    "minere:nether_coal_block": {
       "textures": "textures/blocks/minere/nether_coal_block"
     },
     "minere:amethyst_ore": {
@@ -115,22 +115,22 @@
     "minere:blue_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/blue"
     },
-        "minere:runic_blackstone": {
+    "minere:runic_blackstone": {
       "textures": "textures/blocks/minere/runic_blackstone"
     },
-        "minere:runic_blackstone_bricks": {
+    "minere:runic_blackstone_bricks": {
       "textures": "textures/blocks/minere/runic_blackstone_bricks"
     },
-            "minere:andesite_bricks": {
+    "minere:andesite_bricks": {
       "textures": "textures/blocks/minere/andesite_bricks"
     },
-                "minere:granite_bricks": {
+    "minere:granite_bricks": {
       "textures": "textures/blocks/minere/granite_bricks"
     },
-                "minere:diorite_bricks": {
+    "minere:diorite_bricks": {
       "textures": "textures/blocks/minere/diorite_bricks"
     },
-                "minere:lapis_bricks": {
+    "minere:lapis_bricks": {
       "textures": "textures/blocks/minere/lapis_bricks"
     }
   }

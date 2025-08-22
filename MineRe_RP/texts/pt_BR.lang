@@ -152,8 +152,8 @@ tile.minere:short_icicle.name=Cristal de gelo curto
 tile.minere:tall_icicle.name=Cristal de gelo alto
 tile.minere:thick_icicle.name=Cristal de gelo grosso
 tile.minere:thin_icicle.name=Cristal de gelo fino
-entity.minere:sand_stomp.name=Pisada de areia
-item.spawn_egg.entity.minere:sand_stomp.name=Gerar pisada de areia
+entity.minere:stomp.name=Pisada de areia
+item.spawn_egg.entity.minere:stomp.name=Gerar pisada de areia
 entity.minere:bird.name=Pássaro
 item.spawn_egg.entity.minere:bird.name=Gerar pássaro
 
@@ -201,8 +201,12 @@ settings.minere.tooltip.healing_from_soup=Cura alguns corações ao comer sopas,
 settings.minere.tooltip.armor_weight=Mova-se mais rápido com armaduras leves e mais lento com armaduras pesadas.
 settings.minere.tooltip.armor_curve=Aumenta a proteção de conjuntos de armaduras de baixo nível.
 settings.minere.tooltip.protection_nerf=Reduz a resistência a dano do encantamento de proteção.\n\nNão se aplica a proteção contra fogo, explosões e projéteis.
-settings.minere.tooltip.end_storms=Ativa tempestades elétricas nas ilhas externas do End.\n\nAs tempestades têm 25% de chance de ocorrer a cada 10 minutos e duram de 2 a 4 minutos.\n\nRaios atingirão frequentemente jogadores no ar.
+settings.minere.tooltip.end_storms=Ativa tempestades elétricas nas ilhas externas do End.\n\nRaios atingirão frequentemente jogadores no ar.
+settings.minere.toggle.gremlin_breaks_torches=Gremlins quebram tochas
+settings.minere.tooltip.gremlin_breaks_torches=Permite que os gremlins quebrem tochas.
 
 item.minere:helper0=Assistente 0
 item.minere:helper1=Assistente 1
 item.minere:helper2=Assistente 2
+
+item.minere:ghostwalker=Andarilho Fantasma

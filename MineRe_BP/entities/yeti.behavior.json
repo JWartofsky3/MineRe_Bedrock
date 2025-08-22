@@ -320,16 +320,120 @@
           "entity_types": [
             {
               "filters": {
-                "any_of": [
+                "all_of": [
                   {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "player"
+                    "none_of": [
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "head",
+                            "value": "leather_helmet"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "torso",
+                            "value": "leather_chestplate"
+                          }
+                        ]
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "head",
+                            "value": "leather_helmet"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "leg",
+                            "value": "leather_leggings"
+                          }
+                        ]
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "head",
+                            "value": "leather_helmet"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "feet",
+                            "value": "leather_boots"
+                          }
+                        ]
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "torso",
+                            "value": "leather_chestplate"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "leg",
+                            "value": "leather_leggings"
+                          }
+                        ]
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "torso",
+                            "value": "leather_chestplate"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "feet",
+                            "value": "leather_boots"
+                          }
+                        ]
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "leg",
+                            "value": "leather_leggings"
+                          },
+                          {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "feet",
+                            "value": "leather_boots"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "demon"
+                    "any_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "player"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "demon"
+                      }
+                    ]
                   }
                 ]
               },

@@ -611,12 +611,17 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 9
+          "weight": 30
         },
         {
           "type": "item",
           "name": "minere:amethyst_staff",
-          "weight": 1
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minere:ghostwalker",
+          "weight": 3
         }
       ]
     }

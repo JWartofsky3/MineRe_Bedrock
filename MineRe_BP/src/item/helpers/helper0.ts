@@ -2,7 +2,7 @@ import { ItemCustomComponent, Player, world } from "@minecraft/server";
 
 export const Helper0: ItemCustomComponent = {
   onUse(arg) {
-    world.sendMessage("Clearing old torches...");
+    arg.source.sendMessage("Clearing old torches...");
     const dimension = arg.source.dimension;
     const { x, y, z } = arg.source.location;
 
@@ -23,6 +23,6 @@ export const Helper0: ItemCustomComponent = {
       }
     }
 
-    world.sendMessage("Torch grid refreshed!");
+    arg.source.sendMessage("Torch grid refreshed!");
   },
 };

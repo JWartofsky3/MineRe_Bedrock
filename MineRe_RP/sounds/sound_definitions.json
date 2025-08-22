@@ -55,6 +55,14 @@
         }
       ]
     },
+    "item.ghostwalker.ghost": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/ghostwalker/ghost"
+        }
+      ]
+    },
     "item.ice_charge.frost": {
       "category": "player",
       "sounds": [
@@ -312,6 +320,14 @@
         "sounds/mob/gremlin/hurt4"
       ]
     },
+    "mob.gremlin.angry": {
+      "category": "hostile",
+      "sounds": ["sounds/mob/gremlin/hurt0", "sounds/mob/gremlin/hurt1"]
+    },
+    "mob.gremlin.scared": {
+      "category": "hostile",
+      "sounds": ["sounds/mob/gremlin/scared0", "sounds/mob/gremlin/scared1"]
+    },
     "mob.gremlin.die": {
       "category": "hostile",
       "sounds": [
@@ -480,7 +496,11 @@
     "mob.scorpion.walk": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": ["sounds/mob/scorpion/walk0", "sounds/mob/scorpion/walk1"]
+      "sounds": [
+        "sounds/mob/scorpion/walk0",
+        "sounds/mob/scorpion/walk1",
+        "sounds/mob/scorpion/walk2"
+      ]
     },
     "mob.vampire.ambient": {
       "category": "hostile",

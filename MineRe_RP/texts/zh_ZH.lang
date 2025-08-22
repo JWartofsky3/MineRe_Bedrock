@@ -152,8 +152,8 @@ tile.minere:short_icicle.name=短冰柱
 tile.minere:tall_icicle.name=长冰柱
 tile.minere:thick_icicle.name=粗冰柱
 tile.minere:thin_icicle.name=细冰柱
-entity.minere:sand_stomp.name=沙之践踏
-item.spawn_egg.entity.minere:sand_stomp.name=生成 沙之践踏
+entity.minere:stomp.name=沙之践踏
+item.spawn_egg.entity.minere:stomp.name=生成 沙之践踏
 entity.minere:bird.name=鸟
 item.spawn_egg.entity.minere:bird.name=生成 鸟
 
@@ -201,8 +201,12 @@ settings.minere.tooltip.healing_from_soup=食用汤、牛奶和炖菜时回复�
 settings.minere.tooltip.armor_weight=轻甲移动更快，重甲移动更慢。
 settings.minere.tooltip.armor_curve=增加低等级盔甲套装的保护力。
 settings.minere.tooltip.protection_nerf=削弱“保护”附魔的伤害减免。\n\n不影响火焰保护、爆炸保护和弹射物保护。
-settings.minere.tooltip.end_storms=在末地外岛启用雷暴。\n\n每10分钟有25%的几率发生，持续2-4分钟。\n\n闪电会频繁击中空中的玩家。
+settings.minere.tooltip.end_storms=在末地外岛启用雷暴。\n\n闪电会频繁击中空中的玩家。
+settings.minere.toggle.gremlin_breaks_torches=小妖精打破火把
+settings.minere.tooltip.gremlin_breaks_torches=允许小妖精打破火把。
 
 item.minere:helper0=助手 0
 item.minere:helper1=助手 1
 item.minere:helper2=助手 2
+
+item.minere:ghostwalker=幽魂行者 

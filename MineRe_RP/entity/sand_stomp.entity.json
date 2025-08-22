@@ -2,20 +2,20 @@
   "format_version": "1.8.0",
   "minecraft:client_entity": {
     "description": {
-      "identifier": "minere:sand_stomp",
+      "identifier": "minere:stomp",
       "materials": {
         "default": "entity_emissive_alpha"
       },
       "textures": {
-        "default": "textures/entity/minere/sand_stomp/sand_stomp",
-        "red": "textures/entity/minere/sand_stomp/red_sand_stomp",
-        "end": "textures/entity/minere/sand_stomp/end_stomp",
-        "soul": "textures/entity/minere/sand_stomp/soul_stomp"
+        "default": "textures/entity/minere/stomp/sand_stomp",
+        "red": "textures/entity/minere/stomp/red_stomp",
+        "end": "textures/entity/minere/stomp/end_stomp",
+        "soul": "textures/entity/minere/stomp/soul_stomp"
       },
       "geometry": {
-        "default": "geometry.minere.sand_stomp"
+        "default": "geometry.minere.stomp"
       },
-      "render_controllers": ["controller.render.minere.sand_stomp"],
+      "render_controllers": ["controller.render.minere.stomp"],
       "spawn_egg": {
         "base_color": "#79ea4a",
         "overlay_color": "#405b9a"

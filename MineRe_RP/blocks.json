@@ -48,7 +48,7 @@
     "textures": "minere:nether_coal_ore",
     "sound": "netherrack"
   },
-    "minere:nether_coal_block": {
+  "minere:nether_coal_block": {
     "textures": "minere:nether_coal_block",
     "sound": "netherrack"
   },
@@ -109,27 +109,27 @@
     "textures": "minere:ghost_pot",
     "sound": "decorated_pot"
   },
-    "minere:runic_blackstone": {
+  "minere:runic_blackstone": {
     "textures": "minere:runic_blackstone",
     "sound": "stone"
   },
-    "minere:runic_blackstone_bricks": {
+  "minere:runic_blackstone_bricks": {
     "textures": "minere:runic_blackstone_bricks",
     "sound": "stone"
   },
-      "minere:lapis_bricks": {
+  "minere:lapis_bricks": {
     "textures": "minere:lapis_bricks",
     "sound": "stone"
   },
-        "minere:andesite_bricks": {
+  "minere:andesite_bricks": {
     "textures": "minere:andesite_bricks",
     "sound": "stone"
   },
-        "minere:granite_bricks": {
+  "minere:granite_bricks": {
     "textures": "minere:granite_bricks",
     "sound": "stone"
   },
-        "minere:diorite_bricks": {
+  "minere:diorite_bricks": {
     "textures": "minere:diorite_bricks",
     "sound": "stone"
   }

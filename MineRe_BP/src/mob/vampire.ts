@@ -14,12 +14,13 @@ import {
 } from "util/vector3Functions";
 
 import { DEFAULT_TICK } from "main";
+import { isAlive } from "./mob_utils";
 
 const VAMPIRE_HEAL_AMOUNT = 3;
 const GOLD_DAMAGE_BOUNUS = 6;
 
 export function vampireHeal(vampire: Entity, target: Entity) {
-  if (vampire === null || target === null) {
+  if (!isAlive(vampire) || target === null) {
     return;
   }
   const targetFamily = target.getComponent(

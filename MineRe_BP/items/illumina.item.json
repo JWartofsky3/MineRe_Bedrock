@@ -41,17 +41,17 @@
         ]
       },
       "minecraft:durability": {
-        "max_durability": 1500
+        "max_durability": 1600
       },
       "minecraft:repairable": {
         "repair_items": [
           {
             "items": ["minecraft:diamond"],
-            "repair_amount": 600
+            "repair_amount": 700
           },
           {
             "items": ["minecraft:amethyst_shard", "minecraft:iron_ingot"],
-            "repair_amount": 375
+            "repair_amount": 400
           }
         ]
       }

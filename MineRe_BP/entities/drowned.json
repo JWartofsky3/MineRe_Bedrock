@@ -8,9 +8,6 @@
       "is_experimental": false
     },
     "component_groups": {
-      "immediate_despawn": {
-        "minecraft:instant_despawn": {}
-      },
       "minecraft:baby_drowned": {
         "minecraft:is_baby": {},
         "minecraft:scale": {
@@ -563,24 +560,6 @@
     "events": {
       "minecraft:entity_spawned": {
         "sequence": [
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_daytime"
-                },
-                {
-                  "test": "is_altitude",
-                  "subject": "self",
-                  "operator": ">",
-                  "value": 40
-                }
-              ]
-            },
-            "add": {
-              "component_groups": ["immediate_despawn"]
-            }
-          },
           {
             "randomize": [
               {

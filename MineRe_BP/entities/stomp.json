@@ -2,26 +2,26 @@
   "format_version": "1.16.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "minere:sand_stomp",
+      "identifier": "minere:stomp",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false
     },
     "component_groups": {
-      "minere:sand_stomp": {
+      "minere:stomp": {
         "minecraft:variant": {
           "value": 0
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/sand_stomp/sand_stomp.json"
+          "table": "loot_tables/entities/stomp/sand_stomp.json"
         }
       },
-      "minere:red_sand_stomp": {
+      "minere:red_stomp": {
         "minecraft:variant": {
           "value": 1
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/sand_stomp/red_sand_stomp.json"
+          "table": "loot_tables/entities/stomp/red_stomp.json"
         }
       },
       "minere:end_stomp": {
@@ -29,7 +29,7 @@
           "value": 2
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/sand_stomp/end_stomp.json"
+          "table": "loot_tables/entities/stomp/end_stomp.json"
         }
       },
       "minere:soul_stomp": {
@@ -37,7 +37,7 @@
           "value": 3
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/sand_stomp/soul_stomp.json"
+          "table": "loot_tables/entities/stomp/soul_stomp.json"
         },
         "minecraft:fire_immune": {}
       },
@@ -104,11 +104,11 @@
           },
           {
             "cause": "entity_explosion",
-            "damage_multiplier": 2.5
+            "damage_multiplier": 1.25
           },
           {
             "cause": "block_explosion",
-            "damage_multiplier": 2.5
+            "damage_multiplier": 1.25
           },
           {
             "on_damage": {
@@ -288,7 +288,7 @@
         "sequence": [
           {
             "add": {
-              "component_groups": ["minere:calm", "minere:sand_stomp"]
+              "component_groups": ["minere:calm", "minere:stomp"]
             }
           },
           {
@@ -297,10 +297,10 @@
               "value": "mesa"
             },
             "remove": {
-              "component_groups": ["minere:sand_stomp"]
+              "component_groups": ["minere:stomp"]
             },
             "add": {
-              "component_groups": ["minere:red_sand_stomp"]
+              "component_groups": ["minere:red_stomp"]
             }
           },
           {
@@ -309,7 +309,7 @@
               "value": "the_end"
             },
             "remove": {
-              "component_groups": ["minere:sand_stomp"]
+              "component_groups": ["minere:stomp"]
             },
             "add": {
               "component_groups": ["minere:end_stomp"]
@@ -321,7 +321,7 @@
               "value": "nether"
             },
             "remove": {
-              "component_groups": ["minere:sand_stomp"]
+              "component_groups": ["minere:stomp"]
             },
             "add": {
               "component_groups": ["minere:soul_stomp"]

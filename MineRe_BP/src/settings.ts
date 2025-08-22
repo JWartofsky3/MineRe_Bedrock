@@ -3,7 +3,6 @@ import {
   world,
   PlayerPermissionLevel,
   CommandPermissionLevel,
-  Player,
 } from "@minecraft/server";
 
 export interface WorldSettings {
@@ -13,6 +12,7 @@ export interface WorldSettings {
   armorCurve: boolean;
   protectionNerf: boolean;
   endStorms: boolean;
+  gremlinBreaksTorches: boolean;
 }
 
 export const REDUCED_HEALTH_REGEN = "minere:reducedHealthRegen";
@@ -21,6 +21,7 @@ export const ARMOR_WEIGHT = "minere:armorWeight";
 export const ARMOR_CURVE = "minere:armorCurve";
 export const PROTECTION_NERF = "minere:protectionNerf";
 export const END_STORMS = "minere:endStorms";
+export const GREMLIN_BREAKS_TORCHES = "minere:gremlinBreaksTorches";
 
 export const HAS_GIVEN_BOOK = "minere:hasGivenBook";
 
@@ -35,6 +36,9 @@ export function getSettings(): WorldSettings {
     armorCurve: world.getDynamicProperty(ARMOR_CURVE) as boolean,
     protectionNerf: world.getDynamicProperty(PROTECTION_NERF) as boolean,
     endStorms: world.getDynamicProperty(END_STORMS) as boolean,
+    gremlinBreaksTorches: world.getDynamicProperty(
+      GREMLIN_BREAKS_TORCHES,
+    ) as boolean,
   };
 }
 
@@ -46,6 +50,10 @@ export function saveSettings(settings: WorldSettings) {
   world.setDynamicProperty(ARMOR_CURVE, settings.armorCurve);
   world.setDynamicProperty(PROTECTION_NERF, settings.protectionNerf);
   world.setDynamicProperty(END_STORMS, settings.endStorms);
+  world.setDynamicProperty(
+    GREMLIN_BREAKS_TORCHES,
+    settings.gremlinBreaksTorches,
+  );
 }
 
 /**
@@ -86,6 +94,11 @@ export function initializeWorldSettings(): void {
     // Check and set default for End Storms
     if (world.getDynamicProperty(END_STORMS) === undefined) {
       world.setDynamicProperty(END_STORMS, true);
+    }
+
+    // Check and set default for Gremlin Breaks Torches
+    if (world.getDynamicProperty(GREMLIN_BREAKS_TORCHES) === undefined) {
+      world.setDynamicProperty(GREMLIN_BREAKS_TORCHES, true);
     }
   });
 }

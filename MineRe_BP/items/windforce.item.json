@@ -49,13 +49,13 @@
         ]
       },
       "minecraft:durability": {
-        "max_durability": 1280
+        "max_durability": 1400
       },
       "minecraft:repairable": {
         "repair_items": [
           {
             "items": ["minecraft:breeze_rod"],
-            "repair_amount": 320
+            "repair_amount": 400
           }
         ]
       }

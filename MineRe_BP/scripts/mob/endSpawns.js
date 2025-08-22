@@ -20,7 +20,7 @@ export const handleEndSpawn = (entity) => {
         entity.typeId == "minere:ender_phantom" ||
         entity.typeId == "minere:gremlin" ||
         entity.typeId == "minere:stomp" ||
-        entity.typeId == "minere:sand_stomp"
+        entity.typeId == "minere:stomp"
       )
     ) {
       return;
@@ -40,7 +40,7 @@ export const handleEndSpawn = (entity) => {
         entity.typeId == "minere:walker" ||
         entity.typeId == "minere:cosmic_jelly_placeholder" ||
         entity.typeId == "minere:stomp" ||
-        entity.typeId == "minere:sand_stomp"
+        entity.typeId == "minere:stomp"
       ) {
         entity.remove();
         dimension.spawnEntity("minecraft:enderman", location);

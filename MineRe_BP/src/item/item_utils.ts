@@ -182,3 +182,28 @@ export const canPickupPot = (player: Player): boolean => {
   }
   return getEnchantmentLevel(player, "silk_touch") > 0;
 };
+
+export const getMainItem = (
+  entity: Entity,
+  options?: {
+    requireDurability?: boolean;
+  },
+): ItemStack => {
+  const equipment = entity.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!equipment) {
+    return null;
+  }
+  const item = equipment.getEquipmentSlot(EquipmentSlot.Mainhand)?.getItem();
+  if (!item) {
+    return null;
+  }
+  if (options?.requireDurability) {
+    const durability = item.getComponent(ItemComponentTypes.Durability);
+    if (!durability) {
+      return null;
+    }
+  }
+  return item;
+};

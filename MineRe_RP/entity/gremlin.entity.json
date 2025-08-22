@@ -9,8 +9,14 @@
       },
       "textures": {
         "cave": "textures/entity/minere/gremlin/cave_gremlin",
+        "cave_angry": "textures/entity/minere/gremlin/cave_angry",
+        "cave_scared": "textures/entity/minere/gremlin/cave_scared",
         "nether": "textures/entity/minere/gremlin/nether_gremlin",
-        "ender": "textures/entity/minere/gremlin/ender_gremlin"
+        "nether_angry": "textures/entity/minere/gremlin/nether_angry",
+        "nether_scared": "textures/entity/minere/gremlin/nether_scared",
+        "ender": "textures/entity/minere/gremlin/ender_gremlin",
+        "ender_angry": "textures/entity/minere/gremlin/ender_angry",
+        "ender_scared": "textures/entity/minere/gremlin/ender_scared"
       },
       "geometry": {
         "default": "geometry.minere.gremlin"
@@ -20,14 +26,16 @@
         "overlay_color": "#ccffcc"
       },
       "scripts": {
-        "animate": ["controller"]
+        "animate": ["controller", "attack_controller", "look_at_target"]
       },
       "animations": {
         "look_at_target": "animation.minere.gremlin.look_at_target",
         "walk": "animation.minere.gremlin.walk",
         "idle": "animation.minere.gremlin.idle",
         "attack": "animation.minere.gremlin.attack",
-        "controller": "controller.animation.minere.gremlin"
+        "panic": "animation.minere.gremlin.panic",
+        "controller": "controller.animation.minere.gremlin",
+        "attack_controller": "controller.animation.minere.gremlin_attack"
       },
       "render_controllers": ["controller.render.minere.gremlin"]
     }
