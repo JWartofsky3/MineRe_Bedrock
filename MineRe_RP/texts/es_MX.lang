@@ -200,6 +200,11 @@ settings.minere.tooltip.armor_curve=Mejora la protección de las armaduras de ba
 settings.minere.tooltip.protection_nerf=Reduce la resistencia al daño del encantamiento de protección.\n\nNo aplica a la protección contra fuego, explosiones ni proyectiles.
 settings.minere.tooltip.end_storms=Habilita tormentas eléctricas en las islas exteriores del End.\n\nLos rayos golpearán frecuentemente a los jugadores en el aire.
 settings.minere.tooltip.gremlin_breaks_torches=Permite que los gremlins rompan antorchas.
+settings.minere.toggle.reduce_daylight_drowned=Reducir ahogados de día
+settings.minere.toggle.gold_xp_bonus=Bonificación de XP con oro
+settings.minere.tooltip.reduce_daylight_drowned=Disminuye mucho la cantidad de ahogados que aparecen durante el día por encima de Y=40.
+settings.minere.tooltip.gold_xp_bonus=Gana experiencia extra al derrotar enemigos con armas doradas.
+
 
 ## Groups
 minere:itemGroup.name.treecapitator=Trepacopas

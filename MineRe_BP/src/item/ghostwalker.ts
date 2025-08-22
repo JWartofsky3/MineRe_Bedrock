@@ -59,7 +59,7 @@ export const Ghostwalker: ItemCustomComponent = {
     const lore =
       pwns < MAX_LEVEL
         ? `§c☠♠⚔ §c(${pwns}) §c⚔♠☠`
-        : `§6♛§c☠♠⚔ §c(${pwns}) §c⚔♠☠§6♛`;
+        : `§c☠♠⚔ §6(${pwns}) §c⚔♠☠`;
     arg.itemStack.setLore([lore]);
     const equippable = arg.attackingEntity.getComponent(
       EntityComponentTypes.Equippable,

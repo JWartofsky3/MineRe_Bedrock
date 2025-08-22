@@ -13,6 +13,8 @@ export interface WorldSettings {
   protectionNerf: boolean;
   endStorms: boolean;
   gremlinBreaksTorches: boolean;
+  reduceDaylightDrowned: boolean;
+  goldXPBonus: boolean;
 }
 
 export const REDUCED_HEALTH_REGEN = "minere:reducedHealthRegen";
@@ -22,6 +24,8 @@ export const ARMOR_CURVE = "minere:armorCurve";
 export const PROTECTION_NERF = "minere:protectionNerf";
 export const END_STORMS = "minere:endStorms";
 export const GREMLIN_BREAKS_TORCHES = "minere:gremlinBreaksTorches";
+export const REDUCE_DAYLIGHT_DROWNED = "minere:reduceDaylightDrowned";
+export const GOLD_XP_BONUS = "minere:goldXPBonus";
 
 export const HAS_GIVEN_BOOK = "minere:hasGivenBook";
 
@@ -39,6 +43,10 @@ export function getSettings(): WorldSettings {
     gremlinBreaksTorches: world.getDynamicProperty(
       GREMLIN_BREAKS_TORCHES,
     ) as boolean,
+    reduceDaylightDrowned: world.getDynamicProperty(
+      REDUCE_DAYLIGHT_DROWNED,
+    ) as boolean,
+    goldXPBonus: world.getDynamicProperty(GOLD_XP_BONUS) as boolean,
   };
 }
 
@@ -54,6 +62,11 @@ export function saveSettings(settings: WorldSettings) {
     GREMLIN_BREAKS_TORCHES,
     settings.gremlinBreaksTorches,
   );
+  world.setDynamicProperty(
+    REDUCE_DAYLIGHT_DROWNED,
+    settings.reduceDaylightDrowned,
+  );
+  world.setDynamicProperty(GOLD_XP_BONUS, settings.goldXPBonus);
 }
 
 /**
@@ -99,6 +112,16 @@ export function initializeWorldSettings(): void {
     // Check and set default for Gremlin Breaks Torches
     if (world.getDynamicProperty(GREMLIN_BREAKS_TORCHES) === undefined) {
       world.setDynamicProperty(GREMLIN_BREAKS_TORCHES, true);
+    }
+
+    // Check and set default for Reduce Daylight Drowned
+    if (world.getDynamicProperty(REDUCE_DAYLIGHT_DROWNED) === undefined) {
+      world.setDynamicProperty(REDUCE_DAYLIGHT_DROWNED, true);
+    }
+
+    // Check and set default for Gold XP Bonus
+    if (world.getDynamicProperty(GOLD_XP_BONUS) === undefined) {
+      world.setDynamicProperty(GOLD_XP_BONUS, true);
     }
   });
 }

@@ -204,6 +204,11 @@ settings.minere.tooltip.protection_nerf=削弱“保护”附魔的伤害减免�
 settings.minere.tooltip.end_storms=在末地外岛启用雷暴。\n\n闪电会频繁击中空中的玩家。
 settings.minere.toggle.gremlin_breaks_torches=小妖精打破火把
 settings.minere.tooltip.gremlin_breaks_torches=允许小妖精打破火把。
+settings.minere.toggle.reduce_daylight_drowned=减少白天的溺尸
+settings.minere.toggle.gold_xp_bonus=黄金经验加成
+settings.minere.tooltip.reduce_daylight_drowned=大幅减少在 Y=40 以上白天生成的溺尸数量。
+settings.minere.tooltip.gold_xp_bonus=使用黄金武器击败敌人时可获得额外经验。
+
 
 item.minere:helper0=助手 0
 item.minere:helper1=助手 1

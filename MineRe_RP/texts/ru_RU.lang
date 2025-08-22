@@ -204,6 +204,11 @@ settings.minere.tooltip.protection_nerf=Уменьшает сопротивле�
 settings.minere.tooltip.end_storms=Включает грозы на внешних островах Энда.\n\nМолнии часто будут поражать игроков в воздухе.
 settings.minere.toggle.gremlin_breaks_torches=Гремлины ломают факелы
 settings.minere.tooltip.gremlin_breaks_torches=Позволяет гремлинам ломать факелы.
+settings.minere.toggle.reduce_daylight_drowned=Меньше утопленников днём
+settings.minere.toggle.gold_xp_bonus=Бонус опыта за золото
+settings.minere.tooltip.reduce_daylight_drowned=Сильно уменьшает количество утопленников, появляющихся днём выше Y=40.
+settings.minere.tooltip.gold_xp_bonus=Получайте дополнительный опыт за убийство врагов золотым оружием.
+
 
 item.minere:helper0=Помощник 0
 item.minere:helper1=Помощник 1

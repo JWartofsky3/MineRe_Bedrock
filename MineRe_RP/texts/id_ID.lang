@@ -203,6 +203,11 @@ settings.minere.tooltip.protection_nerf=Mengurangi ketahanan kerusakan dari peso
 settings.minere.tooltip.end_storms=Mengaktifkan badai petir di pulau luar End.\n\nPetir akan sering menyambar pemain yang berada di udara.
 settings.minere.toggle.gremlin_breaks_torches=Gremlin Memecahkan Obor
 settings.minere.tooltip.gremlin_breaks_torches=Memungkinkan gremlin untuk memecahkan obor.
+settings.minere.toggle.reduce_daylight_drowned=Kurangi Drowned di siang hari
+settings.minere.toggle.gold_xp_bonus=Bonus XP Emas
+settings.minere.tooltip.reduce_daylight_drowned=Secara signifikan mengurangi jumlah drowned yang muncul di siang hari di atas Y=40.
+settings.minere.tooltip.gold_xp_bonus=Dapatkan pengalaman bonus saat mengalahkan musuh dengan senjata emas.
+
 
 item.minere:helper0=Asisten 0
 item.minere:helper1=Asisten 1

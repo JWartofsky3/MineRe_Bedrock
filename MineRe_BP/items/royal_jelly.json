@@ -21,7 +21,7 @@
         "use_duration": 2.0,
         "movement_modifier": 0.35
       },
-      "minecraft:use_animation": "eat",
+      "minecraft:use_animation": "drink",
       "minecraft:food": {
         "nutrition": 8,
         "saturation_modifier": 0.9

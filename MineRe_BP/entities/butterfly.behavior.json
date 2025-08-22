@@ -40,7 +40,8 @@
             "minecraft:pitcher_plant",
             "minecraft:torchflower",
             "minecraft:cherry_leaves",
-            "minecraft:pink_petals"
+            "minecraft:pink_petals",
+            "minecraft:sugar"
           ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
@@ -87,7 +88,8 @@
             "minecraft:pitcher_plant",
             "minecraft:torchflower",
             "minecraft:cherry_leaves",
-            "minecraft:pink_petals"
+            "minecraft:pink_petals",
+            "minecraft:sugar"
           ],
           "breeds_with": {
             "mate_type": "minere:butterfly",
@@ -332,7 +334,8 @@
           "minecraft:pitcher_plant",
           "minecraft:torchflower",
           "minecraft:cherry_leaves",
-          "minecraft:pink_petals"
+          "minecraft:pink_petals",
+          "minecraft:sugar"
         ]
       },
       "minecraft:behavior.look_at_target": {

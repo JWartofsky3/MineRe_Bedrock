@@ -201,6 +201,11 @@
           "locator": "right_hand"
         }
       },
+      "sound_effects": {
+        "0.25": {
+          "effect": "magic"
+        }
+      },
       "animation_length": 1.5,
       "bones": {
         "upper_torso": {

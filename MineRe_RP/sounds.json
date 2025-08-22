@@ -313,6 +313,7 @@
           "celebrate": "mob.goblin.laugh",
           "death": "mob.goblin.die",
           "hurt": "mob.goblin.hurt",
+          "tempt": "mob.goblin.admire",
           "retreat": {
             "sound": "mob.goblin.laugh",
             "pitch": [1.2, 1.4],
@@ -347,7 +348,7 @@
           "step": "mob.yeti.step",
           "roar": "mob.demon.magic",
           "attack.strong": "mob.demon.attack",
-          "prepare.summon": "mob.demon.magic"
+          "prepare.summon": "mob.evocation_illager.prepare_summon"
         },
         "pitch": [0.8, 1.2],
         "volume": 2

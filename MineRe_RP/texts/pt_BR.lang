@@ -204,6 +204,11 @@ settings.minere.tooltip.protection_nerf=Reduz a resistência a dano do encantame
 settings.minere.tooltip.end_storms=Ativa tempestades elétricas nas ilhas externas do End.\n\nRaios atingirão frequentemente jogadores no ar.
 settings.minere.toggle.gremlin_breaks_torches=Gremlins quebram tochas
 settings.minere.tooltip.gremlin_breaks_torches=Permite que os gremlins quebrem tochas.
+settings.minere.toggle.reduce_daylight_drowned=Reduzir Afogados à luz do dia
+settings.minere.toggle.gold_xp_bonus=Bônus de XP com ouro
+settings.minere.tooltip.reduce_daylight_drowned=Reduz bastante a quantidade de afogados que surgem durante o dia acima de Y=40.
+settings.minere.tooltip.gold_xp_bonus=Ganhe experiência extra ao derrotar inimigos com armas de ouro.
+
 
 item.minere:helper0=Assistente 0
 item.minere:helper1=Assistente 1

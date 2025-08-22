@@ -1,4 +1,4 @@
-import { system, Entity } from "@minecraft/server";
+import { system, world, Entity } from "@minecraft/server";
 import {
   getBlock,
   isSolid,
@@ -12,13 +12,14 @@ import {
 import { distVector3 } from "util/vector3Functions";
 import { isUnderground } from "./mob_utils";
 import { isDay } from "weather/world_utils";
+import { REDUCE_DAYLIGHT_DROWNED } from "settings";
 
 type SpawnRule = {
   typeId: string;
-  spawnOnly?: boolean;
   density?: number;
   endRule?: EndRule;
   waterRule?: WaterRule;
+  worldProp?: string;
 };
 
 type EndRule = {
@@ -29,6 +30,7 @@ type EndRule = {
 type WaterRule = {
   dayDepth: number;
   allowStructureSpawn: boolean;
+  randomAllowChance?: number;
 };
 
 const DENSITY_DISTANCE = 128;
@@ -119,9 +121,11 @@ placeholderMap.set("minere:biter_placeholder", {
 
 placeholderMap.set("minecraft:drowned", {
   typeId: "minecraft:drowned",
+  worldProp: REDUCE_DAYLIGHT_DROWNED,
   waterRule: {
     dayDepth: 40,
     allowStructureSpawn: true,
+    randomAllowChance: 1 / 25,
   },
 });
 
@@ -152,7 +156,13 @@ function replaceHelper(placeholder: Entity, isSpawn: boolean) {
   if (!spawnRule) {
     return;
   }
-  if (spawnRule.spawnOnly && !isSpawn) {
+  if (spawnRule.typeId === placeholder.typeId && !isSpawn) {
+    return;
+  }
+  if (
+    spawnRule.worldProp &&
+    !world.getDynamicProperty(spawnRule.worldProp)?.valueOf()
+  ) {
     return;
   }
   const dimension = placeholder.dimension;
@@ -190,12 +200,19 @@ function replaceHelper(placeholder: Entity, isSpawn: boolean) {
   const waterRule = spawnRule.waterRule;
   if (waterRule && placeholder.isInWater) {
     if (
-      isDay() &&
-      placeholder.location.y > waterRule.dayDepth &&
-      !isUnderground(placeholder)
+      !(
+        waterRule?.randomAllowChance &&
+        Math.random() <= waterRule.randomAllowChance
+      )
     ) {
-      if (!waterRule.allowStructureSpawn || !checkIfStructure(placeholder)) {
-        return placeholder.remove();
+      if (
+        isDay() &&
+        placeholder.location.y > waterRule.dayDepth &&
+        !isUnderground(placeholder)
+      ) {
+        if (!waterRule.allowStructureSpawn || !checkIfStructure(placeholder)) {
+          return placeholder.remove();
+        }
       }
     }
   }

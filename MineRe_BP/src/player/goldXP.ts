@@ -2,13 +2,15 @@ import {
   Entity,
   EntityComponentTypes,
   EntityHealthComponent,
+  world,
 } from "@minecraft/server";
 import { getMainItem } from "item/item_utils";
 import { isFamily } from "mob/mob_utils";
+import { GOLD_XP_BONUS } from "settings";
 import { addVector3, randomVector3 } from "util/vector3Functions";
 
 const GOLD = 0.5;
-const COPPER = 0.2;
+const COPPER = 0.1;
 
 const XP_VERTICAL_VELOCITY = 0.02;
 const XP_VELOCITY = 0.02;
@@ -39,6 +41,9 @@ export function giveExtraXP(source: Entity, entity: Entity) {
     return;
   }
   if (source?.typeId !== "minecraft:player") {
+    return;
+  }
+  if (!world?.getDynamicProperty(GOLD_XP_BONUS)?.valueOf()) {
     return;
   }
   const tool = getMainItem(source, { requireDurability: true });

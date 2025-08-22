@@ -13,7 +13,6 @@
     },
     "environment.earthquake.attack": {
       "category": "hostile",
-      "__use_legacy_max_distance": "true",
       "sounds": [
         {
           "name": "sounds/environment/earthquake_attack",

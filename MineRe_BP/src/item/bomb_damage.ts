@@ -21,13 +21,13 @@ function damageMultiplier(maxHealth: number): number {
 export function bombDamage(
   entity: Entity,
   baseDamage: number,
-  damageSource: EntityDamageSource
+  damageSource: EntityDamageSource,
 ) {
   if (!isAlive(entity)) {
     return;
   }
   const health = entity.getComponent(
-    EntityComponentTypes.Health
+    EntityComponentTypes.Health,
   ) as EntityHealthComponent;
 
   if (!health) return;
@@ -35,7 +35,7 @@ export function bombDamage(
   const maxHealth = health.effectiveMax;
 
   const projectile = damageSource.damagingProjectile?.getComponent(
-    EntityComponentTypes.Projectile
+    EntityComponentTypes.Projectile,
   ) as EntityProjectileComponent;
 
   const finalDamage =

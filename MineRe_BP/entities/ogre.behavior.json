@@ -407,7 +407,7 @@
               "target": "self"
             }
           },
-                    {
+          {
             "cause": "entity_explosion",
             "on_damage": {
               "event": "minere:ogre_start_berserking",
