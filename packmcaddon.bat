@@ -53,23 +53,23 @@ if exist tmp_pack.zip del tmp_pack.zip
 REM --- Try WinRAR first ---
 if exist "%WINRAR_PATH%" (
     echo 🚀 Using WinRAR for compression...
-    "%WINRAR_PATH%" a -afzip tmp_pack.zip "%RP_DIR%\*" "%BP_DIR%\*" -x"%BP_DIR%\src*" -x"%BP_DIR%\node_modules*" -x"%BP_DIR%\package.json" -x"%BP_DIR%\package-lock.json" -x"%BP_DIR%\tsconfig.json"
+    "%WINRAR_PATH%" a -afzip tmp_pack.zip "%RP_DIR%" "%BP_DIR%" -x"%BP_DIR%\src*" -x"%BP_DIR%\node_modules*" -x"%BP_DIR%\package.json" -x"%BP_DIR%\package-lock.json" -x"%BP_DIR%\tsconfig.json"
     if errorlevel 1 (
         echo ❌ WinRAR failed!
         goto :fail
     )
 ) else if exist "%SEVENZIP_PATH%" (
     echo ⚡ WinRAR not found, using 7-Zip...
-    "%SEVENZIP_PATH%" a -tzip "tmp_pack.zip" "%RP_DIR%\*"
-    "%SEVENZIP_PATH%" a -tzip "tmp_pack.zip" "%BP_DIR%\*" -xr!"src" -xr!"node_modules" -xr!"package.json" -xr!"package-lock.json" -xr!"tsconfig.json"
+    "%SEVENZIP_PATH%" a -tzip tmp_pack.zip "%RP_DIR%"
+    "%SEVENZIP_PATH%" a -tzip tmp_pack.zip "%BP_DIR%" -xr!"src" -xr!"node_modules" -xr!"package.json" -xr!"package-lock.json" -xr!"tsconfig.json"
     if errorlevel 1 (
         echo ❌ 7-Zip failed!
         goto :fail
     )
 ) else (
     echo 🐢 Neither WinRAR nor 7-Zip found, using PowerShell Compress-Archive...
-    powershell -NoProfile -Command "Compress-Archive -Path '%RP_DIR%\*' -DestinationPath 'tmp_pack.zip' -Force"
-    powershell -NoProfile -Command "Get-ChildItem -Path '%BP_DIR%' -Recurse -File | Where-Object { $_.FullName -notmatch 'src|node_modules|package.json|package-lock.json|tsconfig' } | Compress-Archive -Update -DestinationPath 'tmp_pack.zip'"
+    powershell -NoProfile -Command "Compress-Archive -Path '%RP_DIR%\*' -DestinationPath 'tmp_pack.zip' -Force -Recurse"
+    powershell -NoProfile -Command "Get-ChildItem -Path '%BP_DIR%' -Recurse | Where-Object { $_.FullName -notmatch 'src|node_modules|package.json|package-lock.json|tsconfig' } | Compress-Archive -Update -DestinationPath 'tmp_pack.zip'"
 )
 
 REM --- Rename to .mcaddon ---

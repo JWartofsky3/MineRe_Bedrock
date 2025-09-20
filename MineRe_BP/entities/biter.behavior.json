@@ -203,64 +203,6 @@
           ]
         }
       },
-      "minecraft:inventory": {
-        "inventory_size": 8
-      },
-      "minecraft:shareables": {
-        "all_items": true,
-        "all_items_max_amount": 64,
-        "all_items_surplus_amount": 64,
-        "all_items_want_amount": 64,
-        "items": [
-          {
-            "priority": 1,
-            "item": "minecraft:rotten_flesh",
-            "consume_item": true
-          },
-          {
-            "priority": 0,
-            "item": "minecraft:cod",
-            "consume_item": true
-          },
-          {
-            "item": "minecraft:salmon",
-            "consume_item": true
-          },
-          {
-            "item": "minecraft:tropical_fish",
-            "consume_item": true
-          },
-          {
-            "item": "minecraft:chicken",
-            "consume_item": true
-          },
-          {
-            "item": "minecraft:beef",
-            "consume_item": true
-          },
-          {
-            "item": "minecraft:porkchop",
-            "consume_item": true
-          },
-          {
-            "item": "minere:whacon",
-            "consume_item": true
-          },
-          {
-            "item": "minere:blubber",
-            "consume_item": true
-          }
-        ]
-      },
-      "minecraft:behavior.pickup_items": {
-        "priority": 1,
-        "max_dist": 16,
-        "pickup_based_on_chance": false,
-        "track_target": true,
-        "goal_radius": 2,
-        "speed_multiplier": 2,
-        "cooldown_after_being_attacked": 20
-      },
       "minecraft:behavior.melee_attack": {
         "priority": 2,
         "speed_multiplier": 2.5,

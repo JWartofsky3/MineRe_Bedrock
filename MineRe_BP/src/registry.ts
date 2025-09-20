@@ -1,4 +1,4 @@
-import { StartupEvent, system, world } from "@minecraft/server";
+import { StartupEvent } from "@minecraft/server";
 import { PhasedEnderPearl } from "item/phased_ender_pearl";
 import { EnderStrike } from "item/ender_strike";
 import { fireflyLamp } from "block/firefly_lamp";
@@ -27,6 +27,7 @@ import { Helper0 } from "item/helpers/helper0";
 import { Helper1 } from "item/helpers/helper1";
 import { Helper2 } from "item/helpers/helper2";
 import { Ghostwalker } from "item/ghostwalker";
+import { despawnBlock } from "block/despawnBlock";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -114,6 +115,10 @@ export function registerBlocks(data: StartupEvent) {
   data.blockComponentRegistry.registerCustomComponent(
     "minere:firefly_lamp",
     fireflyLamp,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:despawn_block",
+    despawnBlock,
   );
   data.blockComponentRegistry.registerCustomComponent(
     "minere:custom_ore",

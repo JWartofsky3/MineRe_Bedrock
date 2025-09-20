@@ -380,15 +380,15 @@
       }
     },
     "events": {
+      "add_base_components": {
+        "add": {
+          "component_groups": ["minere:firefly_walking", "minere:firefly_adult"]
+        }
+      },
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "add": {
-              "component_groups": [
-                "minere:firefly_walking",
-                "minere:firefly_adult"
-              ]
-            }
+            "trigger": "add_base_components"
           },
           {
             "filters": {
@@ -436,22 +436,26 @@
       "spawn_green": {
         "add": {
           "component_groups": ["minere:green_firefly"]
-        }
+        },
+        "trigger": "add_base_components"
       },
       "spawn_yellow": {
         "add": {
           "component_groups": ["minere:yellow_firefly"]
-        }
+        },
+        "trigger": "add_base_components"
       },
       "spawn_purple": {
         "add": {
           "component_groups": ["minere:purple_firefly"]
-        }
+        },
+        "trigger": "add_base_components"
       },
       "spawn_blue": {
         "add": {
           "component_groups": ["minere:blue_firefly"]
-        }
+        },
+        "trigger": "add_base_components"
       },
       "minecraft:entity_born": {
         "add": {

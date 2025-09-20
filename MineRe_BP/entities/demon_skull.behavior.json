@@ -11,7 +11,7 @@
     "component_groups": {
       "minere:demon_skull_angry": {
         "minecraft:movement": {
-          "value": 2.5
+          "value": 1.5
         },
         "minecraft:physics": {
           "has_gravity": false

@@ -219,6 +219,29 @@
             }
           ]
         }
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {
+          "underground": 4
+        },
+        "minecraft:weight": {
+          "default": 10
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "lush_caves"
+            }
+          ]
+        }
       }
     ]
   }

@@ -639,13 +639,6 @@
                 {
                   "item": "minecraft:emerald",
                   "price_multiplier": 0.2
-                },
-                {
-                  "item": "minecraft:lapis_lazuli",
-                  "quantity": {
-                    "min": 1,
-                    "max": 4
-                  }
                 }
               ],
               "gives": [
@@ -1135,13 +1128,6 @@
                 {
                   "item": "minecraft:emerald",
                   "price_multiplier": 0.2
-                },
-                {
-                  "item": "minecraft:lapis_lazuli",
-                  "quantity": {
-                    "min": 1,
-                    "max": 4
-                  }
                 }
               ],
               "gives": [
@@ -2169,13 +2155,6 @@
                 {
                   "item": "minecraft:emerald",
                   "price_multiplier": 0.2
-                },
-                {
-                  "item": "minecraft:lapis_lazuli",
-                  "quantity": {
-                    "min": 1,
-                    "max": 4
-                  }
                 }
               ],
               "gives": [

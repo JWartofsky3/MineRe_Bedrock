@@ -40,7 +40,7 @@
         "value": 15
       },
       "minecraft:use_on": {
-        "blocks": ["minecraft:grass", "minecraft:snow", "minecraft:snow_layer"]
+        "blocks": ["minecraft:grass", "minecraft:dirt"]
       },
       "minecraft:durability": {
         "max_durability": 1280

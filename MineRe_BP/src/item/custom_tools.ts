@@ -55,6 +55,13 @@ instantMineSet.add("minecraft:torch");
 instantMineSet.add("minecraft:redstone_torch");
 instantMineSet.add("minecraft:soul_torch");
 
+const shovelBlocks = new Set<string>();
+shovelBlocks.add("minecraft:grass");
+shovelBlocks.add("minecraft:grass_path");
+shovelBlocks.add("minecraft:dirt");
+shovelBlocks.add("minecraft:farmland");
+shovelBlocks.add("minecraft:snow_layer");
+
 export function customToolHandleDurability(event: ItemComponentMineBlockEvent) {
   const player = event.source as Player;
   const blockId =
@@ -96,6 +103,9 @@ export const CustomSword: ItemCustomComponent = {
 };
 
 export function onHoeUse(player: Player, item: ItemStack, block: Block) {
+  if (!shovelBlocks.has(block?.typeId)) {
+    return;
+  }
   if (item?.typeId === "minere:enderon_hoe") {
     reduceDurability(player, item, 1);
     player.playSound("dig.gravel", {
@@ -105,6 +115,9 @@ export function onHoeUse(player: Player, item: ItemStack, block: Block) {
 }
 
 export function onShovelUse(player: Player, item: ItemStack, block: Block) {
+  if (!shovelBlocks.has(block?.typeId)) {
+    return;
+  }
   if (item?.typeId === "minere:enderon_shovel") {
     reduceDurability(player, item, 1);
     player.playSound("dig.gravel", {
@@ -114,6 +127,9 @@ export function onShovelUse(player: Player, item: ItemStack, block: Block) {
 }
 
 export function onAxeUse(player: Player, item: ItemStack, block: Block) {
+  if (!block?.typeId.includes("log") || !block?.typeId.includes("stem")) {
+    return;
+  }
   if (item?.typeId === "minere:enderon_axe") {
     reduceDurability(player, item, 1);
     player.playSound("dig.wood", {

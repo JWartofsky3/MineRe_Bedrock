@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:custom_components": ["minere:despawn_block"],
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 0
       },
@@ -22,6 +23,9 @@
       },
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 300
+      },
+      "minecraft:tick": {
+        "interval_range": [300, 400]
       },
       "minecraft:friction": 0.01,
       "minecraft:map_color": "#EA42E3",

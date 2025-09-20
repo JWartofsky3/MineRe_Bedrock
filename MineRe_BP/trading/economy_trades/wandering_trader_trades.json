@@ -236,7 +236,10 @@
               "gives": [
                 {
                   "item": "minecraft:emerald",
-                  "quantity": 4
+                  "quantity": {
+                    "min": 4,
+                    "max": 12
+                  }
                 }
               ],
               "max_uses": 5

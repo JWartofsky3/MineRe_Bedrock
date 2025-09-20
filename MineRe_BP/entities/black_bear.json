@@ -126,7 +126,7 @@
           "damage": [5, 6]
         },
         "minecraft:angry": {
-          "duration": 20,
+          "duration": 50,
           "broadcast_anger": false,
           "broadcast_range": 20,
           "calm_event": {

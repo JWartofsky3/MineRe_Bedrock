@@ -268,7 +268,7 @@ world.afterEvents.entityHurt.subscribe(function (data) {
   if (target?.typeId === "minere:vampire" || target.typeId == "minere:ghost") {
     vampireHurt(target, attacker);
     if ((!!projectile || !!attacker) && target?.typeId === "minere:vampire") {
-      rollBecomeBat(target, 0.25, 0.5);
+      rollBecomeBat(target, 0.275, 0.5);
     }
   }
 });

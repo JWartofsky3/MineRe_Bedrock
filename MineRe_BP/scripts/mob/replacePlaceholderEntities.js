@@ -1,13 +1,5 @@
 import { system, world } from "@minecraft/server";
-import {
-  getBlock,
-  isSolid,
-  oceanFloorBlocks,
-  oceanMonumentBlocks,
-  oceanRuinBlocks,
-  ruinedPortalBlocks,
-  shipwreckBlocks,
-} from "block/blockUtils";
+import { getBlock, isSolid, oceanFloorBlocks, oceanMonumentBlocks, oceanRuinBlocks, ruinedPortalBlocks, shipwreckBlocks, } from "block/blockUtils";
 import { distVector3 } from "util/vector3Functions";
 import { isUnderground } from "./mob_utils";
 import { isDay } from "weather/world_utils";
@@ -16,196 +8,188 @@ const DENSITY_DISTANCE = 128;
 const placeholderMap = new Map();
 // ---------------- SPAWN RULES ---------------------
 placeholderMap.set("minere:cosmic_jelly_placeholder", {
-  typeId: "minere:cosmic_jelly",
-  density: 2,
-  endRule: {
-    distanceFromOrigin: 1000,
-    endermanChance: 1.0,
-  },
+    typeId: "minere:cosmic_jelly",
+    density: 2,
+    endRule: {
+        distanceFromOrigin: 1000,
+        endermanChance: 1.0,
+    },
 });
 placeholderMap.set("minere:walker_placeholder", {
-  typeId: "minere:walker",
-  density: 2,
-  endRule: {
-    distanceFromOrigin: 1000,
-    endermanChance: 1.0,
-  },
+    typeId: "minere:walker",
+    density: 2,
+    endRule: {
+        distanceFromOrigin: 1000,
+        endermanChance: 1.0,
+    },
 });
 placeholderMap.set("minere:gremlin_placeholder", {
-  typeId: "minere:gremlin",
-  endRule: {
-    distanceFromOrigin: 1000,
-    endermanChance: 0.5,
-  },
+    typeId: "minere:gremlin",
+    endRule: {
+        distanceFromOrigin: 1000,
+        endermanChance: 0.5,
+    },
 });
 placeholderMap.set("minere:ogre_placeholder", {
-  typeId: "minere:ogre",
-  density: 4,
+    typeId: "minere:ogre",
+    density: 4,
 });
 placeholderMap.set("minere:goblin_placeholder", {
-  typeId: "minere:goblin",
+    typeId: "minere:goblin",
 });
 placeholderMap.set("minere:monster_bat_placeholder", {
-  typeId: "minere:monster_bat",
-  density: 5,
+    typeId: "minere:monster_bat",
+    density: 5,
 });
 placeholderMap.set("minere:ghost_placeholder", {
-  typeId: "minere:ghost",
-  density: 5,
+    typeId: "minere:ghost",
+    density: 5,
 });
 placeholderMap.set("minere:lizord_placeholder", {
-  typeId: "minere:lizord",
-  density: 3,
+    typeId: "minere:lizord",
+    density: 3,
 });
 placeholderMap.set("minere:dire_wolf_placeholder", {
-  typeId: "minere:dire_wolf",
-  density: 5,
+    typeId: "minere:dire_wolf",
+    density: 5,
 });
 placeholderMap.set("minere:yeti_placeholder", {
-  typeId: "minere:yeti",
-  density: 4,
+    typeId: "minere:yeti",
+    density: 4,
 });
 placeholderMap.set("minere:scorpion_placeholder", {
-  typeId: "minere:scorpion",
+    typeId: "minere:scorpion",
 });
 placeholderMap.set("minere:stomp_placeholder", {
-  typeId: "minere:stomp",
-  endRule: {
-    distanceFromOrigin: 1000,
-    endermanChance: 0.5,
-  },
+    typeId: "minere:stomp",
+    endRule: {
+        distanceFromOrigin: 1000,
+        endermanChance: 0.5,
+    },
 });
 placeholderMap.set("minere:biter_placeholder", {
-  typeId: "minere:biter",
-  density: 5,
-  waterRule: {
-    dayDepth: 32,
-    allowStructureSpawn: false,
-  },
+    typeId: "minere:biter",
+    density: 5,
+    waterRule: {
+        dayDepth: 32,
+        allowStructureSpawn: false,
+    },
 });
 placeholderMap.set("minecraft:drowned", {
-  typeId: "minecraft:drowned",
-  worldProp: REDUCE_DAYLIGHT_DROWNED,
-  waterRule: {
-    dayDepth: 40,
-    allowStructureSpawn: true,
-    randomAllowChance: 1 / 25,
-  },
+    typeId: "minecraft:drowned",
+    worldProp: REDUCE_DAYLIGHT_DROWNED,
+    waterRule: {
+        dayDepth: 40,
+        allowStructureSpawn: true,
+        randomAllowChance: 1 / 50,
+    },
 });
 placeholderMap.set("minere:zombie_horse_placeholder", {
-  typeId: "minecraft:zombie_horse",
+    typeId: "minecraft:zombie_horse",
 });
 placeholderMap.set("minere:skeleton_horse_placeholder", {
-  typeId: "minecraft:skeleton_horse",
+    typeId: "minecraft:skeleton_horse",
 });
 // ---------------- SPAWN RULES ---------------------
 export function replacePlaceholder(entity, isSpawn) {
-  if (!entity || !entity.isValid) {
-    return;
-  }
-  system.run(() => {
-    replaceHelper(entity, isSpawn);
-  });
+    if (!entity || !entity.isValid) {
+        return;
+    }
+    system.run(() => {
+        replaceHelper(entity, isSpawn);
+    });
 }
 function replaceHelper(placeholder, isSpawn) {
-  if (!placeholder || !placeholder.isValid || !placeholder.typeId) {
-    return;
-  }
-  const spawnRule = placeholderMap.get(placeholder.typeId);
-  if (!spawnRule) {
-    return;
-  }
-  if (spawnRule.typeId === placeholder.typeId && !isSpawn) {
-    return;
-  }
-  if (
-    spawnRule.worldProp &&
-    !world.getDynamicProperty(spawnRule.worldProp)?.valueOf()
-  ) {
-    return;
-  }
-  const dimension = placeholder.dimension;
-  if (!dimension) {
-    return;
-  }
-  const location = placeholder.location;
-  // handle density
-  const density = spawnRule.density;
-  if (density > 0) {
-    const entities = dimension.getEntities({
-      location: location,
-      type: spawnRule.typeId,
-      maxDistance: DENSITY_DISTANCE,
-    });
-    if (entities.length >= density) {
-      return placeholder.remove();
+    if (!placeholder || !placeholder.isValid || !placeholder.typeId) {
+        return;
     }
-  }
-  // handle end rule
-  const endRule = spawnRule.endRule;
-  if (endRule && dimension.id === "minecraft:the_end") {
-    const distance = distVector3(placeholder.location, { x: 0, y: 0, z: 0 });
-    if (distance < endRule.distanceFromOrigin) {
-      if (Math.random() <= endRule.endermanChance) {
-        dimension.spawnEntity("minecraft:enderman", location);
-        return placeholder.remove();
-      }
+    const spawnRule = placeholderMap.get(placeholder.typeId);
+    if (!spawnRule) {
+        return;
     }
-  }
-  // handle water rule
-  const waterRule = spawnRule.waterRule;
-  if (waterRule && placeholder.isInWater) {
-    if (
-      !(
-        waterRule?.randomAllowChance &&
-        Math.random() <= waterRule.randomAllowChance
-      )
-    ) {
-      if (
-        isDay() &&
-        placeholder.location.y > waterRule.dayDepth &&
-        !isUnderground(placeholder)
-      ) {
-        if (!waterRule.allowStructureSpawn || !checkIfStructure(placeholder)) {
-          return placeholder.remove();
+    if (spawnRule.typeId === placeholder.typeId && !isSpawn) {
+        return;
+    }
+    if (spawnRule.worldProp &&
+        !world.getDynamicProperty(spawnRule.worldProp)?.valueOf()) {
+        return;
+    }
+    const dimension = placeholder.dimension;
+    if (!dimension) {
+        return;
+    }
+    const location = placeholder.location;
+    // handle density
+    const density = spawnRule.density;
+    if (density > 0) {
+        const entities = dimension.getEntities({
+            location: location,
+            type: spawnRule.typeId,
+            maxDistance: DENSITY_DISTANCE,
+        });
+        if (entities.length >= density) {
+            return placeholder.remove();
         }
-      }
     }
-  }
-  // success!
-  if (placeholder.typeId !== spawnRule.typeId) {
-    dimension.spawnEntity(spawnRule.typeId, location);
-    return placeholder.remove();
-  }
+    // handle end rule
+    const endRule = spawnRule.endRule;
+    if (endRule && dimension.id === "minecraft:the_end") {
+        const distance = distVector3(placeholder.location, { x: 0, y: 0, z: 0 });
+        if (distance < endRule.distanceFromOrigin) {
+            if (Math.random() <= endRule.endermanChance) {
+                dimension.spawnEntity("minecraft:enderman", location);
+            }
+            return placeholder.remove();
+        }
+    }
+    // handle water rule
+    const waterRule = spawnRule.waterRule;
+    if (waterRule && placeholder.isInWater) {
+        if (!(waterRule?.randomAllowChance &&
+            Math.random() <= waterRule.randomAllowChance)) {
+            if (isDay() &&
+                placeholder.location.y > waterRule.dayDepth &&
+                !isUnderground(placeholder)) {
+                if (!waterRule.allowStructureSpawn || !checkIfStructure(placeholder)) {
+                    return placeholder.remove();
+                }
+            }
+        }
+    }
+    // success!
+    if (placeholder.typeId !== spawnRule.typeId) {
+        dimension.spawnEntity(spawnRule.typeId, location);
+        return placeholder.remove();
+    }
 }
 function checkIfStructure(entity) {
-  if (!entity?.isValid) return false;
-  const dimension = entity.dimension;
-  let y = Math.floor(entity.location.y);
-  while (y >= 0) {
-    const block = getBlock(dimension, {
-      x: entity.location.x,
-      y: y,
-      z: entity.location.z,
-    });
-    if (!block?.isValid) return false;
-    const typeId = block.typeId;
-    // Skip liquids, air, and ocean floor blocks
-    if (!isSolid(block)) {
-      y--;
-      continue;
+    if (!entity?.isValid)
+        return false;
+    const dimension = entity.dimension;
+    let y = Math.floor(entity.location.y);
+    while (y >= 0) {
+        const block = getBlock(dimension, {
+            x: entity.location.x,
+            y: y,
+            z: entity.location.z,
+        });
+        if (!block?.isValid)
+            return false;
+        const typeId = block.typeId;
+        // Skip liquids, air, and ocean floor blocks
+        if (!isSolid(block)) {
+            y--;
+            continue;
+        }
+        // First solid non-ocean-floor block
+        if (oceanMonumentBlocks.has(typeId) ||
+            ruinedPortalBlocks.has(typeId) ||
+            shipwreckBlocks.has(typeId) ||
+            oceanRuinBlocks.has(typeId)) {
+            return !oceanFloorBlocks.has(typeId);
+        }
+        // Not a structure block
+        return false;
     }
-    // First solid non-ocean-floor block
-    if (
-      oceanMonumentBlocks.has(typeId) ||
-      ruinedPortalBlocks.has(typeId) ||
-      shipwreckBlocks.has(typeId) ||
-      oceanRuinBlocks.has(typeId)
-    ) {
-      return !oceanFloorBlocks.has(typeId);
-    }
-    // Not a structure block
     return false;
-  }
-  return false;
 }

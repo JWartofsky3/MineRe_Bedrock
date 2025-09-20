@@ -203,6 +203,7 @@ settings.minere.toggle.armor_curve=Armor Curve
 settings.minere.toggle.protection_nerf=Protection Nerf
 settings.minere.toggle.end_storms=End Storms
 settings.minere.toggle.gremlin_breaks_torches=Gremlin Breaks Torches
+settings.minere.toggle.ogre_breaks_blocks=Ogre Breaks Blocks
 settings.minere.toggle.reduce_daylight_drowned=Reduce Daylight Drowned
 settings.minere.toggle.gold_xp_bonus=Gold XP Bonus
 
@@ -213,6 +214,7 @@ settings.minere.tooltip.armor_curve=Increases the protection of low tier armor s
 settings.minere.tooltip.protection_nerf=Reduces damage resistance from the Protection enchantment.\n\nDoes not apply to Fire, Blast, and Projectile protection.
 settings.minere.tooltip.end_storms=Enables lightning storms in the outer End islands.\n\nLightning will frequently strike airborne players.
 settings.minere.tooltip.gremlin_breaks_torches=Allows Gremlins to break torches.
+settings.minere.tooltip.ogre_breaks_blocks=Allows Ogres to break blocks with their roar attack. They can only break blocks below Y=60.
 settings.minere.tooltip.reduce_daylight_drowned=Greatly reduces the amount of drowned that spawn during the day above Y=40.
 settings.minere.tooltip.gold_xp_bonus=Earn bonus experience for defeating enemies with golden weapons.
 

@@ -922,24 +922,11 @@
         "minecraft:behavior.teleport_to_owner": {
           "priority": 1,
           "filters": {
-            "any_of": [
+            "all_of": [
               {
-                "all_of": [
-                  {
-                    "test": "owner_distance",
-                    "operator": ">",
-                    "value": 16
-                  }
-                ]
-              },
-              {
-                "all_of": [
-                  {
-                    "test": "owner_distance",
-                    "operator": ">",
-                    "value": 32
-                  }
-                ]
+                "test": "owner_distance",
+                "operator": ">",
+                "value": 24
               }
             ]
           }
@@ -951,9 +938,9 @@
         "minecraft:behavior.follow_owner": {
           "priority": 4,
           "speed_multiplier": 1.4,
-          "start_distance": 12,
-          "max_distance": 16,
-          "stop_distance": 6
+          "start_distance": 16,
+          "max_distance": 32,
+          "stop_distance": 8
         },
         "minecraft:leashable": {
           "soft_distance": 4.0,
@@ -1053,7 +1040,7 @@
       },
       "minere:adult_hostile": {
         "minecraft:angry": {
-          "duration": 30,
+          "duration": 75,
           "broadcast_anger": true,
           "broadcast_range": 20,
           "calm_event": {
@@ -1230,13 +1217,25 @@
         }
       },
       "minere:entity_born_tame": {
-        "add": {
-          "component_groups": [
-            "minecraft:baby",
-            "minere:tame",
-            "minere:armorless"
-          ]
-        }
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minecraft:baby_wild",
+                "minecraft:adult_wild"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minecraft:baby",
+                "minere:tame",
+                "minere:armorless"
+              ]
+            }
+          }
+        ]
       },
       "minecraft:ageable_grow_up": {
         "sequence": [

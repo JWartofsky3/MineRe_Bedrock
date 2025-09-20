@@ -215,3 +215,6 @@ item.minere:helper1=Помощник 1
 item.minere:helper2=Помощник 2
 
 item.minere:ghostwalker=Призрачный Странник
+
+settings.minere.toggle.ogre_breaks_blocks=Огр ломает блоки
+settings.minere.tooltip.ogre_breaks_blocks=Позволяет ограм ломать блоки их рычащей атакой. Они могут ломать блоки только ниже Y=60.

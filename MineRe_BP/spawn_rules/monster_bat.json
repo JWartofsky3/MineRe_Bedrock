@@ -18,7 +18,7 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 36
+          "default": 30
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -47,7 +47,7 @@
           "max": "hard"
         },
         "minecraft:weight": {
-          "default": 24
+          "default": 20
         },
         "minecraft:density_limit": {
           "surface": 4,
@@ -69,6 +69,16 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "frozen"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mountain"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mountains"
             }
           ],
           "all_of": [
@@ -76,6 +86,23 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "monster"
+            }
+          ],
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "taiga"
             }
           ]
         }

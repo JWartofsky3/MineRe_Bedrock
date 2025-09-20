@@ -17,8 +17,6 @@ export const unbreakableBlocks = new Set<string>([
   "minecraft:end_portal",
   "minecraft:nether_portal",
   "minecraft:air",
-  "minecraft:void_air",
-  "minecraft:cave_air",
   "minecraft:water",
   "minecraft:flowing_water",
   "minecraft:lava",
@@ -29,8 +27,6 @@ export const unbreakableBlocks = new Set<string>([
 // Replaceable blocks
 export const replaceableBlocks = new Set<string>([
   "minecraft:air",
-  "minecraft:void_air",
-  "minecraft:cave_air",
   "minecraft:fire",
   "minecraft:soul_fire",
   "minecraft:short_grass", // Bedrock-only naming (Java: "grass")
@@ -152,8 +148,6 @@ export const ruinedPortalBlocks = new Set<string>([
 
 export const oceanBlocks = new Set<string>([
   "minecraft:air",
-  "minecraft:void_air",
-  "minecraft:cave_air",
   "minecraft:water",
   "minecraft:flowing_water",
   "minecraft:seagrass",

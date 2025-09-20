@@ -5,6 +5,7 @@ import {
   system,
 } from "@minecraft/server";
 import { isFamilySet } from "./mob_utils";
+import { magnitudeVector3 } from "util/vector3Functions";
 
 const IS_STRAFING = "minere:is_strafing";
 const STRAFE_FORCE = 0.06;
@@ -76,11 +77,13 @@ export function skeletonStrafe(entity: Entity, chance: number) {
       }
     }
     const strafeDirRadians = angle * (Math.PI / 180);
-    owner.applyImpulse({
+    if (magnitudeVector3(owner.getVelocity()) < 0.15) {
+      owner.applyImpulse({
       x: Math.cos(strafeDirRadians) * STRAFE_FORCE,
       y: 0,
       z: Math.sin(strafeDirRadians) * STRAFE_FORCE,
     });
+    }
     angle += ANGLE_CHANGE * dir;
   });
 

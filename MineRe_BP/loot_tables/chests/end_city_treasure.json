@@ -450,6 +450,20 @@
       ]
     },
     {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:jump_boots",
+          "weight": 1
+        }
+      ]
+    },
+    {
       "rolls": 3,
       "entries": [
         {

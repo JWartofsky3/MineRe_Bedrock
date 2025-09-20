@@ -334,7 +334,6 @@
           "hurt": "mob.ogre.hurt",
           "step": "mob.yeti.step",
           "attack": "dig.wood",
-          "roar": "mob.ogre.roar",
           "attack.strong": "mob.ogre.attack"
         },
         "pitch": [0.8, 1.2],

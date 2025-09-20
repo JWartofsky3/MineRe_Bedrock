@@ -70,10 +70,10 @@ export const teleporter: BlockCustomComponent = {
           redstonePower = 15;
         }
         if (block.location.y <= arg.block.location.y) {
-          if (block.typeId === "minecraft:redstone_torch") {
-            redstonePower = 15;
-          }
-          if (block?.getRedstonePower() > 0) {
+          if (
+            block.typeId === "minecraft:redstone_torch" &&
+            block?.getRedstonePower() > 0
+          ) {
             redstonePower = 15;
           }
         }

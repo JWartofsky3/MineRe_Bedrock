@@ -22,7 +22,7 @@
       },
       "minecraft:cooldown": {
         "category": "amethystStaff",
-        "duration": 8.0
+        "duration": 10.0
       },
       "minecraft:repairable": {
         "repair_items": [

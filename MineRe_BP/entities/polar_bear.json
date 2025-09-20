@@ -87,7 +87,7 @@
           "value": 1.07
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/bear.json"
+          "table": "loot_tables/entities/polar_bear.json"
         }
       },
       "minecraft:adult_wild": {
@@ -128,7 +128,7 @@
           "damage": [7, 8]
         },
         "minecraft:angry": {
-          "duration": 30,
+          "duration": 75,
           "broadcast_anger": false,
           "broadcast_range": 20,
           "calm_event": {

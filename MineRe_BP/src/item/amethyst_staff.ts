@@ -15,6 +15,7 @@ import {
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "./reduce_durability";
 import { findItemInContainer } from "./item_utils";
+import { getRandomIntInclusive } from "util/mathFunctions";
 
 const SHIELD_RANGE = 4;
 const HEAL_DURATION = 5 * 20;
@@ -40,8 +41,9 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           cooldownComponent.startCooldown(source);
         }
         if (
-          !source.runCommand("clear @s[m=!c] amethyst_shard 0 2")
-            .successCount &&
+          !source.runCommand(
+            `clear @s[m=!c] amethyst_shard 0 ${getRandomIntInclusive(2, 3)}`,
+          ).successCount &&
           source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
@@ -54,7 +56,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
         });
         nearbyEntities.forEach((nearbyEntity: Entity) => {
           nearbyEntity.addEffect("regeneration", HEAL_DURATION, {
-            amplifier: 2.0,
+            amplifier: 1.0,
           });
         });
         generateShield(

@@ -90,6 +90,66 @@
           "blend_transition": 0.75
         }
       }
+    },
+    "controller.animation.minere.yeti.face": {
+      "initial_state": "neutral",
+      "states": {
+        "neutral": {
+          "animations": [
+            "neutral"
+          ],
+          "transitions": [
+            {
+              "angry": "query.is_angry && query.has_target"
+            },
+            {
+              "tame": "query.is_tamed"
+            },
+                        {
+              "scared": "query.is_avoiding_mobs || query.is_avoiding_block"
+            }
+          ]
+        },
+        "tame": {
+          "animations": [
+            "tame"
+          ],
+          "transitions": [
+            {
+              "neutral": "!query.is_tamed"
+            }
+          ]
+        },
+        "angry": {
+          "animations": [
+            "angry"
+          ],
+          "transitions": [
+            {
+              "neutral": "!query.is_angry || !query.has_target"
+            },
+            {
+              "tame": "query.is_tamed"
+            },
+                        {
+              "scared": "query.is_avoiding_mobs || query.is_avoiding_block"
+            }
+          ]
+        },
+        "scared": {
+          "animations": [
+            "scared"
+          ],
+          "transitions": [
+            {
+              "tame": "query.is_tamed"
+            },
+            {
+              "neutral": "!(query.is_avoiding_mobs || query.is_avoiding_block)"
+            }
+          ]
+        }
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ export interface WorldSettings {
   protectionNerf: boolean;
   endStorms: boolean;
   gremlinBreaksTorches: boolean;
+  ogreBreaksBlocks: boolean;
   reduceDaylightDrowned: boolean;
   goldXPBonus: boolean;
 }
@@ -24,9 +25,9 @@ export const ARMOR_CURVE = "minere:armorCurve";
 export const PROTECTION_NERF = "minere:protectionNerf";
 export const END_STORMS = "minere:endStorms";
 export const GREMLIN_BREAKS_TORCHES = "minere:gremlinBreaksTorches";
+export const OGRE_BREAKS_BLOCKS = "minere:ogreBreaksBlocks";
 export const REDUCE_DAYLIGHT_DROWNED = "minere:reduceDaylightDrowned";
 export const GOLD_XP_BONUS = "minere:goldXPBonus";
-
 export const HAS_GIVEN_BOOK = "minere:hasGivenBook";
 
 // Function to get the current settings from dynamic properties.
@@ -43,6 +44,7 @@ export function getSettings(): WorldSettings {
     gremlinBreaksTorches: world.getDynamicProperty(
       GREMLIN_BREAKS_TORCHES,
     ) as boolean,
+    ogreBreaksBlocks: world.getDynamicProperty(OGRE_BREAKS_BLOCKS) as boolean,
     reduceDaylightDrowned: world.getDynamicProperty(
       REDUCE_DAYLIGHT_DROWNED,
     ) as boolean,
@@ -62,6 +64,7 @@ export function saveSettings(settings: WorldSettings) {
     GREMLIN_BREAKS_TORCHES,
     settings.gremlinBreaksTorches,
   );
+  world.setDynamicProperty(OGRE_BREAKS_BLOCKS, settings.ogreBreaksBlocks);
   world.setDynamicProperty(
     REDUCE_DAYLIGHT_DROWNED,
     settings.reduceDaylightDrowned,
@@ -112,6 +115,11 @@ export function initializeWorldSettings(): void {
     // Check and set default for Gremlin Breaks Torches
     if (world.getDynamicProperty(GREMLIN_BREAKS_TORCHES) === undefined) {
       world.setDynamicProperty(GREMLIN_BREAKS_TORCHES, true);
+    }
+
+    // Check and set default for Ogre Breaks Blocks
+    if (world.getDynamicProperty(OGRE_BREAKS_BLOCKS) === undefined) {
+      world.setDynamicProperty(OGRE_BREAKS_BLOCKS, true);
     }
 
     // Check and set default for Reduce Daylight Drowned

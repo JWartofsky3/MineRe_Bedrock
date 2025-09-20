@@ -5,8 +5,6 @@ import { GREMLIN_BREAKS_TORCHES } from "settings";
 const torchSet = new Set<string>();
 torchSet.add("minecraft:torch");
 torchSet.add("minecraft:copper_torch");
-torchSet.add("minecraft:soul_torch");
-torchSet.add("minecraft:redstone_torch");
 
 /**
  * Break all torches around an entity within a cubic radius.

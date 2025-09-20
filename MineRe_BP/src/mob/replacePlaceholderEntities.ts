@@ -125,7 +125,7 @@ placeholderMap.set("minecraft:drowned", {
   waterRule: {
     dayDepth: 40,
     allowStructureSpawn: true,
-    randomAllowChance: 1 / 25,
+    randomAllowChance: 1 / 50,
   },
 });
 
@@ -191,8 +191,8 @@ function replaceHelper(placeholder: Entity, isSpawn: boolean) {
     if (distance < endRule.distanceFromOrigin) {
       if (Math.random() <= endRule.endermanChance) {
         dimension.spawnEntity("minecraft:enderman", location);
-        return placeholder.remove();
       }
+      return placeholder.remove();
     }
   }
 

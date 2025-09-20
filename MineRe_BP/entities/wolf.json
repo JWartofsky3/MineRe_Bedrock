@@ -289,17 +289,27 @@
         "minecraft:behavior.owner_hurt_target": {
           "priority": 2
         },
-        "minecraft:behavior.nearest_attackable_target": {
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
           "priority": 5,
           "must_see": true,
           "entity_types": [
             {
+              "priority": 0,
               "filters": {
                 "test": "is_family",
                 "subject": "other",
                 "value": "skeleton"
               },
               "max_dist": 16
+            },
+            {
+              "priority": 1,
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              "max_dist": 8
             }
           ]
         },

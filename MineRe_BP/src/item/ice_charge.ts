@@ -44,12 +44,15 @@ export function iceCharge(
           ) {
             block.setType("minecraft:air");
           }
+          if (block.typeId === "minecraft:powder_snow") {
+            block.setType("minecraft:snow");
+          }
           if (
             block.typeId === "minecraft:water" ||
             block.typeId === "minecraft:flowing_water" ||
             (block.isWaterlogged && block.isAir)
           ) {
-            if (!(block.above()?.typeId === "minecraft:water")) {
+            if (block?.above()?.typeId !== "minecraft:water") {
               block.setType("minecraft:ice");
               continue;
             }
@@ -58,7 +61,7 @@ export function iceCharge(
             continue;
           }
           if (block.typeId === "minecraft:lava") {
-            if (!(block.above().typeId === "minecraft:lava")) {
+            if (block?.above()?.typeId !== "minecraft:lava") {
               block.setType("minecraft:obsidian");
             }
           }

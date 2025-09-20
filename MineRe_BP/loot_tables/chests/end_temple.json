@@ -139,20 +139,6 @@
         },
         {
           "type": "item",
-          "name": "minecraft:ender_eye",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ],
-          "weight": 150
-        },
-        {
-          "type": "item",
           "name": "minere:phased_ender_pearl",
           "functions": [
             {
@@ -280,6 +266,20 @@
       ]
     },
     {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:amethyst_staff",
+          "weight": 1
+        }
+      ]
+    },
+    {
       "rolls": 2,
       "entries": [
         {
@@ -321,11 +321,11 @@
         {
           "type": "item",
           "name": "minecraft:book",
-          "weight": 1,
+          "weight": 2,
           "functions": [
             {
               "function": "enchant_with_levels",
-              "levels": 30,
+              "levels": 50,
               "treasure": true
             }
           ]

@@ -448,45 +448,7 @@
       },
       "minecraft:fire_immune": {},
       "minecraft:despawn": {
-        "filters": {
-          "any_of": [
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 128
-                }
-              ]
-            },
-            {
-              "all_of": [
-                {
-                  "test": "is_persistent",
-                  "value": false
-                },
-                {
-                  "test": "inactivity_timer",
-                  "subject": "self",
-                  "value": 25
-                },
-                {
-                  "test": "random_chance",
-                  "value": 600
-                },
-                {
-                  "test": "distance_to_nearest_player",
-                  "operator": ">",
-                  "value": 64
-                }
-              ]
-            }
-          ]
-        }
+        "despawn_from_distance": {}
       },
       "minecraft:physics": {},
       "minecraft:conditional_bandwidth_optimization": {}

@@ -34,7 +34,8 @@
       },
       "sound_effects": {
         "rear": "mob.ogre.rear",
-        "smash": "mob.ogre.smash"
+        "smash": "mob.ogre.smash",
+        "roar": "mob.ogre.roar"
       }
     }
   }

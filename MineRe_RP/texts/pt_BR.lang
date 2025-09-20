@@ -215,3 +215,6 @@ item.minere:helper1=Assistente 1
 item.minere:helper2=Assistente 2
 
 item.minere:ghostwalker=Andarilho Fantasma
+
+settings.minere.toggle.ogre_breaks_blocks=Ogro quebra blocos
+settings.minere.tooltip.ogre_breaks_blocks=Permite que os ogros quebrem blocos com seu ataque de rugido. Eles só podem quebrar blocos abaixo de Y=60.

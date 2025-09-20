@@ -7,8 +7,10 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/entity/minere/yeti/yeti",
-        "warm": "textures/entity/minere/yeti/yeti_warm"
+        "cold": "textures/entity/minere/yeti/cold",
+        "brown": "textures/entity/minere/yeti/brown",
+        "light_gray": "textures/entity/minere/yeti/light_gray",
+        "teal": "textures/entity/minere/yeti/teal"
       },
       "geometry": {
         "default": "geometry.minere.yeti"
@@ -19,15 +21,9 @@
         "overlay_color": "#a8a8ff"
       },
       "scripts": {
-        "scale": "1.45",
         "animate": [
           "controller",
-          {
-            "tame": "query.is_tamed"
-          },
-          {
-            "neutral": "!query.is_tamed"
-          }
+          "face_controller"
         ]
       },
       "animations": {
@@ -39,10 +35,13 @@
         "look_at_target": "animation.minere.yeti.look_at_target",
         "tame": "animation.minere.yeti.tame",
         "neutral": "animation.minere.yeti.neutral",
+        "angry": "animation.minere.yeti.angry",
+        "scared": "animation.minere.yeti.scared",
         "sit": "animation.minere.yeti.sit",
         "leap": "animation.minere.yeti.leap",
         "delay": "animation.minere.yeti.delay",
-        "controller": "controller.animation.minere.yeti"
+        "controller": "controller.animation.minere.yeti",
+        "face_controller": "controller.animation.minere.yeti.face"
       }
     }
   }

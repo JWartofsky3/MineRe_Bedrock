@@ -214,3 +214,6 @@ item.minere:helper1=Asisten 1
 item.minere:helper2=Asisten 2
 
 item.minere:ghostwalker=Pengembara Hantu
+
+settings.minere.toggle.ogre_breaks_blocks=Ogre menghancurkan blok
+settings.minere.tooltip.ogre_breaks_blocks=Memungkinkan Ogre menghancurkan blok dengan serangan aumannya. Mereka hanya dapat menghancurkan blok di bawah Y=60.

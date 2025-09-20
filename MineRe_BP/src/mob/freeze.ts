@@ -22,6 +22,9 @@ CANNOT_BE_FROZEN.add("minecraft:bat");
 CANNOT_BE_FROZEN.add("minecraft:ghast");
 CANNOT_BE_FROZEN.add("minecraft:wither");
 CANNOT_BE_FROZEN.add("minecraft:ender_dragon");
+CANNOT_BE_FROZEN.add("minere:yeti");
+CANNOT_BE_FROZEN.add("minere:freeze");
+CANNOT_BE_FROZEN.add("minecraft:stray");
 
 const sizes = new Map<string, Vector2>();
 sizes.set("minere:vampire", { x: 1, y: 2.5 });

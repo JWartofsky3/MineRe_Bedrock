@@ -11,7 +11,7 @@ import { DEFAULT_TICK } from "main";
 import { unbreakableBlocks } from "block/blockUtils";
 import { isAlive } from "./mob_utils";
 
-const ROAR_TIME = 20;
+const ROAR_TIME = 25;
 
 export function rollOgreRoar(
   caster: Entity,

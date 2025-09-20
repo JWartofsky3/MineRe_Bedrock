@@ -40,6 +40,10 @@ export const SettingsBook: ItemCustomComponent = {
         defaultValue: currentSettings.gremlinBreaksTorches,
         tooltip: "settings.minere.tooltip.gremlin_breaks_torches",
       })
+      .toggle("settings.minere.toggle.ogre_breaks_blocks", {
+        defaultValue: currentSettings.ogreBreaksBlocks,
+        tooltip: "settings.minere.tooltip.ogre_breaks_blocks",
+      })
       .toggle("settings.minere.toggle.reduce_daylight_drowned", {
         defaultValue: currentSettings.reduceDaylightDrowned,
         tooltip: "settings.minere.tooltip.reduce_daylight_drowned",
@@ -60,7 +64,7 @@ export const SettingsBook: ItemCustomComponent = {
         // The formValues array holds the state of the toggles.
         const formValues = response.formValues;
 
-        if (formValues && formValues.length === 9) {
+        if (formValues && formValues.length === 10) {
           // Map the form values back to a settings object.
           const newSettings: WorldSettings = {
             reducedHealthRegen: formValues[0] as boolean,
@@ -70,8 +74,9 @@ export const SettingsBook: ItemCustomComponent = {
             protectionNerf: formValues[4] as boolean,
             endStorms: formValues[5] as boolean,
             gremlinBreaksTorches: formValues[6] as boolean,
-            reduceDaylightDrowned: formValues[7] as boolean,
-            goldXPBonus: formValues[8] as boolean,
+            ogreBreaksBlocks: formValues[7] as boolean,
+            reduceDaylightDrowned: formValues[8] as boolean,
+            goldXPBonus: formValues[9] as boolean,
           };
 
           // Save the new settings to the world's dynamic properties.

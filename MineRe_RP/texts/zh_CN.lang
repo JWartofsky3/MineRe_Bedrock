@@ -215,3 +215,6 @@ item.minere:helper1=助手 1
 item.minere:helper2=助手 2
 
 item.minere:ghostwalker=幽魂行者 
+
+settings.minere.toggle.ogre_breaks_blocks=食人魔破坏方块
+settings.minere.tooltip.ogre_breaks_blocks=允许食人魔用咆哮攻击破坏方块。它们只能破坏 Y=60 以下的方块。

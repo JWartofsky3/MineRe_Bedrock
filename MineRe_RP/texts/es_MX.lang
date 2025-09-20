@@ -204,7 +204,8 @@ settings.minere.toggle.reduce_daylight_drowned=Reducir ahogados de día
 settings.minere.toggle.gold_xp_bonus=Bonificación de XP con oro
 settings.minere.tooltip.reduce_daylight_drowned=Disminuye mucho la cantidad de ahogados que aparecen durante el día por encima de Y=40.
 settings.minere.tooltip.gold_xp_bonus=Gana experiencia extra al derrotar enemigos con armas doradas.
-
+settings.minere.toggle.ogre_breaks_blocks=Ogro rompe bloques
+settings.minere.tooltip.ogre_breaks_blocks=Permite que los ogros rompan bloques con su ataque de rugido. Solo pueden romper bloques debajo de Y=60.
 
 ## Groups
 minere:itemGroup.name.treecapitator=Trepacopas

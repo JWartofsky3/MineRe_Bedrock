@@ -41,61 +41,74 @@ instantMineSet.add("minecraft:sunflower");
 instantMineSet.add("minecraft:torch");
 instantMineSet.add("minecraft:redstone_torch");
 instantMineSet.add("minecraft:soul_torch");
+const shovelBlocks = new Set();
+shovelBlocks.add("minecraft:grass");
+shovelBlocks.add("minecraft:grass_path");
+shovelBlocks.add("minecraft:dirt");
+shovelBlocks.add("minecraft:farmland");
 export function customToolHandleDurability(event) {
-  const player = event.source;
-  const blockId =
-    event?.minedBlockPermutation?.getItemStack()?.typeId || "minecraft:air";
-  if (!player || !event?.block || instantMineSet.has(blockId)) {
-    return;
-  }
-  reduceDurability(player, event.itemStack, 1);
+    const player = event.source;
+    const blockId = event?.minedBlockPermutation?.getItemStack()?.typeId || "minecraft:air";
+    if (!player || !event?.block || instantMineSet.has(blockId)) {
+        return;
+    }
+    reduceDurability(player, event.itemStack, 1);
 }
 export const CustomAxe = {
-  onMineBlock(event) {
-    customToolHandleDurability(event);
-  },
+    onMineBlock(event) {
+        customToolHandleDurability(event);
+    },
 };
 export const CustomHoe = {
-  onMineBlock(event) {
-    customToolHandleDurability(event);
-  },
+    onMineBlock(event) {
+        customToolHandleDurability(event);
+    },
 };
 export const CustomShovel = {
-  onMineBlock(event) {
-    customToolHandleDurability(event);
-  },
+    onMineBlock(event) {
+        customToolHandleDurability(event);
+    },
 };
 export const CustomPickaxe = {
-  onMineBlock(event) {
-    customToolHandleDurability(event);
-  },
+    onMineBlock(event) {
+        customToolHandleDurability(event);
+    },
 };
 export const CustomSword = {
-  onMineBlock(event) {
-    customToolHandleDurability(event);
-  },
+    onMineBlock(event) {
+        customToolHandleDurability(event);
+    },
 };
 export function onHoeUse(player, item, block) {
-  if (item?.typeId === "minere:enderon_hoe") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.gravel", {
-      location: player.location ?? player.location,
-    });
-  }
+    if (!shovelBlocks.has(block?.typeId)) {
+        return;
+    }
+    if (item?.typeId === "minere:enderon_hoe") {
+        reduceDurability(player, item, 1);
+        player.playSound("dig.gravel", {
+            location: player.location ?? player.location,
+        });
+    }
 }
 export function onShovelUse(player, item, block) {
-  if (item?.typeId === "minere:enderon_shovel") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.gravel", {
-      location: player.location ?? player.location,
-    });
-  }
+    if (!shovelBlocks.has(block?.typeId)) {
+        return;
+    }
+    if (item?.typeId === "minere:enderon_shovel") {
+        reduceDurability(player, item, 1);
+        player.playSound("dig.gravel", {
+            location: player.location ?? player.location,
+        });
+    }
 }
 export function onAxeUse(player, item, block) {
-  if (item?.typeId === "minere:enderon_axe") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.wood", {
-      location: player.location ?? player.location,
-    });
-  }
+    if (!block?.typeId.includes("log") || !block?.typeId.includes("stem")) {
+        return;
+    }
+    if (item?.typeId === "minere:enderon_axe") {
+        reduceDurability(player, item, 1);
+        player.playSound("dig.wood", {
+            location: player.location ?? player.location,
+        });
+    }
 }
