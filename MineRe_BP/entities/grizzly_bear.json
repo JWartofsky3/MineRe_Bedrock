@@ -720,6 +720,7 @@
           "duration": 1,
           "broadcast_anger": true,
           "broadcast_range": 25,
+          "broadcast_targets": ["grizzly_bear"],
           "calm_event": {
             "event": "minecraft:baby_on_calm",
             "target": "self"
@@ -780,6 +781,19 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "deer"
+                  },
+                  {
+                    "all_of": [
+                      {
+                        "test": "is_baby",
+                        "subject": "other"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "moose"
+                      }
+                    ]
                   },
                   {
                     "test": "is_family",
@@ -1043,6 +1057,7 @@
           "duration": 75,
           "broadcast_anger": true,
           "broadcast_range": 20,
+          "broadcast_targets": ["grizzly_bear"],
           "calm_event": {
             "event": "minecraft:on_calm",
             "target": "self"
@@ -1179,37 +1194,52 @@
             "randomize": [
               {
                 "weight": 50,
-                "add": {
-                  "component_groups": ["minere:brown_bear"]
-                }
+                "trigger": "minere:become_brown"
               },
               {
                 "weight": 20,
-                "add": {
-                  "component_groups": ["minere:light_bear"]
-                }
+                "trigger": "minere:become_light"
               },
               {
                 "weight": 20,
-                "add": {
-                  "component_groups": ["minere:gray_bear"]
-                }
+                "trigger": "minere:become_gray"
               },
               {
                 "weight": 5,
-                "add": {
-                  "component_groups": ["minere:red_bear"]
-                }
+                "trigger": "minere:become_red"
               },
               {
                 "weight": 5,
-                "add": {
-                  "component_groups": ["minere:blue_bear"]
-                }
+                "trigger": "minere:become_blue"
               }
             ]
           }
         ]
+      },
+      "minere:become_brown": {
+        "add": {
+          "component_groups": ["minere:brown_bear"]
+        }
+      },
+      "minere:become_light": {
+        "add": {
+          "component_groups": ["minere:light_bear"]
+        }
+      },
+      "minere:become_gray": {
+        "add": {
+          "component_groups": ["minere:gray_bear"]
+        }
+      },
+      "minere:become_red": {
+        "add": {
+          "component_groups": ["minere:red_bear"]
+        }
+      },
+      "minere:become_blue": {
+        "add": {
+          "component_groups": ["minere:blue_bear"]
+        }
       },
       "minecraft:entity_born": {
         "add": {

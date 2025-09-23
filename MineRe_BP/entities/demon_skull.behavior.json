@@ -221,7 +221,7 @@
                 }
               ]
             },
-            "max_dist": 16
+            "max_dist": 10
           }
         ],
         "must_see": true

@@ -88,13 +88,13 @@
       },
       "minecraft:behavior.ranged_attack": {
         "priority": 1,
-        "attack_radius": 100,
+        "attack_radius": 48,
         "charge_shoot_trigger": 2,
         "charge_charged_trigger": 1.5
       },
       "minecraft:follow_range": {
-        "value": 100,
-        "max": 100
+        "value": 64,
+        "max": 64
       },
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
@@ -108,7 +108,7 @@
               "subject": "other",
               "value": "player"
             },
-            "max_dist": 100
+            "max_dist": 64
           }
         ],
         "must_see": true

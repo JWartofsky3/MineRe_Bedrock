@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:moose",
+      "materials": {
+        "default": "entity_alphatest",
+        "saddle": "entity_alphatest"
+      },
+      "textures": {
+        "brown": "textures/entity/minere/moose/brown",
+        "dark": "textures/entity/minere/moose/dark",
+        "light": "textures/entity/minere/moose/light",
+        "saddle": "textures/entity/minere/moose/saddle",
+        "empty": "textures/entity/minere/moose/empty"
+      },
+      "geometry": {
+        "default": "geometry.minere.moose"
+      },
+      "spawn_egg": {
+        "base_color": "#ba9a80",
+        "overlay_color": "#c0bab1"
+      },
+      "scripts": {
+        "pre_animation": ["variable.saddled = query.is_saddled ? 1 : 0;"],
+        "animate": [
+          "controller",
+          "jump_controller",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      },
+      "animations": {
+        "walk": "animation.minere.moose.walk",
+        "gallop": "animation.minere.moose.gallop",
+        "attack": "animation.minere.moose.attack",
+        "look_at_target": "animation.minere.moose.look_at_target",
+        "graze": "animation.minere.moose.graze",
+        "baby_transform": "animation.minere.moose.baby_transform",
+        "jump": "animation.minere.moose.jump",
+        "controller": "controller.animation.minere.moose",
+        "jump_controller": "controller.animation.minere.moose.jump"
+      },
+      "render_controllers": [
+        "controller.render.minere.moose.saddle",
+        "controller.render.minere.moose"
+      ]
+    }
+  }
+}

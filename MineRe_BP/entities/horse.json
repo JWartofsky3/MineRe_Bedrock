@@ -452,8 +452,8 @@
       },
       "minecraft:health": {
         "value": {
-          "range_min": 14,
-          "range_max": 40
+          "range_min": 15,
+          "range_max": 30
         }
       },
       "minecraft:damage_sensor": {
@@ -509,6 +509,10 @@
         "items": [
           {
             "item": "wheat",
+            "heal_amount": 2
+          },
+          {
+            "item": "carrot",
             "heal_amount": 2
           },
           {

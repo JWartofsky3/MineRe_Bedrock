@@ -71,6 +71,7 @@
           "duration": 1,
           "broadcast_anger": true,
           "broadcast_range": 25,
+          "broadcast_targets": ["black_bear"],
           "calm_event": {
             "event": "minecraft:baby_on_calm",
             "target": "self"
@@ -112,6 +113,19 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "deer"
+                  },
+                  {
+                    "all_of": [
+                      {
+                        "test": "is_baby",
+                        "subject": "other"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "moose"
+                      }
+                    ]
                   }
                 ]
               },
@@ -129,6 +143,7 @@
           "duration": 50,
           "broadcast_anger": false,
           "broadcast_range": 20,
+          "broadcast_targets": ["black_bear"],
           "calm_event": {
             "event": "minecraft:on_calm",
             "target": "self"

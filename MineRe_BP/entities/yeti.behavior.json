@@ -481,7 +481,7 @@
           "priority": 4,
           "attack_duration": 1,
           "attack_once": false,
-          "cooldown_time": 1,
+          "cooldown_time": 0,
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
@@ -721,10 +721,10 @@
               ]
             },
             "must_see": true,
-              "max_dist": 6,
-              "max_flee": 16,
-              "walk_speed_multiplier": 1.8,
-              "sprint_speed_multiplier": 2.1
+            "max_dist": 6,
+            "max_flee": 16,
+            "walk_speed_multiplier": 1.8,
+            "sprint_speed_multiplier": 2.1
           }
         ]
       },

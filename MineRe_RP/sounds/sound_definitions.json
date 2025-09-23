@@ -229,6 +229,37 @@
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]
     },
+    "mob.moose.ambient": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/moose/ambient0",
+        "sounds/mob/moose/ambient1",
+        "sounds/mob/moose/hurt1",
+        "sounds/mob/cow/say2",
+        "sounds/mob/cow/say4"
+      ]
+    },
+    "mob.moose.hurt": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/moose/hurt0",
+        "sounds/mob/moose/hurt1"
+      ]
+    },
+    "mob.moose.death": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/moose/death"
+      ]
+    },
+    "mob.moose.angry": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/mob/moose/angry0",
+        "sounds/mob/moose/angry1",
+        "sounds/mob/moose/angry2"
+      ]
+    },
     "mob.demon.ambient": {
       "category": "hostile",
       "sounds": [

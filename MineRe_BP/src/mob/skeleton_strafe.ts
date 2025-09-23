@@ -79,10 +79,10 @@ export function skeletonStrafe(entity: Entity, chance: number) {
     const strafeDirRadians = angle * (Math.PI / 180);
     if (magnitudeVector3(owner.getVelocity()) < 0.15) {
       owner.applyImpulse({
-      x: Math.cos(strafeDirRadians) * STRAFE_FORCE,
-      y: 0,
-      z: Math.sin(strafeDirRadians) * STRAFE_FORCE,
-    });
+        x: Math.cos(strafeDirRadians) * STRAFE_FORCE,
+        y: 0,
+        z: Math.sin(strafeDirRadians) * STRAFE_FORCE,
+      });
     }
     angle += ANGLE_CHANGE * dir;
   });

@@ -48,6 +48,7 @@ import { replacePlaceholder } from "mob/replacePlaceholderEntities";
 import { getBlock } from "block/blockUtils";
 import { breakTorches } from "mob/breakTorches";
 import { giveExtraXP } from "player/goldXP";
+import { matchParent } from "mob/matchParent";
 
 export const DEFAULT_TICK = 20;
 
@@ -131,6 +132,7 @@ world.afterEvents.entitySpawn.subscribe(function (data) {
   }
   replacePlaceholder(data.entity, true);
   iceChargeRunner(data.entity);
+  matchParent(data.entity);
 });
 
 world.afterEvents.entityLoad.subscribe(function (data) {
@@ -181,7 +183,10 @@ world.afterEvents.entityHurt.subscribe(function (data) {
       attacker?.typeId === "minere:walker") &&
     cause === EntityDamageCause.entityAttack
   ) {
-    throwBy(attacker, target, 1.0, 1.0);
+    throwBy(attacker, target, 1.25, 1.0);
+  }
+  if (attacker?.typeId === "minere:moose") {
+    throwBy(attacker, target, 2.0, 0.5);
   }
 
   // yeti leap

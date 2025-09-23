@@ -69,6 +69,7 @@
         "minecraft:angry": {
           "duration": 1,
           "broadcast_anger": true,
+          "broadcast_targets": ["polarbear"],
           "broadcast_range": 25,
           "calm_event": {
             "event": "minecraft:baby_on_calm",
@@ -114,6 +115,19 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "deer"
+                  },
+                  {
+                    "all_of": [
+                      {
+                        "test": "is_baby",
+                        "subject": "other"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "moose"
+                      }
+                    ]
                   }
                 ]
               },

@@ -223,3 +223,7 @@ item.minere:helper1=Helper 1
 item.minere:helper2=Helper 2
 
 item.minere:ghostwalker=Ghostwalker
+
+entity.minere:moose.name=Moose
+item.spawn_egg.entity.minere:moose.name=Spawn Moose
+action.hint.exit.minere:moose=Tap Sneak to dismount

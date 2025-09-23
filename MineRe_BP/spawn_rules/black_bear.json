@@ -18,7 +18,7 @@
           "default": 3
         },
         "minecraft:density_limit": {
-          "surface": 3
+          "surface": 4
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -43,7 +43,7 @@
           "default": 6
         },
         "minecraft:density_limit": {
-          "surface": 3
+          "surface": 4
         },
         "minecraft:herd": {
           "min_size": 1,
@@ -70,7 +70,7 @@
           "default": 8
         },
         "minecraft:density_limit": {
-          "surface": 3
+          "surface": 4
         },
         "minecraft:herd": {
           "min_size": 1,

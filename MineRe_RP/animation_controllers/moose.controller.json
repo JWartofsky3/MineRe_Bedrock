@@ -1,0 +1,106 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.moose": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "running": "query.ground_speed > 5"
+            },
+            {
+              "grazing": "query.is_grazing"
+            },
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "running": {
+          "animations": [
+            {
+              "gallop": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "walking": "query.ground_speed <= 5"
+            },
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "grazing": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "graze",
+            "tail"
+          ],
+          "transitions": [
+            {
+              "running": "query.ground_speed > 4"
+            },
+            {
+              "walking": "!query.is_grazing"
+            },
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            {
+              "walk": "query.modified_move_speed * 0.7"
+            }
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.minere.moose.jump": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "transitions": [
+            {
+              "jumping": "!query.is_on_ground && !query.is_swimming && !query.is_in_contact_with_water && query.has_rider"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "jumping": {
+          "animations": [
+            "jump"
+          ],
+          "transitions": [
+            {
+              "idle": "query.is_on_ground || query.is_swimming || query.is_in_contact_with_water || !query.has_rider || query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.25
+        }
+      }
+    }
+  }
+}

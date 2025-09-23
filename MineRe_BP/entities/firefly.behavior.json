@@ -462,6 +462,14 @@
           "component_groups": ["minere:firefly_walking", "minere:firefly_baby"]
         }
       },
+      "minecraft:ageable_grow_up": {
+        "remove": {
+          "component_groups": ["minere:firefly_baby"]
+        },
+        "add": {
+          "component_groups": ["minere:firefly_adult"]
+        }
+      },
       "start_flying": {
         "sequence": [
           {

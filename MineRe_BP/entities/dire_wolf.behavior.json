@@ -270,11 +270,6 @@
                 {
                   "test": "is_family",
                   "subject": "other",
-                  "value": "wolf"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
                   "value": "fox"
                 },
                 {
@@ -286,6 +281,19 @@
                   "test": "is_family",
                   "subject": "other",
                   "value": "deer"
+                },
+                {
+                  "all_of": [
+                    {
+                      "test": "is_baby",
+                      "subject": "other"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "moose"
+                    }
+                  ]
                 }
               ]
             },

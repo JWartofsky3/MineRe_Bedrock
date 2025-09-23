@@ -1,0 +1,32 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.moose": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.brown",
+            "Texture.dark",
+            "Texture.light"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.moose.saddle": {
+      "arrays": {
+        "textures": {
+          "Array.saddle": [
+            "Texture.empty",
+            "Texture.saddle"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.saddle" }],
+      "textures": ["Array.saddle[variable.saddled ? 1 : 0]"]
+    }
+  }
+}
