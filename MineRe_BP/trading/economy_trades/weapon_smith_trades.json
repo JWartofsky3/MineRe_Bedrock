@@ -10,7 +10,7 @@
               "wants": [
                 {
                   "item": "minecraft:coal:0",
-                  "quantity": 15,
+                  "quantity": 8,
                   "price_multiplier": 0.05
                 }
               ],

@@ -407,6 +407,7 @@
           "death": "mob.moose.death",
           "hurt": "mob.moose.hurt",
           "angry": "mob.moose.angry",
+          "attack.strong": "mob.moose.attack",
           "step": {
             "sound": "mob.cow.step",
                     "pitch": [0.7, 1.0],
@@ -455,41 +456,39 @@
       },
       "minere:lizord": {
         "events": {
-          "ambient": "mob.lizord.angry",
-          "angry": "mob.lizord.angry",
+          "ambient": "mob.lizord.roar",
           "death": "mob.lizord.die",
           "hurt": "mob.lizord.hurt",
           "step": "mob.lizord.step",
           "shoot": {
             "sound": "mob.lizord.shoot",
-            "volume": 5
+            "volume": 3
           },
           "warn": {
             "sound": "mob.lizord.warn",
-            "volume": 5
+            "volume": 3
           }
         },
         "pitch": [0.8, 1.2],
-        "volume": 2.5
+        "volume": 2
       },
       "minere:netherzord": {
         "events": {
-          "ambient": "mob.lizord.angry",
-          "angry": "mob.lizord.angry",
+          "ambient": "mob.lizord.roar",
           "death": "mob.lizord.die",
           "hurt": "mob.lizord.hurt",
           "step": "mob.lizord.step",
           "shoot": {
             "sound": "mob.lizord.shoot",
-            "volume": 5
+            "volume": 3
           },
           "warn": {
             "sound": "mob.lizord.warn",
-            "volume": 5
+            "volume": 3
           }
         },
-        "pitch": [0.7, 1.1],
-        "volume": 2.5
+        "pitch": [0.7, 1.2],
+        "volume": 2
       },
       "minere:walker": {
         "events": {
@@ -602,8 +601,7 @@
           "swoop": {
             "pitch": [0.95, 1.05],
             "sound": "mob.phantom.swoop"
-          },
-          "shoot": "mob.ghast.fireball"
+          }
         },
         "pitch": [0.4, 0.7],
         "volume": 11

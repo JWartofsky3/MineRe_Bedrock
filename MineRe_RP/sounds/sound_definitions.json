@@ -260,6 +260,16 @@
         "sounds/mob/moose/angry2"
       ]
     },
+    "mob.moose.attack": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/moose/hurt1",
+          "pitch": 1.1,
+          "volume": 1.25
+        }
+      ]
+    },
     "mob.demon.ambient": {
       "category": "hostile",
       "sounds": [
@@ -275,7 +285,7 @@
     },
     "mob.demon.die": {
       "category": "hostile",
-      "sounds": ["sounds/mob/demon/death"]
+      "sounds": ["sounds/mob/demon/die0","sounds/mob/demon/die1"]
     },
     "mob.demon.hurt": {
       "category": "hostile",
@@ -651,9 +661,10 @@
       "category": "hostile",
       "__use_legacy_max_distance": "true",
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/step"
-        }
+"sounds/mob/lizord/step0",
+"sounds/mob/lizord/step1",
+"sounds/mob/lizord/step2",
+"sounds/mob/lizord/step3"
       ]
     },
     "mob.walker.emerge": {
@@ -686,70 +697,72 @@
         }
       ]
     },
-    "mob.lizord.hurt": {
+    "mob.lizord.roar": {
       "category": "hostile",
-      "__use_legacy_max_distance": "true",
+      "max_distance": 64.0,
+      "min_distance": 8.0,
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/hit0",
-          "pitch": 0.5
-        },
-        {
-          "name": "sounds/mob/lizord/hit1"
-        },
-        {
-          "name": "sounds/mob/lizord/hit2"
-        }
+        "sounds/mob/lizord/roar0",
+        "sounds/mob/lizord/roar1",
+        "sounds/mob/lizord/roar2"
       ]
     },
     "mob.lizord.die": {
       "category": "hostile",
-      "__use_legacy_max_distance": "true",
+      "max_distance": 64.0,
+      "min_distance": 8.0,
       "sounds": [
         {
-          "name": "sounds/mob/lizord/die"
+          "name": "sounds/mob/lizord/roar0",
+          "pitch": 0.8,
+          "volume": 1.25
+        },
+        {
+          "name": "sounds/mob/lizord/roar1",
+          "pitch": 0.8,
+          "volume": 1.25
+
+        },
+        {
+          "name": "sounds/mob/lizord/roar2",
+          "pitch": 0.8,
+          "volume": 1.25
         }
       ]
     },
-    "mob.lizord.angry": {
+    "mob.lizord.hurt": {
       "category": "hostile",
-      "__use_legacy_max_distance": "true",
+      "max_distance": 64.0,
+      "min_distance": 8.0,
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/scream",
-          "pitch": 2
-        }
+        "sounds/mob/lizord/hurt0",
+        "sounds/mob/lizord/hurt1",
+        "sounds/mob/lizord/hurt2"
       ]
     },
     "mob.lizord.shoot": {
-      "__use_legacy_max_distance": "true",
       "category": "hostile",
-      "max_distance": 80.0,
-      "min_distance": 0.0,
+      "max_distance": 64.0,
+      "min_distance": 16.0,
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/exhale"
-        }
+        "sounds/mob/lizord/exhale"
       ]
     },
     "mob.lizord.warn": {
-      "__use_legacy_max_distance": "true",
       "category": "hostile",
-      "max_distance": 80.0,
-      "min_distance": 0.0,
+      "max_distance": 64.0,
+      "min_distance": 16.0,
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/inhale"
-        }
+        "sounds/mob/lizord/inhale"
       ]
     },
     "mob.lizord.step": {
       "category": "hostile",
-      "__use_legacy_max_distance": "true",
       "sounds": [
-        {
-          "name": "sounds/mob/lizord/step"
-        }
+        "sounds/mob/lizord/step0",
+        "sounds/mob/lizord/step1",
+        "sounds/mob/lizord/step2",
+        "sounds/mob/lizord/step3"
       ]
     },
     "mob.eagle.ambient": {

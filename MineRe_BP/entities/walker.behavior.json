@@ -329,6 +329,12 @@
                     "subject": "other",
                     "operator": "==",
                     "value": "stomp"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "endermite"
                   }
                 ]
               }
@@ -517,6 +523,16 @@
           {
             "queue_command": {
               "command": "playsound mob.walker.reprogram_complete @a ~ ~ ~ 2.0"
+            }
+          },
+          {
+            "queue_command": {
+              "command": "summon endermite ~ ~ ~"
+            }
+          },
+          {
+            "queue_command": {
+              "command": "summon endermite ~ ~ ~"
             }
           }
         ]

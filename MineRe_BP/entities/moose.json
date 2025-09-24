@@ -165,7 +165,23 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": ["apple", "kelp"],
+          "feed_items": [
+            "kelp",
+            "melon_slice",
+            "glistering_melon_slice",
+            "sweet_berries",
+            "glow_berries",
+            "dried_kelp",
+            "dried_kelp_block",
+            "wheat",
+            "carrot",
+            "sugar",
+            "hay_block",
+            "apple",
+            "golden_carrot",
+            "golden_apple",
+            "appleEnchanted"
+          ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -212,7 +228,14 @@
         },
         "minecraft:tameable": {
           "probability": 0.33,
-          "tame_items": ["apple", "golden_apple", "dried_kelp_block"],
+          "tame_items": [
+            "apple",
+            "golden_apple",
+            "dried_kelp_block",
+            "hay_block",
+            "melon_slice",
+            "glistering_melon_slice"
+          ],
           "tame_event": {
             "event": "minere:on_tame_moose",
             "target": "self"
@@ -231,12 +254,28 @@
               "heal_amount": 2
             },
             {
+              "item": "melon_slice",
+              "heal_amount": 2
+            },
+            {
+              "item": "glistering_melon_slice",
+              "heal_amount": 6
+            },
+            {
+              "item": "sweet_berries",
+              "heal_amount": 2
+            },
+            {
+              "item": "glow_berries",
+              "heal_amount": 2
+            },
+            {
               "item": "dried_kelp",
               "heal_amount": 2
             },
             {
               "item": "dried_kelp_block",
-              "heal_amount": 8
+              "heal_amount": 10
             },
             {
               "item": "wheat",
@@ -256,19 +295,19 @@
             },
             {
               "item": "apple",
-              "heal_amount": 3
-            },
-            {
-              "item": "golden_carrot",
               "heal_amount": 4
             },
             {
+              "item": "golden_carrot",
+              "heal_amount": 5
+            },
+            {
               "item": "golden_apple",
-              "heal_amount": 10
+              "heal_amount": 20
             },
             {
               "item": "appleEnchanted",
-              "heal_amount": 10
+              "heal_amount": 50
             }
           ]
         },
@@ -278,7 +317,7 @@
         },
         "minecraft:breedable": {
           "require_tame": true,
-          "breed_items": "golden_apple",
+          "breed_items": ["golden_apple", "glistering_melon_slice"],
           "breeds_with": {
             "mate_type": "minere:moose",
             "baby_type": "minere:moose",
@@ -322,6 +361,11 @@
           "calm_event": {
             "event": "minecraft:on_calm",
             "target": "self"
+          },
+          "angry_sound": "angry",
+          "sound_interval": {
+            "range_min": 3,
+            "range_max": 6
           }
         }
       },
@@ -521,7 +565,14 @@
       },
       "minecraft:behavior.tempt": {
         "priority": 5,
-        "items": ["apple", "golden_apple", "kelp", "dried_kelp_block"]
+        "items": [
+          "apple",
+          "golden_apple",
+          "kelp",
+          "dried_kelp_block",
+          "melon_slice",
+          "glistering_melon_slice"
+        ]
       },
       "minecraft:behavior.eat_block": {
         "priority": 6,

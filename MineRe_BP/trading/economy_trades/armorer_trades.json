@@ -10,7 +10,7 @@
               "wants": [
                 {
                   "item": "minecraft:coal:0",
-                  "quantity": 15,
+                  "quantity": 8,
                   "price_multiplier": 0.05
                 }
               ],
@@ -32,11 +32,8 @@
             {
               "wants": [
                 {
-                  "item": "minere:emerald_shard",
-                  "quantity": {
-                    "min": 18,
-                    "max": 36
-                  },
+                  "item": "minecraft:emerald",
+                  "quantity": 7,
                   "price_multiplier": 0.2
                 }
               ],
@@ -53,11 +50,8 @@
             {
               "wants": [
                 {
-                  "item": "minere:emerald_shard",
-                  "quantity": {
-                    "min": 11,
-                    "max": 24
-                  },
+                  "item": "minecraft:emerald",
+                  "quantity": 4,
                   "price_multiplier": 0.2
                 }
               ],
@@ -74,11 +68,8 @@
             {
               "wants": [
                 {
-                  "item": "minere:emerald_shard",
-                  "quantity": {
-                    "min": 14,
-                    "max": 28
-                  },
+                  "item": "minecraft:emerald",
+                  "quantity": 5,
                   "price_multiplier": 0.2
                 }
               ],
@@ -95,11 +86,8 @@
             {
               "wants": [
                 {
-                  "item": "minere:emerald_shard",
-                  "quantity": {
-                    "min": 28,
-                    "max": 44
-                  },
+                  "item": "minecraft:emerald",
+                  "quantity": 8,
                   "price_multiplier": 0.2
                 }
               ],
@@ -412,11 +400,8 @@
             {
               "wants": [
                 {
-                  "item": "minere:emerald_shard",
-                  "quantity": {
-                    "min": 18,
-                    "max": 32
-                  },
+                  "item": "minecraft:emerald",
+                  "quantity": 5,
                   "price_multiplier": 0.2
                 }
               ],
@@ -471,7 +456,7 @@
                 }
               ],
               "trader_exp": 15,
-              "max_uses": 1,
+              "max_uses": 2,
               "reward_exp": true
             },
             {
@@ -505,7 +490,7 @@
                 }
               ],
               "trader_exp": 15,
-              "max_uses": 1,
+              "max_uses": 2,
               "reward_exp": true
             }
           ]
@@ -549,7 +534,7 @@
                 }
               ],
               "trader_exp": 30,
-              "max_uses": 1,
+              "max_uses": 2,
               "reward_exp": true
             },
             {
@@ -583,7 +568,7 @@
                 }
               ],
               "trader_exp": 30,
-              "max_uses": 1,
+              "max_uses": 2,
               "reward_exp": true
             }
           ]

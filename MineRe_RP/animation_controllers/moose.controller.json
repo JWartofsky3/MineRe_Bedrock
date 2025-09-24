@@ -46,8 +46,7 @@
             {
               "walk": "query.modified_move_speed"
             },
-            "graze",
-            "tail"
+            "graze"
           ],
           "transitions": [
             {

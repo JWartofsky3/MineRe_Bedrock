@@ -90,7 +90,7 @@ export const Ghostwalker: ItemCustomComponent = {
     reduceDurability(arg.source, arg.itemStack, DURABILITY_COST);
 
     // play shadow activation sound
-    arg.source.playSound("item.ghostwalker.ghost");
+    dimension.playSound("item.ghostwalker.ghost", arg.source.location);
 
     // apply self effects
     arg.source.addEffect("invisibility", shadowTime, { showParticles: false });

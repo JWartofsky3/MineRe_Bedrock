@@ -29,7 +29,7 @@
         },
         "minecraft:behavior.ranged_attack": {
           "priority": 3,
-          "attack_radius": 64,
+          "attack_radius": 48,
           "charge_shoot_trigger": 1.5,
           "charge_charged_trigger": 1,
           "attack_interval": 2.5
