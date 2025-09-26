@@ -462,15 +462,15 @@
           "step": "mob.lizord.step",
           "shoot": {
             "sound": "mob.lizord.shoot",
-            "volume": 3
+            "volume": 3.25
           },
           "warn": {
             "sound": "mob.lizord.warn",
-            "volume": 3
+            "volume": 3.25
           }
         },
         "pitch": [0.8, 1.2],
-        "volume": 2
+        "volume": 2.5
       },
       "minere:netherzord": {
         "events": {
@@ -480,15 +480,15 @@
           "step": "mob.lizord.step",
           "shoot": {
             "sound": "mob.lizord.shoot",
-            "volume": 3
+            "volume": 3.25
           },
           "warn": {
             "sound": "mob.lizord.warn",
-            "volume": 3
+            "volume": 3.25
           }
         },
         "pitch": [0.7, 1.2],
-        "volume": 2
+        "volume": 2.75
       },
       "minere:walker": {
         "events": {

@@ -2,9 +2,9 @@
   "format_version": 2,
   "header": {
     "description": "Minecraft, redone, rebalanced, revised, or something like that.",
-    "name": "MineRe [1.12.4]",
+    "name": "MineRe [1.12.5]",
     "uuid": "741844f2-0592-11ee-be56-0242ac120002",
-    "version": [1, 12, 4],
+    "version": [1, 12, 5],
     "min_engine_version": [1, 21, 30]
   },
   "modules": [
@@ -12,7 +12,7 @@
       "description": "MineRe Data",
       "type": "data",
       "uuid": "cb02d868-fa91-4320-8474-72937e727ae0",
-      "version": [1, 12, 4]
+      "version": [1, 12, 5]
     },
     {
       "description": "MineRe Scripts",
@@ -20,13 +20,13 @@
       "language": "javascript",
       "uuid": "4fa28595-c7bb-4aca-b332-6eb825c63bda",
       "entry": "scripts/main.js",
-      "version": [1, 12, 4]
+      "version": [1, 12, 5]
     }
   ],
   "dependencies": [
     {
       "uuid": "134cbd38-1b56-49ea-bba2-53ff270865c0",
-      "version": [1, 12, 4]
+      "version": [1, 12, 5]
     },
     {
       "module_name": "@minecraft/server",
