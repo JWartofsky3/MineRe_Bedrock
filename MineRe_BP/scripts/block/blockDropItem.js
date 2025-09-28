@@ -1,12 +1,15 @@
 import { ItemStack } from "@minecraft/server";
 import { getEnchantmentLevel, hasSilkTouchOrShears } from "item/item_utils";
 const itemsToDrop = new Map();
-itemsToDrop.set("minecraft:oak_leaves", {
-    drop: "minere:acorn",
-    chance: 0.04,
-    fortuneBonus: 0.04,
-});
-itemsToDrop.set("minecraft:dark_oak_leaves", itemsToDrop.get("minecraft:oak_leaves"));
+// itemsToDrop.set("minecraft:oak_leaves", {
+//   drop: "minere:acorn",
+//   chance: 0.04,
+//   fortuneBonus: 0.04,
+// });
+// itemsToDrop.set(
+//   "minecraft:dark_oak_leaves",
+//   itemsToDrop.get("minecraft:oak_leaves"),
+// );
 export function blockDropItem(data) {
     if (!itemsToDrop.has(data?.brokenBlockPermutation?.getItemStack()?.typeId)) {
         return;

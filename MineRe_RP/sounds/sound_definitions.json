@@ -292,7 +292,8 @@
       "sounds": [
         "sounds/mob/demon/hurt0",
         "sounds/mob/demon/hurt1",
-        "sounds/mob/demon/hurt2"
+        "sounds/mob/demon/hurt2",
+        "sounds/mob/demon/hurt3"
       ]
     },
     "mob.demon.laugh": {

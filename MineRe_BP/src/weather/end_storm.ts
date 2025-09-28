@@ -13,7 +13,8 @@ import { END_STORMS } from "settings";
 const secondsToTicks = (seconds: number) => seconds * 20;
 
 const STORM_PROPERTIES = {
-  CHANCE: 0.25,
+  BASE_CHANCE: 0.25,
+  CHANCE_INCREASE: 0.07,
   MIN_DURATION: 120,
   MAX_DURATION: 240,
   INTERVAL: 600,
@@ -21,6 +22,8 @@ const STORM_PROPERTIES = {
   BAND_SIZE: 1000,
   MIN_DISTANCE: 1000,
 } as const;
+
+let stormChance = STORM_PROPERTIES.BASE_CHANCE;
 
 const LIGHTNING_PROPERTIES = {
   MAX_DISTANCE: 64,
@@ -59,7 +62,11 @@ const activeStorms = new Set<string>(); // Use player's ID to track who is storm
 
 export function runEndStorms() {
   system.runInterval(() => {
-    if (Math.random() > STORM_PROPERTIES.CHANCE) return;
+    if (Math.random() > stormChance) {
+      stormChance += STORM_PROPERTIES.CHANCE_INCREASE;
+      return;
+    }
+    stormChance = STORM_PROPERTIES.BASE_CHANCE;
 
     const players = world.getDimension("the_end").getPlayers();
     players.forEach((player: Player) => {
