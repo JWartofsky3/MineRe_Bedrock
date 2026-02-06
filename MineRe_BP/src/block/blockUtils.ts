@@ -22,6 +22,8 @@ export const unbreakableBlocks = new Set<string>([
   "minecraft:lava",
   "minecraft:flowing_lava",
   "minecraft:fire",
+  "minecraft:trial_spawner",
+  "minecraft:mob_spawner",
 ]);
 
 // Replaceable blocks
@@ -38,19 +40,11 @@ export const replaceableBlocks = new Set<string>([
   "minecraft:warped_roots",
   "minecraft:nether_sprouts",
   "minecraft:seagrass",
-  "minecraft:tall_seagrass",
   "minecraft:kelp",
-  "minecraft:kelp_plant",
   "minecraft:vine",
-  "minecraft:cave_vines",
-  "minecraft:cave_vines_plant",
   "minecraft:weeping_vines",
-  "minecraft:weeping_vines_plant",
   "minecraft:twisting_vines",
-  "minecraft:twisting_vines_plant",
   "minecraft:moss_carpet",
-  "minecraft:small_dripleaf",
-  "minecraft:big_dripleaf_stem",
   "minecraft:big_dripleaf",
 ]);
 
@@ -78,7 +72,6 @@ export const oceanRuinBlocks = new Set<string>([
   "minecraft:stone_brick_stairs",
   "minecraft:suspicious_gravel",
   "minecraft:suspicious_sand",
-  "minecraft:tall_seagrass",
 ]);
 
 export const shipwreckBlocks = new Set<string>([
@@ -151,9 +144,7 @@ export const oceanBlocks = new Set<string>([
   "minecraft:water",
   "minecraft:flowing_water",
   "minecraft:seagrass",
-  "minecraft:tall_seagrass",
   "minecraft:kelp",
-  "minecraft:kelp_plant",
   "minecraft:snow_layer",
 ]);
 
@@ -167,9 +158,7 @@ export const oceanFloorBlocks = new Set<string>([
   "minecraft:gravel",
   "minecraft:clay",
   "minecraft:seagrass",
-  "minecraft:tall_seagrass",
   "minecraft:kelp",
-  "minecraft:kelp_plant",
 ]);
 
 export function getBlock(dimension: Dimension, location: Vector3): Block {

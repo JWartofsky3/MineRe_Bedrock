@@ -31,6 +31,9 @@
             "repair_amount": 512
           }
         ]
+      },
+      "minecraft:fire_resistant": {
+        "value": true
       }
     }
   }

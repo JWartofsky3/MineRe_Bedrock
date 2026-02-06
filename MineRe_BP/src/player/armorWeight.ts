@@ -29,6 +29,11 @@ const lightArmorKeyWords: string[] = [
   "light",
   "straw",
   "paper",
+  "wood",
+  "crunch",
+  "creak",
+  "membrane",
+  "cloak",
 ];
 
 const lightArmorSet: Set<string> = new Set();

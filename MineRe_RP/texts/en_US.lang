@@ -177,7 +177,7 @@ item.minere:gold_bear_armor=Golden Bear Armor
 item.minere:diamond_bear_armor=Diamond Bear Armor
 item.minere:netherite_bear_armor=Netherite Bear Armor
 item.minere:enderon_bear_armor=Enderon Bear Armor
-minere:itemGroup.name.bear_armor=Bear Armor
+minere:itemGroup.name.bear_armor=Grizzly Bear Armor
 
 tile.minere:nether_coal_block.name=Block of Nether Coal
 entity.minere:staff_fireball.name=Fireball
@@ -227,3 +227,12 @@ item.minere:ghostwalker=Ghostwalker
 entity.minere:moose.name=Moose
 item.spawn_egg.entity.minere:moose.name=Spawn Moose
 action.hint.exit.minere:moose=Tap Sneak to dismount
+
+entity.minere:wind_bomb.name=Wind Bomb
+item.minere:wind_bomb=Wind Bomb
+entity.minere:ice_bomb.name=Ice Bomb
+item.minere:ice_bomb=Ice Bomb
+minere:itemGroup.name.bombs=Bombs
+entity.minere:inferno.name=Inferno
+item.spawn_egg.entity.minere:inferno.name=Spawn Inferno
+minere:itemGroup.name.magic_staves=Magic Staves

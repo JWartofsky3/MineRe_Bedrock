@@ -1,0 +1,512 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:inferno",
+      "runtime_identifier": "minecraft:blaze",
+      "spawn_category": "monster",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "minere:phase": {
+          "type": "int",
+          "range": [0, 5],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "hover": {
+        "minecraft:navigation.hover": {
+          "can_path_over_water": false,
+          "can_sink": false,
+          "can_pass_doors": false,
+          "can_path_from_air": true,
+          "avoid_water": true,
+          "avoid_damage_blocks": false,
+          "avoid_sun": false
+        },
+        "minecraft:movement.hover": {},
+        "minecraft:can_climb": {},
+        "minecraft:behavior.random_hover": {
+          "priority": 4,
+          "xz_dist": 8,
+          "y_dist": 8,
+          "y_offset": -1,
+          "interval": 1,
+          "hover_height": [1, 4]
+        }
+      },
+      "retreat": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 0,
+          "entity_types": [
+            {
+              "filters": {
+                "none_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "item"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "inanimate"
+                  }
+                ]
+              },
+              "must_see": true,
+              "max_dist": 6,
+              "max_flee": 16,
+              "walk_speed_multiplier": 1.8,
+              "sprint_speed_multiplier": 2.1
+            }
+          ],
+          "on_escape_event": "remove_retreat"
+        }
+      },
+      "ranged_mode": {
+        "set_property": {
+          "minere:phase": 0
+        },
+        "minecraft:movement": {
+          "value": 0.3
+        },
+        "minecraft:flying_speed": {
+          "value": 0.15
+        },
+        "minecraft:behavior.summon_entity": {
+          "priority": 1,
+          "summon_choices": [
+            {
+              "min_activation_range": 8,
+              "max_activation_range": 16,
+              "weight": 3,
+              "cooldown_time": 8,
+              "cast_duration": 1,
+              "sequence": [
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "base_delay": 1.75,
+                  "delay_per_summon": 0.0,
+                  "num_entities_spawned": 2,
+                  "entity_type": "blaze",
+                  "summon_cap": 4,
+                  "summon_cap_radius": 16
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "small_fireball_mode": {
+        "minecraft:shooter": {
+          "def": "minecraft:small_fireball"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "burst_shots": 10,
+          "burst_interval": 0.07,
+          "charge_charged_trigger": 0.0,
+          "charge_shoot_trigger": 3.5,
+          "attack_interval_min": 2.5,
+          "attack_interval_max": 4.5,
+          "attack_radius": 48.0
+        }
+      },
+      "fireball_mode": {
+        "minecraft:shooter": {
+          "def": "minecraft:fireball"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "burst_shots": 3,
+          "burst_interval": 0.3,
+          "charge_charged_trigger": 0.0,
+          "charge_shoot_trigger": 4.0,
+          "attack_interval_min": 3.0,
+          "attack_interval_max": 5.0,
+          "attack_radius": 48.0
+        }
+      },
+      "melee_mode": {
+        "set_property": {
+          "minere:phase": 0
+        },
+        "minecraft:movement": {
+          "value": 1.5
+        },
+        "minecraft:flying_speed": {
+          "value": 1.5
+        },
+        "minecraft:attack": {
+          "damage": 6
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "on_attack": "add_retreat",
+          "on_kill": "switch_to_ranged"
+        },
+        "minecraft:target_nearby_sensor": {
+          "outside_range": 20.0,
+          "must_see": false,
+          "on_outside_range": {
+            "event": "switch_to_ranged",
+            "target": "self"
+          }
+        }
+      },
+      "push_mode": {
+        "set_property": {
+          "minere:phase": 2
+        },
+        "minecraft:behavior.knockback_roar": {
+          "priority": 0,
+          "duration": 1.5,
+          "attack_time": 1.0,
+          "knockback_damage": 5,
+          "knockback_horizontal_strength": 3,
+          "knockback_vertical_strength": 3,
+          "knockback_range": 4,
+          "knockback_filters": {
+            "none_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              }
+            ]
+          },
+          "on_roar_end": {
+            "event": "switch_to_ranged"
+          }
+        }
+      },
+      "stomp_mode": {
+        "set_property": {
+          "minere:phase": 3
+        },
+        "minecraft:movement.jump": {
+          "jump_delay": 0.1
+        },
+        "minecraft:navigation.walk": {
+          "can_path_over_water": true,
+          "avoid_water": true
+        },
+        "minecraft:jump.static": {},
+        "minecraft:can_climb": {},
+        "minecraft:spell_effects": {
+          "add_effects": [
+            {
+              "effect": "jump_boost",
+              "duration": 999999,
+              "amplifier": 5,
+              "visible": false,
+              "display_on_screen_animation": false
+            }
+          ]
+        },
+        "minecraft:behavior.slime_float": {
+          "priority": 1,
+          "jump_chance_percentage": 0.8,
+          "speed_multiplier": 1.2
+        },
+        "minecraft:behavior.slime_attack": {
+          "priority": 3
+        },
+        "minecraft:area_attack": {
+          "damage_range": 0.15,
+          "damage_per_tick": 8,
+          "damage_cooldown": 2.0,
+          "cause": "entity_attack",
+          "entity_filter": {
+            "any_of": [
+              { "test": "is_family", "subject": "other", "value": "player" },
+              { "test": "is_family", "subject": "other", "value": "irongolem" }
+            ]
+          }
+        },
+        "minecraft:behavior.slime_random_direction": {
+          "priority": 4,
+          "add_random_time_range": 3,
+          "turn_range": 360,
+          "min_change_direction_time": 2
+        },
+        "minecraft:behavior.slime_keep_on_jumping": {
+          "priority": 5,
+          "speed_multiplier": 1
+        },
+        "minecraft:target_nearby_sensor": {
+          "outside_range": 20.0,
+          "must_see": false,
+          "on_outside_range": {
+            "event": "switch_to_ranged",
+            "target": "self"
+          }
+        }
+      },
+      "guard_mode": {
+        "set_property": {
+          "minere:phase": 4
+        }
+      },
+      "stunned": {
+        "set_property": {
+          "minere:phase": 5
+        }
+      }
+    },
+    "components": {
+      "minecraft:boss": {
+        "name": "entity.minere:inferno.name",
+        "hud_range": 48
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? 500 : 0"
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/inferno.json"
+      },
+      "minecraft:collision_box": {
+        "width": 2.0,
+        "height": 4.0
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "test": "has_property",
+                "subject": "self",
+                "domain": "minere:phase",
+                "value": 4
+              }
+            },
+            "cause": "projectile",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:timer": {
+        "looping": true,
+        "randomInterval": true,
+        "time": [2, 8],
+        "time_down_event": {
+          "event": "change_mode"
+        }
+      },
+      "minecraft:health": {
+        "value": 200,
+        "max": 200
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.65
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_contact_with_water"
+            },
+            "cause": "drowning",
+            "damage_per_tick": 1
+          }
+        ]
+      },
+      "minecraft:follow_range": {
+        "value": 48,
+        "max": 48
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:nameable": {},
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "must_see": true,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 48.0
+          }
+        ]
+      },
+
+      "minecraft:behavior.random_look_around": {
+        "priority": 5
+      },
+      "minecraft:type_family": {
+        "family": ["inferno", "monster", "mob"]
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:on_hurt": {
+        "event": "minecraft:on_hurt_event",
+        "target": "self"
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:on_hurt_event",
+        "target": "self"
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": ["default_movement", "ranged_mode"]
+        }
+      },
+      "clear_modes": {
+        "remove": {
+          "component_groups": [
+            "hover",
+            "melee_mode",
+            "ranged_mode",
+            "fireball_mode",
+            "small_fireball_mode",
+            "push_mode",
+            "stomp_mode",
+            "retreat"
+          ]
+        }
+      },
+      "switch_to_ranged": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["hover", "ranged_mode"]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "add": {
+                  "component_groups": ["fireball_mode"]
+                }
+              },
+              {
+                "add": {
+                  "component_groups": ["small_fireball_mode"]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "switch_to_melee": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["hover", "melee_mode"]
+            }
+          }
+        ]
+      },
+      "switch_to_push": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["hover", "push_mode"]
+            }
+          }
+        ]
+      },
+      "switch_to_stomp": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["stomp_mode"]
+            }
+          }
+        ]
+      },
+      "switch_to_guard": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["hover", "guard_mode"]
+            }
+          }
+        ]
+      },
+      "switch_to_stunned": {
+        "sequence": [
+          {
+            "trigger": {
+              "event": "clear_modes",
+              "target": "self"
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["stunned"]
+            }
+          }
+        ]
+      },
+      "add_retreat": {
+        "add": {
+          "component_groups": ["retreat"]
+        }
+      },
+      "remove_retreat": {
+        "remove": {
+          "component_groups": ["retreat"]
+        }
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ const validFamilies = new Set<string>();
 validFamilies.add("skeleton");
 validFamilies.add("stray");
 validFamilies.add("bogged");
+validFamilies.add("parched");
 validFamilies.add("goblin");
 
 export function skeletonStrafe(entity: Entity, chance: number) {

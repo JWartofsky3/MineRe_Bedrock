@@ -70,6 +70,9 @@ export function getItem(
 }
 
 export function checkCooldown(item: ItemStack, entity: Entity): boolean {
+  if (!entity?.isValid) {
+    return false;
+  }
   if (!(entity instanceof Player)) {
     return false;
   }
@@ -91,7 +94,7 @@ export function checkCooldown(item: ItemStack, entity: Entity): boolean {
 }
 
 export const hasSilkTouchOrShears = (player: Player): boolean => {
-  if (player == null) {
+  if (!player?.isValid) {
     return false;
   }
   const equipment = player.getComponent(
@@ -123,7 +126,7 @@ export const getEnchantmentLevel = (
   enchantmentId: string,
   equipmentSlot: EquipmentSlot = EquipmentSlot.Mainhand,
 ): number => {
-  if (entity == null) {
+  if (!entity?.isValid) {
     return 0;
   }
   const equipment = entity.getComponent(
@@ -148,7 +151,7 @@ export const getEnchantmentLevel = (
 };
 
 export const hasPickaxe = (player: Player): boolean => {
-  if (player == null) {
+  if (!player?.isValid) {
     return false;
   }
   const equipment = player.getComponent(
@@ -169,6 +172,9 @@ export const canPickupPot = (player: Player): boolean => {
   const equipment = player.getComponent(
     EntityComponentTypes.Equippable,
   ) as EntityEquippableComponent;
+  if (!player?.isValid) {
+    return false;
+  }
   if (!equipment) {
     return true;
   }
@@ -189,6 +195,9 @@ export const getMainItem = (
     requireDurability?: boolean;
   },
 ): ItemStack => {
+  if (!entity?.isValid) {
+    return null;
+  }
   const equipment = entity.getComponent(
     EntityComponentTypes.Equippable,
   ) as EntityEquippableComponent;

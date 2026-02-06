@@ -1,13 +1,16 @@
-import { system, Dimension, Entity, Vector3 } from "@minecraft/server";
+import { system, Dimension, Entity, Vector3, Block } from "@minecraft/server";
+import { isSolid } from "block/blockUtils";
 
 const LIFESPAN = 100;
 
 export function iceCharge(
   dimension: Dimension,
   location: Vector3,
-  radius: number = 3,
+  radius: number = 4,
+  coverWithSnow: boolean = false,
 ) {
   dimension.playSound("item.ice_charge.blast", location);
+
   const blockAt = dimension.getBlock(location);
   if (blockAt.isAir) {
     blockAt.setType("minecraft:snow_layer");
@@ -25,48 +28,74 @@ export function iceCharge(
   for (let x = -radius; x <= radius; x++) {
     for (let y = -radius; y <= radius; y++) {
       for (let z = -radius; z <= radius; z++) {
-        if (x * x + y * y + z * z <= radius * radius) {
-          const blockPos: Vector3 = {
-            x: Math.round(location.x + x),
-            y: Math.round(location.y + y),
-            z: Math.round(location.z + z),
-          };
-          if (
-            blockPos.y <= dimension.heightRange.min ||
-            blockPos.y >= dimension.heightRange.max
-          ) {
-            continue;
+        if (x * x + y * y + z * z > radius * radius) continue;
+
+        const blockPos: Vector3 = {
+          x: Math.round(location.x + x),
+          y: Math.round(location.y + y),
+          z: Math.round(location.z + z),
+        };
+
+        if (
+          blockPos.y <= dimension.heightRange.min ||
+          blockPos.y >= dimension.heightRange.max
+        ) {
+          continue;
+        }
+
+        const block = dimension.getBlock(blockPos);
+        if (!block) continue;
+
+        // Fire cleanup
+        if (
+          block.typeId === "minecraft:fire" ||
+          block.typeId === "minecraft:soul_fire"
+        ) {
+          block.setType("minecraft:air");
+          continue;
+        }
+
+        // Powder snow → snow
+        if (block.typeId === "minecraft:powder_snow") {
+          block.setType("minecraft:snow");
+          snowParticles(block);
+          continue;
+        }
+
+        // Water → ice
+        if (
+          block.typeId === "minecraft:water" ||
+          block.typeId === "minecraft:flowing_water" ||
+          (block.isWaterlogged && block.isAir)
+        ) {
+          if (block.above()?.typeId !== "minecraft:water") {
+            block.setType("minecraft:ice");
+            snowParticles(block);
           }
-          const block = dimension.getBlock(blockPos);
-          if (
-            block.typeId === "minecraft:fire" ||
-            block.typeId === "minecraft:soul_fire"
-          ) {
-            block.setType("minecraft:air");
-          }
-          if (block.typeId === "minecraft:powder_snow") {
-            block.setType("minecraft:snow");
-          }
-          if (
-            block.typeId === "minecraft:water" ||
-            block.typeId === "minecraft:flowing_water" ||
-            (block.isWaterlogged && block.isAir)
-          ) {
-            if (block?.above()?.typeId !== "minecraft:water") {
-              block.setType("minecraft:ice");
-              continue;
-            }
-          }
-          if (x * x + y * y + z * z > radius * radius * 0.5) {
-            continue;
-          }
+          continue;
+        }
+
+        // Lava handling (inner radius only)
+        if (x * x + y * y + z * z <= radius * radius * 0.5) {
           if (block.typeId === "minecraft:lava") {
-            if (block?.above()?.typeId !== "minecraft:lava") {
+            if (block.above()?.typeId !== "minecraft:lava") {
               block.setType("minecraft:obsidian");
+              snowParticles(block);
             }
+            continue;
           }
           if (block.typeId === "minecraft:flowing_lava") {
             block.setType("minecraft:cobblestone");
+            snowParticles(block);
+            continue;
+          }
+        }
+
+        // ───── Snow layer coverage ─────
+        if (coverWithSnow && block.isAir) {
+          const below = block.below();
+          if (isSolid(below)) {
+            block.setType("minecraft:snow_layer");
           }
         }
       }
@@ -90,4 +119,13 @@ export function iceChargeRunner(entity: Entity) {
   system.runTimeout(() => {
     system.clearRun(runner);
   }, LIFESPAN);
+}
+
+function snowParticles(block: Block) {
+  const dimension = block.dimension;
+  dimension.spawnParticle("minere:ice_charge_particles_short", {
+    x: block.location.x,
+    y: block.location.y + 0.25,
+    z: block.location.z,
+  });
 }

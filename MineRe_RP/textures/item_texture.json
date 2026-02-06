@@ -51,6 +51,12 @@
     "minere.firebomb": {
       "textures": "textures/items/minere/firebomb"
     },
+    "minere.wind_bomb": {
+      "textures": "textures/items/minere/wind_bomb"
+    },
+    "minere.ice_bomb": {
+      "textures": "textures/items/minere/ice_bomb"
+    },
     "minere.emerald_shard": {
       "textures": "textures/items/minere/emerald_shard"
     },

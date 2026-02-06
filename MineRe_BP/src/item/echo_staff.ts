@@ -66,7 +66,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
         if (consumeXp(source, SHADOW_XP_COST)) {
           cooldownComponent.startCooldown(source);
           source.setDynamicProperty(SHADOW_COOLDOWN, system.currentTick);
-          source.playSound("item.echo_staff.whoosh");
+          source.dimension.playSound("item.echo_staff.whoosh", source.location);
           source.addEffect("blindness", SHADOW_TIME, { showParticles: false });
           source.addEffect("invisibility", SHADOW_TIME, {
             showParticles: false,
@@ -128,7 +128,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           return;
         }
         cooldownComponent.startCooldown(source);
-        source.playSound("mob.warden.sonic_charge");
+        source.dimension.playSound("mob.warden.sonic_charge", source.location);
         system.runTimeout(() => {
           const equippable = source.getComponent(
             EntityComponentTypes.Equippable,
@@ -190,7 +190,10 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           }
           system.runTimeout(() => {
             reduceDurability(source, itemStack, SONIC_DURABILITY_COST);
-            source.playSound("mob.warden.sonic_boom");
+            source.dimension.playSound(
+              "mob.warden.sonic_boom",
+              source.location,
+            );
             raycastHits.forEach((raycastHit: EntityRaycastHit) => {
               const entity = raycastHit.entity;
               if (entity?.location) {

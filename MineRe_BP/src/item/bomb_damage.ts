@@ -4,8 +4,10 @@ import {
   EntityDamageSource,
   EntityHealthComponent,
   EntityProjectileComponent,
+  world,
 } from "@minecraft/server";
 import { isAlive } from "mob/mob_utils";
+import { throwBy, throwByPos } from "mob/throwBy";
 
 /**
  * Calculates the damage multiplier based on max health.
@@ -34,18 +36,14 @@ export function bombDamage(
 
   const maxHealth = health.effectiveMax;
 
-  const projectile = damageSource.damagingProjectile?.getComponent(
-    EntityComponentTypes.Projectile,
-  ) as EntityProjectileComponent;
-
   const finalDamage =
     entity.typeId === "minecraft:player"
       ? baseDamage * 1.5
       : baseDamage * damageMultiplier(maxHealth);
 
-  entity.applyDamage(finalDamage, {
+  entity?.applyDamage(finalDamage, {
     cause: damageSource?.cause,
-    damagingEntity: projectile?.owner,
+    damagingEntity: damageSource?.damagingEntity,
     damagingProjectile: damageSource?.damagingProjectile,
   });
 }

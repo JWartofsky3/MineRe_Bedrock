@@ -4,7 +4,6 @@ import {
   EntityComponentTypes,
   EntityEquippableComponent,
   EquipmentSlot,
-  Vector2,
 } from "@minecraft/server";
 import { isAlive } from "./mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
@@ -26,35 +25,8 @@ CANNOT_BE_FROZEN.add("minere:yeti");
 CANNOT_BE_FROZEN.add("minere:freeze");
 CANNOT_BE_FROZEN.add("minecraft:stray");
 
-const sizes = new Map<string, Vector2>();
-sizes.set("minere:vampire", { x: 1, y: 2.5 });
-sizes.set("minere:ogre", { x: 2, y: 3 });
-sizes.set("minere:yeti", { x: 2, y: 3 });
-sizes.set("minere:demon", { x: 2, y: 3 });
-sizes.set("minere:scorpion", { x: 2, y: 1 });
-sizes.set("minecraft:spider", { x: 2, y: 1 });
-sizes.set("minecraft:iron_golem", { x: 2, y: 3 });
-sizes.set("minecraft:silverfish", { x: 1, y: 1 });
-sizes.set("minecraft:endermite", { x: 1, y: 1 });
-sizes.set("minere:lizord", { x: 3, y: 3 });
-sizes.set("minere:netherzord", { x: 4, y: 3.25 });
-sizes.set("minecraft:ghast", { x: 5, y: 5 });
-sizes.set("minere:cosmic_jelly", { x: 7, y: 7 });
-sizes.set("minere:grizzly_bear", { x: 2, y: 2 });
-sizes.set("minecraft:polar_bear", { x: 2, y: 2 });
-sizes.set("minecraft:enderman", { x: 1, y: 3 });
-sizes.set("minere:black_bear", { x: 2, y: 2 });
-sizes.set("minere:dire_wolf", { x: 1.4, y: 1.5 });
-
-export function rollFreeze(
-  target: Entity,
-  attacker: Entity,
-  bonus: number = 0,
-) {
-  if (!target || !attacker) {
-    return;
-  }
-  if (!isAlive(target) || !isAlive(attacker)) {
+export function rollFreeze(target: Entity, bonus: number = 0) {
+  if (!isAlive(target)) {
     return false;
   }
   if (CANNOT_BE_FROZEN.has(target.typeId) || !target.isOnGround) {
@@ -101,7 +73,7 @@ export function rollFreeze(
 }
 
 export function freezeEntity(target: Entity, duration: number) {
-  if (!target) {
+  if (!isAlive(target)) {
     return;
   }
   const dimension = target.dimension;
@@ -126,17 +98,19 @@ export function freezeEntity(target: Entity, duration: number) {
   };
   dimension.playSound("mob.freeze.freeze", target?.location);
 
-  const size = sizes.get(target.typeId) ?? { x: 1, y: 2 };
+  const AABB = target.getAABB();
+  const horizontalSize = Math.max(AABB.extent.x, AABB.extent.z) * 2;
+  const verticalSize = AABB.extent.y * 2;
 
   // Outer shell (ice) width
-  const outerWidth = Math.ceil(size.x + 2);
+  const outerWidth = Math.ceil(horizontalSize + 2);
   const halfOuter = Math.floor(outerWidth / 2);
 
   // Inner (open space) width
   const innerWidth = outerWidth - 2;
   const halfInner = Math.floor(innerWidth / 2);
 
-  const height = Math.ceil(size.y);
+  const height = Math.ceil(verticalSize);
 
   for (let i = -1; i <= height; i++) {
     system.runTimeout(
@@ -156,7 +130,7 @@ export function freezeEntity(target: Entity, duration: number) {
         }
 
         // Center teleport (only once at floor level)
-        if (i === 0 || i === 1) {
+        if (i === 0 || i === 1 || i === 2) {
           target.teleport({
             x: location.x + 0.5,
             y: location.y,
@@ -169,6 +143,7 @@ export function freezeEntity(target: Entity, duration: number) {
   }
 
   // Cleanup
+  const tickDelay = 3;
   system.runTimeout(() => {
     for (let i = -1; i <= height; i++) {
       system.runTimeout(
@@ -182,7 +157,7 @@ export function freezeEntity(target: Entity, duration: number) {
             );
           }
         },
-        12 - i * 3,
+        height * tickDelay - i * tickDelay,
       );
     }
   }, duration * 20);

@@ -7,6 +7,18 @@
         "groups": [
           {
             "group_identifier": {
+              "icon": "minere:bomb",
+              "name": "minere:itemGroup.name.bombs"
+            },
+            "items": [
+              "minere:bomb",
+              "minere:firebomb",
+              "minere:wind_bomb",
+              "minere:ice_bomb"
+            ]
+          },
+          {
+            "group_identifier": {
               "icon": "minere:diamond_treecapitator",
               "name": "minere:itemGroup.name.treecapitator"
             },
@@ -30,7 +42,8 @@
               "minere:windforce",
               "minere:illumina",
               "minere:firebrand",
-              "minere:darkheart"
+              "minere:darkheart",
+              "minere:ghostwalker"
             ]
           },
           {
@@ -45,6 +58,18 @@
               "minere:diamond_bear_armor",
               "minere:netherite_bear_armor",
               "minere:enderon_bear_armor"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "minere:echo_staff",
+              "name": "minere:itemGroup.name.magic_staves"
+            },
+            "items": [
+              "minere:amethyst_staff",
+              "minere:fire_staff",
+              "minere:echo_staff",
+              "minere:blaster_staff"
             ]
           }
         ]

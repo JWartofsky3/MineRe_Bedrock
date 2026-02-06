@@ -36,6 +36,8 @@ const xpMultiplierMap = new Map<string, number>();
 xpMultiplierMap.set("minecraft:ghast", 2.5);
 xpMultiplierMap.set("minere:cosmic_jelly", 2.5);
 
+const MAX_BONUS = 100;
+
 export function giveExtraXP(source: Entity, entity: Entity) {
   if (!source || !source?.isValid || !entity || !entity?.isValid) {
     return;
@@ -66,7 +68,10 @@ export function giveExtraXP(source: Entity, entity: Entity) {
   const dimension = entity.dimension;
   const location = entity.location;
   const xpMultiplier = xpMultiplierMap.get(entity.typeId) ?? 1.0;
-  const xp = Math.floor(health.effectiveMax * itemXPFactor * xpMultiplier);
+  const xp = Math.min(
+    MAX_BONUS,
+    Math.floor(health.effectiveMax * itemXPFactor * xpMultiplier),
+  );
   for (let i = 0; i < xp; i++) {
     const orb = dimension.spawnEntity("minecraft:xp_orb", location);
     orb.applyImpulse(

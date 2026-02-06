@@ -8,7 +8,7 @@
       ["minere:short_icicle_feature", 5],
       ["minere:tall_icicle_feature", 3],
       ["minere:icicle_stalagtite_feature", 2],
-      ["minere:ice_cavern_blocks_feature", 2]
+      ["minere:ice_cavern_blocks_feature", 20]
     ]
   }
 }

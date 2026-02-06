@@ -121,3 +121,15 @@ export const vector3FromString = (string: string): Vector3 => {
     z: Number(args[2]),
   };
 };
+
+export const rotateVectorY = (vec: Vector3, degrees: number) => {
+  const radians = (degrees * Math.PI) / 180;
+  const cos = Math.cos(radians);
+  const sin = Math.sin(radians);
+
+  return {
+    x: vec.x * cos - vec.z * sin,
+    y: vec.y,
+    z: vec.x * sin + vec.z * cos,
+  };
+};

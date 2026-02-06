@@ -81,7 +81,7 @@ export const armorCurve = (
 
   const settings = getSettings();
 
-  if (getEnchantmentLevel(damageSource.damagingEntity, "breach")) {
+  if (getEnchantmentLevel(damageSource?.damagingEntity, "breach")) {
     return;
   }
 

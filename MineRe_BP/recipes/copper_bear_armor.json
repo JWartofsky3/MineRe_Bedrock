@@ -5,13 +5,16 @@
       "identifier": "minere:copper_bear_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["IBB", "II "],
+    "pattern": ["IBH", "II "],
     "key": {
       "B": {
         "item": "minecraft:copper_block"
       },
       "I": {
         "item": "minecraft:copper_ingot"
+      },
+      "H": {
+        "item": "minecraft:copper_helmet"
       }
     },
     "result": {

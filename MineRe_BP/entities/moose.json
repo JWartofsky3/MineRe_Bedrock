@@ -405,15 +405,24 @@
       "minere:moose_saddled": {
         "minecraft:is_saddled": {},
         "minecraft:rideable": {
-          "seat_count": 1,
+          "seat_count": 2,
           "crouching_skip_interact": true,
           "on_rider_enter_event": "minere:no_stroll",
           "on_rider_exit_event": "minere:allow_stroll",
           "family_types": ["player"],
           "interact_text": "action.interact.ride.horse",
-          "seats": {
-            "position": [0, 2.15, -0.2]
-          }
+          "seats": [
+            {
+              "min_rider_count": 0,
+              "max_rider_count": 2,
+              "position": [0, 2.15, -0.2]
+            },
+            {
+              "min_rider_count": 1,
+              "max_rider_count": 2,
+              "position": [0, 2.0, -1.2]
+            }
+          ]
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/moose_saddled.json"

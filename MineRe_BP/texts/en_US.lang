@@ -1,2 +1,4 @@
 pack.name=MineRe BP
 pack.description=Minecraft redone, rebalanced, or something like that.
+entity.minere:inferno.name=Inferno
+item.spawn_egg.entity.minere:inferno.name=Spawn Inferno

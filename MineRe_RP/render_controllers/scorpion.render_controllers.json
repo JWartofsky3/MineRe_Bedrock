@@ -1,0 +1,21 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.scorpion": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.brown",
+            "Texture.black"
+          ]
+        },
+        "materials": {
+          "Array.materials": [ "Material.default", "Material.invisible" ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [ { "*": "Array.materials[query.is_invisible]" } ],
+      "textures": [ "Array.skins[query.variant]" ]
+    }
+  }
+}

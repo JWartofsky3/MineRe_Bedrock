@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.21.131",
   "minecraft:item": {
     "description": {
       "identifier": "minere:netherite_bear_armor",
@@ -12,7 +12,10 @@
       "minecraft:display_name": {
         "value": "item.minere:netherite_bear_armor"
       },
-      "minecraft:max_stack_size": 1
+      "minecraft:max_stack_size": 1,
+      "minecraft:fire_resistant": {
+        "value": true
+      }
     }
   }
 }

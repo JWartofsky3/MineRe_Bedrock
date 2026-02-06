@@ -122,6 +122,7 @@
           "deals_damage": false
         }
       },
+      "minecraft:fire_immune": {},
       "minecraft:type_family": {
         "family": ["bomb", "inanimate"]
       },

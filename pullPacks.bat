@@ -3,11 +3,11 @@ setlocal
 
 REM --- Paths for Behavior Pack ---
 set WORKING_BP=MineRe_BP
-set SOURCE_BP=C:\Users\Jacob\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_behavior_packs\MineRe_BP
+set SOURCE_BP=C:\Users\Jacob\AppData\Roaming\Minecraft Bedrock\Users\Shared\games\com.mojang\development_behavior_packs\MineRe_BP
 
 REM --- Paths for Resource Pack ---
 set WORKING_RP=MineRe_RP
-set SOURCE_RP=C:\Users\Jacob\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs\MineRe_RP
+set SOURCE_RP=C:\Users\Jacob\AppData\Roaming\Minecraft Bedrock\Users\Shared\games\com.mojang\development_resource_packs\MineRe_RP
 
 REM --- Refresh BP ---
 if not exist "%SOURCE_BP%" (

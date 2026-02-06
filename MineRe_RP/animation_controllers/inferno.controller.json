@@ -1,0 +1,191 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.inferno": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "angle",
+            "rotate"
+          ],
+          "transitions": [
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "melee": "query.property('minere:phase') === 1"
+            },
+            {
+              "push": "query.property('minere:phase') === 2 || query.is_roaring"
+            },
+            {
+              "stomp": "query.property('minere:phase') === 3"
+            },
+            {
+              "guard": "query.property('minere:phase') === 4"
+            },
+            {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "casting": {
+          "animations": ["summon", "rotate"],
+          "transitions": [
+            {
+              "default": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "melee": {
+          "animations": ["melee", {
+            "rotate": 2.0
+          }],
+          "transitions": [
+            {
+              "default": "query.property('minere:phase') === 0"
+            },
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "push": "query.property('minere:phase') === 2 || query.is_roaring"
+            },
+            {
+              "stomp": "query.property('minere:phase') === 3"
+            },
+            {
+              "guard": "query.property('minere:phase') === 4"
+            },
+            {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "push": {
+          "animations": ["pushing", "rotate"],
+          "transitions": [
+            {
+              "default": "query.property('minere:phase') === 0"
+            },
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "melee": "query.property('minere:phase') === 1"
+            },
+            {
+              "stomp": "query.property('minere:phase') === 3"
+            },
+            {
+              "guard": "query.property('minere:phase') === 4"
+            },
+            {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "stomp": {
+          "animations": ["stomp", "rotate"],
+          "transitions": [
+            {
+              "default": "query.property('minere:phase') === 0"
+            },
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "melee": "query.property('minere:phase') === 1"
+            },
+            {
+              "push": "query.property('minere:phase') === 2 || query.is_roaring"
+            },
+            {
+              "guard": "query.property('minere:phase') === 4"
+            },
+            {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "guard": {
+          "animations": ["pushing", "rotate"],
+          "transitions": [
+            {
+              "default": "query.property('minere:phase') === 0"
+            },
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "melee": "query.property('minere:phase') === 1"
+            },
+            {
+              "push": "query.property('minere:phase') === 2 || query.is_roaring"
+            },
+            {
+              "stomp": "query.property('minere:phase') === 3"
+            },
+            {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "stunned": {
+          "animations": ["stunned"],
+          "transitions": [
+            {
+              "default": "query.property('minere:phase') === 0"
+            },
+            {
+              "casting": "query.is_casting"
+            },
+            {
+              "melee": "query.property('minere:phase') === 1"
+            },
+            {
+              "push": "query.property('minere:phase') === 2 || query.is_roaring"
+            },
+            {
+              "stomp": "query.property('minere:phase') === 3"
+            },
+            {
+              "guard": "query.property('minere:phase') === 4"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.minere.inferno_look": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "look_at_target"
+          ],
+          "transitions": [
+                        {
+              "stunned": "query.property('minere:phase') === 5"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "stunned": {
+                    "transitions": [
+                        {
+              "default": "query.property('minere:phase') != 5"
+            }
+          ],
+          "blend_transition": 0.25
+        }
+      }
+    }
+  }
+}

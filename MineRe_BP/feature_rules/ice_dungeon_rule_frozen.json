@@ -35,7 +35,7 @@
       }
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/200,v.originx/200); return (t.noise < -0.25) ? 1 : 0;",
+      "iterations": "t.noise = q.noise(v.originz/300,v.originx/300); return (t.noise < -0.25) ? 1 : 0;",
       "x": {
         "distribution": "uniform",
         "extent": [0, 16]

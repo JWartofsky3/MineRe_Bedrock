@@ -366,6 +366,19 @@
         "pitch": [1.2, 1.6],
         "volume": 0.8
       },
+      "minere:inferno" : {
+            "events" : {
+               "ambient" : "mob.blaze.breathe",
+               "death" : "mob.blaze.death",
+               "hurt" : "mob.blaze.hit",
+               "shoot" : "mob.blaze.shoot"
+            },
+            "pitch" : [ 0.60, 0.8 ],
+            "variants" : {
+               "key" : null
+            },
+            "volume" : 3.0
+         },
       "minere:freeze": {
         "events": {
           "attack.strong": "mob.freeze.attack",

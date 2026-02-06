@@ -10,33 +10,31 @@ torchSet.add("minecraft:copper_torch");
  * @param radius The radius to scan in each direction
  */
 export function breakTorches(entity, radius) {
-    if (!entity?.isValid)
-        return;
-    if (!world?.getDynamicProperty(GREMLIN_BREAKS_TORCHES).valueOf()) {
-        return;
-    }
-    const dimension = entity.dimension;
-    const base = entity.location;
-    let torchesBroken = 0;
-    // Loop in a cube around the entity
-    for (let dx = -radius; dx <= radius; dx++) {
-        for (let dy = -radius; dy <= radius; dy++) {
-            for (let dz = -radius; dz <= radius; dz++) {
-                const x = Math.floor(base.x + dx) + 0.5;
-                const y = Math.floor(base.y + dy) + 0.5;
-                const z = Math.floor(base.z + dz) + 0.5;
-                const block = getBlock(dimension, { x, y, z });
-                if (!block)
-                    continue;
-                if (torchSet.has(block.typeId)) {
-                    // Destroy block with particles and drops
-                    entity.runCommand(`setblock ${x} ${y} ${z} air destroy`);
-                    torchesBroken++;
-                }
-            }
+  if (!entity?.isValid) return;
+  if (!world?.getDynamicProperty(GREMLIN_BREAKS_TORCHES).valueOf()) {
+    return;
+  }
+  const dimension = entity.dimension;
+  const base = entity.location;
+  let torchesBroken = 0;
+  // Loop in a cube around the entity
+  for (let dx = -radius; dx <= radius; dx++) {
+    for (let dy = -radius; dy <= radius; dy++) {
+      for (let dz = -radius; dz <= radius; dz++) {
+        const x = Math.floor(base.x + dx) + 0.5;
+        const y = Math.floor(base.y + dy) + 0.5;
+        const z = Math.floor(base.z + dz) + 0.5;
+        const block = getBlock(dimension, { x, y, z });
+        if (!block) continue;
+        if (torchSet.has(block.typeId)) {
+          // Destroy block with particles and drops
+          entity.runCommand(`setblock ${x} ${y} ${z} air destroy`);
+          torchesBroken++;
         }
+      }
     }
-    if (torchesBroken > 0) {
-        entity.triggerEvent("minere:play_attack_animation");
-    }
+  }
+  if (torchesBroken > 0) {
+    entity.triggerEvent("minere:play_attack_animation");
+  }
 }

@@ -8,6 +8,16 @@
       "is_experimental": false
     },
     "component_groups": {
+      "minere:brown_scorpion": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:black_scorpion": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
       "minere:scorpion_neutral": {
         "minecraft:environment_sensor": {
           "triggers": {
@@ -208,9 +218,40 @@
     },
     "events": {
       "minecraft:entity_spawned": {
-        "add": {
-          "component_groups": ["minere:scorpion_neutral"]
-        }
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "minere:scorpion_neutral",
+                "minere:brown_scorpion"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "jungle"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "bamboo_jungle"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "swamp"
+                }
+              ],
+              "remove": {
+                "component_groups": ["minere:brown_scorpion"]
+              },
+              "add": {
+                "component_groups": ["minere:black_scorpion"]
+              }
+            }
+          }
+        ]
       },
       "minecraft:become_hostile": {
         "remove": {

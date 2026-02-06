@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.21.131",
   "minecraft:item": {
     "description": {
       "identifier": "minere:darkheart",
@@ -13,10 +13,11 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_sword"]
       },
-      "minecraft:custom_components": [
-        "minere:darkheart",
-        "minere:custom_sword"
-      ],
+      "minere:darkheart": {},
+      "minere:custom_sword": {},
+      "minecraft:fire_resistant": {
+        "value": true
+      },
       "minecraft:damage": 13,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,
