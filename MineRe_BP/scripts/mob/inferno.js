@@ -1,13 +1,9 @@
-import { EntityLoadAfterEvent, Entity, world, system } from "@minecraft/server";
-import { run } from "node:test";
+import { world, system } from "@minecraft/server";
 import { getRandomIntInclusive } from "util/mathFunctions";
-
 const RUNNER_PROPERTY = "minere:inferno_runner";
 const RUNNER_TICK = 100;
-
-world.afterEvents.entityLoad.subscribe((data: EntityLoadAfterEvent) => {});
-
-function startRunner(entity: Entity) {
+world.afterEvents.entityLoad.subscribe((data) => {});
+function startRunner(entity) {
   if (!entity?.isValid || !(entity?.typeId === "minere:inferno")) {
     return;
   }

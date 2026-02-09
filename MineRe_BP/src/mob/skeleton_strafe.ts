@@ -77,6 +77,7 @@ export function skeletonStrafe(entity: Entity, chance: number) {
         }
       }
     }
+
     const strafeDirRadians = angle * (Math.PI / 180);
     if (magnitudeVector3(owner.getVelocity()) < 0.15) {
       owner.applyImpulse({
