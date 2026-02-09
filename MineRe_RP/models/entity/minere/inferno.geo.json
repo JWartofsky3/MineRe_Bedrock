@@ -1,88 +1,93 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.minere.inferno",
-				"texture_width": 128,
-				"texture_height": 128,
-				"visible_bounds_width": 6,
-				"visible_bounds_height": 5,
-				"visible_bounds_offset": [0, 1.5, 0]
-			},
-			"bones": [
-				{
-					"name": "root",
-					"pivot": [0, 43, 0]
-				},
-				{
-					"name": "head",
-					"parent": "root",
-					"pivot": [0, 43, 0],
-					"cubes": [
-						{"origin": [-5, 38, -5], "size": [10, 10, 10], "inflate": -0.1, "uv": [80, 38]}
-					]
-				},
-				{
-					"name": "helmet",
-					"parent": "head",
-					"pivot": [0, 43, 0],
-					"cubes": [
-						{"origin": [-5, 38, -5], "size": [10, 10, 10], "uv": [80, 58]},
-						{"origin": [-5, 48, -5], "size": [10, 4, 10], "uv": [80, 78]},
-						{"origin": [-1, 47, -5.5], "size": [2, 3, 1], "uv": [0, 0]}
-					]
-				},
-				{
-					"name": "shields",
-					"parent": "root",
-					"pivot": [0, 31, 0]
-				},
-				{
-					"name": "shield0",
-					"parent": "shields",
-					"pivot": [0, 33, -12],
-					"cubes": [
-						{"origin": [-9, 6, -14], "size": [18, 32, 2], "uv": [0, 50]}
-					]
-				},
-				{
-					"name": "shield1",
-					"parent": "shields",
-					"pivot": [-12, 33, 0],
-					"cubes": [
-						{"origin": [-14, 6, -9], "size": [2, 32, 18], "uv": [0, 0]}
-					]
-				},
-				{
-					"name": "shield2",
-					"parent": "shields",
-					"pivot": [0, 33, 12],
-					"cubes": [
-						{"origin": [-9, 6, 12], "size": [18, 32, 2], "uv": [40, 50]}
-					]
-				},
-				{
-					"name": "shield3",
-					"parent": "shields",
-					"pivot": [12, 33, 0],
-					"cubes": [
-						{"origin": [12, 6, -9], "size": [2, 32, 18], "uv": [40, 0]}
-					]
-				},
-				{
-					"name": "pillar",
-					"parent": "root",
-					"pivot": [0, 31, 0],
-					"cubes": [
-						{"origin": [-3, 4, -3], "size": [6, 32, 6], "uv": [80, 0]}
-					],
-					"locators": {
-						"core": [0, 21, 0],
-						"summon": [0, 58, 0]
-					}
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.inferno",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 6,
+        "visible_bounds_height": 5,
+        "visible_bounds_offset": [0, 1.5, 0]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [0, 43, 0]
+        },
+        {
+          "name": "head",
+          "parent": "root",
+          "pivot": [0, 43, 0],
+          "cubes": [
+            {
+              "origin": [-5, 38, -5],
+              "size": [10, 10, 10],
+              "inflate": -0.1,
+              "uv": [80, 38]
+            }
+          ]
+        },
+        {
+          "name": "helmet",
+          "parent": "head",
+          "pivot": [0, 43, 0],
+          "cubes": [
+            { "origin": [-5, 38, -5], "size": [10, 10, 10], "uv": [80, 58] },
+            { "origin": [-5, 48, -5], "size": [10, 4, 10], "uv": [80, 78] },
+            { "origin": [-1, 47, -5.5], "size": [2, 3, 1], "uv": [0, 0] }
+          ]
+        },
+        {
+          "name": "shields",
+          "parent": "root",
+          "pivot": [0, 31, 0]
+        },
+        {
+          "name": "shield0",
+          "parent": "shields",
+          "pivot": [0, 33, -12],
+          "cubes": [
+            { "origin": [-9, 6, -14], "size": [18, 32, 2], "uv": [0, 50] }
+          ]
+        },
+        {
+          "name": "shield1",
+          "parent": "shields",
+          "pivot": [-12, 33, 0],
+          "cubes": [
+            { "origin": [-14, 6, -9], "size": [2, 32, 18], "uv": [0, 0] }
+          ]
+        },
+        {
+          "name": "shield2",
+          "parent": "shields",
+          "pivot": [0, 33, 12],
+          "cubes": [
+            { "origin": [-9, 6, 12], "size": [18, 32, 2], "uv": [40, 50] }
+          ]
+        },
+        {
+          "name": "shield3",
+          "parent": "shields",
+          "pivot": [12, 33, 0],
+          "cubes": [
+            { "origin": [12, 6, -9], "size": [2, 32, 18], "uv": [40, 0] }
+          ]
+        },
+        {
+          "name": "pillar",
+          "parent": "root",
+          "pivot": [0, 31, 0],
+          "cubes": [
+            { "origin": [-3, 4, -3], "size": [6, 32, 6], "uv": [80, 0] }
+          ],
+          "locators": {
+            "core": [0, 21, 0],
+            "summon": [0, 58, 0]
+          }
+        }
+      ]
+    }
+  ]
 }

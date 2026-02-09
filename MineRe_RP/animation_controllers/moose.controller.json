@@ -89,9 +89,7 @@
           "blend_transition": 0.25
         },
         "jumping": {
-          "animations": [
-            "jump"
-          ],
+          "animations": ["jump"],
           "transitions": [
             {
               "idle": "query.is_on_ground || query.is_swimming || query.is_in_contact_with_water || !query.has_rider || query.all_animations_finished"

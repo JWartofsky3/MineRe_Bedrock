@@ -242,13 +242,13 @@
                   "test": "has_biome_tag",
                   "value": "swamp"
                 }
-              ],
-              "remove": {
-                "component_groups": ["minere:brown_scorpion"]
-              },
-              "add": {
-                "component_groups": ["minere:black_scorpion"]
-              }
+              ]
+            },
+            "remove": {
+              "component_groups": ["minere:brown_scorpion"]
+            },
+            "add": {
+              "component_groups": ["minere:black_scorpion"]
             }
           }
         ]

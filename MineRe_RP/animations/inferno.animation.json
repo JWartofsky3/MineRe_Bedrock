@@ -1,232 +1,255 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"animation.minere.inferno.angle_shields": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"rotation": [-15, 0, 0]
-				},
-				"shield2": {
-					"rotation": [15, 0, 0]
-				},
-				"shield1": {
-					"rotation": [0, 0, 15]
-				},
-				"shield3": {
-					"rotation": [0, 0, -15]
-				}
-			}
-		},
-		"animation.minere.inferno.rotate": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"position": [0, "2 * math.cos(0 + query.anim_time * 75)", 0]
-				},
-				"shield2": {
-					"position": [0, "2 * math.cos(0 + query.anim_time * 75)", 0]
-				},
-				"shield1": {
-					"rotation": [0, "-2 * math.cos(180 + query.anim_time * 75)", 0]
-				},
-				"shield3": {
-					"position": [0, "2 * math.cos(180 + query.anim_time * 75)", 0]
-				},
-				"shields": {
-					"rotation": [0, "-query.anim_time * 100", 0]
-				},
-				"pillar": {
-					"rotation": [0, "-query.anim_time * -50", 0]
-				}
-			}
-		},
-		"animation.minere.inferno.breathe": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"position": [0, "math.cos(50 + query.anim_time * 25)", 0]
-				},
-				"pillar": {
-					"position": [0, "1.5 * math.cos(25 + query.anim_time * 25)", 0]
-				},
-				"shields": {
-					"position": [0, "2 * math.cos(0 + query.anim_time * 25)", 0]
-				}
-			}
-		},
-		"animation.minere.inferno.look_at": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
-				}
-			}
-		},
-		"animation.minere.inferno.push": {
-			"animation_length": 1.5,
-			"bones": {
-				"shield0": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.5": [0, 0, 4],
-						"0.7917": [0, 0, 4],
-						"1.0": [0, 0, -10],
-						"1.5": [0, 0, 0]
-					}
-				},
-				"shield2": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.5": [0, 0, -4],
-						"0.7917": [0, 0, -4],
-						"1.0": [0, 0, 10],
-						"1.5": [0, 0, 0]
-					}
-				},
-				"shield1": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.5": [4, 0, 0],
-						"0.7917": [4, 0, 0],
-						"1.0": [-10, 0, 0],
-						"1.5": [0, 0, 0]
-					}
-				},
-				"shield3": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.5": [-4, 0, 0],
-						"0.7917": [-4, 0, 0],
-						"1.0": [10, 0, 0],
-						"1.5": [0, 0, 0]
-					}
-				}
-			}
-		},
-		"animation.minere.inferno.guard": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"position": [0, 5, 4]
-				},
-				"shield2": {
-					"position": [0, 5, -4]
-				},
-				"shield1": {
-					"position": [4, 5, 0]
-				},
-				"shield3": {
-					"position": [-4, 5, 0]
-				}
-			}
-		},
-		"animation.minere.inferno.summon": {
-			"animation_length": 1.75,
-			"bones": {
-				"shields": {
-					"position": {
-						"0.0": [0, 0, 0],
-						"1.5": [0, 25, 0],
-						"1.75": [0, 0, 0]
-					}
-				}
-			}
-		},
-		"animation.minere.inferno.angle": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"rotation": [-15, 0, 0]
-				},
-				"shield1": {
-					"rotation": [0, 0, 15]
-				},
-				"shield2": {
-					"rotation": [15, 0, 0]
-				},
-				"shield3": {
-					"rotation": [0, 0, -15]
-				}
-			}
-		},
-		"animation.minere.inferno.weak": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"rotation": ["50  - math.cos(25 + query.anim_time * 25) * 15", 0, 0],
-					"position": [0, -8, -10]
-				},
-				"shield0": {
-					"rotation": ["45 - math.cos(query.anim_time * 25) * 5", 0, 0],
-					"position": [0, -12, -15]
-				},
-				"shield1": {
-					"rotation": [0, 0, "-45 + math.cos(query.anim_time * 25) * -5"],
-					"position": [-15, -12, 0]
-				},
-				"shield2": {
-					"rotation": ["-45 - math.cos(query.anim_time * 25) * -5", 0, 0],
-					"position": [0, -12, 15]
-				},
-				"shield3": {
-					"rotation": [0, 0, "45 + math.cos(query.anim_time * 25) * 5"],
-					"position": [15, -12, 0]
-				},
-				"pillar": {
-					"rotation": [25, 0, 0],
-					"position": [0, -5, -2]
-				}
-			}
-		},
-		"animation.minere.inferno.stomp": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"rotation": [15, 0, 0]
-				},
-				"shield1": {
-					"rotation": [0, 0, -15]
-				},
-				"shield2": {
-					"rotation": [-15, 0, 0]
-				},
-				"shield3": {
-					"rotation": [0, 0, 15]
-				}
-			}
-		},
-		"animation.minere.inferno.melee": {
-			"loop": true,
-			"bones": {
-				"shield0": {
-					"rotation": [-75, 0, 0]
-				},
-				"shield1": {
-					"rotation": [0, 0, 75]
-				},
-				"shield2": {
-					"rotation": [75, 0, 0]
-				},
-				"shield3": {
-					"rotation": [0, 0, -75]
-				}
-			}
-		},
-		"animation.minere.inferno.counter_rotation": {
-			"loop": true,
-			"override_previous_animation": true,
-			"bones": {
-				"pillar": {
-					"rotation": [0, "q.body_y_rotation - (Math.round(q.body_y_rotation / 90) * 90)", 0]
-				},
-				"head": {
-					"rotation": [0, "-query.body_y_rotation", 0]
-				},
-				"root": {
-					"rotation": [0, "query.body_y_rotation", 0]
-				}
-			}
-		}
-	}
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.inferno.angle_shields": {
+      "loop": true,
+      "bones": {
+        "shield0": {
+          "rotation": [-15, 0, 0]
+        },
+        "shield2": {
+          "rotation": [15, 0, 0]
+        },
+        "shield1": {
+          "rotation": [0, 0, 15]
+        },
+        "shield3": {
+          "rotation": [0, 0, -15]
+        }
+      }
+    },
+    "animation.minere.inferno.bounce": {
+      "loop": true,
+      "animation_length": 4.8,
+      "bones": {
+        "shield0": {
+          "position": [0, "2 * math.cos(query.anim_time * 75)", 0]
+        },
+        "shield2": {
+          "position": [0, "2 * math.cos(query.anim_time * 75)", 0]
+        },
+        "shield3": {
+          "position": [0, "2 * math.cos(180 + query.anim_time * 75)", 0]
+        },
+        "shield1": {
+          "rotation": [0, "-2 * math.cos(180 + query.anim_time * 75)", 0]
+        }
+      }
+    },
+    "animation.minere.inferno.spin": {
+      "loop": true,
+      "animation_length": 7.2,
+      "bones": {
+        "shields": {
+          "rotation": [0, "-query.anim_time * 100", 0]
+        },
+        "pillar": {
+          "rotation": [0, "query.anim_time * 50", 0]
+        }
+      }
+    },
+    "animation.minere.inferno.breathe": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "position": [0, "math.cos(50 + query.anim_time * 25)", 0]
+        },
+        "pillar": {
+          "position": [0, "1.5 * math.cos(25 + query.anim_time * 25)", 0]
+        },
+        "shields": {
+          "position": [0, "2 * math.cos(0 + query.anim_time * 25)", 0]
+        }
+      }
+    },
+    "animation.minere.inferno.look_at": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+        }
+      }
+    },
+    "animation.minere.inferno.push": {
+      "animation_length": 1.5,
+      "bones": {
+        "shield0": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.5": [0, 0, 4],
+            "0.7917": [0, 0, 4],
+            "1.0": [0, 0, -10],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "shield2": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.5": [0, 0, -4],
+            "0.7917": [0, 0, -4],
+            "1.0": [0, 0, 10],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "shield1": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.5": [4, 0, 0],
+            "0.7917": [4, 0, 0],
+            "1.0": [-10, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "shield3": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.5": [-4, 0, 0],
+            "0.7917": [-4, 0, 0],
+            "1.0": [10, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      }
+    },
+    "animation.minere.inferno.guard": {
+      "loop": true,
+      "bones": {
+        "shield0": {
+          "position": [0, 5, 4]
+        },
+        "shield2": {
+          "position": [0, 5, -4]
+        },
+        "shield1": {
+          "position": [4, 5, 0]
+        },
+        "shield3": {
+          "position": [-4, 5, 0]
+        }
+      }
+    },
+    "animation.minere.inferno.summon": {
+      "animation_length": 1.75,
+      "bones": {
+        "shields": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "1.5": [0, 25, 0],
+            "1.75": [0, 0, 0]
+          }
+        }
+      }
+    },
+    "animation.minere.inferno.angle": {
+      "loop": true,
+      "bones": {
+        "shield0": {
+          "rotation": [-15, 0, 0]
+        },
+        "shield1": {
+          "rotation": [0, 0, 15]
+        },
+        "shield2": {
+          "rotation": [15, 0, 0]
+        },
+        "shield3": {
+          "rotation": [0, 0, -15]
+        }
+      }
+    },
+    "animation.minere.inferno.weak": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["50  - math.cos(25 + query.anim_time * 25) * 15", 0, 0],
+          "position": [0, -8, -10]
+        },
+        "shield0": {
+          "rotation": ["45 - math.cos(query.anim_time * 25) * 5", 0, 0],
+          "position": [0, -12, -15]
+        },
+        "shield1": {
+          "rotation": [0, 0, "-45 + math.cos(query.anim_time * 25) * -5"],
+          "position": [-15, -12, 0]
+        },
+        "shield2": {
+          "rotation": ["-45 - math.cos(query.anim_time * 25) * -5", 0, 0],
+          "position": [0, -12, 15]
+        },
+        "shield3": {
+          "rotation": [0, 0, "45 + math.cos(query.anim_time * 25) * 5"],
+          "position": [15, -12, 0]
+        },
+        "pillar": {
+          "rotation": [25, 0, 0],
+          "position": [0, -5, -2]
+        }
+      }
+    },
+    "animation.minere.inferno.stomp": {
+      "loop": true,
+      "bones": {
+        "shield0": {
+          "rotation": [15, 0, 0]
+        },
+        "shield1": {
+          "rotation": [0, 0, -15]
+        },
+        "shield2": {
+          "rotation": [-15, 0, 0]
+        },
+        "shield3": {
+          "rotation": [0, 0, 15]
+        }
+      }
+    },
+    "animation.minere.inferno.melee": {
+      "loop": true,
+      "bones": {
+        "shield0": {
+          "rotation": [-75, 0, 0]
+        },
+        "shield1": {
+          "rotation": [0, 0, 75]
+        },
+        "shield2": {
+          "rotation": [75, 0, 0]
+        },
+        "shield3": {
+          "rotation": [0, 0, -75]
+        },
+        "shields": {
+          "position": [0, -5, 0]
+        }
+      }
+    },
+    "animation.minere.inferno.swing": {
+      "loop": true,
+      "animation_length": 0.25,
+      "sound_effects": {
+        "0": {
+          "effect": "swing"
+        }
+      }
+    },
+    "animation.minere.inferno.counter_rotation": {
+      "loop": true,
+      "override_previous_animation": true,
+      "bones": {
+        "pillar": {
+          "rotation": [
+            0,
+            "q.body_y_rotation - (Math.round(q.body_y_rotation / 90) * 90)",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [0, "-query.body_y_rotation", 0]
+        },
+        "root": {
+          "rotation": [0, "query.body_y_rotation", 0]
+        }
+      }
+    }
+  }
 }

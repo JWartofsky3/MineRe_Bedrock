@@ -21,10 +21,7 @@
         "overlay_color": "#a8a8ff"
       },
       "scripts": {
-        "animate": [
-          "controller",
-          "face_controller"
-        ]
+        "animate": ["controller", "face_controller"]
       },
       "animations": {
         "walk": "animation.minere.yeti.walk",

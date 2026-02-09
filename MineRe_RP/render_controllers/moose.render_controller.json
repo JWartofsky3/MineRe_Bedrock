@@ -4,11 +4,7 @@
     "controller.render.minere.moose": {
       "arrays": {
         "textures": {
-          "Array.skins": [
-            "Texture.brown",
-            "Texture.dark",
-            "Texture.light"
-          ]
+          "Array.skins": ["Texture.brown", "Texture.dark", "Texture.light"]
         }
       },
       "geometry": "Geometry.default",
@@ -18,10 +14,7 @@
     "controller.render.minere.moose.saddle": {
       "arrays": {
         "textures": {
-          "Array.saddle": [
-            "Texture.empty",
-            "Texture.saddle"
-          ]
+          "Array.saddle": ["Texture.empty", "Texture.saddle"]
         }
       },
       "geometry": "Geometry.default",

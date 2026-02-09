@@ -1,0 +1,47 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.emerald_staff.first_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [66, 60, -60],
+          "position": [3, 23, 0]
+        }
+      }
+    },
+    "animation.minere.emerald_staff.third_person_hold": {
+      "loop": true,
+      "bones": {
+        "root_item": {
+          "rotation": [90, 0, 0],
+          "position": [0.5, 20.5, -5.5]
+        }
+      }
+    },
+    "animation.minere.emerald_staff.spin": {
+      "loop": true,
+      "bones": {
+        "rotator": {
+          "rotation": [0, "-math.mod(query.anim_time * 60, 360)", 0]
+        },
+        "spinner0": {
+          "rotation": [0, "1 *math.mod(query.anim_time * 90, 360)", 0],
+          "position": [0, "3 * math.cos(0 + query.anim_time * 45)", 0]
+        },
+        "spinner1": {
+          "rotation": [0, "1 *math.mod(query.anim_time * 90, 360)", 0],
+          "position": [0, "3 * math.cos(90 + query.anim_time * 45)", 0]
+        },
+        "spinner2": {
+          "rotation": [0, "1 *math.mod(query.anim_time * 90, 360)", 0],
+          "position": [0, "3 * math.cos(180 + query.anim_time * 45)", 0]
+        },
+        "spinner3": {
+          "rotation": [0, "1 *math.mod(query.anim_time * 90, 360)", 0],
+          "position": [0, "3 * math.cos(270 + query.anim_time * 45)", 0]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:emerald_staff"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [" EB", " GE", "R  "],
+    "key": {
+      "R": {
+        "item": "minecraft:blaze_rod"
+      },
+      "G": {
+        "item": "minecraft:gold_ingot"
+      },
+      "E": {
+        "item": "minecraft:emerald"
+      },
+      "B": {
+        "item": "minecraft:emerald_block"
+      }
+    },
+    "result": {
+      "item": "minere:emerald_staff"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { EntityComponentTypes, world } from "@minecraft/server";
+import { EntityComponentTypes, world, } from "@minecraft/server";
 import { getMainItem } from "item/item_utils";
 import { isFamily } from "mob/mob_utils";
 import { GOLD_XP_BONUS } from "settings";
@@ -27,45 +27,40 @@ xpMultiplierMap.set("minecraft:ghast", 2.5);
 xpMultiplierMap.set("minere:cosmic_jelly", 2.5);
 const MAX_BONUS = 100;
 export function giveExtraXP(source, entity) {
-  if (!source || !source?.isValid || !entity || !entity?.isValid) {
-    return;
-  }
-  if (source?.typeId !== "minecraft:player") {
-    return;
-  }
-  if (!world?.getDynamicProperty(GOLD_XP_BONUS)?.valueOf()) {
-    return;
-  }
-  const tool = getMainItem(source, { requireDurability: true });
-  if (!tool) {
-    return;
-  }
-  if (!isFamily(entity, "monster")) {
-    return;
-  }
-  const health = entity.getComponent(EntityComponentTypes.Health);
-  if (!health) {
-    return;
-  }
-  const itemXPFactor = itemXPMap.get(tool.typeId);
-  if (!itemXPFactor) {
-    return;
-  }
-  const dimension = entity.dimension;
-  const location = entity.location;
-  const xpMultiplier = xpMultiplierMap.get(entity.typeId) ?? 1.0;
-  const xp = Math.min(
-    MAX_BONUS,
-    Math.floor(health.effectiveMax * itemXPFactor * xpMultiplier),
-  );
-  for (let i = 0; i < xp; i++) {
-    const orb = dimension.spawnEntity("minecraft:xp_orb", location);
-    orb.applyImpulse(
-      addVector3(randomVector3(XP_VELOCITY), {
-        x: 0,
-        y: XP_VERTICAL_VELOCITY,
-        z: 0,
-      }),
-    );
-  }
+    if (!source || !source?.isValid || !entity || !entity?.isValid) {
+        return;
+    }
+    if (source?.typeId !== "minecraft:player") {
+        return;
+    }
+    if (!world?.getDynamicProperty(GOLD_XP_BONUS)?.valueOf()) {
+        return;
+    }
+    const tool = getMainItem(source, { requireDurability: true });
+    if (!tool) {
+        return;
+    }
+    if (!isFamily(entity, "monster")) {
+        return;
+    }
+    const health = entity.getComponent(EntityComponentTypes.Health);
+    if (!health) {
+        return;
+    }
+    const itemXPFactor = itemXPMap.get(tool.typeId);
+    if (!itemXPFactor) {
+        return;
+    }
+    const dimension = entity.dimension;
+    const location = entity.location;
+    const xpMultiplier = xpMultiplierMap.get(entity.typeId) ?? 1.0;
+    const xp = Math.min(MAX_BONUS, Math.floor(health.effectiveMax * itemXPFactor * xpMultiplier));
+    for (let i = 0; i < xp; i++) {
+        const orb = dimension.spawnEntity("minecraft:xp_orb", location);
+        orb.applyImpulse(addVector3(randomVector3(XP_VELOCITY), {
+            x: 0,
+            y: XP_VERTICAL_VELOCITY,
+            z: 0,
+        }));
+    }
 }

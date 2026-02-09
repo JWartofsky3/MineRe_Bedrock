@@ -7,23 +7,33 @@
         "default": "entity_emissive_alpha"
       },
       "textures": {
-        "default": "textures/entity/minere/inferno/inferno"
+        "default": "textures/entity/minere/inferno/inferno",
+        "weak": "textures/entity/minere/inferno/weak"
       },
       "geometry": {
         "default": "geometry.minere.inferno"
       },
       "animations": {
         "breathe": "animation.minere.inferno.breathe",
-        "rotate": "animation.minere.inferno.rotate",
+        "spin": "animation.minere.inferno.spin",
+        "bounce": "animation.minere.inferno.bounce",
         "angle": "animation.minere.inferno.angle",
         "guard": "animation.minere.inferno.guard",
+        "melee": "animation.minere.inferno.melee",
         "summon": "animation.minere.inferno.summon",
         "push": "animation.minere.inferno.push",
-        "look_at": "animation.minere.inferno.look_at",
-        "counter_rotation": "animation.minere.inferno.counter_rotation",
-        "flame_controller": "controller.animation.blaze.flame"
+        "look": "animation.minere.inferno.look_at",
+        "weak": "animation.minere.inferno.weak",
+        "stomp": "animation.minere.inferno.stomp",
+        "swing": "animation.minere.inferno.swing",
+        "flame_controller": "controller.animation.blaze.flame",
+        "phase_controller": "controller.animation.minere.inferno_phase",
+        "action_controller": "controller.animation.minere.inferno_action",
+        "look_controller": "controller.animation.minere.inferno_look",
+        "spin_controller": "controller.animation.minere.inferno_spin",
+        "counter_rotate": "controller.animation.minere.counter_rotation"
       },
-      "render_controllers": ["controller.render.minere.demon"],
+      "render_controllers": ["controller.render.minere.inferno"],
       "spawn_egg": {
         "base_color": "#4f1515",
         "overlay_color": "#af0000"
@@ -33,11 +43,18 @@
         "charged_flames": "minecraft:mobflame_emitter"
       },
       "sound_effects": {
-        "magic": "mob.demon.magic"
+        "swing": "boss.inferno.swing"
       },
       "scripts": {
-                "scale": "1.2",
-        "animate": ["counter_rotation", "breathe", "rotate", "angle", "look_at", "flame_controller"]
+        "scale": "1.2",
+        "animate": [
+          "breathe",
+          "flame_controller",
+          "phase_controller",
+          "action_controller",
+          "look_controller",
+          "spin_controller"
+        ]
       }
     }
   }

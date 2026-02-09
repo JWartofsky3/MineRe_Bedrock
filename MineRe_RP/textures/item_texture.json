@@ -33,6 +33,9 @@
     "minere.amethyst_staff": {
       "textures": "textures/items/minere/amethyst_staff.png"
     },
+    "minere.emerald_staff": {
+      "textures": "textures/items/minere/emerald_staff.png"
+    },
     "minere.fire_staff": {
       "textures": "textures/items/minere/fire_staff.png"
     },

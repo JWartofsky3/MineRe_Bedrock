@@ -19,14 +19,15 @@ import {
   distVector3,
   multiplyVector3Number,
 } from "util/vector3Functions";
+import { isAlive } from "mob/mob_utils";
 
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
 const SHADOW_TIME = 8 * 20;
 const SHADOW_XP_COST = 10; // xp
 const SHADOW_DURABILITY_COST = 5;
 const SHADOW_RANGE = 8;
-const SONIC_RANGE = 24;
-const SONIC_DAMAGE = 26;
+const SONIC_RANGE = 32;
+const SONIC_DAMAGE = 32;
 const SONIC_SPLASH_RANGE = 5;
 const SONIC_SPLASH_DAMAGE = 16;
 const SONIC_XP_COST = 10; // xp
@@ -143,6 +144,8 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           // get direct hits
           const raycastHits = source.getEntitiesFromViewDirection({
             maxDistance: SONIC_RANGE,
+            includeLiquidBlocks: false,
+            includePassableBlocks: false,
           });
           raycastHits.forEach((raycastHit: EntityRaycastHit) => {
             const entity = raycastHit.entity;
@@ -153,9 +156,12 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
               );
             }
           });
+
           // get splash hits
           let targetLocation = source.getBlockFromViewDirection({
             maxDistance: SONIC_RANGE,
+            includeLiquidBlocks: false,
+            includePassableBlocks: false,
           })?.block?.location;
           if (!targetLocation) {
             targetLocation = addVector3(
@@ -168,7 +174,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
               location: targetLocation,
               maxDistance: SONIC_SPLASH_RANGE,
             })
-            .filter((entity: Entity) => entity !== source);
+            .filter((entity: Entity) => entity !== source && isAlive(entity));
           splashEntities.forEach((entity: Entity) => {
             if (entity?.location) {
               dimension.spawnParticle(
@@ -196,16 +202,32 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
             );
             raycastHits.forEach((raycastHit: EntityRaycastHit) => {
               const entity = raycastHit.entity;
-              if (entity?.location) {
-                entity.applyDamage(SONIC_DAMAGE, {
-                  damagingEntity: source,
-                  damagingProjectile: source,
-                  cause:
-                    entity.typeId === "minecraft:player"
-                      ? EntityDamageCause.entityAttack
-                      : EntityDamageCause.sonicBoom,
-                });
+              if (!isAlive(entity)) {
+                return;
               }
+              // Calculate distance to target
+              const distance = distVector3(source.location, entity.location);
+
+              // Calculate damage multiplier
+              let damageMultiplier = 1;
+              if (distance > SONIC_RANGE / 2) {
+                const excess = distance - SONIC_RANGE / 2;
+                const falloffRange = SONIC_RANGE / 2;
+                damageMultiplier = 1 - (excess / falloffRange) * 0.5;
+                if (damageMultiplier < 0.5) {
+                  damageMultiplier = 0.5; // clamp
+                }
+              }
+
+              // Apply scaled damage
+              entity.applyDamage(SONIC_DAMAGE * damageMultiplier, {
+                damagingEntity: source,
+                damagingProjectile: source,
+                cause:
+                  entity.typeId === "minecraft:player"
+                    ? EntityDamageCause.entityAttack
+                    : EntityDamageCause.sonicBoom,
+              });
             });
             splashEntities.forEach((entity: Entity) => {
               if (entity?.location) {

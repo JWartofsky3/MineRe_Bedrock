@@ -61,6 +61,8 @@ import { matchParent } from "mob/matchParent";
 // ───────────────────────── Imports: World / Weather ─────────────────────────
 import { runEndStorms } from "weather/end_storm";
 import { isAlive, isFamily } from "mob/mob_utils";
+import { infernoOnHurtEntity, startInfernoRunners } from "boss/inferno";
+import { useEmeraldStaff } from "item/emerald_staff";
 
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
@@ -90,6 +92,7 @@ world.beforeEvents.itemUse.subscribe((data) => {
   useEchoStaff(data);
   useFireStaff(data);
   useBlasterStaff(data);
+  useEmeraldStaff(data);
 });
 
 // ───────────────────────── Player Events ─────────────────────────
@@ -117,6 +120,8 @@ world.afterEvents.entitySpawn.subscribe((data) => {
   const entity = data.entity;
   if (!entity?.isValid) return;
 
+  startInfernoRunners(entity);
+
   const dimension = entity.dimension;
   runEarthquake(entity);
 
@@ -143,6 +148,7 @@ world.afterEvents.entitySpawn.subscribe((data) => {
 
 world.afterEvents.entityLoad.subscribe((data) => {
   replacePlaceholder(data.entity, false);
+  startInfernoRunners(data.entity);
 });
 
 world.afterEvents.entityDie.subscribe((data) => {
@@ -161,6 +167,8 @@ world.afterEvents.entityHurt.subscribe((data) => {
   if (!isAlive(target)) {
     return;
   }
+
+  infernoOnHurtEntity(data);
 
   const attacker = source.damagingEntity;
   const projectile = source.damagingProjectile;

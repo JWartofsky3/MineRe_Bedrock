@@ -1,0 +1,63 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.emerald_staff",
+        "texture_width": 32,
+        "texture_height": 32,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 3,
+        "visible_bounds_offset": [0, 0.5, 0]
+      },
+      "bones": [
+        {
+          "name": "root_item",
+          "pivot": [0, 2, 0],
+          "binding": "q.item_slot_to_bone_name(c.item_slot)",
+          "cubes": [
+            { "origin": [-0.5, -12, -0.5], "size": [1, 22, 1], "uv": [0, 0] },
+            { "origin": [-1, 8, -1], "size": [2, 5, 2], "uv": [4, 0] }
+          ]
+        },
+        {
+          "name": "rotator",
+          "parent": "root_item",
+          "pivot": [0, 7, 0]
+        },
+        {
+          "name": "spinner0",
+          "parent": "rotator",
+          "pivot": [2, 6, -2],
+          "cubes": [
+            { "origin": [1.5, 6, -2.5], "size": [1, 2, 1], "uv": [4, 7] }
+          ]
+        },
+        {
+          "name": "spinner1",
+          "parent": "rotator",
+          "pivot": [-2, 6, -2],
+          "cubes": [
+            { "origin": [-2.5, 6, -2.5], "size": [1, 2, 1], "uv": [8, 7] }
+          ]
+        },
+        {
+          "name": "spinner2",
+          "parent": "rotator",
+          "pivot": [-2, 6, 2],
+          "cubes": [
+            { "origin": [-2.5, 6, 1.5], "size": [1, 2, 1], "uv": [4, 10] }
+          ]
+        },
+        {
+          "name": "spinner3",
+          "parent": "rotator",
+          "pivot": [2, 6, 2],
+          "cubes": [
+            { "origin": [1.5, 6, 1.5], "size": [1, 2, 1], "uv": [8, 10] }
+          ]
+        }
+      ]
+    }
+  ]
+}

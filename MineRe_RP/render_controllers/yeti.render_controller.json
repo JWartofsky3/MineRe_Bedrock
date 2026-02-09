@@ -4,7 +4,12 @@
     "controller.render.minere.yeti": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.cold", "Texture.brown", "Texture.light_gray", "Texture.teal"]
+          "Array.skins": [
+            "Texture.cold",
+            "Texture.brown",
+            "Texture.light_gray",
+            "Texture.teal"
+          ]
         }
       },
       "geometry": "Geometry.default",
