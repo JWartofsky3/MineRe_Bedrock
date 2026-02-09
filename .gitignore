@@ -1,4 +1,5 @@
 node_modules
 MineRe_BP/node_modules
 MineRe_RP/node_modules
+MineRe_BP/scripts
 *.mcaddon
