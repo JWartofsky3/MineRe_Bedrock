@@ -9,6 +9,7 @@
       "is_experimental": false
     },
     "components": {
+      "minecraft:fire_immune": {},
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {

@@ -1,14 +1,13 @@
 import { ItemComponentTypes, EntityComponentTypes, system, } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
 import { multiplyVector3Number, rotateVectorY } from "util/vector3Functions";
-import { throwBy } from "mob/throwBy";
 const DURABILITY_COST = 2;
 export const Windforce = {
     onHitEntity(arg) {
         if (!arg.hadEffect) {
             return;
         }
-        throwBy(arg.attackingEntity, arg.hitEntity, 1.5, 0.75);
+        throw (arg.attackingEntity.location, arg.hitEntity, 1.5, 0.75);
     },
     onUse(arg) {
         const cooldownComponent = arg.itemStack?.getComponent(ItemComponentTypes.Cooldown);

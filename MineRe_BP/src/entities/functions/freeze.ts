@@ -5,7 +5,7 @@ import {
   EntityEquippableComponent,
   EquipmentSlot,
 } from "@minecraft/server";
-import { isAlive } from "./mob_utils";
+import { isAlive } from "../../mob/mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
 
 const MAX_SLOWNESS = 4;

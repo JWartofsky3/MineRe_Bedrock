@@ -1,5 +1,5 @@
 import { EntityComponentTypes, EquipmentSlot, GameMode, ItemComponentTypes, } from "@minecraft/server";
-import { enderTeleport } from "mob/enderTeleport";
+import { enderTeleport } from "entities/functions/enderTeleport";
 import { addVector3, multiplyVector3Number } from "util/vector3Functions";
 const ENDERON = "enderon";
 const MULTIPLIER = 1.5;

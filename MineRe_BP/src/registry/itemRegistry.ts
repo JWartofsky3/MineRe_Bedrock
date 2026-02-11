@@ -1,11 +1,8 @@
 import { StartupEvent } from "@minecraft/server";
 import { PhasedEnderPearl } from "item/phased_ender_pearl";
 import { EnderStrike } from "item/ender_strike";
-import { fireflyLamp } from "block/firefly_lamp";
 import { IceDagger } from "item/ice_dagger";
 import { VenomShank } from "item/venom_shank";
-import { customOre } from "block/custom_ore";
-import { teleporter } from "block/teleporter";
 import { Treecapitator } from "item/treecapitator";
 import {
   CustomAxe,
@@ -17,7 +14,6 @@ import {
 import { RoyalJelly } from "item/royal_jelly";
 import { Illumina } from "item/illumina";
 import { PlatformPath } from "item/platform_path";
-import { ghostPot } from "block/ghost_pot";
 import { Windforce } from "item/windforce";
 import { Firebrand } from "item/firebrand";
 import { Darkheart } from "item/darkheart";
@@ -27,7 +23,6 @@ import { Helper0 } from "item/helpers/helper0";
 import { Helper1 } from "item/helpers/helper1";
 import { Helper2 } from "item/helpers/helper2";
 import { Ghostwalker } from "item/ghostwalker";
-import { despawnBlock } from "block/despawnBlock";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -109,27 +104,4 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent("minere:helper0", Helper0);
   data.itemComponentRegistry.registerCustomComponent("minere:helper1", Helper1);
   data.itemComponentRegistry.registerCustomComponent("minere:helper2", Helper2);
-}
-
-export function registerBlocks(data: StartupEvent) {
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:firefly_lamp",
-    fireflyLamp,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:despawn_block",
-    despawnBlock,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:custom_ore",
-    customOre,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:teleporter",
-    teleporter,
-  );
-  data.blockComponentRegistry.registerCustomComponent(
-    "minere:ghost_pot",
-    ghostPot,
-  );
 }

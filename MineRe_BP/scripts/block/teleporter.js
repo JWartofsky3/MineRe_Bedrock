@@ -1,5 +1,5 @@
 import { EntityComponentTypes, BlockPermutation, EquipmentSlot, } from "@minecraft/server";
-import { enderTeleport } from "mob/enderTeleport";
+import { enderTeleport } from "entities/functions/enderTeleport";
 import { spawnParticleCloud } from "particles/particleCloud";
 import { addVector3 } from "util/vector3Functions";
 const TELEPORT_RANGE = 3.15;

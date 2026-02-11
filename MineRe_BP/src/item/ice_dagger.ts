@@ -1,6 +1,6 @@
 import { ItemCustomComponent, Player } from "@minecraft/server";
 import { checkCooldown } from "./item_utils";
-import { freezeEntity } from "mob/freeze";
+import { freezeEntity } from "entities/functions/freeze";
 import { isAlive } from "mob/mob_utils";
 
 export const IceDagger: ItemCustomComponent = {

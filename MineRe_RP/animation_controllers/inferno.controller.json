@@ -10,7 +10,7 @@
             { "melee": "query.property('minere:phase') == 1" },
             { "no_angle": "query.property('minere:phase') == 2" },
             { "stomp": "query.property('minere:phase') == 3" },
-            { "no_angle": "query.property('minere:phase') == 4" },
+            { "guard": "query.property('minere:phase') == 4" },
             { "stunned": "query.property('minere:phase') == 5" }
           ],
           "blend_transition": 0.2
@@ -41,7 +41,7 @@
             { "default": "query.property('minere:phase') == 0" },
             { "no_angle": "query.property('minere:phase') == 2" },
             { "stomp": "query.property('minere:phase') == 3" },
-            { "no_angle": "query.property('minere:phase') == 4" },
+            { "guard": "query.property('minere:phase') == 4" },
             { "stunned": "query.property('minere:phase') == 5" }
           ],
           "blend_transition": 0.2
@@ -52,7 +52,7 @@
             { "default": "query.property('minere:phase') == 0" },
             { "melee": "query.property('minere:phase') == 1" },
             { "no_angle": "query.property('minere:phase') == 2" },
-            { "no_angle": "query.property('minere:phase') == 4" },
+            { "guard": "query.property('minere:phase') == 4" },
             { "stunned": "query.property('minere:phase') == 5" }
           ],
           "blend_transition": 0.2
@@ -64,7 +64,7 @@
             { "melee": "query.property('minere:phase') == 1" },
             { "no_angle": "query.property('minere:phase') == 2" },
             { "stomp": "query.property('minere:phase') == 3" },
-            { "no_angle": "query.property('minere:phase') == 4" }
+            { "guard": "query.property('minere:phase') == 4" }
           ],
           "blend_transition": 0.2
         }

@@ -1,35 +1,50 @@
-import { system, Block, Entity, EntityDamageCause } from "@minecraft/server";
-import { isFamily, isFamilySet } from "./mob_utils";
+import {
+  Block,
+  Entity,
+  EntityDamageCause,
+  EntitySpawnAfterEvent,
+  system,
+} from "@minecraft/server";
+import { BaseCustomEntity } from "entities/BaseCustomEntity";
+import { throwEntity } from "entities/functions/throw";
 import { distVector3 } from "util/vector3Functions";
-import { throwBy } from "./throwBy";
 import { getBlock } from "block/blockUtils";
+import { isFamily, isFamilySet } from "entities/utilities/common";
 
+export class Earthquake extends BaseCustomEntity {
+  constructor() {
+    super("minere:earthquake", 0);
+  }
+
+  onEntitySpawn(data: EntitySpawnAfterEvent): void {
+    runEarthquake(data.entity);
+  }
+}
+
+const EARTHQUAKE_TYPE_ID = "minere:earthquake";
 const RANGE = 1.35;
 const EARTHQUAKE_DAMAGE = 5;
+const REMOVE_DELAY_TICKS = 30;
+const DAMAGE_DELAY_TICKS = 8;
+const SUMMONER_SEARCH_RANGE = 24;
 
-const earthquakeSummoners = new Set<string>();
-earthquakeSummoners.add("ogre");
-earthquakeSummoners.add("yeti");
-
-const earthquakeTargets = new Set<string>();
-earthquakeTargets.add("player");
-earthquakeTargets.add("iron_golem");
-earthquakeTargets.add("irongolem");
-earthquakeTargets.add("coppergolem");
-earthquakeTargets.add("villager");
-earthquakeTargets.add("goblin");
-earthquakeTargets.add("wolf");
-earthquakeTargets.add("demon");
+const earthquakeSummoners = new Set<string>(["ogre", "yeti"]);
+const earthquakeTargets = new Set<string>([
+  "player",
+  "iron_golem",
+  "irongolem",
+  "coppergolem",
+  "villager",
+  "goblin",
+  "wolf",
+  "demon",
+]);
 
 export function runEarthquake(earthquake: Entity) {
-  if (earthquake.typeId !== "minere:earthquake" || !earthquake.isValid) {
+  if (earthquake.typeId !== EARTHQUAKE_TYPE_ID || !earthquake.isValid) {
     return;
   }
   const dimension = earthquake.dimension;
-  // You no longer need to get the component since you're using events.
-  // const markVariant = earthquake.getComponent(
-  //   EntityComponentTypes.MarkVariant,
-  // ) as EntityMarkVariantComponent;
 
   const under: Block = getBlock(dimension, {
     x: earthquake.location.x,
@@ -113,7 +128,7 @@ export function runEarthquake(earthquake: Entity) {
   let damagingEntity = earthquake;
   const summoners = dimension.getEntities({
     location: earthquake.location,
-    maxDistance: 24,
+    maxDistance: SUMMONER_SEARCH_RANGE,
   });
   summoners.forEach((summoner: Entity) => {
     if (isFamilySet(summoner, earthquakeSummoners)) {
@@ -150,12 +165,12 @@ export function runEarthquake(earthquake: Entity) {
         damagingEntity: damagingEntity,
         cause: EntityDamageCause.entityAttack,
       });
-      throwBy(earthquake, target, 1.0, 1.0);
+      throwEntity(earthquake.location, target, 1.0, 1.0);
     }
-  }, 8);
+  }, DAMAGE_DELAY_TICKS);
   system.runTimeout(() => {
     if (earthquake?.isValid) {
       earthquake.remove();
     }
-  }, 30);
+  }, REMOVE_DELAY_TICKS);
 }

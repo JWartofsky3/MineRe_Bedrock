@@ -62,14 +62,15 @@
           },
           {
             "group_identifier": {
-              "icon": "minere:echo_staff",
+              "icon": "minere:emerald_staff",
               "name": "minere:itemGroup.name.magic_staves"
             },
             "items": [
               "minere:amethyst_staff",
               "minere:fire_staff",
               "minere:echo_staff",
-              "minere:blaster_staff"
+              "minere:blaster_staff",
+              "minere:emerald_staff"
             ]
           }
         ]

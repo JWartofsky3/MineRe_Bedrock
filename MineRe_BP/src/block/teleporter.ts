@@ -10,7 +10,7 @@ import {
   EquipmentSlot,
   BlockComponentOnPlaceEvent,
 } from "@minecraft/server";
-import { enderTeleport } from "mob/enderTeleport";
+import { enderTeleport } from "entities/functions/enderTeleport";
 import { spawnParticleCloud } from "particles/particleCloud";
 import { randomVector3, addVector3 } from "util/vector3Functions";
 

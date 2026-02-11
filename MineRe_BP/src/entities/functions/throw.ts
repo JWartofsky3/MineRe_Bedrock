@@ -1,6 +1,6 @@
-import { Entity, Vector3 } from "@minecraft/server";
+import { Vector3, Entity } from "@minecraft/server";
 
-function throwByFromPos(
+export function throwEntity(
   throwerPos: Vector3,
   target: Entity,
   scale: number,
@@ -20,23 +20,4 @@ function throwByFromPos(
   };
 
   target.applyKnockback(horizontalForce, vAddition);
-}
-
-export function throwBy(
-  thrower: Entity,
-  target: Entity,
-  scale: number,
-  vAddition: number,
-) {
-  if (!thrower) return;
-  throwByFromPos(thrower.location, target, scale, vAddition);
-}
-
-export function throwByPos(
-  throwerPos: Vector3,
-  target: Entity,
-  scale: number,
-  vAddition: number,
-) {
-  throwByFromPos(throwerPos, target, scale, vAddition);
 }
