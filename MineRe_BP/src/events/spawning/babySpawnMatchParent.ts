@@ -1,9 +1,11 @@
 import {
+  world,
   Entity,
   EntityComponentTypes,
   EntityIsBabyComponent,
   EntityVariantComponent,
 } from "@minecraft/server";
+import { RegisterableEvent } from "events/CustomEvent";
 
 type BabyEventMap = Map<string, string[]>;
 const babyEvents: BabyEventMap = new Map([
@@ -22,6 +24,8 @@ const babyEvents: BabyEventMap = new Map([
     ["minere:become_brown", "minere:become_dark", "minere:become_light"],
   ],
 ]);
+
+export class BabySpawnMatchParentEvent implements RegisterableEvent {}
 
 export function matchParent(baby: Entity) {
   if (!babyEvents.has(baby.typeId)) {

@@ -26,7 +26,7 @@ const BECOME_BAT_MIN_HEALTH = 0.5;
 
 export class Vampire extends BaseCustomEntity {
   constructor() {
-    super("minere:vampire", 0);
+    super("minere:vampire");
   }
 
   onEntityHurtEntity = (data: EntityHurtAfterEvent): void => {

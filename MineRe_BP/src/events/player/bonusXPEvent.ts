@@ -4,6 +4,7 @@ import {
   EntityHealthComponent,
   world,
 } from "@minecraft/server";
+import { RegisterableEvent } from "events/CustomEvent";
 import { getMainItem } from "item/item_utils";
 import { isFamily } from "mob/mob_utils";
 import { GOLD_XP_BONUS } from "settings";
@@ -38,7 +39,19 @@ xpMultiplierMap.set("minere:cosmic_jelly", 2.5);
 
 const MAX_BONUS = 100;
 
-export function giveExtraXP(source: Entity, entity: Entity) {
+export class BonusXPEvent implements RegisterableEvent {
+  constructor() {
+    world.afterEvents.entityDie.subscribe((data) => {
+      giveExtraXP(data.damageSource?.damagingEntity, data.deadEntity);
+    });
+  }
+
+  register(): void {
+    // Registration is handled in the constructor.
+  }
+}
+
+function giveExtraXP(source: Entity, entity: Entity) {
   if (!source || !source?.isValid || !entity || !entity?.isValid) {
     return;
   }

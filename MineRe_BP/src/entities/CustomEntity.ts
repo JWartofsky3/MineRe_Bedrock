@@ -16,18 +16,30 @@ import {
   PlayerInteractWithEntityAfterEvent,
   EntitySpawnAfterEvent,
   ProjectileHitBlockAfterEvent,
+  EntityQueryOptions,
 } from "@minecraft/server";
 
 export type TickInterval = number | [number, number];
+
+export type CustomEntityProperties = {
+  // If > 0, onTick runs every N ticks.
+  // If tuple, onTick runs every random duration between [min, max].
+  // If 0, onTick is disabled.
+  tick?: TickInterval;
+
+  // Query options for finding targets.
+  targetQuery?: EntityQueryOptions;
+
+  //scan on tick for new targets every N ticks, using targetQuery options. Set to 0 to disable.
+  targetScanInterval?: number;
+};
 
 export interface CustomEntity {
   // The entity typeId this handler targets
   typeId: string;
 
-  // If > 0, onTick runs every N ticks.
-  // If tuple, onTick runs every random duration between [min, max].
-  // If 0, onTick is disabled.
-  tick: TickInterval;
+  // Optional properties for this entity type.
+  properties?: CustomEntityProperties;
 
   // Sets up listeners for this entity. Should be the only call needed in main.ts.
   register(): void;
@@ -90,4 +102,10 @@ export interface CustomEntity {
 
   // Called for data-driven triggers.
   onDataDrivenEntityTrigger?(data: DataDrivenEntityTriggerAfterEvent): void;
+
+  getTarget?(source: Entity): Entity | null;
+
+  setTarget?(source: Entity, target: Entity | null): void;
+
+  findTarget?(source: Entity, queryOptions?: EntityQueryOptions): Entity | null;
 }

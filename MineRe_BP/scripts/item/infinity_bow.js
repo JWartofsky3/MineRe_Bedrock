@@ -1,5 +1,5 @@
 import { ItemComponentTypes, } from "@minecraft/server";
-import { consumeXp } from "player/consumeXp";
+import { consumeXp } from "entities/functions/consumeXp";
 const XP_COST = 2;
 export const fireInfintyBowAfter = (data) => {
     const dimension = data.source.dimension;

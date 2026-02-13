@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:glacier",
+      "materials": {
+        "default": "entity_alphablend",
+        "emissive": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/glacier/glacier",
+        "iceCharges0": "textures/entity/minere/glacier/ice_charges0"
+      },
+      "geometry": {
+        "default": "geometry.minere.glacier",
+        "iceCharges": "geometry.minere.glacier_ice_charges"
+      },
+      "animations": {
+        "iceChargesGone": "animation.minere.glacier.iceChargesGone",
+        "iceChargesSummon": "animation.minere.glacier.iceChargesSummon",
+        "iceChargeSpin": "animation.minere.glacier.iceChargesSpin",
+        "iceChargeShoot": "animation.minere.glacier.iceChargeShoot"
+      },
+      "scripts": {
+        "animate": [
+            "iceChargeSpin"
+        ]
+      },
+      "render_controllers": ["controller.render.minere.glacier", "controller.render.minere.glacier_ice_charges"],
+      "spawn_egg": {
+        "base_color": "#3d2857",
+        "overlay_color": "#cd0000"
+      }
+    }
+  }
+}

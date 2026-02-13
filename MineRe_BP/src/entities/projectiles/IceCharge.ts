@@ -75,9 +75,13 @@ export class IceCharge extends BaseCustomEntity {
     if (!isAlive(target)) {
       return;
     }
-      rollFreeze(target, 0.075);
-      if (isFamily(target, "blaze") || isFamily(target, "inferno")) {
-        target?.applyDamage(data.damage * FIRE_MOB_DAMAGE_MULTIPLIER, data.damageSource);
-      }
+    rollFreeze(target, 0.075);
+    if (isFamily(target, "blaze") || isFamily(target, "inferno")) {
+      target?.applyDamage(data.damage * FIRE_MOB_DAMAGE_MULTIPLIER, {
+        damagingProjectile: data.damageSource.damagingProjectile,
+        damagingEntity: data.damageSource.damagingEntity,
+        cause: EntityDamageCause.freezing,
+      });
+    }
   }
 }

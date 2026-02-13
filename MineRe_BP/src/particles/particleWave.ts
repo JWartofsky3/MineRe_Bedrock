@@ -99,7 +99,11 @@ export function particleWave(options: ParticleWaveOptions) {
     emitParticles(options.dimension, particles, step.location);
 
     if (options.soundEffect) {
-      options.dimension.playSound(options.soundEffect, step.location, options.soundOptions);
+      options.dimension.playSound(
+        options.soundEffect,
+        step.location,
+        options.soundOptions,
+      );
     }
 
     // Spawn additional cloud particles around this step location.

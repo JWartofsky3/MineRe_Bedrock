@@ -1,7 +1,7 @@
 import { system, world, EntityDamageCause, ItemComponentTypes, EntityComponentTypes, EquipmentSlot, } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
 import { DEFAULT_TICK } from "main";
-import { consumeXp } from "player/consumeXp";
+import { consumeXp } from "entities/functions/consumeXp";
 import { addVector3, distVector3, multiplyVector3Number, } from "util/vector3Functions";
 import { isAlive } from "mob/mob_utils";
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";

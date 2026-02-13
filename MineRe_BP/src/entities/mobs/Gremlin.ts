@@ -23,7 +23,7 @@ const torchSet = new Set<string>([
 
 export class Gremlin extends BaseCustomEntity {
   constructor() {
-    super(GREMLIN_TYPE_ID, 0);
+    super(GREMLIN_TYPE_ID);
   }
 
   onDataDrivenEntityTrigger(data: DataDrivenEntityTriggerAfterEvent): void {

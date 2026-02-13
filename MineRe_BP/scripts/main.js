@@ -8,8 +8,6 @@ import { ARMOR_WEIGHT, giveOutSettingsBook, initializeWorldSettings, } from "set
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
-import { armorCurve } from "player/armorCurve";
-import { giveExtraXP } from "player/goldXP";
 // ───────────────────────── Imports: Items ─────────────────────────
 import { useAmethystStaff } from "item/amethyst_staff";
 import { useEchoStaff } from "item/echo_staff";
@@ -22,15 +20,11 @@ import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
 import { blockDropItem } from "block/blockDropItem";
 // ───────────────────────── Imports: Mobs / AI ─────────────────────────
 import { skeletonStrafe } from "mob/skeleton_strafe";
-import { angerEndermen } from "mob/angerEndermen";
-import { horseRemoveChest } from "mob/horseCleanup";
-import { replacePlaceholder } from "mob/replacePlaceholderEntities";
-import { matchParent } from "mob/matchParent";
+import { matchParent } from "events/spawning/babySpawnMatchParent";
 // ───────────────────────── Imports: World / Weather ─────────────────────────
 import { runEndStorms } from "weather/end_storm";
-import { isAlive } from "mob/mob_utils";
 import { useEmeraldStaff } from "item/emerald_staff";
-import { enderRandomTeleport } from "entities/functions/enderTeleport";
+import { RegisterCustomEvents } from "registry/eventRegistry";
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
 // ───────────────────────── Startup ─────────────────────────
@@ -38,6 +32,7 @@ system.beforeEvents.startup.subscribe((data) => {
     registerItems(data);
     registerBlocks(data);
     registerCustomEntities();
+    RegisterCustomEvents();
     initializeWorldSettings();
 });
 giveOutSettingsBook();
@@ -63,9 +58,6 @@ world.afterEvents.playerInteractWithBlock.subscribe((data) => {
     onAxeUse(data.player, data.itemStack, data.block);
 });
 // ───────────────────────── Entity Lifecycle ─────────────────────────
-world.beforeEvents.entityRemove.subscribe((data) => {
-    angerEndermen(data);
-});
 world.afterEvents.entitySpawn.subscribe((data) => {
     const entity = data.entity;
     if (!entity?.isValid)
@@ -73,40 +65,7 @@ world.afterEvents.entitySpawn.subscribe((data) => {
     if (entity.typeId === "minecraft:arrow") {
         skeletonStrafe(entity, 0.5);
     }
-    replacePlaceholder(entity, true);
     matchParent(entity);
-});
-world.afterEvents.entityLoad.subscribe((data) => {
-    replacePlaceholder(data.entity, false);
-});
-world.afterEvents.entityDie.subscribe((data) => {
-    giveExtraXP(data.damageSource?.damagingEntity, data.deadEntity);
-    horseRemoveChest(data);
-});
-// ───────────────────────── Combat / Damage ─────────────────────────
-world.afterEvents.entityHurt.subscribe((data) => {
-    const target = data.hurtEntity;
-    const source = data.damageSource;
-    if (!target?.isValid || !source) {
-        return;
-    }
-    if (!isAlive(target)) {
-        return;
-    }
-    const attacker = source.damagingEntity;
-    const projectile = source.damagingProjectile;
-    if (target.typeId === "minecraft:player") {
-        armorCurve(target, data.damage, source);
-    }
-    if (attacker?.typeId === "minecraft:creaking" && Math.random() < 0.5) {
-        target.addEffect("wither", 80);
-    }
-    if (attacker?.typeId === "minecraft:enderman") {
-        enderRandomTeleport(target, 5, 0.25, 0);
-    }
-    if (attacker?.typeId === "minecraft:ender_dragon" && !projectile) {
-        enderRandomTeleport(target, 7, 0.5, 0);
-    }
 });
 // ───────────────────────── Ticking Systems ─────────────────────────
 system.runInterval(() => {

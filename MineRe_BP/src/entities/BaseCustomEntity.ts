@@ -20,15 +20,20 @@ import {
   PlayerInteractWithEntityBeforeEvent,
   DataDrivenEntityTriggerAfterEvent,
   ProjectileHitBlockAfterEvent,
+  Player,
+  GameMode,
 } from "@minecraft/server";
-import { CustomEntity, TickInterval } from "entities/CustomEntity";
+import { CustomEntity, CustomEntityProperties } from "entities/CustomEntity";
+import { isAlive } from "mob/mob_utils";
+import { distVector3 } from "util/vector3Functions";
+
+const TARGET_PROPERTY = "minere:entity_target";
+const TICK_INDEX_PROPERTY = "minere:tick_index";
 
 export abstract class BaseCustomEntity implements CustomEntity {
-  // Target entity type for this handler.
   typeId: string;
 
-  // Tick interval configuration.
-  tick: TickInterval;
+  properties?: CustomEntityProperties;
 
   // Prevents double registration.
   private registered = false;
@@ -36,12 +41,15 @@ export abstract class BaseCustomEntity implements CustomEntity {
   // Dynamic property key used to store the active tick runner id on the entity.
   private tickRunnerKey: string;
 
-  // In-memory runner ids to support removal events.
-  private tickRunners = new Map<string, number>();
-
-  constructor(typeId: string, tick?: TickInterval) {
-    this.typeId = typeId;
-    this.tick = tick;
+  constructor(typeId: string, properties?: CustomEntityProperties) {
+    this.properties = {
+      tick: properties?.tick ?? 0,
+      targetQuery: properties?.targetQuery ?? {
+        maxDistance: 32,
+        excludeGameModes: [GameMode.Creative, GameMode.Spectator],
+      },
+      targetScanInterval: properties?.targetScanInterval ?? 0,
+    };
     this.tickRunnerKey = `minere:tick_runner:${typeId}`;
   }
 
@@ -53,13 +61,19 @@ export abstract class BaseCustomEntity implements CustomEntity {
 
     // Forward hurt events for this entity type.
     world.afterEvents.entityHurt.subscribe((data: EntityHurtAfterEvent) => {
+      const attacker = data.damageSource?.damagingEntity;
       const hurt = data.hurtEntity;
       if (hurt?.typeId === this.typeId) {
         this.onEntityHurt?.(data);
+        if (isAlive(attacker)) {
+          this.setTarget(hurt, attacker);
+        }
       }
 
-      const attacker = data.damageSource?.damagingEntity;
-      if (attacker?.typeId === this.typeId || data?.damageSource?.damagingProjectile?.typeId === this.typeId) {
+      if (
+        attacker?.typeId === this.typeId ||
+        data?.damageSource?.damagingProjectile?.typeId === this.typeId
+      ) {
         this.onEntityHurtEntity?.(data);
       }
     });
@@ -117,7 +131,6 @@ export abstract class BaseCustomEntity implements CustomEntity {
     world.afterEvents.entityRemove.subscribe((data: EntityRemoveAfterEvent) => {
       if (data.typeId === this.typeId) {
         this.onEntityRemove?.(data);
-        this.stopTickingById(data.removedEntityId);
       }
     });
 
@@ -210,17 +223,109 @@ export abstract class BaseCustomEntity implements CustomEntity {
   onEntityRemove?(data: EntityRemoveAfterEvent): void;
   onDataDrivenEntityTrigger?(data: DataDrivenEntityTriggerAfterEvent): void;
 
+  getTarget(source: Entity): Entity | null {
+    if (!isAlive(source)) {
+      return null;
+    }
+    const targetQuery = this.properties?.targetQuery;
+    const targetId = source.getDynamicProperty(TARGET_PROPERTY) as string;
+    if (!targetId) {
+      return null;
+    }
+    const existing = world.getEntity(targetId);
+    if (!isAlive(existing)) {
+      return null;
+    }
+    if (existing.dimension !== source.dimension) {
+      return null;
+    }
+    if (
+      distVector3(existing.location, source.location) > targetQuery?.maxDistance
+    ) {
+      return null;
+    }
+    if (existing instanceof Player) {
+      if (targetQuery.excludeGameModes?.includes(existing.getGameMode())) {
+        return null;
+      }
+    }
+    return existing;
+  }
+
+  setTarget(source: Entity, target: Entity | null): void {
+    if (!isAlive(target)) {
+      return;
+    }
+    source.setDynamicProperty(TARGET_PROPERTY, target.id);
+  }
+
+  findTarget(source: Entity): Entity | null {
+    const targetQuery = this.properties?.targetQuery;
+    if (!isAlive(source)) {
+      return null;
+    }
+
+    const dimension = source.dimension;
+    let target = this.getTarget(source);
+    if (target !== null) {
+      return target;
+    }
+
+    const entities = dimension.getEntities({
+      location: source.location,
+      ...targetQuery,
+    });
+
+    let bestDist = Number.POSITIVE_INFINITY;
+
+    for (let i = 0; i < entities.length; i++) {
+      const entity = entities[i];
+      if (!isAlive(entity)) {
+        continue;
+      }
+      const dist = distVector3(entity.location, source.location);
+      if (dist < bestDist) {
+        bestDist = dist;
+        target = entity;
+      }
+    }
+
+    if (target) {
+      source.setDynamicProperty(TARGET_PROPERTY, target.id);
+    }
+
+    return target;
+  }
+
   private startTicking(entity: Entity): void {
-    if (!this.tick || !this.onTick) {
+    const tick = this.properties?.tick;
+    if (tick || !this.onTick) {
       return;
     }
     if (!entity?.isValid) {
       return;
     }
-    this.clearExistingRunner(entity);
+    this.clearRunner(entity);
 
-    if (typeof this.tick === "number") {
-      const delay = Math.floor(this.tick);
+    const targetScanInterval = this.properties?.targetScanInterval;
+    if (targetScanInterval > 0) {
+      if (targetScanInterval === 1) {
+        this.findTarget(entity);
+      } else {
+        const currentTick = entity.getDynamicProperty(
+          TICK_INDEX_PROPERTY,
+        ) as number;
+        let targetTick = (currentTick ?? 0) + 1;
+        if (targetTick === this.properties.targetScanInterval) {
+          this.findTarget(entity);
+          targetTick = 0;
+        }
+        entity.setDynamicProperty(TICK_INDEX_PROPERTY, targetTick);
+      }
+    }
+
+    if (typeof tick === "number") {
+      const delay = Math.floor(tick);
       if (delay <= 0) {
         return;
       }
@@ -260,30 +365,8 @@ export abstract class BaseCustomEntity implements CustomEntity {
     this.clearRunner(entity);
   }
 
-  private clearExistingRunner(entity: Entity): void {
-    const existing = entity.getDynamicProperty(this.tickRunnerKey);
-    if (typeof existing === "number") {
-      system.clearRun(existing);
-    }
-    const cached = this.tickRunners.get(entity.id);
-    if (typeof cached === "number") {
-      system.clearRun(cached);
-    }
-    this.tickRunners.delete(entity.id);
-    entity.setDynamicProperty(this.tickRunnerKey, undefined);
-  }
-
-  private stopTickingById(entityId: string): void {
-    const runner = this.tickRunners.get(entityId);
-    if (typeof runner === "number") {
-      system.clearRun(runner);
-    }
-    this.tickRunners.delete(entityId);
-  }
-
   private setRunner(entity: Entity, runner: number): void {
     entity.setDynamicProperty(this.tickRunnerKey, runner);
-    this.tickRunners.set(entity.id, runner);
   }
 
   private clearRunner(entity: Entity): void {
@@ -295,12 +378,11 @@ export abstract class BaseCustomEntity implements CustomEntity {
       system.clearRun(runner);
     }
     entity.setDynamicProperty(this.tickRunnerKey, undefined);
-    this.tickRunners.delete(entity.id);
   }
 
   private getNextTickDelay(): number {
-    const min = Math.min(this.tick[0], this.tick[1]);
-    const max = Math.max(this.tick[0], this.tick[1]);
+    const min = Math.min(this.properties[0], this.properties[1]);
+    const max = Math.max(this.properties.tick[0], this.properties.tick[1]);
     if (max <= 0) {
       return 0;
     }

@@ -39,8 +39,8 @@ export function applyToolDamageBonus(
  * Calculates the damage multiplier based on max health.
  */
 function bombDamageMultiplier(maxHealth: number): number {
-  const multiplier = maxHealth / 180 + 17 / 9;
-  return Math.max(1.5, Math.min(4, multiplier));
+  const multiplier = maxHealth / 100 + 1.0;
+  return Math.max(1.5, Math.min(3, multiplier));
 }
 
 /**

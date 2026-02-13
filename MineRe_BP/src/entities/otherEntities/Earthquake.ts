@@ -13,7 +13,7 @@ import { isFamily, isFamilySet } from "entities/utilities/common";
 
 export class Earthquake extends BaseCustomEntity {
   constructor() {
-    super("minere:earthquake", 0);
+    super("minere:earthquake");
   }
 
   onEntitySpawn(data: EntitySpawnAfterEvent): void {

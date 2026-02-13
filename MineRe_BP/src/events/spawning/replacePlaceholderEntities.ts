@@ -10,9 +10,10 @@ import {
   shipwreckBlocks,
 } from "block/blockUtils";
 import { distVector3 } from "util/vector3Functions";
-import { isUnderground } from "./mob_utils";
+import { isUnderground } from "../../mob/mob_utils";
 import { isDay } from "weather/world_utils";
 import { REDUCE_DAYLIGHT_DROWNED } from "settings";
+import { RegisterableEvent } from "events/CustomEvent";
 
 type SpawnRule = {
   typeId: string;
@@ -137,9 +138,24 @@ placeholderMap.set("minere:skeleton_horse_placeholder", {
   typeId: "minecraft:skeleton_horse",
 });
 
+export class ReplacePlaceholderEntitiesEvent implements RegisterableEvent {
+  constructor() {
+    world.afterEvents.entitySpawn.subscribe((data) =>
+      replacePlaceholder(data.entity, true),
+    );
+    world.afterEvents.entityLoad.subscribe((data) =>
+      replacePlaceholder(data.entity, false),
+    );
+  }
+
+  register(): void {
+    // Registration is handled in the constructor.
+  }
+}
+
 // ---------------- SPAWN RULES ---------------------
 
-export function replacePlaceholder(entity: Entity, isSpawn: boolean) {
+function replacePlaceholder(entity: Entity, isSpawn: boolean) {
   if (!entity || !entity.isValid) {
     return;
   }

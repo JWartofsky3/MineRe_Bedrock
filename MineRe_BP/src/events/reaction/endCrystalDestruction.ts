@@ -12,6 +12,18 @@ const LIGHTNING_OFFSET = 5;
 const LIGHTNING_BASE_DELAY = 5;
 const LIGHTNING_DELAY = 30;
 
+export class EndCrystalDestructionEvent {
+  constructor() {
+    world.beforeEvents.entityRemove.subscribe((data) =>
+      afterEndCrystalDestruction(data),
+    );
+  }
+
+  register(): void {
+    // Registration is handled in the constructor.
+  }
+}
+
 function spawnLightning(dimension: Dimension, pos: VectorXZ, delay: number) {
   system.runTimeout(
     () => {
@@ -25,7 +37,7 @@ function spawnLightning(dimension: Dimension, pos: VectorXZ, delay: number) {
   );
 }
 
-export const angerEndermen = (data: EntityRemoveBeforeEvent) => {
+function afterEndCrystalDestruction(data: EntityRemoveBeforeEvent) {
   const target = data.removedEntity;
   if (!target || target.typeId !== "minecraft:ender_crystal") {
     return;
@@ -98,4 +110,4 @@ export const angerEndermen = (data: EntityRemoveBeforeEvent) => {
       );
     }
   });
-};
+}

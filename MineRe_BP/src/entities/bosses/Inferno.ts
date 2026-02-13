@@ -7,7 +7,6 @@ import {
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { getHealth } from "entities/utilities/common";
-import { getTarget, setTarget } from "entities/utilities/target";
 import {
   addVector3,
   directionVector3,
@@ -106,9 +105,47 @@ const PHASE_CYCLE_LIMITS: Record<InfernoMode, number> = {
   [InfernoMode.Stunned]: 8,
 };
 
+const MODE_WEIGHTS: Record<InfernoMode, number>[] = [
+  {
+    [InfernoMode.Ranged]: 3,
+    [InfernoMode.Melee]: 5,
+    [InfernoMode.Push]: 2,
+    [InfernoMode.Stomp]: 3,
+    [InfernoMode.Guard]: 0,
+    [InfernoMode.Stunned]: 0,
+  },
+  {
+    [InfernoMode.Ranged]: 6,
+    [InfernoMode.Melee]: 5,
+    [InfernoMode.Push]: 0,
+    [InfernoMode.Stomp]: 1,
+    [InfernoMode.Guard]: 2,
+    [InfernoMode.Stunned]: 0,
+  },
+  {
+    [InfernoMode.Ranged]: 6,
+    [InfernoMode.Melee]: 2,
+    [InfernoMode.Push]: 0,
+    [InfernoMode.Stomp]: 0,
+    [InfernoMode.Guard]: 2,
+    [InfernoMode.Stunned]: 0,
+  },
+  {
+    [InfernoMode.Ranged]: 4,
+    [InfernoMode.Melee]: 0,
+    [InfernoMode.Push]: 0,
+    [InfernoMode.Stomp]: 0,
+    [InfernoMode.Guard]: 1,
+    [InfernoMode.Stunned]: 0,
+  },
+];
+
 export class Inferno extends BaseCustomEntity {
   constructor() {
-    super(INFERNO_TYPE_ID, TICK_INTERVAL);
+    super(INFERNO_TYPE_ID, {
+      tick: TICK_INTERVAL,
+      targetQuery: { families: TARGET_FAMILIES, maxDistance: 48 },
+    });
   }
 
   // Initialize state on spawn.
@@ -143,11 +180,7 @@ export class Inferno extends BaseCustomEntity {
     if (!boss?.isValid) {
       return;
     }
-
     const attacker = data.damageSource?.damagingEntity;
-    if (attacker?.isValid) {
-      setTarget(boss, attacker);
-    }
 
     const mode = this.getMode(boss);
     if (mode === InfernoMode.Stunned) {
@@ -164,7 +197,9 @@ export class Inferno extends BaseCustomEntity {
     const projectileId = projectile?.typeId;
     if (
       (projectileId === "minere:ice_charge" && Math.random() < 0.33) ||
-      projectileId === "minere:blue_fireball" || projectileId === "minere:ice_bomb" || attacker?.typeId === "minere:ice_bomb"
+      projectileId === "minere:blue_fireball" ||
+      projectileId === "minere:ice_bomb" ||
+      attacker?.typeId === "minere:ice_bomb"
     ) {
       this.enterStunned(boss);
       return;
@@ -206,10 +241,7 @@ export class Inferno extends BaseCustomEntity {
 
     this.incrementCycleCounter(boss);
 
-    const target = getTarget(boss, undefined, TARGET_FAMILIES, 48);
-    if (target?.isValid) {
-      setTarget(boss, target);
-    }
+    const target = this.getTarget(boss);
 
     const mode = this.getMode(boss);
     if (mode === InfernoMode.Stunned) {
@@ -400,35 +432,13 @@ export class Inferno extends BaseCustomEntity {
     distance: number,
     currentMode: InfernoMode,
   ): Record<InfernoMode, number> {
-    const rangedWeight = distance > COMBAT_PROPERTIES.MELEE_RANGE ? 6 : 3;
-    const meleeWeight = distance <= COMBAT_PROPERTIES.MELEE_RANGE ? 5 : 2;
-    const guardWeight =
-      distance > COMBAT_PROPERTIES.PUSH_RANGE &&
-      distance < COMBAT_PROPERTIES.GUARD_RANGE
-        ? 2
-        : 0;
-    const pushWeight = distance <= COMBAT_PROPERTIES.PUSH_RANGE ? 2 : 0;
-    const stompWeight = distance <= COMBAT_PROPERTIES.MELEE_RANGE ? 2 : 0;
-
-    const map = new Map<InfernoMode, number>([
-      [InfernoMode.Ranged, rangedWeight],
-      [InfernoMode.Melee, meleeWeight],
-      [InfernoMode.Push, pushWeight],
-      [InfernoMode.Stomp, stompWeight],
-      [InfernoMode.Guard, guardWeight],
-    ]);
+    const weights =
+      MODE_WEIGHTS[Math.min(Math.floor(distance / 8), MODE_WEIGHTS.length - 1)];
 
     // reduce weight for current mode to make it less likely to be picked again
-    map[currentMode] = map[currentMode] * 0.5;
+    weights[currentMode] = weights[currentMode] * 0.5;
 
-    return {
-      [InfernoMode.Ranged]: rangedWeight,
-      [InfernoMode.Melee]: meleeWeight,
-      [InfernoMode.Push]: pushWeight,
-      [InfernoMode.Stomp]: stompWeight,
-      [InfernoMode.Guard]: guardWeight,
-      [InfernoMode.Stunned]: 0,
-    };
+    return weights;
   }
 
   // Pick a mode from the provided weights.
@@ -459,7 +469,12 @@ export class Inferno extends BaseCustomEntity {
       return;
     }
     const dir = directionVector3(target.location, entity.location);
-    const yDir = entity.location.y > target.location.y + 2 ? -0.1 : entity.location.y < target.location.y + 1 ? 0.1 : 0;
+    const yDir =
+      entity.location.y > target.location.y + 2
+        ? -0.1
+        : entity.location.y < target.location.y + 1
+          ? 0.1
+          : 0;
     const strafeDir = Math.random() < 0.5 ? 1 : -1;
     const strafe = { x: -dir.z * strafeDir, y: 0, z: dir.x * strafeDir };
     let ticks = 0;

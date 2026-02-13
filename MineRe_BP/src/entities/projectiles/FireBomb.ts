@@ -8,7 +8,7 @@ const FUSE_SOUND_ID = "random.fuse";
 
 export class FireBomb extends BaseCustomEntity {
   constructor() {
-    super(FIRE_BOMB_TYPE_ID, 0);
+    super(FIRE_BOMB_TYPE_ID);
   }
 
   onEntitySpawn = (data: EntitySpawnAfterEvent): void => {
@@ -25,5 +25,6 @@ export class FireBomb extends BaseCustomEntity {
       return;
     }
     applyBombDamageBonus(target, data.damage, data.damageSource);
+    target.setOnFire(5);
   };
 }

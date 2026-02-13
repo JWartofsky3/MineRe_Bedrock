@@ -1,4 +1,6 @@
 import {
+  world,
+  EntityHurtAfterEvent,
   EntityComponentTypes,
   EntityDamageCause,
   EntityDamageSource,
@@ -9,9 +11,31 @@ import {
   Player,
   ItemEnchantableComponent,
 } from "@minecraft/server";
+import { RegisterableEvent } from "events/CustomEvent";
 import { getEnchantmentLevel } from "item/item_utils";
 import { isAlive } from "mob/mob_utils";
 import { getSettings } from "settings";
+
+export class ArmorCurveEvent implements RegisterableEvent {
+  constructor() {
+    world.afterEvents.entityHurt.subscribe(applyArmorCurve);
+  }
+
+  register(): void {
+    // Registration is handled in the constructor.
+  }
+}
+
+function applyArmorCurve(data: EntityHurtAfterEvent) {
+  const target = data.hurtEntity;
+  if (!isAlive(target)) {
+    return;
+  }
+
+  if (target.typeId === "minecraft:player") {
+    armorCurve(target as Player, data.damage, data.damageSource);
+  }
+}
 
 const defenseMap = new Map<string, number>();
 // helmets

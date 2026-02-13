@@ -29,7 +29,7 @@ const FREEZE_AREA_OPTIONS = {
 
 export class IceBomb extends BaseCustomEntity {
   constructor() {
-    super(ICE_BOMB_TYPE_ID, 0);
+    super(ICE_BOMB_TYPE_ID);
   }
 
   onEntitySpawn = (data: EntitySpawnAfterEvent): void => {

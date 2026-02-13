@@ -9,7 +9,7 @@ import {
   Dimension,
   Vector3,
 } from "@minecraft/server";
-import { consumeXp } from "player/consumeXp";
+import { consumeXp } from "entities/functions/consumeXp";
 import {
   addVector3,
   distVector3,

@@ -1,6 +1,6 @@
 import { ItemComponentTypes, EntityComponentTypes, EquipmentSlot, } from "@minecraft/server";
 import { reduceDurability } from "./reduce_durability";
-import { consumeXp } from "player/consumeXp";
+import { consumeXp } from "entities/functions/consumeXp";
 import { isFamilySet } from "mob/mob_utils";
 const DURABILITY_COST = 4;
 const SHADOW_TIME_MIN = 5;

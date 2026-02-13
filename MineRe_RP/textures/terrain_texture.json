@@ -134,7 +134,7 @@
       "textures": "textures/blocks/minere/lapis_bricks"
     },
     "minere:firebrand": {
-			"textures": "textures/items/minere/firebrand"
-		}
+      "textures": "textures/items/minere/firebrand"
+    }
   }
 }

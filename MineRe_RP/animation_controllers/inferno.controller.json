@@ -136,7 +136,7 @@
           "transitions": [{ "default": "query.property('minere:phase') != 3" }]
         },
         "stunned": {
-            "animations": [
+          "animations": [
             {
               "spin": "0.25"
             },

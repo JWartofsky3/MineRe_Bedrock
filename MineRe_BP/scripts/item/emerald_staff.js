@@ -1,5 +1,5 @@
 import { system, world, EntityDamageCause, ItemComponentTypes, } from "@minecraft/server";
-import { consumeXp } from "player/consumeXp";
+import { consumeXp } from "entities/functions/consumeXp";
 import { addVector3, distVector3, multiplyVector3Number, } from "util/vector3Functions";
 import { isAlive, isFamily } from "mob/mob_utils";
 import { reduceDurability } from "./reduce_durability";
