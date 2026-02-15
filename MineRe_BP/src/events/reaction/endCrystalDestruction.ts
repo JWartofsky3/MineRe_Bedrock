@@ -13,14 +13,10 @@ const LIGHTNING_BASE_DELAY = 5;
 const LIGHTNING_DELAY = 30;
 
 export class EndCrystalDestructionEvent {
-  constructor() {
+  register(): void {
     world.beforeEvents.entityRemove.subscribe((data) =>
       afterEndCrystalDestruction(data),
     );
-  }
-
-  register(): void {
-    // Registration is handled in the constructor.
   }
 }
 

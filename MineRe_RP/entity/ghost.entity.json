@@ -7,12 +7,13 @@
         "default": "guardian_ghost"
       },
       "textures": {
-        "default": "textures/entity/minere/ghost"
+        "default": "textures/entity/minere/ghost/ghost",
+        "ice": "textures/entity/minere/ghost/iceGhost"
       },
       "geometry": {
         "default": "geometry.minere.ghost"
       },
-      "render_controllers": ["controller.render.default"],
+      "render_controllers": ["controller.render.minere.ghost"],
       "spawn_egg": {
         "base_color": "#ffffff",
         "overlay_color": "#ffffff"

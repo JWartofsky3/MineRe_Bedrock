@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.minere.freeze": {
+    "controller.animation.minere.freeze_attack": {
       "initial_state": "default",
       "states": {
         "default": {
@@ -16,7 +16,7 @@
           "particle_effects": [
             {
               "effect": "freeze_breath",
-              "locator": "locator"
+              "locator": "mouth"
             }
           ],
           "animations": ["aim"],

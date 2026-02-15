@@ -6,11 +6,13 @@ import { CreakingApplyEffectsEvent } from "events/reaction/creakingApplyEffects"
 import { ArmorCurveEvent } from "events/player/armorCurveEvent";
 import { BonusXPEvent } from "events/player/bonusXPEvent";
 import { HorseDieRemoveChestEvent } from "events/reaction/horseDieRemoveChest";
+import { BabySpawnMatchParentEvent } from "events/spawning/babySpawnMatchParent";
 
 export function RegisterCustomEvents() {
   // spawn events
   new ReplacePlaceholderEntitiesEvent().register();
   new InfernoSpawnEvent().register();
+  new BabySpawnMatchParentEvent().register();
 
   // reaction events
   new EndCrystalDestructionEvent().register();

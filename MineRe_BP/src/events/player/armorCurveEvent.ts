@@ -17,12 +17,8 @@ import { isAlive } from "mob/mob_utils";
 import { getSettings } from "settings";
 
 export class ArmorCurveEvent implements RegisterableEvent {
-  constructor() {
-    world.afterEvents.entityHurt.subscribe(applyArmorCurve);
-  }
-
   register(): void {
-    // Registration is handled in the constructor.
+    world.afterEvents.entityHurt.subscribe(applyArmorCurve);
   }
 }
 

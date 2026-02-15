@@ -3,12 +3,8 @@ import { enderRandomTeleport } from "entities/functions/enderTeleport";
 import { isAlive } from "mob/mob_utils";
 
 export class EndermanTeleportTargetEvent {
-  constructor() {
-    world.afterEvents.entityHurt.subscribe(handleEndermanTeleportTarget);
-  }
-
   register(): void {
-    // Registration is handled in the constructor.
+    world.afterEvents.entityHurt.subscribe(handleEndermanTeleportTarget);
   }
 }
 

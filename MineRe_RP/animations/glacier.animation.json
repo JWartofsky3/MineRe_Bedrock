@@ -1,295 +1,480 @@
 {
-  "format_version": "1.8.0",
-  "animations": {
-    "animation.minere.glacier.iceChargeSpin": {
-      "loop": true,
-      "animation_length": 8,
-      "bones": {
-        "iceChargeRoot": {
-          "rotation": [0, "-query.anim_time * 90", 0]
-        },
-        "iceChargeBone1": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 135 + 10) + 1.5 * math.cos(query.anim_time * 225 + 80)",
-            "10 * math.sin(query.anim_time * 45 + 0) + 4 * math.sin(query.anim_time * 135 + 50)",
-            "3.5 * math.sin(query.anim_time * 180 + 30) + 1.5 * math.sin(query.anim_time * 270 + 140)"
-          ],
-          "rotation": [
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 90 + 20)",
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 70)",
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 10)"
-          ]
-        },
-        "iceChargeBone2": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 180 + 55) + 1.5 * math.cos(query.anim_time * 270 + 10)",
-            "10 * math.sin(query.anim_time * 90 + 45) + 4 * math.sin(query.anim_time * 180 + 110)",
-            "3.5 * math.sin(query.anim_time * 225 + 90) + 1.5 * math.sin(query.anim_time * 315 + 40)"
-          ],
-          "rotation": [
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 135 + 5)",
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 95)",
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 90 + 60)"
-          ]
-        },
-        "iceChargeBone3": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 225 + 100) + 1.5 * math.cos(query.anim_time * 315 + 30)",
-            "10 * math.sin(query.anim_time * 135 + 90) + 4 * math.sin(query.anim_time * 225 + 10)",
-            "3.5 * math.sin(query.anim_time * 270 + 150) + 1.5 * math.sin(query.anim_time * 180 + 75)"
-          ],
-          "rotation": [
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 40)",
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 90 + 120)",
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 15)"
-          ]
-        },
-        "iceChargeBone4": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 270 + 145) + 1.5 * math.cos(query.anim_time * 180 + 60)",
-            "10 * math.sin(query.anim_time * 180 + 135) + 4 * math.sin(query.anim_time * 270 + 160)",
-            "3.5 * math.sin(query.anim_time * 315 + 210) + 1.5 * math.sin(query.anim_time * 225 + 20)"
-          ],
-          "rotation": [
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 90 + 80)",
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 25)",
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 180 + 140)"
-          ]
-        },
-        "iceChargeBone5": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 315 + 190) + 1.5 * math.cos(query.anim_time * 135 + 100)",
-            "10 * math.sin(query.anim_time * 225 + 180) + 4 * math.sin(query.anim_time * 45 + 200)",
-            "3.5 * math.sin(query.anim_time * 180 + 260) + 1.5 * math.sin(query.anim_time * 270 + 95)"
-          ],
-          "rotation": [
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 110)",
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 180 + 10)",
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 170)"
-          ]
-        },
-        "iceChargeBone6": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 180 + 235) + 1.5 * math.cos(query.anim_time * 225 + 170)",
-            "10 * math.sin(query.anim_time * 270 + 225) + 4 * math.sin(query.anim_time * 90 + 30)",
-            "3.5 * math.sin(query.anim_time * 225 + 300) + 1.5 * math.sin(query.anim_time * 315 + 160)"
-          ],
-          "rotation": [
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 180 + 75)",
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 5)",
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 145)"
-          ]
-        },
-        "iceChargeBone7": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 225 + 280) + 1.5 * math.cos(query.anim_time * 315 + 210)",
-            "10 * math.sin(query.anim_time * 45 + 270) + 4 * math.sin(query.anim_time * 315 + 90)",
-            "3.5 * math.sin(query.anim_time * 270 + 330) + 1.5 * math.sin(query.anim_time * 180 + 200)"
-          ],
-          "rotation": [
-            "query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 130)",
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 135 + 55)",
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 180 + 25)"
-          ]
-        },
-        "iceChargeBone8": {
-          "position": [
-            "3.5 * math.cos(query.anim_time * 270 + 325) + 1.5 * math.cos(query.anim_time * 180 + 250)",
-            "10 * math.sin(query.anim_time * 90 + 315) + 4 * math.sin(query.anim_time * 270 + 5)",
-            "3.5 * math.sin(query.anim_time * 315 + 25) + 1.5 * math.sin(query.anim_time * 225 + 230)"
-          ],
-          "rotation": [
-            "query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 95)",
-            "query.anim_time * 315 + 25 * math.sin(query.anim_time * 180 + 150)",
-            "query.anim_time * 270 + 25 * math.sin(query.anim_time * 90 + 15)"
-          ]
-        }
-      }
-    },
-    "animation.minere.glacier.iceChargeSummon": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 2.25,
-
-      "bones": {
-        "iceChargeBone1": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "0.5": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone2": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "0.25": [0, 0, 0],
-            "0.75": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone3": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "0.5": [0, 0, 0],
-            "1.0": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone4": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "0.75": [0, 0, 0],
-            "1.25": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone5": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "1.0": [0, 0, 0],
-            "1.5": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone6": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "1.25": [0, 0, 0],
-            "1.75": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone7": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "1.5": [0, 0, 0],
-            "2.0": [1, 1, 1],
-            "2.25": [1, 1, 1]
-          }
-        },
-        "iceChargeBone8": {
-          "scale": {
-            "0.0": [0, 0, 0],
-            "1.75": [0, 0, 0],
-            "2.25": [1, 1, 1]
-          }
-        }
-      },
-
-      "particle_effects": {
-        "0.0": [
-          { "effect": "blueFlame", "locator": "ice_charge_1" },
-          { "effect": "snowParticles", "locator": "ice_charge_1" }
-        ],
-        "0.25": [
-          { "effect": "blueFlame", "locator": "ice_charge_2" },
-          { "effect": "snowParticles", "locator": "ice_charge_2" }
-        ],
-        "0.5": [
-          { "effect": "blueFlame", "locator": "ice_charge_3" },
-          { "effect": "snowParticles", "locator": "ice_charge_3" }
-        ],
-        "0.75": [
-          { "effect": "blueFlame", "locator": "ice_charge_4" },
-          { "effect": "snowParticles", "locator": "ice_charge_4" }
-        ],
-        "1.0": [
-          { "effect": "blueFlame", "locator": "ice_charge_5" },
-          { "effect": "snowParticles", "locator": "ice_charge_5" }
-        ],
-        "1.25": [
-          { "effect": "blueFlame", "locator": "ice_charge_6" },
-          { "effect": "snowParticles", "locator": "ice_charge_6" }
-        ],
-        "1.5": [
-          { "effect": "blueFlame", "locator": "ice_charge_7" },
-          { "effect": "snowParticles", "locator": "ice_charge_7" }
-        ],
-        "1.75": [
-          { "effect": "blueFlame", "locator": "ice_charge_8" },
-          { "effect": "snowParticles", "locator": "ice_charge_8" }
-        ]
-      }
-    },
-    "animation.minere.glacier.iceChargeShoot": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 2,
-      "bones": {
-        "iceChargeBone1": {
-          "scale": 0
-        },
-        "iceChargeBone2": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "0.25": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone3": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "0.5": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone4": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "0.75": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone5": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "1.0": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone6": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "1.25": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone7": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "1.5": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        },
-        "iceChargeBone8": {
-          "scale": {
-            "0.0": [1, 1, 1],
-            "1.75": { "pre": [1, 1, 1], "post": [0, 0, 0] }
-          }
-        }
-      }
-    },
-    "animation.minere.glacier.iceChargeGone": {
-      "loop": true,
-      "animation_length": 0,
-      "bones": {
-        "iceChargeBone1": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone2": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone3": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone4": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone5": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone6": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone7": {
-          "scale": [0, 0, 0]
-        },
-        "iceChargeBone8": {
-          "scale": [0, 0, 0]
-        }
-      }
-    }
-  }
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.minere.glacier.iceChargeSpin": {
+			"loop": true,
+			"animation_length": 8,
+			"bones": {
+				"iceChargeRoot": {
+					"rotation": [0, "-query.anim_time * 90", 0]
+				},
+				"iceChargeBone1": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 135 + 10) + 1.5 * math.cos(query.anim_time * 225 + 80)",
+						"10 * math.sin(query.anim_time * 45 + 0) + 4 * math.sin(query.anim_time * 135 + 50)",
+						"3.5 * math.sin(query.anim_time * 180 + 30) + 1.5 * math.sin(query.anim_time * 270 + 140)"
+					],
+					"rotation": [
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 90 + 20)",
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 70)",
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 10)"
+					]
+				},
+				"iceChargeBone2": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 180 + 55) + 1.5 * math.cos(query.anim_time * 270 + 10)",
+						"10 * math.sin(query.anim_time * 90 + 45) + 4 * math.sin(query.anim_time * 180 + 110)",
+						"3.5 * math.sin(query.anim_time * 225 + 90) + 1.5 * math.sin(query.anim_time * 315 + 40)"
+					],
+					"rotation": [
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 135 + 5)",
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 95)",
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 90 + 60)"
+					]
+				},
+				"iceChargeBone3": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 225 + 100) + 1.5 * math.cos(query.anim_time * 315 + 30)",
+						"10 * math.sin(query.anim_time * 135 + 90) + 4 * math.sin(query.anim_time * 225 + 10)",
+						"3.5 * math.sin(query.anim_time * 270 + 150) + 1.5 * math.sin(query.anim_time * 180 + 75)"
+					],
+					"rotation": [
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 180 + 40)",
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 90 + 120)",
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 15)"
+					]
+				},
+				"iceChargeBone4": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 270 + 145) + 1.5 * math.cos(query.anim_time * 180 + 60)",
+						"10 * math.sin(query.anim_time * 180 + 135) + 4 * math.sin(query.anim_time * 270 + 160)",
+						"3.5 * math.sin(query.anim_time * 315 + 210) + 1.5 * math.sin(query.anim_time * 225 + 20)"
+					],
+					"rotation": [
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 90 + 80)",
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 25)",
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 180 + 140)"
+					]
+				},
+				"iceChargeBone5": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 315 + 190) + 1.5 * math.cos(query.anim_time * 135 + 100)",
+						"10 * math.sin(query.anim_time * 225 + 180) + 4 * math.sin(query.anim_time * 45 + 200)",
+						"3.5 * math.sin(query.anim_time * 180 + 260) + 1.5 * math.sin(query.anim_time * 270 + 95)"
+					],
+					"rotation": [
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 135 + 110)",
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 180 + 10)",
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 170)"
+					]
+				},
+				"iceChargeBone6": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 180 + 235) + 1.5 * math.cos(query.anim_time * 225 + 170)",
+						"10 * math.sin(query.anim_time * 270 + 225) + 4 * math.sin(query.anim_time * 90 + 30)",
+						"3.5 * math.sin(query.anim_time * 225 + 300) + 1.5 * math.sin(query.anim_time * 315 + 160)"
+					],
+					"rotation": [
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 180 + 75)",
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 5)",
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 145)"
+					]
+				},
+				"iceChargeBone7": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 225 + 280) + 1.5 * math.cos(query.anim_time * 315 + 210)",
+						"10 * math.sin(query.anim_time * 45 + 270) + 4 * math.sin(query.anim_time * 315 + 90)",
+						"3.5 * math.sin(query.anim_time * 270 + 330) + 1.5 * math.sin(query.anim_time * 180 + 200)"
+					],
+					"rotation": [
+						"query.anim_time * 360 + 25 * math.sin(query.anim_time * 90 + 130)",
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 135 + 55)",
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 180 + 25)"
+					]
+				},
+				"iceChargeBone8": {
+					"position": [
+						"3.5 * math.cos(query.anim_time * 270 + 325) + 1.5 * math.cos(query.anim_time * 180 + 250)",
+						"10 * math.sin(query.anim_time * 90 + 315) + 4 * math.sin(query.anim_time * 270 + 5)",
+						"3.5 * math.sin(query.anim_time * 315 + 25) + 1.5 * math.sin(query.anim_time * 225 + 230)"
+					],
+					"rotation": [
+						"query.anim_time * 225 + 25 * math.sin(query.anim_time * 135 + 95)",
+						"query.anim_time * 315 + 25 * math.sin(query.anim_time * 180 + 150)",
+						"query.anim_time * 270 + 25 * math.sin(query.anim_time * 90 + 15)"
+					]
+				}
+			}
+		},
+		"animation.minere.glacier.iceChargeSummon": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 2.25,
+			"bones": {
+				"iceChargeBone1": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.5": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone2": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.25": [0, 0, 0],
+						"0.75": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone3": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 0],
+						"1.0": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone4": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.75": [0, 0, 0],
+						"1.25": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone5": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.0": [0, 0, 0],
+						"1.5": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone6": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.25": [0, 0, 0],
+						"1.75": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone7": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.5": [0, 0, 0],
+						"2.0": [1, 1, 1],
+						"2.25": [1, 1, 1]
+					}
+				},
+				"iceChargeBone8": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.75": [0, 0, 0],
+						"2.25": [1, 1, 1]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_1"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_1"
+					}
+				],
+				"0.25": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_2"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_2"
+					}
+				],
+				"0.5": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_3"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_3"
+					}
+				],
+				"0.75": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_4"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_4"
+					}
+				],
+				"1.0": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_5"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_5"
+					}
+				],
+				"1.25": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_6"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_6"
+					}
+				],
+				"1.5": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_7"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_7"
+					}
+				],
+				"1.75": [
+					{
+						"effect": "blueFlame",
+						"locator": "ice_charge_8"
+					},
+					{
+						"effect": "snowParticles",
+						"locator": "ice_charge_8"
+					}
+				]
+			}
+		},
+		"animation.minere.glacier.iceChargeShoot": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 2,
+			"bones": {
+				"iceChargeBone1": {
+					"scale": 0
+				},
+				"iceChargeBone2": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.25": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone3": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.5": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone4": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.75": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone5": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.0": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone6": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.25": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone7": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.5": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				},
+				"iceChargeBone8": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.75": {
+							"pre": [1, 1, 1],
+							"post": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.minere.glacier.iceChargeGone": {
+			"loop": true,
+			"animation_length": 0,
+			"bones": {
+				"iceChargeBone1": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone2": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone3": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone4": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone5": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone6": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone7": {
+					"scale": [0, 0, 0]
+				},
+				"iceChargeBone8": {
+					"scale": [0, 0, 0]
+				}
+			}
+		},
+		"animation.minere.glacier.roar": {
+			"animation_length": 2,
+			"bones": {
+				"leftEyebrow": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 25],
+						"1.0": [0, 0, 25],
+						"1.0833": [0, 0, -15],
+						"1.5": [0, 0, -15],
+						"2.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -4, 0],
+						"1.0": [0, -4, 0],
+						"1.0833": [0, 3, 0],
+						"1.5": [0, 3, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"rightEyebrow": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, -25],
+						"1.0": [0, 0, -25],
+						"1.0833": [0, 0, 15],
+						"1.5": [0, 0, 15],
+						"2.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -4, 0],
+						"1.0": [0, -4, 0],
+						"1.0833": [0, 3, 0],
+						"1.5": [0, 3, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"nose": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -4, 0],
+						"1.0": [0, -4, 0],
+						"1.0833": [0, 2, 0],
+						"1.5": [0, 2, 0],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"rightHorn": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 0],
+						"1.0": [0, 0, 0],
+						"1.0833": [0, 0, 25],
+						"1.25": [0, 0, 15],
+						"2.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -6, 0],
+						"1.0": [0, -6, 0],
+						"1.0833": [0, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				},
+				"leftHorn": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 0],
+						"1.0": [0, 0, 0],
+						"1.0833": [0, 0, -25],
+						"1.25": [0, 0, -15],
+						"2.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -6, 0],
+						"1.0": [0, -6, 0],
+						"1.0833": [0, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.minere.glacier.angry": {
+			"loop": true,
+			"bones": {
+				"leftEyebrow": {
+					"rotation": [0, 0, 25]
+				},
+				"rightEyebrow": {
+					"rotation": [0, 0, -25]
+				}
+			}
+		},
+		"animation.minere.glacier.emerge": {
+			"animation_length": 4,
+			"bones": {
+				"root": {
+					"position": {
+						"0.0": [0, -128, 0],
+						"4.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.minere.glacier.submerge": {
+			"animation_length": 3,
+			"bones": {
+				"root": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"3.0": [0, -128, 0]
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,0 +1,249 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.minere.elephant.walk": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved * 0.75",
+			"bones": {
+				"root": {
+					"rotation": [0, 0, "1 * math.cos(15 + query.anim_time * 60)"]
+				},
+				"tail": {
+					"rotation": [0, 0, "-5 * math.cos(-25 + query.anim_time * 60)"]
+				},
+				"head": {
+					"rotation": [0, 0, "-2 * math.cos(45 + query.anim_time * 60)"]
+				},
+				"trunk0": {
+					"rotation": [5, 0, "2 * math.cos(75 + query.anim_time * 60)"],
+					"position": [0, 3, 0]
+				},
+				"trunk1": {
+					"rotation": [10, 0, "2 * math.cos(100 + query.anim_time * 60)"]
+				},
+				"trunk2": {
+					"rotation": [25, 0, "2 * math.cos(130 + query.anim_time * 60)"]
+				},
+				"rightEar": {
+					"rotation": [0, "5 * math.cos(query.anim_time * 60)", "-2 * math.cos(query.anim_time * 60)"]
+				},
+				"leftEar": {
+					"rotation": [0, "-5 * math.cos(query.anim_time * 60)", "2 * math.cos(query.anim_time * 60)"]
+				},
+				"frontRight": {
+					"rotation": ["20 * math.cos(query.anim_time * 60)", 0, 0]
+				},
+				"rearRight": {
+					"rotation": ["-20 * math.cos(query.anim_time * 60)", 0, 0]
+				},
+				"frontLeft": {
+					"rotation": ["-20 * math.cos(query.anim_time * 60)", 0, 0]
+				},
+				"rearLeft": {
+					"rotation": ["20 * math.cos(query.anim_time * 60)", 0, 0]
+				}
+			}
+		},
+		"animation.minere.elephant.breathe": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, "1 * math.cos(query.anim_time * 45)", 0]
+				},
+				"root": {
+					"position": [0, "0.5 * math.cos(30 + query.anim_time * 45)", 0]
+				},
+				"tail": {
+					"rotation": ["-math.min(0, 3 * math.cos(30 + query.anim_time * 45))", 0, 0]
+				},
+				"trunk0": {
+					"rotation": ["2 * math.cos(15 + query.anim_time * 45)", 0, 0],
+					"position": [0, "1 * math.cos(15 + query.anim_time * 45)", 0]
+				},
+				"trunk1": {
+					"rotation": ["3 * math.cos(30 + query.anim_time * 45)", 0, 0]
+				},
+				"trunk2": {
+					"rotation": ["5 * math.cos(45 + query.anim_time * 45)", 0, 0]
+				},
+				"rightEar": {
+					"rotation": [0, 0, "3 * math.cos(30 + query.anim_time * 45)"]
+				},
+				"leftEar": {
+					"rotation": [0, 0, "-3 * math.cos(30 + query.anim_time * 45)"]
+				},
+				"jaw": {
+					"rotation": ["1 * math.max(0, 10 * math.cos(45 + query.anim_time * 45))", 0, 0]
+				}
+			}
+		},
+		"animation.minere.elephant.look_at": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["-query.target_x_rotation", "-query.target_y_rotation", 0]
+				}
+			}
+		},
+		"animation.minere.elephant.is_baby": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, 0, 0]
+				},
+				"head": {
+					"scale": 1.5
+				},
+				"trunk0": {
+					"scale": 0.75
+				},
+				"rightTusk": {
+					"scale": 0
+				},
+				"leftTusk": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.minere.elephant.attack": {
+			"animation_length": 1.25,
+			"bones": {
+				"root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [5, 0, 0],
+						"0.75": [-2, 0, 0],
+						"1.25": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2.5, 0],
+						"0.75": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [25, 0, 0],
+						"0.75": [-45, 0, 0],
+						"1.25": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 0],
+						"0.75": [0, 0, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"trunk0": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [10, 0, 0],
+						"0.8333": [-20, 0, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"trunk1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [10, 0, 0],
+						"0.8333": [-10, 0, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"trunk2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [15, 0, 0],
+						"0.8333": [-25, 0, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"rightEar": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.375": [0, 20, -5],
+						"0.8333": [0, -20, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"leftEar": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.375": [0, -20, 5],
+						"0.8333": [0, 20, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"frontRight": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-5, 0, 0],
+						"0.75": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [-2, 4, 0],
+						"0.75": [0, 0, 0]
+					}
+				},
+				"rearRight": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-5, 0, 0],
+						"0.75": [3, 0, 0],
+						"1.25": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.75": [0, 0.5, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"frontLeft": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-5, 0, 0],
+						"0.75": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [2, 4, 0],
+						"0.75": [0, 0, 0]
+					}
+				},
+				"rearLeft": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-5, 0, 0],
+						"0.75": [3, 0, 0],
+						"1.25": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.75": [0, 0.5, 0],
+						"1.25": [0, 0, 0]
+					}
+				},
+				"jaw": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [30, 0, 0],
+						"1.25": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.minere.elephant.is_chested": {
+			"loop": true,
+			"bones": {
+				"leftChest": {
+					"scale": 1
+				},
+				"rightChest": {
+					"scale": 1
+				}
+			}
+		}
+	}
+}

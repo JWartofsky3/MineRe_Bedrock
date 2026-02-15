@@ -3,12 +3,8 @@ import { RegisterableEvent } from "events/CustomEvent";
 import { isAlive } from "mob/mob_utils";
 
 export class CreakingApplyEffectsEvent implements RegisterableEvent {
-  constructor() {
-    world.afterEvents.entityHurt.subscribe(creakingApplyWither);
-  }
-
   register(): void {
-    // Registration is handled in the constructor.
+    world.afterEvents.entityHurt.subscribe(creakingApplyWither);
   }
 }
 

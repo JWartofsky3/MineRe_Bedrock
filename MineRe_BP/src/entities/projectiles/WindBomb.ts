@@ -20,7 +20,7 @@ const BASE_VERTICAL = 3;
 
 export class WindBomb extends BaseCustomEntity {
   constructor() {
-    super(WIND_BOMB_TYPE_ID, 0);
+    super(WIND_BOMB_TYPE_ID);
   }
 
   onEntitySpawn = (data: EntitySpawnAfterEvent): void => {

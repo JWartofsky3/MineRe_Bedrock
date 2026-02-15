@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:elephant",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "gray": "textures/entity/minere/elephant/gray"
+      },
+      "geometry": {
+        "default": "geometry.minere.elephant"
+      },
+      "spawn_egg": {
+        "base_color": "#ba9a80",
+        "overlay_color": "#c0bab1"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "is_baby": "query.is_baby"
+          },
+          "breathe"
+        ]
+      },
+      "animations": {
+        "walk": "animation.minere.elephant.walk",
+        "breathe": "animation.minere.elephant.breathe",
+        "attack": "animation.minere.elephant.attack",
+        "look_at_target": "animation.minere.elephant.look_at",
+        "is_baby": "animation.minere.elephant.is_baby",
+        "controller": "controller.animation.minere.elephant"
+      },
+      "render_controllers": [
+        "controller.render.minere.elephant"
+      ]
+    }
+  }
+}

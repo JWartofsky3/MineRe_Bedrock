@@ -11,12 +11,8 @@ import { RegisterableEvent } from "events/CustomEvent";
 import { getItem } from "item/item_utils";
 
 export class HorseDieRemoveChestEvent implements RegisterableEvent {
-  constructor() {
-    world.afterEvents.entityDie.subscribe(horseRemoveChest);
-  }
-
   register(): void {
-    // Registration is handled in the constructor.
+    world.afterEvents.entityDie.subscribe(horseRemoveChest);
   }
 }
 

@@ -25,7 +25,11 @@ const babyEvents: BabyEventMap = new Map([
   ],
 ]);
 
-export class BabySpawnMatchParentEvent implements RegisterableEvent {}
+export class BabySpawnMatchParentEvent implements RegisterableEvent {
+  register(): void {
+    world.afterEvents.entitySpawn.subscribe((data) => matchParent(data.entity));
+  }
+}
 
 export function matchParent(baby: Entity) {
   if (!babyEvents.has(baby.typeId)) {

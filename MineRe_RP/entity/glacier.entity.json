@@ -18,12 +18,18 @@
       "animations": {
         "iceChargesGone": "animation.minere.glacier.iceChargesGone",
         "iceChargesSummon": "animation.minere.glacier.iceChargesSummon",
-        "iceChargeSpin": "animation.minere.glacier.iceChargesSpin",
-        "iceChargeShoot": "animation.minere.glacier.iceChargeShoot"
+        "iceChargeSpin": "animation.minere.glacier.iceChargeSpin",
+        "iceChargeShoot": "animation.minere.glacier.iceChargeShoot",
+                "freezeAttackController": "controller.animation.minere.freeze_attack"
+      },
+            "particle_effects": {
+        "freeze_breath": "minere:freeze_breath",
+        "roar": "animation.minere.glacier.roar"
       },
       "scripts": {
         "animate": [
-            "iceChargeSpin"
+            "iceChargeSpin",
+            "freezeAttackController"
         ]
       },
       "render_controllers": ["controller.render.minere.glacier", "controller.render.minere.glacier_ice_charges"],

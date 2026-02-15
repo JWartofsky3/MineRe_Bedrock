@@ -40,14 +40,10 @@ xpMultiplierMap.set("minere:cosmic_jelly", 2.5);
 const MAX_BONUS = 100;
 
 export class BonusXPEvent implements RegisterableEvent {
-  constructor() {
+  register(): void {
     world.afterEvents.entityDie.subscribe((data) => {
       giveExtraXP(data.damageSource?.damagingEntity, data.deadEntity);
     });
-  }
-
-  register(): void {
-    // Registration is handled in the constructor.
   }
 }
 

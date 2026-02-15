@@ -40,7 +40,7 @@
           "parent": "root",
           "pivot": [0, 9, -8],
           "locators": {
-            "locator": [0, 9, -8]
+            "mouth": [0, 9, -8]
           }
         }
       ]

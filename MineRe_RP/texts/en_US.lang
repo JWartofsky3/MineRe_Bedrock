@@ -238,3 +238,5 @@ item.spawn_egg.entity.minere:inferno.name=Spawn Inferno
 minere:itemGroup.name.magic_staves=Magic Staves
 item.minere:emerald_staff=Emerald Staff
 entity.minere:emerald_projectile.name=Emerald
+minere:itemGroup.name.magic_staves=Magic Staves
+warning.minere:blue_fireball=Your Fire Resistance is gone!

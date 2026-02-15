@@ -139,17 +139,13 @@ placeholderMap.set("minere:skeleton_horse_placeholder", {
 });
 
 export class ReplacePlaceholderEntitiesEvent implements RegisterableEvent {
-  constructor() {
+  register(): void {
     world.afterEvents.entitySpawn.subscribe((data) =>
       replacePlaceholder(data.entity, true),
     );
     world.afterEvents.entityLoad.subscribe((data) =>
       replacePlaceholder(data.entity, false),
     );
-  }
-
-  register(): void {
-    // Registration is handled in the constructor.
   }
 }
 

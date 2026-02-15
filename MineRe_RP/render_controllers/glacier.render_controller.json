@@ -7,9 +7,9 @@
       "textures": ["Texture.default"]
     },
         "controller.render.minere.glacier_ice_charges": {
-      "geometry": "Geometry.default",
+      "geometry": "Geometry.iceCharges",
       "materials": [{ "*": "Material.default" }],
-      "textures": ["Texture.iceCharges"]
+      "textures": ["Texture.iceCharges0"]
     }
   }
 }

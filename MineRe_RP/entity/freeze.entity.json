@@ -29,7 +29,7 @@
         "animate": ["controller", "aim"]
       },
       "animations": {
-        "controller": "controller.animation.minere.freeze",
+        "controller": "controller.animation.minere.freeze_attack",
         "aim": "animation.minere.freeze.aim"
       },
       "render_controllers": [

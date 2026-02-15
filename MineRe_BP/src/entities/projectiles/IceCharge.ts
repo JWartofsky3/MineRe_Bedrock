@@ -29,7 +29,7 @@ const FREEZE_AREA_OPTIONS: FreezeAreaOptions = {
 
 export class IceCharge extends BaseCustomEntity {
   constructor() {
-    super("minere:ice_charge", 1);
+    super("minere:ice_charge", { tick: 1 });
   }
 
   onProjectileHitBlock(data: ProjectileHitBlockAfterEvent): void {

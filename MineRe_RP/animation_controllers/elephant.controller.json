@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.elephant": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            {
+              "walk": "query.modified_move_speed * 0.7"
+            }
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

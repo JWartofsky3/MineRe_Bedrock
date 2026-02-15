@@ -14,12 +14,8 @@ const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20; // 30 minutes
 const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
 
 export class InfernoSpawnEvent implements RegisterableEvent {
-  constructor() {
-    world.afterEvents.entitySpawn.subscribe((data) => handleInfernoSpawn(data));
-  }
-
   register(): void {
-    // Registration is handled in the constructor.
+    world.afterEvents.entitySpawn.subscribe((data) => handleInfernoSpawn(data));
   }
 }
 

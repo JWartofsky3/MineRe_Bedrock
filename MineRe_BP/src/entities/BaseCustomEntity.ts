@@ -42,6 +42,7 @@ export abstract class BaseCustomEntity implements CustomEntity {
   private tickRunnerKey: string;
 
   constructor(typeId: string, properties?: CustomEntityProperties) {
+    this.typeId = typeId;
     this.properties = {
       tick: properties?.tick ?? 0,
       targetQuery: properties?.targetQuery ?? {
@@ -58,6 +59,10 @@ export abstract class BaseCustomEntity implements CustomEntity {
       return;
     }
     this.registered = true;
+    if (!this.typeId) {
+      world.sendMessage("ERROR: registered entity with undefined typeId");
+      return;
+    }
 
     // Forward hurt events for this entity type.
     world.afterEvents.entityHurt.subscribe((data: EntityHurtAfterEvent) => {
