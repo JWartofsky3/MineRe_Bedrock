@@ -20,17 +20,40 @@
         "iceChargesSummon": "animation.minere.glacier.iceChargesSummon",
         "iceChargeSpin": "animation.minere.glacier.iceChargeSpin",
         "iceChargeShoot": "animation.minere.glacier.iceChargeShoot",
-                "freezeAttackController": "controller.animation.minere.freeze_attack"
+                "freezeAttackController": "controller.animation.minere.freeze_attack",
+                        "roar": "animation.minere.glacier.roar",
+        "emerge": "animation.minere.glacier.emerge",
+        "submerge": "animation.minere.glacier.submerge",
+                "summon": "animation.minere.glacier.summon",
+                        "angry": "animation.minere.glacier.angry",
+                        "iceChargesController": "controller.animation.minere.glacier_ice_charges"
+
       },
             "particle_effects": {
         "freeze_breath": "minere:freeze_breath",
-        "roar": "animation.minere.glacier.roar"
+                "emerge": "minecraft:warden_dig"
       },
       "scripts": {
         "animate": [
             "iceChargeSpin",
-            "freezeAttackController"
+            "freezeAttackController",
+            "iceChargesController",
+                      {
+            "emerge": "query.is_emerging"
+          },
+          {
+                        "summon": "query.is_casting"
+          },
+          {
+                        "roar": "query.is_roaring"
+          },
+          {
+                        "angry": "query.is_angry"
+          }
         ]
+      },
+        "sound_effects": {
+        "emerge": "mob.walker.emerge"
       },
       "render_controllers": ["controller.render.minere.glacier", "controller.render.minere.glacier_ice_charges"],
       "spawn_egg": {

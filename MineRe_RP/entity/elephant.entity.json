@@ -7,7 +7,33 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "gray": "textures/entity/minere/elephant/gray"
+        "gray": "textures/entity/minere/elephant/gray",
+                "saddle": "textures/entity/minere/elephant/saddle",
+        "chest": "textures/entity/minere/elephant/chest",
+        "empty": "textures/entity/minere/elephant/empty",
+        "carpet_white": "textures/entity/minere/elephant/carpet/white",
+"carpet_orange": "textures/entity/minere/elephant/carpet/orange",
+"carpet_magenta": "textures/entity/minere/elephant/carpet/magenta",
+"carpet_light_blue": "textures/entity/minere/elephant/carpet/light_blue",
+"carpet_yellow": "textures/entity/minere/elephant/carpet/yellow",
+"carpet_lime": "textures/entity/minere/elephant/carpet/lime",
+"carpet_pink": "textures/entity/minere/elephant/carpet/pink",
+"carpet_gray": "textures/entity/minere/elephant/carpet/gray",
+"carpet_light_gray": "textures/entity/minere/elephant/carpet/light_gray",
+"carpet_cyan": "textures/entity/minere/elephant/carpet/cyan",
+"carpet_purple": "textures/entity/minere/elephant/carpet/purple",
+"carpet_blue": "textures/entity/minere/elephant/carpet/blue",
+"carpet_brown": "textures/entity/minere/elephant/carpet/brown",
+"carpet_green": "textures/entity/minere/elephant/carpet/green",
+"carpet_red": "textures/entity/minere/elephant/carpet/red",
+"carpet_black": "textures/entity/minere/elephant/carpet/black",
+"armor_copper": "textures/entity/minere/elephant/armor/copper",
+"armor_iron": "textures/entity/minere/elephant/armor/iron",
+"armor_gold": "textures/entity/minere/elephant/armor/gold",
+"armor_diamond": "textures/entity/minere/elephant/armor/diamond",
+"armor_netherite": "textures/entity/minere/elephant/armor/netherite",
+"armor_enderon": "textures/entity/minere/elephant/armor/enderon",
+"armor_indigon": "textures/entity/minere/elephant/armor/indigon"
       },
       "geometry": {
         "default": "geometry.minere.elephant"
@@ -17,6 +43,7 @@
         "overlay_color": "#c0bab1"
       },
       "scripts": {
+        "pre_animation": ["variable.carpet = 1 + query.property('minere:carpet');", "variable.armor = 1 + query.property('minere:armor');"],
         "animate": [
           "controller",
           {
@@ -34,6 +61,10 @@
         "controller": "controller.animation.minere.elephant"
       },
       "render_controllers": [
+        "controller.render.minere.elephant_chest",
+        "controller.render.minere.elephant_saddle",
+        "controller.render.minere.elephant_carpet",
+        "controller.render.minere.elephant_armor",
         "controller.render.minere.elephant"
       ]
     }

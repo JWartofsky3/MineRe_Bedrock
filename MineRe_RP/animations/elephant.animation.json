@@ -81,7 +81,7 @@
 			"loop": true,
 			"bones": {
 				"head": {
-					"rotation": ["-query.target_x_rotation", "-query.target_y_rotation", 0]
+					"rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
 				}
 			}
 		},

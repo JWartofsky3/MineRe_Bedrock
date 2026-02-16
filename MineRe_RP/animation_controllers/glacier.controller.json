@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.glacier_ice_charges": {
+      "initial_state": "gone",
+      "states": {
+        "gone": {
+          "animations": [
+            "iceChargesGone"
+          ],
+          "transitions": [
+            {
+              "summon": "query.is_charged"
+            }
+          ]
+        },
+        "summon": {
+          "animations": [
+            "iceChargesSummon"
+          ],
+          "transitions": [
+            {
+                "shoot": "!query.is_charged"
+            }
+          ]
+        },
+        "shoot": {
+          "animations": [
+            "iceChargesShoot"
+          ],
+          "transitions": [
+            {
+                "gone": "query.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

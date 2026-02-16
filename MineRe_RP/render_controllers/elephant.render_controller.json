@@ -14,6 +14,89 @@
         }
       ],
       "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.elephant_saddle": {
+      "arrays": {
+        "textures": {
+          "Array.saddle": ["Texture.empty", "Texture.saddle"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.saddle[query.is_saddled ? 1 : 0]"]
+    },
+    "controller.render.minere.elephant_chest": {
+      "arrays": {
+        "textures": {
+          "Array.chest": ["Texture.empty", "Texture.chest"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.chest[query.is_chested ? 1 : 0]"]
+    },
+    "controller.render.minere.elephant_carpet": {
+      "arrays": {
+        "textures": {
+          "Array.carpets": [
+            "Texture.empty",
+            "Texture.carpet_white",
+            "Texture.carpet_orange",
+            "Texture.carpet_magenta",
+            "Texture.carpet_light_blue",
+            "Texture.carpet_yellow",
+            "Texture.carpet_lime",
+            "Texture.carpet_pink",
+            "Texture.carpet_gray",
+            "Texture.carpet_light_gray",
+            "Texture.carpet_cyan",
+            "Texture.carpet_purple",
+            "Texture.carpet_blue",
+            "Texture.carpet_brown",
+            "Texture.carpet_green",
+            "Texture.carpet_red",
+            "Texture.carpet_black"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.carpets[variable.carpet]"]
+    },
+    "controller.render.minere.elephant_armor": {
+      "arrays": {
+        "textures": {
+          "Array.carpets": [
+            "Texture.empty",
+            "Texture.armor_copper",
+            "Texture.armor_iron",
+            "Texture.armor_gold",
+            "Texture.armor_diamond",
+            "Texture.armor_netherite",
+            "Texture.armor_enderon",
+            "Texture.armor_indigon"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.carpets[variable.armor]"]
     }
   }
 }

@@ -5,7 +5,187 @@
       "identifier": "minere:glacier",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+      "properties": {
+        "minere:is_submerging": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "minere:mode": {
+          "type": "int",
+          "range": [0, 1],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "emerging": {
+        "minecraft:behavior.emerge": {
+          "duration": 4,
+          "on_done": {
+            "event": "minere:emerged",
+            "target": "self"
+          }
+        },
+        "minecraft:collision_box": {
+          "width": 2.5,
+          "height": 1.0
+        },
+        "minecraft:pushable": {
+          "is_pushable": false,
+          "is_pushable_by_piston": false
+        }
+      },
+      "submerging": {
+        "minecraft:collision_box": {
+          "width": 2.5,
+          "height": 1.0
+        },
+        "minecraft:pushable": {
+          "is_pushable": false,
+          "is_pushable_by_piston": false
+        }
+      },
+      "immobile": {
+        "minecraft:movement": {
+          "value": 0
+        },
+        "minecraft:pushable": {
+          "is_pushable": false,
+          "is_pushable_by_piston": false
+        }
+      },
+      "mobile": {
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:pushable": {
+          "is_pushable": true,
+          "is_pushable_by_piston": true
+        },
+        "minecraft:collision_box": {
+          "width": 2.5,
+          "height": 3.5
+        },
+        "minecraft:behavior.summon_entity": {
+          "priority": 2,
+          "summon_choices": [
+            {
+              "weight": 1,
+              "cooldown_time": 30,
+              "cast_duration": 5,
+              "sequence": [
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "num_entities_spawned": 3,
+                  "entity_type": "minere:freeze",
+                  "summon_cap": 8,
+                  "summon_cap_radius": 32,
+                  "size": 4
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "cooldown_time": 30,
+              "cast_duration": 5,
+              "sequence": [
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "num_entities_spawned": 3,
+                  "entity_type": "minere:ghost",
+                  "summon_event": "minere:become_ice_ghost",
+                  "summon_cap": 8,
+                  "summon_cap_radius": 32,
+                  "size": 1,
+                  "sound_event": "prepare.summon"
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "cooldown_time": 34,
+              "cast_duration": 5,
+              "particle_color": "#FFB3B3CC",
+              "sequence": [
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "num_entities_spawned": 3,
+                  "entity_type": "minecraft:stray",
+                  "summon_cap": 8,
+                  "summon_cap_radius": 16,
+                  "size": 1,
+                  "sound_event": "prepare.summon"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "ranged": {
+        "minecraft:shooter": { "def": "minere:ice_charge" },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "burst_shots": 8,
+          "burst_interval": 0.25,
+          "charge_charged_trigger": 1.0,
+          "charge_shoot_trigger": 2.25,
+          "attack_interval": 3,
+          "attack_radius": 48.0
+        }
+      },
+      "melee": {
+        "minecraft:behavior.delayed_attack": {
+          "priority": 3,
+          "attack_duration": 2,
+          "attack_once": false,
+          "cooldown_time": 4,
+          "track_target": true,
+          "require_complete_path": true,
+          "random_stop_interval": 0,
+          "reach_multiplier": 8,
+          "speed_multiplier": 1.25,
+          "hit_delay_pct": 0.6
+        }
+      },
+      "minere:glacier_roaring": {
+        "minecraft:behavior.knockback_roar": {
+          "priority": 0,
+          "duration": 2.0,
+          "attack_time": 1.0,
+          "knockback_damage": 6,
+          "knockback_horizontal_strength": 6,
+          "knockback_vertical_strength": 6,
+          "knockback_range": 8,
+          "knockback_filters": {
+            "none_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "freeze"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "glacier"
+              }
+            ]
+          },
+          "on_roar_end": {
+            "event": "minere:glacier_end_roar"
+          }
+        }
+      }
     },
     "components": {
       "minecraft:physics": {
@@ -16,8 +196,8 @@
         "family": ["glacier", "monster"]
       },
       "minecraft:collision_box": {
-        "width": 1.1,
-        "height": 1.8
+        "width": 2.5,
+        "height": 3.5
       },
       "minecraft:pushable": {
         "is_pushable": true,
@@ -172,23 +352,141 @@
           }
         ]
       },
-      "minecraft:behavior.delayed_attack": {
-        "priority": 3,
-        "attack_duration": 2,
-        "attack_once": false,
-        "cooldown_time": 4,
-        "track_target": false,
-        "require_complete_path": true,
-        "random_stop_interval": 0,
-        "reach_multiplier": 6,
-        "speed_multiplier": 1.25,
-        "hit_delay_pct": 0.6
-      },
       "minecraft:behavior.look_at_target": {
         "priority": 4
       },
       "minecraft:behavior.random_stroll": {
         "priority": 7
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": ["emerging", "immobile"]
+        }
+      },
+      "minere:start_emerging": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["mobile", "submerging"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:is_submerging": false
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["emerging", "immobile"]
+            }
+          }
+        ]
+      },
+      "minere:start_submerging": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["mobile", "emerging"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:is_submerging": true
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["submerging", "immobile"]
+            }
+          }
+        ]
+      },
+      "minere:emerged": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["emerging", "immobile", "submerging"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:is_submerging": false
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["mobile", "ranged"]
+            }
+          }
+        ]
+      },
+      "minere:glacier_start_roar": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["mobile"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:glacier_roaring", "immobile"]
+            }
+          }
+        ]
+      },
+      "minere:glacier_end_roar": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:glacier_roaring", "immobile"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["mobile"]
+            }
+          }
+        ]
+      },
+      "minere:switch_to_melee": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["ranged"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:mode": 0
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["melee"]
+            }
+          }
+        ]
+      },
+      "minere:switch_to_ranged": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["melee"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:mode": 1
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["ranged"]
+            }
+          }
+        ]
       }
     }
   }

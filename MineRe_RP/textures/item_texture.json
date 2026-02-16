@@ -176,7 +176,28 @@
     },
     "minere.ghostwalker": {
       "textures": "textures/items/minere/ghostwalker"
-    }
+    },
+    "minere.copper_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/copper.png"
+    },
+    "minere.iron_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/iron.png"
+},
+"minere.gold_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/gold.png"
+},
+"minere.diamond_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/diamond.png"
+},
+"minere.netherite_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/netherite.png"
+},
+"minere.enderon_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/enderon.png"
+},
+"minere.indigon_elephant_armor": {
+  "textures": "textures/items/minere/elephant_armor/indigon.png"
+}
   },
   "resource_pack_name": "MineRe Resources",
   "texture_name": "atlas.items"

@@ -443,19 +443,19 @@
 				}
 			}
 		},
-		"animation.minere.glacier.angry": {
-			"loop": true,
-			"bones": {
-				"leftEyebrow": {
-					"rotation": [0, 0, 25]
-				},
-				"rightEyebrow": {
-					"rotation": [0, 0, -25]
-				}
-			}
-		},
 		"animation.minere.glacier.emerge": {
 			"animation_length": 4,
+			"sound_effects": {
+				"0.5": {
+					"effect": "emerge"
+				}
+			},
+			"particle_effects": {
+				"0.25": {
+					"effect": "emerge",
+					"pre_effect_script": "variable.dig_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.dig_particle_texture_size = query.surface_particle_texture_size; variable.dig_particle_color = query.surface_particle_color;"
+				}
+			},
 			"bones": {
 				"root": {
 					"position": {
@@ -473,6 +473,36 @@
 						"0.0": [0, 0, 0],
 						"3.0": [0, -128, 0]
 					}
+				}
+			}
+		},
+		"animation.minere.glacier.summon": {
+			"loop": true,
+			"bones": {
+				"rightIcicle": {
+					"position": [0, 15, 0]
+				},
+				"leftIcicle": {
+					"position": [0, 15, 0]
+				},
+				"rightHorn": {
+					"rotation": [0, 0, 8],
+					"position": [5, 5, 0]
+				},
+				"leftHorn": {
+					"rotation": [0, 0, -8],
+					"position": [-5, 5, 0]
+				}
+			}
+		},
+		"animation.minere.glacier.angry": {
+			"loop": true,
+			"bones": {
+				"leftEyebrow": {
+					"rotation": [0, 0, 25]
+				},
+				"rightEyebrow": {
+					"rotation": [0, 0, -25]
 				}
 			}
 		}

@@ -240,3 +240,15 @@ item.minere:emerald_staff=Emerald Staff
 entity.minere:emerald_projectile.name=Emerald
 minere:itemGroup.name.magic_staves=Magic Staves
 warning.minere:blue_fireball=Your Fire Resistance is gone!
+item.minere:copper_elephant_armor=Copper Elephant Armor
+item.minere:iron_elephant_armor=Iron Elephant Armor
+item.minere:gold_elephant_armor=Golden Elephant Armor
+item.minere:diamond_elephant_armor=Diamond Elephant Armor
+item.minere:netherite_elephant_armor=Netherite Elephant Armor
+item.minere:enderon_elephant_armor=Enderon Elephant Armor
+item.minere:indigon_elephant_armor=Indigon Elephant Armor
+action.interact.minere.remove_equipment=Remove Equipment
+action.interact.minere.add_carpet=Add Carpet
+action.interact.minere.add_armor=Add Armor
+entity.minere:elephant.name=Elephant
+

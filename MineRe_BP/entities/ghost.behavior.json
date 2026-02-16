@@ -12,6 +12,11 @@
     "component_groups": {
       "instant_despawn": {
         "minecraft:instant_despawn": {}
+      },
+      "ice_ghost": {
+        "minecraft:variant": {
+          "value": 1
+        }
       }
     },
     "components": {
@@ -133,6 +138,11 @@
             }
           }
         ]
+      },
+      "minere:become_ice_ghost": {
+        "add": {
+          "component_groups": ["ice_ghost"]
+        }
       }
     }
   }

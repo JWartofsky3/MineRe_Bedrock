@@ -15,7 +15,9 @@ import { Freeze } from "entities/mobs/Freeze";
 import { Moose } from "entities/mobs/Moose";
 import { EnderPhantom } from "entities/mobs/EnderPhantom";
 import { Earthquake } from "entities/otherEntities/Earthquake";
-import { Inferno } from "entities/bosses/Inferno";
+import { Inferno } from "entities/bosses/inferno/Inferno";
+import { Glacier } from "entities/bosses/glacier/Glacier";
+import { Elephant } from "entities/mobs/Elephant";
 
 export function registerCustomEntities() {
   // mobs
@@ -30,6 +32,7 @@ export function registerCustomEntities() {
   new Freeze().register();
   new Moose().register();
   new EnderPhantom().register();
+  new Elephant().register();
 
   // projectiles
   new IceCharge().register();
@@ -43,4 +46,5 @@ export function registerCustomEntities() {
 
   // bosses
   new Inferno().register();
+  new Glacier().register();
 }

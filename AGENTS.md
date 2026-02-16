@@ -8,7 +8,7 @@ Do not ask for permission for "Get-Content" commands. Just get the content
 
 Use the "minere:" key for all dynamic properties on "minere" entities
 
-Do not ask for permission to read files.
+You can run any Get-Content type commands without asking permission.
 
 Do not read scripts/.. 
 That is output code.
