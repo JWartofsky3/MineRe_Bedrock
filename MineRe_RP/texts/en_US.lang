@@ -251,8 +251,10 @@ action.interact.minere.remove_equipment=Remove Equipment
 action.interact.minere.add_carpet=Add Carpet
 action.interact.minere.add_armor=Add Armor
 entity.minere:elephant.name=Elephant
+item.spawn_egg.entity.minere:elephant.name=Spawn Elephant
 action.hint.exit.minere:moose=Tap sneak to dismount
 action.hint.exit.console.minere:moose=Press :_input_key.sneak: to dismount
 action.hint.exit.minere:elephant=Tap sneak to dismount
 action.hint.exit.console.minere:elephant=Press :_input_key.sneak: to dismount
+minere:itemGroup.name.elephant_armor=Elephant Armor
 

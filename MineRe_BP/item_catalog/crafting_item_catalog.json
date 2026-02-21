@@ -60,6 +60,21 @@
               "minere:enderon_bear_armor"
             ]
           },
+                    {
+            "group_identifier": {
+              "icon": "minere:copper_elephant_armor",
+              "name": "minere:itemGroup.name.elephant_armor"
+            },
+            "items": [
+              "minere:copper_elephant_armor",
+              "minere:iron_elephant_armor",
+              "minere:gold_elephant_armor",
+              "minere:diamond_elephant_armor",
+              "minere:enderon_elephant_armor",
+              "minere:netherite_elephant_armor",
+              "minere:indigon_elephant_armor"
+            ]
+          },
           {
             "group_identifier": {
               "icon": "minere:emerald_staff",

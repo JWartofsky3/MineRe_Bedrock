@@ -4,7 +4,7 @@
     "controller.render.minere.elephant": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.gray"]
+          "Array.skins": ["Texture.gray", "Texture.brown", "Texture.blue"]
         }
       },
       "geometry": "Geometry.default",

@@ -188,7 +188,12 @@ export class Elephant extends BaseCustomEntity {
   }
 
   onEntityHurtEntity(data: EntityHurtAfterEvent): void {
-    throwEntity(data.damageSource.damagingEntity.location, data.hurtEntity, 3.0, 1.0);
+    throwEntity(
+      data.damageSource.damagingEntity.location,
+      data.hurtEntity,
+      3.0,
+      1.0,
+    );
   }
 
   onCarpet(data: PlayerInteractWithEntityAfterEvent, carpet: CarpetEntry) {
@@ -201,7 +206,9 @@ export class Elephant extends BaseCustomEntity {
         elephant.location,
       );
     }
-    const inventory = data.player.getComponent(EntityComponentTypes.Inventory) as EntityInventoryComponent;
+    const inventory = data.player.getComponent(
+      EntityComponentTypes.Inventory,
+    ) as EntityInventoryComponent;
     if (item.amount > 1) {
       item.amount = item.amount - 1;
       inventory.container.setItem(data.player.selectedSlotIndex, item);
@@ -220,7 +227,9 @@ export class Elephant extends BaseCustomEntity {
         elephant.location,
       );
     }
-    const inventory = data.player.getComponent(EntityComponentTypes.Inventory) as EntityInventoryComponent;
+    const inventory = data.player.getComponent(
+      EntityComponentTypes.Inventory,
+    ) as EntityInventoryComponent;
     inventory.container.setItem(data.player.selectedSlotIndex, undefined);
     elephant.triggerEvent(armorEvent);
   }

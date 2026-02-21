@@ -5,9 +5,7 @@
       "initial_state": "gone",
       "states": {
         "gone": {
-          "animations": [
-            "iceChargesGone"
-          ],
+          "animations": ["iceChargesGone"],
           "transitions": [
             {
               "summon": "query.is_charged"
@@ -15,22 +13,18 @@
           ]
         },
         "summon": {
-          "animations": [
-            "iceChargesSummon"
-          ],
+          "animations": ["iceChargesSummon"],
           "transitions": [
             {
-                "shoot": "!query.is_charged"
+              "shoot": "!query.is_charged"
             }
           ]
         },
         "shoot": {
-          "animations": [
-            "iceChargesShoot"
-          ],
+          "animations": ["iceChargesShoot"],
           "transitions": [
             {
-                "gone": "query.all_animations_finished"
+              "gone": "query.all_animations_finished"
             }
           ]
         }

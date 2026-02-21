@@ -130,22 +130,22 @@
       "textures": "textures/items/minere/enderon_treecapitator.png"
     },
     "minere.copper_bear_armor": {
-      "textures": "textures/items/minere/copper_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/copper_bear_armor.png"
     },
     "minere.iron_bear_armor": {
-      "textures": "textures/items/minere/iron_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/iron_bear_armor.png"
     },
     "minere.gold_bear_armor": {
-      "textures": "textures/items/minere/gold_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/gold_bear_armor.png"
     },
     "minere.diamond_bear_armor": {
-      "textures": "textures/items/minere/diamond_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/diamond_bear_armor.png"
     },
     "minere.netherite_bear_armor": {
-      "textures": "textures/items/minere/netherite_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/netherite_bear_armor.png"
     },
     "minere.enderon_bear_armor": {
-      "textures": "textures/items/minere/enderon_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/enderon_bear_armor.png"
     },
     "minere.royal_jelly": {
       "textures": "textures/items/minere/royal_jelly.png"
@@ -181,23 +181,23 @@
       "textures": "textures/items/minere/elephant_armor/copper.png"
     },
     "minere.iron_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/iron.png"
-},
-"minere.gold_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/gold.png"
-},
-"minere.diamond_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/diamond.png"
-},
-"minere.netherite_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/netherite.png"
-},
-"minere.enderon_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/enderon.png"
-},
-"minere.indigon_elephant_armor": {
-  "textures": "textures/items/minere/elephant_armor/indigon.png"
-}
+      "textures": "textures/items/minere/elephant_armor/iron.png"
+    },
+    "minere.gold_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/gold.png"
+    },
+    "minere.diamond_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/diamond.png"
+    },
+    "minere.netherite_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/netherite.png"
+    },
+    "minere.enderon_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/enderon.png"
+    },
+    "minere.indigon_elephant_armor": {
+      "textures": "textures/items/minere/elephant_armor/indigon.png"
+    }
   },
   "resource_pack_name": "MineRe Resources",
   "texture_name": "atlas.items"

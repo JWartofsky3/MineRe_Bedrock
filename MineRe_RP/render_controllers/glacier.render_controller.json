@@ -6,7 +6,7 @@
       "materials": [{ "*": "Material.default" }],
       "textures": ["Texture.default"]
     },
-        "controller.render.minere.glacier_ice_charges": {
+    "controller.render.minere.glacier_ice_charges": {
       "geometry": "Geometry.iceCharges",
       "materials": [{ "*": "Material.default" }],
       "textures": ["Texture.iceCharges0"]

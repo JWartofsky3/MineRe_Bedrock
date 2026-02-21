@@ -1,5 +1,5 @@
 export const despawnBlock = {
-    onTick(arg) {
-        arg.block.setType("minecraft:air");
-    },
+  onTick(arg) {
+    arg.block.setType("minecraft:air");
+  },
 };

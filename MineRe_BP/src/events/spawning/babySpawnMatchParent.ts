@@ -23,6 +23,10 @@ const babyEvents: BabyEventMap = new Map([
     "minere:moose",
     ["minere:become_brown", "minere:become_dark", "minere:become_light"],
   ],
+  [
+    "minere:elephant",
+    ["minere:become_gray", "minere:become_brown", "minere:become_blue"],
+  ],
 ]);
 
 export class BabySpawnMatchParentEvent implements RegisterableEvent {

@@ -245,11 +245,11 @@
         "sounds/mob/elephant/trumpet1",
         "sounds/mob/elephant/trumpet2",
         "sounds/mob/elephant/trumpet3",
-                "sounds/mob/elephant/trumpet4",
+        "sounds/mob/elephant/trumpet4",
         "sounds/mob/elephant/trumpet5",
-                "sounds/mob/elephant/trumpet6",
-                        "sounds/mob/elephant/grumble0",
-                                "sounds/mob/elephant/soft0"
+        "sounds/mob/elephant/trumpet6",
+        "sounds/mob/elephant/grumble0",
+        "sounds/mob/elephant/soft0"
       ]
     },
     "mob.elephant.trumpet": {
@@ -259,9 +259,9 @@
         "sounds/mob/elephant/trumpet1",
         "sounds/mob/elephant/trumpet2",
         "sounds/mob/elephant/trumpet3",
-                "sounds/mob/elephant/trumpet4",
+        "sounds/mob/elephant/trumpet4",
         "sounds/mob/elephant/trumpet5",
-                "sounds/mob/elephant/trumpet6"
+        "sounds/mob/elephant/trumpet6"
       ]
     },
     "mob.moose.ambient": {
