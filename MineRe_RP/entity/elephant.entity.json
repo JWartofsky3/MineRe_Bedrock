@@ -62,9 +62,9 @@
       },
       "render_controllers": [
         "controller.render.minere.elephant_chest",
-        "controller.render.minere.elephant_saddle",
         "controller.render.minere.elephant_carpet",
         "controller.render.minere.elephant_armor",
+        "controller.render.minere.elephant_saddle",
         "controller.render.minere.elephant"
       ]
     }

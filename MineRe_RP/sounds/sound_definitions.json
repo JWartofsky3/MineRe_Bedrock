@@ -238,8 +238,34 @@
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]
     },
+    "mob.elephant.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/elephant/trumpet0",
+        "sounds/mob/elephant/trumpet1",
+        "sounds/mob/elephant/trumpet2",
+        "sounds/mob/elephant/trumpet3",
+                "sounds/mob/elephant/trumpet4",
+        "sounds/mob/elephant/trumpet5",
+                "sounds/mob/elephant/trumpet6",
+                        "sounds/mob/elephant/grumble0",
+                                "sounds/mob/elephant/soft0"
+      ]
+    },
+    "mob.elephant.trumpet": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/elephant/trumpet0",
+        "sounds/mob/elephant/trumpet1",
+        "sounds/mob/elephant/trumpet2",
+        "sounds/mob/elephant/trumpet3",
+                "sounds/mob/elephant/trumpet4",
+        "sounds/mob/elephant/trumpet5",
+                "sounds/mob/elephant/trumpet6"
+      ]
+    },
     "mob.moose.ambient": {
-      "category": "hostile",
+      "category": "ambient",
       "sounds": [
         "sounds/mob/moose/ambient0",
         "sounds/mob/moose/ambient1",
@@ -249,15 +275,15 @@
       ]
     },
     "mob.moose.hurt": {
-      "category": "hostile",
+      "category": "ambient",
       "sounds": ["sounds/mob/moose/hurt0", "sounds/mob/moose/hurt1"]
     },
     "mob.moose.death": {
-      "category": "hostile",
+      "category": "ambient",
       "sounds": ["sounds/mob/moose/death"]
     },
     "mob.moose.angry": {
-      "category": "hostile",
+      "category": "ambient",
       "sounds": [
         "sounds/mob/moose/angry0",
         "sounds/mob/moose/angry1",
@@ -265,7 +291,7 @@
       ]
     },
     "mob.moose.attack": {
-      "category": "hostile",
+      "category": "ambient",
       "sounds": [
         {
           "name": "sounds/mob/moose/hurt1",

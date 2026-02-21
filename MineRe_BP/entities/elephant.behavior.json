@@ -243,9 +243,9 @@
           "track_target": true,
           "require_complete_path": false,
           "random_stop_interval": 0,
-          "reach_multiplier": 2.25,
+          "reach_multiplier": 1.5,
           "speed_multiplier": 1.5,
-          "hit_delay_pct": 0.5
+          "hit_delay_pct": 0.58
         }
       },
       "minere:elephant_wild": {
