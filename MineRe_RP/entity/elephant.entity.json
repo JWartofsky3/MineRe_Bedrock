@@ -70,6 +70,11 @@
         "hide_reins": "animation.minere.elephant.hide_reins",
         "stomp": "animation.minere.elephant.stomp"
       },
+      "sound_effects": {
+        "stomp": "mob.ogre.smash",
+        "trumpet": "mob.elephant.trumpet",
+        "swing": "boss.inferno.swing"
+      },
       "render_controllers": [
         "controller.render.minere.elephant_chest",
         "controller.render.minere.elephant_carpet",

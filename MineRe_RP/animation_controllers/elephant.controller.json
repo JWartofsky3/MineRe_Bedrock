@@ -14,6 +14,9 @@
           "transitions": [
             {
               "attacking": "query.is_delayed_attacking == 1"
+            },
+                        {
+              "stomping": "query.is_roaring"
             }
           ],
           "blend_transition": 0.25
@@ -22,8 +25,23 @@
           "animations": [
             "attack",
             {
-              "walk": "query.modified_move_speed * 0.7"
+              "walk": "query.modified_move_speed"
             }
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            },
+                                    {
+              "stomping": "query.is_roaring"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "stomping": {
+          "animations": [
+            "stomp",
+                        "look_at_target"
           ],
           "transitions": [
             {

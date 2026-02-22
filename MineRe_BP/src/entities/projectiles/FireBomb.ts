@@ -1,4 +1,8 @@
-import { EntityHurtAfterEvent, EntitySpawnAfterEvent } from "@minecraft/server";
+import {
+  EntityDamageCause,
+  EntityHurtAfterEvent,
+  EntitySpawnAfterEvent,
+} from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { applyBombDamageBonus } from "entities/functions/applyDamageBonus";
 import { isAlive } from "entities/utilities/common";
@@ -24,7 +28,11 @@ export class FireBomb extends BaseCustomEntity {
     if (!isAlive(target)) {
       return;
     }
-    applyBombDamageBonus(target, data.damage, data.damageSource);
+    applyBombDamageBonus(target, data.damage, {
+      damagingProjectile: data.damageSource?.damagingProjectile,
+      damagingEntity: undefined,
+      cause: EntityDamageCause.entityExplosion,
+    });
     target.setOnFire(5);
   };
 }

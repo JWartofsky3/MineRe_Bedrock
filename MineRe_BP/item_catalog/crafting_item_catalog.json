@@ -60,7 +60,7 @@
               "minere:enderon_bear_armor"
             ]
           },
-                    {
+          {
             "group_identifier": {
               "icon": "minere:copper_elephant_armor",
               "name": "minere:itemGroup.name.elephant_armor"

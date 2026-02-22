@@ -5,6 +5,7 @@ import {
   EntityEquippableComponent,
   EntityHealthComponent,
   EquipmentSlot,
+  world,
 } from "@minecraft/server";
 import { getHealth, isAlive } from "entities/utilities/common";
 
@@ -39,7 +40,7 @@ export function applyToolDamageBonus(
  * Calculates the damage multiplier based on max health.
  */
 function bombDamageMultiplier(maxHealth: number): number {
-  const multiplier = maxHealth / 100 + 1.0;
+  const multiplier = maxHealth / 75 + 1.0;
   return Math.max(1.5, Math.min(3, multiplier));
 }
 
@@ -64,5 +65,37 @@ export function applyBombDamageBonus(
       ? baseDamage * 1.5
       : baseDamage * bombDamageMultiplier(maxHealth);
 
+  world.sendMessage(
+    `final damage is ${finalDamage} to targe ${entity?.typeId} from source ${damageSource}`,
+  );
+
   entity?.applyDamage(finalDamage, damageSource);
+}
+
+export function getScaledDamage(
+  distance: number,
+  range: number,
+  minDamage: number,
+  maxDamage: number,
+  maxDamageRangePercent: number, // e.g. 0.5 = first 50% of range is full damage
+): number {
+  if (range <= 0) {
+    return maxDamage;
+  }
+
+  const clampedDistance = Math.max(0, Math.min(distance, range));
+  const clampedPercent = Math.max(0, Math.min(maxDamageRangePercent, 1));
+  const maxDamageDistance = range * clampedPercent;
+
+  if (clampedDistance <= maxDamageDistance) {
+    return maxDamage;
+  }
+
+  const falloffDistance = range - maxDamageDistance;
+  if (falloffDistance <= 0) {
+    return minDamage;
+  }
+
+  const falloffT = (clampedDistance - maxDamageDistance) / falloffDistance;
+  return maxDamage - (maxDamage - minDamage) * falloffT;
 }

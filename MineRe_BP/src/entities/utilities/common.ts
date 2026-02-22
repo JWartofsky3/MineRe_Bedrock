@@ -2,6 +2,7 @@ import {
   Entity,
   EntityComponentTypes,
   EntityHealthComponent,
+  EntityIsBabyComponent,
   EntityTypeFamilyComponent,
 } from "@minecraft/server";
 import { getBlock, isSolid } from "block/blockUtils";
@@ -105,4 +106,14 @@ export function getHealth(entity: Entity): EntityHealthComponent {
     return null;
   }
   return healthComponent as EntityHealthComponent;
+}
+
+export function isBaby(entity: Entity): boolean {
+  const isBaby = entity.getComponent(
+    EntityComponentTypes.IsBaby,
+  ) as EntityIsBabyComponent;
+  if (isBaby?.isValid) {
+    return true;
+  }
+  return false;
 }

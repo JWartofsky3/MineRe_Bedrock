@@ -422,6 +422,11 @@
           "death": "mob.elephant.trumpet",
           "hurt": "mob.elephant.trumpet",
           "angry": "mob.elephant.trumpet",
+          "roar": {
+            "sound": "mob.elephant.trumpet",
+            "pitch": [0.7, 1.0],
+            "volume": 3.0
+          },
           "attack.strong": "mob.elephant.trumpet",
           "step": {
             "sound": "mob.yeti.step",

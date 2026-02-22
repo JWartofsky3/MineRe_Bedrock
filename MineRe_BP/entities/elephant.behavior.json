@@ -187,6 +187,9 @@
         "minecraft:scale": {
           "value": 0.5
         },
+        "minecraft:health": {
+          "value": 80
+        },
         "minecraft:behavior.panic": {
           "priority": 1,
           "speed_multiplier": 2
@@ -337,9 +340,6 @@
         "minecraft:attack": {
           "damage": [16, 32]
         },
-        "minecraft:health": {
-          "value": 300
-        },
         "minecraft:healable": {
           "items": [
             {
@@ -445,6 +445,9 @@
         }
       },
       "minere:elephant_adult_tame": {
+        "minecraft:health": {
+          "value": 300
+        },
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 5,
           "entity_types": [
@@ -605,18 +608,18 @@
         "minecraft:behavior.knockback_roar": {
           "priority": 0,
           "duration": 1.25,
-          "attack_time": 0.83,
-          "knockback_damage": 6,
+          "attack_time": 0.9,
+          "knockback_damage": 0,
           "knockback_horizontal_strength": 7,
           "knockback_vertical_strength": 5,
           "knockback_range": 5,
           "knockback_filters": {
             "none_of": [
-                                {
-                    "test": "is_vehicle_family",
-                    "subject": "other",
-                    "value": "elephant"
-                  },
+              {
+                "test": "is_vehicle_family",
+                "subject": "other",
+                "value": "elephant"
+              },
               {
                 "test": "is_family",
                 "subject": "other",
@@ -1512,7 +1515,10 @@
               "value": "minecraft:is_tamed"
             },
             "add": {
-              "component_groups": ["minere:elephant_adult_tame"]
+              "component_groups": [
+                "minere:elephant_adult_tame",
+                "minere:elephant_unsaddled"
+              ]
             }
           }
         ]
@@ -1562,10 +1568,7 @@
           },
           {
             "add": {
-              "component_groups": [
-                "minere:elephant_tame",
-                "minere:elephant_unsaddled"
-              ]
+              "component_groups": ["minere:elephant_tame"]
             }
           },
           {
@@ -1575,7 +1578,10 @@
               "value": false
             },
             "add": {
-              "component_groups": ["minere:elephant_adult_tame"]
+              "component_groups": [
+                "minere:elephant_adult_tame",
+                "minere:elephant_unsaddled"
+              ]
             }
           }
         ]
@@ -1598,6 +1604,11 @@
       },
       "minere:on_chest": {
         "add": {
+          "component_groups": ["minere:elephant_chested"]
+        }
+      },
+      "minere:on_remove_chest": {
+        "remove": {
           "component_groups": ["minere:elephant_chested"]
         }
       },
@@ -1637,14 +1648,14 @@
         "filters": {
           "all_of": [
             {
-                        "test": "bool_property",
-          "domain": "minere:can_move",
-          "value": true
+              "test": "bool_property",
+              "domain": "minere:can_move",
+              "value": true
             },
             {
-                        "test": "bool_property",
-          "domain": "minere:is_stomping",
-          "value": false
+              "test": "bool_property",
+              "domain": "minere:is_stomping",
+              "value": false
             }
           ]
         },
@@ -1666,14 +1677,14 @@
         "filters": {
           "all_of": [
             {
-                        "test": "bool_property",
-          "domain": "minere:can_move",
-          "value": false
+              "test": "bool_property",
+              "domain": "minere:can_move",
+              "value": false
             },
             {
-                        "test": "bool_property",
-          "domain": "minere:is_stomping",
-          "value": false
+              "test": "bool_property",
+              "domain": "minere:is_stomping",
+              "value": false
             }
           ]
         },
@@ -1691,9 +1702,23 @@
         }
       },
       "minere:start_stomp": {
+        "filters": {
+          "all_of": [
+            {
+              "test": "bool_property",
+              "domain": "minere:can_move",
+              "value": true
+            },
+            {
+              "test": "bool_property",
+              "domain": "minere:is_stomping",
+              "value": false
+            }
+          ]
+        },
         "sequence": [
           {
-            "set_property": { "minere:is_stomping": true}
+            "set_property": { "minere:is_stomping": true }
           },
           {
             "remove": {
@@ -1710,14 +1735,17 @@
       "minere:end_stomp": {
         "sequence": [
           {
-            "set_property": { "minere:is_stomping": false}
+            "set_property": { "minere:is_stomping": false }
           },
           {
-            "set_property": { "minere:can_move": true}
+            "set_property": { "minere:can_move": true }
           },
           {
             "remove": {
-              "component_groups": ["minere:elephant_stomping", "minere:elephant_immobile"]
+              "component_groups": [
+                "minere:elephant_stomping",
+                "minere:elephant_immobile"
+              ]
             }
           },
           {

@@ -1,6 +1,7 @@
 import {
   Dimension,
   Entity,
+  EntityDamageCause,
   EntityHurtAfterEvent,
   EntityRemoveBeforeEvent,
   EntitySpawnAfterEvent,
@@ -45,7 +46,11 @@ export class IceBomb extends BaseCustomEntity {
     if (!isAlive(target)) {
       return;
     }
-    applyBombDamageBonus(target, data.damage, data.damageSource);
+    applyBombDamageBonus(target, data.damage, {
+      damagingProjectile: data.damageSource?.damagingProjectile,
+      damagingEntity: undefined,
+      cause: EntityDamageCause.entityExplosion,
+    });
   };
 
   onBeforeEntityRemove = (data: EntityRemoveBeforeEvent): void =>

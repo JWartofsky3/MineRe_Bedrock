@@ -1,9 +1,7 @@
 import {
-  DataDrivenEntityTriggerAfterEvent,
   world,
   system,
   EntityComponentTypes,
-  EntityRideableComponent,
   EntityRidingComponent,
   PlayerInteractWithEntityAfterEvent,
   PlayerInteractWithEntityBeforeEvent,
@@ -11,19 +9,25 @@ import {
   Entity,
   Player,
   EntityIsSaddledComponent,
-  GameMode,
   EntityDamageCause,
   EntityDieAfterEvent,
   EntityHurtAfterEvent,
   EntityInventoryComponent,
+  EntityDamageSource,
+  EntityIsChestedComponent,
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
+import {
+  applyBombDamageBonus,
+  getScaledDamage,
+} from "entities/functions/applyDamageBonus";
 import { isOffCooldown } from "entities/functions/checkCooldown";
 import { throwEntity } from "entities/functions/throw";
+import { isBaby } from "entities/utilities/common";
 import { isAlive } from "mob/mob_utils";
 import {
   addVector3,
-  directionVector3,
+  distVector3,
   multiplyVector3Number,
 } from "util/vector3Functions";
 
@@ -31,13 +35,23 @@ const ELEPHANT_TYPE_ID = "minere:elephant";
 const CARPET_PROPERTY_ID = "minere:carpet";
 const ARMOR_PROPERTY_ID = "minere:armor";
 const ATTACK_COOLDOWN_PROPERTY_ID = "minere:attack_cooldown";
+const STOMP_COOLDOWN_PROPERTY_ID = "minere:stomp_cooldown";
 
-const ATTACK_COOLDOWN = 20 * 1.5;
+const ATTACK_COOLDOWN = 20 * 1.25;
 const ATTACK_RANGE = 3;
 const ATTACK_DELAY = 20 * 1.0;
 const MIN_DAMAGE = 12;
 const MAX_DAMAGE = 24;
 const TARGET_OFFSET = 1.5;
+const STOMP_COOLDOWN = 20 * 8;
+const STOMP_CHANCE = 0.125;
+const STOMP_ACTIVATION_RANGE = 8;
+const STOMP_DAMAGE_RANGE = 5;
+const STOMP_DAMAGE_MIN = 6;
+const STOMP_DAMAGE_MAX = 16;
+
+const ARMOR_BONUS_DAMAGE = 6;
+const ARMOR_BONUS_RANGE = 1.0;
 
 type CarpetEntry = {
   eventName: string;
@@ -111,6 +125,12 @@ const ARMOR_EVENT_BY_TYPE_ID = new Map<string, string>([
   ["minere:netherite_elephant_armor", "minere:netherite_armor"],
   ["minere:enderon_elephant_armor", "minere:enderon_armor"],
   ["minere:indigon_elephant_armor", "minere:indigon_armor"],
+]);
+
+const INVALID_TYPE_IDS = new Set<string>([
+  "minecraft:item",
+  "minecraft:xp",
+  "minecraft:xp_orb",
 ]);
 
 export class Elephant extends BaseCustomEntity {
@@ -196,6 +216,12 @@ export class Elephant extends BaseCustomEntity {
     );
   }
 
+  onEntityHurt(data: EntityHurtAfterEvent): void {
+    const elephant = data.hurtEntity;
+    const attacker = data?.damageSource?.damagingEntity;
+    this.tryStomp(elephant, attacker);
+  }
+
   onCarpet(data: PlayerInteractWithEntityAfterEvent, carpet: CarpetEntry) {
     const elephant = data.target;
     const carpetProp = elephant.getProperty(CARPET_PROPERTY_ID) as number;
@@ -215,6 +241,7 @@ export class Elephant extends BaseCustomEntity {
     } else {
       inventory.container.setItem(data.player.selectedSlotIndex, undefined);
     }
+    elephant.dimension.playSound("armor.equip_leather", elephant.location);
     elephant.triggerEvent(carpet.eventName);
   }
 
@@ -232,6 +259,7 @@ export class Elephant extends BaseCustomEntity {
     ) as EntityInventoryComponent;
     inventory.container.setItem(data.player.selectedSlotIndex, undefined);
     elephant.triggerEvent(armorEvent);
+    elephant.dimension.playSound("armor.equip_generic", elephant.location);
   }
 
   onShear(data: PlayerInteractWithEntityAfterEvent) {
@@ -245,6 +273,7 @@ export class Elephant extends BaseCustomEntity {
         new ItemStack(CARPET_ID_BY_VALUE.get(carpetProp)),
         elephant.location,
       );
+      dimension.playSound("mob.sheep.shear", elephant.location);
       elephant.triggerEvent("minere:remove_carpet");
       return;
     }
@@ -256,8 +285,28 @@ export class Elephant extends BaseCustomEntity {
         new ItemStack(ARMOR_ID_BY_VALUE.get(armorProp)),
         elephant.location,
       );
+      dimension.playSound("mob.sheep.shear", elephant.location);
       elephant.triggerEvent("minere:remove_armor");
       return;
+    }
+
+    // remove chest
+    const chestComponent = elephant.getComponent(
+      EntityComponentTypes.IsChested,
+    ) as EntityIsChestedComponent;
+    const inventory = elephant.getComponent(
+      EntityComponentTypes.Inventory,
+    ) as EntityInventoryComponent;
+    if (chestComponent?.isValid) {
+      if (!inventory.isValid || inventory.container.weight == 0) {
+        dimension.spawnItem(
+          new ItemStack("minecraft:chest"),
+          elephant.location,
+        );
+        dimension.playSound("mob.sheep.shear", elephant.location);
+        elephant.triggerEvent("minere:on_remove_chest");
+        return;
+      }
     }
   }
 
@@ -272,6 +321,7 @@ export class Elephant extends BaseCustomEntity {
       system.currentTick,
     );
 
+    const isArmored = (elephant.getProperty(ARMOR_PROPERTY_ID) as number) > -1;
     const dimension = elephant.dimension;
     const ignoredEntities = new Set<string>();
     ignoredEntities.add(elephant.id);
@@ -283,11 +333,14 @@ export class Elephant extends BaseCustomEntity {
         return;
       }
 
+      const modifiedAttackRange =
+        ATTACK_RANGE + (isArmored ? ARMOR_BONUS_RANGE : 0);
+
       const entityIdsSet = new Set<string>();
       // get entities at Elephant's position
       let entities = dimension.getEntities({
         location: elephant.location,
-        maxDistance: ATTACK_RANGE,
+        maxDistance: modifiedAttackRange,
       });
       entities.forEach((entity) => {
         entityIdsSet.add(entity.id);
@@ -298,7 +351,7 @@ export class Elephant extends BaseCustomEntity {
           elephant.location,
           multiplyVector3Number(elephant.getViewDirection(), TARGET_OFFSET),
         ),
-        maxDistance: ATTACK_RANGE,
+        maxDistance: modifiedAttackRange,
       });
       entities.forEach((entity) => {
         entityIdsSet.add(entity.id);
@@ -310,7 +363,7 @@ export class Elephant extends BaseCustomEntity {
       );
       entities = dimension.getEntities({
         location: targetPos,
-        maxDistance: ATTACK_RANGE,
+        maxDistance: modifiedAttackRange,
       });
       entities.forEach((entity) => {
         entityIdsSet.add(entity.id);
@@ -322,7 +375,13 @@ export class Elephant extends BaseCustomEntity {
           return;
         }
         const entity = world.getEntity(id);
-        const damage = MIN_DAMAGE + Math.random() * (MAX_DAMAGE - MIN_DAMAGE);
+        if (INVALID_TYPE_IDS.has(entity?.typeId)) {
+          return;
+        }
+        const damage =
+          MIN_DAMAGE +
+          Math.random() * (MAX_DAMAGE - MIN_DAMAGE) +
+          (isArmored ? ARMOR_BONUS_DAMAGE : 0);
         throwEntity(elephant.location, entity, 3.0, 4.0);
         entity.applyDamage(damage, {
           damagingEntity: elephant,
@@ -330,5 +389,63 @@ export class Elephant extends BaseCustomEntity {
         });
       });
     }, ATTACK_DELAY);
+  }
+
+  tryStomp(elephant: Entity, attacker: Entity) {
+    if (!isAlive(attacker) || !isAlive(elephant)) {
+      return;
+    }
+
+    if (isBaby(elephant)) {
+      return;
+    }
+
+    if (!isOffCooldown(elephant, STOMP_COOLDOWN_PROPERTY_ID, STOMP_COOLDOWN)) {
+      return;
+    }
+
+    if (
+      Math.random() < STOMP_CHANCE &&
+      distVector3(elephant.location, attacker.location) < STOMP_ACTIVATION_RANGE
+    ) {
+      elephant.setDynamicProperty(
+        STOMP_COOLDOWN_PROPERTY_ID,
+        system.currentTick,
+      );
+      elephant.triggerEvent("minere:start_stomp");
+      system.runTimeout(() => {
+        const entities = elephant.dimension.getEntities({
+          location: elephant.location,
+          maxDistance: STOMP_DAMAGE_RANGE,
+        });
+        const damageSource: EntityDamageSource = {
+          damagingEntity: elephant,
+          cause: EntityDamageCause.entityAttack,
+        };
+
+        entities.forEach((entity: Entity) => {
+          if (INVALID_TYPE_IDS.has(entity?.typeId)) {
+            return;
+          }
+          if (entity.id === elephant.id) {
+            return;
+          }
+          if (entity.location.y > elephant.location.y + 2.5) {
+            return;
+          }
+          applyBombDamageBonus(
+            entity,
+            getScaledDamage(
+              distVector3(elephant.location, entity.location),
+              STOMP_DAMAGE_RANGE,
+              STOMP_DAMAGE_MIN,
+              STOMP_DAMAGE_MAX,
+              0.5,
+            ),
+            damageSource,
+          );
+        });
+      }, 18);
+    }
   }
 }
