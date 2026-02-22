@@ -323,7 +323,7 @@
           "tame_items": [
             "apple",
             "golden_apple",
-            "dried_kelp_block",
+            "melon_block",
             "hay_block",
             "melon",
             "pumpkin",
@@ -410,7 +410,7 @@
         },
         "minecraft:breedable": {
           "require_tame": true,
-          "breed_items": ["golden_apple", "glistering_melon_slice"],
+          "breed_items": ["golden_apple"],
           "breeds_with": {
             "mate_type": "minere:elephant",
             "baby_type": "minere:elephant",
@@ -632,9 +632,45 @@
           }
         }
       },
+      "minere:unarmored": {
+                "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            }
+          ]
+        }
+      },
       "minere:copper_armor": {
         "minecraft:damage_sensor": {
           "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
             {
               "cause": "entity_attack",
               "damage_multiplier": 0.64
@@ -669,6 +705,21 @@
       "minere:iron_armor": {
         "minecraft:damage_sensor": {
           "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
             {
               "cause": "entity_attack",
 
@@ -706,6 +757,21 @@
         "minecraft:damage_sensor": {
           "triggers": [
             {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
+            {
               "cause": "all",
 
               "damage_multiplier": 0.6
@@ -716,6 +782,21 @@
       "minere:diamond_armor": {
         "minecraft:damage_sensor": {
           "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
             {
               "cause": "entity_attack",
 
@@ -757,6 +838,21 @@
       "minere:netherite_armor": {
         "minecraft:damage_sensor": {
           "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
             {
               "cause": "entity_attack",
 
@@ -804,6 +900,21 @@
         "minecraft:damage_sensor": {
           "triggers": [
             {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
+            {
               "cause": "entity_attack",
 
               "damage_multiplier": 0.4
@@ -825,11 +936,6 @@
             },
             {
               "cause": "thorns",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "fall",
 
               "damage_multiplier": 0.4
             },
@@ -845,6 +951,21 @@
         "minecraft:damage_sensor": {
           "triggers": [
             {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no",
+              "damage_modifier": -3
+            },
+            {
               "cause": "entity_attack",
 
               "damage_multiplier": 0.36
@@ -866,11 +987,6 @@
             },
             {
               "cause": "thorns",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "fall",
 
               "damage_multiplier": 0.36
             },
@@ -1273,14 +1389,20 @@
       "minecraft:damage_sensor": {
         "triggers": [
           {
-            "cause": "freezing",
-            "deals_damage": "no"
-          },
-          {
             "cause": "fall",
             "deals_damage": "no",
             "damage_modifier": -3
-          }
+          },
+          {
+              "on_damage": {
+                "filters": {
+                      "test": "is_riding_self",
+                      "subject": "other",
+                      "value": true
+                }
+              },
+              "deals_damage": "no"
+            }
         ]
       },
       "minecraft:knockback_resistance": {
@@ -1819,6 +1941,11 @@
             "minere:netherite_armor",
             "minere:enderon_armor",
             "minere:indigon_armor"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minere:unarmored"
           ]
         }
       },

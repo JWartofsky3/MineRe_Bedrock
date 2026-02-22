@@ -28,7 +28,8 @@
               "minere:golden_treecapitator",
               "minere:diamond_treecapitator",
               "minere:netherite_treecapitator",
-              "minere:enderon_treecapitator"
+              "minere:enderon_treecapitator",
+              "minere:indigon_treecapitator"
             ]
           },
           {
@@ -57,7 +58,8 @@
               "minere:gold_bear_armor",
               "minere:diamond_bear_armor",
               "minere:netherite_bear_armor",
-              "minere:enderon_bear_armor"
+              "minere:enderon_bear_armor",
+              "minere:indigon_bear_armor"
             ]
           },
           {

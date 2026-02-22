@@ -40,6 +40,9 @@
     "minere:nether_coal_ore": {
       "textures": "textures/blocks/minere/nether_coal_ore"
     },
+    "minere:indigon_ore": {
+      "textures": "textures/blocks/minere/indigon_ore"
+    },
     "minere:nether_coal_block": {
       "textures": "textures/blocks/minere/nether_coal_block"
     },
@@ -102,6 +105,12 @@
     },
     "minere:basalt_nether_coal_ore_top": {
       "textures": "textures/blocks/minere/basalt_nether_coal_ore_top.png"
+    },
+    "minere:basalt_indigon_ore_side": {
+      "textures": "textures/blocks/minere/basalt_indigon_ore_side.png"
+    },
+    "minere:basalt_indigon_ore_top": {
+      "textures": "textures/blocks/minere/basalt_indigon_ore_top.png"
     },
     "minere:ghost_pot": {
       "textures": "textures/blocks/minere/ghost_pot.png"

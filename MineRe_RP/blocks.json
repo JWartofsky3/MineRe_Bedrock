@@ -52,6 +52,10 @@
     "textures": "minere:nether_coal_ore",
     "sound": "netherrack"
   },
+  "minere:indigon_ore": {
+    "textures": "minere:indigon_ore",
+    "sound": "netherrack"
+  },
   "minere:nether_coal_block": {
     "textures": "minere:nether_coal_block",
     "sound": "netherrack"
@@ -65,6 +69,17 @@
       "south": "minere:basalt_nether_coal_ore_side",
       "east": "minere:basalt_nether_coal_ore_side",
       "west": "minere:basalt_nether_coal_ore_side"
+    }
+  },
+  "minere:basalt_indigon_ore": {
+    "sound": "basalt",
+    "textures": {
+      "up": "minere:basalt_indigon_ore_top",
+      "down": "minere:basalt_indigon_ore_top",
+      "north": "minere:basalt_indigon_ore_side",
+      "south": "minere:basalt_indigon_ore_side",
+      "east": "minere:basalt_indigon_ore_side",
+      "west": "minere:basalt_indigon_ore_side"
     }
   },
   "minere:amethyst_ore": {

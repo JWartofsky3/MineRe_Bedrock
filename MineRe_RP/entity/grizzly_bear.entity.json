@@ -19,6 +19,7 @@
         "diamond_armor": "textures/entity/minere/grizzly_bear/diamond_armor",
         "netherite_armor": "textures/entity/minere/grizzly_bear/netherite_armor",
         "enderon_armor": "textures/entity/minere/grizzly_bear/enderon_armor",
+        "indigon_armor": "textures/entity/minere/grizzly_bear/indigon_armor",
         "empty": "textures/entity/minere/grizzly_bear/empty"
       },
       "geometry": {

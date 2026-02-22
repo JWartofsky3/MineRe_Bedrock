@@ -27,7 +27,8 @@
             "Texture.gold_armor",
             "Texture.diamond_armor",
             "Texture.netherite_armor",
-            "Texture.enderon_armor"
+            "Texture.enderon_armor",
+            "Texture.indigon_armor"
           ]
         }
       },

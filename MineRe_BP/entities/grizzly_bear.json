@@ -127,6 +127,20 @@
               "use_item": true,
               "play_sounds": "saddle",
               "interact_text": "action.interact.saddle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "has_equipment",
+                  "subject": "other",
+                  "domain": "hand",
+                  "value": "minere:indigon_bear_armor"
+                },
+                "event": "equip_indigon_armor"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
             }
           ]
         }
@@ -594,6 +608,87 @@
           "target_teleport_chance": 0.05,
           "light_teleport_chance": 0.01,
           "dark_teleport_chance": 0.01
+        }
+      },
+      "minere:indigon_armor": {
+        "minecraft:mark_variant": {
+          "value": 7
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "entity_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "block_explosion",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true,
+              "damage_multiplier": 0.36
+            },
+            {
+              "cause": "lava",
+              "deals_damage": true,
+              "damage_multiplier": 0.64
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "on_unarmored"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/grizzly_bear/indigon_armor.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
         }
       },
       "minecraft:baby": {
@@ -1453,6 +1548,20 @@
           }
         ]
       },
+      "equip_indigon_armor": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:armorable"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:indigon_armor"]
+            }
+          }
+        ]
+      },
       "on_unarmored": {
         "sequence": [
           {
@@ -1463,7 +1572,8 @@
                 "minere:gold_armor",
                 "minere:diamond_armor",
                 "minere:netherite_armor",
-                "minere:enderon_armor"
+                "minere:enderon_armor",
+                "minere:indigon_armor"
               ]
             }
           },

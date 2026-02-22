@@ -2,22 +2,22 @@
   "format_version": "1.21.10",
   "minecraft:item": {
     "description": {
-      "identifier": "minere:enderon_horse_armor",
+      "identifier": "minere:indigon_horse_armor",
       "menu_category": {
         "category": "equipment",
         "group": "itemGroup.name.horseArmor"
       }
     },
     "components": {
-      "minecraft:icon": "minere.enderon_horse_armor",
+      "minecraft:icon": "minere.indigon_horse_armor",
       "minecraft:display_name": {
-        "value": "item.minere:enderon_horse_armor"
+        "value": "item.minere:indigon_horse_armor"
       },
-                  "minecraft:wearable": {
+      "minecraft:max_stack_size": 1,
+            "minecraft:wearable": {
               "slot": "slot.armor.body",
-        "protection": 10
-      },
-      "minecraft:max_stack_size": 1
+        "protection": 12
+      }
     }
   }
 }

@@ -1,0 +1,51 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:indigon_shovel",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.shovel"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "minere.indigon_shovel",
+      "minecraft:tags": {
+        "tags": ["minecraft:is_shovel"]
+      },
+      "minecraft:custom_components": ["minere:custom_shovel"],
+      "minecraft:damage": 4,
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": {
+              "tags": "q.any_tag('dirt', 'sand', 'gravel', 'grass', 'snow', 'minecraft:is_shovel_item_destructible')"
+            },
+            "speed": 8
+          }
+        ]
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+        "slot": "shovel",
+        "value": 10
+      },
+      "minecraft:use_on": {
+        "blocks": ["minecraft:grass", "minecraft:dirt"]
+      },
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minere:indigon_ingot"],
+            "repair_amount": 390
+          }
+        ]
+      }
+    }
+  }
+}

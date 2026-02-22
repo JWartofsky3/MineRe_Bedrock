@@ -24,17 +24,32 @@
     "minere.enderon_sword": {
       "textures": "textures/items/minere/enderon_sword.png"
     },
+    "minere.indigon_sword": {
+      "textures": "textures/items/minere/indigon_sword"
+    },
     "minere.enderon_pickaxe": {
       "textures": "textures/items/minere/enderon_pickaxe.png"
+    },
+    "minere.indigon_pickaxe": {
+      "textures": "textures/items/minere/indigon_pickaxe"
     },
     "minere.enderon_axe": {
       "textures": "textures/items/minere/enderon_axe.png"
     },
+    "minere.indigon_axe": {
+      "textures": "textures/items/minere/indigon_axe"
+    },
     "minere.enderon_shovel": {
       "textures": "textures/items/minere/enderon_shovel.png"
     },
+    "minere.indigon_shovel": {
+      "textures": "textures/items/minere/indigon_shovel"
+    },
     "minere.enderon_hoe": {
       "textures": "textures/items/minere/enderon_hoe.png"
+    },
+    "minere.indigon_hoe": {
+      "textures": "textures/items/minere/indigon_hoe"
     },
     "minere.amethyst_staff": {
       "textures": "textures/items/minere/amethyst_staff.png"
@@ -99,6 +114,9 @@
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"
     },
+    "minere.indigon_horse_armor": {
+      "textures": "textures/items/minere/indigon_horse_armor"
+    },
     "minere.ice_dagger": {
       "textures": "textures/items/minere/ice_dagger.png"
     },
@@ -135,6 +153,9 @@
     "minere.enderon_treecapitator": {
       "textures": "textures/items/minere/enderon_treecapitator.png"
     },
+    "minere.indigon_treecapitator": {
+      "textures": "textures/items/minere/indigon_treecapitator.png"
+    },
     "minere.copper_bear_armor": {
       "textures": "textures/items/minere/bear_armor/copper_bear_armor.png"
     },
@@ -152,6 +173,9 @@
     },
     "minere.enderon_bear_armor": {
       "textures": "textures/items/minere/bear_armor/enderon_bear_armor.png"
+    },
+    "minere.indigon_bear_armor": {
+      "textures": "textures/items/minere/bear_armor/indigon_bear_armor.png"
     },
     "minere.royal_jelly": {
       "textures": "textures/items/minere/royal_jelly.png"

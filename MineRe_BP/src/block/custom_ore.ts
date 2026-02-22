@@ -127,6 +127,22 @@ oreMap.set("minere:basalt_iron_ore", {
 });
 oreMap.set("minere:blackstone_iron_ore", oreMap.get("minere:basalt_iron_ore"));
 
+oreMap.set("minere:indigon_ore", {
+  ore: "minere:raw_indigon",
+  count: {
+    min: 1,
+    max: 1,
+  },
+  fortune: {
+    min: 0,
+    max: 1,
+  },
+  experience: {
+    min: 1,
+    max: 4,
+  },
+});
+
 export const customOre: BlockCustomComponent = {
   onPlayerBreak(arg: BlockComponentPlayerBreakEvent) {
     const player: Player = arg.player;

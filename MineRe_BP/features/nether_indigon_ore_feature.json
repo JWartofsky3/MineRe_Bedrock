@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "minere:nether_indigon_ore_feature"
+    },
+    "count": 8,
+    "replace_rules": [
+      {
+        "places_block": "minere:indigon_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:netherrack"
+          }
+        ]
+      },
+      {
+        "places_block": "minere:basalt_indigon_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:basalt"
+          }
+        ]
+      }
+    ]
+  }
+}

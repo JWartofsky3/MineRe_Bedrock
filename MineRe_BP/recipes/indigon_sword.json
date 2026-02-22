@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:indigon_sword"
+    },
+
+    "tags": ["crafting_table"],
+    "pattern": ["X", "X", "#"],
+    "key": {
+      "#": {
+        "item": "minecraft:stick"
+      },
+      "X": {
+        "item": "minere:indigon_ingot"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minere:indigon_ingot"
+      }
+    ],
+    "result": {
+      "item": "minere:indigon_sword"
+    }
+  }
+}

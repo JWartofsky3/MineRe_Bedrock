@@ -15,6 +15,8 @@ import {
   EntityInventoryComponent,
   EntityDamageSource,
   EntityIsChestedComponent,
+  EntityEquippableComponent,
+  EquipmentSlot,
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import {
@@ -127,10 +129,18 @@ const ARMOR_EVENT_BY_TYPE_ID = new Map<string, string>([
   ["minere:indigon_elephant_armor", "minere:indigon_armor"],
 ]);
 
-const INVALID_TYPE_IDS = new Set<string>([
+const INVALID_TARGET_TYPES = new Set<string>([
   "minecraft:item",
   "minecraft:xp",
   "minecraft:xp_orb",
+]);
+
+const VALID_COMMAND_ITEMS = new Set<string>([
+  "minecraft:stick",
+  "minecraft:blaze_rod",
+  "minecraft:bone",
+  "minecraft:carrot_on_a_stick",
+  "minecraft:warped_fungus_on_a_stick"
 ]);
 
 export class Elephant extends BaseCustomEntity {
@@ -153,6 +163,13 @@ export class Elephant extends BaseCustomEntity {
     if (mount?.id != data.target.id) {
       return;
     }
+
+    const playerEquip = data.player.getComponent(EntityComponentTypes.Equippable) as EntityEquippableComponent;
+    const mainItem = playerEquip.getEquipment(EquipmentSlot.Mainhand);
+    if (mainItem != null && !VALID_COMMAND_ITEMS.has(mainItem.typeId)) {
+      return;
+    }
+
     system.runTimeout(() => {
       this.onControlledAttack(elephant, data.player);
     });
@@ -321,6 +338,7 @@ export class Elephant extends BaseCustomEntity {
       system.currentTick,
     );
 
+
     const isArmored = (elephant.getProperty(ARMOR_PROPERTY_ID) as number) > -1;
     const dimension = elephant.dimension;
     const ignoredEntities = new Set<string>();
@@ -375,7 +393,7 @@ export class Elephant extends BaseCustomEntity {
           return;
         }
         const entity = world.getEntity(id);
-        if (INVALID_TYPE_IDS.has(entity?.typeId)) {
+        if (INVALID_TARGET_TYPES.has(entity?.typeId)) {
           return;
         }
         const damage =
@@ -424,7 +442,7 @@ export class Elephant extends BaseCustomEntity {
         };
 
         entities.forEach((entity: Entity) => {
-          if (INVALID_TYPE_IDS.has(entity?.typeId)) {
+          if (INVALID_TARGET_TYPES.has(entity?.typeId)) {
             return;
           }
           if (entity.id === elephant.id) {
