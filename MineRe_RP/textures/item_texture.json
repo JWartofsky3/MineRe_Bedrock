@@ -15,6 +15,12 @@
     "minere.enderon_gemstone": {
       "textures": "textures/items/minere/enderon_gemstone.png"
     },
+    "minere.indigon_ingot": {
+      "textures": "textures/items/minere/indigon_ingot.png"
+    },
+    "minere.raw_indigon": {
+      "textures": "textures/items/minere/raw_indigon.png"
+    },
     "minere.enderon_sword": {
       "textures": "textures/items/minere/enderon_sword.png"
     },

@@ -1,0 +1,21 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:gold_elephant_armor"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BBB", "II ", "I  "],
+    "key": {
+      "B": {
+        "item": "minecraft:gold_block"
+      },
+      "I": {
+        "item": "minecraft:gold_ingot"
+      }
+    },
+    "result": {
+      "item": "minere:gold_elephant_armor"
+    }
+  }
+}

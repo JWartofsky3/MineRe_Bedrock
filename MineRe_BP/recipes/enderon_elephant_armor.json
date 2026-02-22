@@ -1,0 +1,21 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:enderon_elephant_armor"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["BBB", "II ", "I  "],
+    "key": {
+      "B": {
+        "item": "minere:enderon_block"
+      },
+      "I": {
+        "item": "minere:enderon_gemstone"
+      }
+    },
+    "result": {
+      "item": "minere:enderon_elephant_armor"
+    }
+  }
+}

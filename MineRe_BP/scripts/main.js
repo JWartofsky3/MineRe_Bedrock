@@ -3,11 +3,7 @@ import { world, system } from "@minecraft/server";
 import { registerBlocks } from "registry/blockRegistry";
 import { registerItems } from "registry/itemRegistry";
 import { registerCustomEntities } from "registry/customEntityRegistry";
-import {
-  ARMOR_WEIGHT,
-  giveOutSettingsBook,
-  initializeWorldSettings,
-} from "settings";
+import { ARMOR_WEIGHT, giveOutSettingsBook, initializeWorldSettings, } from "settings";
 // ───────────────────────── Imports: Player ─────────────────────────
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -33,46 +29,48 @@ import { RegisterCustomEvents } from "registry/eventRegistry";
 export const DEFAULT_TICK = 20;
 // ───────────────────────── Startup ─────────────────────────
 system.beforeEvents.startup.subscribe((data) => {
-  registerItems(data);
-  registerBlocks(data);
-  registerCustomEntities();
-  RegisterCustomEvents();
-  initializeWorldSettings();
+    registerItems(data);
+    registerBlocks(data);
+    registerCustomEntities();
+    RegisterCustomEvents();
+    initializeWorldSettings();
 });
 giveOutSettingsBook();
 // ───────────────────────── Item Events ─────────────────────────
 world.afterEvents.itemReleaseUse.subscribe(fireInfintyBowAfter);
 world.afterEvents.itemCompleteUse.subscribe(healFromItem);
 world.beforeEvents.itemUse.subscribe((data) => {
-  useAmethystStaff(data);
-  useEchoStaff(data);
-  useFireStaff(data);
-  useBlasterStaff(data);
-  useEmeraldStaff(data);
+    useAmethystStaff(data);
+    useEchoStaff(data);
+    useFireStaff(data);
+    useBlasterStaff(data);
+    useEmeraldStaff(data);
 });
 // ───────────────────────── Player Events ─────────────────────────
 world.afterEvents.entityHealthChanged.subscribe(playerHungerHeal);
 world.afterEvents.playerBreakBlock.subscribe((data) => {
-  offHandTreecapitate(data);
-  blockDropItem(data);
+    offHandTreecapitate(data);
+    blockDropItem(data);
 });
 world.afterEvents.playerInteractWithBlock.subscribe((data) => {
-  onHoeUse(data.player, data.itemStack, data.block);
-  onShovelUse(data.player, data.itemStack, data.block);
-  onAxeUse(data.player, data.itemStack, data.block);
+    onHoeUse(data.player, data.itemStack, data.block);
+    onShovelUse(data.player, data.itemStack, data.block);
+    onAxeUse(data.player, data.itemStack, data.block);
 });
 // ───────────────────────── Entity Lifecycle ─────────────────────────
 world.afterEvents.entitySpawn.subscribe((data) => {
-  const entity = data.entity;
-  if (!entity?.isValid) return;
-  if (entity.typeId === "minecraft:arrow") {
-    skeletonStrafe(entity, 0.5);
-  }
-  matchParent(entity);
+    const entity = data.entity;
+    if (!entity?.isValid)
+        return;
+    if (entity.typeId === "minecraft:arrow") {
+        skeletonStrafe(entity, 0.5);
+    }
+    matchParent(entity);
 });
 // ───────────────────────── Ticking Systems ─────────────────────────
 system.runInterval(() => {
-  if (!world.getDynamicProperty(ARMOR_WEIGHT)?.valueOf()) return;
-  world.getAllPlayers().forEach(armorWeight);
+    if (!world.getDynamicProperty(ARMOR_WEIGHT)?.valueOf())
+        return;
+    world.getAllPlayers().forEach(armorWeight);
 }, 1);
 runEndStorms();

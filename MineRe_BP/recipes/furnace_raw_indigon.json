@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "minere:furnace_raw_indigon"
+    },
+
+    "unlock": [
+      {
+        "item": "minere:raw_indigon"
+      }
+    ],
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:raw_indigon",
+    "output": "minere:indigon_ingot"
+  }
+}

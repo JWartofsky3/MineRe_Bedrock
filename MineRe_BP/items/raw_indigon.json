@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:raw_indigon",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "minere.raw_indigon",
+      "minecraft:display_name": {
+        "value": "item.minere:raw_indigon"
+      }
+    }
+  }
+}

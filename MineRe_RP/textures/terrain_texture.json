@@ -22,6 +22,9 @@
     "minere:enderon_block": {
       "textures": "textures/blocks/minere/enderon_block"
     },
+    "minere:indigon_block": {
+      "textures": "textures/blocks/minere/indigon_block"
+    },
     "minere:ender_plasma_ore": {
       "textures": "textures/blocks/minere/ender_plasma_ore"
     },

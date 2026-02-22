@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:indigon_ingot"
+    },
+
+    "tags": ["crafting_table"],
+    "pattern": ["#"],
+    "key": {
+      "#": {
+        "item": "minere:indigon_block"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minere:indigon_ingot"
+      }
+    ],
+    "result": {
+      "item": "minere:indigon_ingot",
+      "count": 9
+    }
+  }
+}

@@ -65,10 +65,6 @@ export function applyBombDamageBonus(
       ? baseDamage * 1.5
       : baseDamage * bombDamageMultiplier(maxHealth);
 
-  world.sendMessage(
-    `final damage is ${finalDamage} to targe ${entity?.typeId} from source ${damageSource}`,
-  );
-
   entity?.applyDamage(finalDamage, damageSource);
 }
 
