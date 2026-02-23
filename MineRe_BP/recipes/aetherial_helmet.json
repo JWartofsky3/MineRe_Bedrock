@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:aetherial_helmet"
+    },
+
+    "tags": ["crafting_table"],
+    "pattern": ["RWR", "WGW", "RWR"],
+    "key": {
+      "R": { "item": "minecraft:redstone" },
+      "W": { "item": "minecraft:wind_charge" },
+      "G": { "item": "minecraft:golden_helmet" }
+    },
+    "unlock": [
+      { "item": "minecraft:wind_charge" }
+    ],
+    "result": {
+      "item": "minere:aetherial_helmet"
+    }
+  }
+}

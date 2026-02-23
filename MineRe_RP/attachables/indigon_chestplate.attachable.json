@@ -2,13 +2,13 @@
   "format_version": "1.21.60",
   "minecraft:attachable": {
     "description": {
-      "identifier": "minere:enderon_helmet",
+      "identifier": "minere:indigon_chestplate",
       "materials": {
-        "default": "entity_alphablend",
+        "default": "armor",
         "enchanted": "armor_enchanted"
       },
       "textures": {
-        "default": "textures/models/minere/armor/enderon_main",
+        "default": "textures/models/minere/armor/indigon_main",
         "enchanted": "textures/misc/enchanted_actor_glint",
         "sentry_trim": "textures/trims/sentry",
         "vex_trim": "textures/trims/vex",
@@ -27,10 +27,9 @@
         "eye_trim": "textures/trims/eye",
         "spire_trim": "textures/trims/spire",
         "flow_trim": "textures/trims/flow",
-        "bolt_trim": "textures/trims/bolt"
-      },
+        "bolt_trim": "textures/trims/bolt"      },
       "geometry": {
-        "default": "geometry.minere.battle_helmet"
+        "default": "geometry.player.armor.chestplate"
       },
       "scripts": {
         "parent_setup": "v.chest_layer_visible = 0.0;"

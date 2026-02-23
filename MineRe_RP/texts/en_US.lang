@@ -139,6 +139,10 @@ entity.minere:earthquake.name=Earthquake
 tile.minere:amethyst_ore.name=Amethyst Ore
 tile.minere:deepslate_amethyst_ore.name=Deepslate Amethyst Ore
 item.minere:enderon_helmet=Enderon Helmet
+item.minere:indigon_helmet=Indigon Helmet
+item.minere:indigon_chestplate=Indigon Chestplate
+item.minere:indigon_leggings=Indigon Leggings
+item.minere:indigon_boots=Indigon Boots
 item.minere:enderon_chestplate=Enderon Chestplate
 item.minere:enderon_leggings=Enderon Leggings
 item.minere:enderon_boots=Enderon Boots
@@ -270,3 +274,4 @@ action.hint.exit.console.minere:moose=Press :_input_key.sneak: to dismount
 action.hint.exit.minere:elephant=Tap sneak to dismount
 action.hint.exit.console.minere:elephant=Press :_input_key.sneak: to dismount
 minere:itemGroup.name.elephant_armor=Elephant Armor
+

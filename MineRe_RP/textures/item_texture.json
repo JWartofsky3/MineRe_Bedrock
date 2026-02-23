@@ -102,6 +102,18 @@
     "minere.enderon_helmet": {
       "textures": "textures/items/minere/enderon_helmet"
     },
+    "minere.indigon_helmet": {
+      "textures": "textures/items/minere/indigon_helmet"
+    },
+    "minere.indigon_chestplate": {
+      "textures": "textures/items/minere/indigon_chestplate"
+    },
+    "minere.indigon_leggings": {
+      "textures": "textures/items/minere/indigon_leggings"
+    },
+    "minere.indigon_boots": {
+      "textures": "textures/items/minere/indigon_boots"
+    },
     "minere.enderon_chestplate": {
       "textures": "textures/items/minere/enderon_chestplate"
     },
@@ -232,3 +244,4 @@
   "resource_pack_name": "MineRe Resources",
   "texture_name": "atlas.items"
 }
+
