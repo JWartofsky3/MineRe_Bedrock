@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:glacier",
       "materials": {
-        "default": "entity_alphablend",
+        "default": "entity_alphatest",
         "emissive": "entity_emissive_alpha"
       },
       "textures": {
@@ -27,13 +27,14 @@
         "summon": "animation.minere.glacier.summon",
         "angry": "animation.minere.glacier.angry",
         "controller": "controller.animation.minere.glacier",
-        "iceChargesController": "controller.animation.minere.glacier_ice_charges"
+        "iceChargesController": "controller.animation.minere.glacier_ice_charges",
+        "submergeController": "controller.animation.minere.glacier_submerge"
       },
       "particle_effects": {
         "freeze_breath": "minere:freeze_breath",
         "emerge": "minecraft:warden_dig",
-        "blueFlame": "minere:ice_charge_skull_particles",
-        "snow": "minere:ice_charge_particles"
+        "blueFlame": "minere:glacier_ice_charge_skull_particles",
+        "snow": "minere:glacier_ice_charge_particles"
       },
       "scripts": {
         "animate": [
@@ -41,9 +42,7 @@
           "freezeAttackController",
           "controller",
           "iceChargesController",
-          {
-            "emerge": "query.is_emerging"
-          }
+          "submergeController"
         ]
       },
       "sound_effects": {

@@ -1,5 +1,7 @@
 import { Vector3, Entity } from "@minecraft/server";
 
+const INVALID_TYPE_IDS = new Set<string>(["minecraft:item", "minecraft:arrow", "minecraft:xp"]);
+
 export function throwEntity(
   throwerPos: Vector3,
   target: Entity,
@@ -7,7 +9,7 @@ export function throwEntity(
   vAddition: number,
 ) {
   if (!throwerPos || !target || !scale) return;
-  if (target.typeId === "minecraft:item" || target.typeId === "minecraft:xp") {
+  if (INVALID_TYPE_IDS.has(target?.typeId)) {
     return;
   }
 

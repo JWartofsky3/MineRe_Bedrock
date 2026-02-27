@@ -396,17 +396,18 @@
       },
             "minere:glacier": {
         "events": {
+          "ambient": "boss.glacier.ambient",
           "attack.strong": "mob.freeze.attack",
           "hurt": "mob.freeze.hurt",
           "shoot": "item.ice_charge.frost",
           "death": {
             "sound": "mob.freeze.die",
             "pitch": 0.6,
-            "volume": 1.75
+            "volume": 3.0
           }
         },
         "pitch": [0.8, 1.2],
-        "volume": 1.1
+        "volume": 2.5
       },
       "minere:yeti": {
         "events": {

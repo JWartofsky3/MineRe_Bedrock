@@ -74,20 +74,26 @@
 					]
 				},
 				{
-					"name": "rightHorn",
+					"name": "leftHorn",
 					"parent": "root",
 					"pivot": [22, 36, -6],
 					"cubes": [
 						{"origin": [18, 36, -14], "size": [8, 32, 16], "uv": [144, 42]}
-					]
+					],
+					"locators": {
+						"leftHorn": [22, 67, -6]
+					}
 				},
 				{
-					"name": "leftHorn",
+					"name": "rightHorn",
 					"parent": "root",
 					"pivot": [-22, 36, -6],
 					"cubes": [
 						{"origin": [-26, 36, -14], "size": [8, 32, 16], "uv": [60, 150]}
-					]
+					],
+					"locators": {
+						"rightHorn": [-22, 67, -6]
+					}
 				},
 				{
 					"name": "head",

@@ -1163,7 +1163,7 @@
         "minecraft:is_chested": {},
         "minecraft:inventory": {
           "inventory_size": 36,
-          "container_type": "container"
+          "container_type": "inventory"
         }
       },
       "minere:elephant_saddled": {

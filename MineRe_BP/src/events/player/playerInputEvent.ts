@@ -12,16 +12,8 @@ export class PlayerInputEvent implements RegisterableEvent {
   register(): void {
     world.afterEvents.playerButtonInput.subscribe(
       (data: PlayerButtonInputAfterEvent) => {
-        if (data.button === InputButton.Jump) {
-          onJump(data.player, data.newButtonState);
-        }
+        handleArmorSetJump(data);
       },
     );
-  }
-}
-
-function onJump(player: Player, newButtonState: ButtonState) {
-  if (newButtonState === ButtonState.Pressed) {
-    handleArmorSetJump(player);
   }
 }

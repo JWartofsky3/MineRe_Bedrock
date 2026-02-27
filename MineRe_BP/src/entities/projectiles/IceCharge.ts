@@ -75,6 +75,10 @@ export class IceCharge extends BaseCustomEntity {
     if (!isAlive(target)) {
       return;
     }
+    let offset = 0.075;
+    if (data.damageSource?.damagingEntity?.typeId === "minere:glacier") {
+      offset = -0.15;
+    }
     rollFreeze(target, 0.075);
     if (isFamily(target, "blaze") || isFamily(target, "inferno")) {
       target?.applyDamage(data.damage * FIRE_MOB_DAMAGE_MULTIPLIER, {

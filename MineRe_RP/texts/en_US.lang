@@ -284,6 +284,7 @@ item.minere:aetherial_chestplate=Aetherial Chestplate
 item.minere:aetherial_leggings=Aetherial Leggings
 item.minere:aetherial_boots=Aetherial Boots
 crafting.minere:altar=Altar
+minere:itemGroup.name.altars=Altars
 
 tile.minere:white_altar.name=White Altar
 

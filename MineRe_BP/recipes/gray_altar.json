@@ -14,10 +14,10 @@
                                                 ],
                                     "key":  {
                                                 "A":  {
-                                                          "item":  "minecraft:amethyst_block"
+                                                          "item":  "minecraft:amethyst_shard"
                                                       },
                                                 "W":  {
-                                                          "item":  "minecraft:gray_wool"
+                                                          "item":  "minecraft:gray_carpet"
                                                       },
                                                 "G":  {
                                                           "item":  "minecraft:gold_block"
@@ -28,7 +28,7 @@
                                             },
                                     "unlock":  [
                                                    {
-                                                       "item":  "minecraft:amethyst_block"
+                                                       "item":  "minecraft:amethyst_shard"
                                                    }
                                                ],
                                     "result":  {
@@ -36,3 +36,4 @@
                                                }
                                 }
 }
+

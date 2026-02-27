@@ -13,8 +13,8 @@
         "spawn_rate": 15,
         "max_particles": 50
       },
-      "minecraft:emitter_lifetime_looping": {
-        "active_time": 1
+      "minecraft:emitter_lifetime_once": {
+        "active_time": 2.25
       },
       "minecraft:emitter_shape_disc": {
         "offset": [0, 0.4, 0],

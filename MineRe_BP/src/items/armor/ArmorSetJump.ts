@@ -4,6 +4,10 @@ import {
   EntityComponentTypes,
   EntityEquippableComponent,
   EquipmentSlot,
+  PlayerButtonInputAfterEvent,
+  InputButton,
+  InputMode,
+  ButtonState,
 } from "@minecraft/server";
 import { isSolid } from "block/blockUtils";
 
@@ -42,8 +46,17 @@ const ARMOR_JUMP_CONFIGS: Map<string, ArmorJumpConfig> = new Map([
   ],
 ]);
 
-export function handleArmorSetJump(player: Player): void {
+export function handleArmorSetJump(data: PlayerButtonInputAfterEvent): void {
+  const player = data.player;
   if (!player || !player.isValid) {
+    return;
+  }
+
+  if (data.button === InputButton.Sneak && player.isOnGround) {
+    setAirJumpsUsed(player, 0);
+    return;
+  }
+  if (data.button !== InputButton.Jump || data.newButtonState !== ButtonState.Pressed) {
     return;
   }
 

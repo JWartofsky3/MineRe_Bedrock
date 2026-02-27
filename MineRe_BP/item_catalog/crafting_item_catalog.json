@@ -91,6 +91,36 @@
             ]
           }
         ]
+      },
+      {
+        "category_name": "construction",
+        "groups": [
+                    {
+            "group_identifier": {
+              "icon": "minere:red_altar",
+              "name": "minere:itemGroup.name.altars"
+            },
+            "items": [
+              "minere:white_altar",
+              "minere:light_gray_altar",
+              "minere:gray_altar",
+              "minere:black_altar",
+              "minere:brown_altar",
+              "minere:red_altar",
+              "minere:orange_altar",
+              "minere:yellow_altar",
+              "minere:lime_altar",
+              "minere:green_altar",
+              "minere:cyan_altar",
+              "minere:light_blue_altar",
+              "minere:blue_altar",
+              "minere:purple_altar",
+              "minere:magenta_altar",
+              "minere:pink_altar"
+            ]
+          }
+
+        ]
       }
     ]
   }

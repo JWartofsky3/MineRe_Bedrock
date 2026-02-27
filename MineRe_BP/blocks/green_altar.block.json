@@ -30,10 +30,11 @@
           "texture": "minere:green_altar",
           "ambient_occlusion": true,
           "face_dimming": false,
-          "render_method": "blend"
+          "render_method": "alpha_test"
         }
       },
       "minecraft:map_color": "#5E7C16"
     }
   }
 }
+

@@ -74,9 +74,9 @@
           "summon_choices": [
                       {
             "min_activation_range": 0,
-            "max_activation_range": 3,
+            "max_activation_range": 8,
             "cooldown_time": 5,
-            "weight": 3,
+            "weight": 5,
             "cast_duration": 2,
             "particle_color": "#FF664D59",
             "start_sound_event": "cast.spell",
@@ -106,7 +106,7 @@
           },
           {
             "min_activation_range": 3,
-            "weight": 3,
+            "weight": 5,
             "cooldown_time": 5,
             "cast_duration": 2,
             "particle_color": "#FF664D59",
@@ -160,7 +160,7 @@
             },
             {
               "weight": 1,
-              "cooldown_time": 34,
+              "cooldown_time": 40,
               "cast_duration": 5,
               "particle_color": "#FFB3B3CC",
               "sequence": [
@@ -278,7 +278,7 @@
         ]
       },
       "minecraft:experience_reward": {
-        "on_death": "query.last_hit_by_player ? 7:0"
+        "on_death": "500"
       },
       "minecraft:boss": {
         "name": "entity.minere:glacier.name",
@@ -289,10 +289,10 @@
         "max": 600
       },
       "minecraft:attack": {
-        "damage": 4
+        "damage": 7
       },
       "minecraft:knockback_resistance": {
-        "value": 0.5
+        "value": 0.9
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}
@@ -313,6 +313,10 @@
         "triggers": [
           {
             "cause": "freezing",
+            "deals_damage": false
+          },
+                    {
+            "cause": "fall",
             "deals_damage": false
           }
         ]
