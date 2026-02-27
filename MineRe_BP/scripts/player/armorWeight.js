@@ -8,6 +8,7 @@ const lightArmorKeyWords = [
     "leather",
     "chain",
     "enderon",
+    "aetherial",
     "elytra",
     "cap",
     "fur",

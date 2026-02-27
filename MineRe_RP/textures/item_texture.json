@@ -21,6 +21,12 @@
     "minere.raw_indigon": {
       "textures": "textures/items/minere/raw_indigon.png"
     },
+    "minere.indigon_apple": {
+      "textures": "textures/items/minere/indigon_apple"
+    },
+    "minere.enchanted_indigon_apple": {
+      "textures": "textures/items/minere/indigon_apple"
+    },
     "minere.enderon_sword": {
       "textures": "textures/items/minere/enderon_sword.png"
     },
@@ -122,6 +128,18 @@
     },
     "minere.enderon_boots": {
       "textures": "textures/items/minere/enderon_boots"
+    },
+    "minere.aetherial_helmet": {
+      "textures": "textures/items/minere/aetherial_helmet"
+    },
+    "minere.aetherial_chestplate": {
+      "textures": "textures/items/minere/aetherial_chestplate"
+    },
+    "minere.aetherial_leggings": {
+      "textures": "textures/items/minere/aetherial_leggings"
+    },
+    "minere.aetherial_boots": {
+      "textures": "textures/items/minere/aetherial_boots"
     },
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"
@@ -244,4 +262,7 @@
   "resource_pack_name": "MineRe Resources",
   "texture_name": "atlas.items"
 }
+
+
+
 

@@ -1,5 +1,5 @@
 import { ItemStack, } from "@minecraft/server";
-import { hasSilkTouchOrShears, hasPickaxe, getEnchantmentLevel, } from "item/item_utils";
+import { hasSilkTouchOrShears, hasPickaxe, getEnchantmentLevel, } from "items/components/item_utils";
 import { addVector3 } from "util/vector3Functions";
 import { getRandomIntInclusive } from "util/mathFunctions";
 const oreMap = new Map();

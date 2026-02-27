@@ -1,28 +1,28 @@
 import { StartupEvent } from "@minecraft/server";
-import { PhasedEnderPearl } from "item/phased_ender_pearl";
-import { EnderStrike } from "item/ender_strike";
-import { IceDagger } from "item/ice_dagger";
-import { VenomShank } from "item/venom_shank";
-import { Treecapitator } from "item/treecapitator";
+import { PhasedEnderPearl } from "items/components/phased_ender_pearl";
+import { EnderStrike } from "items/components/ender_strike";
+import { IceDagger } from "items/components/ice_dagger";
+import { VenomShank } from "items/components/venom_shank";
+import { Treecapitator } from "items/components/treecapitator";
 import {
   CustomAxe,
   CustomSword,
   CustomShovel,
   CustomPickaxe,
   CustomHoe,
-} from "item/custom_tools";
-import { RoyalJelly } from "item/royal_jelly";
-import { Illumina } from "item/illumina";
-import { PlatformPath } from "item/platform_path";
-import { Windforce } from "item/windforce";
-import { Firebrand } from "item/firebrand";
-import { Darkheart } from "item/darkheart";
-import { ElixirOfExperience } from "item/elixir_of_experience";
-import { SettingsBook } from "item/settings_book";
-import { Helper0 } from "item/helpers/helper0";
-import { Helper1 } from "item/helpers/helper1";
-import { Helper2 } from "item/helpers/helper2";
-import { Ghostwalker } from "item/ghostwalker";
+} from "items/components/custom_tools";
+import { RoyalJelly } from "items/components/royal_jelly";
+import { Illumina } from "items/components/illumina";
+import { PlatformPath } from "items/components/platform_path";
+import { Windforce } from "items/components/windforce";
+import { Firebrand } from "items/components/firebrand";
+import { Darkheart } from "items/components/darkheart";
+import { ElixirOfExperience } from "items/components/elixir_of_experience";
+import { SettingsBook } from "items/components/settings_book";
+import { Helper0 } from "items/components/helpers/helper0";
+import { Helper1 } from "items/components/helpers/helper1";
+import { Helper2 } from "items/components/helpers/helper2";
+import { Ghostwalker } from "items/components/ghostwalker";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(

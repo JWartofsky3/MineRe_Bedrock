@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:ice_spike",
+      "materials": {
+        "default": "entity_alphablend"
+      },
+      "textures": {
+        "default": "textures/entity/minere/ice_spike"
+      },
+      "geometry": {
+        "default": "geometry.minere.ice_spike"
+      },
+      "animations": {
+        "run": "animation.minere.ice_spike.emerge",
+        "particles": "animation.minere.earthquake.particles",
+        "particle_runner": "controller.animation.minere.earthquake_particles"
+      },
+      "render_controllers": ["controller.render.default"],
+      "scripts": {
+        "animate": ["run", "particle_runner"]
+      },
+      "particle_effects": {
+        "emerge": "minecraft:warden_dig"
+      },
+      "sound_effects": {
+        "emerge": "environment.ice_spike.crack",
+        "attack": "mob.freeze.hurt"
+      }
+    }
+  }
+}

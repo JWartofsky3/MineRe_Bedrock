@@ -1,5 +1,5 @@
 import { EntityComponentTypes, ItemComponentTypes, EquipmentSlot, } from "@minecraft/server";
-import { getItem } from "item/item_utils";
+import { getItem } from "items/components/item_utils";
 export const fireflyLamp = {
     onPlayerBreak(arg) {
         const player = arg.player;

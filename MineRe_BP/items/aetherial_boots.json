@@ -15,13 +15,13 @@
       },
       "minecraft:max_stack_size": 1,
       "minecraft:enchantable": {
-        "value": 15,
+        "value": 25,
         "slot": "armor_feet"
       },
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": ["minere:enderon_gemstone"],
+            "items": ["minecraft:gold_ingot", "minecraft:breeze_rod"],
             "repair_amount": 88
           }
         ]

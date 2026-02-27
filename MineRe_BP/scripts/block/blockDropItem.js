@@ -1,5 +1,5 @@
 import { ItemStack } from "@minecraft/server";
-import { getEnchantmentLevel, hasSilkTouchOrShears } from "item/item_utils";
+import { getEnchantmentLevel, hasSilkTouchOrShears, } from "items/components/item_utils";
 const itemsToDrop = new Map();
 // itemsToDrop.set("minecraft:oak_leaves", {
 //   drop: "minere:acorn",

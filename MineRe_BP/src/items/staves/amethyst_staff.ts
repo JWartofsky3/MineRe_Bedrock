@@ -13,8 +13,8 @@ import {
   GameMode,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
-import { reduceDurability } from "./reduce_durability";
-import { findItemInContainer } from "./item_utils";
+import { reduceDurability } from "../components/reduce_durability";
+import { findItemInContainer } from "../components/item_utils";
 import { getRandomIntInclusive } from "util/mathFunctions";
 
 const SHIELD_RANGE = 4;

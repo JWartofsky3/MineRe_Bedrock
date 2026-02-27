@@ -14,8 +14,8 @@
         "value": "item.minere:indigon_horse_armor"
       },
       "minecraft:max_stack_size": 1,
-            "minecraft:wearable": {
-              "slot": "slot.armor.body",
+      "minecraft:wearable": {
+        "slot": "slot.armor.body",
         "protection": 12
       }
     }

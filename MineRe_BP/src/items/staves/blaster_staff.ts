@@ -11,7 +11,7 @@ import {
   GameMode,
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
-import { reduceDurability } from "./reduce_durability";
+import { reduceDurability } from "../components/reduce_durability";
 
 export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;

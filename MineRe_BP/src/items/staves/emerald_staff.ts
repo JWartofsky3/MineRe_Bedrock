@@ -16,7 +16,7 @@ import {
   multiplyVector3Number,
 } from "util/vector3Functions";
 import { isAlive, isFamily } from "mob/mob_utils";
-import { reduceDurability } from "./reduce_durability";
+import { reduceDurability } from "../components/reduce_durability";
 
 const MONSTER_DAMAGE = 8;
 const UNDEAD_DAMAGE = 12;

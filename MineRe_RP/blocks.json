@@ -151,5 +151,70 @@
   "minere:diorite_bricks": {
     "textures": "minere:diorite_bricks",
     "sound": "stone"
+  },
+  "minere:red_altar": {
+    "textures": "minere:red_altar",
+    "sound": "stone"
+  },
+  "minere:white_altar": {
+    "textures": "minere:white_altar",
+    "sound": "stone"
+  },
+  "minere:orange_altar": {
+    "textures": "minere:orange_altar",
+    "sound": "stone"
+  },
+  "minere:magenta_altar": {
+    "textures": "minere:magenta_altar",
+    "sound": "stone"
+  },
+  "minere:light_blue_altar": {
+    "textures": "minere:light_blue_altar",
+    "sound": "stone"
+  },
+  "minere:yellow_altar": {
+    "textures": "minere:yellow_altar",
+    "sound": "stone"
+  },
+  "minere:lime_altar": {
+    "textures": "minere:lime_altar",
+    "sound": "stone"
+  },
+  "minere:pink_altar": {
+    "textures": "minere:pink_altar",
+    "sound": "stone"
+  },
+  "minere:gray_altar": {
+    "textures": "minere:gray_altar",
+    "sound": "stone"
+  },
+  "minere:light_gray_altar": {
+    "textures": "minere:light_gray_altar",
+    "sound": "stone"
+  },
+  "minere:cyan_altar": {
+    "textures": "minere:cyan_altar",
+    "sound": "stone"
+  },
+  "minere:purple_altar": {
+    "textures": "minere:purple_altar",
+    "sound": "stone"
+  },
+  "minere:blue_altar": {
+    "textures": "minere:blue_altar",
+    "sound": "stone"
+  },
+  "minere:brown_altar": {
+    "textures": "minere:brown_altar",
+    "sound": "stone"
+  },
+  "minere:green_altar": {
+    "textures": "minere:green_altar",
+    "sound": "stone"
+  },
+  "minere:black_altar": {
+    "textures": "minere:black_altar",
+    "sound": "stone"
   }
 }
+

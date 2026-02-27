@@ -8,7 +8,7 @@ import {
   EntityDieAfterEvent,
 } from "@minecraft/server";
 import { RegisterableEvent } from "events/CustomEvent";
-import { getItem } from "item/item_utils";
+import { getItem } from "items/components/item_utils";
 
 export class HorseDieRemoveChestEvent implements RegisterableEvent {
   register(): void {

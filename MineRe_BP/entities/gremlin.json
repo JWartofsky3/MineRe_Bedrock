@@ -31,6 +31,47 @@
           "target": "self"
         }
       },
+      "alert_for_attack_targets": {
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 3,
+        "must_see": true,
+        "within_radius": 24,
+        "entity_types": [
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "endermite"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "silverfish"
+                }
+              ]
+            },
+            "max_dist": 8
+          }
+        ]
+      }
+      },
+            "take_target_as_response_to_block_break": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
       "minere:scared_of_blocks": {
         "minecraft:behavior.avoid_block": {
           "priority": 1,
@@ -265,6 +306,21 @@
         "value": 24,
         "max": 24
       },
+            "minecraft:block_sensor": {
+          "sensor_radius": 16,
+          "on_break": [
+            {
+              "block_list": [
+                "minecraft:deepslate_coal_ore",
+                "minecraft:coal_ore",
+                "minecraft:warped_stem",
+                "minecraft:chorus_plant",
+                "minecraft:chorus_flower"
+              ],
+              "on_block_broken": "important_block_destroyed_event"
+            }
+          ]
+        },
       "minecraft:on_target_acquired": {
         "event": "become_angry_event",
         "target": "self"
@@ -326,30 +382,6 @@
         "speed_multiplier": 1.15,
         "horizontal_reach": 0.5
       },
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 3,
-        "must_see": true,
-        "within_radius": 24,
-        "entity_types": [
-          {
-            "filters": {
-              "any_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "endermite"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "silverfish"
-                }
-              ]
-            },
-            "max_dist": 8
-          }
-        ]
-      },
       "minecraft:behavior.random_stroll": {
         "priority": 5,
         "speed_multiplier": 1
@@ -384,7 +416,8 @@
             "add": {
               "component_groups": [
                 "minere:scared_of_blocks",
-                "minere:scared_of_walkers"
+                "minere:scared_of_walkers",
+                "alert_for_attack_targets"
               ]
             }
           },
@@ -510,7 +543,18 @@
       },
       "become_calm_event": {
         "remove": {
-          "component_groups": ["angry"]
+          "component_groups": ["angry", "take_target_as_response_to_block_break"]
+        },
+        "add": {
+          "component_groups": ["alert_for_attack_targets"]
+        }
+      },
+            "important_block_destroyed_event": {
+        "remove": {
+          "component_groups": ["alert_for_attack_targets"]
+        },
+        "add": {
+          "component_groups": ["take_target_as_response_to_block_break"]
         }
       },
       "minere:change_mode": {

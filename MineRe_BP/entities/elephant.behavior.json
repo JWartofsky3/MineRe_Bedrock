@@ -633,14 +633,14 @@
         }
       },
       "minere:unarmored": {
-                "minecraft:damage_sensor": {
+        "minecraft:damage_sensor": {
           "triggers": [
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -659,9 +659,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -708,9 +708,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -759,9 +759,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -785,9 +785,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -841,9 +841,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -902,9 +902,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -953,9 +953,9 @@
             {
               "on_damage": {
                 "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
+                  "test": "is_riding_self",
+                  "subject": "other",
+                  "value": true
                 }
               },
               "deals_damage": "no"
@@ -1394,15 +1394,15 @@
             "damage_modifier": -3
           },
           {
-              "on_damage": {
-                "filters": {
-                      "test": "is_riding_self",
-                      "subject": "other",
-                      "value": true
-                }
-              },
-              "deals_damage": "no"
-            }
+            "on_damage": {
+              "filters": {
+                "test": "is_riding_self",
+                "subject": "other",
+                "value": true
+              }
+            },
+            "deals_damage": "no"
+          }
         ]
       },
       "minecraft:knockback_resistance": {
@@ -1944,9 +1944,7 @@
           ]
         },
         "add": {
-          "component_groups": [
-            "minere:unarmored"
-          ]
+          "component_groups": ["minere:unarmored"]
         }
       },
       "minere:copper_armor": {

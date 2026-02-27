@@ -11,7 +11,7 @@ import {
   EntityEquippableComponent,
   EquipmentSlot,
 } from "@minecraft/server";
-import { reduceDurability } from "./reduce_durability";
+import { reduceDurability } from "../components/reduce_durability";
 import { DEFAULT_TICK } from "main";
 import { consumeXp } from "entities/functions/consumeXp";
 import {

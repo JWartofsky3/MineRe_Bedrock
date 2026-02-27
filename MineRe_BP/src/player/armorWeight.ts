@@ -19,6 +19,7 @@ const lightArmorKeyWords: string[] = [
   "leather",
   "chain",
   "enderon",
+  "aetherial",
   "elytra",
   "cap",
   "fur",

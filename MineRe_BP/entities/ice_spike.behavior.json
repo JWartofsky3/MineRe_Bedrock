@@ -1,0 +1,42 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:ice_spike",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:damage_sensor": {
+        "triggers": { "cause": "all", "deals_damage": false }
+      },
+      "minecraft:type_family": {
+        "family": ["ice_spike", "immobile", "inanimate", "trap"]
+      },
+      "minecraft:timer": {
+        "time": 100.0,
+        "looping": false,
+        "time_down_event": {
+          "event": "despawn_self",
+          "target": "self"
+        }
+      },
+      "minecraft:mark_variant": {
+        "value": 0
+      }
+    },
+    "events": {
+      "despawn_self": {
+        "add": {
+          "component_groups": ["despawn_now"]
+        }
+      }
+    },
+    "component_groups": {
+      "despawn_now": {
+        "minecraft:instant_despawn": {}
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import {
   Dimension,
   Vector3,
 } from "@minecraft/server";
-import { canPickupPot, getEnchantmentLevel } from "item/item_utils";
+import { canPickupPot, getEnchantmentLevel } from "items/components/item_utils";
 import { addVector3, randomVector3 } from "util/vector3Functions";
 
 const XP = 6;

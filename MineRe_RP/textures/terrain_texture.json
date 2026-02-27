@@ -147,6 +147,55 @@
     },
     "minere:firebrand": {
       "textures": "textures/items/minere/firebrand"
+    },
+    "minere:red_altar": {
+      "textures": "textures/blocks/minere/altar/red.png"
+    },
+    "minere:white_altar": {
+      "textures": "textures/blocks/minere/altar/white.png"
+    },
+    "minere:orange_altar": {
+      "textures": "textures/blocks/minere/altar/orange.png"
+    },
+    "minere:magenta_altar": {
+      "textures": "textures/blocks/minere/altar/magenta.png"
+    },
+    "minere:light_blue_altar": {
+      "textures": "textures/blocks/minere/altar/light_blue.png"
+    },
+    "minere:yellow_altar": {
+      "textures": "textures/blocks/minere/altar/yellow.png"
+    },
+    "minere:lime_altar": {
+      "textures": "textures/blocks/minere/altar/lime.png"
+    },
+    "minere:pink_altar": {
+      "textures": "textures/blocks/minere/altar/pink.png"
+    },
+    "minere:gray_altar": {
+      "textures": "textures/blocks/minere/altar/gray.png"
+    },
+    "minere:light_gray_altar": {
+      "textures": "textures/blocks/minere/altar/light_gray.png"
+    },
+    "minere:cyan_altar": {
+      "textures": "textures/blocks/minere/altar/cyan.png"
+    },
+    "minere:purple_altar": {
+      "textures": "textures/blocks/minere/altar/purple.png"
+    },
+    "minere:blue_altar": {
+      "textures": "textures/blocks/minere/altar/blue.png"
+    },
+    "minere:brown_altar": {
+      "textures": "textures/blocks/minere/altar/brown.png"
+    },
+    "minere:green_altar": {
+      "textures": "textures/blocks/minere/altar/green.png"
+    },
+    "minere:black_altar": {
+      "textures": "textures/blocks/minere/altar/black.png"
     }
   }
 }
+

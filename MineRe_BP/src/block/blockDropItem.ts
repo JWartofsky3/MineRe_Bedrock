@@ -1,5 +1,8 @@
 import { ItemStack, PlayerBreakBlockAfterEvent } from "@minecraft/server";
-import { getEnchantmentLevel, hasSilkTouchOrShears } from "item/item_utils";
+import {
+  getEnchantmentLevel,
+  hasSilkTouchOrShears,
+} from "items/components/item_utils";
 
 type BlockDropDefinition = {
   drop: string;

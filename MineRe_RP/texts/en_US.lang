@@ -275,3 +275,48 @@ action.hint.exit.minere:elephant=Tap sneak to dismount
 action.hint.exit.console.minere:elephant=Press :_input_key.sneak: to dismount
 minere:itemGroup.name.elephant_armor=Elephant Armor
 
+entity.minere:glacier.name=Glacier
+item.spawn_egg.entity.minere:glacier.name=Spawn Glacier
+
+
+item.minere:aetherial_helmet=Aetherial Helmet
+item.minere:aetherial_chestplate=Aetherial Chestplate
+item.minere:aetherial_leggings=Aetherial Leggings
+item.minere:aetherial_boots=Aetherial Boots
+crafting.minere:altar=Altar
+
+tile.minere:white_altar.name=White Altar
+
+tile.minere:orange_altar.name=Orange Altar
+
+tile.minere:magenta_altar.name=Magenta Altar
+
+tile.minere:light_blue_altar.name=Light Blue Altar
+
+tile.minere:yellow_altar.name=Yellow Altar
+
+tile.minere:lime_altar.name=Lime Altar
+
+tile.minere:pink_altar.name=Pink Altar
+
+tile.minere:gray_altar.name=Gray Altar
+
+tile.minere:light_gray_altar.name=Light Gray Altar
+
+tile.minere:cyan_altar.name=Cyan Altar
+
+tile.minere:purple_altar.name=Purple Altar
+
+tile.minere:blue_altar.name=Blue Altar
+
+tile.minere:brown_altar.name=Brown Altar
+
+tile.minere:green_altar.name=Green Altar
+
+tile.minere:red_altar.name=Red Altar
+
+tile.minere:black_altar.name=Black Altar
+
+item.minere:indigon_apple=Indigon Apple
+
+item.minere:enchanted_indigon_apple=Enchanted Indigon Apple

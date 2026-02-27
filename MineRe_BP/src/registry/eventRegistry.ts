@@ -7,6 +7,7 @@ import { ArmorCurveEvent } from "events/player/armorCurveEvent";
 import { BonusXPEvent } from "events/player/bonusXPEvent";
 import { HorseDieRemoveChestEvent } from "events/reaction/horseDieRemoveChest";
 import { BabySpawnMatchParentEvent } from "events/spawning/babySpawnMatchParent";
+import { PlayerInputEvent } from "events/player/playerInputEvent";
 
 export function RegisterCustomEvents() {
   // spawn events
@@ -23,4 +24,5 @@ export function RegisterCustomEvents() {
   // player events
   new ArmorCurveEvent().register();
   new BonusXPEvent().register();
+  new PlayerInputEvent().register();
 }

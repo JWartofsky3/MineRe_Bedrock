@@ -8,7 +8,7 @@ import {
   hasSilkTouchOrShears,
   hasPickaxe,
   getEnchantmentLevel,
-} from "item/item_utils";
+} from "items/components/item_utils";
 import { addVector3 } from "util/vector3Functions";
 import { getRandomIntInclusive } from "util/mathFunctions";
 

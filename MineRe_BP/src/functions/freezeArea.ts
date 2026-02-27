@@ -52,6 +52,7 @@ export function freezeArea(
   const verticalRadius = options.verticalRadius ?? 4;
   const coverWithSnow = options.coverWithSnow ?? false;
   const ticksPerStep = options.ticksPerStep ?? 2;
+  const isNether = dimension.id.includes("nether");
 
   const blockAt = dimension.getBlock(location);
   if (blockAt && blockAt.isAir) {
@@ -124,7 +125,7 @@ export function freezeArea(
 
         if (coverWithSnow && block.isAir) {
           const below = block.below();
-          if (isSolid(below)) {
+          if (isSolid(below) && !isNether) {
             block.setType("minecraft:snow_layer");
           }
         }

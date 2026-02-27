@@ -7,6 +7,9 @@ export function throwEntity(
   vAddition: number,
 ) {
   if (!throwerPos || !target || !scale) return;
+  if (target.typeId === "minecraft:item" || target.typeId === "minecraft:xp") {
+    return;
+  }
 
   const dx = target.location.x - throwerPos.x;
   const dz = target.location.z - throwerPos.z;

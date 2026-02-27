@@ -18,6 +18,7 @@ import { Earthquake } from "entities/otherEntities/Earthquake";
 import { Inferno } from "entities/bosses/inferno/Inferno";
 import { Glacier } from "entities/bosses/glacier/Glacier";
 import { Elephant } from "entities/mobs/Elephant";
+import { IceSpike } from "entities/otherEntities/IceSpike";
 
 export function registerCustomEntities() {
   // mobs
@@ -43,6 +44,7 @@ export function registerCustomEntities() {
 
   // others
   new Earthquake().register();
+  new IceSpike().register();
 
   // bosses
   new Inferno().register();

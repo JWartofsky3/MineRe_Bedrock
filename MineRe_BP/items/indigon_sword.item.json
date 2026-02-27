@@ -14,9 +14,7 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_sword"]
       },
-      "minecraft:custom_components": [
-        "minere:custom_sword"
-      ],
+      "minecraft:custom_components": ["minere:custom_sword"],
       "minecraft:damage": 7,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,

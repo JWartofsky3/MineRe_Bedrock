@@ -117,3 +117,13 @@ export function isBaby(entity: Entity): boolean {
   }
   return false;
 }
+
+export function isTamed(entity: Entity): boolean {
+  const isTamed = entity.getComponent(
+    EntityComponentTypes.IsTamed,
+  ) as EntityIsBabyComponent;
+  if (isTamed?.isValid) {
+    return true;
+  }
+  return false;
+}

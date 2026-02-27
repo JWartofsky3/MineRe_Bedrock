@@ -12,7 +12,7 @@ import {
   ItemEnchantableComponent,
 } from "@minecraft/server";
 import { RegisterableEvent } from "events/CustomEvent";
-import { getEnchantmentLevel } from "item/item_utils";
+import { getEnchantmentLevel } from "items/components/item_utils";
 import { isAlive } from "mob/mob_utils";
 import { getSettings } from "settings";
 

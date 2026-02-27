@@ -25,7 +25,7 @@ import {
 } from "entities/functions/applyDamageBonus";
 import { isOffCooldown } from "entities/functions/checkCooldown";
 import { throwEntity } from "entities/functions/throw";
-import { isBaby } from "entities/utilities/common";
+import { isBaby, isTamed } from "entities/utilities/common";
 import { isAlive } from "mob/mob_utils";
 import {
   addVector3,
@@ -140,7 +140,7 @@ const VALID_COMMAND_ITEMS = new Set<string>([
   "minecraft:blaze_rod",
   "minecraft:bone",
   "minecraft:carrot_on_a_stick",
-  "minecraft:warped_fungus_on_a_stick"
+  "minecraft:warped_fungus_on_a_stick",
 ]);
 
 export class Elephant extends BaseCustomEntity {
@@ -164,7 +164,9 @@ export class Elephant extends BaseCustomEntity {
       return;
     }
 
-    const playerEquip = data.player.getComponent(EntityComponentTypes.Equippable) as EntityEquippableComponent;
+    const playerEquip = data.player.getComponent(
+      EntityComponentTypes.Equippable,
+    ) as EntityEquippableComponent;
     const mainItem = playerEquip.getEquipment(EquipmentSlot.Mainhand);
     if (mainItem != null && !VALID_COMMAND_ITEMS.has(mainItem.typeId)) {
       return;
@@ -338,7 +340,6 @@ export class Elephant extends BaseCustomEntity {
       system.currentTick,
     );
 
-
     const isArmored = (elephant.getProperty(ARMOR_PROPERTY_ID) as number) > -1;
     const dimension = elephant.dimension;
     const ignoredEntities = new Set<string>();
@@ -414,7 +415,7 @@ export class Elephant extends BaseCustomEntity {
       return;
     }
 
-    if (isBaby(elephant)) {
+    if (isBaby(elephant) || (isTamed(elephant) && attacker.typeId === "minecraft:player")) {
       return;
     }
 

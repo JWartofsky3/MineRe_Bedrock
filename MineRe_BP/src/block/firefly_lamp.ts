@@ -9,7 +9,7 @@ import {
   ItemEnchantableComponent,
   ItemDurabilityComponent,
 } from "@minecraft/server";
-import { getItem } from "item/item_utils";
+import { getItem } from "items/components/item_utils";
 
 export const fireflyLamp: BlockCustomComponent = {
   onPlayerBreak(arg: BlockComponentPlayerBreakEvent) {

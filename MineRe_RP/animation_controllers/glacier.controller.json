@@ -29,6 +29,54 @@
           ]
         }
       }
+    },
+    "controller.animation.minere.glacier": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "summoning": "query.is_casting"
+            },
+            {
+              "roaring": "query.is_roaring"
+            },
+            {
+              "angry": "query.is_angry"
+            }
+          ]
+        },
+        "angry": {
+          "animations": ["angry"],
+          "transitions": [
+            {
+              "summoning": "query.is_casting"
+            },
+            {
+              "roaring": "query.is_roaring"
+            },
+            {
+              "default": "!query.is_angry"
+            }
+          ]
+        },
+        "summoning": {
+          "animations": ["summon"],
+          "transitions": [
+            {
+              "angry": "!query.is_casting"
+            }
+          ]
+        },
+        "roaring": {
+          "animations": ["roar"],
+          "transitions": [
+            {
+              "angry": "query.all_animations_finished"
+            }
+          ]
+        }
+      }
     }
   }
 }

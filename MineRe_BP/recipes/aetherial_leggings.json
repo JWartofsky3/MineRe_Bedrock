@@ -5,16 +5,14 @@
       "identifier": "minere:aetherial_leggings"
     },
 
-    "tags": ["crafting_table"],
+    "tags": ["altar"],
     "pattern": ["RWR", "WGW", "RWR"],
     "key": {
       "R": { "item": "minecraft:redstone" },
       "W": { "item": "minecraft:wind_charge" },
       "G": { "item": "minecraft:golden_leggings" }
     },
-    "unlock": [
-      { "item": "minecraft:wind_charge" }
-    ],
+    "unlock": [{ "item": "minecraft:wind_charge" }],
     "result": {
       "item": "minere:aetherial_leggings"
     }

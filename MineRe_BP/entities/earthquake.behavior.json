@@ -8,6 +8,9 @@
       "is_experimental": false
     },
     "component_groups": {
+      "despawn_now": {
+        "minecraft:instant_despawn": {}
+      },
       "minere:variant_0": {
         "minecraft:mark_variant": {
           "value": 0
@@ -63,8 +66,19 @@
       "minecraft:damage_sensor": {
         "triggers": { "cause": "all", "deals_damage": false }
       },
+      "minecraft:type_family": {
+        "family": ["earthquake", "immobile", "inanimate", "trap"]
+      },
       "minecraft:mark_variant": {
         "value": 0
+      },
+            "minecraft:timer": {
+        "time": 100.0,
+        "looping": false,
+        "time_down_event": {
+          "event": "despawn_self",
+          "target": "self"
+        }
       }
     },
     "events": {
@@ -97,6 +111,11 @@
       },
       "minere:set_variant_9": {
         "add": { "component_groups": ["minere:variant_9"] }
+      },
+      "despawn_self": {
+        "add": {
+          "component_groups": ["despawn_now"]
+        }
       }
     }
   }

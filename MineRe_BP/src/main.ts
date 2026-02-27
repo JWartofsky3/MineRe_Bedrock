@@ -16,13 +16,13 @@ import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
 
 // ───────────────────────── Imports: Items ─────────────────────────
-import { useAmethystStaff } from "item/amethyst_staff";
-import { useEchoStaff } from "item/echo_staff";
-import { useFireStaff } from "item/fire_staff";
-import { useBlasterStaff } from "item/blaster_staff";
-import { fireInfintyBowAfter } from "item/infinity_bow";
-import { offHandTreecapitate } from "item/treecapitator";
-import { onAxeUse, onShovelUse, onHoeUse } from "item/custom_tools";
+import { useAmethystStaff } from "items/staves/amethyst_staff";
+import { useEchoStaff } from "items/staves/echo_staff";
+import { useFireStaff } from "items/staves/fire_staff";
+import { useBlasterStaff } from "items/staves/blaster_staff";
+import { fireInfintyBowAfter } from "items/components/infinity_bow";
+import { offHandTreecapitate } from "items/components/treecapitator";
+import { onAxeUse, onShovelUse, onHoeUse } from "items/components/custom_tools";
 
 // ───────────────────────── Imports: Blocks ─────────────────────────
 import { blockDropItem } from "block/blockDropItem";
@@ -33,7 +33,7 @@ import { matchParent } from "events/spawning/babySpawnMatchParent";
 
 // ───────────────────────── Imports: World / Weather ─────────────────────────
 import { runEndStorms } from "weather/end_storm";
-import { useEmeraldStaff } from "item/emerald_staff";
+import { useEmeraldStaff } from "items/staves/emerald_staff";
 import { RegisterCustomEvents } from "registry/eventRegistry";
 
 // ───────────────────────── Constants ─────────────────────────

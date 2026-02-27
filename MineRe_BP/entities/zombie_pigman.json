@@ -35,7 +35,7 @@
         "minecraft:angry": {
           "duration": 25,
           "broadcast_anger": true,
-          "broadcast_range": 20,
+          "broadcast_range": 32,
           "broadcast_anger_when_dying": false,
           "calm_event": {
             "event": "minecraft:on_calm",
@@ -67,6 +67,10 @@
       "minecraft:collision_box": {
         "width": 0.6,
         "height": 1.9
+      },
+            "minecraft:follow_range": {
+        "value": 48,
+        "max": 48
       },
       "minecraft:nameable": {},
       "minecraft:navigation.walk": {

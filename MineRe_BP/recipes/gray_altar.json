@@ -1,0 +1,38 @@
+{
+    "format_version":  "1.20.10",
+    "minecraft:recipe_shaped":  {
+                                    "description":  {
+                                                        "identifier":  "minere:gray_altar"
+                                                    },
+                                    "tags":  [
+                                                 "crafting_table"
+                                             ],
+                                    "pattern":  [
+                                                    "AWA",
+                                                    "WGW",
+                                                    "TTT"
+                                                ],
+                                    "key":  {
+                                                "A":  {
+                                                          "item":  "minecraft:amethyst_block"
+                                                      },
+                                                "W":  {
+                                                          "item":  "minecraft:gray_wool"
+                                                      },
+                                                "G":  {
+                                                          "item":  "minecraft:gold_block"
+                                                      },
+                                                "T":  {
+                                                          "item":  "minecraft:chiseled_tuff"
+                                                      }
+                                            },
+                                    "unlock":  [
+                                                   {
+                                                       "item":  "minecraft:amethyst_block"
+                                                   }
+                                               ],
+                                    "result":  {
+                                                   "item":  "minere:gray_altar"
+                                               }
+                                }
+}

@@ -5,7 +5,7 @@ import {
   world,
 } from "@minecraft/server";
 import { RegisterableEvent } from "events/CustomEvent";
-import { getMainItem } from "item/item_utils";
+import { getMainItem } from "items/components/item_utils";
 import { isFamily } from "mob/mob_utils";
 import { GOLD_XP_BONUS } from "settings";
 import { addVector3, randomVector3 } from "util/vector3Functions";

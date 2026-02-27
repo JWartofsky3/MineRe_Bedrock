@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:yellow_altar",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:crafting_table": {
+        "crafting_tags": ["altar"],
+        "table_name": "crafting.minere:altar"
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:stone": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 60
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.minere.altar"
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "minere:yellow_altar",
+          "ambient_occlusion": true,
+          "face_dimming": false,
+          "render_method": "blend"
+        }
+      },
+      "minecraft:map_color": "#FED83D"
+    }
+  }
+}

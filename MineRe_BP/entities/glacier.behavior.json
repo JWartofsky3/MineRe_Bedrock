@@ -72,6 +72,58 @@
         "minecraft:behavior.summon_entity": {
           "priority": 2,
           "summon_choices": [
+                      {
+            "min_activation_range": 0,
+            "max_activation_range": 3,
+            "cooldown_time": 5,
+            "weight": 3,
+            "cast_duration": 2,
+            "particle_color": "#FF664D59",
+            "start_sound_event": "cast.spell",
+            "sequence": [
+              {
+                "shape": "circle",
+                "target": "self",
+                "base_delay": 1,
+                "delay_per_summon": 0,
+                "num_entities_spawned": 10,
+                "entity_type": "minere:ice_spike",
+                "size": 6,
+                "entity_lifespan": 5.0,
+                "sound_event": "prepare.attack"
+              },
+              {
+                "shape": "circle",
+                "target": "self",
+                "base_delay": 0.15,
+                "delay_per_summon": 0,
+                "num_entities_spawned": 16,
+                "entity_type": "minere:ice_spike",
+                "size": 7,
+                "entity_lifespan": 5.0
+              }
+            ]
+          },
+          {
+            "min_activation_range": 3,
+            "weight": 3,
+            "cooldown_time": 5,
+            "cast_duration": 2,
+            "particle_color": "#FF664D59",
+            "start_sound_event": "cast.spell",
+            "sequence": [
+              {
+                "shape": "line",
+                "target": "self",
+                "base_delay": 1,
+                "delay_per_summon": 0.05,
+                "num_entities_spawned": 32,
+                "entity_type": "minere:ice_spike",
+                "size": 32,
+                "entity_lifespan": 5.0
+              }
+            ]
+          },
             {
               "weight": 1,
               "cooldown_time": 30,
@@ -159,9 +211,9 @@
           "duration": 2.0,
           "attack_time": 1.0,
           "knockback_damage": 6,
-          "knockback_horizontal_strength": 6,
-          "knockback_vertical_strength": 6,
-          "knockback_range": 8,
+          "knockback_horizontal_strength": 5,
+          "knockback_vertical_strength": 5,
+          "knockback_range": 6,
           "knockback_filters": {
             "none_of": [
               {
@@ -175,6 +227,16 @@
                 "value": "freeze"
               },
               {
+                "test": "is_family",
+                "subject": "other",
+                "value": "glacier"
+              },
+                            {
+                "test": "is_family",
+                "subject": "other",
+                "value": "ice_spike"
+              },
+                            {
                 "test": "is_family",
                 "subject": "other",
                 "value": "glacier"
@@ -311,8 +373,8 @@
         ]
       },
       "minecraft:follow_range": {
-        "value": 24,
-        "max": 24
+        "value": 64,
+        "max": 64
       },
       "minecraft:behavior.float": {
         "priority": 0
@@ -348,7 +410,7 @@
                 }
               ]
             },
-            "max_dist": 24
+            "max_dist": 48
           }
         ]
       },
