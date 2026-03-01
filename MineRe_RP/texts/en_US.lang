@@ -321,3 +321,6 @@ tile.minere:black_altar.name=Black Altar
 item.minere:indigon_apple=Indigon Apple
 
 item.minere:enchanted_indigon_apple=Enchanted Indigon Apple
+
+entity.minere:monkey.name=Monkey
+item.spawn_egg.entity.minere:monkey.name=Spawn Monkey
