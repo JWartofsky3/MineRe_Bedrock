@@ -72,7 +72,7 @@
       "minecraft:mark_variant": {
         "value": 0
       },
-            "minecraft:timer": {
+      "minecraft:timer": {
         "time": 100.0,
         "looping": false,
         "time_down_event": {

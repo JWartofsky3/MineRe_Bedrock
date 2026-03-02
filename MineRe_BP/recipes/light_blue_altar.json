@@ -1,39 +1,32 @@
 {
-    "format_version":  "1.20.10",
-    "minecraft:recipe_shaped":  {
-                                    "description":  {
-                                                        "identifier":  "minere:light_blue_altar"
-                                                    },
-                                    "tags":  [
-                                                 "crafting_table"
-                                             ],
-                                    "pattern":  [
-                                                    "AWA",
-                                                    "WGW",
-                                                    "TTT"
-                                                ],
-                                    "key":  {
-                                                "A":  {
-                                                          "item":  "minecraft:amethyst_shard"
-                                                      },
-                                                "W":  {
-                                                          "item":  "minecraft:light_blue_carpet"
-                                                      },
-                                                "G":  {
-                                                          "item":  "minecraft:gold_block"
-                                                      },
-                                                "T":  {
-                                                          "item":  "minecraft:chiseled_tuff"
-                                                      }
-                                            },
-                                    "unlock":  [
-                                                   {
-                                                       "item":  "minecraft:amethyst_shard"
-                                                   }
-                                               ],
-                                    "result":  {
-                                                   "item":  "minere:light_blue_altar"
-                                               }
-                                }
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:light_blue_altar"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["AWA", "WGW", "TTT"],
+    "key": {
+      "A": {
+        "item": "minecraft:amethyst_shard"
+      },
+      "W": {
+        "item": "minecraft:light_blue_carpet"
+      },
+      "G": {
+        "item": "minecraft:gold_block"
+      },
+      "T": {
+        "item": "minecraft:chiseled_tuff"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:amethyst_shard"
+      }
+    ],
+    "result": {
+      "item": "minere:light_blue_altar"
+    }
+  }
 }
-

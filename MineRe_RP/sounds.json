@@ -452,6 +452,20 @@
 				"pitch": [0.8, 1.2],
 				"volume": 2.5
 			},
+      "minere:monkey": {
+        "events": {
+          "ambient": "mob.monkey.ambient",
+          "death": {
+            "sound": "mob.monkey.hurt",
+            "pitch": [0.7, 1.0],
+            "volume": 3.0
+          },
+          "hurt": "mob.monkey.hurt",
+          "angry": "mob.monkey.hurt"
+        },
+        "pitch": [0.8, 1.2],
+		"volume": [0.9, 1.1]
+      },
 			"minere:moose": {
 				"events": {
 					"ambient": "mob.moose.ambient",

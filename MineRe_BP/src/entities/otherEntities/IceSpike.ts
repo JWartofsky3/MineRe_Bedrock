@@ -27,10 +27,13 @@ const ICE_SPIKE_DAMAGE = 5;
 const REMOVE_DELAY_TICKS = 80;
 const DAMAGE_DELAY_TICKS = 14;
 const SUMMONER_SEARCH_RANGE = 24;
-const SLOWNESS_DAMAGE_MULT = 2.0
+const SLOWNESS_DAMAGE_MULT = 2.0;
 
 const iceSpikeSummoners = new Set<string>(["glacier"]);
-const INVALID_TARGET_TYPES = new Set<string>(["minecraft:item", "minere:ice_spike"]);
+const INVALID_TARGET_TYPES = new Set<string>([
+  "minecraft:item",
+  "minere:ice_spike",
+]);
 
 export function runIceSpike(iceSpike: Entity) {
   const dimension = iceSpike.dimension;
@@ -61,11 +64,19 @@ export function runIceSpike(iceSpike: Entity) {
     });
     for (let i = 0; i < entities.length; i++) {
       const target = entities[i];
-      if (!target.isValid || INVALID_TARGET_TYPES.has(target.typeId) || isFamily(target, "monster")) {
+      if (
+        !target.isValid ||
+        INVALID_TARGET_TYPES.has(target.typeId) ||
+        isFamily(target, "monster")
+      ) {
         continue;
       }
       const slowness = target.getEffect("slowness");
-      const finalDamage = ICE_SPIKE_DAMAGE + (slowness?.isValid ? ((slowness?.amplifier + 1) * SLOWNESS_DAMAGE_MULT) : 0);
+      const finalDamage =
+        ICE_SPIKE_DAMAGE +
+        (slowness?.isValid
+          ? (slowness?.amplifier + 1) * SLOWNESS_DAMAGE_MULT
+          : 0);
       if (slowness) {
         dimension.playSound("item.ice_charge.blast", iceSpike.location);
         target.removeEffect("slowness");

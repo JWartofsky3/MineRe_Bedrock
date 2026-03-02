@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:enchanted_indigon_apple"
     },
-    
+
     "components": {
       "minecraft:hand_equipped": false,
       "minecraft:stacked_by_data": true,

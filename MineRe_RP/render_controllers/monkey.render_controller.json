@@ -13,7 +13,50 @@
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.skins[0]"]
+      "textures": [
+        "Array.skins[0]"
+      ]
+    },
+    "controller.render.minere.monkey_face": {
+      "arrays": {
+        "textures": {
+          "Array.faces": [
+            "Texture.empty",
+            "Texture.face_playful",
+            "Texture.face_aggressive",
+            "Texture.face_fearful",
+            "Texture.face_lazy"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.faces[query.mark_variant]"
+      ]
+    },
+    "controller.render.minere.monkey_melon": {
+      "arrays": {
+        "textures": {
+          "Array.faces": [
+            "Texture.empty",
+            "Texture.melon"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.faces[query.is_eating ? 1 : 0]"
+      ]
     }
   }
 }

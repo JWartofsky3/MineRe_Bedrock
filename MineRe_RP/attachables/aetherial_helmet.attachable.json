@@ -33,10 +33,9 @@
         "default": "geometry.minere.battle_helmet"
       },
       "scripts": {
-        "parent_setup": "v.chest_layer_visible = 0.0;"
+        "parent_setup": "variable.helmet_layer_visible = 0.0;"
       },
       "render_controllers": ["controller.render.armor"]
     }
   }
 }
-

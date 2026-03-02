@@ -1,7 +1,7 @@
 node_modules
 MineRe_BP/node_modules
 MineRe_RP/node_modules
-MineRe_BP/scripts
+MineRe_BP/scripts/
 *.mcaddon
 bedrock_samples/
 other_samples/

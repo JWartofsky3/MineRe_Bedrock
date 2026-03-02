@@ -1,6 +1,10 @@
 import { Vector3, Entity } from "@minecraft/server";
 
-const INVALID_TYPE_IDS = new Set<string>(["minecraft:item", "minecraft:arrow", "minecraft:xp"]);
+const INVALID_TYPE_IDS = new Set<string>([
+  "minecraft:item",
+  "minecraft:arrow",
+  "minecraft:xp",
+]);
 
 export function throwEntity(
   throwerPos: Vector3,

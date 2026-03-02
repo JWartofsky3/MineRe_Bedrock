@@ -56,7 +56,10 @@ export function handleArmorSetJump(data: PlayerButtonInputAfterEvent): void {
     setAirJumpsUsed(player, 0);
     return;
   }
-  if (data.button !== InputButton.Jump || data.newButtonState !== ButtonState.Pressed) {
+  if (
+    data.button !== InputButton.Jump ||
+    data.newButtonState !== ButtonState.Pressed
+  ) {
     return;
   }
 

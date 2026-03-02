@@ -7,13 +7,16 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/entity/minere/monkey/brown"
+        "default": "textures/entity/minere/monkey/brown",
+        "empty": "textures/entity/minere/monkey/empty",
+        "face_playful": "textures/entity/minere/monkey/playful",
+        "face_fearful": "textures/entity/minere/monkey/fearful",
+        "face_aggressive": "textures/entity/minere/monkey/aggressive",
+        "face_lazy": "textures/entity/minere/monkey/lazy",
+        "melon": "textures/entity/minere/monkey/melon"
       },
       "geometry": {
         "default": "geometry.minere.monkey"
-      },
-      "scripts": {
-        "animate": ["controller"]
       },
       "animations": {
         "walk": "animation.minere.monkey.walk",
@@ -22,9 +25,19 @@
         "climb": "animation.minere.monkey.climb",
         "attack": "animation.minere.monkey.attack",
         "look_at_target": "animation.minere.monkey.look_at",
+        "is_baby": "animation.minere.monkey.is_baby",
         "controller": "controller.animation.minere.monkey"
       },
-      "render_controllers": ["controller.render.minere.monkey"],
+      "scripts": {
+        "animate": ["controller", {
+          "look_at_target": "!query.is_eating && !query.is_scared"
+        },
+      {
+        "is_baby": "query.is_baby"
+      }]
+      },
+      "render_controllers": ["controller.render.minere.monkey_melon", "controller.render.minere.monkey_face", "controller.render.minere.monkey"],
+      "enable_attachables": true,
       "spawn_egg": {
         "base_color": "#866141",
         "overlay_color": "#995418"

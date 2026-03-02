@@ -32,32 +32,32 @@
         }
       },
       "alert_for_attack_targets": {
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 3,
-        "must_see": true,
-        "within_radius": 24,
-        "entity_types": [
-          {
-            "filters": {
-              "any_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "endermite"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "silverfish"
-                }
-              ]
-            },
-            "max_dist": 8
-          }
-        ]
-      }
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "must_see": true,
+          "within_radius": 24,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "endermite"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "silverfish"
+                  }
+                ]
+              },
+              "max_dist": 8
+            }
+          ]
+        }
       },
-            "take_target_as_response_to_block_break": {
+      "take_target_as_response_to_block_break": {
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 3,
           "entity_types": [
@@ -306,21 +306,21 @@
         "value": 24,
         "max": 24
       },
-            "minecraft:block_sensor": {
-          "sensor_radius": 16,
-          "on_break": [
-            {
-              "block_list": [
-                "minecraft:deepslate_coal_ore",
-                "minecraft:coal_ore",
-                "minecraft:warped_stem",
-                "minecraft:chorus_plant",
-                "minecraft:chorus_flower"
-              ],
-              "on_block_broken": "important_block_destroyed_event"
-            }
-          ]
-        },
+      "minecraft:block_sensor": {
+        "sensor_radius": 16,
+        "on_break": [
+          {
+            "block_list": [
+              "minecraft:deepslate_coal_ore",
+              "minecraft:coal_ore",
+              "minecraft:warped_stem",
+              "minecraft:chorus_plant",
+              "minecraft:chorus_flower"
+            ],
+            "on_block_broken": "important_block_destroyed_event"
+          }
+        ]
+      },
       "minecraft:on_target_acquired": {
         "event": "become_angry_event",
         "target": "self"
@@ -543,13 +543,16 @@
       },
       "become_calm_event": {
         "remove": {
-          "component_groups": ["angry", "take_target_as_response_to_block_break"]
+          "component_groups": [
+            "angry",
+            "take_target_as_response_to_block_break"
+          ]
         },
         "add": {
           "component_groups": ["alert_for_attack_targets"]
         }
       },
-            "important_block_destroyed_event": {
+      "important_block_destroyed_event": {
         "remove": {
           "component_groups": ["alert_for_attack_targets"]
         },

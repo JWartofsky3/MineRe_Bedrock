@@ -415,7 +415,10 @@ export class Elephant extends BaseCustomEntity {
       return;
     }
 
-    if (isBaby(elephant) || (isTamed(elephant) && attacker.typeId === "minecraft:player")) {
+    if (
+      isBaby(elephant) ||
+      (isTamed(elephant) && attacker.typeId === "minecraft:player")
+    ) {
       return;
     }
 

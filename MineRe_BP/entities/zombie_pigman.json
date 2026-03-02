@@ -68,7 +68,7 @@
         "width": 0.6,
         "height": 1.9
       },
-            "minecraft:follow_range": {
+      "minecraft:follow_range": {
         "value": 48,
         "max": 48
       },

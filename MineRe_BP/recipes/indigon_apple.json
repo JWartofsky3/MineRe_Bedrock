@@ -6,11 +6,7 @@
     },
 
     "tags": ["crafting_table"],
-    "pattern": [
-      "###",
-      "#X#",
-      "###"
-    ],
+    "pattern": ["###", "#X#", "###"],
     "key": {
       "#": {
         "item": "minere:indigon_ingot"

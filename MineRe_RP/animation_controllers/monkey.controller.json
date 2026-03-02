@@ -8,8 +8,7 @@
           "animations": [
             {
               "walk": "query.modified_move_speed"
-            },
-            "look_at_target"
+            }
           ],
           "transitions": [
             {
@@ -22,7 +21,7 @@
               "running": "query.ground_speed > 3.0"
             },
             {
-              "sitting": "query.is_sitting"
+              "sitting": "query.is_sitting && query.ground_speed < 0.5"
             }
           ],
           "blend_transition": 0.2
@@ -31,8 +30,7 @@
           "animations": [
             {
               "run": "query.modified_move_speed"
-            },
-            "look_at_target"
+            }
           ],
           "transitions": [
             {
@@ -45,13 +43,13 @@
               "walking": "query.ground_speed <= 3.0"
             },
             {
-              "sitting": "query.is_sitting"
+              "sitting": "query.is_sitting && query.ground_speed < 0.5"
             }
           ],
           "blend_transition": 0.2
         },
         "climbing": {
-          "animations": ["climb", "look_at_target"],
+          "animations": ["climb"],
           "transitions": [
             {
               "attacking": "variable.attack_time > 0.0"
@@ -66,7 +64,7 @@
           "blend_transition": 0.2
         },
         "attacking": {
-          "animations": ["attack", "look_at_target"],
+          "animations": ["attack"],
           "transitions": [
             {
               "climbing": "query.all_animations_finished && query.is_wall_climbing == 1"
@@ -84,16 +82,16 @@
           "blend_transition": 0.2
         },
         "sitting": {
-          "animations": ["sit", "look_at_target"],
+          "animations": ["sit"],
           "transitions": [
             {
-              "climbing": "!query.is_sitting && query.is_wall_climbing == 1"
+              "climbing": "!query.is_sitting || query.is_wall_climbing == 1"
             },
             {
-              "running": "!query.is_sitting && query.ground_speed > 3.0"
+              "running": "!query.is_sitting || query.ground_speed > 3.0"
             },
             {
-              "walking": "!query.is_sitting"
+              "walking": "!query.is_sitting || query.ground_speed > 0.5"
             }
           ],
           "blend_transition": 0.3

@@ -95,7 +95,7 @@
       {
         "category_name": "construction",
         "groups": [
-                    {
+          {
             "group_identifier": {
               "icon": "minere:red_altar",
               "name": "minere:itemGroup.name.altars"
@@ -119,7 +119,6 @@
               "minere:pink_altar"
             ]
           }
-
         ]
       }
     ]

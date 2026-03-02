@@ -1,4 +1,11 @@
-import { Entity, EntityComponentTypes, EntityDamageCause, EntityHurtAfterEvent, system, world } from "@minecraft/server";
+import {
+  Entity,
+  EntityComponentTypes,
+  EntityDamageCause,
+  EntityHurtAfterEvent,
+  system,
+  world,
+} from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { isOffCooldown } from "entities/functions/checkCooldown";
 import { isAlive } from "mob/mob_utils";
@@ -113,7 +120,12 @@ export class Glacier extends BaseCustomEntity {
     const glacier = data.hurtEntity;
     const attacker = data.damageSource?.damagingEntity;
 
-    if (data.damageSource.cause === EntityDamageCause.temperature && (world.getTimeOfDay() > 500 && world.getTimeOfDay() < 11000) && !(glacier.getProperty("minere:is_submerging") as boolean)) {
+    if (
+      data.damageSource.cause === EntityDamageCause.temperature &&
+      world.getTimeOfDay() > 500 &&
+      world.getTimeOfDay() < 11000 &&
+      !(glacier.getProperty("minere:is_submerging") as boolean)
+    ) {
       return this.submergeAndDespawn(glacier);
     }
 
@@ -129,7 +141,6 @@ export class Glacier extends BaseCustomEntity {
     ) {
       glacier.triggerEvent("minere:glacier_start_roar");
     }
-
   }
 
   private getWeightsForDistance(distance: number): Map<GlacierMode, number> {
@@ -187,9 +198,9 @@ export class Glacier extends BaseCustomEntity {
   }
 
   private submergeAndDespawn(glacier: Entity) {
-      glacier.triggerEvent("minere:start_submerging");
-      system.runTimeout(() => {
-        glacier.remove();
-      }, 70);
+    glacier.triggerEvent("minere:start_submerging");
+    system.runTimeout(() => {
+      glacier.remove();
+    }, 70);
   }
 }

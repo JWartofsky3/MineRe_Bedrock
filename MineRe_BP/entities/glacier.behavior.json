@@ -72,58 +72,58 @@
         "minecraft:behavior.summon_entity": {
           "priority": 2,
           "summon_choices": [
-                      {
-            "min_activation_range": 0,
-            "max_activation_range": 8,
-            "cooldown_time": 5,
-            "weight": 5,
-            "cast_duration": 2,
-            "particle_color": "#FF664D59",
-            "start_sound_event": "cast.spell",
-            "sequence": [
-              {
-                "shape": "circle",
-                "target": "self",
-                "base_delay": 1,
-                "delay_per_summon": 0,
-                "num_entities_spawned": 10,
-                "entity_type": "minere:ice_spike",
-                "size": 6,
-                "entity_lifespan": 5.0,
-                "sound_event": "prepare.attack"
-              },
-              {
-                "shape": "circle",
-                "target": "self",
-                "base_delay": 0.15,
-                "delay_per_summon": 0,
-                "num_entities_spawned": 16,
-                "entity_type": "minere:ice_spike",
-                "size": 7,
-                "entity_lifespan": 5.0
-              }
-            ]
-          },
-          {
-            "min_activation_range": 3,
-            "weight": 5,
-            "cooldown_time": 5,
-            "cast_duration": 2,
-            "particle_color": "#FF664D59",
-            "start_sound_event": "cast.spell",
-            "sequence": [
-              {
-                "shape": "line",
-                "target": "self",
-                "base_delay": 1,
-                "delay_per_summon": 0.05,
-                "num_entities_spawned": 32,
-                "entity_type": "minere:ice_spike",
-                "size": 32,
-                "entity_lifespan": 5.0
-              }
-            ]
-          },
+            {
+              "min_activation_range": 0,
+              "max_activation_range": 8,
+              "cooldown_time": 5,
+              "weight": 5,
+              "cast_duration": 2,
+              "particle_color": "#FF664D59",
+              "start_sound_event": "cast.spell",
+              "sequence": [
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "base_delay": 1,
+                  "delay_per_summon": 0,
+                  "num_entities_spawned": 10,
+                  "entity_type": "minere:ice_spike",
+                  "size": 6,
+                  "entity_lifespan": 5.0,
+                  "sound_event": "prepare.attack"
+                },
+                {
+                  "shape": "circle",
+                  "target": "self",
+                  "base_delay": 0.15,
+                  "delay_per_summon": 0,
+                  "num_entities_spawned": 16,
+                  "entity_type": "minere:ice_spike",
+                  "size": 7,
+                  "entity_lifespan": 5.0
+                }
+              ]
+            },
+            {
+              "min_activation_range": 3,
+              "weight": 5,
+              "cooldown_time": 5,
+              "cast_duration": 2,
+              "particle_color": "#FF664D59",
+              "start_sound_event": "cast.spell",
+              "sequence": [
+                {
+                  "shape": "line",
+                  "target": "self",
+                  "base_delay": 1,
+                  "delay_per_summon": 0.05,
+                  "num_entities_spawned": 32,
+                  "entity_type": "minere:ice_spike",
+                  "size": 32,
+                  "entity_lifespan": 5.0
+                }
+              ]
+            },
             {
               "weight": 1,
               "cooldown_time": 30,
@@ -231,12 +231,12 @@
                 "subject": "other",
                 "value": "glacier"
               },
-                            {
+              {
                 "test": "is_family",
                 "subject": "other",
                 "value": "ice_spike"
               },
-                            {
+              {
                 "test": "is_family",
                 "subject": "other",
                 "value": "glacier"
@@ -315,7 +315,7 @@
             "cause": "freezing",
             "deals_damage": false
           },
-                    {
+          {
             "cause": "fall",
             "deals_damage": false
           }

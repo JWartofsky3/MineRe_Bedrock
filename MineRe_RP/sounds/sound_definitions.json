@@ -295,6 +295,34 @@
         "sounds/mob/bird/toucan/toucan1"
       ]
     },
+    "mob.monkey.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/monkey/ambient0",
+        "sounds/mob/monkey/ambient1",
+        "sounds/mob/monkey/ambient2",
+        "sounds/mob/monkey/ambient3",
+        "sounds/mob/monkey/ambient4",
+        "sounds/mob/monkey/screech0",
+        "sounds/mob/monkey/screech1"
+      ]
+    },
+    "mob.monkey.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/monkey/hurt0",
+        {
+          "name": "sounds/mob/monkey/screech0",
+          "pitch": 1.25,
+          "volume": 1.25
+        },
+        {
+          "name": "sounds/mob/monkey/screech1",
+          "pitch": 1.25,
+          "volume": 1.25
+        }
+      ]
+    },
     "mob.butterfly.squish": {
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]
