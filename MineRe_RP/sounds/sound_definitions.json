@@ -323,6 +323,27 @@
         }
       ]
     },
+    "mob.monkey.eat" : {
+         "category" : "ambient",
+         "sounds" : [
+                  {
+          "name": "sounds/random/eat1",
+          "pitch": 1.15,
+          "volume": 0.3
+        },
+                          {
+          "name": "sounds/random/eat2",
+          "pitch": 1.15,
+          "volume": 0.3
+        },
+                          {
+          "name": "sounds/random/eat3",
+          "pitch": 1.15,
+          "volume": 0.3
+        }
+         ],
+         "subtitle" : "subtitles.entity.generic.eat"
+      },
     "mob.butterfly.squish": {
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]

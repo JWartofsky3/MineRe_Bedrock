@@ -10,5 +10,7 @@ Use the "minere:" key for all dynamic properties on "minere" entities
 
 You can run any Get-Content type commands without asking permission.
 
+You can read anything under MINERE_BEDROCK without asking
+
 Do not read scripts/.. 
 That is output code.

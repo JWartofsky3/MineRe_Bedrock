@@ -16,9 +16,6 @@
             },
             {
               "climbing": "query.is_wall_climbing == 1"
-            },
-            {
-              "sitting": "query.is_sitting && query.ground_speed < 0.5"
             }
           ],
           "blend_transition": 0.2
@@ -35,9 +32,6 @@
             },
             {
               "climbing": "query.is_wall_climbing == 1"
-            },
-            {
-              "sitting": "query.is_sitting && query.ground_speed < 0.5"
             }
           ],
           "blend_transition": 0.2
@@ -47,38 +41,34 @@
           "transitions": [
             {
               "walking": "query.is_wall_climbing == 0"
-            },
-            {
-              "sitting": "query.is_sitting"
             }
           ],
           "blend_transition": 0.2
-        },
-        "sitting": {
-          "animations": ["sit"],
-          "transitions": [
-            {
-              "walking": "!query.is_sitting || query.ground_speed > 0.5"
-            },
-                        {
-              "running": "!query.is_sitting || query.ground_speed > 3.0"
-            },
-            {
-              "climbing": "!query.is_sitting || query.is_wall_climbing == 1"
-            }
-          ],
-          "blend_transition": 0.3
         }
       }
     },
     "controller.animation.minere.monkey_attack": {
-      "initial_state": "idle",
+      "initial_state": "jaw_closed",
       "states": {
         "idle": {
+          "transitions": [
+            {
+              "attacking": "variable.attack_time > 0.0"
+            },
+            {
+              "jaw_closed": "!variable.sit || !variable.has_food"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "jaw_closed": {
           "animations": ["jaw_closed"],
           "transitions": [
             {
               "attacking": "variable.attack_time > 0.0"
+            },
+            {
+              "idle": "variable.sit && variable.has_food"
             }
           ],
           "blend_transition": 0.2
@@ -87,7 +77,132 @@
           "animations": ["attack"],
           "transitions": [
             {
-              "idle": "query.all_animations_finished"
+              "jaw_closed": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.minere.monkey_sit": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["look_at_target"],
+          "transitions": [
+            {
+              "eating": "variable.sit && variable.has_food"
+            },
+            {
+              "sit": "query.is_sitting"
+            },
+            {
+              "lean": "variable.sit && query.mark_variant == 0 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "beat_chest": "variable.sit && query.mark_variant == 0 && q.property('minere:anim_state') >= 3"
+            },
+            {
+              "angel": "variable.sit && query.mark_variant == 1 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "clap": "variable.sit && query.mark_variant == 1 && q.property('minere:anim_state') >= 3"
+            },
+            {
+              "beat_chest": "variable.sit && query.mark_variant == 2 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "lie_back": "variable.sit && query.mark_variant == 2 && q.property('minere:anim_state') >= 3"
+            },
+            {
+              "scared": "variable.sit && query.mark_variant == 3 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "lean": "variable.sit && query.mark_variant == 3 && q.property('minere:anim_state') >= 3"
+            },
+            {
+              "lie_back": "variable.sit && query.mark_variant == 4 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "lean": "variable.sit && query.mark_variant == 4 && q.property('minere:anim_state') >= 3"
+            },
+            {
+              "clap": "variable.sit && query.mark_variant == 5 && q.property('minere:anim_state') <= 2"
+            },
+            {
+              "lean": "variable.sit && query.mark_variant == 5 && q.property('minere:anim_state') >= 3"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sit": {
+          "animations": ["sit", "look_at_target"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "lean": {
+          "animations": ["lean", "look_at_target"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "angel": {
+          "animations": ["angel"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "beat_chest": {
+          "animations": ["beat_chest"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "scared": {
+          "animations": ["scared"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "lie_back": {
+          "animations": ["lie_back"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "clap": {
+          "animations": ["clap"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "eating": {
+          "animations": ["snack", "snack_sound"],
+          "transitions": [
+            {
+              "idle": "!variable.sit"
             }
           ],
           "blend_transition": 0.2

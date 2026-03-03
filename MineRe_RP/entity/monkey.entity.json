@@ -14,7 +14,8 @@
         "face_aggressive": "textures/entity/minere/monkey/aggressive",
         "face_lazy": "textures/entity/minere/monkey/lazy",
         "face_friendly": "textures/entity/minere/monkey/friendly",
-        "melon": "textures/entity/minere/monkey/melon",
+        "bite0": "textures/entity/minere/monkey/bite0",
+        "bite1": "textures/entity/minere/monkey/bite1",
         "collar_white": "textures/entity/minere/monkey/collar/white",
         "collar_orange": "textures/entity/minere/monkey/collar/orange",
         "collar_magenta": "textures/entity/minere/monkey/collar/magenta",
@@ -44,18 +45,39 @@
         "jaw_closed": "animation.minere.monkey.jaw_closed",
         "look_at_target": "animation.minere.monkey.look_at",
         "is_baby": "animation.minere.monkey.is_baby",
+        "lie_back": "animation.minere.monkey.lie_back",
+        "lean": "animation.minere.monkey.lean",
+        "beat_chest": "animation.minere.monkey.beat_chest",
+        "clap": "animation.minere.monkey.clap",
+                "scared": "animation.minere.monkey.scared",
+        "snack": "animation.minere.monkey.snack",
+"snack_sound": "animation.minere.monkey.snack_sound",
+        "angel": "animation.minere.monkey.angel",
         "controller": "controller.animation.minere.monkey",
+        "sit_controller": "controller.animation.minere.monkey_sit",
         "attack_controller": "controller.animation.minere.monkey_attack"
       },
+      "sound_effects": {
+        "eat": "mob.monkey.eat",
+        "burp": "random.burp"
+      },
+      "particle_effects": {
+  "eat_crumbs": "minere:monkey_eat_crumbs"
+},
       "scripts": {
-        "animate": ["controller", {
-          "look_at_target": "!query.is_eating && !query.is_scared"
-        },
+        "pre_animation": [
+          "variable.sit = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') != 0));", 
+          "variable.has_food = query.is_item_name_any('slot.weapon.mainhand', 'minecraft:melon_slice', 'minecraft:sweet_berries', 'minecraft:glow_berries');",
+          "variable.bite_frame = math.mod(query.life_time * 4, 2);",
+          "variable.is_eating = variable.sit && variable.has_food;",
+          "variable.is_beat_chest = variable.sit && !variable.has_food && query.property('minere:anim_state') != 0 && ((query.mark_variant == 0 && query.property('minere:anim_state') >= 3) || (query.mark_variant == 2 && query.property('minere:anim_state') <= 2));",
+          "variable.is_biting = variable.attack_time > 0.0 || variable.is_eating || variable.is_beat_chest;"],
+        "animate": ["controller", "attack_controller", "sit_controller",
       {
         "is_baby": "query.is_baby"
       }]
       },
-      "render_controllers": ["controller.render.minere.monkey_melon", "controller.render.minere.monkey_face", "controller.render.minere.monkey_collar", "controller.render.minere.monkey"],
+      "render_controllers": ["controller.render.minere.monkey_bite", "controller.render.minere.monkey_face", "controller.render.minere.monkey_collar", "controller.render.minere.monkey"],
       "enable_attachables": true,
       "spawn_egg": {
         "base_color": "#866141",

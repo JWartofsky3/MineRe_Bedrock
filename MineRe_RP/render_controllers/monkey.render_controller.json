@@ -74,12 +74,13 @@
         "Array.collar[query.is_tamed ? (query.property('minere:collar_color') + 1) : 0]"
       ]
     },
-    "controller.render.minere.monkey_melon": {
+    "controller.render.minere.monkey_bite": {
       "arrays": {
         "textures": {
-          "Array.faces": [
+          "Array.bites": [
             "Texture.empty",
-            "Texture.melon"
+            "Texture.bite0",
+            "Texture.bite1"
           ]
         }
       },
@@ -90,7 +91,7 @@
         }
       ],
       "textures": [
-        "Array.faces[query.is_eating ? 1 : 0]"
+        "Array.bites[variable.is_biting ? (variable.bite_frame + 1) : 0]"
       ]
     }
   }

@@ -12,10 +12,92 @@
           "range": [-1, 15],
           "default": -1,
           "client_sync": true
+        },
+        "minere:anim_state": {
+          "type": "int",
+          "range": [0, 5],
+          "default": 0,
+          "client_sync": true
         }
       }
     },
     "component_groups": {
+      "minere:sleepy": {
+        "minecraft:ambient_sound_interval": {
+          "event_name": "sleep"
+        },
+        "minecraft:behavior.jump_to_block": {
+          "priority": 6,
+          "search_width": 10,
+          "search_height": 10,
+          "minimum_path_length": 3,
+          "minimum_distance": 1,
+          "scale_factor": 0.65,
+          "cooldown_range": [120, 240]
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 5,
+          "xz_dist": 5,
+          "interval": 1500
+        }
+      },
+      "minere:lethargic": {
+        "minecraft:behavior.jump_to_block": {
+          "priority": 6,
+          "search_width": 10,
+          "search_height": 10,
+          "minimum_path_length": 3,
+          "minimum_distance": 1,
+          "scale_factor": 0.65,
+          "cooldown_range": [8, 40]
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 5,
+          "xz_dist": 5
+        },
+        "minecraft:ambient_sound_interval": {
+          "range": 20.0,
+          "value": 10
+        }
+      },
+      "minere:active": {
+        "minecraft:behavior.jump_to_block": {
+          "priority": 6,
+          "search_width": 10,
+          "search_height": 10,
+          "minimum_path_length": 3,
+          "minimum_distance": 1,
+          "scale_factor": 0.65,
+          "cooldown_range": [4, 16]
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 5,
+          "xz_dist": 10
+        },
+        "minecraft:ambient_sound_interval": {
+          "range": 14.0,
+          "value": 7
+        }
+      },
+      "minere:energetic": {
+        "minecraft:behavior.jump_to_block": {
+          "priority": 6,
+          "search_width": 10,
+          "search_height": 10,
+          "minimum_path_length": 3,
+          "minimum_distance": 1,
+          "scale_factor": 0.65,
+          "cooldown_range": [2, 10]
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 5,
+          "xz_dist": 15
+        },
+        "minecraft:ambient_sound_interval": {
+          "range": 10.0,
+          "value": 5
+        }
+      },
       "minere:monkey_baby": {
         "minecraft:is_baby": {},
         "minecraft:scale": {
@@ -23,7 +105,14 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": ["melon_slice", "glistering_melon_slice", "apple", "golden_apple", "sweet_berries"],
+          "feed_items": [
+            "melon_slice",
+            "glistering_melon_slice",
+            "apple",
+            "golden_apple",
+            "sweet_berries",
+            "glow_berries"
+          ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -60,6 +149,20 @@
         }
       },
       "minere:monkey_wild": {
+        "minecraft:behavior.raid_garden": {
+          "priority": 4,
+          "blocks": [
+            "minecraft:sweet_berry_bush",
+            "minecraft:cave_vines_head_with_berries",
+            "minecraft:cave_vines_body_with_berries"
+          ],
+          "speed_multiplier": 1.2,
+          "search_range": 12,
+          "search_height": 2,
+          "goal_radius": 0.8,
+          "max_to_eat": 0,
+          "initial_eat_delay": 2
+        },
         "minecraft:tameable": {
           "probability": 1.0,
           "tame_items": ["glistering_melon_slice"],
@@ -72,8 +175,129 @@
       "minere:monkey_tamed": {
         "minecraft:is_tamed": {},
         "minecraft:persistent": {},
-        "minecraft:sittable": {},
-        
+        "minecraft:sittable": {
+          "sit_event": {
+            "event": "minere:set_anim_0"
+          },
+          "stand_event": {
+            "event": "minere:set_anim_0"
+          }
+        },
+        "minecraft:healable": {
+          "items": [
+            {
+              "item": "porkchop",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_porkchop",
+              "heal_amount": 16
+            },
+            {
+              "item": "fish",
+              "heal_amount": 4
+            },
+            {
+              "item": "salmon",
+              "heal_amount": 4
+            },
+            {
+              "item": "cooked_fish",
+              "heal_amount": 10
+            },
+            {
+              "item": "cooked_salmon",
+              "heal_amount": 12
+            },
+            {
+              "item": "beef",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_beef",
+              "heal_amount": 16
+            },
+            {
+              "item": "chicken",
+              "heal_amount": 4
+            },
+            {
+              "item": "cooked_chicken",
+              "heal_amount": 12
+            },
+            {
+              "item": "muttonRaw",
+              "heal_amount": 4
+            },
+            {
+              "item": "muttonCooked",
+              "heal_amount": 12
+            },
+            {
+              "item": "minere:venison",
+              "heal_amount": 4
+            },
+            {
+              "item": "minere:cooked_venison",
+              "heal_amount": 12
+            },
+            {
+              "item": "melon_slice",
+              "heal_amount": 5
+            },
+            {
+              "item": "sweet_berries",
+              "heal_amount": 5
+            },
+            {
+              "item": "glow_berries",
+              "heal_amount": 5
+            },
+            {
+              "item": "glistering_melon_slice",
+              "heal_amount": 24
+            },
+            {
+              "item": "rabbit",
+              "heal_amount": 6
+            },
+            {
+              "item": "cooked_rabbit",
+              "heal_amount": 10
+            },
+            {
+              "item": "rabbit_stew",
+              "heal_amount": 20
+            }
+          ]
+        },
+        "minecraft:behavior.teleport_to_owner": {
+          "priority": 1,
+          "filters": {
+            "any_of": [
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 16
+                  },
+                  { "test": "is_panicking" }
+                ]
+              },
+              {
+                "all_of": [
+                  {
+                    "test": "owner_distance",
+                    "operator": ">",
+                    "value": 32
+                  },
+                  { "test": "has_target" }
+                ]
+              }
+            ]
+          }
+        },
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 2,
           "must_see_forget_duration": 5,
@@ -581,9 +805,9 @@
           "value": 24,
           "max": 24
         },
-              "minecraft:attack": {
-        "damage": 4
-      },
+        "minecraft:attack": {
+          "damage": 4
+        },
         "minecraft:behavior.stay_while_sitting": {
           "priority": 0
         },
@@ -611,15 +835,6 @@
         },
         "minecraft:movement": {
           "value": 0.36
-        },
-        "minecraft:behavior.jump_to_block": {
-          "priority": 6,
-          "search_width": 10,
-          "search_height": 10,
-          "minimum_path_length": 3,
-          "minimum_distance": 1,
-          "scale_factor": 0.65,
-          "cooldown_range": [2, 10]
         }
       },
       "minere:personality_aggressive": {
@@ -628,10 +843,6 @@
         },
         "minecraft:type_family": {
           "family": ["monkey", "monkey_aggressive", "mob"]
-        },
-        "minecraft:on_friendly_anger": {
-          "event": "minere:on_angry",
-          "target": "self"
         },
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
@@ -686,6 +897,8 @@
                   },
                   {
                     "test": "has_component",
+                    "operator": "!=",
+                    "subject": "self",
                     "value": "minecraft:is_tamed"
                   }
                 ]
@@ -701,7 +914,7 @@
                 "value": "monster"
               },
               "max_dist": 16,
-              "walk_speed_multiplier": 1.0,
+              "walk_speed_multiplier": 1.1,
               "sprint_speed_multiplier": 1.6
             },
             {
@@ -711,7 +924,7 @@
                 "value": "irongolem"
               },
               "max_dist": 16,
-              "walk_speed_multiplier": 1.0,
+              "walk_speed_multiplier": 1.1,
               "sprint_speed_multiplier": 1.6
             }
           ]
@@ -723,36 +936,26 @@
         },
         "minecraft:movement": {
           "value": 0.2
-        },
-        "minecraft:behavior.jump_to_block": {
-          "priority": 6,
-          "search_width": 10,
-          "search_height": 10,
-          "minimum_path_length": 3,
-          "minimum_distance": 1,
-          "scale_factor": 0.65,
-          "cooldown_range": [8, 40]
         }
       },
       "minere:personality_friendly": {
         "minecraft:mark_variant": {
           "value": 5
-        },
-        "minecraft:timer": {
-          "looping": true,
-          "randomInterval": true,
-          "time": [4, 8],
-          "time_down_event": {
-            "event": "minere:toggle_go_to_player"
-          }
         }
       },
       "minere:go_to_player": {
         "minecraft:behavior.follow_mob": {
-  "priority": 3,
-  "search_range": 16,
-  "stop_distance": 4,
-                "filters": {
+          "priority": 3,
+          "search_range": 16,
+          "stop_distance": 6,
+          "filters": {
+            "all_of": [
+              {
+                "test": "is_mark_variant",
+                "subject": "self",
+                "value": 5
+              },
+              {
                 "any_of": [
                   {
                     "test": "is_family",
@@ -764,7 +967,7 @@
                     "subject": "other",
                     "value": "villager"
                   },
-                                    {
+                  {
                     "test": "is_family",
                     "subject": "other",
                     "value": "irongolem"
@@ -776,7 +979,9 @@
                   }
                 ]
               }
-}
+            ]
+          }
+        }
       }
     },
     "components": {
@@ -788,6 +993,14 @@
       "minecraft:health": {
         "value": 12,
         "max": 12
+      },
+      "minecraft:timer": {
+        "looping": true,
+        "randomInterval": true,
+        "time": [4, 8],
+        "time_down_event": {
+          "event": "minere:toggle_state"
+        }
       },
       "minecraft:on_target_acquired": {
         "event": "minere:on_angry",
@@ -836,69 +1049,296 @@
       "minecraft:can_climb": {},
       "minecraft:block_climber": {},
       "minecraft:damage_sensor": {
-        "triggers": {
-          "cause": "fall",
-          "deals_damage": "no"
-        }
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:sweet_berry_bush"
+              }
+            },
+            "deals_damage": "no"
+          }
+        ]
       },
       "minecraft:despawn": {
         "despawn_from_distance": {}
       },
-"minecraft:shareables": {
-  "items": [
-    { "item": "minecraft:netherite_sword", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
-    { "item": "minecraft:diamond_sword", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:enderon_sword", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:indigon_sword", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minecraft:iron_sword", "want_amount": 1, "surplus_amount": 1, "priority": 2 },
-    { "item": "minecraft:copper_sword", "want_amount": 1, "surplus_amount": 1, "priority": 3 },
-    { "item": "minecraft:stone_sword", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
-    { "item": "minecraft:golden_sword", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
-    { "item": "minecraft:wooden_sword", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minecraft:netherite_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 0
+          },
+          {
+            "item": "minecraft:diamond_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:enderon_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minecraft:iron_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 2
+          },
+          {
+            "item": "minecraft:copper_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
+          },
+          {
+            "item": "minecraft:stone_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:golden_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 5
+          },
+          {
+            "item": "minecraft:wooden_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 6
+          },
 
-    { "item": "minecraft:netherite_axe", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
-    { "item": "minecraft:diamond_axe", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:enderon_axe", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:indigon_axe", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minecraft:iron_axe", "want_amount": 1, "surplus_amount": 1, "priority": 2 },
-    { "item": "minecraft:copper_axe", "want_amount": 1, "surplus_amount": 1, "priority": 3 },
-    { "item": "minecraft:stone_axe", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
-    { "item": "minecraft:golden_axe", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
-    { "item": "minecraft:wooden_axe", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
-    { "item": "minecraft:netherite_spear", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
-    { "item": "minecraft:diamond_spear", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minecraft:iron_spear", "want_amount": 1, "surplus_amount": 1, "priority": 2 },
-    { "item": "minecraft:copper_spear", "want_amount": 1, "surplus_amount": 1, "priority": 3 },
-    { "item": "minecraft:stone_spear", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
-    { "item": "minecraft:golden_spear", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
-    { "item": "minecraft:wooden_spear", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
+          {
+            "item": "minecraft:netherite_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 0
+          },
+          {
+            "item": "minecraft:diamond_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:enderon_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minecraft:iron_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 2
+          },
+          {
+            "item": "minecraft:copper_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
+          },
+          {
+            "item": "minecraft:stone_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:golden_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 5
+          },
+          {
+            "item": "minecraft:wooden_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 6
+          },
+          {
+            "item": "minecraft:netherite_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 0
+          },
+          {
+            "item": "minecraft:diamond_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minecraft:iron_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 2
+          },
+          {
+            "item": "minecraft:copper_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
+          },
+          {
+            "item": "minecraft:stone_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:golden_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 5
+          },
+          {
+            "item": "minecraft:wooden_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 6
+          },
 
-    { "item": "minecraft:netherite_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
-    { "item": "minecraft:diamond_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:enderon_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:indigon_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minere:aetherial_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
-    { "item": "minecraft:iron_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 2 },
-    { "item": "minecraft:copper_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 3 },
-    { "item": "minecraft:chainmail_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
-    { "item": "minecraft:golden_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
-    { "item": "minecraft:leather_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
-    { "item": "minecraft:turtle_fhelmet", "want_amount": 1, "surplus_amount": 1, "priority": 7 },
-    { "item": "minecraft:melon", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
-    { "item": "minecraft:apple", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
-    { "item": "minecraft:sweet_berries", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
+          {
+            "item": "minecraft:netherite_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 0
+          },
+          {
+            "item": "minecraft:diamond_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:enderon_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:aetherial_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minecraft:iron_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 2
+          },
+          {
+            "item": "minecraft:copper_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
+          },
+          {
+            "item": "minecraft:chainmail_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:golden_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 5
+          },
+          {
+            "item": "minecraft:leather_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 6
+          },
+          {
+            "item": "minecraft:turtle_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 7
+          },
+          {
+            "item": "minecraft:melon",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8,
+            "max_amount": 1
+          },
+          {
+            "item": "minecraft:apple",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8,
+            "max_amount": 1
+          },
+          {
+            "item": "minecraft:sweet_berries",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8,
+            "max_amount": 1
+          },
+          {
+            "item": "minecraft:glow_berries",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8,
+            "max_amount": 1
+          },
 
-    { "item": "minecraft:stick", "want_amount": 1, "surplus_amount": 1, "priority": 8 },
-    { "item": "minecraft:bone", "want_amount": 1, "surplus_amount": 1, "priority": 8 }
-  ]
-},
+          {
+            "item": "minecraft:stick",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8
+          },
+          {
+            "item": "minecraft:bone",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 8
+          }
+        ]
+      },
       "minecraft:equip_item": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
-              "minecraft:behavior.hurt_by_target": {
-          "priority": 1
-        },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
       "minecraft:behavior.panic": {
         "priority": 1,
         "speed_multiplier": 1.25
@@ -921,8 +1361,8 @@
         "cooldown_after_being_attacked": 20
       },
       "minecraft:behavior.eat_carried_item": {
-        "priority": 8,
-        "delay_before_eating": 28
+        "priority": 1,
+        "delay_before_eating": 15
       },
       "minecraft:behavior.jump_to_block": {
         "priority": 4,
@@ -1100,20 +1540,20 @@
                   "subject": "self",
                   "value": 0
                 },
-                                {
+                {
                   "test": "is_mark_variant",
                   "subject": "self",
                   "value": 2
                 },
-                                {
+                {
                   "test": "is_mark_variant",
                   "subject": "self",
                   "value": 5
                 }
-              ],
-                          "add": {
+              ]
+            },
+            "add": {
               "component_groups": ["minere:can_fight"]
-            }
             }
           }
         ]
@@ -1208,16 +1648,165 @@
           "component_groups": ["minere:angry"]
         }
       },
-      "minere:toggle_go_to_player": {
-        "randomize": [
+      "minere:set_anim_0": {
+        "set_property": {
+          "minere:anim_state": 0
+        }
+      },
+      "minere:toggle_state": {
+        "sequence": [
           {
-            "add": {
-              "component_groups": ["minere:go_to_player"]
+            "randomize": [
+              {
+                "add": {
+                  "component_groups": ["minere:go_to_player"]
+                }
+              },
+              {
+                "remove": {
+                  "component_groups": ["minere:go_to_player"]
+                }
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 0
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 2
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 3
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 4
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 5
+                }
+              }
+            ]
+          },
+          {
+            "remove": {
+              "component_groups": [
+                "minere:sleepy",
+                "minere:lethargic",
+                "minere:energetic",
+                "minere:active"
+              ]
             }
           },
+          {
+            "filters": {
+              "test": "is_daytime",
+              "subject": "self",
+              "value": false
+            },
+            "add": {
+              "component_groups": ["minere:sleepy"]
+            }
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_daytime",
+                  "subject": "self",
+                  "value": true
+                },
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 4
+                }
+              ]
+            },
+            "add": {
+              "component_groups": ["minere:lethargic"]
+            }
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_daytime",
+                  "subject": "self",
+                  "value": true
+                },
+                {
+                  "any_of": [
                     {
-            "remove": {
-              "component_groups": ["minere:go_to_player"]
+                      "test": "is_mark_variant",
+                      "subject": "self",
+                      "value": 1
+                    },
+                    {
+                      "test": "is_baby",
+                      "subject": "self",
+                      "value": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "add": {
+              "component_groups": ["minere:energetic"]
+            }
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_daytime",
+                  "subject": "self",
+                  "value": true
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "is_mark_variant",
+                      "subject": "self",
+                      "value": 0
+                    },
+                    {
+                      "test": "is_mark_variant",
+                      "subject": "self",
+                      "value": 2
+                    },
+                    {
+                      "test": "is_mark_variant",
+                      "subject": "self",
+                      "value": 3
+                    },
+                    {
+                      "test": "is_mark_variant",
+                      "subject": "self",
+                      "value": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            "add": {
+              "component_groups": ["minere:active"]
             }
           }
         ]

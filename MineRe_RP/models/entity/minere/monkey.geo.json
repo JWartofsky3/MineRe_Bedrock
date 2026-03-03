@@ -22,24 +22,12 @@
 					"cubes": [
 						{"origin": [-4, 8, -11], "size": [8, 8, 7], "uv": [0, 16]},
 						{"origin": [4, 10, -8], "size": [3, 5, 1], "inflate": 0.01, "uv": [14, 40]},
-						{"origin": [-7, 10, -8], "size": [3, 5, 1], "inflate": 0.01, "uv": [22, 40]}
-					]
-				},
-				{
-					"name": "closed",
-					"parent": "head",
-					"pivot": [0, 10, -11],
-					"cubes": [
+						{"origin": [-7, 10, -8], "size": [3, 5, 1], "inflate": 0.01, "uv": [22, 40]},
 						{"origin": [-4, 8, -12], "size": [8, 4, 1], "uv": [0, 31]}
-					]
-				},
-				{
-					"name": "open",
-					"parent": "head",
-					"pivot": [0, 10, -11],
-					"cubes": [
-						{"origin": [-4, 8, -12], "size": [8, 4, 1], "uv": [44, 0]}
-					]
+					],
+					"locators": {
+						"mouth": [0, 10, -12]
+					}
 				},
 				{
 					"name": "hat",
