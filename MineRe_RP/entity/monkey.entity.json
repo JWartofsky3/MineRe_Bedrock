@@ -13,7 +13,24 @@
         "face_fearful": "textures/entity/minere/monkey/fearful",
         "face_aggressive": "textures/entity/minere/monkey/aggressive",
         "face_lazy": "textures/entity/minere/monkey/lazy",
-        "melon": "textures/entity/minere/monkey/melon"
+        "face_friendly": "textures/entity/minere/monkey/friendly",
+        "melon": "textures/entity/minere/monkey/melon",
+        "collar_white": "textures/entity/minere/monkey/collar/white",
+        "collar_orange": "textures/entity/minere/monkey/collar/orange",
+        "collar_magenta": "textures/entity/minere/monkey/collar/magenta",
+        "collar_light_blue": "textures/entity/minere/monkey/collar/light_blue",
+        "collar_yellow": "textures/entity/minere/monkey/collar/yellow",
+        "collar_lime": "textures/entity/minere/monkey/collar/lime",
+        "collar_pink": "textures/entity/minere/monkey/collar/pink",
+        "collar_gray": "textures/entity/minere/monkey/collar/gray",
+        "collar_light_gray": "textures/entity/minere/monkey/collar/light_gray",
+        "collar_cyan": "textures/entity/minere/monkey/collar/cyan",
+        "collar_purple": "textures/entity/minere/monkey/collar/purple",
+        "collar_blue": "textures/entity/minere/monkey/collar/blue",
+        "collar_brown": "textures/entity/minere/monkey/collar/brown",
+        "collar_green": "textures/entity/minere/monkey/collar/green",
+        "collar_red": "textures/entity/minere/monkey/collar/red",
+        "collar_black": "textures/entity/minere/monkey/collar/black"
       },
       "geometry": {
         "default": "geometry.minere.monkey"
@@ -24,9 +41,11 @@
         "sit": "animation.minere.monkey.sit",
         "climb": "animation.minere.monkey.climb",
         "attack": "animation.minere.monkey.attack",
+        "jaw_closed": "animation.minere.monkey.jaw_closed",
         "look_at_target": "animation.minere.monkey.look_at",
         "is_baby": "animation.minere.monkey.is_baby",
-        "controller": "controller.animation.minere.monkey"
+        "controller": "controller.animation.minere.monkey",
+        "attack_controller": "controller.animation.minere.monkey_attack"
       },
       "scripts": {
         "animate": ["controller", {
@@ -36,7 +55,7 @@
         "is_baby": "query.is_baby"
       }]
       },
-      "render_controllers": ["controller.render.minere.monkey_melon", "controller.render.minere.monkey_face", "controller.render.minere.monkey"],
+      "render_controllers": ["controller.render.minere.monkey_melon", "controller.render.minere.monkey_face", "controller.render.minere.monkey_collar", "controller.render.minere.monkey"],
       "enable_attachables": true,
       "spawn_egg": {
         "base_color": "#866141",

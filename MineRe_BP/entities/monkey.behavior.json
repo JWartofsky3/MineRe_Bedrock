@@ -5,7 +5,15 @@
       "identifier": "minere:monkey",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+      "properties": {
+        "minere:collar_color": {
+          "type": "int",
+          "range": [-1, 15],
+          "default": -1,
+          "client_sync": true
+        }
+      }
     },
     "component_groups": {
       "minere:monkey_baby": {
@@ -15,7 +23,7 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": ["melon", "melon_slice"],
+          "feed_items": ["melon_slice", "glistering_melon_slice", "apple", "golden_apple", "sweet_berries"],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -33,44 +41,10 @@
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/monkey.json"
-        }
-      },
-      "minere:monkey_wild": {
-        "minecraft:tameable": {
-          "probability": 0.2,
-          "tame_items": ["melon_slice"],
-          "tame_event": {
-            "event": "minere:on_tame",
-            "target": "self"
-          }
-        }
-      },
-      "minere:monkey_tamed": {
-        "minecraft:is_tamed": {},
-        "minecraft:persistent": {},
-        "minecraft:sittable": {},
-        "minecraft:health": {
-          "value": 24,
-          "max": 24
-        },
-        "minecraft:behavior.stay_while_sitting": {
-          "priority": 0
-        },
-        "minecraft:behavior.owner_hurt_by_target": {
-          "priority": 1
-        },
-        "minecraft:behavior.owner_hurt_target": {
-          "priority": 2
-        },
-        "minecraft:behavior.follow_owner": {
-          "priority": 3,
-          "speed_multiplier": 1.1,
-          "start_distance": 8,
-          "stop_distance": 2
         },
         "minecraft:breedable": {
-          "require_tame": true,
-          "breed_items": ["melon", "melon_slice"],
+          "require_tame": false,
+          "breed_items": ["melon_slice"],
           "breeds_with": {
             "mate_type": "minere:monkey",
             "baby_type": "minere:monkey",
@@ -83,6 +57,547 @@
         "minecraft:behavior.breed": {
           "priority": 0,
           "speed_multiplier": 1.0
+        }
+      },
+      "minere:monkey_wild": {
+        "minecraft:tameable": {
+          "probability": 1.0,
+          "tame_items": ["glistering_melon_slice"],
+          "tame_event": {
+            "event": "minere:on_tame",
+            "target": "self"
+          }
+        }
+      },
+      "minere:monkey_tamed": {
+        "minecraft:is_tamed": {},
+        "minecraft:persistent": {},
+        "minecraft:sittable": {},
+        
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see_forget_duration": 5,
+          "persist_time": 5,
+          "attack_interval": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "monster"
+                  },
+                  {
+                    "test": "is_mark_variant",
+                    "subject": "self",
+                    "value": 2
+                  }
+                ]
+              },
+              "must_see": true,
+              "max_dist": 8
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "take_item": true,
+              "swing": true,
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "is_sneaking",
+                      "subject": "other",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "white_dye"
+                    }
+                  ]
+                },
+                "event": "minere:white_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "orange_dye"
+                    }
+                  ]
+                },
+                "event": "minere:orange_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "magenta_dye"
+                    }
+                  ]
+                },
+                "event": "minere:magenta_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "light_blue_dye"
+                    }
+                  ]
+                },
+                "event": "minere:light_blue_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "yellow_dye"
+                    }
+                  ]
+                },
+                "event": "minere:yellow_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "lime_dye"
+                    }
+                  ]
+                },
+                "event": "minere:lime_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "pink_dye"
+                    }
+                  ]
+                },
+                "event": "minere:pink_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "gray_dye"
+                    }
+                  ]
+                },
+                "event": "minere:gray_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "light_gray_dye"
+                    }
+                  ]
+                },
+                "event": "minere:light_gray_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "cyan_dye"
+                    }
+                  ]
+                },
+                "event": "minere:cyan_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "purple_dye"
+                    }
+                  ]
+                },
+                "event": "minere:purple_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "blue_dye"
+                    }
+                  ]
+                },
+                "event": "minere:blue_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "brown_dye"
+                    }
+                  ]
+                },
+                "event": "minere:brown_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "green_dye"
+                    }
+                  ]
+                },
+                "event": "minere:green_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "red_dye"
+                    }
+                  ]
+                },
+                "event": "minere:red_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "black_dye"
+                    }
+                  ]
+                },
+                "event": "minere:black_collar",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.dye"
+            }
+          ]
+        },
+        "minecraft:health": {
+          "value": 24,
+          "max": 24
+        },
+              "minecraft:attack": {
+        "damage": 4
+      },
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 0
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.follow_owner": {
+          "priority": 3,
+          "speed_multiplier": 1.5,
+          "start_distance": 16,
+          "stop_distance": 6
         }
       },
       "minere:personality_default": {
@@ -118,12 +633,17 @@
           "event": "minere:on_angry",
           "target": "self"
         },
-        "minecraft:behavior.hurt_by_target": {
-          "priority": 1
-        },
         "minecraft:behavior.melee_box_attack": {
           "priority": 2,
-          "track_target": true
+          "track_target": true,
+          "speed_multiplier": 1.5
+        }
+      },
+      "minere:can_fight": {
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 2,
+          "track_target": true,
+          "speed_multiplier": 1.5
         }
       },
       "minere:angry": {
@@ -131,11 +651,7 @@
           "duration": 25,
           "broadcast_anger": true,
           "broadcast_range": 32,
-          "broadcast_filters": {
-            "test": "is_family",
-            "operator": "==",
-            "value": "monkey_aggressive"
-          },
+          "broadcast_targets": ["monkey_aggressive"],
           "calm_event": {
             "event": "minere:on_calm",
             "target": "self"
@@ -207,7 +723,60 @@
         },
         "minecraft:movement": {
           "value": 0.2
+        },
+        "minecraft:behavior.jump_to_block": {
+          "priority": 6,
+          "search_width": 10,
+          "search_height": 10,
+          "minimum_path_length": 3,
+          "minimum_distance": 1,
+          "scale_factor": 0.65,
+          "cooldown_range": [8, 40]
         }
+      },
+      "minere:personality_friendly": {
+        "minecraft:mark_variant": {
+          "value": 5
+        },
+        "minecraft:timer": {
+          "looping": true,
+          "randomInterval": true,
+          "time": [4, 8],
+          "time_down_event": {
+            "event": "minere:toggle_go_to_player"
+          }
+        }
+      },
+      "minere:go_to_player": {
+        "minecraft:behavior.follow_mob": {
+  "priority": 3,
+  "search_range": 16,
+  "stop_distance": 4,
+                "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "villager"
+                  },
+                                    {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "irongolem"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "copper_golem"
+                  }
+                ]
+              }
+}
       }
     },
     "components": {
@@ -219,6 +788,10 @@
       "minecraft:health": {
         "value": 12,
         "max": 12
+      },
+      "minecraft:on_target_acquired": {
+        "event": "minere:on_angry",
+        "target": "self"
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -235,7 +808,7 @@
         ]
       },
       "minecraft:attack": {
-        "damage": 3
+        "damage": 2
       },
       "minecraft:movement": {
         "value": 0.3
@@ -292,6 +865,13 @@
     { "item": "minecraft:stone_axe", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
     { "item": "minecraft:golden_axe", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
     { "item": "minecraft:wooden_axe", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
+    { "item": "minecraft:netherite_spear", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
+    { "item": "minecraft:diamond_spear", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
+    { "item": "minecraft:iron_spear", "want_amount": 1, "surplus_amount": 1, "priority": 2 },
+    { "item": "minecraft:copper_spear", "want_amount": 1, "surplus_amount": 1, "priority": 3 },
+    { "item": "minecraft:stone_spear", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
+    { "item": "minecraft:golden_spear", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
+    { "item": "minecraft:wooden_spear", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
 
     { "item": "minecraft:netherite_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 0 },
     { "item": "minecraft:diamond_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 1 },
@@ -303,7 +883,10 @@
     { "item": "minecraft:chainmail_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 4 },
     { "item": "minecraft:golden_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 5 },
     { "item": "minecraft:leather_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 6 },
-    { "item": "minecraft:turtle_helmet", "want_amount": 1, "surplus_amount": 1, "priority": 7 },
+    { "item": "minecraft:turtle_fhelmet", "want_amount": 1, "surplus_amount": 1, "priority": 7 },
+    { "item": "minecraft:melon", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
+    { "item": "minecraft:apple", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
+    { "item": "minecraft:sweet_berries", "want_amount": 1, "surplus_amount": 1, "priority": 8, "max_amount": 1 },
 
     { "item": "minecraft:stick", "want_amount": 1, "surplus_amount": 1, "priority": 8 },
     { "item": "minecraft:bone", "want_amount": 1, "surplus_amount": 1, "priority": 8 }
@@ -313,6 +896,9 @@
       "minecraft:behavior.float": {
         "priority": 0
       },
+              "minecraft:behavior.hurt_by_target": {
+          "priority": 1
+        },
       "minecraft:behavior.panic": {
         "priority": 1,
         "speed_multiplier": 1.25
@@ -324,7 +910,7 @@
         "priority": 2,
         "speed_multiplier": 0.7,
         "within_radius": 16,
-        "items": ["melon", "melon_slice"]
+        "items": ["melon_slice", "glistering_melon_slice"]
       },
       "minecraft:behavior.pickup_items": {
         "priority": 3,
@@ -333,6 +919,10 @@
         "pickup_based_on_chance": false,
         "can_pickup_any_item": false,
         "cooldown_after_being_attacked": 20
+      },
+      "minecraft:behavior.eat_carried_item": {
+        "priority": 8,
+        "delay_before_eating": 28
       },
       "minecraft:behavior.jump_to_block": {
         "priority": 4,
@@ -389,33 +979,39 @@
           {
             "randomize": [
               {
-                "weight": 20,
+                "weight": 25,
                 "add": {
                   "component_groups": ["minere:personality_default"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_playful"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_aggressive"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_fearful"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_lazy"]
+                }
+              },
+              {
+                "weight": 15,
+                "add": {
+                  "component_groups": ["minere:personality_friendly"]
                 }
               }
             ]
@@ -432,33 +1028,39 @@
           {
             "randomize": [
               {
-                "weight": 20,
+                "weight": 25,
                 "add": {
                   "component_groups": ["minere:personality_default"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_playful"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_aggressive"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_fearful"]
                 }
               },
               {
-                "weight": 20,
+                "weight": 15,
                 "add": {
                   "component_groups": ["minere:personality_lazy"]
+                }
+              },
+              {
+                "weight": 15,
+                "add": {
+                  "component_groups": ["minere:personality_friendly"]
                 }
               }
             ]
@@ -474,11 +1076,126 @@
         }
       },
       "minere:on_tame": {
-        "remove": {
-          "component_groups": ["minere:monkey_wild"]
-        },
-        "add": {
-          "component_groups": ["minere:monkey_tamed"]
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["minere:monkey_wild"]
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["minere:monkey_tamed"]
+            }
+          },
+          {
+            "set_property": {
+              "minere:collar_color": 14
+            }
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 0
+                },
+                                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 2
+                },
+                                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 5
+                }
+              ],
+                          "add": {
+              "component_groups": ["minere:can_fight"]
+            }
+            }
+          }
+        ]
+      },
+      "minere:white_collar": {
+        "set_property": {
+          "minere:collar_color": 0
+        }
+      },
+      "minere:orange_collar": {
+        "set_property": {
+          "minere:collar_color": 1
+        }
+      },
+      "minere:magenta_collar": {
+        "set_property": {
+          "minere:collar_color": 2
+        }
+      },
+      "minere:light_blue_collar": {
+        "set_property": {
+          "minere:collar_color": 3
+        }
+      },
+      "minere:yellow_collar": {
+        "set_property": {
+          "minere:collar_color": 4
+        }
+      },
+      "minere:lime_collar": {
+        "set_property": {
+          "minere:collar_color": 5
+        }
+      },
+      "minere:pink_collar": {
+        "set_property": {
+          "minere:collar_color": 6
+        }
+      },
+      "minere:gray_collar": {
+        "set_property": {
+          "minere:collar_color": 7
+        }
+      },
+      "minere:light_gray_collar": {
+        "set_property": {
+          "minere:collar_color": 8
+        }
+      },
+      "minere:cyan_collar": {
+        "set_property": {
+          "minere:collar_color": 9
+        }
+      },
+      "minere:purple_collar": {
+        "set_property": {
+          "minere:collar_color": 10
+        }
+      },
+      "minere:blue_collar": {
+        "set_property": {
+          "minere:collar_color": 11
+        }
+      },
+      "minere:brown_collar": {
+        "set_property": {
+          "minere:collar_color": 12
+        }
+      },
+      "minere:green_collar": {
+        "set_property": {
+          "minere:collar_color": 13
+        }
+      },
+      "minere:red_collar": {
+        "set_property": {
+          "minere:collar_color": 14
+        }
+      },
+      "minere:black_collar": {
+        "set_property": {
+          "minere:collar_color": 15
         }
       },
       "minere:on_angry": {
@@ -490,6 +1207,20 @@
         "remove": {
           "component_groups": ["minere:angry"]
         }
+      },
+      "minere:toggle_go_to_player": {
+        "randomize": [
+          {
+            "add": {
+              "component_groups": ["minere:go_to_player"]
+            }
+          },
+                    {
+            "remove": {
+              "component_groups": ["minere:go_to_player"]
+            }
+          }
+        ]
       }
     }
   }

@@ -7,8 +7,8 @@
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 4,
-				"visible_bounds_height": 2.5,
-				"visible_bounds_offset": [0, 0.75, 0]
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
 			},
 			"bones": [
 				{
@@ -97,17 +97,17 @@
 				{
 					"name": "rightleg",
 					"parent": "torso",
-					"pivot": [-1.5, 6, 3.5],
+					"pivot": [-2, 6, 3.5],
 					"cubes": [
-						{"origin": [-3.01, 0, 2], "size": [3, 6, 3], "uv": [32, 0]}
+						{"origin": [-3.5, 0, 2], "size": [3, 6, 3], "uv": [32, 0]}
 					]
 				},
 				{
 					"name": "leftleg",
 					"parent": "torso",
-					"pivot": [1.5, 6, 3.5],
+					"pivot": [2, 6, 3.5],
 					"cubes": [
-						{"origin": [0.01, 0, 2], "size": [3, 6, 3], "uv": [18, 31]}
+						{"origin": [0.5, 0, 2], "size": [3, 6, 3], "uv": [18, 31]}
 					]
 				},
 				{
