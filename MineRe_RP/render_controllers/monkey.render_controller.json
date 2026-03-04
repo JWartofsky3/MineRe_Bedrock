@@ -4,7 +4,20 @@
     "controller.render.minere.monkey": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.default"]
+          "Array.skins": [
+            "Texture.orange",
+            "Texture.brown",
+            "Texture.red",
+            "Texture.black",
+            "Texture.gray",
+            "Texture.green",
+            "Texture.white",
+            "Texture.blue",
+            "Texture.crimson",
+            "Texture.purple",
+            "Texture.teal",
+            "Texture.pink"
+          ]
         }
       },
       "geometry": "Geometry.default",
@@ -14,7 +27,7 @@
         }
       ],
       "textures": [
-        "Array.skins[0]"
+        "Array.skins[query.variant]"
       ]
     },
     "controller.render.minere.monkey_face": {

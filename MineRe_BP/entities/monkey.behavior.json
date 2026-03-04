@@ -18,6 +18,11 @@
           "range": [0, 5],
           "default": 0,
           "client_sync": true
+        },
+        "minere:is_sleepy": {
+          "type": "bool",
+          "default": false,
+          "client_sync": false
         }
       }
     },
@@ -38,7 +43,7 @@
         "minecraft:behavior.random_stroll": {
           "priority": 5,
           "xz_dist": 5,
-          "interval": 1500
+          "interval": 600
         }
       },
       "minere:lethargic": {
@@ -53,7 +58,7 @@
         },
         "minecraft:behavior.random_stroll": {
           "priority": 5,
-          "xz_dist": 5
+          "interval": 250
         },
         "minecraft:ambient_sound_interval": {
           "range": 20.0,
@@ -72,7 +77,7 @@
         },
         "minecraft:behavior.random_stroll": {
           "priority": 5,
-          "xz_dist": 10
+          "interval": 150
         },
         "minecraft:ambient_sound_interval": {
           "range": 14.0,
@@ -91,11 +96,71 @@
         },
         "minecraft:behavior.random_stroll": {
           "priority": 5,
-          "xz_dist": 15
+          "interval": 100
         },
         "minecraft:ambient_sound_interval": {
           "range": 10.0,
           "value": 5
+        }
+      },
+      "minere:skin_orange": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:skin_brown": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "minere:skin_red": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "minere:skin_black": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "minere:skin_gray": {
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
+      "minere:skin_green": {
+        "minecraft:variant": {
+          "value": 5
+        }
+      },
+      "minere:skin_white": {
+        "minecraft:variant": {
+          "value": 6
+        }
+      },
+      "minere:skin_blue": {
+        "minecraft:variant": {
+          "value": 7
+        }
+      },
+      "minere:skin_crimson": {
+        "minecraft:variant": {
+          "value": 8
+        }
+      },
+      "minere:skin_purple": {
+        "minecraft:variant": {
+          "value": 9
+        }
+      },
+      "minere:skin_teal": {
+        "minecraft:variant": {
+          "value": 10
+        }
+      },
+      "minere:skin_pink": {
+        "minecraft:variant": {
+          "value": 11
         }
       },
       "minere:monkey_baby": {
@@ -896,10 +961,9 @@
                     "value": "player"
                   },
                   {
-                    "test": "has_component",
-                    "operator": "!=",
-                    "subject": "self",
-                    "value": "minecraft:is_tamed"
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": false
                   }
                 ]
               },
@@ -1413,8 +1477,72 @@
           },
           {
             "add": {
-              "component_groups": ["minere:monkey_wild"]
+              "component_groups": ["minere:monkey_wild", "minere:skin_orange"]
             }
+          },
+          {
+            "randomize": [
+              {
+                "add": {
+                  "component_groups": ["minere:skin_orange"]
+                }
+              },
+              {
+                "add": {
+                  "component_groups": ["minere:skin_brown"]
+                }
+              },
+              {
+                "add": {
+                  "component_groups": ["minere:skin_red"]
+                }
+              },
+              {
+                "add": {
+                  "component_groups": ["minere:skin_black"]
+                }
+              },
+              {
+                "add": {
+                  "component_groups": ["minere:skin_gray"]
+                }
+              },
+              {
+                "filters": {
+                  "test": "is_altitude",
+                  "subject": "self",
+                  "operator": ">",
+                  "value": 100
+                },
+                "add": {
+                  "component_groups": ["minere:skin_white"]
+                }
+              },
+              {
+                "filters": {
+                  "test": "is_altitude",
+                  "subject": "self",
+                  "operator": ">",
+                  "value": 100
+                },
+                "add": {
+                  "component_groups": ["minere:skin_blue"]
+                }
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": ["minere:skin_pink"]
+                }
+              },
+              {
+                "weight": 99
+              }
+            ]
           },
           {
             "randomize": [
@@ -1463,6 +1591,42 @@
           {
             "add": {
               "component_groups": ["minere:monkey_baby", "minere:monkey_wild"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "lush_caves"
+            },
+            "add": {
+              "component_groups": ["minere:skin_green"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "crimson_forest"
+            },
+            "add": {
+              "component_groups": ["minere:skin_crimson"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "the_end"
+            },
+            "add": {
+              "component_groups": ["minere:skin_purple"]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "warped_forest"
+            },
+            "add": {
+              "component_groups": ["minere:skin_teal"]
             }
           },
           {
@@ -1666,6 +1830,83 @@
                 "remove": {
                   "component_groups": ["minere:go_to_player"]
                 }
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 1,
+                "filters": {
+                  "all_of": [
+                    {
+                      "any_of": [
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:melon_slice"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:glistering_melon_slice"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:apple"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:golden_apple"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:sweet_berries"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "self",
+                          "domain": "hand",
+                          "value": "minecraft:glow_berries"
+                        }
+                      ]
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "operator": ">",
+                      "value": 0
+                    }
+                  ]
+                },
+                "sequence": [
+                  {
+                    "queue_command": {
+                      "command": "replaceitem entity @s slot.weapon.mainhand 0 air"
+                    }
+                  },
+                  {
+                    "play_sound": {
+                      "sound": "burp"
+                    }
+                  },
+                  {
+                    "queue_command": {
+                      "command": "effect @s regeneration 5 0 true"
+                    }
+                  }
+                ]
+              },
+              {
+                "weight": 2
               }
             ]
           },

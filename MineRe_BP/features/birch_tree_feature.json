@@ -7,7 +7,7 @@
     "trunk": {
       "trunk_height": {
         "range_min": 7,
-        "range_max": 10
+        "range_max": 11
       },
       "trunk_block": {
         "name": "minecraft:log",

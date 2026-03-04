@@ -59,7 +59,56 @@
 			"loop": true,
 			"bones": {
 				"head": {
-					"rotation": ["-(query.sit_amount * (100 - this)) + this", 0, 0],
+					"rotation": [0, 0, 0],
+					"position": [0, 2, 4]
+				},
+				"body": {
+					"position": [0, 0, 4]
+				},
+				"rightarm": {
+					"rotation": ["90 + this", "-10 * math.abs(math.cos(query.anim_time * 50))", "-this"],
+					"position": [0, 0, 0]
+				},
+				"leftarm": {
+					"rotation": ["90 + this", "10 * math.abs(math.cos(query.anim_time * 50))", "-this"],
+					"position": [0, 0, 0]
+				},
+				"leftleg": {
+					"rotation": [0, 0, -15],
+					"position": [0, 1, 0]
+				},
+				"rightleg": {
+					"rotation": [0, 0, 15],
+					"position": [0, 1, 0]
+				},
+				"tail": {
+					"rotation": [0, -90, 0],
+					"position": [0, 1, -0.5]
+				},
+				"torso": {
+					"rotation": [-90, 0, 0]
+				},
+				"tie": {
+					"rotation": [89.9, 0, 0]
+				}
+			}
+		},
+		"animation.minere.monkey.jaw_closed": {
+			"loop": true,
+			"bones": {
+				"closed": {
+					"scale": 1
+				},
+				"open": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.minere.monkey.sleep": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["45.0 - 11.5 * math.sin(query.life_time * 50)", 0, 0],
 					"position": [0, 2, 4]
 				},
 				"body": {
@@ -97,7 +146,7 @@
 			"loop": true,
 			"bones": {
 				"head": {
-					"rotation": ["-(query.sit_amount * (100 - this)) + this", 0, 0],
+					"rotation": [0, 0, 0],
 					"position": [0, 2, 4]
 				},
 				"body": {
@@ -280,17 +329,6 @@
 			"bones": {
 				"head": {
 					"scale": 1.25
-				}
-			}
-		},
-		"animation.minere.monkey.jaw_closed": {
-			"loop": true,
-			"bones": {
-				"closed": {
-					"scale": 1
-				},
-				"open": {
-					"scale": 0
 				}
 			}
 		},
@@ -511,13 +549,21 @@
 				}
 			},
 			"particle_effects": {
-  "0.0": {
-    "effect": "eat_crumbs",
-    "locator": "mouth",
-    "pre_effect_script": "variable.num_particles = 6; variable.emitter_radius = 0.03; variable.size_modifier = 1.2; variable.speed_modifier = 0.7;"
-  }
-},
+				"0.0": {
+					"effect": "eat_crumbs",
+					"locator": "mouth",
+					"pre_effect_script": "variable.num_particles = 6; variable.emitter_radius = 0.03; variable.size_modifier = 1.2; variable.speed_modifier = 0.7;"
+				}
+			},
 			"animation_length": 0.25
+		},
+		"animation.minere.monkey.nod": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["45 - 7 * math.cos(query.anim_time * 50)", 0, 0]
+				}
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@
     "acacia_trunk": {
       "trunk_width": 2,
       "trunk_height": {
-        "base": 8,
+        "base": 10,
         "intervals": [3, 2]
       },
       "trunk_block": {
