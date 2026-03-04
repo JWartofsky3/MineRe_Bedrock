@@ -1,213 +1,235 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.minere.glacier",
-				"texture_width": 256,
-				"texture_height": 256,
-				"visible_bounds_width": 7,
-				"visible_bounds_height": 14,
-				"visible_bounds_offset": [0, -1, 0]
-			},
-			"bones": [
-				{
-					"name": "root",
-					"pivot": [0, 0, 0],
-					"cubes": [
-						{"origin": [-18, 0, -18], "size": [36, 54, 36], "uv": [0, 0]},
-						{"origin": [18, 0, -12], "size": [6, 36, 24], "uv": [96, 90]},
-						{"origin": [-24, 0, -12], "size": [6, 36, 24], "uv": [0, 130]},
-						{"origin": [-12, 0, 18], "size": [24, 36, 6], "uv": [144, 0]}
-					],
-					"locators": {
-						"emerge": [0, 0, 0]
-					}
-				},
-				{
-					"name": "crown",
-					"parent": "root",
-					"pivot": [0, 54, 0],
-					"cubes": [
-						{"origin": [-12, 54, -12], "size": [24, 16, 24], "uv": [0, 90]}
-					]
-				},
-				{
-					"name": "leftEyebrow",
-					"parent": "root",
-					"pivot": [-9, 42, -18],
-					"cubes": [
-						{"origin": [-18, 42, -22], "size": [13, 4, 4], "uv": [60, 130]}
-					]
-				},
-				{
-					"name": "rightEyebrow",
-					"parent": "root",
-					"pivot": [9, 42, -18],
-					"cubes": [
-						{"origin": [5, 42, -22], "size": [13, 4, 4], "uv": [60, 138]}
-					]
-				},
-				{
-					"name": "nose",
-					"parent": "root",
-					"pivot": [20, 0, -36],
-					"cubes": [
-						{"origin": [-3, 24, -24], "size": [6, 16, 6], "uv": [156, 90]}
-					]
-				},
-				{
-					"name": "rightIcicle",
-					"parent": "root",
-					"pivot": [17, 8, 17],
-					"rotation": [-5, 0, 5],
-					"cubes": [
-						{"origin": [12, 8, 12], "size": [8, 54, 8], "uv": [108, 150]}
-					]
-				},
-				{
-					"name": "leftIcicle",
-					"parent": "root",
-					"pivot": [-15, 8, 17],
-					"cubes": [
-						{"origin": [-20, 8, 12], "size": [8, 54, 8], "pivot": [-15, 8, 17], "rotation": [-5, 0, -5], "uv": [140, 150]}
-					]
-				},
-				{
-					"name": "leftHorn",
-					"parent": "root",
-					"pivot": [22, 36, -6],
-					"cubes": [
-						{"origin": [18, 36, -14], "size": [8, 32, 16], "uv": [144, 42]}
-					],
-					"locators": {
-						"leftHorn": [22, 67, -6]
-					}
-				},
-				{
-					"name": "rightHorn",
-					"parent": "root",
-					"pivot": [-22, 36, -6],
-					"cubes": [
-						{"origin": [-26, 36, -14], "size": [8, 32, 16], "uv": [60, 150]}
-					],
-					"locators": {
-						"rightHorn": [-22, 67, -6]
-					}
-				},
-				{
-					"name": "head",
-					"parent": "root",
-					"pivot": [0, 16, -18],
-					"locators": {
-						"mouth": [0, 16, -18]
-					}
-				}
-			]
-		},
-		{
-			"description": {
-				"identifier": "geometry.minere.glacier_ice_charges",
-				"texture_width": 32,
-				"texture_height": 16,
-				"visible_bounds_width": 8,
-				"visible_bounds_height": 5.5,
-				"visible_bounds_offset": [0, 2.25, 0]
-			},
-			"bones": [
-				{
-					"name": "iceChargeRoot",
-					"pivot": [0, 32, 0]
-				},
-				{
-					"name": "iceChargeBone1",
-					"parent": "iceChargeRoot",
-					"pivot": [40, 32, 0],
-					"cubes": [
-						{"origin": [36, 28, -4], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_1": [40, 32, 0]
-					}
-				},
-				{
-					"name": "iceChargeBone2",
-					"parent": "iceChargeRoot",
-					"pivot": [28.28427, 32, -28.28427],
-					"cubes": [
-						{"origin": [24.28427, 28, -32.28427], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_2": [28.28427, 32, -28.28427]
-					}
-				},
-				{
-					"name": "iceChargeBone3",
-					"parent": "iceChargeRoot",
-					"pivot": [0, 32, -40],
-					"cubes": [
-						{"origin": [-4, 28, -44], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_3": [0, 32, -40]
-					}
-				},
-				{
-					"name": "iceChargeBone4",
-					"parent": "iceChargeRoot",
-					"pivot": [-28.28427, 32, -28.28427],
-					"cubes": [
-						{"origin": [-32.28427, 28, -32.28427], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_4": [-28.28427, 32, -28.28427]
-					}
-				},
-				{
-					"name": "iceChargeBone5",
-					"parent": "iceChargeRoot",
-					"pivot": [-40, 32, 0],
-					"cubes": [
-						{"origin": [-44, 28, -4], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_5": [-40, 32, 0]
-					}
-				},
-				{
-					"name": "iceChargeBone6",
-					"parent": "iceChargeRoot",
-					"pivot": [-28.28427, 32, 28.28427],
-					"cubes": [
-						{"origin": [-32.28427, 28, 24.28427], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_6": [-28.28427, 32, 28.28427]
-					}
-				},
-				{
-					"name": "iceChargeBone7",
-					"parent": "iceChargeRoot",
-					"pivot": [0, 32, 40],
-					"cubes": [
-						{"origin": [-4, 28, 36], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_7": [0, 32, 40]
-					}
-				},
-				{
-					"name": "iceChargeBone8",
-					"parent": "iceChargeRoot",
-					"pivot": [28.28427, 32, 28.28427],
-					"cubes": [
-						{"origin": [24.28427, 28, 24.28427], "size": [8, 8, 8], "uv": [0, 0]}
-					],
-					"locators": {
-						"ice_charge_8": [28.28427, 32, 28.28427]
-					}
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.minere.glacier",
+        "texture_width": 256,
+        "texture_height": 256,
+        "visible_bounds_width": 7,
+        "visible_bounds_height": 14,
+        "visible_bounds_offset": [0, -1, 0]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            { "origin": [-18, 0, -18], "size": [36, 54, 36], "uv": [0, 0] },
+            { "origin": [18, 0, -12], "size": [6, 36, 24], "uv": [96, 90] },
+            { "origin": [-24, 0, -12], "size": [6, 36, 24], "uv": [0, 130] },
+            { "origin": [-12, 0, 18], "size": [24, 36, 6], "uv": [144, 0] }
+          ],
+          "locators": {
+            "emerge": [0, 0, 0]
+          }
+        },
+        {
+          "name": "crown",
+          "parent": "root",
+          "pivot": [0, 54, 0],
+          "cubes": [
+            { "origin": [-12, 54, -12], "size": [24, 16, 24], "uv": [0, 90] }
+          ]
+        },
+        {
+          "name": "leftEyebrow",
+          "parent": "root",
+          "pivot": [-9, 42, -18],
+          "cubes": [
+            { "origin": [-18, 42, -22], "size": [13, 4, 4], "uv": [60, 130] }
+          ]
+        },
+        {
+          "name": "rightEyebrow",
+          "parent": "root",
+          "pivot": [9, 42, -18],
+          "cubes": [
+            { "origin": [5, 42, -22], "size": [13, 4, 4], "uv": [60, 138] }
+          ]
+        },
+        {
+          "name": "nose",
+          "parent": "root",
+          "pivot": [20, 0, -36],
+          "cubes": [
+            { "origin": [-3, 24, -24], "size": [6, 16, 6], "uv": [156, 90] }
+          ]
+        },
+        {
+          "name": "rightIcicle",
+          "parent": "root",
+          "pivot": [17, 8, 17],
+          "rotation": [-5, 0, 5],
+          "cubes": [
+            { "origin": [12, 8, 12], "size": [8, 54, 8], "uv": [108, 150] }
+          ]
+        },
+        {
+          "name": "leftIcicle",
+          "parent": "root",
+          "pivot": [-15, 8, 17],
+          "cubes": [
+            {
+              "origin": [-20, 8, 12],
+              "size": [8, 54, 8],
+              "pivot": [-15, 8, 17],
+              "rotation": [-5, 0, -5],
+              "uv": [140, 150]
+            }
+          ]
+        },
+        {
+          "name": "leftHorn",
+          "parent": "root",
+          "pivot": [22, 36, -6],
+          "cubes": [
+            { "origin": [18, 36, -14], "size": [8, 32, 16], "uv": [144, 42] }
+          ],
+          "locators": {
+            "leftHorn": [22, 67, -6]
+          }
+        },
+        {
+          "name": "rightHorn",
+          "parent": "root",
+          "pivot": [-22, 36, -6],
+          "cubes": [
+            { "origin": [-26, 36, -14], "size": [8, 32, 16], "uv": [60, 150] }
+          ],
+          "locators": {
+            "rightHorn": [-22, 67, -6]
+          }
+        },
+        {
+          "name": "head",
+          "parent": "root",
+          "pivot": [0, 16, -18],
+          "locators": {
+            "mouth": [0, 16, -18]
+          }
+        }
+      ]
+    },
+    {
+      "description": {
+        "identifier": "geometry.minere.glacier_ice_charges",
+        "texture_width": 32,
+        "texture_height": 16,
+        "visible_bounds_width": 8,
+        "visible_bounds_height": 5.5,
+        "visible_bounds_offset": [0, 2.25, 0]
+      },
+      "bones": [
+        {
+          "name": "iceChargeRoot",
+          "pivot": [0, 32, 0]
+        },
+        {
+          "name": "iceChargeBone1",
+          "parent": "iceChargeRoot",
+          "pivot": [40, 32, 0],
+          "cubes": [
+            { "origin": [36, 28, -4], "size": [8, 8, 8], "uv": [0, 0] }
+          ],
+          "locators": {
+            "ice_charge_1": [40, 32, 0]
+          }
+        },
+        {
+          "name": "iceChargeBone2",
+          "parent": "iceChargeRoot",
+          "pivot": [28.28427, 32, -28.28427],
+          "cubes": [
+            {
+              "origin": [24.28427, 28, -32.28427],
+              "size": [8, 8, 8],
+              "uv": [0, 0]
+            }
+          ],
+          "locators": {
+            "ice_charge_2": [28.28427, 32, -28.28427]
+          }
+        },
+        {
+          "name": "iceChargeBone3",
+          "parent": "iceChargeRoot",
+          "pivot": [0, 32, -40],
+          "cubes": [
+            { "origin": [-4, 28, -44], "size": [8, 8, 8], "uv": [0, 0] }
+          ],
+          "locators": {
+            "ice_charge_3": [0, 32, -40]
+          }
+        },
+        {
+          "name": "iceChargeBone4",
+          "parent": "iceChargeRoot",
+          "pivot": [-28.28427, 32, -28.28427],
+          "cubes": [
+            {
+              "origin": [-32.28427, 28, -32.28427],
+              "size": [8, 8, 8],
+              "uv": [0, 0]
+            }
+          ],
+          "locators": {
+            "ice_charge_4": [-28.28427, 32, -28.28427]
+          }
+        },
+        {
+          "name": "iceChargeBone5",
+          "parent": "iceChargeRoot",
+          "pivot": [-40, 32, 0],
+          "cubes": [
+            { "origin": [-44, 28, -4], "size": [8, 8, 8], "uv": [0, 0] }
+          ],
+          "locators": {
+            "ice_charge_5": [-40, 32, 0]
+          }
+        },
+        {
+          "name": "iceChargeBone6",
+          "parent": "iceChargeRoot",
+          "pivot": [-28.28427, 32, 28.28427],
+          "cubes": [
+            {
+              "origin": [-32.28427, 28, 24.28427],
+              "size": [8, 8, 8],
+              "uv": [0, 0]
+            }
+          ],
+          "locators": {
+            "ice_charge_6": [-28.28427, 32, 28.28427]
+          }
+        },
+        {
+          "name": "iceChargeBone7",
+          "parent": "iceChargeRoot",
+          "pivot": [0, 32, 40],
+          "cubes": [
+            { "origin": [-4, 28, 36], "size": [8, 8, 8], "uv": [0, 0] }
+          ],
+          "locators": {
+            "ice_charge_7": [0, 32, 40]
+          }
+        },
+        {
+          "name": "iceChargeBone8",
+          "parent": "iceChargeRoot",
+          "pivot": [28.28427, 32, 28.28427],
+          "cubes": [
+            {
+              "origin": [24.28427, 28, 24.28427],
+              "size": [8, 8, 8],
+              "uv": [0, 0]
+            }
+          ],
+          "locators": {
+            "ice_charge_8": [28.28427, 32, 28.28427]
+          }
+        }
+      ]
+    }
+  ]
 }

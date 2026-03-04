@@ -44,7 +44,7 @@
           "pitch": 0.75,
           "volume": 0.75
         },
-                {
+        {
           "name": "sounds/environment/ice_crack1",
           "pitch": 0.75,
           "volume": 0.75
@@ -54,7 +54,7 @@
           "pitch": 0.85,
           "volume": 0.75
         },
-                {
+        {
           "name": "sounds/environment/ice_crack1",
           "pitch": 0.85,
           "volume": 0.75
@@ -64,17 +64,17 @@
           "pitch": 1.0,
           "volume": 0.75
         },
-                {
+        {
           "name": "sounds/environment/ice_crack1",
           "pitch": 1.0,
           "volume": 0.75
         },
-                {
+        {
           "name": "sounds/environment/ice_crack0",
           "pitch": 1.25,
           "volume": 0.75
         },
-                {
+        {
           "name": "sounds/environment/ice_crack1",
           "pitch": 1.25,
           "volume": 0.75
@@ -90,7 +90,7 @@
           "pitch": 0.4,
           "volume": 1.0
         },
-                {
+        {
           "name": "sounds/environment/ice_crack1",
           "pitch": 0.4,
           "volume": 1.0
@@ -323,27 +323,27 @@
         }
       ]
     },
-    "mob.monkey.eat" : {
-         "category" : "ambient",
-         "sounds" : [
-                  {
+    "mob.monkey.eat": {
+      "category": "ambient",
+      "sounds": [
+        {
           "name": "sounds/random/eat1",
           "pitch": 1.15,
           "volume": 0.3
         },
-                          {
+        {
           "name": "sounds/random/eat2",
           "pitch": 1.15,
           "volume": 0.3
         },
-                          {
+        {
           "name": "sounds/random/eat3",
           "pitch": 1.15,
           "volume": 0.3
         }
-         ],
-         "subtitle" : "subtitles.entity.generic.eat"
-      },
+      ],
+      "subtitle": "subtitles.entity.generic.eat"
+    },
     "mob.butterfly.squish": {
       "category": "ambient",
       "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]

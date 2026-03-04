@@ -15,7 +15,7 @@
             {
               "attacking": "query.is_delayed_attacking == 1"
             },
-                        {
+            {
               "stomping": "query.is_roaring"
             }
           ],
@@ -32,17 +32,14 @@
             {
               "walking": "query.all_animations_finished"
             },
-                                    {
+            {
               "stomping": "query.is_roaring"
             }
           ],
           "blend_transition": 0.5
         },
         "stomping": {
-          "animations": [
-            "stomp",
-                        "look_at_target"
-          ],
+          "animations": ["stomp", "look_at_target"],
           "transitions": [
             {
               "walking": "query.all_animations_finished"

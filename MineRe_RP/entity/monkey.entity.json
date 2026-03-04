@@ -51,20 +51,21 @@
       "animations": {
         "walk": "animation.minere.monkey.walk",
         "run": "animation.minere.monkey.run",
-        "sit": "animation.minere.monkey.sit",
         "climb": "animation.minere.monkey.climb",
         "attack": "animation.minere.monkey.attack",
-        "jaw_closed": "animation.minere.monkey.jaw_closed",
         "look_at_target": "animation.minere.monkey.look_at",
         "is_baby": "animation.minere.monkey.is_baby",
-        "lie_back": "animation.minere.monkey.lie_back",
+        "sit": "animation.minere.monkey.sit",
         "lean": "animation.minere.monkey.lean",
+        "lie_back": "animation.minere.monkey.lie_back",
         "beat_chest": "animation.minere.monkey.beat_chest",
         "clap": "animation.minere.monkey.clap",
-                "scared": "animation.minere.monkey.scared",
+        "laugh": "animation.minere.monkey.laugh",
+        "scared": "animation.minere.monkey.scared",
         "snack": "animation.minere.monkey.snack",
-"snack_sound": "animation.minere.monkey.snack_sound",
+        "snack_sound": "animation.minere.monkey.snack_sound",
         "angel": "animation.minere.monkey.angel",
+        "nod": "animation.minere.monkey.nod",
         "controller": "controller.animation.minere.monkey",
         "sit_controller": "controller.animation.minere.monkey_sit",
         "attack_controller": "controller.animation.minere.monkey_attack"
@@ -74,22 +75,32 @@
         "burp": "random.burp"
       },
       "particle_effects": {
-  "eat_crumbs": "minere:monkey_eat_crumbs"
-},
+        "eat_crumbs": "minere:monkey_eat_crumbs"
+      },
       "scripts": {
         "pre_animation": [
-          "variable.sit = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') != 0));", 
+          "variable.play_anim = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') != 0));",
           "variable.has_food = query.is_item_name_any('slot.weapon.mainhand', 'minecraft:melon_slice', 'minecraft:sweet_berries', 'minecraft:glow_berries');",
           "variable.bite_frame = math.mod(query.life_time * 4, 2);",
           "variable.is_eating = variable.sit && variable.has_food;",
           "variable.is_beat_chest = variable.sit && !variable.has_food && query.property('minere:anim_state') != 0 && ((query.mark_variant == 0 && query.property('minere:anim_state') >= 3) || (query.mark_variant == 2 && query.property('minere:anim_state') <= 2));",
-          "variable.is_biting = variable.attack_time > 0.0 || variable.is_eating || variable.is_beat_chest;"],
-        "animate": ["controller", "attack_controller", "sit_controller",
-      {
-        "is_baby": "query.is_baby"
-      }]
+          "variable.is_biting = variable.attack_time > 0.0 || variable.is_eating || variable.is_beat_chest;"
+        ],
+        "animate": [
+          "controller",
+          "attack_controller",
+          "sit_controller",
+          {
+            "is_baby": "query.is_baby"
+          }
+        ]
       },
-      "render_controllers": ["controller.render.minere.monkey_bite", "controller.render.minere.monkey_face", "controller.render.minere.monkey_collar", "controller.render.minere.monkey"],
+      "render_controllers": [
+        "controller.render.minere.monkey_bite",
+        "controller.render.minere.monkey_face",
+        "controller.render.minere.monkey_collar",
+        "controller.render.minere.monkey"
+      ],
       "enable_attachables": true,
       "spawn_egg": {
         "base_color": "#866141",

@@ -133,7 +133,7 @@
     "animation.minere.elephant.attack": {
       "animation_length": 1,
       "sound_effects": {
-                              "0.6": {
+        "0.6": {
           "effect": "swing"
         }
       },
@@ -293,7 +293,7 @@
     "animation.minere.elephant.stomp": {
       "animation_length": 1.25,
       "sound_effects": {
-                      "0.83": {
+        "0.83": {
           "effect": "stomp"
         }
       },

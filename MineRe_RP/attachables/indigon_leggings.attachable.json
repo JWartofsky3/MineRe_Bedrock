@@ -27,7 +27,8 @@
         "eye_trim": "textures/trims/eye_leggings",
         "spire_trim": "textures/trims/spire_leggings",
         "flow_trim": "textures/trims/flow_leggings",
-        "bolt_trim": "textures/trims/bolt_leggings"      },
+        "bolt_trim": "textures/trims/bolt_leggings"
+      },
       "geometry": {
         "default": "geometry.humanoid.armor.leggings"
       },

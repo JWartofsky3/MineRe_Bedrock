@@ -26,9 +26,7 @@
           "*": "Material.default"
         }
       ],
-      "textures": [
-        "Array.skins[query.variant]"
-      ]
+      "textures": ["Array.skins[query.variant]"]
     },
     "controller.render.minere.monkey_face": {
       "arrays": {
@@ -49,9 +47,7 @@
           "*": "Material.default"
         }
       ],
-      "textures": [
-        "Array.faces[query.mark_variant]"
-      ]
+      "textures": ["Array.faces[query.mark_variant]"]
     },
     "controller.render.minere.monkey_collar": {
       "arrays": {
@@ -90,11 +86,7 @@
     "controller.render.minere.monkey_bite": {
       "arrays": {
         "textures": {
-          "Array.bites": [
-            "Texture.empty",
-            "Texture.bite0",
-            "Texture.bite1"
-          ]
+          "Array.bites": ["Texture.empty", "Texture.bite0", "Texture.bite1"]
         }
       },
       "geometry": "Geometry.default",

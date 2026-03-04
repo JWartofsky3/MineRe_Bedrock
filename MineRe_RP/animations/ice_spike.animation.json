@@ -1,28 +1,28 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"animation.minere.ice_spike.emerge": {
-			"loop": "hold_on_last_frame",
-			"animation_length": 4,
-			      "sound_effects": {
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.minere.ice_spike.emerge": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 4,
+      "sound_effects": {
         "0.0": {
           "effect": "emerge"
         },
-		"0.5": {
+        "0.5": {
           "effect": "attack"
         }
       },
-			"bones": {
-				"root": {
-					"position": {
-						"0.0": [0, -60, 0],
-						"0.2917": [0, -32, 0],
-						"0.5": [0, -33, 0],
-						"0.75": [0, 0, 0],
-						"4.0": [0, -44, 0]
-					}
-				}
-			}
-		}
-	}
+      "bones": {
+        "root": {
+          "position": {
+            "0.0": [0, -60, 0],
+            "0.2917": [0, -32, 0],
+            "0.5": [0, -33, 0],
+            "0.75": [0, 0, 0],
+            "4.0": [0, -44, 0]
+          }
+        }
+      }
+    }
+  }
 }

@@ -71,8 +71,7 @@
     "atlas_tile": "minere:purple_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
-  }
-,
+  },
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/blue",
     "atlas_tile": "minere:blue_firefly_lamp",

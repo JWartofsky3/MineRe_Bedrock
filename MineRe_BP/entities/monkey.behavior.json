@@ -19,6 +19,11 @@
           "default": 0,
           "client_sync": true
         },
+        "minere:is_safe": {
+          "type": "bool",
+          "default": false,
+          "client_sync": false
+        },
         "minere:is_sleepy": {
           "type": "bool",
           "default": false,
@@ -1454,6 +1459,69 @@
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
+      "minecraft:entity_sensor": {
+        "relative_range": false,
+        "subsensors": [
+          {
+            "event": "minere:set_not_safe",
+            "cooldown": 8.0,
+            "range": [8.0, 4.0],
+            "event_filters": {
+              "any_of": [
+                {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneaking",
+                      "subject": "other",
+                      "value": false
+                    }
+                  ]
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "monster"
+                }
+              ]
+            }
+          },
+          {
+            "event": "minere:set_safe",
+            "cooldown": 8.0,
+            "minimum_count": 0,
+            "maximum_count": 0,
+            "range": [16.0, 4.0],
+            "event_filters": {
+              "any_of": [
+                {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneaking",
+                      "subject": "other",
+                      "value": false
+                    }
+                  ]
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "monster"
+                }
+              ]
+            }
+          }
+        ]
+      },
       "minecraft:conditional_bandwidth_optimization": {}
     },
     "events": {
@@ -1817,6 +1885,16 @@
           "minere:anim_state": 0
         }
       },
+      "minere:set_safe": {
+        "set_property": {
+          "minere:is_safe": true
+        }
+      },
+      "minere:set_not_safe": {
+        "set_property": {
+          "minere:is_safe": false
+        }
+      },
       "minere:toggle_state": {
         "sequence": [
           {
@@ -1946,32 +2024,52 @@
             ]
           },
           {
-            "remove": {
-              "component_groups": [
-                "minere:sleepy",
-                "minere:lethargic",
-                "minere:energetic",
-                "minere:active"
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_daytime",
+                  "subject": "self",
+                  "value": false
+                },
+                {
+                  "test": "bool_property",
+                  "domain": "minere:is_safe",
+                  "value": true
+                }
               ]
+            },
+            "add": {
+              "component_groups": ["minere:sleepy"]
+            },
+            "set_property": {
+              "minere:is_sleepy": true
             }
           },
           {
             "filters": {
-              "test": "is_daytime",
-              "subject": "self",
-              "value": false
+              "any_of": [
+                {
+                  "test": "is_daytime"
+                },
+                {
+                  "test": "bool_property",
+                  "domain": "minere:is_safe",
+                  "value": false
+                }
+              ]
             },
-            "add": {
-              "component_groups": ["minere:sleepy"]
+            "set_property": {
+              "minere:is_sleepy": false
             }
           },
           {
             "filters": {
               "all_of": [
                 {
-                  "test": "is_daytime",
+                  "test": "bool_property",
                   "subject": "self",
-                  "value": true
+                  "domain": "minere:is_sleepy",
+                  "value": false
                 },
                 {
                   "test": "is_mark_variant",
@@ -1988,9 +2086,10 @@
             "filters": {
               "all_of": [
                 {
-                  "test": "is_daytime",
+                  "test": "bool_property",
                   "subject": "self",
-                  "value": true
+                  "domain": "minere:is_sleepy",
+                  "value": false
                 },
                 {
                   "any_of": [
@@ -2016,9 +2115,10 @@
             "filters": {
               "all_of": [
                 {
-                  "test": "is_daytime",
+                  "test": "bool_property",
                   "subject": "self",
-                  "value": true
+                  "domain": "minere:is_sleepy",
+                  "value": false
                 },
                 {
                   "any_of": [

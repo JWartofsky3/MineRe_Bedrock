@@ -27,7 +27,8 @@
         "eye_trim": "textures/trims/eye",
         "spire_trim": "textures/trims/spire",
         "flow_trim": "textures/trims/flow",
-        "bolt_trim": "textures/trims/bolt"      },
+        "bolt_trim": "textures/trims/bolt"
+      },
       "geometry": {
         "default": "geometry.player.armor.chestplate"
       },
