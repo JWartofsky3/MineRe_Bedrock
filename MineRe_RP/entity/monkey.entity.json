@@ -79,11 +79,12 @@
       },
       "scripts": {
         "pre_animation": [
+          "variable.is_sitting = !variable.attack_time && query.is_sitting && query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') == 0;",
           "variable.play_anim = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') != 0));",
           "variable.has_food = query.is_item_name_any('slot.weapon.mainhand', 'minecraft:melon_slice', 'minecraft:sweet_berries', 'minecraft:glow_berries');",
           "variable.bite_frame = math.mod(query.life_time * 4, 2);",
-          "variable.is_eating = variable.sit && variable.has_food;",
-          "variable.is_beat_chest = variable.sit && !variable.has_food && query.property('minere:anim_state') != 0 && ((query.mark_variant == 0 && query.property('minere:anim_state') >= 3) || (query.mark_variant == 2 && query.property('minere:anim_state') <= 2));",
+          "variable.is_eating = variable.play_anim && variable.has_food;",
+          "variable.is_beat_chest = variable.play_anim && !variable.has_food && query.property('minere:anim_state') == 3;",
           "variable.is_biting = variable.attack_time > 0.0 || variable.is_eating || variable.is_beat_chest;"
         ],
         "animate": [

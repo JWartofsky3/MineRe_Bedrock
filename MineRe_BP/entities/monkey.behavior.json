@@ -15,7 +15,7 @@
         },
         "minere:anim_state": {
           "type": "int",
-          "range": [0, 5],
+          "range": [0, 7],
           "default": 0,
           "client_sync": true
         },
@@ -2017,6 +2017,232 @@
                 }
               },
               {
+                "set_property": {
+                  "minere:anim_state": 5
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 6
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 7
+                }
+              }
+            ]
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 1
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 3
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 6
+                    }
+                  ]
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "set_property": {
+                  "minere:anim_state": 5
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 7
+                }
+              }
+            ]
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 2
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 4
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 5
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 6
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 7
+                    }
+                  ]
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "weight": 3,
+                "set_property": {
+                  "minere:anim_state": 3
+                }
+              },
+              {
+                "weight": 1,
+                "set_property": {
+                  "minere:anim_state": 2
+                }
+              }
+            ]
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 3
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 3
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 5
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 7
+                    }
+                  ]
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 6
+                }
+              },
+              {
+                "weight": 2,
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              }
+            ]
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 4
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 3
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 5
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 6
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 7
+                    }
+                  ]
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 2
+                }
+              }
+            ]
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_mark_variant",
+                  "subject": "self",
+                  "value": 5
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 3
+                    },
+                    {
+                      "test": "int_property",
+                      "domain": "minere:anim_state",
+                      "value": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            "randomize": [
+              {
+                "weight": 4,
+                "set_property": {
+                  "minere:anim_state": 4
+                }
+              },
+              {
+                "weight": 1,
                 "set_property": {
                   "minere:anim_state": 5
                 }

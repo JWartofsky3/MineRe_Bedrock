@@ -48,27 +48,12 @@
       }
     },
     "controller.animation.minere.monkey_attack": {
-      "initial_state": "jaw_closed",
+      "initial_state": "idle",
       "states": {
         "idle": {
           "transitions": [
             {
               "attacking": "variable.attack_time > 0.0"
-            },
-            {
-              "jaw_closed": "!variable.play_anim || !variable.has_food"
-            }
-          ],
-          "blend_transition": 0.2
-        },
-        "jaw_closed": {
-          "animations": ["jaw_closed"],
-          "transitions": [
-            {
-              "attacking": "variable.attack_time > 0.0"
-            },
-            {
-              "idle": "variable.play_anim && variable.has_food"
             }
           ],
           "blend_transition": 0.2
@@ -77,7 +62,7 @@
           "animations": ["attack"],
           "transitions": [
             {
-              "jaw_closed": "query.all_animations_finished"
+              "idle": "query.all_animations_finished"
             }
           ],
           "blend_transition": 0.2
@@ -91,61 +76,43 @@
           "animations": ["look_at_target"],
           "transitions": [
             {
-              "eating": "variable.play_anim && variable.has_food"
+              "eating": "variable.is_eating"
             },
             {
-              "sit": "query.is_sitting"
+              "sit": "variable.is_sitting"
             },
             {
-              "lean": "variable.play_anim && query.mark_variant == 0 && q.property('minere:anim_state') <= 2"
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
             },
             {
-              "beat_chest": "variable.play_anim && query.mark_variant == 0 && q.property('minere:anim_state') >= 3"
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
             },
             {
-              "angel": "variable.play_anim && query.mark_variant == 1 && q.property('minere:anim_state') <= 2"
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
             },
             {
-              "clap": "variable.play_anim && query.mark_variant == 1 && q.property('minere:anim_state') >= 3"
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
             },
             {
-              "laugh": "variable.play_anim && query.mark_variant == 1 && q.property('minere:anim_state') >= 3"
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
             },
             {
-              "beat_chest": "variable.play_anim && query.mark_variant == 2 && q.property('minere:anim_state') <= 2"
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
             },
             {
-              "lie_back": "variable.play_anim && query.mark_variant == 2 && q.property('minere:anim_state') >= 3"
-            },
-            {
-              "scared": "variable.play_anim && query.mark_variant == 3 && q.property('minere:anim_state') <= 2"
-            },
-            {
-              "lean": "variable.play_anim && query.mark_variant == 3 && q.property('minere:anim_state') >= 3"
-            },
-            {
-              "lie_back": "variable.play_anim && query.mark_variant == 4 && q.property('minere:anim_state') <= 2"
-            },
-            {
-              "lean": "variable.play_anim && query.mark_variant == 4 && q.property('minere:anim_state') >= 3"
-            },
-            {
-              "clap": "variable.play_anim && query.mark_variant == 5 && q.property('minere:anim_state') <= 2"
-            },
-            {
-              "lean": "variable.play_anim && query.mark_variant == 5 && q.property('minere:anim_state') >= 3"
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "sit": {
           "animations": ["sit", "look_at_target"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
+              "idle": "!variable.is_sitting"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "lean": {
           "animations": ["lean", "look_at_target"],
@@ -154,7 +121,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "angel": {
           "animations": ["angel"],
@@ -163,7 +130,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "beat_chest": {
           "animations": ["beat_chest"],
@@ -172,7 +139,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "scared": {
           "animations": ["scared"],
@@ -181,7 +148,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "lie_back": {
           "animations": ["lie_back"],
@@ -190,7 +157,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "clap": {
           "animations": ["clap"],
@@ -199,7 +166,7 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "laugh": {
           "animations": ["laugh"],
@@ -208,16 +175,16 @@
               "idle": "!variable.play_anim"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         },
         "eating": {
           "animations": ["snack", "snack_sound"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
+              "idle": "!variable.is_eating"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.5
         }
       }
     }
