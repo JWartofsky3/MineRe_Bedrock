@@ -76,10 +76,7 @@
           "animations": ["look_at_target"],
           "transitions": [
             {
-              "eating": "variable.is_eating"
-            },
-            {
-              "sit": "variable.is_sitting"
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
             },
             {
               "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
@@ -101,6 +98,12 @@
             },
             {
               "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
             }
           ],
           "blend_transition": 0.5
@@ -109,7 +112,7 @@
           "animations": ["sit", "look_at_target"],
           "transitions": [
             {
-              "idle": "!variable.is_sitting"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting)"
             }
           ],
           "blend_transition": 0.5
@@ -118,34 +121,7 @@
           "animations": ["lean", "look_at_target"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
-            }
-          ],
-          "blend_transition": 0.5
-        },
-        "angel": {
-          "animations": ["angel"],
-          "transitions": [
-            {
-              "idle": "!variable.play_anim"
-            }
-          ],
-          "blend_transition": 0.5
-        },
-        "beat_chest": {
-          "animations": ["beat_chest"],
-          "transitions": [
-            {
-              "idle": "!variable.play_anim"
-            }
-          ],
-          "blend_transition": 0.5
-        },
-        "scared": {
-          "animations": ["scared"],
-          "transitions": [
-            {
-              "idle": "!variable.play_anim"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 1)"
             }
           ],
           "blend_transition": 0.5
@@ -154,7 +130,16 @@
           "animations": ["lie_back"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 2)"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "beat_chest": {
+          "animations": ["beat_chest"],
+          "transitions": [
+            {
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 3)"
             }
           ],
           "blend_transition": 0.5
@@ -163,7 +148,7 @@
           "animations": ["clap"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 4)"
             }
           ],
           "blend_transition": 0.5
@@ -172,7 +157,25 @@
           "animations": ["laugh"],
           "transitions": [
             {
-              "idle": "!variable.play_anim"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 5)"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "scared": {
+          "animations": ["scared"],
+          "transitions": [
+            {
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 6)"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "angel": {
+          "animations": ["angel"],
+          "transitions": [
+            {
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 7)"
             }
           ],
           "blend_transition": 0.5
@@ -181,7 +184,16 @@
           "animations": ["snack", "snack_sound"],
           "transitions": [
             {
-              "idle": "!variable.is_eating"
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 8)"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sleeping": {
+          "animations": ["sit", "nod"],
+          "transitions": [
+            {
+              "idle": "!(variable.play_anim && q.property('minere:anim_state') == 9)"
             }
           ],
           "blend_transition": 0.5

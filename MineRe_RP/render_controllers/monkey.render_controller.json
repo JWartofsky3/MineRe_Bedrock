@@ -98,6 +98,22 @@
       "textures": [
         "Array.bites[variable.is_biting ? (variable.bite_frame + 1) : 0]"
       ]
+    },
+    "controller.render.minere.monkey_sleep": {
+      "arrays": {
+        "textures": {
+          "Array.bites": ["Texture.empty", "Texture.sleep"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.bites[variable.is_sleeping ? 1 : 0]"
+      ]
     }
   }
 }

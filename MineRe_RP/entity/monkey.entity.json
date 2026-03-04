@@ -28,6 +28,7 @@
         "face_friendly": "textures/entity/minere/monkey/friendly",
         "bite0": "textures/entity/minere/monkey/bite0",
         "bite1": "textures/entity/minere/monkey/bite1",
+        "sleep": "textures/entity/minere/monkey/sleep",
         "collar_white": "textures/entity/minere/monkey/collar/white",
         "collar_orange": "textures/entity/minere/monkey/collar/orange",
         "collar_magenta": "textures/entity/minere/monkey/collar/magenta",
@@ -79,13 +80,10 @@
       },
       "scripts": {
         "pre_animation": [
-          "variable.is_sitting = !variable.attack_time && query.is_sitting && query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') == 0;",
-          "variable.play_anim = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground && query.property('minere:anim_state') != 0));",
-          "variable.has_food = query.is_item_name_any('slot.weapon.mainhand', 'minecraft:melon_slice', 'minecraft:sweet_berries', 'minecraft:glow_berries');",
+          "variable.play_anim = !variable.attack_time && (query.is_sitting || (query.ground_speed < 0.5 && query.is_on_ground));",
           "variable.bite_frame = math.mod(query.life_time * 4, 2);",
-          "variable.is_eating = variable.play_anim && variable.has_food;",
-          "variable.is_beat_chest = variable.play_anim && !variable.has_food && query.property('minere:anim_state') == 3;",
-          "variable.is_biting = variable.attack_time > 0.0 || variable.is_eating || variable.is_beat_chest;"
+          "variable.is_biting = variable.attack_time > 0.0 || variable.play_anim && (query.property('minere:anim_state') == 3 || query.property('minere:anim_state') == 8);",
+          "variable.is_sleeping = variable.play_anim && query.property('minere:anim_state') == 9;"
         ],
         "animate": [
           "controller",
@@ -97,6 +95,7 @@
         ]
       },
       "render_controllers": [
+        "controller.render.minere.monkey_sleep",
         "controller.render.minere.monkey_bite",
         "controller.render.minere.monkey_face",
         "controller.render.minere.monkey_collar",
