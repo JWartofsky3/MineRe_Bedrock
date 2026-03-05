@@ -871,122 +871,6 @@
             }
           ]
         },
-        "minecraft:environment_sensor": {
-        "triggers": [
-          {
-            "filters": {
-                "all_of": [
-                    {
-                      "any_of": [
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:melon_slice"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:glistering_melon_slice"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:apple"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:golden_apple"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:sweet_berries"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:glow_berries"
-                        }
-                      ]
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "operator": ">",
-                      "value": 0
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "operator": "!=",
-                      "value": 8
-                    }
-                  ]
-            },
-            "event": "minere:set_anim_8"
-          },
-          {
-            "filters": {
-                "all_of": [
-                    {
-                      "none_of": [
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:melon_slice"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:glistering_melon_slice"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:apple"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:golden_apple"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:sweet_berries"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "subject": "self",
-                          "domain": "hand",
-                          "value": "minecraft:glow_berries"
-                        }
-                      ]
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "operator": "=",
-                      "value": 8
-                    }
-                  ]
-            },
-            "event": "minere:set_anim_1"
-          }
-        ]
-      },
         "minecraft:health": {
           "value": 24,
           "max": 24
@@ -1182,10 +1066,126 @@
       "minecraft:timer": {
         "looping": true,
         "randomInterval": true,
-        "time": [4, 8],
+        "time": [6, 12],
         "time_down_event": {
           "event": "minere:toggle_state"
         }
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "any_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:melon_slice"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:glistering_melon_slice"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:apple"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:golden_apple"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:sweet_berries"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:glow_berries"
+                    }
+                  ]
+                },
+                {
+                  "test": "int_property",
+                  "domain": "minere:anim_state",
+                  "operator": ">",
+                  "value": 0
+                },
+                {
+                  "test": "int_property",
+                  "domain": "minere:anim_state",
+                  "operator": "!=",
+                  "value": 8
+                }
+              ]
+            },
+            "event": "minere:set_anim_8"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "none_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:melon_slice"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:glistering_melon_slice"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:apple"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:golden_apple"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:sweet_berries"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "hand",
+                      "value": "minecraft:glow_berries"
+                    }
+                  ]
+                },
+                {
+                  "test": "int_property",
+                  "domain": "minere:anim_state",
+                  "operator": "=",
+                  "value": 8
+                }
+              ]
+            },
+            "event": "minere:set_anim_1"
+          }
+        ]
       },
       "minecraft:on_target_acquired": {
         "event": "minere:on_angry",
@@ -2387,11 +2387,22 @@
                   "test": "bool_property",
                   "domain": "minere:is_sleepy",
                   "value": true
+                },
+                {
+                  "test": "int_property",
+                  "domain": "minere:anim_state",
+                  "operator": "!=",
+                  "value": 8
                 }
               ]
             },
             "set_property": {
-                "minere:anim_state": 9
+              "minere:anim_state": 9
+            }
+          },
+          {
+            "remove": {
+              "component_groups": ["minere:sleepy", "minere:lethargic", "minere:energetic", "minere:active"]
             }
           },
           {
