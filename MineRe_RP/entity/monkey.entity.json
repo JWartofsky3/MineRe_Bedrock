@@ -68,6 +68,7 @@
         "snack_sound": "animation.minere.monkey.snack_sound",
         "angel": "animation.minere.monkey.angel",
         "nod": "animation.minere.monkey.nod",
+        "handstand": "animation.minere.monkey.handstand",
         "controller": "controller.animation.minere.monkey",
         "sit_controller": "controller.animation.minere.monkey_sit",
         "attack_controller": "controller.animation.minere.monkey_attack"

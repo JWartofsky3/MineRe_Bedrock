@@ -15,7 +15,7 @@
         },
         "minere:anim_state": {
           "type": "int",
-          "range": [0, 9],
+          "range": [0, 10],
           "default": 0,
           "client_sync": true
         },
@@ -2163,6 +2163,11 @@
                 "set_property": {
                   "minere:anim_state": 7
                 }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 10
+                }
               }
             ]
           },
@@ -2200,8 +2205,15 @@
                 }
               },
               {
+                "weight": 2,
                 "set_property": {
                   "minere:anim_state": 7
+                }
+              },
+              {
+                "weight": 4,
+                "set_property": {
+                  "minere:anim_state": 10
                 }
               }
             ]
@@ -2234,6 +2246,11 @@
                 "weight": 4,
                 "set_property": {
                   "minere:anim_state": 3
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 10
                 }
               }
             ]
@@ -2271,6 +2288,11 @@
                 "weight": 5,
                 "set_property": {
                   "minere:anim_state": 6
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 10
                 }
               }
             ]
@@ -2341,8 +2363,14 @@
                 }
               },
               {
+                "weight": 2,
                 "set_property": {
                   "minere:anim_state": 7
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 10
                 }
               }
             ]
