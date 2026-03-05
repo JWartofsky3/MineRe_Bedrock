@@ -62,6 +62,7 @@
         "beat_chest": "animation.minere.monkey.beat_chest",
         "beat_chest_sound": "animation.minere.monkey.beat_chest_sound",
         "clap": "animation.minere.monkey.clap",
+        "clap_sound": "animation.minere.monkey.clap_sound",
         "laugh": "animation.minere.monkey.laugh",
         "scared": "animation.minere.monkey.scared",
         "snack": "animation.minere.monkey.snack",

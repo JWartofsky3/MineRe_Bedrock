@@ -268,7 +268,7 @@
           "blend_transition": 0.5
         },
         "clap": {
-          "animations": ["clap"],
+          "animations": ["clap", "clap_sound"],
           "transitions": [
             {
               "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"

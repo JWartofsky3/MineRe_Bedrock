@@ -504,6 +504,15 @@
 				}
 			}
 		},
+		"animation.minere.monkey.clap_sound": {
+			"loop": true,
+			"sound_effects": {
+				"0.0": {
+					"effect": "thud"
+				}
+			},
+			"animation_length": 0.45
+		},
 		"animation.minere.monkey.angel": {
 			"loop": true,
 			"bones": {
