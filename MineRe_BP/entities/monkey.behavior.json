@@ -108,6 +108,16 @@
           "value": 5
         }
       },
+      "minere:awake": {
+      "minecraft:behavior.look_at_player": {
+        "priority": 6,
+        "look_distance": 8,
+        "probability": 0.08
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 7
+      }
+      },
       "minere:skin_orange": {
         "minecraft:variant": {
           "value": 0
@@ -1562,14 +1572,6 @@
         "priority": 5,
         "speed_multiplier": 1.0
       },
-      "minecraft:behavior.look_at_player": {
-        "priority": 6,
-        "look_distance": 8,
-        "probability": 0.08
-      },
-      "minecraft:behavior.random_look_around": {
-        "priority": 7
-      },
       "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
@@ -1661,7 +1663,7 @@
           },
           {
             "add": {
-              "component_groups": ["minere:monkey_wild", "minere:skin_orange"]
+              "component_groups": ["minere:monkey_wild", "minere:skin_orange", "minere:awake"]
             }
           },
           {
@@ -1774,7 +1776,7 @@
         "sequence": [
           {
             "add": {
-              "component_groups": ["minere:monkey_baby", "minere:monkey_wild"]
+              "component_groups": ["minere:monkey_baby", "minere:monkey_wild", "minere:awake"]
             }
           },
           {
@@ -2423,6 +2425,9 @@
             "add": {
               "component_groups": ["minere:sleepy"]
             },
+            "remove": {
+              "component_groups": ["minere:awake"]
+            },
             "set_property": {
               "minere:is_sleepy": true
             }
@@ -2442,6 +2447,9 @@
             },
             "set_property": {
               "minere:is_sleepy": false
+            },
+            "add": {
+              "component_groups": ["minere:awake"]
             }
           },
           {
