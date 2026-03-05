@@ -112,6 +112,33 @@
           "animations": ["sit", "look_at_target"],
           "transitions": [
             {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
+            {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting)"
             }
           ],
@@ -120,6 +147,33 @@
         "lean": {
           "animations": ["lean", "look_at_target"],
           "transitions": [
+            {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
             {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 1)"
             }
@@ -130,6 +184,33 @@
           "animations": ["lie_back"],
           "transitions": [
             {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
+            {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 2)"
             }
           ],
@@ -138,6 +219,33 @@
         "beat_chest": {
           "animations": ["beat_chest"],
           "transitions": [
+            {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
             {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 3)"
             }
@@ -148,6 +256,33 @@
           "animations": ["clap"],
           "transitions": [
             {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
+            {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 4)"
             }
           ],
@@ -156,6 +291,33 @@
         "laugh": {
           "animations": ["laugh"],
           "transitions": [
+            {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
             {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 5)"
             }
@@ -166,6 +328,33 @@
           "animations": ["scared"],
           "transitions": [
             {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
+            {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 6)"
             }
           ],
@@ -174,6 +363,33 @@
         "angel": {
           "animations": ["angel"],
           "transitions": [
+            {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
             {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 7)"
             }
@@ -184,6 +400,33 @@
           "animations": ["snack", "snack_sound"],
           "transitions": [
             {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "sleeping": "variable.play_anim && q.property('minere:anim_state') == 9"
+            },
+            {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 8)"
             }
           ],
@@ -192,6 +435,33 @@
         "sleeping": {
           "animations": ["sit", "nod"],
           "transitions": [
+            {
+              "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"
+            },
+            {
+              "lean": "variable.play_anim && q.property('minere:anim_state') == 1"
+            },
+            {
+              "lie_back": "variable.play_anim && q.property('minere:anim_state') == 2"
+            },
+            {
+              "beat_chest": "variable.play_anim && q.property('minere:anim_state') == 3"
+            },
+            {
+              "clap": "variable.play_anim && q.property('minere:anim_state') == 4"
+            },
+            {
+              "laugh": "variable.play_anim && q.property('minere:anim_state') == 5"
+            },
+            {
+              "scared": "variable.play_anim && q.property('minere:anim_state') == 6"
+            },
+            {
+              "angel": "variable.play_anim && q.property('minere:anim_state') == 7"
+            },
+            {
+              "eating": "variable.play_anim && q.property('minere:anim_state') == 8"
+            },
             {
               "idle": "!(variable.play_anim && q.property('minere:anim_state') == 9)"
             }
