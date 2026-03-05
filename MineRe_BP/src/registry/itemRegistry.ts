@@ -23,6 +23,7 @@ import { Helper0 } from "items/components/helpers/helper0";
 import { Helper1 } from "items/components/helpers/helper1";
 import { Helper2 } from "items/components/helpers/helper2";
 import { Ghostwalker } from "items/components/ghostwalker";
+import { IndigonApple } from "items/components/indigon_apple";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -64,6 +65,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:royal_jelly",
     RoyalJelly,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:indigon_apple",
+    IndigonApple,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:custom_sword",

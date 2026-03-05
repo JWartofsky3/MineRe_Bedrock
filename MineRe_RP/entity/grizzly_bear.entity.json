@@ -68,6 +68,7 @@
         "controller.render.minere.grizzly_bear_armor"
       ],
       "spawn_egg": {
+        "texture": "spawn_egg_grizzly_bear",
         "base_color": "#402102",
         "overlay_color": "#352601"
       }

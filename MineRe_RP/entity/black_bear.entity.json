@@ -31,6 +31,7 @@
       ],
       "render_controllers": ["controller.render.polarbear"],
       "spawn_egg": {
+        "texture": "spawn_egg_black_bear",
         "base_color": "#1B1919",
         "overlay_color": "#343129"
       }

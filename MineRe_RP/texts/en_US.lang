@@ -324,3 +324,5 @@ item.minere:enchanted_indigon_apple=Enchanted Indigon Apple
 
 entity.minere:monkey.name=Monkey
 item.spawn_egg.entity.minere:monkey.name=Spawn Monkey
+
+action.interact.untame=Untame

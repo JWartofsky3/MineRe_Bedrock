@@ -22,7 +22,7 @@
       "textures": "textures/items/minere/raw_indigon.png"
     },
     "minere.indigon_apple": {
-      "textures": "textures/items/minere/indigon_apple"
+      "textures": "textures/items/minere/indigon_apple.png"
     },
     "minere.enchanted_indigon_apple": {
       "textures": "textures/items/minere/indigon_apple"
@@ -236,6 +236,15 @@
     },
     "minere.ghostwalker": {
       "textures": "textures/items/minere/ghostwalker"
+    },
+    "spawn_egg_monkey": {
+      "textures": "textures/items/minere/spawn_eggs/spawn_egg_monkey"
+    },
+    "spawn_egg_black_bear": {
+      "textures": "textures/items/minere/spawn_eggs/spawn_egg_black_bear"
+    },
+    "spawn_egg_grizzly_bear": {
+      "textures": "textures/items/minere/spawn_eggs/spawn_egg_grizzly_bear"
     },
     "minere.copper_elephant_armor": {
       "textures": "textures/items/minere/elephant_armor/copper.png"

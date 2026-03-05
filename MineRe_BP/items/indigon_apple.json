@@ -1,33 +1,30 @@
 {
-  "format_version": "1.10",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "minere:indigon_apple"
+      "identifier": "minere:indigon_apple",
+      "menu_category": {
+        "group": "itemGroup.name.rawFood"
+      }
     },
-
     "components": {
-      "minecraft:stacked_by_data": true,
-      "minecraft:use_duration": 32,
-      "minecraft:foil": false,
-
+      "minecraft:icon": "minere.indigon_apple",
+      "minecraft:display_name": {
+        "value": "item.minere:indigon_apple"
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_food"]
+      },
+      "minecraft:custom_components": ["minere:indigon_apple"],
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      },
+      "minecraft:use_animation": "eat",
       "minecraft:food": {
         "nutrition": 4,
-        "saturation_modifier": "supernatural",
-        "can_always_eat": true,
-        "effects": [
-          {
-            "name": "strength",
-            "chance": 1.0,
-            "duration": 20,
-            "amplifier": 1
-          },
-          {
-            "name": "jump_boost",
-            "chance": 1.0,
-            "duration": 20,
-            "amplifier": 0
-          }
-        ]
+        "saturation_modifier": 0.9,
+        "can_always_eat": true
       }
     }
   }

@@ -42,7 +42,7 @@
 								"north": {"uv": [26, 0], "uv_size": [0, 4]},
 								"east": {"uv": [0, 64], "uv_size": [0, 0]},
 								"south": {"uv": [30, 0], "uv_size": [0, 4]},
-								"west": {"uv": [22, 0], "uv_size": [9, 9]},
+								"west": {"uv": [0, 0], "uv_size": [9, 9]},
 								"up": {"uv": [26, -4], "uv_size": [0, 4]},
 								"down": {"uv": [26, 0], "uv_size": [0, -4]}
 							}

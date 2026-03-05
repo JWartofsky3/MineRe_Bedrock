@@ -89,7 +89,7 @@
           "variable.play_anim = 0.0;"
         ],
         "pre_animation": [
-          "variable.play_anim_latched = !variable.attack_time && (query.is_sitting || (query.is_on_ground && ((variable.play_anim_latched && query.ground_speed < 0.7) || (!variable.play_anim_latched && query.ground_speed < 0.35))));",
+          "variable.play_anim_latched = !variable.attack_time && (query.is_sitting || (query.is_on_ground && ((variable.play_anim_latched && query.ground_speed < 1.0) || (!variable.play_anim_latched && query.ground_speed < 0.35))));",
           "variable.play_anim = variable.play_anim_latched;",
           "variable.bite_frame = math.mod(query.life_time * 4, 2);",
           "variable.is_biting = variable.attack_time > 0.0 || variable.play_anim && (query.property('minere:anim_state') == 3 || query.property('minere:anim_state') == 8);",
@@ -113,6 +113,7 @@
       ],
       "enable_attachables": true,
       "spawn_egg": {
+        "texture": "spawn_egg_monkey",
         "base_color": "#866141",
         "overlay_color": "#995418"
       }
