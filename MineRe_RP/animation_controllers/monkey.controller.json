@@ -217,7 +217,7 @@
           "blend_transition": 0.5
         },
         "beat_chest": {
-          "animations": ["beat_chest"],
+          "animations": ["beat_chest", "beat_chest_sound"],
           "transitions": [
             {
               "sit": "variable.play_anim && q.property('minere:anim_state') == 0 && query.is_sitting"

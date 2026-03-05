@@ -2117,6 +2117,11 @@
             ]
           },
           {
+            "filters": {
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 0
+            },
             "randomize": [
               {
                 "weight": 5,
@@ -2163,29 +2168,32 @@
           },
           {
             "filters": {
-              "all_of": [
-                {
-                  "test": "is_mark_variant",
-                  "subject": "self",
-                  "value": 1
-                },
-                {
-                  "any_of": [
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 3
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 6
-                    }
-                  ]
-                }
-              ]
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 1
             },
             "randomize": [
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 0
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 2
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 4
+                }
+              },
               {
                 "set_property": {
                   "minere:anim_state": 5
@@ -2200,87 +2208,47 @@
           },
           {
             "filters": {
-              "all_of": [
-                {
-                  "test": "is_mark_variant",
-                  "subject": "self",
-                  "value": 2
-                },
-                {
-                  "any_of": [
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 4
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 5
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 6
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 7
-                    }
-                  ]
-                }
-              ]
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 2
             },
             "randomize": [
               {
-                "weight": 3,
+                "weight": 5,
                 "set_property": {
-                  "minere:anim_state": 3
+                  "minere:anim_state": 0
                 }
               },
               {
-                "weight": 1,
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              },
+              {
+                "weight": 2,
                 "set_property": {
                   "minere:anim_state": 2
+                }
+              },
+              {
+                "weight": 4,
+                "set_property": {
+                  "minere:anim_state": 3
                 }
               }
             ]
           },
           {
             "filters": {
-              "all_of": [
-                {
-                  "test": "is_mark_variant",
-                  "subject": "self",
-                  "value": 3
-                },
-                {
-                  "any_of": [
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 3
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 5
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 7
-                    }
-                  ]
-                }
-              ]
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 3
             },
             "randomize": [
               {
                 "weight": 5,
                 "set_property": {
-                  "minere:anim_state": 6
+                  "minere:anim_state": 0
                 }
               },
               {
@@ -2288,44 +2256,38 @@
                 "set_property": {
                   "minere:anim_state": 1
                 }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 2
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 4
+                }
+              },
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 6
+                }
               }
             ]
           },
           {
             "filters": {
-              "all_of": [
-                {
-                  "test": "is_mark_variant",
-                  "subject": "self",
-                  "value": 4
-                },
-                {
-                  "any_of": [
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 3
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 5
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 6
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 7
-                    }
-                  ]
-                }
-              ]
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 4
             },
             "randomize": [
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 0
+                }
+              },
               {
                 "set_property": {
                   "minere:anim_state": 1
@@ -2335,34 +2297,32 @@
                 "set_property": {
                   "minere:anim_state": 2
                 }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 4
+                }
               }
             ]
           },
           {
             "filters": {
-              "all_of": [
-                {
-                  "test": "is_mark_variant",
-                  "subject": "self",
-                  "value": 5
-                },
-                {
-                  "any_of": [
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 3
-                    },
-                    {
-                      "test": "int_property",
-                      "domain": "minere:anim_state",
-                      "value": 2
-                    }
-                  ]
-                }
-              ]
+              "test": "is_mark_variant",
+              "subject": "self",
+              "value": 5
             },
             "randomize": [
+              {
+                "weight": 5,
+                "set_property": {
+                  "minere:anim_state": 0
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 1
+                }
+              },
               {
                 "weight": 4,
                 "set_property": {
@@ -2373,6 +2333,16 @@
                 "weight": 1,
                 "set_property": {
                   "minere:anim_state": 5
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 6
+                }
+              },
+              {
+                "set_property": {
+                  "minere:anim_state": 7
                 }
               }
             ]

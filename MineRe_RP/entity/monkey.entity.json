@@ -60,6 +60,7 @@
         "lean": "animation.minere.monkey.lean",
         "lie_back": "animation.minere.monkey.lie_back",
         "beat_chest": "animation.minere.monkey.beat_chest",
+        "beat_chest_sound": "animation.minere.monkey.beat_chest_sound",
         "clap": "animation.minere.monkey.clap",
         "laugh": "animation.minere.monkey.laugh",
         "scared": "animation.minere.monkey.scared",
@@ -73,7 +74,9 @@
       },
       "sound_effects": {
         "eat": "mob.monkey.eat",
-        "burp": "random.burp"
+        "burp": "random.burp",
+        "thud": "mob.monkey.thud",
+        "announce": "mob.monkey.announce"
       },
       "particle_effects": {
         "eat_crumbs": "minere:monkey_eat_crumbs"

@@ -458,6 +458,15 @@
 				}
 			}
 		},
+		"animation.minere.monkey.beat_chest_sound": {
+			"loop": true,
+			"sound_effects": {
+				"0.0": {
+					"effect": "thud"
+				}
+			},
+			"animation_length": 0.2
+		},
 		"animation.minere.monkey.clap": {
 			"loop": true,
 			"bones": {
@@ -590,6 +599,77 @@
 				"bubble": {
 					"rotation": ["15 - 7 * math.cos(query.anim_time * 50)", 0, "-25 + 7 * math.cos(query.anim_time * 50)"],
 					"scale": "(1 - 1/8) + 1/8 * math.cos(query.anim_time * 50)"
+				}
+			}
+		},
+		"animation.minere.monkey.handstand": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 10000,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["90 + 2 * math.cos(query.anim_time * 100)", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.25": [0, 13, 7],
+						"0.5": [0, "8 + 0.25 * math.cos(query.anim_time * 100)", 11]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["90 + 15 * math.cos(query.anim_time * 100)", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -2, 3]
+					}
+				},
+				"torso": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["-25 * math.cos(query.anim_time * 100)", 0, 0]
+					}
+				},
+				"leftarm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["-90 + 25 * math.cos(query.anim_time * 100)", 0, 0]
+					}
+				},
+				"rightarm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["-90 + 25 * math.cos(query.anim_time * 100)", 0, 0]
+					}
+				},
+				"rightleg": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["65 - 25 * math.cos(query.anim_time * 100)", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 2, 1]
+					}
+				},
+				"leftleg": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["65 - 25 * math.cos(query.anim_time * 100)", 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 2, 1]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": ["50 * math.cos(query.anim_time * 100)", 0, 0]
+					}
 				}
 			}
 		}

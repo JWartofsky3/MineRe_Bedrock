@@ -307,6 +307,15 @@
         "sounds/mob/monkey/screech1"
       ]
     },
+    "mob.monkey.announce": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/mob/monkey/screech0",
+          "volume": 2.0
+        }
+      ]
+    },
     "mob.monkey.hurt": {
       "category": "ambient",
       "sounds": [
@@ -321,6 +330,14 @@
           "pitch": 1.25,
           "volume": 1.25
         }
+      ]
+    },
+    "mob.monkey.thud": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/monkey/thud0",
+        "sounds/mob/monkey/thud1",
+        "sounds/mob/monkey/thud2"
       ]
     },
     "mob.monkey.eat": {
