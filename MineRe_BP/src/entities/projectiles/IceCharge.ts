@@ -56,7 +56,6 @@ export class IceCharge extends BaseCustomEntity {
         return;
       }
     }
-    world.sendMessage("ice charge ticking");
     if (entity.isInWater) {
       freezeArea(entity.dimension, entity.location, FREEZE_AREA_OPTIONS);
       entity.remove();

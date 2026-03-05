@@ -304,7 +304,7 @@ export abstract class BaseCustomEntity implements CustomEntity {
 
   private startTicking(entity: Entity): void {
     const tick = this.properties?.tick;
-    if (tick || !this.onTick) {
+    if (!tick || !this.onTick) {
       return;
     }
     if (!entity?.isValid) {
@@ -386,7 +386,7 @@ export abstract class BaseCustomEntity implements CustomEntity {
   }
 
   private getNextTickDelay(): number {
-    const min = Math.min(this.properties[0], this.properties[1]);
+    const min = Math.min(this.properties.tick[0], this.properties.tick[1]);
     const max = Math.max(this.properties.tick[0], this.properties.tick[1]);
     if (max <= 0) {
       return 0;

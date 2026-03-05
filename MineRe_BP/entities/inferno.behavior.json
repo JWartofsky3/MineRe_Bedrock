@@ -247,7 +247,9 @@
           "on_outside_range": { "event": "switch_to_ranged", "target": "self" }
         }
       },
-      "stunned_mode": {}
+      "stunned_mode": {
+        "minecraft:is_shaking": {}
+      }
     },
     "components": {
       "minecraft:boss": {

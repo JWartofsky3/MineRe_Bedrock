@@ -23,7 +23,7 @@ import { ParticleWave, particleWave } from "particles/particleWave";
 // based on distance and phase cycles, avoids stomp due to buggy behavior, and can
 // push with a chance on being hurt. Push mode relies on behavior.json to return to
 // ranged. Stun lasts for 8 cycles or 40 damage.
-// Ranged mode strafes, and teleporting is allowed in all non-stunned modes.
+// Ranged mode strafes, and teleporting is allowed in melee, guard, and ranged modes.
 
 const INFERNO_TYPE_ID = "minere:inferno";
 
