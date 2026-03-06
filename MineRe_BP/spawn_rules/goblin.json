@@ -13,7 +13,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 24
+          "default": 50
         },
         "minecraft:biome_filter": {
           "test": "has_biome_tag",
@@ -36,7 +36,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 12
+          "default": 20
         },
         "minecraft:herd": {
           "min_size": 3,
@@ -110,7 +110,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 12
+          "default": 20
         },
         "minecraft:herd": {
           "min_size": 4,

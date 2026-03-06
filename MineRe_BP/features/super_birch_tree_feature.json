@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minecraft:super_birch_tree_feature"
+    },
+    "features": [
+      ["minere:normal_birch_tree_feature", 4],
+      ["minere:fancy_birch_tree_feature", 4],
+      ["minere:giant_birch_tree_feature", 2]
+    ]
+  }
+}

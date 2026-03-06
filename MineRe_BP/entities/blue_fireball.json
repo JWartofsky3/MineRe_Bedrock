@@ -49,7 +49,16 @@
           "1 * math.sin(query.body_y_rotation - 90)"
         ],
         "reflect_on_hurt": true,
-        "catch_fire": true
+        "catch_fire": true,
+        "spawn_aoe_cloud": {
+          "radius": 3.0,
+          "radius_on_use": 0,
+          "potion": 35,
+          "duration": 20,
+          "color": [58, 0, 250],
+          "affect_owner": false,
+          "reapplication_delay": 15
+        }
       },
       "minecraft:collision_box": {
         "width": 1,

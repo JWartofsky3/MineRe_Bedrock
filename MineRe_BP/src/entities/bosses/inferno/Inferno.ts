@@ -13,6 +13,10 @@ import {
   TELEPORT_COOLDOWN,
   tryInfernoTeleport,
 } from "entities/bosses/inferno/teleport";
+import {
+  canInfernoEnterPush,
+  enterInfernoPush,
+} from "entities/bosses/inferno/push";
 import { tryInfernoRetreat } from "entities/bosses/inferno/retreat";
 import { tryInfernoStrafe } from "entities/bosses/inferno/strafe";
 
@@ -191,10 +195,25 @@ export class Inferno extends BaseCustomEntity {
       const distance = distVector3(boss.location, attacker.location);
       if (
         distance <= COMBAT_PROPERTIES.PUSH_RANGE &&
-        this.canEnterPush(boss) &&
+        canInfernoEnterPush(boss, DYNAMIC_PROPERTIES, COMBAT_PROPERTIES) &&
         Math.random() < this.getPushChanceOnHurt(boss)
       ) {
-        this.enterPush(boss);
+        enterInfernoPush({
+          entity: boss,
+          getMode: (entity) => {
+            return this.getMode(entity);
+          },
+          setMode: (entity, mode) => {
+            this.setMode(entity, mode as InfernoMode);
+          },
+          killMovement: (entity) => {
+            this.killMovement(entity);
+          },
+          dynamicProperties: DYNAMIC_PROPERTIES,
+          combatProperties: COMBAT_PROPERTIES,
+          pushMode: InfernoMode.Push,
+          pushSoundId: SOUND_PROPERTIES.PUSH_ID,
+        });
       }
     }
   };
@@ -406,43 +425,6 @@ export class Inferno extends BaseCustomEntity {
     entity.setDynamicProperty(DYNAMIC_PROPERTIES.STUN_DAMAGE, 0);
     entity.setDynamicProperty(DYNAMIC_PROPERTIES.STUN_CYCLE, 0);
     this.setMode(entity, InfernoMode.Stunned);
-  }
-
-  // Enter push and play the delayed push sound if still pushing.
-  private enterPush(entity: Entity): void {
-    this.markPushCycle(entity);
-    this.setMode(entity, InfernoMode.Push);
-    this.killMovement(entity);
-    system.runTimeout(() => {
-      if (!entity?.isValid) {
-        return;
-      }
-      if (this.getMode(entity) !== InfernoMode.Push) {
-        return;
-      }
-      this.killMovement(entity);
-      entity.dimension.playSound(SOUND_PROPERTIES.PUSH_ID, entity.location);
-    }, COMBAT_PROPERTIES.PUSH_DELAY);
-  }
-
-  private canEnterPush(entity: Entity): boolean {
-    const currentCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.CYCLE_COUNTER,
-    );
-    const lastPushCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.LAST_PUSH_CYCLE,
-    );
-    const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
-    const lastValue = typeof lastPushCycle === "number" ? lastPushCycle : 0;
-    return currentValue - lastValue >= COMBAT_PROPERTIES.PUSH_COOLDOWN;
-  }
-
-  private markPushCycle(entity: Entity): void {
-    const currentCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.CYCLE_COUNTER,
-    );
-    const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
-    entity.setDynamicProperty(DYNAMIC_PROPERTIES.LAST_PUSH_CYCLE, currentValue);
   }
 
   // Compute weighted mode chances based on distance.

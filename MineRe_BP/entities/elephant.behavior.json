@@ -1378,6 +1378,10 @@
       "minecraft:type_family": {
         "family": ["elephant", "mob"]
       },
+      "minecraft:variable_max_auto_step": {
+        "base_value": 2.0,
+        "controlled_value": 2.0
+      },
       "minecraft:breathable": {
         "total_supply": 15,
         "suffocate_time": 0

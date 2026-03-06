@@ -8,7 +8,7 @@
       "trunk_width": 1,
       "trunk_height": {
         "base": 5,
-        "intervals": [ 7, 3 ]
+        "intervals": [7, 3]
       },
       "trunk_block": {
         "name": "minecraft:acacia_log"
@@ -52,18 +52,11 @@
       }
     },
     // Blocks the tree can be placed on.
-    "may_grow_on": [
-      { "tags": "query.any_tag('dirt')" }
-    ],
+    "may_grow_on": [{ "tags": "query.any_tag('dirt')" }],
     // Any "may_grow_on" block that is not specified here will be replaced with the first block in this list.
-    "base_block": [
-      "minecraft:dirt",
-      "minecraft:coarse_dirt"
-    ],
+    "base_block": ["minecraft:dirt", "minecraft:coarse_dirt"],
     // Blocks to ignore when checking for clearance around the tree. Already includes all blocks specified in "may_replace".
-    "may_grow_through": [
-      { "tags": "query.any_tag('dirt')" }
-    ],
+    "may_grow_through": [{ "tags": "query.any_tag('dirt')" }],
     // Blocks that can be replaced by the tree's trunk and canopy.
     "may_replace": [
       "minecraft:air",

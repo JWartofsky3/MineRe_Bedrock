@@ -59,9 +59,14 @@ export function tryInfernoRetreat(options: InfernoRetreatOptions): void {
       entity.setDynamicProperty(dynamicProperties.RETREAT_RUNNER, undefined);
       return;
     }
-    const impulse = multiplyVector3Number(dir, -movementProperties.RETREAT_FORCE);
+    const impulse = multiplyVector3Number(
+      dir,
+      -movementProperties.RETREAT_FORCE,
+    );
     impulse.y = 0.1;
-    if (magnitudeVector3(entity.getVelocity()) < movementProperties.MAX_VELOCITY) {
+    if (
+      magnitudeVector3(entity.getVelocity()) < movementProperties.MAX_VELOCITY
+    ) {
       entity.applyImpulse(impulse);
     }
     ticks += 1;

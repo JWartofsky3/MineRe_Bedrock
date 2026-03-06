@@ -83,7 +83,9 @@ export function tryInfernoTeleport(options: InfernoTeleportOptions): void {
     if (vertical > TELEPORT_PROPERTIES.VERTICAL_RANGE) {
       continue;
     }
-    if (!isWithinTeleportRange(entity, destination, options.dynamicProperties)) {
+    if (
+      !isWithinTeleportRange(entity, destination, options.dynamicProperties)
+    ) {
       continue;
     }
     if (!isSafeTeleportDestination(entity, destination)) {
@@ -110,7 +112,9 @@ function canTeleport(options: InfernoTeleportOptions): boolean {
   if (!allowedModes.includes(mode)) {
     return false;
   }
-  const retreatRunner = entity.getDynamicProperty(dynamicProperties.RETREAT_RUNNER);
+  const retreatRunner = entity.getDynamicProperty(
+    dynamicProperties.RETREAT_RUNNER,
+  );
   if (typeof retreatRunner === "number") {
     return false;
   }
@@ -119,7 +123,9 @@ function canTeleport(options: InfernoTeleportOptions): boolean {
     return true;
   }
 
-  const currentCycle = entity.getDynamicProperty(dynamicProperties.CYCLE_COUNTER);
+  const currentCycle = entity.getDynamicProperty(
+    dynamicProperties.CYCLE_COUNTER,
+  );
   const lastCycle = entity.getDynamicProperty(
     dynamicProperties.LAST_TELEPORT_CYCLE,
   );
@@ -132,9 +138,14 @@ function markTeleported(
   entity: Entity,
   dynamicProperties: InfernoTeleportDynamicProperties,
 ): void {
-  const currentCycle = entity.getDynamicProperty(dynamicProperties.CYCLE_COUNTER);
+  const currentCycle = entity.getDynamicProperty(
+    dynamicProperties.CYCLE_COUNTER,
+  );
   const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
-  entity.setDynamicProperty(dynamicProperties.LAST_TELEPORT_CYCLE, currentValue);
+  entity.setDynamicProperty(
+    dynamicProperties.LAST_TELEPORT_CYCLE,
+    currentValue,
+  );
 }
 
 function isWithinTeleportRange(
@@ -153,7 +164,9 @@ function isWithinTeleportRange(
   ) {
     return false;
   }
-  if (distVector3(entity.location, destination) > TELEPORT_PROPERTIES.MAX_DISTANCE) {
+  if (
+    distVector3(entity.location, destination) > TELEPORT_PROPERTIES.MAX_DISTANCE
+  ) {
     return false;
   }
   return true;

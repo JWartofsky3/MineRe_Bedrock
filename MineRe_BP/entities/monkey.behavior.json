@@ -2424,6 +2424,11 @@
           {
             "randomize": [
               {
+                "filters": {
+                  "test": "bool_property",
+                  "domain": "minere:is_sleepy",
+                  "value": false
+                },
                 "add": {
                   "component_groups": ["minere:go_to_player"]
                 }

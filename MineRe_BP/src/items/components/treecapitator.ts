@@ -69,6 +69,8 @@ logSet.add("minecraft:crimson_stem");
 logSet.add("minecraft:stripped_crimson_stem");
 logSet.add("minecraft:warped_stem");
 logSet.add("minecraft:stripped_warped_stem");
+// mangrove roots
+logSet.add("minecraft:mangrove_roots");
 
 // leaves
 const leavesSet = new Set<string>();
@@ -415,7 +417,8 @@ export function runTreecapitate(
       (logSet.has(logTypeId) ||
         logTypeId.includes("log") ||
         logTypeId.includes("stem")) &&
-      blockPermutation.getState("pillar_axis") === "y"
+      (blockPermutation.getState("pillar_axis") === "y" ||
+        logTypeId.includes("roots"))
     )
   ) {
     return 0;
