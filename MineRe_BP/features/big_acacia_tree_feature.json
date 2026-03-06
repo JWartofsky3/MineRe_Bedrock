@@ -5,7 +5,7 @@
       "identifier": "minere:big_acacia_tree_feature"
     },
     "acacia_trunk": {
-      "trunk_width": 3,
+      "trunk_width": 2,
       "trunk_height": {
         "base": 7,
         "intervals": [8, 6]
@@ -39,7 +39,7 @@
         "branch_position": 1,
         "branch_canopy": {
           "acacia_canopy": {
-            "canopy_size": 5,
+            "canopy_size": 4,
             "leaf_block": {
               "name": "minecraft:leaves2",
               "states": {

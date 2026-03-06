@@ -8,8 +8,7 @@
       ["minere:small_crater_feature", 11],
       ["minere:crater_no_meteorite_feature", 6],
       ["minere:crater_round_feature", 5],
-      ["minere:crater_meteorite_feature", 4],
-      ["minere:big_acacia_tree_feature", 400]
+      ["minere:crater_meteorite_feature", 4]
     ]
   }
 }

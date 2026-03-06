@@ -1,0 +1,12 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "minecraft:savanna_tree_feature"
+    },
+    "features": [
+      ["minere:normal_savanna_tree_feature", 19],
+      ["minere:big_acacia_tree_feature", 1]
+    ]
+  }
+}

@@ -7,22 +7,20 @@ import {
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { getHealth } from "entities/utilities/common";
+import { distVector3 } from "util/vector3Functions";
 import {
-  addVector3,
-  directionVector3,
-  distVector3,
-  getRandomAir,
-  magnitudeVector3,
-  multiplyVector3Number,
-} from "util/vector3Functions";
-import { spawnParticleCloud } from "particles/particleCloud";
-import { ParticleWave, particleWave } from "particles/particleWave";
+  getInfernoTeleportChance,
+  TELEPORT_COOLDOWN,
+  tryInfernoTeleport,
+} from "entities/bosses/inferno/teleport";
+import { tryInfernoRetreat } from "entities/bosses/inferno/retreat";
+import { tryInfernoStrafe } from "entities/bosses/inferno/strafe";
 
 // Summary:
 // Inferno is a boss entity that ticks every 16–24 ticks. It selects weighted modes
 // based on distance and phase cycles, avoids stomp due to buggy behavior, and can
 // push with a chance on being hurt. Push mode relies on behavior.json to return to
-// ranged. Stun lasts for 8 cycles or 40 damage.
+// ranged. Stun lasts for 8 cycles or 50 damage.
 // Ranged mode strafes, and teleporting is allowed in melee, guard, and ranged modes.
 
 const INFERNO_TYPE_ID = "minere:inferno";
@@ -43,22 +41,6 @@ const DYNAMIC_PROPERTIES = {
 const TICK_INTERVAL: [number, number] = [16, 24];
 const STUN_PROPERTIES = {
   DAMAGE_THRESHOLD: 50,
-};
-
-const TELEPORT_PROPERTIES = {
-  MAX_DISTANCE: 32,
-  MAX_DISTANCE_TO_TARGET: 25,
-  MIN_DISTANCE_TO_TARGET: 8,
-  VERTICAL_RANGE: 6,
-  COOLDOWN: 7,
-  MAX_ORIGIN_DISTANCE: 64,
-  TELEPORT_CHANCE_MIN: 0.2,
-  TELEPORT_CHANCE_MAX: 0.45,
-  LOW_HEALTH_DISTANCE_BONUS: 8,
-  // effects
-  PARTICLE_ID: "minecraft:candle_flame_particle",
-  SOUND_ID: "mob.ghast.fireball",
-  SOUND_VOLUME: 0.5,
 };
 
 const SOUND_PROPERTIES = {
@@ -161,7 +143,7 @@ export class Inferno extends BaseCustomEntity {
     entity.setDynamicProperty(DYNAMIC_PROPERTIES.CYCLE_COUNTER, 0);
     entity.setDynamicProperty(
       DYNAMIC_PROPERTIES.LAST_TELEPORT_CYCLE,
-      -TELEPORT_PROPERTIES.COOLDOWN,
+      -TELEPORT_COOLDOWN,
     );
     entity.setDynamicProperty(
       DYNAMIC_PROPERTIES.LAST_PUSH_CYCLE,
@@ -230,7 +212,16 @@ export class Inferno extends BaseCustomEntity {
     if (this.getMode(boss) !== InfernoMode.Melee) {
       return;
     }
-    this.retreat(boss, target);
+    tryInfernoRetreat({
+      entity: boss,
+      target,
+      getMode: (entity) => {
+        return this.getMode(entity);
+      },
+      meleeMode: InfernoMode.Melee,
+      dynamicProperties: DYNAMIC_PROPERTIES,
+      movementProperties: MOVEMENT_PROPERTIES,
+    });
   };
 
   // Main AI tick: target selection, phase cycles, movement behaviors.
@@ -257,11 +248,38 @@ export class Inferno extends BaseCustomEntity {
     }
 
     if (mode === InfernoMode.Ranged && target?.isValid) {
-      this.strafe(boss, target);
+      tryInfernoStrafe({
+        entity: boss,
+        target,
+        getMode: (entity) => {
+          return this.getMode(entity);
+        },
+        rangedMode: InfernoMode.Ranged,
+        dynamicProperties: DYNAMIC_PROPERTIES,
+        movementProperties: MOVEMENT_PROPERTIES,
+      });
     }
 
-    if (target?.isValid && Math.random() < this.getTeleportChance(boss)) {
-      this.tryTeleport(boss, target);
+    if (
+      target?.isValid &&
+      Math.random() < getInfernoTeleportChance(boss, this.getLowHealthFactor)
+    ) {
+      tryInfernoTeleport({
+        entity: boss,
+        target,
+        getMode: (entity) => {
+          return this.getMode(entity);
+        },
+        getLowHealthFactor: (entity) => {
+          return this.getLowHealthFactor(entity);
+        },
+        dynamicProperties: DYNAMIC_PROPERTIES,
+        allowedModes: [
+          InfernoMode.Ranged,
+          InfernoMode.Melee,
+          InfernoMode.Guard,
+        ],
+      });
     }
   };
 
@@ -432,8 +450,9 @@ export class Inferno extends BaseCustomEntity {
     distance: number,
     currentMode: InfernoMode,
   ): Record<InfernoMode, number> {
-    const weights =
+    const baseWeights =
       MODE_WEIGHTS[Math.min(Math.floor(distance / 8), MODE_WEIGHTS.length - 1)];
+    const weights = { ...baseWeights };
 
     // reduce weight for current mode to make it less likely to be picked again
     weights[currentMode] = weights[currentMode] * 0.5;
@@ -458,221 +477,6 @@ export class Inferno extends BaseCustomEntity {
       }
     }
     return InfernoMode.Ranged;
-  }
-
-  // Apply strafing impulse around the target.
-  private strafe(entity: Entity, target: Entity): void {
-    const existing = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.STRAFE_RUNNER,
-    );
-    if (typeof existing === "number") {
-      return;
-    }
-    const dir = directionVector3(target.location, entity.location);
-    const yDir =
-      entity.location.y > target.location.y + 2
-        ? -0.1
-        : entity.location.y < target.location.y + 1
-          ? 0.1
-          : 0;
-    const strafeDir = Math.random() < 0.5 ? 1 : -1;
-    const strafe = { x: -dir.z * strafeDir, y: 0, z: dir.x * strafeDir };
-    let ticks = 0;
-    const runner = system.runInterval(() => {
-      if (!entity?.isValid || !target?.isValid) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.STRAFE_RUNNER, undefined);
-        return;
-      }
-      if (this.getMode(entity) !== InfernoMode.Ranged) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.STRAFE_RUNNER, undefined);
-        return;
-      }
-      entity.applyImpulse(
-        multiplyVector3Number(strafe, MOVEMENT_PROPERTIES.STRAFE_FORCE),
-      );
-      ticks += 1;
-      if (ticks >= MOVEMENT_PROPERTIES.STRAFE_TICKS) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.STRAFE_RUNNER, undefined);
-      }
-    }, 1);
-    entity.setDynamicProperty(DYNAMIC_PROPERTIES.STRAFE_RUNNER, runner);
-  }
-
-  // Teleport near the target within distance and vertical limits.
-  private tryTeleport(entity: Entity, target: Entity): void {
-    if (!target?.isValid) {
-      return;
-    }
-    if (!this.canTeleport(entity)) {
-      return;
-    }
-
-    const origin = target.location;
-    const distanceBonus = this.getTeleportDistanceBonus(entity);
-    const minTeleportDistance =
-      TELEPORT_PROPERTIES.MIN_DISTANCE_TO_TARGET + distanceBonus;
-    const maxTeleportDistance =
-      TELEPORT_PROPERTIES.MAX_DISTANCE_TO_TARGET + distanceBonus;
-    const randomOffset = Math.ceil(maxTeleportDistance);
-    for (let i = 0; i < 6; i++) {
-      const candidate = getRandomAir(origin, entity.dimension, randomOffset, 6);
-      if (!candidate) {
-        continue;
-      }
-      const distance = distVector3(candidate, origin);
-      const vertical = Math.abs(candidate.y - origin.y);
-      if (distance < minTeleportDistance || distance > maxTeleportDistance) {
-        continue;
-      }
-      if (vertical > TELEPORT_PROPERTIES.VERTICAL_RANGE) {
-        continue;
-      }
-      if (!this.isWithinTeleportRange(entity, candidate)) {
-        continue;
-      }
-      this.teleportWithEffects(entity, candidate, origin);
-      this.markTeleported(entity);
-      return;
-    }
-  }
-
-  // Check teleport cooldown based on cycle count.
-  private canTeleport(entity: Entity): boolean {
-    const mode = this.getMode(entity);
-    if (mode === InfernoMode.Push || mode === InfernoMode.Stunned) {
-      return false;
-    }
-
-    if (entity.isInWater) {
-      return true;
-    }
-
-    const currentCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.CYCLE_COUNTER,
-    );
-    const lastCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.LAST_TELEPORT_CYCLE,
-    );
-    const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
-    const lastValue = typeof lastCycle === "number" ? lastCycle : 0;
-    return currentValue - lastValue >= TELEPORT_PROPERTIES.COOLDOWN;
-  }
-
-  // Record the cycle when a teleport occurs.
-  private markTeleported(entity: Entity): void {
-    const currentCycle = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.CYCLE_COUNTER,
-    );
-    const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
-    entity.setDynamicProperty(
-      DYNAMIC_PROPERTIES.LAST_TELEPORT_CYCLE,
-      currentValue,
-    );
-  }
-
-  // Ensure teleport destination is within the origin radius.
-  private isWithinTeleportRange(
-    entity: Entity,
-    destination: { x: number; y: number; z: number },
-  ): boolean {
-    const origin = entity.getDynamicProperty(DYNAMIC_PROPERTIES.ORIGIN_POS) as {
-      x: number;
-      y: number;
-      z: number;
-    };
-    if (
-      origin &&
-      distVector3(origin, destination) > TELEPORT_PROPERTIES.MAX_ORIGIN_DISTANCE
-    ) {
-      return false;
-    }
-    if (
-      distVector3(entity.location, destination) >
-      TELEPORT_PROPERTIES.MAX_DISTANCE
-    ) {
-      return false;
-    }
-    return true;
-  }
-
-  // Teleport with particle trail and sound.
-  private teleportWithEffects(
-    entity: Entity,
-    destination: { x: number; y: number; z: number },
-    faceLocation: { x: number; y: number; z: number },
-  ): void {
-    const dimension = entity.dimension;
-
-    particleWave({
-      startLocation: entity.location,
-      endLocation: destination,
-      dimension: entity.dimension,
-      particle: TELEPORT_PROPERTIES.PARTICLE_ID,
-      soundEffect: TELEPORT_PROPERTIES.SOUND_ID,
-      soundOptions: { volume: TELEPORT_PROPERTIES.SOUND_VOLUME },
-      ticksPerStep: 0,
-      particleCloudOptions: {
-        distance: 2,
-        count: 10,
-      },
-    });
-
-    entity.teleport(destination, {
-      facingLocation: faceLocation,
-      keepVelocity: false,
-    });
-    entity.clearVelocity();
-  }
-
-  // Retreat away from the target after a melee hit.
-  private retreat(entity: Entity, target: Entity): void {
-    const existing = entity.getDynamicProperty(
-      DYNAMIC_PROPERTIES.RETREAT_RUNNER,
-    );
-    if (typeof existing === "number") {
-      return;
-    }
-
-    const dir = directionVector3(target.location, entity.location);
-    let ticks = 0;
-    const runner = system.runInterval(() => {
-      if (!entity?.isValid || !target?.isValid) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.RETREAT_RUNNER, undefined);
-        return;
-      }
-      if (this.getMode(entity) !== InfernoMode.Melee) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.RETREAT_RUNNER, undefined);
-        return;
-      }
-      const distance = distVector3(entity.location, target.location);
-      if (distance >= MOVEMENT_PROPERTIES.RETREAT_DISTANCE) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.RETREAT_RUNNER, undefined);
-        return;
-      }
-      const impulse = multiplyVector3Number(
-        dir,
-        -MOVEMENT_PROPERTIES.RETREAT_FORCE,
-      );
-      impulse.y = 0.1;
-      if (
-        magnitudeVector3(entity.getVelocity()) <
-        MOVEMENT_PROPERTIES.MAX_VELOCITY
-      ) {
-        entity.applyImpulse(impulse);
-      }
-      ticks += 1;
-      if (ticks >= MOVEMENT_PROPERTIES.RETREAT_TICKS) {
-        system.clearRun(runner);
-        entity.setDynamicProperty(DYNAMIC_PROPERTIES.RETREAT_RUNNER, undefined);
-      }
-    }, 1);
-    entity.setDynamicProperty(DYNAMIC_PROPERTIES.RETREAT_RUNNER, runner);
   }
 
   private killMovement(entity: Entity): void {
@@ -700,21 +504,6 @@ export class Inferno extends BaseCustomEntity {
       entity,
       COMBAT_PROPERTIES.PUSH_CHANCE_MIN,
       COMBAT_PROPERTIES.PUSH_CHANCE_MAX,
-    );
-  }
-
-  private getTeleportChance(entity: Entity): number {
-    return this.scaleByLowHealth(
-      entity,
-      TELEPORT_PROPERTIES.TELEPORT_CHANCE_MIN,
-      TELEPORT_PROPERTIES.TELEPORT_CHANCE_MAX,
-    );
-  }
-
-  private getTeleportDistanceBonus(entity: Entity): number {
-    return (
-      this.getLowHealthFactor(entity) *
-      TELEPORT_PROPERTIES.LOW_HEALTH_DISTANCE_BONUS
     );
   }
 
