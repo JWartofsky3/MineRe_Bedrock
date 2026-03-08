@@ -2,8 +2,11 @@ import {
   system,
   world,
   EntitySpawnAfterEvent,
+  Dimension,
   Player,
+  Vector3,
 } from "@minecraft/server";
+import { hasBlockInRadius } from "blocks/functions/getBlocksInRadius";
 import { RegisterableEvent } from "events/CustomEvent";
 
 const SPAWN_CHANCE_MIN = 0.05;
@@ -12,6 +15,7 @@ const LEVEL_MIN = 10;
 const LEVEL_CAP = 50;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20; // 30 minutes
 const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
+const SPAWNER_BLOCK_RADIUS = 12;
 
 export class InfernoSpawnEvent implements RegisterableEvent {
   register(): void {
@@ -67,8 +71,22 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
   if (Math.random() > spawnChance) {
     return;
   }
+  if (hasNearbyMobSpawner(dimension, location)) {
+    return;
+  }
 
   challenger.setDynamicProperty(MINI_BOSS_SPAWN_TIME_PROP, system.currentTick);
   entity.remove();
   dimension.spawnEntity("minere:inferno", location);
+}
+
+function hasNearbyMobSpawner(dimension: Dimension, location: Vector3): boolean {
+  return hasBlockInRadius(
+    dimension,
+    location,
+    SPAWNER_BLOCK_RADIUS,
+    (block) => {
+      return block.typeId === "minecraft:mob_spawner";
+    },
+  );
 }

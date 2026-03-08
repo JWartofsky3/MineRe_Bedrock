@@ -1,4 +1,4 @@
-import { Entity } from "@minecraft/server";
+import { system, Entity } from "@minecraft/server";
 import { particleWave } from "particles/particleWave";
 import { distVector3, getRandomAir } from "util/vector3Functions";
 
@@ -24,7 +24,6 @@ type InfernoTeleportDynamicProperties = {
   CYCLE_COUNTER: string;
   LAST_TELEPORT_CYCLE: string;
   ORIGIN_POS: string;
-  RETREAT_RUNNER: string;
 };
 
 type InfernoTeleportOptions = {
@@ -112,12 +111,6 @@ function canTeleport(options: InfernoTeleportOptions): boolean {
   if (!allowedModes.includes(mode)) {
     return false;
   }
-  const retreatRunner = entity.getDynamicProperty(
-    dynamicProperties.RETREAT_RUNNER,
-  );
-  if (typeof retreatRunner === "number") {
-    return false;
-  }
 
   if (entity.isInWater) {
     return true;
@@ -193,17 +186,6 @@ function isSafeTeleportDestination(
     y: Math.floor(destination.y),
     z: Math.floor(destination.z),
   };
-  const floorBlock = entity.dimension.getBlock({
-    x: base.x,
-    y: base.y - 1,
-    z: base.z,
-  });
-  if (!floorBlock?.isValid) {
-    return false;
-  }
-  if (floorBlock.isAir) {
-    return false;
-  }
 
   for (let y = 0; y < TELEPORT_PROPERTIES.REQUIRED_CLEARANCE_HEIGHT; y++) {
     const checkBlock = entity.dimension.getBlock({

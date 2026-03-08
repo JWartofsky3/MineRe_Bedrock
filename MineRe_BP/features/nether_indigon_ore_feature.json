@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:nether_indigon_ore_feature"
     },
-    "count": 8,
+    "count": 9,
     "replace_rules": [
       {
         "places_block": "minere:indigon_ore",

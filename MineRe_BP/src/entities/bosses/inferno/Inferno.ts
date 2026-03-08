@@ -158,6 +158,7 @@ export class Inferno extends BaseCustomEntity {
       DYNAMIC_PROPERTIES.LAST_PUSH_CYCLE,
       -COMBAT_PROPERTIES.PUSH_COOLDOWN,
     );
+    entity.setDynamicProperty(DYNAMIC_PROPERTIES.ORIGIN_POS, entity.location);
   };
 
   // React to incoming damage (targeting, stun, push chance).
@@ -193,6 +194,9 @@ export class Inferno extends BaseCustomEntity {
 
     if (!!projectile && Math.random() < COMBAT_PROPERTIES.PROJECTILE_GUARD_CHANCE) {
       this.setMode(boss, InfernoMode.Guard);
+    }
+    if (!projectile && mode === InfernoMode.Guard) {
+      this.changePhase(boss, this.getTarget(boss));
     }
 
     if (attacker?.isValid) {
@@ -287,6 +291,7 @@ export class Inferno extends BaseCustomEntity {
       target?.isValid &&
       Math.random() < getInfernoTeleportChance(boss, this.getLowHealthFactor)
     ) {
+      this.killMovement(boss);
       tryInfernoTeleport({
         entity: boss,
         target,
