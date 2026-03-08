@@ -158,6 +158,14 @@
         }
       ]
     },
+    "item.armor.powerup": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/armor/powerup"
+        }
+      ]
+    },
     "item.echo_staff.whoosh": {
       "category": "player",
       "sounds": [

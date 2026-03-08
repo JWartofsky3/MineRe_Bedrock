@@ -19,6 +19,7 @@ import { Inferno } from "entities/bosses/inferno/Inferno";
 import { Glacier } from "entities/bosses/glacier/Glacier";
 import { Elephant } from "entities/mobs/Elephant";
 import { IceSpike } from "entities/otherEntities/IceSpike";
+import { CustomPlayer } from "entities/player/Player";
 
 export function registerCustomEntities() {
   // mobs
@@ -49,4 +50,7 @@ export function registerCustomEntities() {
   // bosses
   new Inferno().register();
   new Glacier().register();
+
+  // player
+  new CustomPlayer().register();
 }

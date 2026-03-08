@@ -26,7 +26,9 @@ export function canInfernoEnterPush(
   dynamicProperties: InfernoPushDynamicProperties,
   combatProperties: InfernoPushCombatProperties,
 ): boolean {
-  const currentCycle = entity.getDynamicProperty(dynamicProperties.CYCLE_COUNTER);
+  const currentCycle = entity.getDynamicProperty(
+    dynamicProperties.CYCLE_COUNTER,
+  );
   const lastPushCycle = entity.getDynamicProperty(
     dynamicProperties.LAST_PUSH_CYCLE,
   );
@@ -65,7 +67,9 @@ function markPushCycle(
   entity: Entity,
   dynamicProperties: InfernoPushDynamicProperties,
 ): void {
-  const currentCycle = entity.getDynamicProperty(dynamicProperties.CYCLE_COUNTER);
+  const currentCycle = entity.getDynamicProperty(
+    dynamicProperties.CYCLE_COUNTER,
+  );
   const currentValue = typeof currentCycle === "number" ? currentCycle : 0;
   entity.setDynamicProperty(dynamicProperties.LAST_PUSH_CYCLE, currentValue);
 }

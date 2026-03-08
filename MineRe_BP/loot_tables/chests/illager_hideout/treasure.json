@@ -424,15 +424,6 @@
         {
           "type": "item",
           "name": "minecraft:enchanted_golden_apple"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "empty",
-          "weight": 2
         },
         {
           "type": "item",
@@ -446,6 +437,19 @@
               }
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minere:emerald_staff"
         }
       ]
     }

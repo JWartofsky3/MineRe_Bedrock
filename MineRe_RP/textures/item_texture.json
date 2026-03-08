@@ -45,6 +45,9 @@
     "minere.indigon_axe": {
       "textures": "textures/items/minere/indigon_axe"
     },
+    "minere.fire_axe": {
+      "textures": "textures/items/minere/fire_axe.png"
+    },
     "minere.enderon_shovel": {
       "textures": "textures/items/minere/enderon_shovel.png"
     },
@@ -140,6 +143,9 @@
     },
     "minere.aetherial_boots": {
       "textures": "textures/items/minere/aetherial_boots"
+    },
+    "minere.inferno_crown": {
+      "textures": "textures/items/minere/inferno_crown"
     },
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"

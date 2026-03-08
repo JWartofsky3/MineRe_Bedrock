@@ -69,6 +69,7 @@ const COMBAT_PROPERTIES = {
   PUSH_CHANCE_MIN: 0.12,
   PUSH_CHANCE_MAX: 0.35,
   PUSH_DELAY: 20,
+  PROJECTILE_GUARD_CHANCE: 0.25
 };
 
 const TARGET_FAMILIES = ["player", "villager", "irongolem"];
@@ -127,6 +128,10 @@ const MODE_WEIGHTS: Record<InfernoMode, number>[] = [
 ];
 
 export class Inferno extends BaseCustomEntity {
+  public static enterStunned(entity: Entity): void {
+    new Inferno().enterStunned(entity);
+  }
+
   constructor() {
     super(INFERNO_TYPE_ID, {
       tick: TICK_INTERVAL,
@@ -153,11 +158,6 @@ export class Inferno extends BaseCustomEntity {
       DYNAMIC_PROPERTIES.LAST_PUSH_CYCLE,
       -COMBAT_PROPERTIES.PUSH_COOLDOWN,
     );
-    entity.setDynamicProperty(DYNAMIC_PROPERTIES.ORIGIN_POS, {
-      x: entity.location.x,
-      y: entity.location.y,
-      z: entity.location.z,
-    });
   };
 
   // React to incoming damage (targeting, stun, push chance).
@@ -189,6 +189,10 @@ export class Inferno extends BaseCustomEntity {
     ) {
       this.enterStunned(boss);
       return;
+    }
+
+    if (!!projectile && Math.random() < COMBAT_PROPERTIES.PROJECTILE_GUARD_CHANCE) {
+      this.setMode(boss, InfernoMode.Guard);
     }
 
     if (attacker?.isValid) {
@@ -318,10 +322,6 @@ export class Inferno extends BaseCustomEntity {
       return;
     }
 
-    // if (mode === InfernoMode.Stomp) {
-    //   return;
-    // }
-
     this.killMovement(entity);
     entity.setProperty(MODE_PROPERTY, mode);
     entity.dimension.playSound(
@@ -392,6 +392,9 @@ export class Inferno extends BaseCustomEntity {
 
     const weights = this.getModeWeights(distance, currentMode);
     const nextMode = this.pickWeightedMode(weights);
+    if (target === null) {
+      return this.setMode(entity, InfernoMode.Ranged);
+    }
     if (nextMode === InfernoMode.Stomp) {
       return;
     }
