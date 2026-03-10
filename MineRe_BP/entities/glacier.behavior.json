@@ -7,6 +7,11 @@
       "is_summonable": true,
       "is_experimental": false,
       "properties": {
+        "minere:is_emerging": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
         "minere:is_submerging": {
           "type": "bool",
           "default": false,
@@ -200,9 +205,22 @@
           "track_target": true,
           "require_complete_path": true,
           "random_stop_interval": 0,
-          "reach_multiplier": 8,
+          "reach_multiplier": 6,
           "speed_multiplier": 1.25,
           "hit_delay_pct": 0.6
+        }
+      },
+      "minere:glacier_angry": {
+        "minecraft:angry": {
+          "duration": 30,
+          "calm_event": {
+            "event": "minere:glacier_become_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:on_target_escape": {
+          "event": "minere:glacier_become_calm",
+          "target": "self"
         }
       },
       "minere:glacier_roaring": {
@@ -387,6 +405,10 @@
         "priority": 1,
         "must_see_forget_duration": 10
       },
+      "minecraft:on_target_acquired": {
+        "event": "minere:glacier_become_angry",
+        "target": "self"
+      },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 2,
         "must_see_forget_duration": 10,
@@ -427,19 +449,30 @@
     },
     "events": {
       "minecraft:entity_spawned": {
-        "add": {
-          "component_groups": ["emerging", "immobile"]
-        }
+        "sequence": [
+          {
+            "set_property": {
+              "minere:is_emerging": true,
+              "minere:is_submerging": false
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["emerging", "immobile"]
+            }
+          }
+        ]
       },
       "minere:start_emerging": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["mobile", "submerging"]
+              "component_groups": ["mobile", "submerging", "ranged", "melee"]
             }
           },
           {
             "set_property": {
+              "minere:is_emerging": true,
               "minere:is_submerging": false
             }
           },
@@ -454,11 +487,12 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["mobile", "emerging"]
+              "component_groups": ["mobile", "emerging", "ranged", "melee"]
             }
           },
           {
             "set_property": {
+              "minere:is_emerging": false,
               "minere:is_submerging": true
             }
           },
@@ -473,11 +507,16 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["emerging", "immobile", "submerging"]
+              "component_groups": [
+                "emerging",
+                "immobile",
+                "submerging"
+              ]
             }
           },
           {
             "set_property": {
+              "minere:is_emerging": false,
               "minere:is_submerging": false
             }
           },
@@ -487,6 +526,16 @@
             }
           }
         ]
+      },
+      "minere:glacier_become_angry": {
+        "add": {
+          "component_groups": ["minere:glacier_angry"]
+        }
+      },
+      "minere:glacier_become_calm": {
+        "remove": {
+          "component_groups": ["minere:glacier_angry"]
+        }
       },
       "minere:glacier_start_roar": {
         "sequence": [

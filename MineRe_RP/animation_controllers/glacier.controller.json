@@ -8,16 +8,21 @@
           "animations": ["emerge"],
           "transitions": [
             {
-              "default": "query.all_animations_finished || !query.is_emerging"
+              "default": "query.all_animations_finished || !query.property('minere:is_emerging')"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "default": {
           "transitions": [
             {
+              "emerging": "query.property('minere:is_emerging')"
+            },
+            {
               "submerging": "query.property('minere:is_submerging')"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "submerging": {
           "animations": ["submerge"],
@@ -25,7 +30,8 @@
             {
               "default": "query.all_animations_finished"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         }
       }
     },
@@ -36,25 +42,31 @@
           "animations": ["iceChargesGone"],
           "transitions": [
             {
-              "summon": "query.is_charged"
+              "summon": "query.is_charged && !variable.is_transitioning"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "summon": {
           "animations": ["iceChargesSummon"],
           "transitions": [
             {
               "shoot": "!query.is_charged"
+            },
+            {
+              "gone": "variable.is_transitioning"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "shoot": {
           "animations": ["iceChargesShoot"],
           "transitions": [
             {
-              "gone": "query.all_animations_finished"
+              "gone": "query.all_animations_finished || variable.is_transitioning"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         }
       }
     },
@@ -72,7 +84,8 @@
             {
               "angry": "query.is_angry"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "angry": {
           "animations": ["angry"],
@@ -86,7 +99,8 @@
             {
               "default": "!query.is_angry"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "summoning": {
           "animations": ["summon"],
@@ -94,7 +108,8 @@
             {
               "angry": "!query.is_casting"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         },
         "roaring": {
           "animations": ["roar"],
@@ -102,7 +117,8 @@
             {
               "angry": "query.all_animations_finished"
             }
-          ]
+          ],
+          "blend_transition": 0.2
         }
       }
     },
@@ -110,30 +126,52 @@
       "initial_state": "neutral",
       "states": {
         "neutral": {
-          "animations": ["neutral"],
+          "animations": ["neutral_face"],
           "transitions": [
             {
               "roaring": "query.is_roaring"
             },
             {
               "angry": "query.is_angry"
+            },
+                        {
+              "attacking": "query.is_delayed_attacking"
             }
           ]
         },
         "angry": {
+          "animations": ["angry_face"],
           "transitions": [
             {
               "roaring": "query.is_roaring"
             },
             {
               "neutral": "!query.is_angry"
+            },
+            {
+              "attacking": "query.is_delayed_attacking"
             }
           ]
         },
         "roaring": {
+          "animations": ["roaring_face"],
           "transitions": [
             {
-              "angry": "!query.is_roaring"
+              "angry": "query.all_animations_finished && query.is_angry"
+            },
+            {
+              "neutral": "query.all_animations_finished && !query.is_angry"
+            }
+          ]
+        },
+        "attacking": {
+          "animations": ["attacking_face"],
+          "transitions": [
+              {
+              "roaring": "query.is_roaring"
+            },
+            {
+              "angry": "!query.is_delayed_attacking"
             }
           ]
         }

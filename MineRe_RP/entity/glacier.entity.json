@@ -4,16 +4,21 @@
     "description": {
       "identifier": "minere:glacier",
       "materials": {
-        "default": "entity_alphatest",
+        "default": "entity_emissive_alpha",
         "emissive": "entity_emissive_alpha"
       },
       "textures": {
         "default": "textures/entity/minere/glacier/glacier",
-        "iceCharges0": "textures/entity/minere/glacier/ice_charges0"
+        "iceCharges0": "textures/entity/minere/glacier/ice_charges0",
+        "breathe0": "textures/entity/minere/glacier/breathe0",
+        "breathe1": "textures/entity/minere/glacier/breathe1",
+        "breathe2": "textures/entity/minere/glacier/breathe2",
+        "empty": "textures/entity/minere/freeze/empty"
       },
       "geometry": {
         "default": "geometry.minere.glacier",
-        "iceCharges": "geometry.minere.glacier_ice_charges"
+        "iceCharges": "geometry.minere.glacier_ice_charges",
+        "breathe": "geometry.minere.glacier_breath"
       },
       "animations": {
         "iceChargesGone": "animation.minere.glacier.iceChargesGone",
@@ -22,11 +27,14 @@
         "iceChargesShoot": "animation.minere.glacier.iceChargesShoot",
         "freezeAttackController": "controller.animation.minere.freeze_attack",
         "roar": "animation.minere.glacier.roar",
+        "roaring_face": "animation.minere.glacier.roaring_face",
         "emerge": "animation.minere.glacier.emerge",
         "submerge": "animation.minere.glacier.submerge",
         "summon": "animation.minere.glacier.summon",
         "angry": "animation.minere.glacier.angry",
-        "neutral": "animation.minere.glacier.neutral",
+        "angry_face": "animation.minere.glacier.angry_face",
+        "neutral_face": "animation.minere.glacier.neutral_face",
+        "attacking_face": "animation.minere.glacier.attacking_face",
         "controller": "controller.animation.minere.glacier",
         "iceChargesController": "controller.animation.minere.glacier_ice_charges",
         "submergeController": "controller.animation.minere.glacier_submerge",
@@ -39,6 +47,11 @@
         "snow": "minere:glacier_ice_charge_particles"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.is_attacking = query.is_delayed_attacking ? 1 : 0;",
+          "variable.textureframe = math.mod(query.life_time * 7, 3);",
+          "variable.is_transitioning = query.property('minere:is_submerging') || query.property('minere:is_emerging');"
+        ],
         "animate": [
           "iceChargesSpin",
           "freezeAttackController",
@@ -55,6 +68,7 @@
       },
       "render_controllers": [
         "controller.render.minere.glacier",
+        "controller.render.minere.glacier_breath",
         "controller.render.minere.glacier_ice_charges"
       ],
       "spawn_egg": {

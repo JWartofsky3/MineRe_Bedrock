@@ -360,6 +360,11 @@
 		},
 		"animation.minere.glacier.roar": {
 			"animation_length": 2,
+			"sound_effects": {
+				"1.0": {
+					"effect": "blast"
+				}
+			},
 			"bones": {
 				"leftEyebrow": {
 					"rotation": {
@@ -440,7 +445,12 @@
 						"1.0833": [0, 0, 0],
 						"1.5": [0, 0, 0]
 					}
-				},
+				}
+			}
+		},
+		"animation.minere.glacier.roaring_face": {
+			"animation_length": 2,
+			"bones": {
 				"angry": {
 					"scale": {
 						"0.0": [1, 1, 1],
@@ -509,6 +519,11 @@
 		},
 		"animation.minere.glacier.submerge": {
 			"loop": "hold_on_last_frame",
+			"sound_effects": {
+				"0.0": {
+					"effect": "emerge"
+				}
+			},
 			"particle_effects": {
 				"0.0": {
 					"effect": "emerge",
@@ -603,19 +618,10 @@
 				},
 				"rightEyebrow": {
 					"rotation": [0, 0, -25]
-				},
-				"charging": {
-					"scale": 0
-				},
-				"neutral": {
-					"scale": 0
-				},
-				"attacking": {
-					"scale": 0
 				}
 			}
 		},
-		"animation.minere.glacier.neutral": {
+		"animation.minere.glacier.neutral_face": {
 			"loop": true,
 			"bones": {
 				"angry": {
@@ -629,7 +635,7 @@
 				}
 			}
 		},
-		"animation.minere.glacier.attacking": {
+		"animation.minere.glacier.attacking_face": {
 			"loop": true,
 			"bones": {
 				"angry": {
@@ -643,6 +649,23 @@
 				},
 				"attacking": {
 					"scale": 1
+				}
+			}
+		},
+		"animation.minere.glacier.angry_face": {
+			"loop": true,
+			"bones": {
+				"angry": {
+					"scale": 1
+				},
+				"charging": {
+					"scale": 0
+				},
+				"neutral": {
+					"scale": 0
+				},
+				"attacking": {
+					"scale": 0
 				}
 			}
 		}

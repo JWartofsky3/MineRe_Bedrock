@@ -400,6 +400,7 @@
           "attack.strong": "mob.freeze.attack",
           "hurt": "mob.freeze.hurt",
           "shoot": "item.ice_charge.frost",
+          "roar": "mob.glacier.inhale",
           "death": {
             "sound": "mob.freeze.die",
             "pitch": 0.6,

@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:ice_spike",
       "materials": {
-        "default": "entity_alphablend"
+        "default": "entity_alphatest"
       },
       "textures": {
         "default": "textures/entity/minere/ice_spike"

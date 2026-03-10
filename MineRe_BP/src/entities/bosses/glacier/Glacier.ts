@@ -1,19 +1,25 @@
 import {
+  Block,
   Entity,
   EntityComponentTypes,
   EntityDamageCause,
   EntityHurtAfterEvent,
+  EntityQueryOptions,
+  Vector3,
   system,
   world,
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { isOffCooldown } from "entities/functions/checkCooldown";
+import { throwEntity } from "entities/functions/throw";
 import { isAlive } from "mob/mob_utils";
 import { distVector3 } from "util/vector3Functions";
 
 const GLACIER_TYPE_ID = "minere:glacier";
 const TICK_INTERVAL: [number, number] = [16, 24];
 const TARGET_FAMILIES = ["player", "villager", "irongolem"];
+const EMERGING_PROPERTY = "minere:is_emerging";
+const SUBMERGING_PROPERTY = "minere:is_submerging";
 
 enum GlacierMode {
   Ranged = 0,
@@ -55,8 +61,26 @@ const ROAR_PROPERTIES = {
 
 const TELEPORT_PROPERTIES = {
   PROP: "minere:glacier_teleport_cooldown",
-  COOLDOWN: 20 * 12,
+  COOLDOWN: 20 * 20,
   CHANCE: 0.2,
+  ATTEMPTS: 16,
+  MIN_DISTANCE_TO_TARGET: 0,
+  MAX_DISTANCE_TO_TARGET: 16,
+  MIN_VERTICAL_OFFSET: -4,
+  MAX_VERTICAL_OFFSET: 4,
+  SUBMERGE_DURATION: 60,
+  EMERGE_IMPACT_DELAY: 10,
+  EMERGE_IMPACT_DAMAGE: 5,
+  EMERGE_IMPACT_RADIUS: 2,
+  EMERGE_IMPACT_KNOCKBACK: 1.5,
+  EMERGE_IMPACT_VERTICAL: 1.0,
+  CLEARANCE_RADIUS: 2,
+  CLEARANCE_HEIGHT: 5,
+  VALID_BLOCKS: new Set<string>([
+    "minecraft:ice",
+    "minecraft:packed_ice",
+    "minecraft:blue_ice",
+  ]),
 };
 
 export class Glacier extends BaseCustomEntity {
@@ -68,12 +92,20 @@ export class Glacier extends BaseCustomEntity {
   }
 
   onTick(entity: Entity): void {
-    if (Math.random() > MODE_PROPERTIES.CHANCE) {
+    if (this.isTransitioning(entity)) {
       return;
     }
 
     const target = this.getTarget(entity);
     if (!isAlive(target)) {
+      return;
+    }
+
+    if (this.tryTeleport(entity, target)) {
+      return;
+    }
+
+    if (Math.random() > MODE_PROPERTIES.CHANCE) {
       return;
     }
 
@@ -122,9 +154,10 @@ export class Glacier extends BaseCustomEntity {
 
     if (
       data.damageSource.cause === EntityDamageCause.temperature &&
-      world.getTimeOfDay() > 500 &&
-      world.getTimeOfDay() < 11000 &&
-      !(glacier.getProperty("minere:is_submerging") as boolean)
+      ((world.getTimeOfDay() > 200 &&
+      world.getTimeOfDay() < 11000)) &&
+      !(glacier.getProperty(EMERGING_PROPERTY) as boolean) &&
+      !(glacier.getProperty(SUBMERGING_PROPERTY) as boolean)
     ) {
       return this.submergeAndDespawn(glacier);
     }
@@ -197,10 +230,196 @@ export class Glacier extends BaseCustomEntity {
     return GlacierMode.Ranged;
   }
 
+  private isTransitioning(entity: Entity): boolean {
+    return (
+      entity.getProperty(EMERGING_PROPERTY) === true ||
+      entity.getProperty(SUBMERGING_PROPERTY) === true
+    );
+  }
+
+  private tryTeleport(entity: Entity, target: Entity): boolean {
+    if (this.isTransitioning(entity)) {
+      return false;
+    }
+    if (Math.random() > TELEPORT_PROPERTIES.CHANCE) {
+      return false;
+    }
+    if (
+      !isOffCooldown(
+        entity,
+        TELEPORT_PROPERTIES.PROP,
+        TELEPORT_PROPERTIES.COOLDOWN,
+      )
+    ) {
+      return false;
+    }
+
+    const destination = this.findTeleportDestination(entity, target);
+    if (!destination) {
+      return false;
+    }
+    const facingLocation = {
+      x: target.location.x,
+      y: target.location.y,
+      z: target.location.z,
+    };
+
+    entity.triggerEvent("minere:start_submerging");
+    entity.setDynamicProperty(TELEPORT_PROPERTIES.PROP, system.currentTick);
+
+    system.runTimeout(() => {
+      if (!isAlive(entity)) {
+        return;
+      }
+      entity.teleport(destination, {
+        facingLocation,
+        keepVelocity: false,
+      });
+      entity.clearVelocity();
+      entity.triggerEvent("minere:start_emerging");
+      system.runTimeout(() => {
+        if (!isAlive(entity)) {
+          return;
+        }
+        this.applyEmergeImpact(entity);
+      }, TELEPORT_PROPERTIES.EMERGE_IMPACT_DELAY);
+    }, TELEPORT_PROPERTIES.SUBMERGE_DURATION);
+
+    return true;
+  }
+
+  private findTeleportDestination(
+    entity: Entity,
+    target: Entity,
+  ): Vector3 | null {
+    for (let i = 0; i < TELEPORT_PROPERTIES.ATTEMPTS; i++) {
+      const destination = this.getTeleportCandidate(target.location);
+      if (!destination) {
+        continue;
+      }
+      if (
+        !this.isValidTeleportSurface(entity.dimension.getBlock({
+          x: Math.floor(destination.x),
+          y: Math.floor(destination.y) - 1,
+          z: Math.floor(destination.z),
+        }))
+      ) {
+        continue;
+      }
+      if (!this.hasTeleportClearance(entity, destination)) {
+        continue;
+      }
+      return destination;
+    }
+    return null;
+  }
+
+  private getTeleportCandidate(targetLocation: Vector3): Vector3 | null {
+    const angle = Math.random() * Math.PI * 2;
+    const distance =
+      TELEPORT_PROPERTIES.MIN_DISTANCE_TO_TARGET +
+      Math.random() *
+        (TELEPORT_PROPERTIES.MAX_DISTANCE_TO_TARGET -
+          TELEPORT_PROPERTIES.MIN_DISTANCE_TO_TARGET);
+    const yOffset =
+      TELEPORT_PROPERTIES.MIN_VERTICAL_OFFSET +
+      Math.floor(
+        Math.random() *
+          (TELEPORT_PROPERTIES.MAX_VERTICAL_OFFSET -
+            TELEPORT_PROPERTIES.MIN_VERTICAL_OFFSET +
+            1),
+      );
+
+    return {
+      x: Math.floor(targetLocation.x + Math.cos(angle) * distance) + 0.5,
+      y: Math.floor(targetLocation.y + yOffset),
+      z: Math.floor(targetLocation.z + Math.sin(angle) * distance) + 0.5,
+    };
+  }
+
+  private isValidTeleportSurface(block: Block | undefined): boolean {
+    if (!block?.isValid) {
+      return false;
+    }
+    return TELEPORT_PROPERTIES.VALID_BLOCKS.has(block.typeId);
+  }
+
+  private hasTeleportClearance(entity: Entity, destination: Vector3): boolean {
+    const base = {
+      x: Math.floor(destination.x),
+      y: Math.floor(destination.y),
+      z: Math.floor(destination.z),
+    };
+
+    for (
+      let x = -TELEPORT_PROPERTIES.CLEARANCE_RADIUS;
+      x <= TELEPORT_PROPERTIES.CLEARANCE_RADIUS;
+      x++
+    ) {
+      for (
+        let z = -TELEPORT_PROPERTIES.CLEARANCE_RADIUS;
+        z <= TELEPORT_PROPERTIES.CLEARANCE_RADIUS;
+        z++
+      ) {
+        const floorBlock = entity.dimension.getBlock({
+          x: base.x + x,
+          y: base.y - 1,
+          z: base.z + z,
+        });
+        if (!this.isValidTeleportSurface(floorBlock)) {
+          return false;
+        }
+        for (let y = 0; y < TELEPORT_PROPERTIES.CLEARANCE_HEIGHT; y++) {
+          const block = entity.dimension.getBlock({
+            x: base.x + x,
+            y: base.y + y,
+            z: base.z + z,
+          });
+          if (!block?.isValid || !block.isAir) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  }
+
+  private applyEmergeImpact(entity: Entity): void {
+    const headLocation = {
+      x: entity.location.x,
+      y: entity.location.y + 2.5,
+      z: entity.location.z,
+    };
+    const query: EntityQueryOptions = {
+      location: headLocation,
+      maxDistance: TELEPORT_PROPERTIES.EMERGE_IMPACT_RADIUS,
+      excludeFamilies: ["monster", "freeze", "glacier", "ice_spike"],
+    };
+    const targets = entity.dimension.getEntities(query);
+
+    for (let i = 0; i < targets.length; i++) {
+      const target = targets[i];
+      if (!isAlive(target) || target.id === entity.id) {
+        continue;
+      }
+      target.applyDamage(TELEPORT_PROPERTIES.EMERGE_IMPACT_DAMAGE, {
+        damagingEntity: entity,
+        cause: EntityDamageCause.entityAttack,
+      });
+      throwEntity(
+        headLocation,
+        target,
+        TELEPORT_PROPERTIES.EMERGE_IMPACT_KNOCKBACK,
+        TELEPORT_PROPERTIES.EMERGE_IMPACT_VERTICAL,
+      );
+    }
+  }
+
   private submergeAndDespawn(glacier: Entity) {
     glacier.triggerEvent("minere:start_submerging");
     system.runTimeout(() => {
       glacier.remove();
-    }, 70);
+    }, 55);
   }
 }

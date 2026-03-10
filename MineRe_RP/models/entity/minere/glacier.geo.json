@@ -272,6 +272,50 @@
 					}
 				}
 			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.minere.glacier_breath",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 14,
+				"visible_bounds_offset": [0, -1, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "neutral",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-18, 0, -18], "size": [36, 54, 36], "inflate": -0.1, "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "attacking",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-18, 0, -18],
+							"size": [36, 54, 36],
+							"inflate": -0.1,
+							"uv": {
+								"north": {"uv": [220, 108.1], "uv_size": [36, 54]},
+								"east": {"uv": [0, 36], "uv_size": [36, 54]},
+								"south": {"uv": [108, 36], "uv_size": [36, 54]},
+								"west": {"uv": [72, 36], "uv_size": [36, 54]},
+								"up": {"uv": [36, 0], "uv_size": [36, 36]},
+								"down": {"uv": [72, 36], "uv_size": [36, -36]}
+							}
+						}
+					]
+				}
+			]
 		}
 	]
 }

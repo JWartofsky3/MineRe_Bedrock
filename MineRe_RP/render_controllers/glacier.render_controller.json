@@ -10,6 +10,22 @@
       "geometry": "Geometry.iceCharges",
       "materials": [{ "*": "Material.default" }],
       "textures": ["Texture.iceCharges0"]
+    },
+    "controller.render.minere.glacier_breath": {
+      "arrays": {
+        "textures": {
+          "Array.breath": [
+            "Texture.breathe0",
+            "Texture.breathe1",
+            "Texture.breathe2"
+          ]
+        }
+      },
+      "geometry": "Geometry.breathe",
+      "materials": [{ "*": "Material.emissive" }],
+      "textures": [
+        "variable.is_attacking ? Array.breath[variable.textureframe] : Texture.empty"
+      ]
     }
   }
 }
