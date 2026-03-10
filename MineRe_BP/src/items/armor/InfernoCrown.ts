@@ -1,13 +1,11 @@
 import {
-  world,
   EntityComponentTypes,
   EntityDamageCause,
   EntityEquippableComponent,
   EntityHurtAfterEvent,
   EquipmentSlot,
-  ItemComponentTypes,
-  ItemCooldownComponent,
   Player,
+  system,
 } from "@minecraft/server";
 import { spawnParticleCloud } from "particles/particleCloud";
 
@@ -15,6 +13,8 @@ const STRENGTH_DURATION = 20 * 10;
 const FIRE_RESISTANCE_DURATION = 20 * 15;
 const REGENERATION_DURATION = 20 * 5;
 const INFERNO_CROWN_ITEM_ID = "minere:inferno_crown";
+const INFERNO_CROWN_COOLDOWN_PROPERTY = "minere:inferno_crown_cooldown";
+const INFERNO_CROWN_COOLDOWN_TICKS = 20 * 20;
 
 export function infernoCrownOnEntityHurt(data: EntityHurtAfterEvent) {
   const player = data.hurtEntity;
@@ -41,15 +41,16 @@ export function infernoCrownOnEntityHurt(data: EntityHurtAfterEvent) {
   if (helmet?.typeId !== INFERNO_CROWN_ITEM_ID) {
     return;
   }
-
-  const cooldown = helmet.getComponent(
-    ItemComponentTypes.Cooldown,
-  ) as ItemCooldownComponent;
-  if (cooldown.getCooldownTicksRemaining(player) !== 0) {
+  if (
+    isPlayerOnCooldown(
+      player,
+      INFERNO_CROWN_COOLDOWN_PROPERTY,
+      INFERNO_CROWN_COOLDOWN_TICKS,
+    )
+  ) {
     return;
   }
-
-  cooldown.startCooldown(player);
+  player.setDynamicProperty(INFERNO_CROWN_COOLDOWN_PROPERTY, system.currentTick);
   player.addEffect("strength", STRENGTH_DURATION, { amplifier: 1 });
   player.addEffect("regeneration", REGENERATION_DURATION, { amplifier: 1 });
   player.addEffect("fire_resistance", FIRE_RESISTANCE_DURATION);
@@ -63,5 +64,18 @@ export function infernoCrownOnEntityHurt(data: EntityHurtAfterEvent) {
     3,
     25,
     player.dimension,
+  );
+}
+
+function isPlayerOnCooldown(
+  player: Player,
+  propertyId: string,
+  cooldownTicks: number,
+): boolean {
+  const cooldown = player.getDynamicProperty(propertyId);
+
+  return (
+    typeof cooldown === "number" &&
+    system.currentTick - cooldown < cooldownTicks
   );
 }

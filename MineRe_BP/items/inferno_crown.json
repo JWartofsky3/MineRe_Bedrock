@@ -18,10 +18,6 @@
         "value": 15,
         "slot": "armor_head"
       },
-      "minecraft:cooldown": {
-        "category": "inferno_crown",
-        "duration": 20.0
-      },
       "minecraft:rarity": "epic",
       "minecraft:repairable": {
         "repair_items": [

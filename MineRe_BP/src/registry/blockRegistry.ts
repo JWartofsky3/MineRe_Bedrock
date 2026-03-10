@@ -4,6 +4,7 @@ import { customOre } from "block/custom_ore";
 import { teleporter } from "block/teleporter";
 import { ghostPot } from "block/ghost_pot";
 import { despawnBlock } from "block/despawnBlock";
+import { icicleBreak } from "block/icicleBreak";
 
 export function registerBlocks(data: StartupEvent) {
   data.blockComponentRegistry.registerCustomComponent(
@@ -25,5 +26,9 @@ export function registerBlocks(data: StartupEvent) {
   data.blockComponentRegistry.registerCustomComponent(
     "minere:ghost_pot",
     ghostPot,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:icicle_break",
+    icicleBreak,
   );
 }

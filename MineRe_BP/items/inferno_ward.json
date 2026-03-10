@@ -14,7 +14,7 @@
       },
       "minecraft:max_stack_size": 1,
       "minecraft:rarity": "rare",
-      "minere:inferno_totem": {},
+      "minere:boss_totem": {},
       "minecraft:cooldown": {
         "category": "minere:mini_boss_totem",
         "duration": 1.0

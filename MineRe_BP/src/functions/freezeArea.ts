@@ -13,29 +13,40 @@ export type FreezeAreaOptions = {
 type FreezeReplacement = {
   toTypeId: string;
   showParticles: boolean;
+  playFizz?: boolean;
+  freezeSoundVolume?: number;
 };
 
 const OUTER_REPLACEMENTS = new Map<string, FreezeReplacement>([
   ["minecraft:fire", { toTypeId: "minecraft:air", showParticles: false }],
   ["minecraft:soul_fire", { toTypeId: "minecraft:air", showParticles: false }],
   [
-    "minecraft:powder_snow",
-    { toTypeId: "minecraft:snow", showParticles: true },
+    "minecraft:water",
+    { toTypeId: "minecraft:ice", showParticles: true, freezeSoundVolume: 0.25 },
   ],
-  ["minecraft:water", { toTypeId: "minecraft:ice", showParticles: true }],
   [
     "minecraft:flowing_water",
-    { toTypeId: "minecraft:ice", showParticles: true },
+    { toTypeId: "minecraft:ice", showParticles: true, freezeSoundVolume: 0.25 },
   ],
 ]);
 
 const INNER_RING_REPLACEMENTS = new Map<string, FreezeReplacement>([
   [
-    "minecraft:flowing_lava",
-    { toTypeId: "minecraft:cobblestone", showParticles: true },
+    "minecraft:magma",
+    { toTypeId: "minecraft:basalt", showParticles: true, playFizz: true },
   ],
-  ["minecraft:lava", { toTypeId: "minecraft:obsidian", showParticles: true }],
+  [
+    "minecraft:flowing_lava",
+    { toTypeId: "minecraft:cobblestone", showParticles: true, playFizz: true },
+  ],
+  [
+    "minecraft:lava",
+    { toTypeId: "minecraft:obsidian", showParticles: true, playFizz: true },
+  ],
 ]);
+
+const LAVA_EXTINGUISH_SOUND_ID = "random.fizz";
+const WATER_FREEZE_SOUND_ID = "mob.freeze.freeze";
 
 export function freezeArea(
   dimension: Dimension,
@@ -136,6 +147,14 @@ export function freezeArea(
 
 function applyReplacement(block: Block, replacement: FreezeReplacement) {
   block.setType(replacement.toTypeId);
+  if (replacement.playFizz) {
+    block.dimension.playSound(LAVA_EXTINGUISH_SOUND_ID, block.location);
+  }
+  if (replacement.freezeSoundVolume) {
+    block.dimension.playSound(WATER_FREEZE_SOUND_ID, block.location, {
+      volume: replacement.freezeSoundVolume,
+    });
+  }
   if (replacement.showParticles) {
     snowParticles(block);
   }
@@ -148,4 +167,16 @@ function snowParticles(block: Block) {
     y: block.location.y + 0.25,
     z: block.location.z,
   });
+  if (
+    block.typeId === "minecraft:obsidian" ||
+    block.typeId === "minecraft:cobblestone"
+  ) {
+    for (let i = 0; i < 8; i++) {
+      dimension.spawnParticle("minecraft:basic_smoke_particle", {
+        x: block.location.x + 0.5,
+        y: block.location.y + 0.5,
+        z: block.location.z + 0.5,
+      });
+    }
+  }
 }

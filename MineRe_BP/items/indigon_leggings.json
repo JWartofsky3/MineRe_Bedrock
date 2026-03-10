@@ -18,10 +18,6 @@
         "value": 10,
         "slot": "armor_legs"
       },
-      "minecraft:cooldown": {
-        "category": "indigon_armor",
-        "duration": 60.0
-      },
       "minecraft:repairable": {
         "repair_items": [
           {

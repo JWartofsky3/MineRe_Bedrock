@@ -1,5 +1,6 @@
 import { ReplacePlaceholderEntitiesEvent } from "events/spawning/replacePlaceholderEntities";
 import { InfernoSpawnEvent } from "events/spawning/spawnInferno";
+import { GlacierSpawnEvent } from "events/spawning/spawnGlacier";
 import { EndCrystalDestructionEvent } from "events/reaction/endCrystalDestruction";
 import { EndermanTeleportTargetEvent } from "events/reaction/endermanTeleportTarget";
 import { CreakingApplyEffectsEvent } from "events/reaction/creakingApplyEffects";
@@ -13,6 +14,7 @@ export function RegisterCustomEvents() {
   // spawn events
   new ReplacePlaceholderEntitiesEvent().register();
   new InfernoSpawnEvent().register();
+  new GlacierSpawnEvent().register();
   new BabySpawnMatchParentEvent().register();
 
   // reaction events
