@@ -1,4 +1,5 @@
-import { system, Entity } from "@minecraft/server";
+import { system, Entity, Vector3 } from "@minecraft/server";
+import { isSolid } from "block/blockUtils";
 import { particleWave } from "particles/particleWave";
 import { distVector3, getRandomAir } from "util/vector3Functions";
 
@@ -16,6 +17,7 @@ const TELEPORT_PROPERTIES = {
   SOUND_ID: "mob.ghast.fireball",
   SOUND_VOLUME: 0.5,
   REQUIRED_CLEARANCE_HEIGHT: 4,
+  LINE_OF_SIGHT_STEP: 0.75,
 };
 
 export const TELEPORT_COOLDOWN = TELEPORT_PROPERTIES.COOLDOWN;
@@ -88,6 +90,9 @@ export function tryInfernoTeleport(options: InfernoTeleportOptions): void {
       continue;
     }
     if (!isSafeTeleportDestination(entity, destination)) {
+      continue;
+    }
+    if (!hasTeleportLineOfSight(destination, target)) {
       continue;
     }
     teleportWithEffects(entity, destination, origin);
@@ -227,4 +232,58 @@ function teleportWithEffects(
     keepVelocity: false,
   });
   entity.clearVelocity();
+}
+
+function hasTeleportLineOfSight(destination: Vector3, target: Entity): boolean {
+  const start = getUpperBodyLocationAtLocation(target, destination);
+  const end = getUpperBodyLocation(target);
+  const distance = distVector3(start, end);
+  const steps = Math.max(
+    1,
+    Math.floor(distance / TELEPORT_PROPERTIES.LINE_OF_SIGHT_STEP),
+  );
+
+  for (let i = 1; i < steps; i++) {
+    const progress = i / steps;
+    const sample = interpolateVector3(start, end, progress);
+    const block = target.dimension.getBlock({
+      x: Math.floor(sample.x),
+      y: Math.floor(sample.y),
+      z: Math.floor(sample.z),
+    });
+    if (isSolid(block)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getUpperBodyLocation(entity: Entity): Vector3 {
+  const headLocation = entity.getHeadLocation();
+  return {
+    x: entity.location.x,
+    y: entity.location.y + (headLocation.y - entity.location.y) * 0.75,
+    z: entity.location.z,
+  };
+}
+
+function getUpperBodyLocationAtLocation(
+  entity: Entity,
+  location: Vector3,
+): Vector3 {
+  const headLocation = entity.getHeadLocation();
+  return {
+    x: location.x,
+    y: location.y + (headLocation.y - entity.location.y) * 0.75,
+    z: location.z,
+  };
+}
+
+function interpolateVector3(start: Vector3, end: Vector3, progress: number): Vector3 {
+  return {
+    x: start.x + (end.x - start.x) * progress,
+    y: start.y + (end.y - start.y) * progress,
+    z: start.z + (end.z - start.z) * progress,
+  };
 }

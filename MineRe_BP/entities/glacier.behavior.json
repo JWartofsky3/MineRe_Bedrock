@@ -336,6 +336,10 @@
           {
             "cause": "fall",
             "deals_damage": false
+          },
+          {
+            "cause": "projectile",
+            "deals_damage": false
           }
         ]
       },
@@ -467,7 +471,13 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["mobile", "submerging", "ranged", "melee"]
+              "component_groups": [
+                "mobile",
+                "submerging",
+                "ranged",
+                "melee",
+                "minere:glacier_roaring"
+              ]
             }
           },
           {
@@ -487,7 +497,13 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["mobile", "emerging", "ranged", "melee"]
+              "component_groups": [
+                "mobile",
+                "emerging",
+                "ranged",
+                "melee",
+                "minere:glacier_roaring"
+              ]
             }
           },
           {

@@ -496,6 +496,7 @@
 			}
 		},
 		"animation.minere.glacier.emerge": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 4,
 			"sound_effects": {
 				"0.5": {
@@ -542,6 +543,11 @@
 		},
 		"animation.minere.glacier.summon": {
 			"loop": "hold_on_last_frame",
+						"sound_effects": {
+				"0.0": {
+					"effect": "summon"
+				}
+			},
 			"particle_effects": {
 				"0.0": [
 					{

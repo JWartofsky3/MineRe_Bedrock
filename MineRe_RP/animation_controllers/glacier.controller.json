@@ -8,10 +8,10 @@
           "animations": ["emerge"],
           "transitions": [
             {
-              "default": "query.all_animations_finished || !query.property('minere:is_emerging')"
+              "default": "!query.property('minere:is_emerging')"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.0
         },
         "default": {
           "transitions": [
@@ -22,7 +22,7 @@
               "submerging": "query.property('minere:is_submerging')"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.0
         },
         "submerging": {
           "animations": ["submerge"],
@@ -31,7 +31,7 @@
               "default": "query.all_animations_finished"
             }
           ],
-          "blend_transition": 0.2
+          "blend_transition": 0.0
         }
       }
     },

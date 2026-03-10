@@ -9,6 +9,7 @@ import {
   system,
   world,
 } from "@minecraft/server";
+import { isSolid } from "block/blockUtils";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { isOffCooldown } from "entities/functions/checkCooldown";
 import { throwEntity } from "entities/functions/throw";
@@ -65,7 +66,7 @@ const TELEPORT_PROPERTIES = {
   CHANCE: 0.2,
   ATTEMPTS: 16,
   MIN_DISTANCE_TO_TARGET: 0,
-  MAX_DISTANCE_TO_TARGET: 16,
+  MAX_DISTANCE_TO_TARGET: 24,
   MIN_VERTICAL_OFFSET: -4,
   MAX_VERTICAL_OFFSET: 4,
   SUBMERGE_DURATION: 60,
@@ -76,10 +77,12 @@ const TELEPORT_PROPERTIES = {
   EMERGE_IMPACT_VERTICAL: 1.0,
   CLEARANCE_RADIUS: 2,
   CLEARANCE_HEIGHT: 5,
+  LINE_OF_SIGHT_STEP: 0.75,
   VALID_BLOCKS: new Set<string>([
     "minecraft:ice",
     "minecraft:packed_ice",
     "minecraft:blue_ice",
+    "minecraft:snow",
   ]),
 };
 
@@ -152,14 +155,17 @@ export class Glacier extends BaseCustomEntity {
     const glacier = data.hurtEntity;
     const attacker = data.damageSource?.damagingEntity;
 
-    if (
-      data.damageSource.cause === EntityDamageCause.temperature &&
-      ((world.getTimeOfDay() > 200 &&
-      world.getTimeOfDay() < 11000)) &&
-      !(glacier.getProperty(EMERGING_PROPERTY) as boolean) &&
-      !(glacier.getProperty(SUBMERGING_PROPERTY) as boolean)
-    ) {
+    const isDaytime = world.getTimeOfDay() > 200 && world.getTimeOfDay() < 11000;
+    const isTransitioning = this.isTransitioning(glacier);
+    const shouldSubmerge =
+      (data.damageSource.cause === EntityDamageCause.temperature || isDaytime) &&
+      !isTransitioning;
+
+    if (shouldSubmerge) {
       return this.submergeAndDespawn(glacier);
+    }
+    if (isTransitioning) {
+      return;
     }
 
     if (!isAlive(attacker)) {
@@ -292,9 +298,15 @@ export class Glacier extends BaseCustomEntity {
     entity: Entity,
     target: Entity,
   ): Vector3 | null {
+    const currentDistanceToTarget = distVector3(entity.location, target.location);
     for (let i = 0; i < TELEPORT_PROPERTIES.ATTEMPTS; i++) {
       const destination = this.getTeleportCandidate(target.location);
       if (!destination) {
+        continue;
+      }
+      if (
+        distVector3(destination, target.location) >= currentDistanceToTarget
+      ) {
         continue;
       }
       if (
@@ -307,6 +319,9 @@ export class Glacier extends BaseCustomEntity {
         continue;
       }
       if (!this.hasTeleportClearance(entity, destination)) {
+        continue;
+      }
+      if (!this.hasTeleportLineOfSight(destination, target)) {
         continue;
       }
       return destination;
@@ -414,6 +429,67 @@ export class Glacier extends BaseCustomEntity {
         TELEPORT_PROPERTIES.EMERGE_IMPACT_VERTICAL,
       );
     }
+  }
+
+  private hasTeleportLineOfSight(
+    destination: Vector3,
+    target: Entity,
+  ): boolean {
+    const start = this.getUpperBodyLocationAtLocation(target, destination);
+    const end = this.getUpperBodyLocation(target);
+    const distance = distVector3(start, end);
+    const steps = Math.max(
+      1,
+      Math.floor(distance / TELEPORT_PROPERTIES.LINE_OF_SIGHT_STEP),
+    );
+
+    for (let i = 1; i < steps; i++) {
+      const progress = i / steps;
+      const sample = this.interpolateVector3(start, end, progress);
+      const block = target.dimension.getBlock({
+        x: Math.floor(sample.x),
+        y: Math.floor(sample.y),
+        z: Math.floor(sample.z),
+      });
+      if (isSolid(block)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  private getUpperBodyLocation(entity: Entity): Vector3 {
+    const headLocation = entity.getHeadLocation();
+    return {
+      x: entity.location.x,
+      y: entity.location.y + (headLocation.y - entity.location.y) * 0.75,
+      z: entity.location.z,
+    };
+  }
+
+  private getUpperBodyLocationAtLocation(
+    entity: Entity,
+    location: Vector3,
+  ): Vector3 {
+    const headLocation = entity.getHeadLocation();
+    return {
+      x: location.x,
+      y: location.y + (headLocation.y - entity.location.y) * 0.75,
+      z: location.z,
+    };
+  }
+
+  private interpolateVector3(
+    start: Vector3,
+    end: Vector3,
+    progress: number,
+  ): Vector3 {
+    return {
+      x: start.x + (end.x - start.x) * progress,
+      y: start.y + (end.y - start.y) * progress,
+      z: start.z + (end.z - start.z) * progress,
+    };
   }
 
   private submergeAndDespawn(glacier: Entity) {

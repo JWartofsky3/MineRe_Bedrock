@@ -68,26 +68,47 @@ export class Ogre extends BaseCustomEntity {
   onEntityHurtEntity = (data: EntityHurtAfterEvent): void => {
     const ogre = data.damageSource?.damagingEntity;
     const target = data.hurtEntity;
-    if (!isAlive(ogre) || !isAlive(target)) {
+    if (!isAlive(ogre)) {
       return;
     }
+    const isTargetAlive = isAlive(target);
 
     const variant: OgreVariantProperties = isCaveOgre(ogre)
       ? OGRE_PROPERTIES.variant.cave
       : OGRE_PROPERTIES.variant.green;
 
     // trigger roar attack
-    rollOgreRoar(ogre, target, variant, target.typeId === "minecraft:player");
+    if (isTargetAlive) {
+      rollOgreRoar(
+        ogre,
+        target,
+        variant,
+        target.typeId === "minecraft:player",
+      );
+    }
 
     // laugh on kill
+    if (!isTargetAlive) {
+      system.runTimeout(() => {
+        if (!ogre?.isValid) {
+          return;
+        }
+        ogre.dimension.playSound("mob.ogre.laugh", ogre.location);
+      }, OGRE_PROPERTIES.laughDelayTicks);
+      return;
+    }
     const health = target.getComponent(
       EntityComponentTypes.Health,
     ) as EntityHealthComponent;
-    if (health && health.currentValue <= 0) {
-      system.runTimeout(() => {
-        ogre.dimension.playSound("mob.ogre.laugh", ogre.location);
-      }, OGRE_PROPERTIES.laughDelayTicks);
+    if (!health || health.currentValue > 0) {
+      return;
     }
+    system.runTimeout(() => {
+      if (!ogre?.isValid) {
+        return;
+      }
+      ogre.dimension.playSound("mob.ogre.laugh", ogre.location);
+    }, OGRE_PROPERTIES.laughDelayTicks);
   };
 
   onEntityHurt = (data: EntityHurtAfterEvent): void => {

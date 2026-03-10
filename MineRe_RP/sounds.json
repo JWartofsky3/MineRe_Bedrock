@@ -401,6 +401,7 @@
           "hurt": "mob.freeze.hurt",
           "shoot": "item.ice_charge.frost",
           "roar": "mob.glacier.inhale",
+          "prepare.summon": "mob.evocation_illager.prepare_summon",
           "death": {
             "sound": "mob.freeze.die",
             "pitch": 0.6,

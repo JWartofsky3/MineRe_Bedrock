@@ -81,22 +81,6 @@
         }
       ]
     },
-    "boss.glacier.ambient": {
-      "sounds": [
-        "sounds/boss/glacier/iceburg0",
-        "sounds/boss/glacier/iceburg1",
-        {
-          "name": "sounds/environment/ice_crack0",
-          "pitch": 0.4,
-          "volume": 1.0
-        },
-        {
-          "name": "sounds/environment/ice_crack1",
-          "pitch": 0.4,
-          "volume": 1.0
-        }
-      ]
-    },
     "item.amethyst_staff.error": {
       "category": "player",
       "sounds": [
@@ -512,9 +496,34 @@
       "category": "hostile",
       "sounds": ["sounds/mob/freeze/freeze"]
     },
+        "boss.glacier.ambient": {
+      "sounds": [
+        "sounds/boss/glacier/iceburg0",
+        "sounds/boss/glacier/iceburg1",
+        {
+          "name": "sounds/environment/ice_crack0",
+          "pitch": 0.4,
+          "volume": 1.0
+        },
+        {
+          "name": "sounds/environment/ice_crack1",
+          "pitch": 0.4,
+          "volume": 1.0
+        }
+      ]
+    },
     "boss.glacier.inhale": {
       "category": "hostile",
       "sounds": ["sounds/boss/glacier/inhale"]
+    },
+        "boss.glacier.magic": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/boss/glacier/magic",
+          "volume": 2
+        }
+      ]
     },
     "mob.gremlin.ambient": {
       "category": "hostile",

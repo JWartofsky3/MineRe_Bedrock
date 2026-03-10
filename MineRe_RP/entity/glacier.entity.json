@@ -64,7 +64,8 @@
       "sound_effects": {
         "emerge": "mob.walker.emerge",
         "inhale": "boss.glacier.inhale",
-        "blast": "item.ice_charge.blast"
+        "blast": "item.ice_charge.blast",
+        "summon": "boss.glacier.magic"
       },
       "render_controllers": [
         "controller.render.minere.glacier",

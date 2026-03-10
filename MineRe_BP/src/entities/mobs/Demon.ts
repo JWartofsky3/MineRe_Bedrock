@@ -1,4 +1,10 @@
-import { Entity, EntityHurtAfterEvent, system } from "@minecraft/server";
+import {
+  Entity,
+  EntityComponentTypes,
+  EntityHealthComponent,
+  EntityHurtAfterEvent,
+  system,
+} from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { castFire } from "functions/castFire";
 import { isAlive } from "entities/utilities/common";
@@ -14,6 +20,7 @@ const FIRE_ACTIVATION_RANGE = 7;
 const FIRE_MAX_RANGE = 14;
 const FIRE_BEAM_DELAY = 15;
 const FIRE_RANDOM_DELAY = 100;
+const LAUGH_DELAY_TICKS = 3;
 
 export class Demon extends BaseCustomEntity {
   constructor() {
@@ -47,10 +54,38 @@ export class Demon extends BaseCustomEntity {
   onEntityHurtEntity = (data: EntityHurtAfterEvent): void => {
     const attacker = data.damageSource?.damagingEntity;
     const target = data.hurtEntity;
-    if (!isAlive(attacker) || !isAlive(target)) {
+    if (!isAlive(attacker)) {
       return;
     }
-    this.tryCastFire(attacker, target, 0.25, FIRE_RANDOM_DELAY);
+    const isTargetAlive = isAlive(target);
+
+    if (isTargetAlive) {
+      this.tryCastFire(attacker, target, 0.25, FIRE_RANDOM_DELAY);
+    }
+
+    if (!isTargetAlive) {
+      system.runTimeout(() => {
+        if (!attacker?.isValid) {
+          return;
+        }
+        attacker.dimension.playSound("mob.demon.laugh", attacker.location);
+      }, LAUGH_DELAY_TICKS);
+      return;
+    }
+
+    const health = target.getComponent(
+      EntityComponentTypes.Health,
+    ) as EntityHealthComponent;
+    if (!health || health.currentValue > 0) {
+      return;
+    }
+
+    system.runTimeout(() => {
+      if (!attacker?.isValid) {
+        return;
+      }
+      attacker.dimension.playSound("mob.demon.laugh", attacker.location);
+    }, LAUGH_DELAY_TICKS);
   };
 
   private tryCastFire(
