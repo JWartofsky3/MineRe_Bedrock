@@ -4,10 +4,10 @@
     "description": {
       "identifier": "minere:ice_caverns_feature"
     },
-    "features": [
-      "minere:ice_cavern_snap_to_floor_blocks_feature",
-      "minere:ice_caverns_feature1"
-    ],
-    "early_out": "first_failure"
+    "features": [      "minere:ice_cavern_snap_to_floor_feature",
+      "minere:ice_cavern_snap_to_ceiling_feature",
+      "minere:ice_cavern_snap_to_wall_blocks_feature",
+    "minere:ice_cavern_snap_to_wall_blocks_feature",
+  "minere:ice_cavern_snap_to_wall_blocks_feature"]
   }
 }

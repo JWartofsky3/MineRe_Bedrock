@@ -2,33 +2,53 @@
   "format_version": "1.13.0",
   "minecraft:tree_feature": {
     "description": {
-      "identifier": "minecraft:pine_tree_feature"
+      "identifier": "minecraft:mountain_spruce_tree_feature"
     },
     "trunk": {
       "trunk_height": {
-        "range_min": 10,
-        "range_max": 20
+        "range_min": 9,
+        "range_max": 18
+      },
+      "height_modifier": {
+        "range_min": -2,
+        "range_max": 1
       },
       "trunk_block": {
         "name": "minecraft:spruce_log"
       }
     },
-    "pine_canopy": {
-      "base_radius": 1,
-      "canopy_height": {
-        "range_min": 5,
+    "spruce_canopy": {
+      "lower_offset": {
+        "range_min": 1,
         "range_max": 7
+      },
+      "upper_offset": {
+        "range_min": 0,
+        "range_max": 3
+      },
+      "max_radius": {
+        "range_min": 2,
+        "range_max": 4
       },
       "leaf_block": {
         "name": "minecraft:spruce_leaves"
       }
     },
     // Blocks the tree can be placed on.
-    "may_grow_on": [{ "tags": "query.any_tag('dirt')" }],
+    "may_grow_on": [
+      { "tags": "query.any_tag('dirt')" },
+      "minecraft:snow"
+    ],
     // Any "may_grow_on" block that is not specified here will be replaced with the first block in this list.
-    "base_block": ["minecraft:dirt", "minecraft:coarse_dirt"],
+    "base_block": [
+      "minecraft:dirt",
+      "minecraft:coarse_dirt"
+    ],
     // Blocks to ignore when checking for clearance around the tree. Already includes all blocks specified in "may_replace".
-    "may_grow_through": [{ "tags": "query.any_tag('dirt')" }],
+    "may_grow_through": [
+      { "tags": "query.any_tag('dirt')" },
+      "minecraft:snow"
+    ],
     // Blocks that can be replaced by the tree's trunk and canopy.
     "may_replace": [
       "minecraft:air",
@@ -44,7 +64,10 @@
       "minecraft:mangrove_leaves",
       "minecraft:oak_leaves",
       "minecraft:pale_oak_leaves",
-      "minecraft:spruce_leaves"
+      "minecraft:spruce_leaves",
+      // Plants
+      "minecraft:wildflowers",
+      "minecraft:leaf_litter"
     ]
   }
 }

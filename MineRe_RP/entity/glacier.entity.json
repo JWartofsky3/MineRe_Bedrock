@@ -26,9 +26,11 @@
         "submerge": "animation.minere.glacier.submerge",
         "summon": "animation.minere.glacier.summon",
         "angry": "animation.minere.glacier.angry",
+        "neutral": "animation.minere.glacier.neutral",
         "controller": "controller.animation.minere.glacier",
         "iceChargesController": "controller.animation.minere.glacier_ice_charges",
-        "submergeController": "controller.animation.minere.glacier_submerge"
+        "submergeController": "controller.animation.minere.glacier_submerge",
+        "faceController": "controller.animation.minere.glacier_face"
       },
       "particle_effects": {
         "freeze_breath": "minere:freeze_breath",
@@ -42,7 +44,8 @@
           "freezeAttackController",
           "controller",
           "iceChargesController",
-          "submergeController"
+          "submergeController",
+          "faceController"
         ]
       },
       "sound_effects": {

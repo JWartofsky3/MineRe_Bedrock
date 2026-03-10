@@ -138,9 +138,6 @@
         "stunned": {
           "animations": [
             {
-              "spin": "0.25"
-            },
-            {
               "bounce": "0.25"
             }
           ],

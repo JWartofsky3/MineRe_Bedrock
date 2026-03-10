@@ -24,6 +24,7 @@ import { Helper1 } from "items/components/helpers/helper1";
 import { Helper2 } from "items/components/helpers/helper2";
 import { Ghostwalker } from "items/components/ghostwalker";
 import { IndigonApple } from "items/components/indigon_apple";
+import { InfernoTotem } from "items/components/infernoTotem";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -61,6 +62,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:ghostwalker",
     Ghostwalker,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:inferno_totem",
+    InfernoTotem,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:royal_jelly",

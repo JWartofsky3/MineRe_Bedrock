@@ -44,8 +44,7 @@ export function skeletonStrafe(entity, chance) {
             owner.isClimbing ||
             owner.location.y <= owner.dimension.heightRange.min ||
             !owner.getDynamicProperty(IS_STRAFING)) {
-            system.clearRun(runner);
-            owner.setDynamicProperty(IS_STRAFING, false);
+            endStrafe(owner, runner);
             return;
         }
         for (let i = -1; i <= 1; i++) {
@@ -56,8 +55,7 @@ export function skeletonStrafe(entity, chance) {
                     z: owner.location.z + j,
                 });
                 if (!blockAt || blockAt.isAir || blockAt.isLiquid) {
-                    system.clearRun(runner);
-                    owner.setDynamicProperty(IS_STRAFING, false);
+                    endStrafe(owner, runner);
                     return;
                 }
             }
@@ -74,7 +72,12 @@ export function skeletonStrafe(entity, chance) {
     });
     // cleanup
     system.runTimeout(() => {
-        system.clearRun(runner);
-        owner?.setDynamicProperty(IS_STRAFING, false);
+        endStrafe(owner, runner);
     }, 20 * DURATION_MIN + 20 * DURATION_MAX * Math.random());
+}
+function endStrafe(owner, runner) {
+    system.clearRun(runner);
+    if (owner?.isValid) {
+        owner.setDynamicProperty(IS_STRAFING, false);
+    }
 }

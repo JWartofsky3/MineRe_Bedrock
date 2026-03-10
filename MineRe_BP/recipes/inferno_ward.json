@@ -1,0 +1,24 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:inferno_ward"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [" B ", "BGB", " N "],
+    "key": {
+      "N": {
+        "item": "minecraft:netherite_scrap"
+      },
+      "G": {
+        "item": "minecraft:gold_ingot"
+      },
+      "B": {
+        "item": "minecraft:blaze_rod"
+      }
+    },
+    "result": {
+      "item": "minere:inferno_ward"
+    }
+  }
+}

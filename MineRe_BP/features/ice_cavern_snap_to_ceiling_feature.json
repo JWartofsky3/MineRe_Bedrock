@@ -6,6 +6,7 @@
     },
     "feature_to_snap": "minere:ice_cavern_weighted_ceiling_feature",
     "vertical_search_range": 8,
-    "surface": "ceiling"
+    "surface": "ceiling",
+    "allow_air_placement": true
   }
 }

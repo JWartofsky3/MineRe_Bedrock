@@ -30,14 +30,14 @@
       }
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/300,v.originx/300); t.mult = 1 + (query.heightmap(v.originx, v.originz) - 64)/64; return (t.noise < -0.4) ? (800 * t.mult) : (t.noise < -0.3) ? (500 * t.mult) : (t.noise < -0.15) ? (250 * t.mult) : 0;",
+      "iterations": "t.noise = q.noise(v.originz/300,v.originx/300); t.mult = 1 + (query.heightmap(v.originx, v.originz) - 64)/64; return (t.noise < -0.35) ? (2000 * t.mult) : (t.noise < -0.25) ? (1400 * t.mult) : (t.noise < -0.1) ? (700 * t.mult) : 0;",
       "x": {
         "distribution": "uniform",
         "extent": [0, 16]
       },
       "y": {
         "distribution": "uniform",
-        "extent": [-8, "query.heightmap(variable.worldx, variable.worldz) - 24"]
+        "extent": [-8, "query.heightmap(variable.worldx, variable.worldz) - 16"]
       },
       "z": {
         "distribution": "uniform",

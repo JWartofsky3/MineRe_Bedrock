@@ -8,7 +8,7 @@
           "animations": ["emerge"],
           "transitions": [
             {
-              "default": "query.all_animations_finished"
+              "default": "query.all_animations_finished || !query.is_emerging"
             }
           ]
         },
@@ -101,6 +101,39 @@
           "transitions": [
             {
               "angry": "query.all_animations_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.minere.glacier_face": {
+      "initial_state": "neutral",
+      "states": {
+        "neutral": {
+          "animations": ["neutral"],
+          "transitions": [
+            {
+              "roaring": "query.is_roaring"
+            },
+            {
+              "angry": "query.is_angry"
+            }
+          ]
+        },
+        "angry": {
+          "transitions": [
+            {
+              "roaring": "query.is_roaring"
+            },
+            {
+              "neutral": "!query.is_angry"
+            }
+          ]
+        },
+        "roaring": {
+          "transitions": [
+            {
+              "angry": "!query.is_roaring"
             }
           ]
         }

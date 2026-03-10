@@ -326,6 +326,10 @@ item.minere:indigon_apple=Indigon Apple
 
 item.minere:enchanted_indigon_apple=Enchanted Indigon Apple
 
+item.minere:inferno_totem=Inferno Totem
+
+item.minere:inferno_ward=Inferno Ward
+
 entity.minere:monkey.name=Monkey
 item.spawn_egg.entity.minere:monkey.name=Spawn Monkey
 

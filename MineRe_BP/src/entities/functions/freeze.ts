@@ -19,6 +19,8 @@ CANNOT_BE_FROZEN.add("minecraft:bat");
 CANNOT_BE_FROZEN.add("minecraft:ender_dragon");
 CANNOT_BE_FROZEN.add("minere:freeze");
 CANNOT_BE_FROZEN.add("minecraft:glacier");
+CANNOT_BE_FROZEN.add("minere:inferno");
+CANNOT_BE_FROZEN.add("minecraft:blaze");
 
 export function rollFreeze(target: Entity, bonus: number = 0) {
   if (!isAlive(target)) {

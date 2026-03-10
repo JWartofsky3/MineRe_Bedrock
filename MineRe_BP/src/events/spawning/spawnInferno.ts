@@ -3,6 +3,9 @@ import {
   world,
   EntitySpawnAfterEvent,
   Dimension,
+  EntityComponentTypes,
+  EntityEquippableComponent,
+  EquipmentSlot,
   Player,
   Vector3,
 } from "@minecraft/server";
@@ -16,6 +19,14 @@ const LEVEL_CAP = 50;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20; // 30 minutes
 const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
+const INFERNO_TOTEM_ID = "minere:inferno_totem";
+const INFERNO_WARD_ID = "minere:inferno_ward";
+
+type Challenger = {
+  player: Player;
+  effectiveLevel: number;
+  hasTotem: boolean;
+};
 
 export class InfernoSpawnEvent implements RegisterableEvent {
   register(): void {
@@ -47,16 +58,39 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
     maxDistance: 64,
   });
 
-  let challenger: Player | undefined = undefined;
+  let challenger: Challenger | undefined = undefined;
   for (const player of players) {
+    const infernoHeldItemState = getInfernoHeldItemState(player);
+    if (infernoHeldItemState.hasWard) {
+      return;
+    }
+
+    const effectiveLevel = infernoHeldItemState.hasTotem
+      ? LEVEL_CAP
+      : player.level;
     const miniBossProp = player.getDynamicProperty(MINI_BOSS_SPAWN_TIME_PROP);
-    if (!!miniBossProp && typeof miniBossProp === "number") {
+    if (
+      !infernoHeldItemState.hasTotem &&
+      !!miniBossProp &&
+      typeof miniBossProp === "number"
+    ) {
       if (system.currentTick - miniBossProp < SPAWN_CHANCE_COOLDOWN_TICKS) {
         continue;
       }
     }
-    if (!challenger || player.level > challenger?.level) {
-      challenger = player;
+
+    if (
+      !challenger ||
+      effectiveLevel > challenger.effectiveLevel ||
+      (effectiveLevel === challenger.effectiveLevel &&
+        infernoHeldItemState.hasTotem &&
+        !challenger.hasTotem)
+    ) {
+      challenger = {
+        player: player,
+        effectiveLevel: effectiveLevel,
+        hasTotem: infernoHeldItemState.hasTotem,
+      };
     }
   }
   if (!challenger) {
@@ -66,7 +100,7 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
   const spawnChance =
     SPAWN_CHANCE_MIN +
     ((SPAWN_CHANCE_MAX - SPAWN_CHANCE_MIN) *
-      (Math.min(challenger.level, LEVEL_CAP) - LEVEL_MIN)) /
+      (Math.min(challenger.effectiveLevel, LEVEL_CAP) - LEVEL_MIN)) /
       (LEVEL_CAP - LEVEL_MIN);
   if (Math.random() > spawnChance) {
     return;
@@ -75,7 +109,10 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
     return;
   }
 
-  challenger.setDynamicProperty(MINI_BOSS_SPAWN_TIME_PROP, system.currentTick);
+  challenger.player.setDynamicProperty(
+    MINI_BOSS_SPAWN_TIME_PROP,
+    system.currentTick,
+  );
   entity.remove();
   dimension.spawnEntity("minere:inferno", location);
 }
@@ -89,4 +126,32 @@ function hasNearbyMobSpawner(dimension: Dimension, location: Vector3): boolean {
       return block.typeId === "minecraft:mob_spawner";
     },
   );
+}
+
+function getInfernoHeldItemState(player: Player): {
+  hasTotem: boolean;
+  hasWard: boolean;
+} {
+  const equippable = player.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!equippable) {
+    return {
+      hasTotem: false,
+      hasWard: false,
+    };
+  }
+
+  const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
+  const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
+  const hasWard =
+    mainhand?.typeId === INFERNO_WARD_ID || offhand?.typeId === INFERNO_WARD_ID;
+  const hasTotem =
+    mainhand?.typeId === INFERNO_TOTEM_ID ||
+    offhand?.typeId === INFERNO_TOTEM_ID;
+
+  return {
+    hasTotem: hasTotem,
+    hasWard: hasWard,
+  };
 }

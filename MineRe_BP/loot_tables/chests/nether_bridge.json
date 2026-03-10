@@ -202,11 +202,16 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 4
+          "weight": 3
         },
         {
           "type": "item",
-          "name": "minere:firebrand",
+          "name": "minere:inferno_ward",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:inferno_totem",
           "weight": 1
         }
       ]
@@ -216,7 +221,7 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 7
+          "weight": 4
         },
         {
           "type": "item",

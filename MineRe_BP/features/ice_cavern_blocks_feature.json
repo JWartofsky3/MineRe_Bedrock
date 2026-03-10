@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:ice_cavern_blocks_feature"
     },
-    "count": 40,
+    "count": 32,
     "replace_rules": [
       {
         "places_block": {

@@ -147,6 +147,12 @@
     "minere.inferno_crown": {
       "textures": "textures/items/minere/inferno_crown"
     },
+    "minere.inferno_totem": {
+      "textures": "textures/items/minere/inferno_totem.png"
+    },
+    "minere.inferno_ward": {
+      "textures": "textures/items/minere/inferno_ward.png"
+    },
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"
     },
