@@ -27,6 +27,7 @@ import { IndigonApple } from "items/components/indigon_apple";
 import { BossTotem } from "items/components/bossTotem";
 import { IcePick } from "items/components/ice_pick";
 import { WindShovel } from "items/components/wind_shovel";
+import { ShadowScythe } from "items/components/shadow_scythe";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -68,6 +69,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:darkheart",
     Darkheart,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:shadow_scythe",
+    ShadowScythe,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:ghostwalker",

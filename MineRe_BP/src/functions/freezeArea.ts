@@ -66,7 +66,7 @@ export function freezeArea(
   const isNether = dimension.id.includes("nether");
 
   const blockAt = dimension.getBlock(location);
-  if (blockAt && blockAt.isAir) {
+  if (blockAt && blockAt.isAir && !isNether && isSolid(blockAt.below())) {
     blockAt.setType("minecraft:snow_layer");
   }
 

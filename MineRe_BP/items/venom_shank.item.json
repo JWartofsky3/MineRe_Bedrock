@@ -17,6 +17,10 @@
         "minere:venom_shank",
         "minere:custom_sword"
       ],
+      "minecraft:cooldown": {
+        "category": "minere:venom_shank_dash",
+        "duration": 5.0
+      },
       "minecraft:damage": 6,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,

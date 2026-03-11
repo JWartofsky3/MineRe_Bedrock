@@ -2,23 +2,23 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": {
-      "identifier": "minere:emerald_staff"
+      "identifier": "minere:ice_staff"
     },
     "tags": ["crafting_table"],
     "pattern": [" EB", " RE", "R  "],
     "key": {
       "R": {
-        "item": "minecraft:blaze_rod"
+        "item": "minecraft:breeze_rod"
       },
       "E": {
-        "item": "minecraft:emerald"
+        "item": "minere:ice_charge"
       },
       "B": {
-        "item": "minecraft:emerald_block"
+        "item": "minecraft:diamond_block"
       }
     },
     "result": {
-      "item": "minere:emerald_staff"
+      "item": "minere:ice_staff"
     }
   }
 }

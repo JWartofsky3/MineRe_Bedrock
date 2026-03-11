@@ -13,11 +13,16 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_hoe"]
       },
+      "minere:shadow_scythe": {},
       "minere:custom_hoe": {},
+      "minecraft:cooldown": {
+        "category": "minere:shadow_scythe",
+        "duration": 6.0
+      },
       "minecraft:fire_resistant": {
         "value": true
       },
-      "minecraft:damage": 10,
+      "minecraft:damage": 7,
       "minecraft:hand_equipped": true,
       "minecraft:rarity": "epic",
       "minecraft:digger": {
@@ -31,15 +36,11 @@
           }
         ]
       },
-      "minecraft:enchantable": {
-        "slot": "hoe",
-        "value": 15
-      },
       "minecraft:use_on": {
         "blocks": ["minecraft:dirt", "minecraft:grass"]
       },
       "minecraft:durability": {
-        "max_durability": 5000
+        "max_durability": 6000
       },
       "minecraft:repairable": {
         "repair_items": [

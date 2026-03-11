@@ -15,6 +15,10 @@
       },
       "minere:darkheart": {},
       "minere:custom_sword": {},
+      "minecraft:cooldown": {
+        "category": "minere:darkheart_dash",
+        "duration": 5.0
+      },
       "minecraft:fire_resistant": {
         "value": true
       },
@@ -42,7 +46,7 @@
         ]
       },
       "minecraft:durability": {
-        "max_durability": 5000
+        "max_durability": 6000
       },
       "minecraft:repairable": {
         "repair_items": [

@@ -72,6 +72,9 @@
     "minere.emerald_staff": {
       "textures": "textures/items/minere/emerald_staff.png"
     },
+    "minere.ice_staff": {
+      "textures": "textures/items/minere/ice_staff.png"
+    },
     "minere.fire_staff": {
       "textures": "textures/items/minere/fire_staff.png"
     },

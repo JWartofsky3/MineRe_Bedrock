@@ -20,6 +20,7 @@ import { useAmethystStaff } from "items/staves/amethyst_staff";
 import { useEchoStaff } from "items/staves/echo_staff";
 import { useFireStaff } from "items/staves/fire_staff";
 import { useBlasterStaff } from "items/staves/blaster_staff";
+import { useIceStaff } from "items/staves/ice_staff";
 import { fireInfintyBowAfter } from "items/components/infinity_bow";
 import { offHandTreecapitate } from "items/components/treecapitator";
 import { onAxeUse, onShovelUse, onHoeUse } from "items/components/custom_tools";
@@ -60,6 +61,7 @@ world.beforeEvents.itemUse.subscribe((data) => {
   useFireStaff(data);
   useBlasterStaff(data);
   useEmeraldStaff(data);
+  useIceStaff(data);
 });
 
 // ───────────────────────── Player Events ─────────────────────────

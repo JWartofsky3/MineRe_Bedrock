@@ -116,6 +116,14 @@
         }
       ]
     },
+        "item.sword.swoosh": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/item/sword/swoosh"
+        }
+      ]
+    },
     "item.ice_charge.frost": {
       "category": "player",
       "sounds": [
