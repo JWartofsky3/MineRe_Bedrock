@@ -14,8 +14,9 @@ import { RegisterableEvent } from "events/CustomEvent";
 
 const SPAWN_CHANCE_MIN = 0.05;
 const SPAWN_CHANCE_MAX = 0.15;
-const LEVEL_MIN = 10;
+const LEVEL_MIN = 15;
 const LEVEL_CAP = 50;
+const MIN_WORLD_DAYS = 10;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20;
 const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
@@ -92,6 +93,9 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
     }
   }
   if (!challenger) {
+    return;
+  }
+  if (!challenger.hasTotem && world.getDay() < MIN_WORLD_DAYS) {
     return;
   }
 

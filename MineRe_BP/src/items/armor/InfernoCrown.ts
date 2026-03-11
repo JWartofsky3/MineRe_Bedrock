@@ -50,7 +50,10 @@ export function infernoCrownOnEntityHurt(data: EntityHurtAfterEvent) {
   ) {
     return;
   }
-  player.setDynamicProperty(INFERNO_CROWN_COOLDOWN_PROPERTY, system.currentTick);
+  player.setDynamicProperty(
+    INFERNO_CROWN_COOLDOWN_PROPERTY,
+    system.currentTick,
+  );
   player.addEffect("strength", STRENGTH_DURATION, { amplifier: 1 });
   player.addEffect("regeneration", REGENERATION_DURATION, { amplifier: 1 });
   player.addEffect("fire_resistance", FIRE_RESISTANCE_DURATION);

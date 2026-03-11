@@ -4,7 +4,8 @@
     "description": {
       "identifier": "minere:inferno_totem",
       "menu_category": {
-        "category": "equipment"
+        "category": "equipment",
+        "group": "minere:itemGroup.name.boss_totems"
       }
     },
     "components": {

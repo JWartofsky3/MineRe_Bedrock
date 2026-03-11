@@ -24,20 +24,11 @@
       }
     },
     // Blocks the tree can be placed on.
-    "may_grow_on": [
-      { "tags": "query.any_tag('dirt')" },
-      "minecraft:snow"
-    ],
+    "may_grow_on": [{ "tags": "query.any_tag('dirt')" }, "minecraft:snow"],
     // Any "may_grow_on" block that is not specified here will be replaced with the first block in this list.
-    "base_block": [
-      "minecraft:dirt",
-      "minecraft:coarse_dirt"
-    ],
+    "base_block": ["minecraft:dirt", "minecraft:coarse_dirt"],
     // Blocks to ignore when checking for clearance around the tree. Already includes all blocks specified in "may_replace".
-    "may_grow_through": [
-      { "tags": "query.any_tag('dirt')" },
-      "minecraft:snow"
-    ],
+    "may_grow_through": [{ "tags": "query.any_tag('dirt')" }, "minecraft:snow"],
     // Blocks that can be replaced by the tree's trunk and canopy.
     "may_replace": [
       "minecraft:air",

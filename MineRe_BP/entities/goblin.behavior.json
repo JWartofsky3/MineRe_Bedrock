@@ -702,6 +702,114 @@
             "priority": 1,
             "admire": true,
             "barter": true
+          },
+          {
+            "item": "minecraft:copper_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:copper_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:copper_pickaxe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:copper_shovel",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:copper_hoe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minere:indigon_sword",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_axe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_pickaxe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_shovel",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_hoe",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_chestplate",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_leggings",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:indigon_boots",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:aetherial_helmet",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:aetherial_chestplate",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:aetherial_leggings",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minere:aetherial_boots",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
           }
         ]
       }

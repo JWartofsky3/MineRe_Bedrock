@@ -51,8 +51,11 @@ item.minere:enderon_hoe=Enderon Hoe
 item.minere:indigon_hoe=Indigon Hoe
 item.minere:enderon_pickaxe=Enderon Pickaxe
 item.minere:indigon_pickaxe=Indigon Pickaxe
+item.minere:ice_pick=Ice Pick
+item.minere:shadow_scythe=Shadow Scythe
 item.minere:enderon_shovel=Enderon Shovel
 item.minere:indigon_shovel=Indigon Shovel
+item.minere:wind_shovel=Wind Shovel
 item.minere:enderon_sword=Enderon Sword
 item.minere:indigon_sword=Indigon Sword
 item.spawn_egg.entity.minere:biter.name=Spawn Biter
@@ -168,9 +171,13 @@ entity.minere:lizord_fireball.name=Fireball
 entity.minere:firebrand_fireball.name=Fireball
 entity.minere:firebomb.name=Fire Bomb
 item.minere:firebomb=Fire Bomb
+entity.minere:poison_bomb.name=Poison Bomb
+item.minere:poison_bomb=Poison Bomb
 
 item.minere:jump_boots=Jump Boots
 minere:itemGroup.name.magic_sword=Magic Swords
+minere:itemGroup.name.magic_tools=Magic Tools
+minere:itemGroup.name.boss_totems=Boss Totems
 tile.minere:short_icicle.name=Short Icicle
 tile.minere:tall_icicle.name=Tall Icicle
 tile.minere:thick_icicle.name=Thick Icicle
@@ -260,6 +267,7 @@ minere:itemGroup.name.magic_staves=Magic Staves
 warning.minere:blue_fireball=§cYour Fire Resistance is gone!§r
 info.minere:inferno_helmet.activate=§6The Inferno Crown protects you!§r
 info.minere:indigon_armor.activate=§5Your armor gives you strength!§r
+info.minere:ice_crown.activate=§bThe Ice Crown protects you!§r
 item.minere:copper_elephant_armor=Copper Elephant Armor
 item.minere:iron_elephant_armor=Iron Elephant Armor
 item.minere:gold_elephant_armor=Golden Elephant Armor
@@ -287,6 +295,7 @@ item.minere:aetherial_chestplate=Aetherial Chestplate
 item.minere:aetherial_leggings=Aetherial Leggings
 item.minere:aetherial_boots=Aetherial Boots
 item.minere:inferno_crown=Inferno Crown
+item.minere:ice_crown=Ice Crown
 crafting.minere:altar=Altar
 minere:itemGroup.name.altars=Altars
 
@@ -329,6 +338,10 @@ item.minere:enchanted_indigon_apple=Enchanted Indigon Apple
 item.minere:inferno_totem=Inferno Totem
 
 item.minere:inferno_ward=Inferno Ward
+
+item.minere:glacier_totem=Glacier Totem
+
+item.minere:glacier_ward=Glacier Ward
 
 entity.minere:monkey.name=Monkey
 item.spawn_egg.entity.minere:monkey.name=Spawn Monkey

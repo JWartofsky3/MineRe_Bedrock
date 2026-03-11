@@ -9,6 +9,7 @@ import { IceCharge } from "entities/projectiles/IceCharge";
 import { Bomb } from "entities/projectiles/Bomb";
 import { FireBomb } from "entities/projectiles/FireBomb";
 import { IceBomb } from "entities/projectiles/IceBomb";
+import { PoisonBomb } from "entities/projectiles/PoisonBomb";
 import { WindBomb } from "entities/projectiles/WindBomb";
 import { Gremlin } from "entities/mobs/Gremlin";
 import { Freeze } from "entities/mobs/Freeze";
@@ -41,6 +42,7 @@ export function registerCustomEntities() {
   new Bomb().register();
   new FireBomb().register();
   new IceBomb().register();
+  new PoisonBomb().register();
   new WindBomb().register();
 
   // others

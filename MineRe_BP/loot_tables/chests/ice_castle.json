@@ -468,6 +468,11 @@
           "type": "item",
           "name": "minere:ice_dagger",
           "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:ice_pick",
+          "weight": 5
         }
       ]
     },
@@ -522,6 +527,25 @@
         {
           "type": "item",
           "name": "minere:elixir_of_experience",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 7
+        },
+        {
+          "type": "item",
+          "name": "minere:glacier_totem",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:glacier_ward",
           "weight": 1
         }
       ]

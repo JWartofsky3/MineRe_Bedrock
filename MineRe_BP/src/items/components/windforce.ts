@@ -5,6 +5,7 @@ import {
   EntityComponentTypes,
   system,
 } from "@minecraft/server";
+import { throwEntity } from "entities/functions/throw";
 import { reduceDurability } from "./reduce_durability";
 import { multiplyVector3Number, rotateVectorY } from "util/vector3Functions";
 
@@ -15,7 +16,7 @@ export const Windforce: ItemCustomComponent = {
     if (!arg.hadEffect) {
       return;
     }
-    throw (arg.attackingEntity.location, arg.hitEntity, 1.5, 0.75);
+    throwEntity(arg.attackingEntity.location, arg.hitEntity, 1.5, 0.75);
   },
   onUse(arg) {
     const cooldownComponent = arg.itemStack?.getComponent(

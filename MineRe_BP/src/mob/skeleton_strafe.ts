@@ -98,6 +98,6 @@ export function skeletonStrafe(entity: Entity, chance: number) {
 function endStrafe(owner: Entity, runner: number) {
   system.clearRun(runner);
   if (owner?.isValid) {
-      owner.setDynamicProperty(IS_STRAFING, false);
+    owner.setDynamicProperty(IS_STRAFING, false);
   }
 }

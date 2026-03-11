@@ -523,11 +523,7 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": [
-                "emerging",
-                "immobile",
-                "submerging"
-              ]
+              "component_groups": ["emerging", "immobile", "submerging"]
             }
           },
           {

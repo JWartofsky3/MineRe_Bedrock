@@ -25,6 +25,8 @@ import { Helper2 } from "items/components/helpers/helper2";
 import { Ghostwalker } from "items/components/ghostwalker";
 import { IndigonApple } from "items/components/indigon_apple";
 import { BossTotem } from "items/components/bossTotem";
+import { IcePick } from "items/components/ice_pick";
+import { WindShovel } from "items/components/wind_shovel";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -44,12 +46,20 @@ export function registerItems(data: StartupEvent) {
     IceDagger,
   );
   data.itemComponentRegistry.registerCustomComponent(
+    "minere:ice_pick",
+    IcePick,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
     "minere:venom_shank",
     VenomShank,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:windforce",
     Windforce,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:wind_shovel",
+    WindShovel,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:firebrand",

@@ -31,10 +31,16 @@ const lightArmorKeyWords: string[] = [
   "straw",
   "paper",
   "wood",
-  "crunch",
-  "creak",
+  "wooden",
+  "crunching",
+  "creaking",
   "membrane",
   "cloak",
+  "crown",
+  "robe",
+  "robes",
+  "cape",
+  "cloth",
 ];
 
 const lightArmorSet: Set<string> = new Set();
@@ -96,14 +102,23 @@ function getItemWeight(item: ItemStack): number {
   if (!item.getComponent(ItemComponentTypes.Enchantable)) {
     return 0;
   }
+  const idWords = getIdWords(item.typeId);
   for (let i = 0; i < lightArmorKeyWords.length; i++) {
-    if (item.typeId.includes(lightArmorKeyWords[i])) {
+    if (idWords.has(lightArmorKeyWords[i])) {
       lightArmorSet.add(item.typeId);
       return 0;
     }
   }
   heavyArmorSet.add(item.typeId);
   return 1;
+}
+
+function getIdWords(typeId: string): Set<string> {
+  const parts = typeId.split(":");
+  const itemId = parts.length > 1 ? parts[1] : parts[0];
+  const words = itemId.split("_");
+
+  return new Set(words);
 }
 
 function getSoulSpeedMultiplier(player: Player) {

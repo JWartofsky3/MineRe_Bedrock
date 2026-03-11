@@ -62,7 +62,23 @@
         {
           "type": "item",
           "name": "minere:windforce",
-          "weight": 4,
+          "weight": 3,
+          "functions": [
+            {
+              "function": "specific_enchants",
+              "enchants": [
+                {
+                  "id": "knockback",
+                  "level": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minere:wind_shovel",
+          "weight": 2,
           "functions": [
             {
               "function": "specific_enchants",

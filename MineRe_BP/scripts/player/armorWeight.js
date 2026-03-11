@@ -20,10 +20,16 @@ const lightArmorKeyWords = [
     "straw",
     "paper",
     "wood",
-    "crunch",
-    "creak",
+    "wooden",
+    "crunching",
+    "creaking",
     "membrane",
     "cloak",
+    "crown",
+    "robe",
+    "robes",
+    "cape",
+    "cloth",
 ];
 const lightArmorSet = new Set();
 const heavyArmorSet = new Set();
@@ -72,14 +78,21 @@ function getItemWeight(item) {
     if (!item.getComponent(ItemComponentTypes.Enchantable)) {
         return 0;
     }
+    const idWords = getIdWords(item.typeId);
     for (let i = 0; i < lightArmorKeyWords.length; i++) {
-        if (item.typeId.includes(lightArmorKeyWords[i])) {
+        if (idWords.has(lightArmorKeyWords[i])) {
             lightArmorSet.add(item.typeId);
             return 0;
         }
     }
     heavyArmorSet.add(item.typeId);
     return 1;
+}
+function getIdWords(typeId) {
+    const parts = typeId.split(":");
+    const itemId = parts.length > 1 ? parts[1] : parts[0];
+    const words = itemId.split("_");
+    return new Set(words);
 }
 function getSoulSpeedMultiplier(player) {
     if (!player) {

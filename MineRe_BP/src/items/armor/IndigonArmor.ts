@@ -61,7 +61,10 @@ export function indigonArmorOnEntityHurt(data: EntityHurtAfterEvent) {
   ) {
     return;
   }
-  player.setDynamicProperty(INDIGON_ARMOR_COOLDOWN_PROPERTY, system.currentTick);
+  player.setDynamicProperty(
+    INDIGON_ARMOR_COOLDOWN_PROPERTY,
+    system.currentTick,
+  );
 
   const durationScale = equippedIndigonPieces.length / FULL_SET_PIECES;
   player.addEffect(

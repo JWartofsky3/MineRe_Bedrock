@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.131",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:glacier_ward",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minere:itemGroup.name.boss_totems"
+      }
+    },
+    "components": {
+      "minecraft:icon": "minere.glacier_ward",
+      "minecraft:display_name": {
+        "value": "item.minere:glacier_ward"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:rarity": "rare",
+      "minere:boss_totem": {},
+      "minecraft:cooldown": {
+        "category": "minere:mini_boss_totem",
+        "duration": 1.0
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      }
+    }
+  }
+}

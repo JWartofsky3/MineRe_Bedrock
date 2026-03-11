@@ -39,6 +39,9 @@
     "minere.indigon_pickaxe": {
       "textures": "textures/items/minere/indigon_pickaxe"
     },
+    "minere.ice_pick": {
+      "textures": "textures/items/minere/ice_pick"
+    },
     "minere.enderon_axe": {
       "textures": "textures/items/minere/enderon_axe.png"
     },
@@ -53,6 +56,9 @@
     },
     "minere.indigon_shovel": {
       "textures": "textures/items/minere/indigon_shovel"
+    },
+    "minere.wind_shovel": {
+      "textures": "textures/items/minere/wind_shovel"
     },
     "minere.enderon_hoe": {
       "textures": "textures/items/minere/enderon_hoe.png"
@@ -83,6 +89,9 @@
     },
     "minere.firebomb": {
       "textures": "textures/items/minere/firebomb"
+    },
+    "minere.poison_bomb": {
+      "textures": "textures/items/minere/poison_bomb"
     },
     "minere.wind_bomb": {
       "textures": "textures/items/minere/wind_bomb"
@@ -147,11 +156,20 @@
     "minere.inferno_crown": {
       "textures": "textures/items/minere/inferno_crown"
     },
+    "minere.ice_crown": {
+      "textures": "textures/items/minere/ice_crown"
+    },
     "minere.inferno_totem": {
       "textures": "textures/items/minere/inferno_totem.png"
     },
     "minere.inferno_ward": {
       "textures": "textures/items/minere/inferno_ward.png"
+    },
+    "minere.glacier_totem": {
+      "textures": "textures/items/minere/glacier_totem.png"
+    },
+    "minere.glacier_ward": {
+      "textures": "textures/items/minere/glacier_ward.png"
     },
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"
@@ -176,6 +194,9 @@
     },
     "minere.darkheart": {
       "textures": "textures/items/minere/darkheart.png"
+    },
+    "minere.shadow_scythe": {
+      "textures": "textures/items/minere/shadow_scythe.png"
     },
     "minere.copper_treecapitator": {
       "textures": "textures/items/minere/copper_treecapitator.png"

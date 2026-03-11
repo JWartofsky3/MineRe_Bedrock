@@ -155,10 +155,12 @@ export class Glacier extends BaseCustomEntity {
     const glacier = data.hurtEntity;
     const attacker = data.damageSource?.damagingEntity;
 
-    const isDaytime = world.getTimeOfDay() > 200 && world.getTimeOfDay() < 11000;
+    const isDaytime =
+      world.getTimeOfDay() > 200 && world.getTimeOfDay() < 11000;
     const isTransitioning = this.isTransitioning(glacier);
     const shouldSubmerge =
-      (data.damageSource.cause === EntityDamageCause.temperature || isDaytime) &&
+      (data.damageSource.cause === EntityDamageCause.temperature ||
+        isDaytime) &&
       !isTransitioning;
 
     if (shouldSubmerge) {
@@ -298,7 +300,10 @@ export class Glacier extends BaseCustomEntity {
     entity: Entity,
     target: Entity,
   ): Vector3 | null {
-    const currentDistanceToTarget = distVector3(entity.location, target.location);
+    const currentDistanceToTarget = distVector3(
+      entity.location,
+      target.location,
+    );
     for (let i = 0; i < TELEPORT_PROPERTIES.ATTEMPTS; i++) {
       const destination = this.getTeleportCandidate(target.location);
       if (!destination) {
@@ -310,11 +315,13 @@ export class Glacier extends BaseCustomEntity {
         continue;
       }
       if (
-        !this.isValidTeleportSurface(entity.dimension.getBlock({
-          x: Math.floor(destination.x),
-          y: Math.floor(destination.y) - 1,
-          z: Math.floor(destination.z),
-        }))
+        !this.isValidTeleportSurface(
+          entity.dimension.getBlock({
+            x: Math.floor(destination.x),
+            y: Math.floor(destination.y) - 1,
+            z: Math.floor(destination.z),
+          }),
+        )
       ) {
         continue;
       }

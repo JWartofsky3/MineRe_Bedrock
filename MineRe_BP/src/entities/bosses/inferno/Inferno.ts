@@ -69,7 +69,7 @@ const COMBAT_PROPERTIES = {
   PUSH_CHANCE_MIN: 0.12,
   PUSH_CHANCE_MAX: 0.35,
   PUSH_DELAY: 20,
-  PROJECTILE_GUARD_CHANCE: 0.25
+  PROJECTILE_GUARD_CHANCE: 0.25,
 };
 
 const TARGET_FAMILIES = ["player", "villager", "irongolem"];
@@ -192,7 +192,10 @@ export class Inferno extends BaseCustomEntity {
       return;
     }
 
-    if (!!projectile && Math.random() < COMBAT_PROPERTIES.PROJECTILE_GUARD_CHANCE) {
+    if (
+      !!projectile &&
+      Math.random() < COMBAT_PROPERTIES.PROJECTILE_GUARD_CHANCE
+    ) {
       this.setMode(boss, InfernoMode.Guard);
     }
     if (!projectile && mode === InfernoMode.Guard) {

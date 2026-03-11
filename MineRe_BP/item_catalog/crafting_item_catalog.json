@@ -13,6 +13,7 @@
             "items": [
               "minere:bomb",
               "minere:firebomb",
+              "minere:poison_bomb",
               "minere:wind_bomb",
               "minere:ice_bomb"
             ]
@@ -45,6 +46,30 @@
               "minere:firebrand",
               "minere:darkheart",
               "minere:ghostwalker"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "minere:ice_pick",
+              "name": "minere:itemGroup.name.magic_tools"
+            },
+            "items": [
+              "minere:ice_pick",
+              "minere:fire_axe",
+              "minere:wind_shovel",
+              "minere:shadow_scythe"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "minere:inferno_totem",
+              "name": "minere:itemGroup.name.boss_totems"
+            },
+            "items": [
+              "minere:inferno_totem",
+              "minere:inferno_ward",
+              "minere:glacier_totem",
+              "minere:glacier_ward"
             ]
           },
           {

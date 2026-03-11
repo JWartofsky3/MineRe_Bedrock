@@ -444,10 +444,6 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "empty",
-          "weight": 2
-        },
-        {
           "type": "item",
           "name": "minere:emerald_staff"
         }

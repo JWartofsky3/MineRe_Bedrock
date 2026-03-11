@@ -280,7 +280,11 @@ function getUpperBodyLocationAtLocation(
   };
 }
 
-function interpolateVector3(start: Vector3, end: Vector3, progress: number): Vector3 {
+function interpolateVector3(
+  start: Vector3,
+  end: Vector3,
+  progress: number,
+): Vector3 {
   return {
     x: start.x + (end.x - start.x) * progress,
     y: start.y + (end.y - start.y) * progress,

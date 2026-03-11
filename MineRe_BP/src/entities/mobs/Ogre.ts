@@ -79,12 +79,7 @@ export class Ogre extends BaseCustomEntity {
 
     // trigger roar attack
     if (isTargetAlive) {
-      rollOgreRoar(
-        ogre,
-        target,
-        variant,
-        target.typeId === "minecraft:player",
-      );
+      rollOgreRoar(ogre, target, variant, target.typeId === "minecraft:player");
     }
 
     // laugh on kill

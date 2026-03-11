@@ -1226,6 +1226,24 @@
           "num_to_select": 4,
           "trades": [
             {
+              "weight": 3,
+              "wants": [
+                {
+                  "item": "minecraft:emerald"
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:poison_bomb",
+                  "quantity": {
+                    "min": 2,
+                    "max": 4
+                  }
+                }
+              ],
+              "max_uses": 5
+            },
+            {
               "weight": 1,
               "wants": [
                 {
@@ -2309,6 +2327,44 @@
               "gives": [
                 {
                   "item": "minere:ice_dagger"
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1
+            },
+                        {
+              "weight": 2,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 12,
+                    "max": 16
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:ice_pick"
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1
+            },
+                        {
+              "weight": 2,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 12,
+                    "max": 16
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:wind_shovel"
                 }
               ],
               "trader_exp": 5,

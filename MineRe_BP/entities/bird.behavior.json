@@ -300,6 +300,26 @@
             }
           },
           {
+            "filters": {
+              "none_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cherry_grove"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "meadow"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "jungle"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "pale_garden"
+                }
+              ]
+            },
             "randomize": [
               {
                 "weight": 10,

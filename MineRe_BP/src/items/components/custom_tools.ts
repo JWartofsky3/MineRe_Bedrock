@@ -62,6 +62,21 @@ shovelBlocks.add("minecraft:dirt");
 shovelBlocks.add("minecraft:farmland");
 shovelBlocks.add("minecraft:snow_layer");
 
+const hoeSoundItems = new Set<string>();
+hoeSoundItems.add("minere:enderon_hoe");
+hoeSoundItems.add("minere:indigon_hoe");
+hoeSoundItems.add("minere:shadow_scythe");
+
+const shovelSoundItems = new Set<string>();
+shovelSoundItems.add("minere:enderon_shovel");
+shovelSoundItems.add("minere:indigon_shovel");
+shovelSoundItems.add("minere:wind_shovel");
+
+const axeSoundItems = new Set<string>();
+axeSoundItems.add("minere:enderon_axe");
+axeSoundItems.add("minere:indigon_axe");
+axeSoundItems.add("minere:fire_axe");
+
 export function customToolHandleDurability(event: ItemComponentMineBlockEvent) {
   const player = event.source as Player;
   const blockId =
@@ -106,34 +121,42 @@ export function onHoeUse(player: Player, item: ItemStack, block: Block) {
   if (!shovelBlocks.has(block?.typeId)) {
     return;
   }
-  if (item?.typeId === "minere:enderon_hoe") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.gravel", {
-      location: player.location ?? player.location,
-    });
+  if (!hoeSoundItems.has(item?.typeId)) {
+    return;
   }
+  reduceDurability(player, item, 1);
+  player.playSound("dig.gravel", {
+    location: player.location ?? player.location,
+  });
 }
 
 export function onShovelUse(player: Player, item: ItemStack, block: Block) {
   if (!shovelBlocks.has(block?.typeId)) {
     return;
   }
-  if (item?.typeId === "minere:enderon_shovel") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.gravel", {
-      location: player.location ?? player.location,
-    });
+  if (!shovelSoundItems.has(item?.typeId)) {
+    return;
   }
+  reduceDurability(player, item, 1);
+  player.playSound("dig.gravel", {
+    location: player.location ?? player.location,
+  });
 }
 
 export function onAxeUse(player: Player, item: ItemStack, block: Block) {
-  if (!block?.typeId.includes("log") || !block?.typeId.includes("stem")) {
+  if (
+    !block?.typeId.includes("log") &&
+    !block?.typeId.includes("stem") &&
+    !block?.typeId.includes("hyphae") &&
+    !block?.typeId.includes("wood")
+  ) {
     return;
   }
-  if (item?.typeId === "minere:enderon_axe") {
-    reduceDurability(player, item, 1);
-    player.playSound("dig.wood", {
-      location: player.location ?? player.location,
-    });
+  if (!axeSoundItems.has(item?.typeId)) {
+    return;
   }
+  reduceDurability(player, item, 1);
+  player.playSound("dig.wood", {
+    location: player.location ?? player.location,
+  });
 }

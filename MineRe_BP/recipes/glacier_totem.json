@@ -1,0 +1,27 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minere:glacier_totem"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["IGI", "IDI", "IAI"],
+    "key": {
+      "I": {
+        "item": "minere:ice_charge"
+      },
+      "D": {
+        "item": "minecraft:diamond"
+      },
+      "G": {
+        "item": "minecraft:gold_ingot"
+      },
+      "A": {
+        "item": "minecraft:amethyst_shard"
+      }
+    },
+    "result": {
+      "item": "minere:glacier_totem"
+    }
+  }
+}
