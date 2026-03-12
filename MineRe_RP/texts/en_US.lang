@@ -272,6 +272,7 @@ warning.minere:blue_fireball=§cYour Fire Resistance is gone!§r
 info.minere:inferno_helmet.activate=§6The Inferno Crown protects you!§r
 info.minere:indigon_armor.activate=§5Your armor gives you strength!§r
 info.minere:indigon_tool.activate=§5Your tools give you haste!§r
+info.minere:indigon_tool.attack=§5Your tools give you strength!§r
 info.minere:ice_crown.activate=§bThe Ice Crown protects you!§r
 item.minere:copper_elephant_armor=Copper Elephant Armor
 item.minere:iron_elephant_armor=Iron Elephant Armor

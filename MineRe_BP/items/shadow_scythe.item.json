@@ -22,7 +22,7 @@
       "minecraft:fire_resistant": {
         "value": true
       },
-      "minecraft:damage": 7,
+      "minecraft:damage": 10,
       "minecraft:hand_equipped": true,
       "minecraft:rarity": "epic",
       "minecraft:digger": {

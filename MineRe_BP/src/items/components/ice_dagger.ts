@@ -1,4 +1,4 @@
-import { EntityDamageCause, ItemCustomComponent } from "@minecraft/server";
+import { EntityDamageCause, ItemCustomComponent, system } from "@minecraft/server";
 import { Inferno } from "entities/bosses/inferno/Inferno";
 import { checkCooldown } from "./item_utils";
 import { freezeEntity } from "entities/functions/freeze";
@@ -7,7 +7,6 @@ import { spawnParticleCloud } from "particles/particleCloud";
 
 const FIRE_MOBS = new Set<string>(["minecraft:blaze", "minere:inferno"]);
 const FIRE_MOB_DAMAGE = 20;
-const INFERNO_STUN_CHANCE = 0.5;
 
 export const IceDagger: ItemCustomComponent = {
   onHitEntity(arg) {
@@ -28,12 +27,6 @@ export const IceDagger: ItemCustomComponent = {
       amplifier: 3,
     });
     freezeEntity(target, 22);
-    if (
-      target.typeId === "minere:inferno" &&
-      Math.random() < INFERNO_STUN_CHANCE
-    ) {
-      Inferno.enterStunned(target);
-    }
     if (FIRE_MOBS.has(target.typeId)) {
       target.applyDamage(FIRE_MOB_DAMAGE, {
         damagingEntity: arg.attackingEntity,
@@ -44,6 +37,14 @@ export const IceDagger: ItemCustomComponent = {
         "minere:ice_charge_particles_short",
         target.location,
       );
+    }
+    if (target.typeId === "minere:inferno") {
+      system.run(() => {
+        if (!isAlive(target)) {
+          return;
+        }
+        Inferno.enterStunned(target);
+      });
     }
   },
 };

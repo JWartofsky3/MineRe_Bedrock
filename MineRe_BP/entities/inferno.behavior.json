@@ -500,7 +500,8 @@
                 "blue_fireball_mode",
                 "walk",
                 "jump",
-                "hover"
+                "hover",
+                "immobile"
               ]
             }
           },
