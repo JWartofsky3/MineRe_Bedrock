@@ -5,6 +5,7 @@ import {
   EntityEquippableComponent,
   EquipmentSlot,
 } from "@minecraft/server";
+import { Inferno } from "../bosses/inferno/Inferno";
 import { isAlive } from "../../mob/mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
 
@@ -26,7 +27,8 @@ export function rollFreeze(target: Entity, bonus: number = 0) {
   if (!isAlive(target)) {
     return false;
   }
-  if (CANNOT_BE_FROZEN.has(target.typeId) || !target.isOnGround) {
+  const isInferno = target.typeId === "minere:inferno";
+  if ((!isInferno && CANNOT_BE_FROZEN.has(target.typeId)) || (!isInferno && !target.isOnGround)) {
     return;
   }
 
@@ -57,6 +59,9 @@ export function rollFreeze(target: Entity, bonus: number = 0) {
     freezeEntity(target, 16);
     return;
   }
+  if (isInferno) {
+    return;
+  }
   if (Math.random() < snowChance) {
     for (let i = 0; i < 2; i++) {
       system.runTimeout(
@@ -71,6 +76,10 @@ export function rollFreeze(target: Entity, bonus: number = 0) {
 
 export function freezeEntity(target: Entity, duration: number) {
   if (!isAlive(target)) {
+    return;
+  }
+  if (target.typeId === "minere:inferno") {
+    Inferno.enterStunned(target);
     return;
   }
   const dimension = target.dimension;

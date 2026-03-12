@@ -182,12 +182,7 @@ export class Inferno extends BaseCustomEntity {
 
     const projectile = data.damageSource?.damagingProjectile;
     const projectileId = projectile?.typeId;
-    if (
-      (projectileId === "minere:ice_charge" && Math.random() < 0.33) ||
-      projectileId === "minere:blue_fireball" ||
-      projectileId === "minere:ice_bomb" ||
-      attacker?.typeId === "minere:ice_bomb"
-    ) {
+    if (projectileId === "minere:blue_fireball") {
       this.enterStunned(boss);
       return;
     }
