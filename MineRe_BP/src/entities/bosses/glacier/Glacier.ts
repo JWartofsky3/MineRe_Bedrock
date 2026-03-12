@@ -13,6 +13,7 @@ import { isSolid } from "block/blockUtils";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { isOffCooldown } from "entities/functions/checkCooldown";
 import { throwEntity } from "entities/functions/throw";
+import { freezeArea } from "functions/freezeArea";
 import { isAlive } from "mob/mob_utils";
 import { distVector3 } from "util/vector3Functions";
 
@@ -58,6 +59,7 @@ const ROAR_PROPERTIES = {
   COOLDOWN: 20 * 8,
   CHANCE: 0.125,
   ACTIVATION_RANGE: 8,
+  ACTIVATION_DELAY: 1 * 20
 };
 
 const TELEPORT_PROPERTIES = {
@@ -181,6 +183,13 @@ export class Glacier extends BaseCustomEntity {
       isOffCooldown(glacier, ROAR_PROPERTIES.PROP, ROAR_PROPERTIES.COOLDOWN)
     ) {
       glacier.triggerEvent("minere:glacier_start_roar");
+      system.runTimeout(() => {
+        freezeArea(glacier.dimension, glacier.location, {
+          radius: 4,
+          verticalRadius: 4,
+          coverWithSnow: true
+        })
+      }, ROAR_PROPERTIES.ACTIVATION_DELAY);
     }
   }
 

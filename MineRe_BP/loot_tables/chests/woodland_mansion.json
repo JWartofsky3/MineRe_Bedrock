@@ -380,6 +380,25 @@
           "weight": 1
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 6
+        },
+        {
+          "type": "item",
+          "name": "minere:venom_shank",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:venom_spear",
+          "weight": 1
+        }
+      ]
     }
   ]
 }

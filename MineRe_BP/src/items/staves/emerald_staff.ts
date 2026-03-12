@@ -17,6 +17,7 @@ import {
 } from "util/vector3Functions";
 import { isAlive, isFamily } from "mob/mob_utils";
 import { reduceDurability } from "../components/reduce_durability";
+import { spawnParticleCloud } from "particles/particleCloud";
 
 const MONSTER_DAMAGE = 8;
 const UNDEAD_DAMAGE = 12;
@@ -130,10 +131,7 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
                 dimension.spawnParticle("minere:emerald_wave", entity.location);
               } else {
                 entity.addEffect("instant_health", 1);
-                dimension.spawnParticle(
-                  "minecraft:heart_particle",
-                  entity.getHeadLocation(),
-                );
+                spawnParticleCloud("minecraft:heart_particle", entity.getHeadLocation(), 2, 5, entity.dimension);
               }
             }
             // apply effects to blocks

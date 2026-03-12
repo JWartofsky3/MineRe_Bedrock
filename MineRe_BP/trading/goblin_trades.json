@@ -2313,6 +2313,55 @@
               "trader_exp": 5,
               "max_uses": 1
             },
+                        {
+              "weight": 2,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 12,
+                    "max": 16
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:venom_spear"
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1
+            },
+                        {
+              "weight": 1,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": {
+                    "min": 32,
+                    "max": 48
+                  }
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:illumina",
+                  "functions": [
+                    {
+                      "function": "specific_enchants",
+                      "enchants": [
+                        {
+                          "id": "smite",
+                          "level": 5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "trader_exp": 5,
+              "max_uses": 1
+            },
             {
               "weight": 2,
               "wants": [

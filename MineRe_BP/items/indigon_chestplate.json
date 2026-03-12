@@ -31,7 +31,7 @@
         "protection": 8
       },
       "minecraft:durability": {
-        "max_durability": 528
+        "max_durability": 601
       },
       "minecraft:tags": {
         "tags": ["minecraft:is_armor", "minecraft:trimmable_armors"]

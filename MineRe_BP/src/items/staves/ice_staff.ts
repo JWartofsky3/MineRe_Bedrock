@@ -8,11 +8,12 @@ import {
   GameMode,
   EntityComponentTypes,
   EntityInventoryComponent,
+  EntityDamageCause,
 } from "@minecraft/server";
 import { rollFreeze } from "entities/functions/freeze";
-import { consumeXp } from "entities/functions/consumeXp";
 import { freezeArea } from "functions/freezeArea";
 import { particleWave } from "particles/particleWave";
+import { spawnParticleCloud } from "particles/particleCloud";
 import {
   addVector3,
   magnitudeVector3,
@@ -22,17 +23,19 @@ import {
 import { reduceDurability } from "../components/reduce_durability";
 import { findItemInContainer } from "items/components/item_utils";
 
-const XP_COST = 6;
-const MAX_RANGE = 16;
+const MAX_RANGE = 19;
 const WAVE_COUNT = 4;
 const WAVE_DELAY = 5;
 const WAVE_STEP_DISTANCE = 1.0;
 const WAVE_RADIUS = 2;
+const DAMAGE = 5;
 const DAMAGE_RANGE = 2.5;
+const SNEAK_FREEZE_RADIUS = 5;
+const SNEAK_AMMO_COST = 1;
 const FREEZE_SOUND = "item.ice_charge.frost";
 const WAVE_SOUND = "mob.freeze.freeze";
 const WAVE_PARTICLE = "minere:ice_staff_wave";
-const AMMO_CONSUME_CHANCE = 0.8;
+const AMMO_CONSUME_CHANCE = 0.64;
 
 export const useIceStaff = (data: ItemUseBeforeEvent) => {
   if (!data.source) {
@@ -53,23 +56,67 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
     if (cooldownComponent?.getCooldownTicksRemaining(source)) {
       return;
     }
-        if (
-          source.getGameMode() !== GameMode.Creative &&
-          findItemInContainer(
-            (
-              source.getComponent(
-                EntityComponentTypes.Inventory,
-              ) as EntityInventoryComponent
-            )?.container,
-            "minere:ice_charge",
-          ) === -1
-        ) {
-          source.playSound("item.amethyst_staff.error");
-          return;
+    if (source.isSneaking) {
+      if (
+        !source.runCommand(
+          `clear @s[m=!c] minere:ice_charge 0 ${SNEAK_AMMO_COST}`,
+        ).successCount &&
+        source.getGameMode() !== GameMode.Creative
+      ) {
+        source.playSound("item.amethyst_staff.error");
+        return;
+      }
+
+      cooldownComponent.startCooldown(source);
+      reduceDurability(source, itemStack, 6);
+      dimension.playSound(FREEZE_SOUND, source.location);
+      spawnParticleCloud(
+        "minere:ice_charge_particles",
+        source.location,
+        SNEAK_FREEZE_RADIUS,
+        40,
+        dimension,
+      );
+      freezeArea(dimension, source.location, {
+        radius: SNEAK_FREEZE_RADIUS,
+        verticalRadius: SNEAK_FREEZE_RADIUS,
+        coverWithSnow: true,
+        ticksPerStep: 3,
+        playSound: false,
+      });
+
+      const entities = dimension.getEntities({
+        location: source.location,
+        maxDistance: SNEAK_FREEZE_RADIUS,
+        excludeTypes: ["minecraft:item"],
+      });
+      for (let i = 0; i < entities.length; i++) {
+        const entity = entities[i];
+        if (entity.id === source.id) {
+          continue;
         }
-        if (Math.random() < AMMO_CONSUME_CHANCE) {
-          source.runCommand("clear @s[m=!c] minere:ice_charge 0 1");
-        }
+        rollFreeze(entity);
+      }
+      return;
+    }
+
+    if (
+      source.getGameMode() !== GameMode.Creative &&
+      findItemInContainer(
+        (
+          source.getComponent(
+            EntityComponentTypes.Inventory,
+          ) as EntityInventoryComponent
+        )?.container,
+        "minere:ice_charge",
+      ) === -1
+    ) {
+      source.playSound("item.amethyst_staff.error");
+      return;
+    }
+    if (Math.random() < AMMO_CONSUME_CHANCE) {
+      source.runCommand("clear @s[m=!c] minere:ice_charge 0 1");
+    }
 
     cooldownComponent.startCooldown(source);
     reduceDurability(source, itemStack, 1);
@@ -127,6 +174,10 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
               }
               entitiesHit.add(entity.id);
               rollFreeze(entity);
+              entity.applyDamage(DAMAGE, {
+                damagingEntity: source,
+                cause: EntityDamageCause.freezing
+              })
             },
           },
         });

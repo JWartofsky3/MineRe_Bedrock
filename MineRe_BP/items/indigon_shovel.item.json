@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_shovel"]
       },
-      "minecraft:custom_components": ["minere:custom_shovel"],
+      "minecraft:custom_components": [
+        "minere:custom_shovel",
+        "minere:indigon_tool"
+      ],
       "minecraft:damage": 4,
       "minecraft:digger": {
         "use_efficiency": true,
@@ -36,7 +39,7 @@
         "blocks": ["minecraft:grass", "minecraft:dirt"]
       },
       "minecraft:durability": {
-        "max_durability": 1561
+        "max_durability": 1776
       },
       "minecraft:repairable": {
         "repair_items": [

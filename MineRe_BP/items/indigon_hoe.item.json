@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_hoe"]
       },
-      "minecraft:custom_components": ["minere:custom_hoe"],
+      "minecraft:custom_components": [
+        "minere:custom_hoe",
+        "minere:indigon_tool"
+      ],
       "minecraft:damage": 1,
       "minecraft:digger": {
         "use_efficiency": true,
@@ -36,7 +39,7 @@
         "blocks": ["minecraft:dirt", "minecraft:grass"]
       },
       "minecraft:durability": {
-        "max_durability": 1561
+        "max_durability": 1776
       },
       "minecraft:repairable": {
         "repair_items": [

@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_pickaxe"]
       },
-      "minecraft:custom_components": ["minere:custom_pickaxe"],
+      "minecraft:custom_components": [
+        "minere:custom_pickaxe",
+        "minere:indigon_tool"
+      ],
       "minecraft:damage": 5,
       "minecraft:digger": {
         "use_efficiency": true,
@@ -105,7 +108,7 @@
         "value": 10
       },
       "minecraft:durability": {
-        "max_durability": 1561
+        "max_durability": 1776
       },
       "minecraft:repairable": {
         "repair_items": [

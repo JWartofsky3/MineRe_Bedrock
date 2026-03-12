@@ -30,8 +30,14 @@
     "minere.enderon_sword": {
       "textures": "textures/items/minere/enderon_sword.png"
     },
+    "minere.enderon_spear": {
+      "textures": "textures/items/minere/spear/enderon_spear"
+    },
     "minere.indigon_sword": {
       "textures": "textures/items/minere/indigon_sword"
+    },
+    "minere.indigon_spear": {
+      "textures": "textures/items/minere/spear/indigon_spear"
     },
     "minere.enderon_pickaxe": {
       "textures": "textures/items/minere/enderon_pickaxe.png"
@@ -185,6 +191,9 @@
     },
     "minere.venom_shank": {
       "textures": "textures/items/minere/venom_shank.png"
+    },
+    "minere.venom_spear": {
+      "textures": "textures/items/minere/spear/venom_spear"
     },
     "minere.illumina": {
       "textures": "textures/items/minere/illumina.png"

@@ -157,14 +157,8 @@
         },
         {
           "type": "item",
-          "name": "minere:amethyst_staff",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "enchant_randomly",
-              "treasure": true
-            }
-          ]
+          "name": "minere:ice_staff",
+          "weight": 1
         }
       ]
     },

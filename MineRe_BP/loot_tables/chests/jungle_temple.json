@@ -157,11 +157,16 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "item",
           "name": "minere:venom_shank",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "minere:venom_spear",
           "weight": 1
         }
       ]

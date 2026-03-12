@@ -22,7 +22,7 @@
       },
       "minecraft:cooldown": {
         "category": "iceStaff",
-        "duration": 2.0
+        "duration": 3.0
       },
       "minecraft:repairable": {
         "repair_items": [

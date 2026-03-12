@@ -8,7 +8,7 @@
     "tags": ["crafting_table"],
     "ingredients": [
       {
-        "item": "minecraft:fermented_spider_eye"
+        "item": "minecraft:spider_eye"
       },
       {
         "item": "minecraft:slime_ball"

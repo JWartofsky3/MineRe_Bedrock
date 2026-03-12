@@ -28,6 +28,7 @@ import { BossTotem } from "items/components/bossTotem";
 import { IcePick } from "items/components/ice_pick";
 import { WindShovel } from "items/components/wind_shovel";
 import { ShadowScythe } from "items/components/shadow_scythe";
+import { IndigonTool } from "items/components/indigon_tool";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -89,6 +90,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:indigon_apple",
     IndigonApple,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:indigon_tool",
+    IndigonTool,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:custom_sword",

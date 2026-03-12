@@ -14,7 +14,10 @@
       "minecraft:tags": {
         "tags": ["minecraft:is_sword"]
       },
-      "minecraft:custom_components": ["minere:custom_sword"],
+      "minecraft:custom_components": [
+        "minere:custom_sword",
+        "minere:indigon_tool"
+      ],
       "minecraft:damage": 7,
       "minecraft:can_destroy_in_creative": false,
       "minecraft:hand_equipped": true,
@@ -42,7 +45,7 @@
         ]
       },
       "minecraft:durability": {
-        "max_durability": 1561
+        "max_durability": 1776
       },
       "minecraft:repairable": {
         "repair_items": [

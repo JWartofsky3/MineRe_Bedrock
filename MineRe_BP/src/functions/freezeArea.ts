@@ -65,6 +65,8 @@ export function freezeArea(
   const ticksPerStep = options.ticksPerStep ?? 2;
   const isNether = dimension.id.includes("nether");
 
+  extinguishEntitiesInArea(dimension, location, radius, verticalRadius);
+
   const blockAt = dimension.getBlock(location);
   if (blockAt && blockAt.isAir && !isNether && isSolid(blockAt.below())) {
     blockAt.setType("minecraft:snow_layer");
@@ -142,6 +144,38 @@ export function freezeArea(
         }
       }
     }, ringIndex * clampedTicksPerStep);
+  }
+}
+
+function extinguishEntitiesInArea(
+  dimension: Dimension,
+  location: Vector3,
+  radius: number,
+  verticalRadius: number,
+) {
+  const maxDistance = Math.max(radius, verticalRadius);
+  const entities = dimension.getEntities({
+    location,
+    maxDistance,
+    excludeTypes: ["minecraft:item"],
+  });
+
+  for (let i = 0; i < entities.length; i++) {
+    const entity = entities[i];
+    const dx = entity.location.x - location.x;
+    const dy = entity.location.y - location.y;
+    const dz = entity.location.z - location.z;
+    if (Math.abs(dy) > verticalRadius) {
+      continue;
+    }
+    if (Math.sqrt(dx * dx + dz * dz) > radius) {
+      continue;
+    }
+    try {
+      entity.extinguishFire();
+    } catch (ignored) {
+      // Ignore entities that do not support extinguishing.
+    }
   }
 }
 
