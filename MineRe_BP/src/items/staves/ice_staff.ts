@@ -22,6 +22,7 @@ import {
 } from "util/vector3Functions";
 import { reduceDurability } from "../components/reduce_durability";
 import { findItemInContainer } from "items/components/item_utils";
+import { isFireMob } from "entities/functions/isFireMob";
 
 const MAX_RANGE = 19;
 const WAVE_COUNT = 4;
@@ -174,7 +175,11 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
               }
               entitiesHit.add(entity.id);
               rollFreeze(entity);
-              entity.applyDamage(DAMAGE, {
+              let damage = DAMAGE;
+              if (isFireMob(entity)) {
+                damage *= 3;
+              }
+              entity.applyDamage(damage, {
                 damagingEntity: source,
                 cause: EntityDamageCause.freezing
               })

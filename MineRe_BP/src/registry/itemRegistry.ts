@@ -29,6 +29,7 @@ import { IcePick } from "items/components/ice_pick";
 import { WindShovel } from "items/components/wind_shovel";
 import { ShadowScythe } from "items/components/shadow_scythe";
 import { IndigonTool } from "items/components/indigon_tool";
+import { VenomSpear } from "items/components/venom_spear";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -54,6 +55,10 @@ export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
     "minere:venom_shank",
     VenomShank,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:venom_spear",
+    VenomSpear,
   );
   data.itemComponentRegistry.registerCustomComponent(
     "minere:windforce",

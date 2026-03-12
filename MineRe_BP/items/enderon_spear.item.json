@@ -23,6 +23,7 @@
           "minecraft:is_spear"
         ]
       },
+      "minere:ender_strike": {},
       "minecraft:max_stack_size": 1,
       "minecraft:durability": {
         "max_durability": 1280,

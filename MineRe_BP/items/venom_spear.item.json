@@ -23,6 +23,7 @@
           "minecraft:is_spear"
         ]
       },
+      "minere:venom_spear": {},
       "minecraft:max_stack_size": 1,
       "minecraft:durability": {
         "max_durability": 900,

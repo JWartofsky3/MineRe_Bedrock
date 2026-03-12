@@ -1,13 +1,16 @@
 import { ItemCustomComponent } from "@minecraft/server";
 import { dashAttack } from "./dashAttack";
+import { spawnParticleCloud } from "particles/particleCloud";
 
 const DASH_DAMAGE = 7;
 const POISON_DURATION = 20 * 6;
 const DURABILITY_COST = 2;
 const DASH_PARTICLE = "minere:poison_particle";
+const HIT_PARTICLE = "minere:poison_particle";
 
 export const VenomShank: ItemCustomComponent = {
   onHitEntity(arg) {
+    spawnParticleCloud(HIT_PARTICLE, arg.hitEntity.location, 2, 5, arg.hitEntity.dimension);
     arg.hitEntity.addEffect("poison", 200, {
       amplifier: 1,
     });

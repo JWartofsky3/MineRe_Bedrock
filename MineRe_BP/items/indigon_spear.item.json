@@ -17,6 +17,7 @@
       "minecraft:display_name": {
         "value": "item.minere:indigon_spear"
       },
+      "minere:indigon_tool": {},
       "minecraft:tags": {
         "tags": [
           "minecraft:transformable_items",
