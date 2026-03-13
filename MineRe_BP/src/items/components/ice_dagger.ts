@@ -1,4 +1,8 @@
-import { EntityDamageCause, ItemCustomComponent, system } from "@minecraft/server";
+import {
+  EntityDamageCause,
+  ItemCustomComponent,
+  system,
+} from "@minecraft/server";
 import { Inferno } from "entities/bosses/inferno/Inferno";
 import { checkCooldown } from "./item_utils";
 import { freezeEntity } from "entities/functions/freeze";

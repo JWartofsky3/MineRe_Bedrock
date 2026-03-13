@@ -1,0 +1,7 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:texture_set": {
+    "color": "echo_staff_charged",
+    "metalness_emissive_roughness_subsurface": "echo_staff_charged_mers"
+  }
+}

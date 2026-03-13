@@ -1,6 +1,7 @@
 import { Block, Dimension, Vector3, system } from "@minecraft/server";
 import { isSolid } from "block/blockUtils";
 import { getBlocksInRadius } from "blocks/functions/getBlocksInRadius";
+import { isWearingIceCrown } from "items/armor/iceCrownUtils";
 
 export type FreezeAreaOptions = {
   radius?: number;
@@ -162,6 +163,9 @@ function extinguishEntitiesInArea(
 
   for (let i = 0; i < entities.length; i++) {
     const entity = entities[i];
+    if (isWearingIceCrown(entity)) {
+      continue;
+    }
     const dx = entity.location.x - location.x;
     const dy = entity.location.y - location.y;
     const dz = entity.location.z - location.z;

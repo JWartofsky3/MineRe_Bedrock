@@ -19,10 +19,7 @@
       },
       "minere:indigon_tool": {},
       "minecraft:tags": {
-        "tags": [
-          "minecraft:transformable_items",
-          "minecraft:is_spear"
-        ]
+        "tags": ["minecraft:transformable_items", "minecraft:is_spear"]
       },
       "minecraft:max_stack_size": 1,
       "minecraft:durability": {

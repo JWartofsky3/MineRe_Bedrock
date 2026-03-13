@@ -2313,7 +2313,7 @@
               "trader_exp": 5,
               "max_uses": 1
             },
-                        {
+            {
               "weight": 2,
               "wants": [
                 {
@@ -2332,7 +2332,7 @@
               "trader_exp": 5,
               "max_uses": 1
             },
-                        {
+            {
               "weight": 1,
               "wants": [
                 {

@@ -12,12 +12,12 @@ import {
 import { hasBlockInRadius } from "blocks/functions/getBlocksInRadius";
 import { RegisterableEvent } from "events/CustomEvent";
 
-const SPAWN_CHANCE_MIN = 0.05;
+const SPAWN_CHANCE_MIN = 0.03;
 const SPAWN_CHANCE_MAX = 0.15;
 const LEVEL_MIN = 15;
-const LEVEL_CAP = 50;
+const LEVEL_CAP = 75;
 const MIN_WORLD_DAYS = 10;
-const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20;
+const SPAWN_CHANCE_COOLDOWN_TICKS = 90 * 60 * 20;
 const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
 const GLACIER_TOTEM_ID = "minere:glacier_totem";

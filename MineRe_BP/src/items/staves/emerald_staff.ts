@@ -131,7 +131,13 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
                 dimension.spawnParticle("minere:emerald_wave", entity.location);
               } else {
                 entity.addEffect("instant_health", 1);
-                spawnParticleCloud("minecraft:heart_particle", entity.getHeadLocation(), 2, 5, entity.dimension);
+                spawnParticleCloud(
+                  "minecraft:heart_particle",
+                  entity.getHeadLocation(),
+                  2,
+                  5,
+                  entity.dimension,
+                );
               }
             }
             // apply effects to blocks

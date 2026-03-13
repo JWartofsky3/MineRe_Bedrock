@@ -135,10 +135,7 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
             includeLiquidBlocks: true,
             includePassableBlocks: true,
           })?.block?.location ??
-          addVector3(
-            sourcePos,
-            multiplyVector3Number(sourceDir, MAX_RANGE),
-          );
+          addVector3(sourcePos, multiplyVector3Number(sourceDir, MAX_RANGE));
         const endPos = {
           x: targetLocation.x,
           y: targetLocation.y,
@@ -181,8 +178,8 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
               }
               entity.applyDamage(damage, {
                 damagingEntity: source,
-                cause: EntityDamageCause.freezing
-              })
+                cause: EntityDamageCause.freezing,
+              });
             },
           },
         });

@@ -10,7 +10,13 @@ const HIT_PARTICLE = "minere:poison_particle";
 
 export const VenomShank: ItemCustomComponent = {
   onHitEntity(arg) {
-    spawnParticleCloud(HIT_PARTICLE, arg.hitEntity.location, 2, 5, arg.hitEntity.dimension);
+    spawnParticleCloud(
+      HIT_PARTICLE,
+      arg.hitEntity.location,
+      2,
+      5,
+      arg.hitEntity.dimension,
+    );
     arg.hitEntity.addEffect("poison", 200, {
       amplifier: 1,
     });

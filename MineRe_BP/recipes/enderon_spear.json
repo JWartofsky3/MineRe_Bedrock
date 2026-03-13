@@ -5,11 +5,7 @@
       "identifier": "minere:enderon_spear"
     },
     "tags": ["crafting_table"],
-    "pattern": [
-      "  X",
-      " # ",
-      "#  "
-    ],
+    "pattern": ["  X", " # ", "#  "],
     "key": {
       "#": {
         "item": "minecraft:stick"

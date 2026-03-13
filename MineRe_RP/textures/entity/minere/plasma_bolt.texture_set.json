@@ -1,0 +1,7 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:texture_set": {
+    "color": "plasma_bolt",
+    "metalness_emissive_roughness_subsurface": "plasma_bolt_mers"
+  }
+}

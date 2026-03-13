@@ -8,6 +8,7 @@ import {
 import { Inferno } from "../bosses/inferno/Inferno";
 import { isAlive } from "../../mob/mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
+import { isWearingIceCrown } from "items/armor/iceCrownUtils";
 
 const MAX_SLOWNESS = 4;
 
@@ -27,8 +28,14 @@ export function rollFreeze(target: Entity, bonus: number = 0) {
   if (!isAlive(target)) {
     return false;
   }
+  if (isWearingIceCrown(target)) {
+    return false;
+  }
   const isInferno = target.typeId === "minere:inferno";
-  if ((!isInferno && CANNOT_BE_FROZEN.has(target.typeId)) || (!isInferno && !target.isOnGround)) {
+  if (
+    (!isInferno && CANNOT_BE_FROZEN.has(target.typeId)) ||
+    (!isInferno && !target.isOnGround)
+  ) {
     return;
   }
 
@@ -76,6 +83,9 @@ export function rollFreeze(target: Entity, bonus: number = 0) {
 
 export function freezeEntity(target: Entity, duration: number) {
   if (!isAlive(target)) {
+    return;
+  }
+  if (isWearingIceCrown(target)) {
     return;
   }
   if (target.typeId === "minere:inferno") {

@@ -1,17 +1,18 @@
 import {
   Entity,
-  EntityComponentTypes,
   EntityDamageCause,
-  EntityEquippableComponent,
+  EffectAddAfterEvent,
   EntityHurtAfterEvent,
-  EquipmentSlot,
   Player,
   system,
 } from "@minecraft/server";
 import { isAlive } from "mob/mob_utils";
 import { freezeArea } from "functions/freezeArea";
+import {
+  ICE_CROWN_ITEM_ID,
+  isWearingIceCrown,
+} from "items/armor/iceCrownUtils";
 
-const ICE_CROWN_ITEM_ID = "minere:ice_crown";
 const ICE_CROWN_COOLDOWN_PROPERTY = "minere:ice_crown_cooldown";
 const ICE_CROWN_COOLDOWN_TICKS = 20 * 20;
 const ICE_CROWN_MESSAGE = "info.minere:ice_crown.activate";
@@ -32,15 +33,7 @@ export function iceCrownOnEntityHurt(data: EntityHurtAfterEvent) {
     return;
   }
 
-  const equippable = player.getComponent(
-    EntityComponentTypes.Equippable,
-  ) as EntityEquippableComponent;
-  if (!equippable) {
-    return;
-  }
-
-  const helmet = equippable.getEquipment(EquipmentSlot.Head);
-  if (helmet?.typeId !== ICE_CROWN_ITEM_ID) {
+  if (!isWearingIceCrown(player)) {
     return;
   }
 
@@ -82,6 +75,20 @@ function applyAttackerSlow(attacker?: Entity) {
   attacker.addEffect("slowness", ICE_CROWN_SLOWNESS_DURATION, {
     amplifier: 0,
   });
+}
+
+export function iceCrownOnEffectAdd(data: EffectAddAfterEvent) {
+  if (data.effect.typeId !== "slowness") {
+    return;
+  }
+  if (!isWearingIceCrown(data.entity)) {
+    return;
+  }
+  if (!isAlive(data.entity)) {
+    return;
+  }
+
+  data.entity.removeEffect("slowness");
 }
 
 function isIceCrownTriggerCause(cause: EntityDamageCause): boolean {

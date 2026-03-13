@@ -1,34 +1,34 @@
 {
   "texture_data": {
     "minere.acorn": {
-      "textures": "textures/items/minere/acorn.png"
+      "textures": "textures/items/minere/acorn"
     },
     "minere.popcorn": {
-      "textures": "textures/items/minere/popcorn.png"
+      "textures": "textures/items/minere/popcorn"
     },
     "minere.ender_plasma": {
-      "textures": "textures/items/minere/ender_plasma.png"
+      "textures": "textures/items/minere/ender_plasma"
     },
     "minere.nether_coal": {
-      "textures": "textures/items/minere/nether_coal.png"
+      "textures": "textures/items/minere/nether_coal"
     },
     "minere.enderon_gemstone": {
-      "textures": "textures/items/minere/enderon_gemstone.png"
+      "textures": "textures/items/minere/enderon_gemstone"
     },
     "minere.indigon_ingot": {
-      "textures": "textures/items/minere/indigon_ingot.png"
+      "textures": "textures/items/minere/indigon_ingot"
     },
     "minere.raw_indigon": {
-      "textures": "textures/items/minere/raw_indigon.png"
+      "textures": "textures/items/minere/raw_indigon"
     },
     "minere.indigon_apple": {
-      "textures": "textures/items/minere/indigon_apple.png"
+      "textures": "textures/items/minere/indigon_apple"
     },
     "minere.enchanted_indigon_apple": {
       "textures": "textures/items/minere/indigon_apple"
     },
     "minere.enderon_sword": {
-      "textures": "textures/items/minere/enderon_sword.png"
+      "textures": "textures/items/minere/enderon_sword"
     },
     "minere.enderon_spear": {
       "textures": "textures/items/minere/spear/enderon_spear"
@@ -40,7 +40,7 @@
       "textures": "textures/items/minere/spear/indigon_spear"
     },
     "minere.enderon_pickaxe": {
-      "textures": "textures/items/minere/enderon_pickaxe.png"
+      "textures": "textures/items/minere/enderon_pickaxe"
     },
     "minere.indigon_pickaxe": {
       "textures": "textures/items/minere/indigon_pickaxe"
@@ -49,16 +49,16 @@
       "textures": "textures/items/minere/ice_pick"
     },
     "minere.enderon_axe": {
-      "textures": "textures/items/minere/enderon_axe.png"
+      "textures": "textures/items/minere/enderon_axe"
     },
     "minere.indigon_axe": {
       "textures": "textures/items/minere/indigon_axe"
     },
     "minere.fire_axe": {
-      "textures": "textures/items/minere/fire_axe.png"
+      "textures": "textures/items/minere/fire_axe"
     },
     "minere.enderon_shovel": {
-      "textures": "textures/items/minere/enderon_shovel.png"
+      "textures": "textures/items/minere/enderon_shovel"
     },
     "minere.indigon_shovel": {
       "textures": "textures/items/minere/indigon_shovel"
@@ -67,31 +67,31 @@
       "textures": "textures/items/minere/wind_shovel"
     },
     "minere.enderon_hoe": {
-      "textures": "textures/items/minere/enderon_hoe.png"
+      "textures": "textures/items/minere/enderon_hoe"
     },
     "minere.indigon_hoe": {
       "textures": "textures/items/minere/indigon_hoe"
     },
     "minere.amethyst_staff": {
-      "textures": "textures/items/minere/amethyst_staff.png"
+      "textures": "textures/items/minere/amethyst_staff"
     },
     "minere.emerald_staff": {
-      "textures": "textures/items/minere/emerald_staff.png"
+      "textures": "textures/items/minere/emerald_staff"
     },
     "minere.ice_staff": {
-      "textures": "textures/items/minere/ice_staff.png"
+      "textures": "textures/items/minere/ice_staff"
     },
     "minere.fire_staff": {
-      "textures": "textures/items/minere/fire_staff.png"
+      "textures": "textures/items/minere/fire_staff"
     },
     "minere.blaster_staff": {
-      "textures": "textures/items/minere/blaster_staff.png"
+      "textures": "textures/items/minere/blaster_staff"
     },
     "minere.echo_staff": {
-      "textures": "textures/items/minere/echo_staff.png"
+      "textures": "textures/items/minere/echo_staff"
     },
     "minere.phased_ender_pearl": {
-      "textures": "textures/items/minere/phased_ender_pearl.png"
+      "textures": "textures/items/minere/phased_ender_pearl"
     },
     "minere.bomb": {
       "textures": "textures/items/minere/bomb"
@@ -169,16 +169,16 @@
       "textures": "textures/items/minere/ice_crown"
     },
     "minere.inferno_totem": {
-      "textures": "textures/items/minere/inferno_totem.png"
+      "textures": "textures/items/minere/inferno_totem"
     },
     "minere.inferno_ward": {
-      "textures": "textures/items/minere/inferno_ward.png"
+      "textures": "textures/items/minere/inferno_ward"
     },
     "minere.glacier_totem": {
-      "textures": "textures/items/minere/glacier_totem.png"
+      "textures": "textures/items/minere/glacier_totem"
     },
     "minere.glacier_ward": {
-      "textures": "textures/items/minere/glacier_ward.png"
+      "textures": "textures/items/minere/glacier_ward"
     },
     "minere.enderon_horse_armor": {
       "textures": "textures/items/minere/enderon_horse_armor"
@@ -187,79 +187,79 @@
       "textures": "textures/items/minere/indigon_horse_armor"
     },
     "minere.ice_dagger": {
-      "textures": "textures/items/minere/ice_dagger.png"
+      "textures": "textures/items/minere/ice_dagger"
     },
     "minere.venom_shank": {
-      "textures": "textures/items/minere/venom_shank.png"
+      "textures": "textures/items/minere/venom_shank"
     },
     "minere.venom_spear": {
       "textures": "textures/items/minere/spear/venom_spear"
     },
     "minere.illumina": {
-      "textures": "textures/items/minere/illumina.png"
+      "textures": "textures/items/minere/illumina"
     },
     "minere.windforce": {
-      "textures": "textures/items/minere/windforce.png"
+      "textures": "textures/items/minere/windforce"
     },
     "minere.firebrand": {
-      "textures": "textures/items/minere/firebrand.png"
+      "textures": "textures/items/minere/firebrand"
     },
     "minere.darkheart": {
-      "textures": "textures/items/minere/darkheart.png"
+      "textures": "textures/items/minere/darkheart"
     },
     "minere.shadow_scythe": {
-      "textures": "textures/items/minere/shadow_scythe.png"
+      "textures": "textures/items/minere/shadow_scythe"
     },
     "minere.copper_treecapitator": {
-      "textures": "textures/items/minere/copper_treecapitator.png"
+      "textures": "textures/items/minere/copper_treecapitator"
     },
     "minere.iron_treecapitator": {
-      "textures": "textures/items/minere/iron_treecapitator.png"
+      "textures": "textures/items/minere/iron_treecapitator"
     },
     "minere.golden_treecapitator": {
-      "textures": "textures/items/minere/gold_treecapitator.png"
+      "textures": "textures/items/minere/gold_treecapitator"
     },
     "minere.diamond_treecapitator": {
-      "textures": "textures/items/minere/diamond_treecapitator.png"
+      "textures": "textures/items/minere/diamond_treecapitator"
     },
     "minere.netherite_treecapitator": {
-      "textures": "textures/items/minere/netherite_treecapitator.png"
+      "textures": "textures/items/minere/netherite_treecapitator"
     },
     "minere.enderon_treecapitator": {
-      "textures": "textures/items/minere/enderon_treecapitator.png"
+      "textures": "textures/items/minere/enderon_treecapitator"
     },
     "minere.indigon_treecapitator": {
-      "textures": "textures/items/minere/indigon_treecapitator.png"
+      "textures": "textures/items/minere/indigon_treecapitator"
     },
     "minere.copper_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/copper_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/copper_bear_armor"
     },
     "minere.iron_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/iron_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/iron_bear_armor"
     },
     "minere.gold_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/gold_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/gold_bear_armor"
     },
     "minere.diamond_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/diamond_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/diamond_bear_armor"
     },
     "minere.netherite_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/netherite_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/netherite_bear_armor"
     },
     "minere.enderon_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/enderon_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/enderon_bear_armor"
     },
     "minere.indigon_bear_armor": {
-      "textures": "textures/items/minere/bear_armor/indigon_bear_armor.png"
+      "textures": "textures/items/minere/bear_armor/indigon_bear_armor"
     },
     "minere.royal_jelly": {
-      "textures": "textures/items/minere/royal_jelly.png"
+      "textures": "textures/items/minere/royal_jelly"
     },
     "minere.end_path": {
-      "textures": "textures/items/minere/end_path.png"
+      "textures": "textures/items/minere/end_path"
     },
     "minere.ice_charge": {
-      "textures": "textures/items/minere/ice_charge.png"
+      "textures": "textures/items/minere/ice_charge"
     },
     "minere.jump_boots": {
       "textures": "textures/items/minere/jump_boots"
@@ -292,25 +292,25 @@
       "textures": "textures/items/minere/spawn_eggs/spawn_egg_grizzly_bear"
     },
     "minere.copper_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/copper.png"
+      "textures": "textures/items/minere/elephant_armor/copper"
     },
     "minere.iron_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/iron.png"
+      "textures": "textures/items/minere/elephant_armor/iron"
     },
     "minere.gold_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/gold.png"
+      "textures": "textures/items/minere/elephant_armor/gold"
     },
     "minere.diamond_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/diamond.png"
+      "textures": "textures/items/minere/elephant_armor/diamond"
     },
     "minere.netherite_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/netherite.png"
+      "textures": "textures/items/minere/elephant_armor/netherite"
     },
     "minere.enderon_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/enderon.png"
+      "textures": "textures/items/minere/elephant_armor/enderon"
     },
     "minere.indigon_elephant_armor": {
-      "textures": "textures/items/minere/elephant_armor/indigon.png"
+      "textures": "textures/items/minere/elephant_armor/indigon"
     }
   },
   "resource_pack_name": "MineRe Resources",

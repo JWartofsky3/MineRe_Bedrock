@@ -59,7 +59,7 @@ const ROAR_PROPERTIES = {
   COOLDOWN: 20 * 8,
   CHANCE: 0.125,
   ACTIVATION_RANGE: 8,
-  ACTIVATION_DELAY: 1 * 20
+  ACTIVATION_DELAY: 1 * 20,
 };
 
 const TELEPORT_PROPERTIES = {
@@ -187,8 +187,8 @@ export class Glacier extends BaseCustomEntity {
         freezeArea(glacier.dimension, glacier.location, {
           radius: 4,
           verticalRadius: 4,
-          coverWithSnow: true
-        })
+          coverWithSnow: true,
+        });
       }, ROAR_PROPERTIES.ACTIVATION_DELAY);
     }
   }
