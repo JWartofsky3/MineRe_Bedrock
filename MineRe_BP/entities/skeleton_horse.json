@@ -8,6 +8,27 @@
       "is_experimental": false
     },
     "component_groups": {
+      "minecraft:skeleton_trap": {
+        "minecraft:behavior.skeleton_horse_trap": {
+          "within_radius": 10.0,
+          "duration": 900.0,
+          "priority": 2
+        }
+      },
+      "minecraft:lightning_immune": {
+        "minecraft:damage_sensor": {
+          "triggers": {
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "lightning"
+              }
+            },
+            "deals_damage": "no"
+          }
+        }
+      },
       "minere:skeleton_cavalry": {
         "minecraft:addrider": {
           "entity_type": "minecraft:skeleton",
@@ -256,6 +277,22 @@
             }
           }
         ]
+      },
+      "minecraft:set_trap": {
+        "add": {
+          "component_groups": [
+            "minecraft:skeleton_trap",
+            "minecraft:lightning_immune"
+          ]
+        }
+      },
+      "minecraft:spring_trap": {
+        "add": {
+          "component_groups": [
+            "minecraft:skeleton_horse_adult",
+            "minecraft:lightning_immune"
+          ]
+        }
       }
     }
   }

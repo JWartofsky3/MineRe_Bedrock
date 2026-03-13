@@ -130,14 +130,6 @@ placeholderMap.set("minecraft:drowned", {
   },
 });
 
-placeholderMap.set("minere:zombie_horse_placeholder", {
-  typeId: "minecraft:zombie_horse",
-});
-
-placeholderMap.set("minere:skeleton_horse_placeholder", {
-  typeId: "minecraft:skeleton_horse",
-});
-
 export class ReplacePlaceholderEntitiesEvent implements RegisterableEvent {
   register(): void {
     world.afterEvents.entitySpawn.subscribe((data) =>
