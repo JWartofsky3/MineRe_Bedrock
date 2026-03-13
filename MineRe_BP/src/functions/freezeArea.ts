@@ -1,7 +1,7 @@
 import { Block, Dimension, Vector3, system } from "@minecraft/server";
 import { isSolid } from "block/blockUtils";
 import { getBlocksInRadius } from "blocks/functions/getBlocksInRadius";
-import { isWearingIceCrown } from "items/armor/iceCrownUtils";
+import { isWearingIceCrown } from "items/armor/IceCrown";
 
 export type FreezeAreaOptions = {
   radius?: number;

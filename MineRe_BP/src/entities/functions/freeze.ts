@@ -8,7 +8,7 @@ import {
 import { Inferno } from "../bosses/inferno/Inferno";
 import { isAlive } from "../../mob/mob_utils";
 import { replaceableBlocks } from "block/blockUtils";
-import { isWearingIceCrown } from "items/armor/iceCrownUtils";
+import { isWearingIceCrown } from "items/armor/IceCrown";
 
 const MAX_SLOWNESS = 4;
 

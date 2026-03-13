@@ -1,11 +1,18 @@
 {
-  "format_version": "1.17.20",
+  "format_version": "1.26.0",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:zombie",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+      "properties": {
+        "minecraft:is_riding_zombie_horse": {
+          "type": "bool",
+          "default": false,
+          "client_sync": false
+        }
+      }
     },
     "component_groups": {
       "minecraft:look_to_start_drowned_transformation": {
@@ -117,6 +124,45 @@
         "minecraft:equipment": {
           "table": "loot_tables/entities/zombie_rider_gear.json"
         }
+      },
+      "minecraft:on_zombie_horse": {
+        "minecraft:behavior.use_kinetic_weapon": {
+          "priority": 3,
+          "track_target": true,
+          "approach_distance": 12.0,
+          "reposition_distance": {
+            "min": 8.0,
+            "max": 9.0
+          },
+          "cooldown_distance": {
+            "min": 11.0,
+            "max": 13.0
+          },
+          "weapon_reach_multiplier": 0.7,
+          "weapon_min_speed_multiplier": 0.2,
+          "speed_multiplier": 1.4,
+          "reposition_speed_multiplier": 1.4,
+          "cooldown_speed_multiplier": 1.4,
+          "hijack_mount_navigation": true
+        }
+      },
+      "minecraft:not_on_zombie_horse": {
+        "minecraft:behavior.use_kinetic_weapon": {
+          "priority": 3,
+          "track_target": true,
+          "approach_distance": 10.0,
+          "reposition_distance": {
+            "min": 6.0,
+            "max": 7.0
+          },
+          "cooldown_distance": {
+            "min": 9.0,
+            "max": 11.0
+          },
+          "weapon_reach_multiplier": 0.5,
+          "weapon_min_speed_multiplier": 0.2,
+          "hijack_mount_navigation": true
+        }
       }
     },
     "components": {
@@ -216,6 +262,48 @@
           },
           {
             "item": "minecraft:bone",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 6
+          },
+          {
+            "item": "minecraft:netherite_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 0
+          },
+          {
+            "item": "minecraft:diamond_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 1
+          },
+          {
+            "item": "minecraft:iron_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 2
+          },
+          {
+            "item": "minecraft:golden_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 3
+          },
+          {
+            "item": "minecraft:copper_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 4
+          },
+          {
+            "item": "minecraft:stone_spear",
+            "want_amount": 1,
+            "surplus_amount": 1,
+            "priority": 5
+          },
+          {
+            "item": "minecraft:wooden_spear",
             "want_amount": 1,
             "surplus_amount": 1,
             "priority": 6
@@ -431,7 +519,7 @@
         "priority": 2
       },
       "minecraft:behavior.melee_box_attack": {
-        "priority": 3,
+        "priority": 4,
         "horizontal_reach": 0.5,
         "speed_multiplier": 1.2
       },
@@ -557,7 +645,8 @@
                 "add": {
                   "component_groups": [
                     "minecraft:zombie_adult",
-                    "minecraft:can_have_equipment"
+                    "minecraft:can_have_equipment",
+                    "minecraft:not_on_zombie_horse"
                   ]
                 }
               },
@@ -567,7 +656,8 @@
                 "add": {
                   "component_groups": [
                     "minecraft:zombie_baby",
-                    "minecraft:can_have_equipment"
+                    "minecraft:can_have_equipment",
+                    "minecraft:not_on_zombie_horse"
                   ]
                 }
               },
@@ -578,7 +668,8 @@
                   "component_groups": [
                     "minecraft:zombie_baby",
                     "minecraft:zombie_jockey",
-                    "minecraft:can_have_equipment"
+                    "minecraft:can_have_equipment",
+                    "minecraft:not_on_zombie_horse"
                   ]
                 }
               }
@@ -601,12 +692,12 @@
       },
       "minecraft:as_adult": {
         "add": {
-          "component_groups": ["minecraft:zombie_adult"]
+          "component_groups": ["minecraft:zombie_adult", "minecraft:not_on_zombie_horse"]
         }
       },
       "minecraft:as_baby": {
         "add": {
-          "component_groups": ["minecraft:zombie_baby"]
+          "component_groups": ["minecraft:zombie_baby", "minecraft:not_on_zombie_horse"]
         }
       },
       "minere:spawn_as_rider": {
@@ -614,9 +705,21 @@
           "component_groups": [
             "minere:zombie_rider_gear",
             "minecraft:zombie_adult",
-            "minecraft:can_break_doors"
+            "minecraft:can_break_doors",
+            "minecraft:on_zombie_horse"
           ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:not_on_zombie_horse"
+          ]
+        },
+        "set_property": {
+          "minecraft:is_riding_zombie_horse": true
         }
+      },
+      "minecraft:spawn_as_rider": {
+        "trigger": "minere:spawn_as_rider"
       },
       "minecraft:start_transforming": {
         "add": {

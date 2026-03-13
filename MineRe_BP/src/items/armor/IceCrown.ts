@@ -1,23 +1,22 @@
 import {
   Entity,
+  EntityComponentTypes,
   EntityDamageCause,
-  EffectAddAfterEvent,
+  EntityEquippableComponent,
   EntityHurtAfterEvent,
+  EquipmentSlot,
   Player,
   system,
 } from "@minecraft/server";
 import { isAlive } from "mob/mob_utils";
 import { freezeArea } from "functions/freezeArea";
-import {
-  ICE_CROWN_ITEM_ID,
-  isWearingIceCrown,
-} from "items/armor/iceCrownUtils";
 
 const ICE_CROWN_COOLDOWN_PROPERTY = "minere:ice_crown_cooldown";
 const ICE_CROWN_COOLDOWN_TICKS = 20 * 20;
 const ICE_CROWN_MESSAGE = "info.minere:ice_crown.activate";
 const ICE_CROWN_RADIUS = 5;
 const ICE_CROWN_SLOWNESS_DURATION = 20 * 5;
+const ICE_CROWN_ITEM_ID = "minere:ice_crown";
 
 const ICE_CROWN_FREEZE_OPTIONS = {
   radius: ICE_CROWN_RADIUS,
@@ -77,20 +76,6 @@ function applyAttackerSlow(attacker?: Entity) {
   });
 }
 
-export function iceCrownOnEffectAdd(data: EffectAddAfterEvent) {
-  if (data.effect.typeId !== "slowness") {
-    return;
-  }
-  if (!isWearingIceCrown(data.entity)) {
-    return;
-  }
-  if (!isAlive(data.entity)) {
-    return;
-  }
-
-  data.entity.removeEffect("slowness");
-}
-
 function isIceCrownTriggerCause(cause: EntityDamageCause): boolean {
   return (
     cause === EntityDamageCause.fire ||
@@ -125,4 +110,24 @@ function createSafePocket(player: Player) {
   player.dimension.runCommand(
     `fill ${location.x - 2} ${location.y - 1} ${location.z - 2} ${location.x + 2} ${location.y + 2} ${location.z + 2} obsidian replace lava`,
   );
+}
+
+export function isWearingIceCrown(entity: Entity): boolean {
+  if (!isAlive(entity)) {
+    return false;
+  }
+
+  const equippable = entity.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!equippable) {
+    return false;
+  }
+
+  const helmet = equippable.getEquipment(EquipmentSlot.Head);
+  if (helmet?.typeId !== ICE_CROWN_ITEM_ID) {
+    return false;
+  }
+
+  return true;
 }

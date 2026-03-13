@@ -26,7 +26,6 @@ import { matchParent } from "events/spawning/babySpawnMatchParent";
 import { runEndStorms } from "weather/end_storm";
 import { useEmeraldStaff } from "items/staves/emerald_staff";
 import { RegisterCustomEvents } from "registry/eventRegistry";
-import { iceCrownOnEffectAdd } from "items/armor/IceCrown";
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
 // ───────────────────────── Startup ─────────────────────────
@@ -51,7 +50,6 @@ world.beforeEvents.itemUse.subscribe((data) => {
 });
 // ───────────────────────── Player Events ─────────────────────────
 world.afterEvents.entityHealthChanged.subscribe(playerHungerHeal);
-world.afterEvents.effectAdd.subscribe(iceCrownOnEffectAdd);
 world.afterEvents.playerBreakBlock.subscribe((data) => {
     offHandTreecapitate(data);
     blockDropItem(data);
