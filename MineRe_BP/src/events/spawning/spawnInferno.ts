@@ -17,7 +17,7 @@ const SPAWN_CHANCE_MAX = 0.15;
 const LEVEL_MIN = 10;
 const LEVEL_CAP = 50;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 30 * 60 * 20; // 30 minutes
-const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
+const INFERNO_SPAWN_PROP = "minere:inferno_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
 const INFERNO_TOTEM_ID = "minere:inferno_totem";
 const INFERNO_WARD_ID = "minere:inferno_ward";
@@ -68,7 +68,7 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
     const effectiveLevel = infernoHeldItemState.hasTotem
       ? LEVEL_CAP
       : player.level;
-    const miniBossProp = player.getDynamicProperty(MINI_BOSS_SPAWN_TIME_PROP);
+    const miniBossProp = player.getDynamicProperty(INFERNO_SPAWN_PROP);
     if (
       !infernoHeldItemState.hasTotem &&
       !!miniBossProp &&
@@ -110,7 +110,7 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
   }
 
   challenger.player.setDynamicProperty(
-    MINI_BOSS_SPAWN_TIME_PROP,
+    INFERNO_SPAWN_PROP,
     system.currentTick,
   );
   entity.remove();

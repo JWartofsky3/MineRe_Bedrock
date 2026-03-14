@@ -18,8 +18,9 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 15
       },
-      "minecraft:light_emission": 6,
-      "minecraft:map_color": "#EEF6B4"
+      "minecraft:map_color": "#EEF6B4",
+      "minecraft:light_dampening": 0,
+      "minecraft:light_emission": 15
     }
   }
 }

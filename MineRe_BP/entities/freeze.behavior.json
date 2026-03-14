@@ -87,9 +87,25 @@
           },
           {
             "filters": {
-              "test": "in_contact_with_water",
-              "operator": "==",
-              "value": true
+              "all_of": [
+                {
+                  "test": "in_contact_with_water",
+                  "operator": "==",
+                  "value": true
+                },
+                {
+                  "none_of": [
+                    {
+                      "test": "has_biome_tag",
+                      "value": "cold"
+                    },
+                    {
+                      "test": "has_biome_tag",
+                      "value": "frozen"
+                    }
+                  ]
+                }
+              ]
             },
             "cause": "drowning",
             "damage_per_tick": 2

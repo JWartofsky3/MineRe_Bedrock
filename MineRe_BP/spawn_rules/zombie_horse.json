@@ -5,7 +5,8 @@
       "identifier": "minecraft:zombie_horse",
       "population_control": "monster"
     },
-    "conditions": [{
+    "conditions": [
+      {
         "minecraft:spawns_on_surface": {},
         "minecraft:brightness_filter": {
           "min": 0,
@@ -67,6 +68,7 @@
         "minecraft:world_age_filter": {
           "min": 18000
         }
-      }]
+      }
+    ]
   }
 }

@@ -13,12 +13,12 @@ const ANGLE_CHANGE = 3;
 const DURATION_MIN = 1;
 const DURATION_MAX = 4;
 
-const validFamilies = new Set<string>();
-validFamilies.add("skeleton");
-validFamilies.add("stray");
-validFamilies.add("bogged");
-validFamilies.add("parched");
-validFamilies.add("goblin");
+const validTypes = new Set<string>();
+validTypes.add("minecraft:skeleton");
+validTypes.add("minecraft:stray");
+validTypes.add("minecraft:bogged");
+validTypes.add("minecraft:parched");
+validTypes.add("minecraft:goblin");
 
 export function skeletonStrafe(entity: Entity, chance: number) {
   if (Math.random() > chance) {
@@ -35,8 +35,8 @@ export function skeletonStrafe(entity: Entity, chance: number) {
     return;
   }
 
-  // validate shooter belongs to a valid family
-  if (!isFamilySet(owner, validFamilies)) {
+  // validate shooter belongs to a valid type
+  if (!validTypes.has(owner.typeId)) {
     return;
   }
 

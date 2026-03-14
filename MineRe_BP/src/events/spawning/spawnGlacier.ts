@@ -12,16 +12,17 @@ import {
 import { hasBlockInRadius } from "blocks/functions/getBlocksInRadius";
 import { RegisterableEvent } from "events/CustomEvent";
 
-const SPAWN_CHANCE_MIN = 0.03;
+const SPAWN_CHANCE_MIN = 0.05;
 const SPAWN_CHANCE_MAX = 0.15;
 const LEVEL_MIN = 15;
-const LEVEL_CAP = 75;
+const LEVEL_CAP = 50;
 const MIN_WORLD_DAYS = 10;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 90 * 60 * 20;
-const MINI_BOSS_SPAWN_TIME_PROP = "minere:mini_boss_spawn";
+const GLACIER_SPAWN_PROP = "minere:glacier_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
 const GLACIER_TOTEM_ID = "minere:glacier_totem";
 const GLACIER_WARD_ID = "minere:glacier_ward";
+const SURFACE_CHANCE_ROLL = 0.5;
 
 type Challenger = {
   player: Player;
@@ -39,6 +40,12 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
   const entity = data.entity;
   if (entity.typeId !== "minere:freeze") {
     return;
+  }
+
+  if (entity.getBlockStandingOn().getSkyLightLevel() > 5) {
+    if (Math.random() < SURFACE_CHANCE_ROLL) {
+      return;
+    }
   }
 
   const dimension = entity.dimension;
@@ -67,7 +74,7 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
     const effectiveLevel = glacierHeldItemState.hasTotem
       ? LEVEL_CAP
       : player.level;
-    const miniBossProp = player.getDynamicProperty(MINI_BOSS_SPAWN_TIME_PROP);
+    const miniBossProp = player.getDynamicProperty(GLACIER_SPAWN_PROP);
     if (
       !glacierHeldItemState.hasTotem &&
       !!miniBossProp &&
@@ -112,7 +119,7 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
   }
 
   challenger.player.setDynamicProperty(
-    MINI_BOSS_SPAWN_TIME_PROP,
+    GLACIER_SPAWN_PROP,
     system.currentTick,
   );
   entity.remove();

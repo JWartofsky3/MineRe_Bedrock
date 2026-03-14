@@ -90,18 +90,18 @@
                   "shape": "circle",
                   "target": "self",
                   "base_delay": 1,
-                  "delay_per_summon": 0,
-                  "num_entities_spawned": 10,
+                  "delay_per_summon": 0.05,
+                  "num_entities_spawned": 16,
                   "entity_type": "minere:ice_spike",
-                  "size": 6,
+                  "size": 5,
                   "entity_lifespan": 5.0,
                   "sound_event": "prepare.attack"
                 },
                 {
                   "shape": "circle",
                   "target": "self",
-                  "base_delay": 0.15,
-                  "delay_per_summon": 0,
+                  "base_delay": 1,
+                  "delay_per_summon": 0.05,
                   "num_entities_spawned": 16,
                   "entity_type": "minere:ice_spike",
                   "size": 7,
@@ -359,9 +359,25 @@
           },
           {
             "filters": {
-              "test": "in_contact_with_water",
-              "operator": "==",
-              "value": true
+              "all_of": [
+                {
+                  "test": "in_contact_with_water",
+                  "operator": "==",
+                  "value": true
+                },
+                {
+                  "none_of": [
+                    {
+                      "test": "has_biome_tag",
+                      "value": "cold"
+                    },
+                    {
+                      "test": "has_biome_tag",
+                      "value": "frozen"
+                    }
+                  ]
+                }
+              ]
             },
             "cause": "drowning",
             "damage_per_tick": 2

@@ -1,0 +1,3 @@
+display_name: Cocoa's Monsters Sync
+short_description: Sync the Cocoa's_Monsters subset pack from the MineRe megapack.
+default_prompt: Sync Cocoa's_Monsters into subpacks\\Cocoa's_Monsters from MineRe by preserving the existing standalone manifests and pack icons, overwriting everything else from MineRe, and asking first whether the standalone version should be incremented and if that increment should be major or minor.

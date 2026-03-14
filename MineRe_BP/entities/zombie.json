@@ -692,12 +692,18 @@
       },
       "minecraft:as_adult": {
         "add": {
-          "component_groups": ["minecraft:zombie_adult", "minecraft:not_on_zombie_horse"]
+          "component_groups": [
+            "minecraft:zombie_adult",
+            "minecraft:not_on_zombie_horse"
+          ]
         }
       },
       "minecraft:as_baby": {
         "add": {
-          "component_groups": ["minecraft:zombie_baby", "minecraft:not_on_zombie_horse"]
+          "component_groups": [
+            "minecraft:zombie_baby",
+            "minecraft:not_on_zombie_horse"
+          ]
         }
       },
       "minere:spawn_as_rider": {
@@ -710,9 +716,7 @@
           ]
         },
         "remove": {
-          "component_groups": [
-            "minecraft:not_on_zombie_horse"
-          ]
+          "component_groups": ["minecraft:not_on_zombie_horse"]
         },
         "set_property": {
           "minecraft:is_riding_zombie_horse": true

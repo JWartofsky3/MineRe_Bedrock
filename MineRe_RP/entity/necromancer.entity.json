@@ -34,6 +34,7 @@
         "look_at": "animation.minere.necromancer.look_at",
         "riding.arms": "animation.humanoid.riding.arms",
         "riding.legs": "animation.humanoid.riding.legs",
+        "riding.body": "animation.humanoid.riding.body",
         "holding": "animation.humanoid.holding",
         "casting_controller": "controller.animation.minere.necromancer",
         "riding_controller": "controller.animation.humanoid.riding",

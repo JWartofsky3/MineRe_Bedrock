@@ -1,0 +1,3 @@
+display_name: Cocoa's Birds Sync
+short_description: Sync the Cocoa's_Birds subset pack from the MineRe megapack.
+default_prompt: Extract or sync Cocoa's_Birds into subpacks\\Cocoa's_Birds from MineRe, asking whether to create a new major or minor version before building BP/RP names with bracketed versions like [1.0.0].
