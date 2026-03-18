@@ -1,17 +1,16 @@
 import { EntityComponentTypes, system, } from "@minecraft/server";
-import { isFamilySet } from "./mob_utils";
 import { magnitudeVector3 } from "util/vector3Functions";
 const IS_STRAFING = "minere:is_strafing";
 const STRAFE_FORCE = 0.06;
 const ANGLE_CHANGE = 3;
 const DURATION_MIN = 1;
 const DURATION_MAX = 4;
-const validFamilies = new Set();
-validFamilies.add("skeleton");
-validFamilies.add("stray");
-validFamilies.add("bogged");
-validFamilies.add("parched");
-validFamilies.add("goblin");
+const validTypes = new Set();
+validTypes.add("minecraft:skeleton");
+validTypes.add("minecraft:stray");
+validTypes.add("minecraft:bogged");
+validTypes.add("minecraft:parched");
+validTypes.add("minecraft:goblin");
 export function skeletonStrafe(entity, chance) {
     if (Math.random() > chance) {
         return;
@@ -24,8 +23,8 @@ export function skeletonStrafe(entity, chance) {
     if (!owner) {
         return;
     }
-    // validate shooter belongs to a valid family
-    if (!isFamilySet(owner, validFamilies)) {
+    // validate shooter belongs to a valid type
+    if (!validTypes.has(owner.typeId)) {
         return;
     }
     // check if shooter is already strafing

@@ -7,7 +7,10 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/entity/minere/deer"
+        "brown": "textures/entity/minere/deer/brown",
+        "light": "textures/entity/minere/deer/light",
+        "red": "textures/entity/minere/deer/red",
+        "white": "textures/entity/minere/deer/white"
       },
       "geometry": {
         "default": "geometry.minere.deer"
@@ -17,7 +20,6 @@
         "overlay_color": "#c0bab1"
       },
       "scripts": {
-        "scale": "1.2",
         "animate": [
           "controller",
           {
@@ -34,7 +36,7 @@
         "baby_transform": "animation.minere.deer.baby_transform",
         "controller": "controller.animation.minere.deer"
       },
-      "render_controllers": ["controller.render.cow"]
+      "render_controllers": ["controller.render.minere.deer"]
     }
   }
 }

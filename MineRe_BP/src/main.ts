@@ -14,6 +14,7 @@ import {
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
+import { getItemLoreSyncInterval, syncItemLore } from "items/itemLore";
 
 // ───────────────────────── Imports: Items ─────────────────────────
 import { useAmethystStaff } from "items/staves/amethyst_staff";
@@ -95,5 +96,9 @@ system.runInterval(() => {
   if (!world.getDynamicProperty(ARMOR_WEIGHT)?.valueOf()) return;
   world.getAllPlayers().forEach(armorWeight);
 }, 1);
+
+system.runInterval(() => {
+  world.getAllPlayers().forEach(syncItemLore);
+}, getItemLoreSyncInterval());
 
 runEndStorms();

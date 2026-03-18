@@ -20,6 +20,7 @@ import {
   multiplyVector3Number,
 } from "util/vector3Functions";
 import { isAlive } from "mob/mob_utils";
+import { showHint } from "./staffHints";
 
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
 const SHADOW_TIME = 8 * 20;
@@ -115,6 +116,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           reduceDurability(source, itemStack, SHADOW_DURABILITY_COST);
         } else {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.echo.shadow_xp");
         }
         return;
       } else {
@@ -126,6 +128,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
         }
         if (!consumeXp(source, SONIC_XP_COST)) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.echo.sonic_xp");
           return;
         }
         cooldownComponent.startCooldown(source);

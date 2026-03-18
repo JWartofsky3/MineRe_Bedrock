@@ -18,6 +18,7 @@ import {
 import { isAlive, isFamily } from "mob/mob_utils";
 import { reduceDurability } from "../components/reduce_durability";
 import { spawnParticleCloud } from "particles/particleCloud";
+import { showHint } from "./staffHints";
 
 const MONSTER_DAMAGE = 8;
 const UNDEAD_DAMAGE = 12;
@@ -67,6 +68,7 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
       }
       if (!consumeXp(source, XP_COST)) {
         source.playSound("item.amethyst_staff.error");
+        showHint(source, "hint.minere:staff.emerald.xp");
         return;
       }
       cooldownComponent.startCooldown(source);

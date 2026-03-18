@@ -89,28 +89,28 @@
       "textures": "textures/blocks/minere/end_crystalline.png"
     },
     "minere:blackstone_iron_ore": {
-      "textures": "textures/blocks/minere/blackstone_iron_ore.png"
+      "textures": "textures/blocks/minere/blackstone_iron_ore"
     },
     "minere:blackstone_iron_ore_top": {
-      "textures": "textures/blocks/minere/blackstone_iron_ore_top.png"
+      "textures": "textures/blocks/minere/blackstone_iron_ore_top"
     },
     "minere:basalt_iron_ore_side": {
-      "textures": "textures/blocks/minere/basalt_iron_ore_side.png"
+      "textures": "textures/blocks/minere/basalt_iron_ore_side"
     },
     "minere:basalt_iron_ore_top": {
-      "textures": "textures/blocks/minere/basalt_iron_ore_top.png"
+      "textures": "textures/blocks/minere/basalt_iron_ore_top"
     },
     "minere:basalt_nether_coal_ore_side": {
-      "textures": "textures/blocks/minere/basalt_nether_coal_ore_side.png"
+      "textures": "textures/blocks/minere/basalt_nether_coal_ore_side"
     },
     "minere:basalt_nether_coal_ore_top": {
-      "textures": "textures/blocks/minere/basalt_nether_coal_ore_top.png"
+      "textures": "textures/blocks/minere/basalt_nether_coal_ore_top"
     },
     "minere:basalt_indigon_ore_side": {
-      "textures": "textures/blocks/minere/basalt_indigon_ore_side.png"
+      "textures": "textures/blocks/minere/basalt_indigon_ore_side"
     },
     "minere:basalt_indigon_ore_top": {
-      "textures": "textures/blocks/minere/basalt_indigon_ore_top.png"
+      "textures": "textures/blocks/minere/basalt_indigon_ore_top"
     },
     "minere:ghost_pot": {
       "textures": "textures/blocks/minere/ghost_pot.png"

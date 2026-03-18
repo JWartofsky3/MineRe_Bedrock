@@ -16,6 +16,7 @@ import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "../components/reduce_durability";
 import { findItemInContainer } from "../components/item_utils";
 import { getRandomIntInclusive } from "util/mathFunctions";
+import { showHint } from "./staffHints";
 
 const SHIELD_RANGE = 4;
 const HEAL_DURATION = 5 * 20;
@@ -47,6 +48,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.amethyst.ammo");
           return;
         }
         const nearbyEntities = dimension.getEntities({
@@ -79,6 +81,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           ) === -1
         ) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.amethyst.ammo");
           return;
         }
         if (Math.random() < AMMO_CONSUME_CHANCE) {

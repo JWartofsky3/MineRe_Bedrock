@@ -12,6 +12,7 @@ import {
 } from "@minecraft/server";
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "../components/reduce_durability";
+import { showHint } from "./staffHints";
 
 export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -41,6 +42,7 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
           itemStack.typeId
         ) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.blaster.ammo");
           return;
         }
         if (

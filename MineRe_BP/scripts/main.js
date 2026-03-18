@@ -8,6 +8,7 @@ import { ARMOR_WEIGHT, giveOutSettingsBook, initializeWorldSettings, } from "set
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
+import { getItemLoreSyncInterval, syncItemLore } from "items/itemLore";
 // ───────────────────────── Imports: Items ─────────────────────────
 import { useAmethystStaff } from "items/staves/amethyst_staff";
 import { useEchoStaff } from "items/staves/echo_staff";
@@ -75,4 +76,7 @@ system.runInterval(() => {
         return;
     world.getAllPlayers().forEach(armorWeight);
 }, 1);
+system.runInterval(() => {
+    world.getAllPlayers().forEach(syncItemLore);
+}, getItemLoreSyncInterval());
 runEndStorms();

@@ -42,7 +42,7 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
     return;
   }
 
-  if (entity.getBlockStandingOn().getSkyLightLevel() > 5) {
+  if (entity.getBlockStandingOn()?.getSkyLightLevel() > 5) {
     if (Math.random() < SURFACE_CHANCE_ROLL) {
       return;
     }

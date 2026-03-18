@@ -9,6 +9,26 @@
       "is_experimental": false
     },
     "component_groups": {
+      "minere:deer_brown": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "minere:deer_light": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "minere:deer_red": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "minere:deer_white": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
       "minere:deer_baby": {
         "minecraft:is_baby": {},
         "minecraft:scale": {
@@ -239,21 +259,35 @@
     },
     "events": {
       "minecraft:entity_spawned": {
-        "randomize": [
+        "sequence": [
           {
-            "weight": 95,
-            "trigger": "minecraft:spawn_adult"
+            "randomize": [
+              {
+                "weight": 95,
+                "trigger": "minecraft:spawn_adult"
+              },
+              {
+                "weight": 5,
+                "trigger": "minecraft:spawn_baby"
+              }
+            ]
           },
           {
-            "weight": 5,
-            "trigger": "minecraft:spawn_baby"
+            "trigger": "minere:select_spawn_variant"
           }
         ]
       },
       "minecraft:entity_born": {
-        "add": {
-          "component_groups": ["minere:deer_baby", "minere:deer_trusting"]
-        }
+        "sequence": [
+          {
+            "add": {
+              "component_groups": ["minere:deer_baby", "minere:deer_trusting"]
+            }
+          },
+          {
+            "trigger": "minere:select_spawn_variant"
+          }
+        ]
       },
       "minecraft:ageable_grow_up": {
         "remove": {
@@ -286,6 +320,142 @@
             }
           }
         ]
+      },
+      "minere:select_spawn_variant": {
+        "sequence": [
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                }
+              ]
+            },
+            "trigger": "minere:set_white_variant"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "roofed"
+                }
+              ],
+              "none_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                }
+              ]
+            },
+            "trigger": "minere:set_brown_variant"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                }
+              ],
+              "none_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "roofed"
+                }
+              ]
+            },
+            "trigger": "minere:set_red_variant"
+          },
+          {
+            "filters": {
+              "none_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "roofed"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "taiga"
+                }
+              ]
+            },
+            "trigger": "minere:set_light_variant"
+          }
+        ]
+      },
+      "minere:set_brown_variant": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_light",
+            "minere:deer_red",
+            "minere:deer_white"
+          ]
+        },
+        "add": {
+          "component_groups": ["minere:deer_brown"]
+        }
+      },
+      "minere:set_light_variant": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_brown",
+            "minere:deer_red",
+            "minere:deer_white"
+          ]
+        },
+        "add": {
+          "component_groups": ["minere:deer_light"]
+        }
+      },
+      "minere:set_red_variant": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_brown",
+            "minere:deer_light",
+            "minere:deer_white"
+          ]
+        },
+        "add": {
+          "component_groups": ["minere:deer_red"]
+        }
+      },
+      "minere:set_white_variant": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_brown",
+            "minere:deer_light",
+            "minere:deer_red"
+          ]
+        },
+        "add": {
+          "component_groups": ["minere:deer_white"]
+        }
       }
     }
   }

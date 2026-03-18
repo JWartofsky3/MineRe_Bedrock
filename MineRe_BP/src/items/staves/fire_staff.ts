@@ -19,6 +19,7 @@ import {
 import { reduceDurability } from "../components/reduce_durability";
 import { replaceableBlocks } from "block/blockUtils";
 import { findItemInContainer } from "../components/item_utils";
+import { showHint } from "./staffHints";
 
 const AMMO_CONSUME_CHANCE = 0.64;
 
@@ -44,6 +45,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
           source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.fire.ammo");
           return;
         }
         source.addEffect("fire_resistance", 120, {
@@ -64,6 +66,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
           ) === -1
         ) {
           source.playSound("item.amethyst_staff.error");
+          showHint(source, "hint.minere:staff.fire.ammo");
           return;
         }
         if (Math.random() < AMMO_CONSUME_CHANCE) {

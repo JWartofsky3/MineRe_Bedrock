@@ -23,6 +23,7 @@ import {
 import { reduceDurability } from "../components/reduce_durability";
 import { findItemInContainer } from "items/components/item_utils";
 import { isFireMob } from "entities/functions/isFireMob";
+import { showHint } from "./staffHints";
 
 const MAX_RANGE = 19;
 const WAVE_COUNT = 4;
@@ -65,6 +66,7 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
         source.getGameMode() !== GameMode.Creative
       ) {
         source.playSound("item.amethyst_staff.error");
+        showHint(source, "hint.minere:staff.ice.ammo");
         return;
       }
 
@@ -113,6 +115,7 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
       ) === -1
     ) {
       source.playSound("item.amethyst_staff.error");
+      showHint(source, "hint.minere:staff.ice.ammo");
       return;
     }
     if (Math.random() < AMMO_CONSUME_CHANCE) {

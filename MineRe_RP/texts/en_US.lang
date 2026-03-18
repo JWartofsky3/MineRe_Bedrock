@@ -290,6 +290,17 @@ action.hint.exit.minere:moose=Tap sneak to dismount
 action.hint.exit.console.minere:moose=Press :_input_key.sneak: to dismount
 action.hint.exit.minere:elephant=Tap sneak to dismount
 action.hint.exit.console.minere:elephant=Press :_input_key.sneak: to dismount
+hint.minere:staff.amethyst.ammo=§cAmethyst Staff requires amethyst shards!§r
+hint.minere:staff.amethyst.sneak=§dUse Amethyst Staff while sneaking to generate a shield!§r
+hint.minere:staff.blaster.ammo=§cBlaster Staff requires ender plasma!§r
+hint.minere:staff.echo.shadow_xp=§cEcho Staff requires XP to enter shadow form!§r
+hint.minere:staff.echo.sneak=§7Use Echo Staff while sneaking to enter shadow form!§r
+hint.minere:staff.echo.sonic_xp=§cEcho Staff requires XP for sonic boom!§r
+hint.minere:staff.emerald.xp=§cEmerald Staff requires XP!§r
+hint.minere:staff.fire.ammo=§cFire Staff requires fire charges!§r
+hint.minere:staff.fire.sneak=§6Use Fire Staff while sneaking to create a firewall!§r
+hint.minere:staff.ice.ammo=§cIce Staff requires ice charges!§r
+hint.minere:staff.ice.sneak=§bUse Ice Staff while sneaking to freeze nearby enemies!§r
 minere:itemGroup.name.elephant_armor=Elephant Armor
 
 entity.minere:glacier.name=Glacier
@@ -342,14 +353,28 @@ item.minere:indigon_apple=Indigon Apple
 item.minere:enchanted_indigon_apple=Enchanted Indigon Apple
 
 item.minere:inferno_totem=Inferno Totem
+hint.minere:inferno_totem=§6Inferno Totem attracts Inferno spawns!§r
 
 item.minere:inferno_ward=Inferno Ward
+hint.minere:inferno_ward=§cInferno Ward prevents Inferno spawns!§r
 
 item.minere:glacier_totem=Glacier Totem
+hint.minere:glacier_totem=§bGlacier Totem attracts Glacier spawns!§r
 
 item.minere:glacier_ward=Glacier Ward
+hint.minere:glacier_ward=§cGlacier Ward prevents Glacier spawns!§r
 
 entity.minere:monkey.name=Monkey
 item.spawn_egg.entity.minere:monkey.name=Spawn Monkey
 
 action.interact.untame=Untame
+lore.minere:enderon_armor=Increases teleportation distance
+lore.minere:aetherial_armor=Grants triple jump
+lore.minere:indigon_armor=Gives effects at half health
+lore.minere:inferno_crown=Gives strength and fire resistance on fire damage
+lore.minere:ice_crown=Resistant to Freeze
+lore.minere:ice_pick=§bFreezes area while mining§r
+lore.minere:indigon_tool=§5Becomes stronger at low durability§r
+lore.minere:lifesteal_living=§4Lifesteal against the living§r
+lore.minere:ghostwalker.kills=Kills: %1
+lore.minere:ghostwalker.kills_max=Kills: §6%1§r
