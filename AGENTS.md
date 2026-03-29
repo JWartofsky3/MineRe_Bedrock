@@ -22,3 +22,8 @@ You can read anything under "C:\Users\Jacob\Desktop\Mine Re" without asking
 
 Do not read scripts/.. 
 That is output code.
+
+Locale file note:
+- `MineRe_RP/texts/*.lang` files may not be UTF-8, so `apply_patch` can fail on them.
+- If a `.lang` file blocks patching, use a key-based replacement approach that preserves the file's existing encoding and only updates the specific lines you need.
+- When syncing translations, treat `en_US.lang` as the source of truth, add missing keys to the other locale files first, then replace fallback English text with real translations only when requested.
