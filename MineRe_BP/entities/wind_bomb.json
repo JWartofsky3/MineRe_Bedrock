@@ -8,66 +8,6 @@
       "is_experimental": false
     },
     "component_groups": {
-      "minere:from_regular_explosion": {
-        "minecraft:explode": {
-          "destroy_affected_by_griefing": false,
-          "fuse_length": {
-            "range_min": 0.5,
-            "range_max": 2
-          },
-          "fuse_lit": true,
-          "power": 3,
-          "causes_fire": false
-        }
-      },
-      "minere:from_mob_explosion": {
-        "minecraft:explode": {
-          "destroy_affected_by_griefing": true,
-          "fuse_length": {
-            "range_min": 0.5,
-            "range_max": 2
-          },
-          "fuse_lit": true,
-          "power": 3,
-          "causes_fire": false
-        }
-      },
-      "minere:from_goblin_explosion": {
-        "minecraft:explode": {
-          "destroy_affected_by_griefing": true,
-          "fuse_length": {
-            "range_min": 0.5,
-            "range_max": 1.5
-          },
-          "fuse_lit": true,
-          "power": 2,
-          "causes_fire": false
-        }
-      },
-      "minere:regular_bomb": {
-        "minecraft:variant": {
-          "value": 0
-        },
-        "minecraft:explode": {
-          "fuse_length": 2,
-          "fuse_lit": true,
-          "power": 3,
-          "causes_fire": false,
-          "destroy_affected_by_griefing": false
-        },
-        "minecraft:projectile": {
-          "power": 0.85,
-          "gravity": 0.0025,
-          "angle_offset": -20,
-          "inertia": 0.995,
-          "liquid_inertia": 0.5,
-          "uncertainty_base": 0,
-          "uncertainty_multiplier": 0,
-          "anchor": 2,
-          "offset": [0, 1, 0],
-          "should_bounce": true
-        }
-      },
       "minere:mob_bomb": {
         "minecraft:variant": {
           "value": 1
@@ -78,14 +18,6 @@
           "power": 3,
           "causes_fire": false,
           "destroy_affected_by_griefing": true
-        },
-        "minecraft:projectile": {
-          "power": 0.85,
-          "gravity": 0.0025,
-          "angle_offset": -20,
-          "inertia": 0.995,
-          "anchor": 2,
-          "offset": [0, 1, 0]
         }
       },
       "minere:goblin_bomb": {
@@ -101,21 +33,13 @@
           "power": 2,
           "causes_fire": false,
           "destroy_affected_by_griefing": true
-        },
-        "minecraft:projectile": {
-          "power": 0.85,
-          "gravity": 0.0025,
-          "angle_offset": -20,
-          "inertia": 0.995,
-          "anchor": 2,
-          "offset": [0, 1, 0]
         }
       }
     },
     "components": {
       "minecraft:collision_box": {
         "width": 0.8,
-        "height": 1.5
+        "height": 0.8
       },
       "minecraft:damage_sensor": {
         "triggers": {
@@ -124,19 +48,41 @@
       },
       "minecraft:fire_immune": {},
       "minecraft:type_family": {
-        "family": ["bomb", "inanimate"]
+        "family": [
+          "bomb",
+          "inanimate"
+        ]
+      },
+      "minecraft:variant": {
+        "value": 0
+      },
+      "minecraft:explode": {
+        "fuse_length": 2,
+        "fuse_lit": true,
+        "power": 3,
+        "causes_fire": false,
+        "destroy_affected_by_griefing": false
       },
       "minecraft:projectile": {
-        "power": 0.8,
-        "gravity": 0,
-        "angle_offset": -20,
+        "anchor": 1,
+        "catch_fire": false,
+        "crit_particle_on_hurt": false,
+        "gravity": 0.015,
         "inertia": 0.995,
+        "is_dangerous": true,
+        "isolated_physics": false,
+        "lightning": false,
         "liquid_inertia": 0.5,
+        "multiple_targets": true,
+        "power": 0.85,
+        "angle_offset": -20,
+        "reflect_on_hurt": false,
+        "shoot_target": true,
+        "should_bounce": true,
+        "splash_range": 4,
+        "stop_on_hurt": false,
         "uncertainty_base": 0,
-        "uncertainty_multiplier": 0,
-        "anchor": 2,
-        "offset": [0, 1, 0],
-        "should_bounce": true
+        "uncertainty_multiplier": 0
       },
       "minecraft:physics": {},
       "minecraft:body_rotation_blocked": {},
@@ -156,11 +102,6 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "add": {
-              "component_groups": ["minere:regular_bomb"]
-            }
-          },
-          {
             "filters": {
               "all_of": [
                 {
@@ -176,11 +117,10 @@
                 }
               ]
             },
-            "remove": {
-              "component_groups": ["minere:regular_bomb"]
-            },
             "add": {
-              "component_groups": ["minere:mob_bomb"]
+              "component_groups": [
+                "minere:mob_bomb"
+              ]
             }
           },
           {
@@ -189,45 +129,10 @@
               "subject": "other",
               "value": "goblin"
             },
-            "remove": {
-              "component_groups": ["minere:regular_bomb"]
-            },
             "add": {
-              "component_groups": ["minere:goblin_bomb"]
-            }
-          }
-        ]
-      },
-      "minecraft:from_explosion": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_variant",
-              "subject": "self",
-              "value": 0
-            },
-            "add": {
-              "component_groups": ["minere:from_regular_explosion"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_variant",
-              "subject": "self",
-              "value": 1
-            },
-            "add": {
-              "component_groups": ["minere:from_mob_explosion"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_variant",
-              "subject": "self",
-              "value": 2
-            },
-            "add": {
-              "component_groups": ["minere:from_goblin_explosion"]
+              "component_groups": [
+                "minere:goblin_bomb"
+              ]
             }
           }
         ]
