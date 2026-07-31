@@ -1,4 +1,6 @@
 import { EntityComponentTypes, EquipmentSlot, ItemComponentTypes, } from "@minecraft/server";
+import { ARMOR_WEIGHT } from "settings";
+import { world } from "@minecraft/server";
 const BASE_MOVEMENT = 0.1;
 const HEAVY_ARMOR_MULT = 0.95;
 const LIGHT_ARMOR_MULT = 1.05;
@@ -33,6 +35,21 @@ const lightArmorKeyWords = [
 ];
 const lightArmorSet = new Set();
 const heavyArmorSet = new Set();
+const armorItemKeyWords = [
+    "helmet",
+    "chestplate",
+    "leggings",
+    "boots",
+    "crown",
+    "cap",
+    "hat",
+    "robe",
+    "robes",
+    "cloak",
+    "cape",
+    "elytra",
+];
+const excludedArmorKeyWords = ["horse"];
 export function armorWeight(player) {
     if (!player) {
         return;
@@ -62,31 +79,57 @@ export function armorWeight(player) {
         getSoulSpeedMultiplier(player);
     movementCopmonent.setCurrentValue(finalSpeedValue);
 }
-function getItemWeight(item) {
+export function isArmorWeightEnabled() {
+    return !!world.getDynamicProperty(ARMOR_WEIGHT)?.valueOf();
+}
+export function getArmorWeightKind(item) {
+    if (!isArmorWeightAffectedItem(item)) {
+        return null;
+    }
     if (!item?.typeId) {
-        return 0;
+        return null;
     }
     if (lightArmorSet.has(item.typeId)) {
-        return 0;
+        return "light";
     }
     if (heavyArmorSet.has(item.typeId)) {
-        return 1;
-    }
-    if (!item.getComponent(ItemComponentTypes.Durability)) {
-        return 0;
-    }
-    if (!item.getComponent(ItemComponentTypes.Enchantable)) {
-        return 0;
+        return "heavy";
     }
     const idWords = getIdWords(item.typeId);
     for (let i = 0; i < lightArmorKeyWords.length; i++) {
         if (idWords.has(lightArmorKeyWords[i])) {
             lightArmorSet.add(item.typeId);
-            return 0;
+            return "light";
         }
     }
     heavyArmorSet.add(item.typeId);
-    return 1;
+    return "heavy";
+}
+export function isArmorWeightAffectedItem(item) {
+    if (!item?.typeId) {
+        return false;
+    }
+    if (!item.getComponent(ItemComponentTypes.Durability)) {
+        return false;
+    }
+    if (!item.getComponent(ItemComponentTypes.Enchantable)) {
+        return false;
+    }
+    const idWords = getIdWords(item.typeId);
+    for (let i = 0; i < excludedArmorKeyWords.length; i++) {
+        if (idWords.has(excludedArmorKeyWords[i])) {
+            return false;
+        }
+    }
+    for (let i = 0; i < armorItemKeyWords.length; i++) {
+        if (idWords.has(armorItemKeyWords[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+function getItemWeight(item) {
+    return getArmorWeightKind(item) === "heavy" ? 1 : 0;
 }
 function getIdWords(typeId) {
     const parts = typeId.split(":");

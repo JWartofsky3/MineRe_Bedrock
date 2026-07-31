@@ -7,6 +7,11 @@ import {
   Player,
   RawMessage,
 } from "@minecraft/server";
+import {
+  getArmorWeightKind,
+  isArmorWeightAffectedItem,
+  isArmorWeightEnabled,
+} from "player/armorWeight";
 
 const ITEM_LORE_SYNC_INTERVAL = 20;
 
@@ -42,6 +47,9 @@ const ARMOR_SLOTS = [
   EquipmentSlot.Legs,
   EquipmentSlot.Feet,
 ];
+const ARMOR_WEIGHT_PREFIX = "§7Weight: ";
+const LIGHT_ARMOR_TEXT = "§aLight";
+const HEAVY_ARMOR_TEXT = "§cHeavy";
 
 export function getItemLoreSyncInterval(): number {
   return ITEM_LORE_SYNC_INTERVAL;
@@ -95,24 +103,38 @@ function syncEquippedLore(player: Player): void {
 }
 
 function applyLoreIfNeeded(item: ItemStack): boolean {
-  const loreKeys = ITEM_LORE_KEYS[item.typeId];
+  const nextLore = buildLore(item);
+  const currentLore = item.getRawLore();
 
-  if (!loreKeys) {
+  if (hasMatchingLore(currentLore, nextLore)) {
     return false;
   }
 
-  const lore = createLore(loreKeys);
-  if (hasMatchingLore(item, lore)) {
-    return false;
-  }
-
-  item.setLore(lore);
+  item.setLore(nextLore);
   return true;
 }
 
-function createLore(loreKeys: string[]): RawMessage[] {
-  const lore: RawMessage[] = [];
+function buildLore(item: ItemStack): RawMessage[] {
+  const staticLore = createStaticLore(item.typeId);
+  const currentLore = item.getRawLore();
+  const preservedLore = getPreservedLore(item, currentLore, staticLore);
+  const lore = [...staticLore, ...preservedLore];
+  const armorWeightLore = createArmorWeightLore(item);
 
+  if (armorWeightLore) {
+    lore.push(armorWeightLore);
+  }
+
+  return lore;
+}
+
+function createStaticLore(typeId: string): RawMessage[] {
+  const loreKeys = ITEM_LORE_KEYS[typeId];
+  if (!loreKeys) {
+    return [];
+  }
+
+  const lore: RawMessage[] = [];
   for (let i = 0; i < loreKeys.length; i++) {
     lore.push({
       translate: loreKeys[i],
@@ -122,12 +144,85 @@ function createLore(loreKeys: string[]): RawMessage[] {
   return lore;
 }
 
-function hasMatchingLore(item: ItemStack, lore: RawMessage[]): boolean {
-  const currentLore = item.getRawLore();
+function getPreservedLore(
+  item: ItemStack,
+  currentLore: RawMessage[],
+  staticLore: RawMessage[],
+): RawMessage[] {
+  const preservedLore: RawMessage[] = [];
 
+  for (let i = 0; i < currentLore.length; i++) {
+    const line = currentLore[i];
+    if (isArmorWeightLoreLine(line)) {
+      continue;
+    }
+    if (isOwnedStaticLoreLine(item, line, staticLore)) {
+      continue;
+    }
+    preservedLore.push(line);
+  }
+
+  return preservedLore;
+}
+
+function isOwnedStaticLoreLine(
+  item: ItemStack,
+  line: RawMessage,
+  staticLore: RawMessage[],
+): boolean {
+  if (!ITEM_LORE_KEYS[item.typeId]) {
+    return false;
+  }
+
+  for (let i = 0; i < staticLore.length; i++) {
+    if (rawMessagesEqual(line, staticLore[i])) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function createArmorWeightLore(item: ItemStack): RawMessage | null {
+  if (!isArmorWeightEnabled() || !isArmorWeightAffectedItem(item)) {
+    return null;
+  }
+
+  const weightKind = getArmorWeightKind(item);
+  if (weightKind === "light") {
+    return {
+      rawtext: [{ text: ARMOR_WEIGHT_PREFIX }, { text: LIGHT_ARMOR_TEXT }],
+    };
+  }
+  if (weightKind === "heavy") {
+    return {
+      rawtext: [{ text: ARMOR_WEIGHT_PREFIX }, { text: HEAVY_ARMOR_TEXT }],
+    };
+  }
+
+  return null;
+}
+
+function isArmorWeightLoreLine(line: RawMessage): boolean {
+  const rawtext = (line as { rawtext?: Array<{ text?: string }> }).rawtext;
+  if (!rawtext || rawtext.length !== 2) {
+    return false;
+  }
+
+  return (
+    rawtext[0]?.text === ARMOR_WEIGHT_PREFIX &&
+    (rawtext[1]?.text === LIGHT_ARMOR_TEXT || rawtext[1]?.text === HEAVY_ARMOR_TEXT)
+  );
+}
+
+function hasMatchingLore(currentLore: RawMessage[], lore: RawMessage[]): boolean {
   if (currentLore.length !== lore.length) {
     return false;
   }
 
   return JSON.stringify(currentLore) === JSON.stringify(lore);
 }
+
+function rawMessagesEqual(left: RawMessage, right: RawMessage): boolean {
+  return JSON.stringify(left) === JSON.stringify(right);
+  }
