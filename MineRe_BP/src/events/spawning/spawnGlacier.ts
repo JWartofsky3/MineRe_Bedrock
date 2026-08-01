@@ -118,10 +118,7 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
     return;
   }
 
-  challenger.player.setDynamicProperty(
-    GLACIER_SPAWN_PROP,
-    system.currentTick,
-  );
+  challenger.player.setDynamicProperty(GLACIER_SPAWN_PROP, system.currentTick);
   entity.remove();
   dimension.spawnEntity("minere:glacier", location);
 }

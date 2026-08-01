@@ -1,7 +1,10 @@
-import { ItemCustomComponent, Player, world } from "@minecraft/server";
+import { ItemCustomComponent } from "@minecraft/server";
 
 export const Helper2: ItemCustomComponent = {
   onUse(arg) {
-    arg.source.sendMessage("Hello world!");
+    arg.source.dimension.spawnEntity(
+      "minere:goblin_cavalry_placeholder",
+      arg.source.location,
+    );
   },
 };

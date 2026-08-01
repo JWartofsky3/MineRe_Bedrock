@@ -1,0 +1,66 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:goblin_cavalry_placeholder",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": "minecraft:grass",
+        "minecraft:weight": {
+          "default": 5
+        },
+        "minecraft:herd": {
+          "min_size": 4,
+          "max_size": 4
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "roofed"
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": "minecraft:grass",
+        "minecraft:weight": {
+          "default": 5
+        },
+        "minecraft:herd": {
+          "min_size": 4,
+          "max_size": 4
+        },
+        "minecraft:difficulty_filter": {
+          "min": "easy",
+          "max": "hard"
+        },
+        "minecraft:biome_filter": {
+          "none_of": [
+            { "test": "has_biome_tag", "operator": "==", "value": "ocean" },
+            { "test": "has_biome_tag", "operator": "==", "value": "desert" },
+            { "test": "has_biome_tag", "operator": "==", "value": "frozen" },
+            { "test": "has_biome_tag", "operator": "==", "value": "roofed" },
+            { "test": "has_biome_tag", "operator": "==", "value": "plains" }
+          ],
+          "any_of": [
+            { "test": "has_biome_tag", "operator": "==", "value": "forest" },
+            { "test": "has_biome_tag", "operator": "==", "value": "swamp" },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            { "test": "has_biome_tag", "operator": "==", "value": "jungle" },
+            { "test": "has_biome_tag", "operator": "==", "value": "mesa" }
+          ]
+        }
+      }
+    ]
+  }
+}

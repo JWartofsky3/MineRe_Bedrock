@@ -108,7 +108,9 @@ export function isArmorWeightEnabled(): boolean {
   return !!world.getDynamicProperty(ARMOR_WEIGHT)?.valueOf();
 }
 
-export function getArmorWeightKind(item: ItemStack | undefined): ArmorWeightKind | null {
+export function getArmorWeightKind(
+  item: ItemStack | undefined,
+): ArmorWeightKind | null {
   if (!isArmorWeightAffectedItem(item)) {
     return null;
   }
@@ -134,7 +136,9 @@ export function getArmorWeightKind(item: ItemStack | undefined): ArmorWeightKind
   return "heavy";
 }
 
-export function isArmorWeightAffectedItem(item: ItemStack | undefined): boolean {
+export function isArmorWeightAffectedItem(
+  item: ItemStack | undefined,
+): boolean {
   if (!item?.typeId) {
     return false;
   }

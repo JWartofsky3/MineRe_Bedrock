@@ -17,6 +17,7 @@ import { RegisterableEvent } from "events/CustomEvent";
 
 type SpawnRule = {
   typeId: string;
+  spawnEvent?: string;
   density?: number;
   endRule?: EndRule;
   waterRule?: WaterRule;
@@ -72,6 +73,11 @@ placeholderMap.set("minere:ogre_placeholder", {
 
 placeholderMap.set("minere:goblin_placeholder", {
   typeId: "minere:goblin",
+});
+
+placeholderMap.set("minere:goblin_cavalry_placeholder", {
+  typeId: "minere:deer",
+  spawnEvent: "become_cavalry",
 });
 
 placeholderMap.set("minere:monster_bat_placeholder", {
@@ -223,7 +229,10 @@ function replaceHelper(placeholder: Entity, isSpawn: boolean) {
 
   // success!
   if (placeholder.typeId !== spawnRule.typeId) {
-    dimension.spawnEntity(spawnRule.typeId, location);
+    const entity = dimension.spawnEntity(spawnRule.typeId, location);
+    if (spawnRule.spawnEvent) {
+      entity.triggerEvent(spawnRule.spawnEvent);
+    }
     return placeholder.remove();
   }
 }

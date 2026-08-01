@@ -2,6 +2,7 @@ import {
   Entity,
   EntityComponentTypes,
   EntityProjectileComponent,
+  EntityRidingComponent,
   system,
 } from "@minecraft/server";
 import { isFamilySet } from "./mob_utils";
@@ -51,6 +52,11 @@ export function skeletonStrafe(entity: Entity, chance: number) {
   let angle = Math.random() * 360;
   const dir = Math.random() > 0.5 ? 1 : -1;
   const runner = system.runInterval(() => {
+    const mount = owner.getComponent(EntityComponentTypes.Riding) as EntityRidingComponent;
+    if (mount?.isValid) {
+      endStrafe(owner, runner);
+      return;
+    }
     if (
       !owner.isValid ||
       !owner.isOnGround ||

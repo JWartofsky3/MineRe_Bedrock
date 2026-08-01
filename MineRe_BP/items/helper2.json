@@ -2,10 +2,7 @@
   "format_version": "1.21.40",
   "minecraft:item": {
     "description": {
-      "identifier": "minere:helper2",
-      "menu_category": {
-        "category": "none"
-      }
+      "identifier": "minere:helper2"
     },
     "components": {
       "minecraft:icon": "minere.helper2",

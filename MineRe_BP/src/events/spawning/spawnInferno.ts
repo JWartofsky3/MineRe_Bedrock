@@ -109,10 +109,7 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
     return;
   }
 
-  challenger.player.setDynamicProperty(
-    INFERNO_SPAWN_PROP,
-    system.currentTick,
-  );
+  challenger.player.setDynamicProperty(INFERNO_SPAWN_PROP, system.currentTick);
   entity.remove();
   dimension.spawnEntity("minere:inferno", location);
 }

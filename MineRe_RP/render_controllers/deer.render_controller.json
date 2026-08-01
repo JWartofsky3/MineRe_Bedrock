@@ -19,6 +19,34 @@
         }
       ],
       "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.deer_saddle": {
+      "arrays": {
+        "textures": {
+          "Array.saddle": ["Texture.empty", "Texture.saddle"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.saddle[query.is_saddled ? 1 : 0]"]
+    },
+    "controller.render.minere.deer_reins": {
+      "arrays": {
+        "textures": {
+          "Array.reins": ["Texture.empty", "Texture.reins"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.reins[query.is_saddled && query.has_rider ? 1 : 0]"]
     }
   }
 }

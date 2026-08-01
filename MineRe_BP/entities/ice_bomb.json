@@ -48,10 +48,7 @@
       },
       "minecraft:fire_immune": {},
       "minecraft:type_family": {
-        "family": [
-          "bomb",
-          "inanimate"
-        ]
+        "family": ["bomb", "inanimate"]
       },
       "minecraft:variant": {
         "value": 0
@@ -118,9 +115,7 @@
               ]
             },
             "add": {
-              "component_groups": [
-                "minere:mob_bomb"
-              ]
+              "component_groups": ["minere:mob_bomb"]
             }
           },
           {
@@ -130,9 +125,7 @@
               "value": "goblin"
             },
             "add": {
-              "component_groups": [
-                "minere:goblin_bomb"
-              ]
+              "component_groups": ["minere:goblin_bomb"]
             }
           }
         ]

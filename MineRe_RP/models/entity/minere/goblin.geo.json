@@ -82,7 +82,7 @@
           ]
         },
         {
-          "name": "rightItem",
+          "name": "rightitem",
           "parent": "rightarm",
           "pivot": [-6, 13.75, 1.75]
         },
@@ -95,7 +95,7 @@
           ]
         },
         {
-          "name": "leftItem",
+          "name": "leftitem",
           "parent": "leftarm",
           "pivot": [6, 12, 1]
         },

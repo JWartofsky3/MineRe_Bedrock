@@ -37,6 +37,11 @@ export function skeletonStrafe(entity, chance) {
     let angle = Math.random() * 360;
     const dir = Math.random() > 0.5 ? 1 : -1;
     const runner = system.runInterval(() => {
+        const mount = owner.getComponent(EntityComponentTypes.Riding);
+        if (mount?.isValid) {
+            endStrafe(owner, runner);
+            return;
+        }
         if (!owner.isValid ||
             !owner.isOnGround ||
             owner.isInWater ||

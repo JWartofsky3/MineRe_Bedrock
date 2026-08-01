@@ -1,0 +1,18 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "item", "name": "minecraft:leather_helmet" },
+        { "type": "item", "name": "minecraft:copper_helmet" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "item", "name": "minecraft:stone_spear" },
+        { "type": "item", "name": "minecraft:copper_spear" }
+      ]
+    }
+  ]
+}

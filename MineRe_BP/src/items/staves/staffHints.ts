@@ -41,9 +41,7 @@ export function showHint(
   });
 }
 
-export function handleStaffSneakHint(
-  data: PlayerButtonInputAfterEvent,
-): void {
+export function handleStaffSneakHint(data: PlayerButtonInputAfterEvent): void {
   if (data.button !== InputButton.Sneak) {
     return;
   }

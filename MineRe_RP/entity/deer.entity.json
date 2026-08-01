@@ -10,7 +10,10 @@
         "brown": "textures/entity/minere/deer/brown",
         "light": "textures/entity/minere/deer/light",
         "red": "textures/entity/minere/deer/red",
-        "white": "textures/entity/minere/deer/white"
+        "white": "textures/entity/minere/deer/white",
+        "saddle": "textures/entity/minere/deer/saddle",
+        "reins": "textures/entity/minere/deer/reins",
+        "empty": "textures/entity/minere/elephant/empty"
       },
       "geometry": {
         "default": "geometry.minere.deer"
@@ -24,6 +27,9 @@
           "controller",
           {
             "baby_transform": "query.is_baby"
+          },
+          {
+            "hide_reins": "!query.is_saddled || !query.has_rider"
           }
         ]
       },
@@ -34,9 +40,14 @@
         "tail": "animation.minere.deer.tail",
         "graze": "animation.minere.deer.graze",
         "baby_transform": "animation.minere.deer.baby_transform",
+        "hide_reins": "animation.minere.deer.hide_reins",
         "controller": "controller.animation.minere.deer"
       },
-      "render_controllers": ["controller.render.minere.deer"]
+      "render_controllers": [
+        "controller.render.minere.deer_saddle",
+        "controller.render.minere.deer_reins",
+        "controller.render.minere.deer"
+      ]
     }
   }
 }

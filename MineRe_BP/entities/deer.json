@@ -36,7 +36,9 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": ["apple"],
+          "feed_items": [
+            "apple"
+          ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -62,7 +64,9 @@
       "minere:deer_wild": {
         "minecraft:trusting": {
           "probability": 0.33,
-          "trust_items": ["apple"],
+          "trust_items": [
+            "apple"
+          ],
           "trust_event": {
             "event": "minecraft:on_trust",
             "target": "self"
@@ -72,7 +76,9 @@
           "priority": 4,
           "can_get_scared": true,
           "speed_multiplier": 0.5,
-          "items": ["apple"]
+          "items": [
+            "apple"
+          ]
         },
         "minecraft:behavior.avoid_mob_type": {
           "priority": 5,
@@ -112,6 +118,7 @@
         }
       },
       "minere:deer_trusting": {
+        "minecraft:is_tamed": {},
         "minecraft:behavior.breed": {
           "priority": 3,
           "speed_multiplier": 1
@@ -120,7 +127,9 @@
           "priority": 4,
           "can_get_scared": true,
           "speed_multiplier": 0.9,
-          "items": ["apple"]
+          "items": [
+            "apple"
+          ]
         },
         "minecraft:behavior.avoid_mob_type": {
           "priority": 5,
@@ -151,11 +160,101 @@
             }
           }
         }
+      },
+      "minere:deer_unsaddled": {
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_component",
+                      "subject": "self",
+                      "value": "minecraft:is_tamed"
+                    }
+                  ]
+                },
+                "event": "minecraft:on_saddled"
+              },
+              "use_item": true,
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.saddle"
+            }
+          ]
+        }
+      },
+      "minere:deer_saddled": {
+        "minecraft:is_saddled": {},
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "crouching_skip_interact": true,
+          "family_types": [
+            "goblin",
+            "player"
+          ],
+          "interact_text": "action.interact.ride.horse",
+          "seats": {
+            "position": [
+              0,
+              0.75,
+              -0.2
+            ],
+            "lock_rider_rotation": 0
+          }
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    }
+                  ]
+                },
+                "event": "minecraft:on_unsaddled"
+              },
+              "hurt_item": 1,
+              "spawn_items": {
+                "table": "loot_tables/entities/deer_saddle.json"
+              },
+              "interact_text": "action.interact.removesaddle",
+              "play_sounds": "shear",
+              "vibration": "shear"
+            }
+          ]
+        }
+      },
+      "minere:deer_cavalry": {
+        "minecraft:addrider": {
+          "entity_type": "minere:goblin",
+          "spawn_event": "become_cavalry"
+        }
       }
     },
     "components": {
       "minecraft:type_family": {
-        "family": ["deer", "mob"]
+        "family": [
+          "deer",
+          "mob"
+        ]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -165,6 +264,46 @@
       "minecraft:health": {
         "value": 14,
         "max": 14
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "damager",
+                    "value": "goblin"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "has_equipment",
+                        "subject": "damager",
+                        "domain": "hand",
+                        "value": "minecraft:stone_spear"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "damager",
+                        "domain": "hand",
+                        "value": "minecraft:copper_spear"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "damager",
+                        "domain": "hand",
+                        "value": "minecraft:iron_spear"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "deals_damage": false
+          }
+        ]
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -215,7 +354,7 @@
       },
       "minecraft:behavior.mount_pathing": {
         "priority": 2,
-        "speed_multiplier": 1.25,
+        "speed_multiplier": 2.0,
         "target_dist": 0,
         "track_target": true
       },
@@ -281,7 +420,11 @@
         "sequence": [
           {
             "add": {
-              "component_groups": ["minere:deer_baby", "minere:deer_trusting"]
+              "component_groups": [
+                "minere:deer_baby",
+                "minere:deer_trusting",
+                "minere:deer_unsaddled"
+              ]
             }
           },
           {
@@ -291,35 +434,92 @@
       },
       "minecraft:ageable_grow_up": {
         "remove": {
-          "component_groups": ["minere:deer_baby"]
+          "component_groups": [
+            "minere:deer_baby"
+          ]
         },
         "add": {
-          "component_groups": ["minere:deer_adult"]
+          "component_groups": [
+            "minere:deer_adult"
+          ]
         }
       },
       "minecraft:spawn_adult": {
         "add": {
-          "component_groups": ["minere:deer_adult", "minere:deer_wild"]
+          "component_groups": [
+            "minere:deer_adult",
+            "minere:deer_wild"
+          ]
         }
       },
       "minecraft:spawn_baby": {
         "add": {
-          "component_groups": ["minere:deer_baby", "minere:deer_wild"]
+          "component_groups": [
+            "minere:deer_baby",
+            "minere:deer_wild"
+          ]
         }
       },
       "minecraft:on_trust": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:deer_wild"]
+              "component_groups": [
+                "minere:deer_wild"
+              ]
             }
           },
           {
             "add": {
-              "component_groups": ["minere:deer_trusting"]
+              "component_groups": [
+                "minere:deer_trusting",
+                "minere:deer_unsaddled"
+              ]
             }
           }
         ]
+      },
+      "minecraft:on_saddled": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_unsaddled"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minere:deer_saddled"
+          ]
+        }
+      },
+      "minecraft:on_unsaddled": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_saddled",
+            "minere:deer_cavalry"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minere:deer_unsaddled"
+          ]
+        }
+      },
+      "become_cavalry": {
+        "remove": {
+          "component_groups": [
+            "minere:deer_wild",
+            "minere:deer_baby",
+            "minere:deer_unsaddled"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minere:deer_adult",
+            "minere:deer_trusting",
+            "minere:deer_saddled",
+            "minere:deer_cavalry"
+          ]
+        }
       },
       "minere:select_spawn_variant": {
         "sequence": [
@@ -418,7 +618,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:deer_brown"]
+          "component_groups": [
+            "minere:deer_brown"
+          ]
         }
       },
       "minere:set_light_variant": {
@@ -430,7 +632,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:deer_light"]
+          "component_groups": [
+            "minere:deer_light"
+          ]
         }
       },
       "minere:set_red_variant": {
@@ -442,7 +646,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:deer_red"]
+          "component_groups": [
+            "minere:deer_red"
+          ]
         }
       },
       "minere:set_white_variant": {
@@ -454,7 +660,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:deer_white"]
+          "component_groups": [
+            "minere:deer_white"
+          ]
         }
       }
     }

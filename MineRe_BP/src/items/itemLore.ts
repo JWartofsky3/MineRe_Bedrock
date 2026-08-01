@@ -211,11 +211,15 @@ function isArmorWeightLoreLine(line: RawMessage): boolean {
 
   return (
     rawtext[0]?.text === ARMOR_WEIGHT_PREFIX &&
-    (rawtext[1]?.text === LIGHT_ARMOR_TEXT || rawtext[1]?.text === HEAVY_ARMOR_TEXT)
+    (rawtext[1]?.text === LIGHT_ARMOR_TEXT ||
+      rawtext[1]?.text === HEAVY_ARMOR_TEXT)
   );
 }
 
-function hasMatchingLore(currentLore: RawMessage[], lore: RawMessage[]): boolean {
+function hasMatchingLore(
+  currentLore: RawMessage[],
+  lore: RawMessage[],
+): boolean {
   if (currentLore.length !== lore.length) {
     return false;
   }
@@ -225,4 +229,4 @@ function hasMatchingLore(currentLore: RawMessage[], lore: RawMessage[]): boolean
 
 function rawMessagesEqual(left: RawMessage, right: RawMessage): boolean {
   return JSON.stringify(left) === JSON.stringify(right);
-  }
+}
