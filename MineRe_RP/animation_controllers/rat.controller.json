@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.rat": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            }
+          ],
+          "transitions": [
+            {
+              "sitting": "query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sitting": {
+          "animations": ["sit"],
+          "transitions": [
+            {
+              "walking": "!query.is_sitting"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

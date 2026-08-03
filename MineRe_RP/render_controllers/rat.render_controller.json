@@ -1,0 +1,73 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.rat": {
+      "arrays": {
+        "textures": {
+          "Array.skins": ["Texture.brown", "Texture.gray", "Texture.black"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skins[query.variant]"]
+    },
+    "controller.render.minere.rat_collar": {
+      "arrays": {
+        "textures": {
+          "Array.collar": [
+            "Texture.empty",
+            "Texture.collar_white",
+            "Texture.collar_orange",
+            "Texture.collar_magenta",
+            "Texture.collar_light_blue",
+            "Texture.collar_yellow",
+            "Texture.collar_lime",
+            "Texture.collar_pink",
+            "Texture.collar_gray",
+            "Texture.collar_light_gray",
+            "Texture.collar_cyan",
+            "Texture.collar_purple",
+            "Texture.collar_blue",
+            "Texture.collar_brown",
+            "Texture.collar_green",
+            "Texture.collar_red",
+            "Texture.collar_black"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.collar[query.is_tamed ? (query.property('minere:collar_color') + 1) : 0]"
+      ]
+    },
+    "controller.render.minere.rat_eyes": {
+      "arrays": {
+        "textures": {
+          "Array.eyes": [
+            "Texture.empty",
+            "Texture.eyes_tame",
+            "Texture.eyes_hostile"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.eyes[query.is_tamed ? 1 : (query.property('minere:is_hostile') ? 2 : 0)]"
+      ]
+    }
+  }
+}

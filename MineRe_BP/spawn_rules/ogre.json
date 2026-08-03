@@ -20,7 +20,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 15
+          "default": 16
         },
         "minecraft:density_limit": {
           "surface": 2
@@ -58,7 +58,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 10
+          "default": 12
         },
         "minecraft:density_limit": {
           "surface": 2
@@ -121,7 +121,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 12
+          "default": 16
         },
         "minecraft:density_limit": {
           "underground": 3

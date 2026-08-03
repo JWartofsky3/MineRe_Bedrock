@@ -3,6 +3,7 @@
   "minecraft:client_entity": {
     "description": {
       "identifier": "minere:goblin",
+      "min_engine_version": "1.8.0",
       "materials": {
         "default": "entity_alphatest"
       },
@@ -25,8 +26,7 @@
           "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
           "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;",
           "variable.z_bob = Math.cos(query.life_time * 103.13244) * 2.865 + 2.865;",
-          "variable.x_bob = Math.sin(query.life_time * 76.776372) * 2.865;",
-          "variable.melee_spear_equipped = query.is_item_name_any('slot.weapon.mainhand', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear');"
+          "variable.x_bob = Math.sin(query.life_time * 76.776372) * 2.865;"
         ],
         "initialize": [
           "v.tp_melee_spear_base_arm_rotation_x = -30.0;"
@@ -52,13 +52,13 @@
           "bob",
           "look_at_target_controller",
           {
-            "goblin_attack_controller": "!variable.melee_spear_equipped"
+            "goblin_attack_controller": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear')"
           },
           "riding_controller",
           "brandish_spear_controller",
           "charging_controller",
           {
-            "melee_spear_controller": "variable.melee_spear_equipped"
+            "melee_spear_controller": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear')"
           }
         ]
       },

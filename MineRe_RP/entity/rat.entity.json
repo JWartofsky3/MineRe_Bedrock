@@ -1,0 +1,57 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:rat",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "brown": "textures/entity/minere/rat/brown",
+        "gray": "textures/entity/minere/rat/gray",
+        "black": "textures/entity/minere/rat/black",
+        "empty": "textures/entity/minere/rat/empty",
+        "eyes_empty": "textures/entity/minere/rat/eyes/empty",
+        "eyes_tame": "textures/entity/minere/rat/eyes/tame",
+        "eyes_hostile": "textures/entity/minere/rat/eyes/hostile",
+        "collar_white": "textures/entity/minere/rat/collars/white",
+        "collar_orange": "textures/entity/minere/rat/collars/orange",
+        "collar_magenta": "textures/entity/minere/rat/collars/magenta",
+        "collar_light_blue": "textures/entity/minere/rat/collars/light_blue",
+        "collar_yellow": "textures/entity/minere/rat/collars/yellow",
+        "collar_lime": "textures/entity/minere/rat/collars/lime",
+        "collar_pink": "textures/entity/minere/rat/collars/pink",
+        "collar_gray": "textures/entity/minere/rat/collars/gray",
+        "collar_light_gray": "textures/entity/minere/rat/collars/light_gray",
+        "collar_cyan": "textures/entity/minere/rat/collars/cyan",
+        "collar_purple": "textures/entity/minere/rat/collars/purple",
+        "collar_blue": "textures/entity/minere/rat/collars/blue",
+        "collar_brown": "textures/entity/minere/rat/collars/brown",
+        "collar_green": "textures/entity/minere/rat/collars/green",
+        "collar_red": "textures/entity/minere/rat/collars/red",
+        "collar_black": "textures/entity/minere/rat/collars/black"
+      },
+      "geometry": {
+        "default": "geometry.minere.rat"
+      },
+      "animations": {
+        "walk": "animation.minere.rat.walk",
+        "look_at": "animation.minere.rat.look_at",
+        "sit": "animation.minere.rat.sit",
+        "controller": "controller.animation.minere.rat"
+      },
+      "scripts": {
+        "animate": ["controller", "look_at"]
+      },
+      "render_controllers": [
+        "controller.render.minere.rat_eyes",
+        "controller.render.minere.rat_collar",
+        "controller.render.minere.rat"
+      ],
+      "spawn_egg": {
+        "base_color": "#71594a",
+        "overlay_color": "#2e2a28"
+      }
+    }
+  }
+}

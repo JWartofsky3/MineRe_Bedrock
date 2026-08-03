@@ -75,6 +75,10 @@ placeholderMap.set("minere:goblin_placeholder", {
   typeId: "minere:goblin",
 });
 
+placeholderMap.set("minere:rat_placeholder", {
+  typeId: "minere:rat",
+});
+
 placeholderMap.set("minere:goblin_cavalry_placeholder", {
   typeId: "minere:deer",
   spawnEvent: "become_cavalry",
