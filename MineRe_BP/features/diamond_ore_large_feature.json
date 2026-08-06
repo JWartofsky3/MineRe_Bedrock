@@ -5,7 +5,7 @@
       "identifier": "minecraft:diamond_ore_large_feature"
     },
     "count": 12,
-    "discard_chance_on_air_exposure": 0.25,
+    "discard_chance_on_air_exposure": 0.0,
     "replace_rules": [
       {
         "places_block": "minecraft:diamond_ore",

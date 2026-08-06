@@ -6,7 +6,30 @@
         {
           "type": "item",
           "name": "minecraft:iron_spear",
-          "functions": [{ "function": "enchant_random_gear", "chance": 1.0 }]
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:shield",
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.5
+            }
+          ]
+        },
+        {
+          "type": "empty"
         }
       ]
     },
@@ -16,41 +39,82 @@
         {
           "type": "item",
           "name": "minecraft:iron_helmet",
-          "functions": [{ "function": "enchant_random_gear", "chance": 1.0 }]
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.5
+            }
+          ]
         }
       ]
     },
     {
       "conditions": [
-        { "condition": "random_difficulty_chance", "default_chance": 1.0 },
-        { "condition": "random_regional_difficulty_chance", "max_chance": 0.25 }
+        {
+          "condition": "random_difficulty_chance",
+          "default_chance": 1.0
+        },
+        {
+          "condition": "random_regional_difficulty_chance",
+          "max_chance": 0.25
+        }
       ],
       "rolls": 1,
       "entries": [
-        { "type": "item", "name": "minecraft:iron_chestplate" },
-        { "type": "item", "name": "minecraft:chainmail_chestplate" }
+        {
+          "type": "item",
+          "name": "minecraft:iron_chestplate"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_chestplate"
+        }
       ]
     },
     {
       "conditions": [
-        { "condition": "random_difficulty_chance", "default_chance": 1.0 },
-        { "condition": "random_regional_difficulty_chance", "max_chance": 0.25 }
+        {
+          "condition": "random_difficulty_chance",
+          "default_chance": 1.0
+        },
+        {
+          "condition": "random_regional_difficulty_chance",
+          "max_chance": 0.25
+        }
       ],
       "rolls": 1,
       "entries": [
-        { "type": "item", "name": "minecraft:iron_leggings" },
-        { "type": "item", "name": "minecraft:chainmail_leggings" }
+        {
+          "type": "item",
+          "name": "minecraft:iron_leggings"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_leggings"
+        }
       ]
     },
     {
       "conditions": [
-        { "condition": "random_difficulty_chance", "default_chance": 1.0 },
-        { "condition": "random_regional_difficulty_chance", "max_chance": 0.25 }
+        {
+          "condition": "random_difficulty_chance",
+          "default_chance": 1.0
+        },
+        {
+          "condition": "random_regional_difficulty_chance",
+          "max_chance": 0.25
+        }
       ],
       "rolls": 1,
       "entries": [
-        { "type": "item", "name": "minecraft:iron_boots" },
-        { "type": "item", "name": "minecraft:chainmail_boots" }
+        {
+          "type": "item",
+          "name": "minecraft:iron_boots"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_boots"
+        }
       ]
     }
   ]

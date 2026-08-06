@@ -30,7 +30,7 @@
               "hand_attack": "variable.has_target && !query.is_item_equipped && variable.attack_time >= 0.0 && !query.is_admiring"
             },
             {
-              "melee_attack": "variable.has_target && query.is_item_equipped && variable.attack_time >= 0.0 && !query.is_admiring"
+              "melee_attack": "variable.has_target && query.is_item_equipped && !query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear') && variable.attack_time >= 0.0 && !query.is_admiring"
             }
           ]
         },
@@ -66,6 +66,41 @@
           "transitions": [
             {
               "default": "query.is_item_equipped || !variable.has_target || variable.attack_time < 0.0 ||  query.is_admiring"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.minere.goblin.spear": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": ["melee_spear_hold"],
+          "transitions": [
+            {
+              "point": "query.has_target && !query.is_admiring"
+            }
+          ]
+        },
+        "point": {
+          "animations": ["melee_spear_hold"],
+          "transitions": [
+            {
+              "hold": "!query.has_target || query.is_admiring"
+            },
+            {
+              "attack": "variable.attack_time > 0.0"
+            }
+          ]
+        },
+        "attack": {
+          "animations": ["melee_spear_attack"],
+          "transitions": [
+            {
+              "point": "query.has_target && variable.attack_time == 0.0"
+            },
+            {
+              "hold": "variable.attack_time == 0.0"
             }
           ]
         }

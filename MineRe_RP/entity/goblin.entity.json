@@ -33,7 +33,8 @@
         ],
         "variables": {
           "variable.item_use_normalized": "public",
-          "variable.tp_melee_spear_use_attachable_rotation_z": "public"
+          "variable.tp_melee_spear_use_attachable_rotation_z": "public",
+          "variable.tp_melee_spear_attack_attachable_position_z": "public"
         },
         "animate": [
           {
@@ -51,14 +52,10 @@
           "move",
           "bob",
           "look_at_target_controller",
-          {
-            "goblin_attack_controller": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear')"
-          },
+          "goblin_attack_controller",
           "riding_controller",
-          "brandish_spear_controller",
-          "charging_controller",
           {
-            "melee_spear_controller": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear')"
+            "goblin_spear_controller": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:wooden_spear', 'minecraft:stone_spear', 'minecraft:copper_spear', 'minecraft:iron_spear', 'minecraft:golden_spear', 'minecraft:diamond_spear', 'minecraft:netherite_spear')"
           }
         ]
       },
@@ -74,6 +71,7 @@
         "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
         "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
         "goblin_attack_controller": "controller.animation.minere.goblin.attack",
+        "goblin_spear_controller": "controller.animation.minere.goblin.spear",
         "bow_and_arrow": "animation.humanoid.bow_and_arrow",
         "crossbow_hold": "animation.minere.goblin.crossbow.hold",
         "crossbow_charge": "animation.minere.goblin.crossbow.charge",
@@ -83,15 +81,12 @@
         "riding.arms": "animation.humanoid.riding.arms",
         "riding.legs": "animation.humanoid.riding.legs",
         "riding.body": "animation.humanoid.riding.body",
-        "brandish_spear": "animation.humanoid.brandish_spear",
-        "brandish_spear_controller": "controller.animation.humanoid.brandish_spear",
-        "charging": "animation.humanoid.charging",
-        "charging_controller": "controller.animation.humanoid.charging",
-        "melee_spear_use": "animation.zombie.melee_spear_use",
-        "melee_spear_hold": "animation.zombie.melee_spear_hold",
-        "melee_spear_controller": "controller.animation.humanoid.melee_spear"
+        "melee_spear_hold": "animation.humanoid.melee_spear_hold",
+        "melee_spear_attack": "animation.player.melee_spear_attack"
       },
-      "render_controllers": ["controller.render.minere.goblin"],
+      "render_controllers": [
+        "controller.render.minere.goblin"
+      ],
       "enable_attachables": true
     }
   }

@@ -1,6 +1,22 @@
 {
   "entity_sounds": {
     "entities": {
+      "minere:rat": {
+        "events": {
+          "ambient": "mob.rat.squeak",
+          "attack": "mob.rat.squeak",
+          "hurt": {
+            "sound": "mob.rat.squeak",
+            "volume": 1.2,
+            "pitch": 1.25
+          },
+          "death": {
+            "sound": "mob.rat.squeak",
+            "volume": 1.3,
+            "pitch": 0.75
+          }
+        }
+      },
       "minere:inferno": {
         "events": {
           "ambient": "mob.blaze.breathe",

@@ -20,6 +20,26 @@
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.saddle" }],
       "textures": ["Array.saddle[variable.saddled ? 1 : 0]"]
+    },
+    "controller.render.minere.moose.chest": {
+      "arrays": {
+        "textures": {
+          "Array.chest": ["Texture.empty", "Texture.chest"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.chest[query.is_chested ? 1 : 0]"]
+    },
+    "controller.render.minere.moose.reins": {
+      "arrays": {
+        "textures": {
+          "Array.reins": ["Texture.empty", "Texture.reins"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.reins[query.has_rider ? 1 : 0]"]
     }
   }
 }

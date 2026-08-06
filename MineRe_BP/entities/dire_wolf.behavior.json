@@ -46,7 +46,10 @@
         "minecraft:timer": {
           "looping": true,
           "randomInterval": true,
-          "time": [2, 8],
+          "time": [
+            2,
+            8
+          ],
           "time_down_event": {
             "event": "change_mode"
           }
@@ -59,7 +62,9 @@
         "minecraft:navigation.walk": {
           "can_path_over_water": true,
           "avoid_water": true,
-          "blocks_to_avoid": ["minecraft:powder_snow"]
+          "blocks_to_avoid": [
+            "minecraft:powder_snow"
+          ]
         },
         "minecraft:movement.basic": {},
         "minecraft:jump.static": {},
@@ -78,7 +83,10 @@
       "minere:dire_wolf_angry": {
         "minecraft:angry": {
           "angry_sound": "angry",
-          "sound_interval": [2, 4],
+          "sound_interval": [
+            2,
+            4
+          ],
           "duration": 25,
           "calm_event": {
             "event": "become_calm",
@@ -117,7 +125,10 @@
       "minere:dire_wolf_circling": {
         "minecraft:behavior.move_around_target": {
           "priority": 2,
-          "destination_position_range": [7, 10],
+          "destination_position_range": [
+            7,
+            10
+          ],
           "movement_speed": 1.5,
           "destination_pos_spread_degrees": 360,
           "filters": {
@@ -160,7 +171,11 @@
       },
       "minecraft:nameable": {},
       "minecraft:type_family": {
-        "family": ["dire_wolf", "monster", "mob"]
+        "family": [
+          "dire_wolf",
+          "monster",
+          "mob"
+        ]
       },
       "minecraft:knockback_resistance": {
         "value": 0.3
@@ -283,6 +298,11 @@
                   "value": "deer"
                 },
                 {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "rat"
+                },
+                {
                   "all_of": [
                     {
                       "test": "is_baby",
@@ -351,9 +371,15 @@
       },
       "minecraft:rideable": {
         "seat_count": 1,
-        "family_types": ["zombie"],
+        "family_types": [
+          "zombie"
+        ],
         "seats": {
-          "position": [0, 0.7, -0.1]
+          "position": [
+            0,
+            0.7,
+            -0.1
+          ]
         }
       },
       "minecraft:conditional_bandwidth_optimization": {}
@@ -380,12 +406,16 @@
             "randomize": [
               {
                 "add": {
-                  "component_groups": ["brown"]
+                  "component_groups": [
+                    "brown"
+                  ]
                 }
               },
               {
                 "add": {
-                  "component_groups": ["gray"]
+                  "component_groups": [
+                    "gray"
+                  ]
                 }
               }
             ]
@@ -398,12 +428,16 @@
             "randomize": [
               {
                 "add": {
-                  "component_groups": ["white"]
+                  "component_groups": [
+                    "white"
+                  ]
                 }
               },
               {
                 "add": {
-                  "component_groups": ["gray"]
+                  "component_groups": [
+                    "gray"
+                  ]
                 }
               }
             ]
@@ -414,7 +448,9 @@
               "value": "frozen"
             },
             "add": {
-              "component_groups": ["white"]
+              "component_groups": [
+                "white"
+              ]
             }
           }
         ]
@@ -424,41 +460,57 @@
           {
             "weight": 2,
             "remove": {
-              "component_groups": ["minere:dire_wolf_circling"]
+              "component_groups": [
+                "minere:dire_wolf_circling"
+              ]
             }
           },
           {
             "weight": 1,
             "add": {
-              "component_groups": ["minere:dire_wolf_circling"]
+              "component_groups": [
+                "minere:dire_wolf_circling"
+              ]
             }
           }
         ]
       },
       "attack_mode": {
         "remove": {
-          "component_groups": ["minere:dire_wolf_circling"]
+          "component_groups": [
+            "minere:dire_wolf_circling"
+          ]
         }
       },
       "become_angry": {
         "remove": {
-          "component_groups": ["minere:dire_wolf_calm"]
+          "component_groups": [
+            "minere:dire_wolf_calm"
+          ]
         },
         "add": {
-          "component_groups": ["minere:dire_wolf_angry"]
+          "component_groups": [
+            "minere:dire_wolf_angry"
+          ]
         }
       },
       "become_calm": {
         "remove": {
-          "component_groups": ["minere:dire_wolf_angry"]
+          "component_groups": [
+            "minere:dire_wolf_angry"
+          ]
         },
         "add": {
-          "component_groups": ["minere:dire_wolf_calm"]
+          "component_groups": [
+            "minere:dire_wolf_calm"
+          ]
         }
       },
       "despawn_event": {
         "add": {
-          "component_groups": ["despawn"]
+          "component_groups": [
+            "despawn"
+          ]
         }
       },
       "dig_event": {
@@ -482,7 +534,9 @@
           },
           {
             "add": {
-              "component_groups": ["minere:dire_wolf_dig"]
+              "component_groups": [
+                "minere:dire_wolf_dig"
+              ]
             }
           }
         ]

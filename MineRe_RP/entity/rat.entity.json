@@ -10,6 +10,9 @@
         "brown": "textures/entity/minere/rat/brown",
         "gray": "textures/entity/minere/rat/gray",
         "black": "textures/entity/minere/rat/black",
+        "red": "textures/entity/minere/rat/red",
+        "green": "textures/entity/minere/rat/green",
+        "blue": "textures/entity/minere/rat/blue",
         "empty": "textures/entity/minere/rat/empty",
         "eyes_empty": "textures/entity/minere/rat/eyes/empty",
         "eyes_tame": "textures/entity/minere/rat/eyes/tame",
@@ -38,16 +41,24 @@
         "walk": "animation.minere.rat.walk",
         "look_at": "animation.minere.rat.look_at",
         "sit": "animation.minere.rat.sit",
-        "controller": "controller.animation.minere.rat"
+        "attack_controller": "controller.animation.minere.rat.attack"
       },
       "scripts": {
-        "animate": ["controller", "look_at"]
+        "animate": [
+          { "walk": "query.modified_move_speed" },
+          "attack_controller",
+          { "sit": "query.is_sitting" },
+          "look_at"
+        ]
       },
       "render_controllers": [
         "controller.render.minere.rat_eyes",
         "controller.render.minere.rat_collar",
         "controller.render.minere.rat"
       ],
+      "sound_effects": {
+        "ambient": "mob.rat.squeak"
+      },
       "spawn_egg": {
         "base_color": "#71594a",
         "overlay_color": "#2e2a28"

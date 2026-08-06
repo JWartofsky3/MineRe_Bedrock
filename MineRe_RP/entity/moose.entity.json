@@ -12,6 +12,8 @@
         "dark": "textures/entity/minere/moose/dark",
         "light": "textures/entity/minere/moose/light",
         "saddle": "textures/entity/minere/moose/saddle",
+        "chest": "textures/entity/minere/moose/chest",
+        "reins": "textures/entity/minere/moose/reins",
         "empty": "textures/entity/minere/moose/empty"
       },
       "geometry": {
@@ -44,6 +46,8 @@
       },
       "render_controllers": [
         "controller.render.minere.moose.saddle",
+        "controller.render.minere.moose.chest",
+        "controller.render.minere.moose.reins",
         "controller.render.minere.moose"
       ]
     }

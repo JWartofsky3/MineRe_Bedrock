@@ -10,31 +10,15 @@
         "minecraft:spawns_on_surface": {},
         "minecraft:spawns_on_block_filter": "minecraft:grass",
         "minecraft:weight": {
-          "default": 5
+          "default": 12
         },
         "minecraft:herd": {
-          "min_size": 4,
-          "max_size": 4
+          "min_size": 3,
+          "max_size": 6
         },
-        "minecraft:difficulty_filter": {
-          "min": "easy",
-          "max": "hard"
-        },
-        "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "roofed"
-        }
-      },
-      {
-        "minecraft:spawns_on_surface": {},
-        "minecraft:spawns_on_block_filter": "minecraft:grass",
-        "minecraft:weight": {
-          "default": 5
-        },
-        "minecraft:herd": {
-          "min_size": 4,
-          "max_size": 4
+        "minecraft:density_limit": {
+          "surface": 8,
+          "underground": 8
         },
         "minecraft:difficulty_filter": {
           "min": "easy",
@@ -42,22 +26,28 @@
         },
         "minecraft:biome_filter": {
           "none_of": [
-            { "test": "has_biome_tag", "operator": "==", "value": "ocean" },
-            { "test": "has_biome_tag", "operator": "==", "value": "desert" },
-            { "test": "has_biome_tag", "operator": "==", "value": "frozen" },
-            { "test": "has_biome_tag", "operator": "==", "value": "roofed" },
-            { "test": "has_biome_tag", "operator": "==", "value": "plains" }
-          ],
-          "any_of": [
-            { "test": "has_biome_tag", "operator": "==", "value": "forest" },
-            { "test": "has_biome_tag", "operator": "==", "value": "swamp" },
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "mangrove_swamp"
+              "value": "ocean"
             },
-            { "test": "has_biome_tag", "operator": "==", "value": "jungle" },
-            { "test": "has_biome_tag", "operator": "==", "value": "mesa" }
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "frozen"
+            }
+          ],
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "monster"
+            }
           ]
         }
       }

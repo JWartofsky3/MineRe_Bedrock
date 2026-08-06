@@ -5,58 +5,9 @@
       "identifier": "minere:goblin",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false,
-      "properties": {
-        "minere:is_riding_deer": {
-          "type": "bool",
-          "default": false,
-          "client_sync": false
-        }
-      }
+      "is_experimental": false
     },
     "component_groups": {
-      "minere:goblin_kinetic_unmounted": {
-        "minecraft:behavior.use_kinetic_weapon": {
-          "priority": 3,
-          "track_target": true,
-          "approach_distance": 10.0,
-          "reposition_distance": {
-            "min": 6.0,
-            "max": 7.0
-          },
-          "cooldown_distance": {
-            "min": 8.0,
-            "max": 10.0
-          },
-          "weapon_reach_multiplier": 0.5,
-          "weapon_min_speed_multiplier": 0.2,
-          "speed_multiplier": 1.4,
-          "reposition_speed_multiplier": 1.4,
-          "cooldown_speed_multiplier": 1.4,
-          "hijack_mount_navigation": false
-        }
-      },
-      "minere:goblin_kinetic_mounted": {
-        "minecraft:behavior.use_kinetic_weapon": {
-          "priority": 3,
-          "track_target": true,
-          "approach_distance": 12.0,
-          "reposition_distance": {
-            "min": 8.0,
-            "max": 9.0
-          },
-          "cooldown_distance": {
-            "min": 11.0,
-            "max": 13.0
-          },
-          "weapon_reach_multiplier": 0.5,
-          "weapon_min_speed_multiplier": 0.2,
-          "speed_multiplier": 1.7,
-          "reposition_speed_multiplier": 1.4,
-          "cooldown_speed_multiplier": 1.4,
-          "hijack_mount_navigation": true
-        }
-      },
       "noble_baby": {
         "minecraft:variant": {
           "value": 1
@@ -173,6 +124,25 @@
         },
         "minecraft:equipment": {
           "table": "loot_tables/entities/goblin/goblin_knight_gear.json"
+        },
+        "minecraft:behavior.use_kinetic_weapon": {
+          "priority": 3,
+          "track_target": true,
+          "approach_distance": 8.0,
+          "reposition_distance": {
+            "min": 4.0,
+            "max": 8.0
+          },
+          "cooldown_distance": {
+            "min": 4.0,
+            "max": 8.0
+          },
+          "weapon_reach_multiplier": 0.5,
+          "weapon_min_speed_multiplier": 0.2,
+          "speed_multiplier": 1.4,
+          "reposition_speed_multiplier": 1.4,
+          "cooldown_speed_multiplier": 1.4,
+          "hijack_mount_navigation": true
         }
       },
       "poor_knight_unit": {
@@ -186,6 +156,25 @@
         },
         "minecraft:equipment": {
           "table": "loot_tables/entities/goblin/goblin_poor_knight_gear.json"
+        },
+        "minecraft:behavior.use_kinetic_weapon": {
+          "priority": 3,
+          "track_target": true,
+          "approach_distance": 8.0,
+          "reposition_distance": {
+            "min": 4.0,
+            "max": 8.0
+          },
+          "cooldown_distance": {
+            "min": 4.0,
+            "max": 8.0
+          },
+          "weapon_reach_multiplier": 0.5,
+          "weapon_min_speed_multiplier": 0.2,
+          "speed_multiplier": 1.4,
+          "reposition_speed_multiplier": 1.4,
+          "cooldown_speed_multiplier": 1.4,
+          "hijack_mount_navigation": true
         }
       },
       "bomb_unit": {
@@ -534,9 +523,10 @@
                             "value": "deer"
                           },
                           {
-                            "test": "is_tamed",
+                            "test": "is_family",
                             "subject": "other",
-                            "value": false
+                            "operator": "!=",
+                            "value": "saddled"
                           }
                         ]
                       }
@@ -787,43 +777,6 @@
       "minecraft:behavior.equip_item": {
         "priority": 8
       },
-      "minecraft:environment_sensor": {
-        "triggers": [
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_vehicle_family",
-                  "value": "deer"
-                },
-                {
-                  "test": "bool_property",
-                  "domain": "minere:is_riding_deer",
-                  "value": false
-                }
-              ]
-            },
-            "event": "minere:on_start_riding_deer"
-          },
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_vehicle_family",
-                  "operator": "not",
-                  "value": "deer"
-                },
-                {
-                  "test": "bool_property",
-                  "domain": "minere:is_riding_deer",
-                  "value": true
-                }
-              ]
-            },
-            "event": "minere:on_stop_riding_deer"
-          }
-        ]
-      },
       "minecraft:behavior.pickup_items": {
         "priority": 9,
         "max_dist": 10,
@@ -836,6 +789,10 @@
       "minecraft:behavior.random_stroll": {
         "priority": 10,
         "speed_multiplier": 0.6
+      },
+      "minecraft:behavior.look_at_target": {
+        "priority": 10,
+        "look_distance": 8
       },
       "minecraft:behavior.look_at_player": {
         "priority": 11,
@@ -1011,13 +968,6 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "add": {
-              "component_groups": [
-                "minere:goblin_kinetic_unmounted"
-              ]
-            }
-          },
-          {
             "randomize": [
               {
                 "weight": 5,
@@ -1097,127 +1047,28 @@
         ]
       },
       "become_cavalry": {
-        "sequence": [
+        "randomize": [
           {
-            "remove": {
-              "component_groups": [
-                "minere:goblin_kinetic_unmounted"
-              ]
-            }
+            "weight": 200,
+            "trigger": "spawn_adult_melee"
           },
           {
-            "add": {
-              "component_groups": [
-                "minere:goblin_kinetic_mounted"
-              ]
-            }
+            "weight": 300,
+            "trigger": "spawn_adult_bow"
           },
           {
-            "set_property": {
-              "minere:is_riding_deer": true
-            }
+            "weight": 150,
+            "trigger": "spawn_adult_trader"
           },
           {
-            "randomize": [
-              {
-                "weight": 125,
-                "trigger": "spawn_adult_grunt"
-              },
-              {
-                "weight": 200,
-                "trigger": "spawn_adult_melee"
-              },
-              {
-                "weight": 250,
-                "trigger": "spawn_adult_bow"
-              },
-              {
-                "weight": 125,
-                "trigger": "spawn_adult_crossbow"
-              },
-              {
-                "weight": 150,
-                "sequence": [
-                  {
-                    "filters": {
-                      "test": "is_altitude",
-                      "operator": "<=",
-                      "value": 48
-                    },
-                    "trigger": "spawn_adult_bomb"
-                  },
-                  {
-                    "filters": {
-                      "test": "is_altitude",
-                      "operator": ">",
-                      "value": 48
-                    },
-                    "randomize": [
-                      {
-                        "weight": 1,
-                        "trigger": "spawn_adult_grunt"
-                      },
-                      {
-                        "weight": 2,
-                        "trigger": "spawn_adult_bow"
-                      },
-                      {
-                        "weight": 1,
-                        "trigger": "spawn_adult_crossbow"
-                      },
-                      {
-                        "weight": 4,
-                        "trigger": "spawn_adult_melee"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "weight": 150,
-                "trigger": "spawn_adult_trader"
-              },
-              {
-                "weight": 500,
-                "trigger": "spawn_adult_knight"
-              },
-              {
-                "weight": 500,
-                "trigger": "spawn_adult_poor_knight"
-              }
-            ]
+            "weight": 250,
+            "trigger": "spawn_adult_knight"
+          },
+          {
+            "weight": 250,
+            "trigger": "spawn_adult_poor_knight"
           }
         ]
-      },
-      "minere:on_start_riding_deer": {
-        "remove": {
-          "component_groups": [
-            "minere:goblin_kinetic_unmounted"
-          ]
-        },
-        "add": {
-          "component_groups": [
-            "minere:goblin_kinetic_mounted"
-          ]
-        },
-        "set_property": {
-          "minere:is_riding_deer": true
-        }
-      },
-      "minere:on_stop_riding_deer": {
-        "remove": {
-          "component_groups": [
-            "minere:goblin_kinetic_mounted"
-          ]
-        },
-        "add": {
-          "component_groups": [
-            "minere:goblin_kinetic_unmounted"
-          ]
-        },
-        "set_property": {
-          "minere:is_riding_deer": false
-        }
       },
       "spawn_adult_grunt": {
         "add": {

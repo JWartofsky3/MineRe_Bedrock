@@ -4,7 +4,7 @@
     "controller.render.minere.rat": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.brown", "Texture.gray", "Texture.black"]
+          "Array.skins": ["Texture.brown", "Texture.gray", "Texture.black", "Texture.red", "Texture.green", "Texture.blue"]
         }
       },
       "geometry": "Geometry.default",

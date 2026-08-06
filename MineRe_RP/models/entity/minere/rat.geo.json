@@ -33,18 +33,18 @@
 						{"origin": [-3.5, 3, -7], "size": [3, 3, 1], "uv": [32, 31]}
 					],
 					"locators": {
-						"held_item": [0.5, 2, -11]
+						"held_item": [0, 4, -8]
 					}
 				},
 				{
 					"name": "rightItem",
 					"parent": "head",
-					"pivot": [-0.5, 2, -11]
+					"pivot": [-0.5, 3, -8]
 				},
 				{
 					"name": "leftItem",
 					"parent": "head",
-					"pivot": [0.5, 2, -11]
+					"pivot": [0.5, 3, -8]
 				},
 				{
 					"name": "leg_front_left",

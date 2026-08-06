@@ -1273,6 +1273,15 @@
         }
       ]
     },
+    "mob.rat.squeak": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/rat/squeaks0",
+        "sounds/mob/rat/squeaks1",
+        "sounds/mob/rat/squeaks2",
+        "sounds/mob/rat/squeaks3"
+      ]
+    },
     "mob.yeti.purr": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",

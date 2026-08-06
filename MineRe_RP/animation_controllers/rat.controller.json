@@ -18,7 +18,9 @@
           "blend_transition": 0.2
         },
         "sitting": {
-          "animations": ["sit"],
+          "animations": [
+            "sit"
+          ],
           "transitions": [
             {
               "walking": "!query.is_sitting"

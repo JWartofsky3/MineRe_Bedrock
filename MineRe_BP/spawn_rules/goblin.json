@@ -67,11 +67,6 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "roofed"
-            },
-            {
-              "test": "has_biome_tag",
-              "operator": "==",
-              "value": "plains"
             }
           ],
           "any_of": [
@@ -99,6 +94,11 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "mesa"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "taiga"
             }
           ]
         }

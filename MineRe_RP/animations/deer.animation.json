@@ -13,8 +13,8 @@
 				"right_antler": {
 					"scale": 0
 				}
-				}
-			},
+			}
+		},
 		"animation.minere.deer.walk": {
 			"loop": true,
 			"anim_time_update": "query.modified_distance_moved * 0.75",
@@ -100,7 +100,13 @@
 					"rotation": ["math.cos(query.anim_time * 38.17) * 25", 0, 0]
 				},
 				"body2": {
-					"rotation": ["math.cos(query.anim_time * 38.17) * 3", "math.cos(query.anim_time * 38.17) * 3", "math.cos(query.anim_time * 38.17) * 3"]
+					"rotation": ["math.cos(query.anim_time * 38.17) * 3", 0, 0]
+				},
+				"left_rein": {
+					"rotation": ["math.cos(25 + query.anim_time * 38.17) * 7", 0, 0]
+				},
+				"right_rein": {
+					"rotation": ["math.cos(25 + query.anim_time * 38.17) * 7", 0, 0]
 				}
 			}
 		},
@@ -112,34 +118,40 @@
 				},
 				"head": {
 					"rotation": ["query.target_x_rotation * 0.8", "query.target_y_rotation * 0.8", 0]
+				},
+				"left_rein": {
+					"rotation": ["-query.target_x_rotation * 0.2", "-query.target_y_rotation * 0.2", 0]
+				},
+				"right_rein": {
+					"rotation": ["-query.target_x_rotation * 0.2", "-query.target_y_rotation * 0.2", 0]
 				}
 			}
 		},
-    "animation.minere.deer.tail": {
-      "loop": true,
-      "animation_length": 2,
-      "bones": {
-        "tail": {
-          "rotation": {
-            "0.0": [0, 0, 0],
-            "1.0": [0, 0, 0],
-            "1.25": [0, 45, 0],
-            "1.75": [0, -45, 0],
-            "2.0": [0, 0, 0]
-          }
-        }
-      }
-    },
-    "animation.minere.deer.hide_reins": {
-      "loop": true,
-      "bones": {
-        "left_rein": {
-          "scale": 0
-        },
-        "right_rein": {
-          "scale": 0
-        }
-      }
-    }
-  }
+		"animation.minere.deer.tail": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.0": [0, 0, 0],
+						"1.25": [0, 45, 0],
+						"1.75": [0, -45, 0],
+						"2.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.minere.deer.hide_reins": {
+			"loop": true,
+			"bones": {
+				"left_rein": {
+					"scale": 0
+				},
+				"right_rein": {
+					"scale": 0
+				}
+			}
+		}
+	}
 }

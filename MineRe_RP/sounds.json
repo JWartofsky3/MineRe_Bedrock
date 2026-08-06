@@ -7,7 +7,10 @@
           "fly": "mob.parrot.fly",
           "step": "mob.parrot.step"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1,
         "variants": {
           "key": "query.property('minecraft:sound_variant')",
@@ -22,7 +25,10 @@
                 "death": "mob.blue_jay.ambient",
                 "hurt": "mob.blue_jay.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "cardinal": {
@@ -34,7 +40,10 @@
                 "death": "mob.cardinal.hurt",
                 "hurt": "mob.cardinal.hurt"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "tufted_titmouse": {
@@ -46,7 +55,10 @@
                 "death": "mob.tufted_titmouse.ambient",
                 "hurt": "mob.tufted_titmouse.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "crow": {
@@ -58,7 +70,10 @@
                 "death": "mob.crow.ambient",
                 "hurt": "mob.crow.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "robin": {
@@ -70,7 +85,10 @@
                 "death": "mob.robin.ambient",
                 "hurt": "mob.robin.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "oropendola": {
@@ -82,7 +100,10 @@
                 "death": "mob.oropendola.ambient",
                 "hurt": "mob.oropendola.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "piha": {
@@ -94,7 +115,10 @@
                 "death": "mob.piha.ambient",
                 "hurt": "mob.piha.ambient"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             },
             "goldfinch": {
@@ -106,7 +130,10 @@
                 "death": "mob.goldfinch.hurt",
                 "hurt": "mob.goldfinch.hurt"
               },
-              "pitch": [0.8, 1.2],
+              "pitch": [
+                0.8,
+                1.2
+              ],
               "volume": 1
             }
           }
@@ -116,28 +143,46 @@
         "events": {
           "ambient": "",
           "attack": {
-            "pitch": [0.8, 1.2],
+            "pitch": [
+              0.8,
+              1.2
+            ],
             "sound": "mob.stomp.stone"
           },
           "death": {
             "sound": "mob.stomp.stone",
-            "pitch": [0.7, 0.8],
+            "pitch": [
+              0.7,
+              0.8
+            ],
             "volume": 2
           },
           "hurt": {
-            "pitch": [0.8, 1.2],
+            "pitch": [
+              0.8,
+              1.2
+            ],
             "sound": "mob.stomp.stone"
           },
           "squish.big": {
-            "pitch": [0.64, 0.96],
+            "pitch": [
+              0.64,
+              0.96
+            ],
             "sound": "mob.stomp.sand"
           },
           "squish.small": {
-            "pitch": [0.64, 0.96],
+            "pitch": [
+              0.64,
+              0.96
+            ],
             "sound": "mob.stomp.sand"
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:queen_bee": {
@@ -151,19 +196,31 @@
             "volume": 0.85
           },
           "attack": {
-            "pitch": [0.7, 0.9],
+            "pitch": [
+              0.7,
+              0.9
+            ],
             "sound": "mob.bee.sting"
           },
           "death": {
-            "pitch": [0.7, 0.9],
+            "pitch": [
+              0.7,
+              0.9
+            ],
             "sound": "mob.bee.death"
           },
           "hurt": {
-            "pitch": [0.7, 0.9],
+            "pitch": [
+              0.7,
+              0.9
+            ],
             "sound": "mob.bee.hurt"
           },
           "prepare.summon": {
-            "pitch": [0.9, 1.1],
+            "pitch": [
+              0.9,
+              1.1
+            ],
             "sound": "block.beehive.enter"
           }
         },
@@ -187,7 +244,10 @@
           "prepare.summon": "mob.evocation_illager.prepare_summon",
           "prepare.wololo": "mob.evocation_illager.prepare_wololo"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:eagle": {
@@ -200,17 +260,26 @@
             "volume": 1.5
           },
           "flap": {
-            "pitch": [1.5, 2],
+            "pitch": [
+              1.5,
+              2
+            ],
             "sound": "mob.phantom.flap",
             "volume": 2
           },
           "hurt": "mob.eagle.ambient",
           "swoop": {
-            "pitch": [0.95, 1.05],
+            "pitch": [
+              0.95,
+              1.05
+            ],
             "sound": "mob.eagle.hawk"
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 5
       },
       "minere:owl": {
@@ -220,13 +289,19 @@
             "volume": 2
           },
           "death": {
-            "pitch": [0.8, 1],
+            "pitch": [
+              0.8,
+              1
+            ],
             "sound": "mob.owl.ambient",
             "volume": 2
           },
           "eat": "mob.parrot.eat",
           "fly": {
-            "pitch": [0.6, 0.8],
+            "pitch": [
+              0.6,
+              0.8
+            ],
             "sound": "mob.parrot.fly"
           },
           "hurt": {
@@ -234,7 +309,10 @@
           },
           "step": "mob.parrot.step"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:scorpion": {
@@ -243,28 +321,43 @@
           "death": "mob.scorpion.death",
           "hurt": "mob.scorpion.hurt",
           "step": {
-            "pitch": [0.8, 1.2],
+            "pitch": [
+              0.8,
+              1.2
+            ],
             "sound": "mob.scorpion.walk",
             "volume": 0.6
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.5
       },
       "minere:firefly": {
         "events": {
           "death": {
-            "pitch": [0.9, 1.1],
+            "pitch": [
+              0.9,
+              1.1
+            ],
             "sound": "mob.bee.death",
             "volume": 0.6
           },
           "hurt": {
-            "pitch": [0.9, 1.1],
+            "pitch": [
+              0.9,
+              1.1
+            ],
             "sound": "mob.bee.hurt",
             "volume": 0.6
           },
           "ambient": {
-            "pitch": [0.9, 1.1],
+            "pitch": [
+              0.9,
+              1.1
+            ],
             "sound": "block.firefly_bush.ambient",
             "volume": 0.6
           }
@@ -279,22 +372,34 @@
           "death": "mob.ghost.die",
           "hurt": "mob.ghost.hurt"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.3
       },
       "minere:cosmic_jelly": {
         "events": {
           "ambient": {
             "sound": "mob.cosmic_jelly.ambient",
-            "pitch": [0.5, 0.75]
+            "pitch": [
+              0.5,
+              0.75
+            ]
           },
           "hurt": {
             "sound": "mob.cosmic_jelly.bubble",
-            "pitch": [0.75, 1]
+            "pitch": [
+              0.75,
+              1
+            ]
           },
           "warn": {
             "sound": "mob.cosmic_jelly.warn",
-            "pitch": [0.75, 1]
+            "pitch": [
+              0.75,
+              1
+            ]
           },
           "shoot": "mob.cosmic_jelly.shoot",
           "death": {
@@ -302,7 +407,10 @@
             "pitch": 0.4
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 5
       },
       "minere:goblin": {
@@ -316,7 +424,10 @@
           "tempt": "mob.goblin.admire",
           "retreat": {
             "sound": "mob.goblin.laugh",
-            "pitch": [1.2, 1.4],
+            "pitch": [
+              1.2,
+              1.4
+            ],
             "volume": 1.5
           },
           "step": {
@@ -324,7 +435,10 @@
             "volume": 0.55
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:ogre": {
@@ -336,8 +450,23 @@
           "attack": "dig.wood",
           "attack.strong": "mob.ogre.attack"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2
+      },
+      "minere:rat": {
+        "events": {
+          "ambient": "mob.rat.squeak",
+          "death": "mob.rat.squeak",
+          "hurt": "mob.rat.squeak"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.5
       },
       "minere:demon": {
         "events": {
@@ -349,7 +478,10 @@
           "attack.strong": "mob.demon.attack",
           "prepare.summon": "mob.evocation_illager.prepare_summon"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2
       },
       "minere:demon_skull": {
@@ -363,7 +495,10 @@
           },
           "hurt": "mob.demon_skull.screech"
         },
-        "pitch": [1.2, 1.6],
+        "pitch": [
+          1.2,
+          1.6
+        ],
         "volume": 0.8
       },
       "minere:inferno": {
@@ -375,7 +510,10 @@
           "roar": "boss.inferno.hydraulic",
           "prepare.summon": "mob.evocation_illager.prepare_summon"
         },
-        "pitch": [0.6, 0.8],
+        "pitch": [
+          0.6,
+          0.8
+        ],
         "variants": {
           "key": null
         },
@@ -391,7 +529,10 @@
             "volume": 1.75
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.1
       },
       "minere:glacier": {
@@ -408,7 +549,10 @@
             "volume": 3
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2.5
       },
       "minere:yeti": {
@@ -421,7 +565,10 @@
           "retreat": "mob.yeti.scared",
           "purr": "mob.yeti.purr"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2
       },
       "minere:deer": {
@@ -430,7 +577,10 @@
           "hurt": "mob.llama.hurt",
           "step": "mob.llama.step"
         },
-        "pitch": [1.1, 1.3],
+        "pitch": [
+          1.1,
+          1.3
+        ],
         "volume": 1
       },
       "minere:elephant": {
@@ -441,17 +591,26 @@
           "angry": "mob.elephant.trumpet",
           "roar": {
             "sound": "mob.elephant.trumpet",
-            "pitch": [0.7, 1],
+            "pitch": [
+              0.7,
+              1
+            ],
             "volume": 3
           },
           "attack.strong": "mob.elephant.trumpet",
           "step": {
             "sound": "mob.yeti.step",
-            "pitch": [0.7, 1],
+            "pitch": [
+              0.7,
+              1
+            ],
             "volume": 2
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2.5
       },
       "minere:monkey": {
@@ -459,14 +618,23 @@
           "ambient": "mob.monkey.ambient",
           "death": {
             "sound": "mob.monkey.hurt",
-            "pitch": [0.7, 1.0],
+            "pitch": [
+              0.7,
+              1.0
+            ],
             "volume": 3.0
           },
           "hurt": "mob.monkey.hurt",
           "angry": "mob.monkey.hurt"
         },
-        "pitch": [0.8, 1.2],
-        "volume": [0.9, 1.1]
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": [
+          0.9,
+          1.1
+        ]
       },
       "minere:moose": {
         "events": {
@@ -477,11 +645,17 @@
           "attack.strong": "mob.moose.attack",
           "step": {
             "sound": "mob.cow.step",
-            "pitch": [0.7, 1],
+            "pitch": [
+              0.7,
+              1
+            ],
             "volume": 1.3
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.3
       },
       "minere:squirrel": {
@@ -491,7 +665,10 @@
           "eat": "",
           "hurt": "mob.rabbit.hurt"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 0.8
       },
       "minere:biter": {
@@ -510,7 +687,10 @@
             "volume": 0.15
           }
         },
-        "pitch": [0.6, 1],
+        "pitch": [
+          0.6,
+          1
+        ],
         "volume": 1.5
       },
       "minere:butterfly": {
@@ -518,7 +698,10 @@
           "death": "mob.butterfly.squish",
           "hurt": "mob.butterfly.squish"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:lizord": {
@@ -536,7 +719,10 @@
             "volume": 3.25
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2.5
       },
       "minere:netherzord": {
@@ -554,7 +740,10 @@
             "volume": 3.25
           }
         },
-        "pitch": [0.7, 1.1],
+        "pitch": [
+          0.7,
+          1.1
+        ],
         "volume": 2.75
       },
       "minere:walker": {
@@ -568,13 +757,19 @@
           "shoot": "mob.walker.shoot",
           "warn": "mob.walker.warn",
           "step": {
-            "pitch": [0.6, 0.8],
+            "pitch": [
+              0.6,
+              0.8
+            ],
             "sound": "mob.walker.step",
             "volume": 3
           },
           "irongolem.repair": "mob.irongolem.repair"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 5
       },
       "minere:web_spider": {
@@ -583,12 +778,18 @@
           "death": "mob.spider.death",
           "hurt": "mob.spider.say",
           "step": {
-            "pitch": [0.6, 0.8],
+            "pitch": [
+              0.6,
+              0.8
+            ],
             "sound": "mob.spider.step",
             "volume": 0.55
           }
         },
-        "pitch": [0.5, 0.8],
+        "pitch": [
+          0.5,
+          0.8
+        ],
         "volume": 2
       },
       "minere:whale": {
@@ -598,12 +799,18 @@
           "death": "mob.whale.ambient",
           "death.in.water": "mob.whale.ambient",
           "hurt": {
-            "pitch": [0.2, 0.4],
+            "pitch": [
+              0.2,
+              0.4
+            ],
             "sound": "mob.dolphin.hurt",
             "volume": 3
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 2
       },
       "minere:gremlin": {
@@ -626,7 +833,10 @@
           },
           "tempt": "mob.strider.tempt"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:monster_bat": {
@@ -635,12 +845,18 @@
           "death": "mob.bat.death",
           "hurt": "mob.bat.hurt",
           "takeoff": {
-            "pitch": [0.8, 1.2],
+            "pitch": [
+              0.8,
+              1.2
+            ],
             "sound": "mob.bat.takeoff",
             "volume": 0.05
           }
         },
-        "pitch": [0.3, 0.7],
+        "pitch": [
+          0.3,
+          0.7
+        ],
         "volume": 0.6
       },
       "minere:vampire": {
@@ -655,7 +871,10 @@
             "volume": 0.25
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.5
       },
       "minere:ender_phantom": {
@@ -666,11 +885,17 @@
           "flap": "mob.phantom.flap",
           "hurt": "mob.phantom.hurt",
           "swoop": {
-            "pitch": [0.95, 1.05],
+            "pitch": [
+              0.95,
+              1.05
+            ],
             "sound": "mob.phantom.swoop"
           }
         },
-        "pitch": [0.4, 0.7],
+        "pitch": [
+          0.4,
+          0.7
+        ],
         "volume": 11
       },
       "minere:black_bear": {
@@ -693,7 +918,10 @@
             "volume": 0.7
           }
         },
-        "pitch": [0.85, 1.25],
+        "pitch": [
+          0.85,
+          1.25
+        ],
         "volume": 1
       },
       "minere:grizzly_bear": {
@@ -716,72 +944,105 @@
             "volume": 0.7
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "minere:dire_wolf": {
         "events": {
           "ambient": {
-            "pitch": [0.9, 1.2],
+            "pitch": [
+              0.9,
+              1.2
+            ],
             "sound": "mob.dire_wolf.howl",
             "volume": 2.5
           },
           "angry": "mob.dire_wolf.growl",
           "death": "mob.dire_wolf.howl",
           "hurt": {
-            "pitch": [0.9, 1.4],
+            "pitch": [
+              0.9,
+              1.4
+            ],
             "sound": "mob.dire_wolf.growl",
             "volume": 1.5
           },
           "step": {
-            "pitch": [0.8, 1.2],
+            "pitch": [
+              0.8,
+              1.2
+            ],
             "sound": "mob.wolf.step",
             "volume": 0.85
           }
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1.5
       },
       "skeleton": {
         "events": {
           "shoot": "random.bow"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "drowned": {
         "events": {
           "shoot": "item.trident.throw"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "pillager": {
         "events": {
           "shoot": "random.bow"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "piglin": {
         "events": {
           "shoot": "random.bow"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "stray": {
         "events": {
           "shoot": "random.bow"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "bogged": {
         "events": {
           "shoot": "random.bow"
         },
-        "pitch": [0.8, 1.2],
+        "pitch": [
+          0.8,
+          1.2
+        ],
         "volume": 1
       },
       "blaze": {

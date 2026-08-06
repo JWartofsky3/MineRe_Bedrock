@@ -192,21 +192,28 @@
       },
       "minere:deer_saddled": {
         "minecraft:is_saddled": {},
+        "minecraft:type_family": {
+          "family": [
+            "deer",
+            "mob",
+            "saddled"
+          ]
+        },
         "minecraft:rideable": {
           "seat_count": 1,
           "crouching_skip_interact": true,
+          "on_rider_exit_event": "minere:on_rider_exit",
           "family_types": [
-            "goblin",
-            "player"
+            "goblin"
           ],
           "interact_text": "action.interact.ride.horse",
           "seats": {
+            "lock_rider_rotation": true,
             "position": [
               0,
-              0.75,
+              0.8,
               -0.2
-            ],
-            "lock_rider_rotation": 0
+            ]
           }
         },
         "minecraft:interact": {
@@ -353,8 +360,8 @@
         "speed_multiplier": 2
       },
       "minecraft:behavior.mount_pathing": {
-        "priority": 2,
-        "speed_multiplier": 2.0,
+        "priority": 0,
+        "speed_multiplier": 1.4,
         "target_dist": 0,
         "track_target": true
       },
@@ -503,6 +510,22 @@
             "minere:deer_unsaddled"
           ]
         }
+      },
+      "minere:on_rider_exit": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "goblin"
+            },
+            "remove": {
+              "component_groups": [
+                "minere:deer_cavalry"
+              ]
+            }
+          }
+        ]
       },
       "become_cavalry": {
         "remove": {

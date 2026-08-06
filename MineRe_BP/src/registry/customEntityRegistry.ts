@@ -19,6 +19,7 @@ import { Earthquake } from "entities/otherEntities/Earthquake";
 import { Inferno } from "entities/bosses/inferno/Inferno";
 import { Glacier } from "entities/bosses/glacier/Glacier";
 import { Elephant } from "entities/mobs/Elephant";
+//import { Deer } from "entities/mobs/Deer";
 import { IceSpike } from "entities/otherEntities/IceSpike";
 import { CustomPlayer } from "entities/player/Player";
 
@@ -36,6 +37,7 @@ export function registerCustomEntities() {
   new Moose().register();
   new EnderPhantom().register();
   new Elephant().register();
+  //new Deer().register();
 
   // projectiles
   new IceCharge().register();
