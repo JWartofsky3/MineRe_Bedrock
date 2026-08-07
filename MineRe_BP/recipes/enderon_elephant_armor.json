@@ -5,7 +5,7 @@
       "identifier": "minere:enderon_elephant_armor"
     },
     "tags": ["crafting_table"],
-    "pattern": ["BBB", "II ", "I  "],
+    "pattern": ["BBB", "III", "I  "],
     "key": {
       "B": {
         "item": "minere:enderon_block"

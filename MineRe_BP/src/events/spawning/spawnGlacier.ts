@@ -120,7 +120,7 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
 
   challenger.player.setDynamicProperty(GLACIER_SPAWN_PROP, system.currentTick);
   entity.remove();
-  dimension.spawnEntity("minere:glacier", location);
+  dimension.spawnEntity<string>("minere:glacier", location);
 }
 
 function hasNearbyMobSpawner(dimension: Dimension, location: Vector3): boolean {

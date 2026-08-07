@@ -1,7 +1,9 @@
-import { ItemCustomComponent, Player, world } from "@minecraft/server";
+import { ItemCustomComponent } from "@minecraft/server";
+import { GUIDE_DISCOVERY_PROPERTY } from "guide/discovery";
 
 export const Helper1: ItemCustomComponent = {
   onUse(arg) {
-    arg.source.sendMessage("Hello world!");
+    arg.source.setDynamicProperty(GUIDE_DISCOVERY_PROPERTY, undefined);
+    arg.source.sendMessage("Guide discoveries cleared.");
   },
 };

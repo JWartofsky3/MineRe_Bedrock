@@ -431,7 +431,6 @@
             "volume": 1.5
           },
           "step": {
-            "sound": "mob.goblin.step",
             "volume": 0.55
           }
         },

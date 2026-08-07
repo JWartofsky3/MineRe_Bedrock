@@ -133,7 +133,7 @@ function triggerLightningStrikes(
       maxDistance: PHANTOM_PROPERTIES.MAX_DISTANCE,
     });
     if (phantoms.length < PHANTOM_PROPERTIES.MAX_DENSITY) {
-      dimension.spawnEntity("minere:ender_phantom", {
+      dimension.spawnEntity<string>("minere:ender_phantom", {
         x: player.location.x,
         y: player.location.y + PHANTOM_PROPERTIES.ALTITUDE,
         z: player.location.z,

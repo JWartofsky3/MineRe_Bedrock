@@ -129,5 +129,5 @@ export const ghostPot: BlockCustomComponent = {
 
 function spawnGhost(dimension: Dimension, location: Vector3) {
   dimension.playSound("mob.ghast.scream", location, { volume: 2.0 });
-  dimension.spawnEntity("minere:ghost", location);
+  dimension.spawnEntity<string>("minere:ghost", location);
 }

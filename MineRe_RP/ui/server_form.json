@@ -1,0 +1,203 @@
+{
+  "namespace": "server_form",
+  "long_form": {
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": [
+          {
+            "binding_name": "#title_text"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#title_text - 'textures/guide/') = #title_text)",
+            "target_property_name": "#visible"
+          }
+        ]
+      }
+    ]
+  },
+  "minere_guide_entity_form@common_dialogs.main_panel_no_buttons": {
+    "$title_panel": "common_dialogs.standard_title_label",
+    "$title_size": ["100% - 15px", 10],
+    "$title_max_size": ["100% - 15px", 10],
+    "size": [225, 200],
+    "$text_name": "guide.minere.title",
+    "$title_text_binding_type": "none",
+    "$child_control": "server_form.minere_guide_entity_form_panel",
+    "layer": 2,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'textures/guide/') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "minere_guide_entity_form_panel": {
+    "type": "stack_panel",
+    "size": ["100%", "100%"],
+    "orientation": "vertical",
+    "layer": 1,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "scrolling_panel@common.scrolling_panel": {
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "$show_background": false,
+          "size": ["100%", "100%"],
+          "$scrolling_content": "server_form.minere_guide_entity_scrolling_content",
+          "$scroll_size": [5, "100% - 4px"],
+          "$scrolling_pane_size": ["100% - 4px", "100% - 2px"],
+          "$scrolling_pane_offset": [2, 0],
+          "$scroll_bar_right_padding_size": [0, 0]
+        }
+      }
+    ]
+  },
+  "minere_guide_entity_scrolling_content": {
+    "type": "stack_panel",
+    "size": ["100% - 4px", "100%c"],
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      }
+    ],
+    "controls": [
+      {
+        "entity_title_panel": {
+          "type": "panel",
+          "size": ["100%", 20],
+          "controls": [
+            {
+              "deer_title@server_form.minere_guide_entity_title": {
+                "$text": "entity.minere:deer.name",
+                "$image_path": "textures/guide/animals/deer"
+              }
+            },
+            {
+              "moose_title@server_form.minere_guide_entity_title": {
+                "$text": "entity.minere:moose.name",
+                "$image_path": "textures/guide/animals/moose"
+              }
+            },
+            {
+              "vampire_title@server_form.minere_guide_entity_title": {
+                "$text": "entity.minere:vampire.name",
+                "$image_path": "textures/guide/monsters/vampire"
+              }
+            },
+            {
+              "grizzly_bear_title@server_form.minere_guide_entity_title": {
+                "$text": "entity.minere:grizzly_bear.name",
+                "$image_path": "textures/guide/animals/grizzly_bear"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "entity_image_panel": {
+          "type": "panel",
+          "size": ["100%", 96],
+          "controls": [
+            {
+              "entity_image@server_form.minere_guide_entity_image": {}
+            }
+          ]
+        }
+      },
+      {
+        "padding": {
+          "type": "panel",
+          "size": ["100%", 6]
+        }
+      },
+      {
+        "guide_contents@server_form.minere_guide_dynamic_contents": {}
+      }
+    ]
+  },
+  "minere_guide_dynamic_contents": {
+    "type": "stack_panel",
+    "size": ["100% - 4px", "100%c"],
+    "offset": [2, 0],
+    "orientation": "vertical",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.dynamic_button",
+        "label": "@server_form.dynamic_label",
+        "header": "@server_form.dynamic_header",
+        "divider": "@settings_common.option_group_section_divider"
+      }
+    },
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_contents",
+        "binding_name_override": "#collection_length"
+      }
+    ]
+  },
+  "minere_guide_entity_image": {
+    "type": "image",
+    "size": [96, 96],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "bindings": [
+      {
+        "binding_name": "#title_text",
+        "binding_name_override": "#texture"
+      }
+    ]
+  },
+  "minere_guide_entity_title": {
+    "$text|default": "",
+    "$image_path|default": "",
+    "type": "label",
+    "text": "$text",
+    "font_size": "large",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "(#title_text = $image_path)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "main_screen_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "minere_guide_entity_factory": {
+              "type": "panel",
+              "factory": {
+                "name": "server_form_factory",
+                "control_ids": {
+                  "long_form": "@server_form.minere_guide_entity_form"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

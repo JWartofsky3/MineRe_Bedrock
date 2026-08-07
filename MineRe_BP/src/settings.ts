@@ -1,9 +1,4 @@
-import {
-  system,
-  world,
-  PlayerPermissionLevel,
-  CommandPermissionLevel,
-} from "@minecraft/server";
+import { system, world, Player } from "@minecraft/server";
 
 export interface WorldSettings {
   reducedHealthRegen: boolean;
@@ -28,7 +23,7 @@ export const GREMLIN_BREAKS_TORCHES = "minere:gremlinBreaksTorches";
 export const OGRE_BREAKS_BLOCKS = "minere:ogreBreaksBlocks";
 export const REDUCE_DAYLIGHT_DROWNED = "minere:reduceDaylightDrowned";
 export const GOLD_XP_BONUS = "minere:goldXPBonus";
-export const HAS_GIVEN_BOOK = "minere:hasGivenBook";
+const HAS_RECEIVED_GUIDE = "minere:hasReceivedGuide";
 
 // Function to get the current settings from dynamic properties.
 export function getSettings(): WorldSettings {
@@ -77,11 +72,6 @@ export function saveSettings(settings: WorldSettings) {
  */
 export function initializeWorldSettings(): void {
   system.runTimeout(() => {
-    // Check and set default for the book flag
-    if (world.getDynamicProperty(HAS_GIVEN_BOOK) === undefined) {
-      world.setDynamicProperty(HAS_GIVEN_BOOK, false);
-    }
-
     // Check and set default for Reduced Health Regeneration
     if (world.getDynamicProperty(REDUCED_HEALTH_REGEN) === undefined) {
       world.setDynamicProperty(REDUCED_HEALTH_REGEN, true);
@@ -134,39 +124,23 @@ export function initializeWorldSettings(): void {
   });
 }
 
-// Gives out the settings book to the first operator/admin player in the world
-export function giveOutSettingsBook() {
-  // try giving the book when players join
-  world.afterEvents.playerJoin.subscribe(function (data) {
-    system.runTimeout(() => {
-      let gaveOutBook = !!world?.getDynamicProperty(HAS_GIVEN_BOOK)?.valueOf();
-      if (gaveOutBook) {
-        return;
-      }
-      // check every tick for the loaded admin to join
-      const runner = system.runInterval(() => {
-        const players = world.getPlayers();
-        for (let i = 0; i < players.length; i++) {
-          if (players[i].id === data.playerId) {
-            if (
-              world.getDay() == 0 ||
-              players[i].commandPermissionLevel ===
-                CommandPermissionLevel.Admin ||
-              players[i].playerPermissionLevel ===
-                PlayerPermissionLevel.Operator
-            ) {
-              players[i].runCommand("give @s minere:settings_book");
-              world.setDynamicProperty(HAS_GIVEN_BOOK, true);
-              gaveOutBook = true;
-              system.clearRun(runner);
-            }
-          }
-        }
-      });
-      // stop checking after 10 seconds
-      system.runTimeout(() => {
-        system.clearRun(runner);
-      }, 200);
-    }, 20);
+/** Gives each player one Guide when their character is loaded for the first time. */
+export function giveGuideOnPlayerLoad(): void {
+  world.afterEvents.entityLoad.subscribe((data) => {
+    if (data.entity.typeId !== "minecraft:player") {
+      return;
+    }
+
+    const player = data.entity as Player;
+    if (player.getDynamicProperty(HAS_RECEIVED_GUIDE)) {
+      return;
+    }
+
+    try {
+      player.runCommand("give @s minere:guide");
+      player.setDynamicProperty(HAS_RECEIVED_GUIDE, true);
+    } catch (error) {
+      console.error("Failed to give Guide to player: " + error);
+    }
   });
 }

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": { "identifier": "minere:guide", "menu_category": { "category": "equipment" } },
+    "components": {
+      "minecraft:icon": "minere.guide",
+      "minecraft:max_stack_size": 1,
+      "minecraft:custom_components": ["minere:guide"],
+      "minecraft:cooldown": { "category": "minere:guide", "duration": 1.0 },
+      "minecraft:rarity": "epic"
+    }
+  }
+}

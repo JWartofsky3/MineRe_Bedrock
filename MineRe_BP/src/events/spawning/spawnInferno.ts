@@ -111,7 +111,7 @@ function handleInfernoSpawn(data: EntitySpawnAfterEvent) {
 
   challenger.player.setDynamicProperty(INFERNO_SPAWN_PROP, system.currentTick);
   entity.remove();
-  dimension.spawnEntity("minere:inferno", location);
+  dimension.spawnEntity<string>("minere:inferno", location);
 }
 
 function hasNearbyMobSpawner(dimension: Dimension, location: Vector3): boolean {

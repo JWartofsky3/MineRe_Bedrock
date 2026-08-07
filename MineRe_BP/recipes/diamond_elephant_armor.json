@@ -4,8 +4,14 @@
     "description": {
       "identifier": "minere:diamond_elephant_armor"
     },
-    "tags": ["crafting_table"],
-    "pattern": ["BBB", "II ", "I  "],
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "BBB",
+      "III",
+      "I  "
+    ],
     "key": {
       "B": {
         "item": "minecraft:diamond_block"

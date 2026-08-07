@@ -94,7 +94,7 @@ export const useAmethystStaff = (data: ItemUseBeforeEvent) => {
           y: source.location.y + 1.5 + source.getViewDirection().y * 1.5,
           z: source.location.z + source.getViewDirection().z * 1.5,
         };
-        let fireball = source.dimension.spawnEntity(
+        let fireball = source.dimension.spawnEntity<string>(
           "minere:amethyst_projectile",
           loc,
         );

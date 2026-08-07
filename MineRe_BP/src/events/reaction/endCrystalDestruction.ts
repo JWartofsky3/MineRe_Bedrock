@@ -23,7 +23,7 @@ export class EndCrystalDestructionEvent {
 function spawnLightning(dimension: Dimension, pos: VectorXZ, delay: number) {
   system.runTimeout(
     () => {
-      dimension.spawnEntity("lightning_bolt", {
+      dimension.spawnEntity("minecraft:lightning_bolt", {
         x: pos.x,
         y: dimension.getTopmostBlock(pos)?.location?.y ?? 0,
         z: pos.z,

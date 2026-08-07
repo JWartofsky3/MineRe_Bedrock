@@ -18,7 +18,7 @@ import { Windforce } from "items/components/windforce";
 import { Firebrand } from "items/components/firebrand";
 import { Darkheart } from "items/components/darkheart";
 import { ElixirOfExperience } from "items/components/elixir_of_experience";
-import { SettingsBook } from "items/components/settings_book";
+import { Guide } from "guide/item";
 import { Helper0 } from "items/components/helpers/helper0";
 import { Helper1 } from "items/components/helpers/helper1";
 import { Helper2 } from "items/components/helpers/helper2";
@@ -132,10 +132,7 @@ export function registerItems(data: StartupEvent) {
     "minere:phased_ender_pearl",
     PhasedEnderPearl,
   );
-  data.itemComponentRegistry.registerCustomComponent(
-    "minere:settings_book",
-    SettingsBook,
-  );
+  data.itemComponentRegistry.registerCustomComponent("minere:guide", Guide);
   data.itemComponentRegistry.registerCustomComponent("minere:helper0", Helper0);
   data.itemComponentRegistry.registerCustomComponent("minere:helper1", Helper1);
   data.itemComponentRegistry.registerCustomComponent("minere:helper2", Helper2);

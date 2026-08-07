@@ -7,6 +7,21 @@
           "num_to_select": 3,
           "trades": [
             {
+              "weight": 5,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1
+                }
+              ],
+              "gives": [
+                {
+                  "item": "minere:guide"
+                }
+              ],
+              "max_uses": 12
+            },
+            {
               "wants": [
                 {
                   "item": "minecraft:flint",

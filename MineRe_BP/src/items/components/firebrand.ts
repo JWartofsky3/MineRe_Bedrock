@@ -40,7 +40,7 @@ export const Firebrand: ItemCustomComponent = {
     dimension.playSound("mob.ghast.fireball", arg.source.location, {
       volume: 0.5,
     });
-    const fireball = dimension.spawnEntity("minere:firebrand_fireball", loc);
+    const fireball = dimension.spawnEntity<string>("minere:firebrand_fireball", loc);
     arg.source.addEffect("fire_resistance", 20 * RESISTANCE_DURATION, {
       showParticles: false,
     });

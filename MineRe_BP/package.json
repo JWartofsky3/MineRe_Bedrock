@@ -10,8 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@minecraft/server": "2.4.0",
-    "@minecraft/server-ui": "^2.0.0",
+    "@minecraft/server": "^2.11.0-beta.1.26.50-preview.20",
+    "@minecraft/server-ui": "^2.3.0-beta.1.26.50-preview.20",
+    "@minecraft/vanilla-data": "^1.26.40",
     "csv-parser": "^3.2.0",
     "prettier": "^3.2.5",
     "url": "^0.11.4"

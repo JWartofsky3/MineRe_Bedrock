@@ -60,7 +60,7 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
           y: source.location.y + 1.5 + source.getViewDirection().y * 1.5,
           z: source.location.z + source.getViewDirection().z * 1.5,
         };
-        let plasmaBolt = source.dimension.spawnEntity(
+        let plasmaBolt = source.dimension.spawnEntity<string>(
           "minere:plasma_bolt",
           loc,
         );

@@ -41,6 +41,7 @@
         "walk": "animation.minere.rat.walk",
         "look_at": "animation.minere.rat.look_at",
         "sit": "animation.minere.rat.sit",
+        "attack": "animation.minere.rat.attack",
         "attack_controller": "controller.animation.minere.rat.attack"
       },
       "scripts": {

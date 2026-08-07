@@ -234,7 +234,7 @@ function replaceHelper(placeholder: Entity, isSpawn: boolean) {
 
   // success!
   if (placeholder.typeId !== spawnRule.typeId) {
-    const entity = dimension.spawnEntity(spawnRule.typeId, location);
+    const entity = dimension.spawnEntity<string>(spawnRule.typeId, location);
     if (spawnRule.spawnEvent) {
       entity.triggerEvent(spawnRule.spawnEvent);
     }

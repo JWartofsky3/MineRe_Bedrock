@@ -84,7 +84,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
             source.getViewDirection().y * 1.5,
           z: source.getHeadLocation().z + source.getViewDirection().z * 1.5,
         };
-        let fireball = source.dimension.spawnEntity(
+        let fireball = source.dimension.spawnEntity<string>(
           "minere:staff_fireball",
           loc,
         );
