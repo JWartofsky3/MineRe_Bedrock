@@ -5,7 +5,7 @@ import {
   Player,
   system,
 } from "@minecraft/server";
-import { areHintsEnabled } from "guide/preferences";
+import { getPreferences } from "guide/preferences";
 
 const DEFAULT_HINT_COOLDOWN_TICKS = 20 * 4;
 const STAFF_EQUIP_HINT_COOLDOWN_TICKS = 20 * 60 * 30;
@@ -25,7 +25,7 @@ export function showHint(
   hintKey: string,
   cooldownTicks = DEFAULT_HINT_COOLDOWN_TICKS,
 ): void {
-  if (!areHintsEnabled(player)) {
+  if (!getPreferences(player).enableHints) {
     return;
   }
 

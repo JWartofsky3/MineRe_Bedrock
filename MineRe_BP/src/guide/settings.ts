@@ -9,8 +9,16 @@ import { ModalFormData } from "@minecraft/server-ui";
 import { WorldSettings, getSettings, saveSettings } from "settings";
 
 const settingKeys: (keyof WorldSettings)[] = [
-  "reducedHealthRegen", "healingFromSoup", "armorWeight", "armorCurve", "protectionNerf",
-  "endStorms", "gremlinBreaksTorches", "ogreBreaksBlocks", "reduceDaylightDrowned", "goldXPBonus",
+  "reducedHealthRegen",
+  "healingFromSoup",
+  "armorWeight",
+  "armorCurve",
+  "protectionNerf",
+  "endStorms",
+  "gremlinBreaksTorches",
+  "ogreBreaksBlocks",
+  "reduceDaylightDrowned",
+  "goldXPBonus",
 ];
 
 const settingTranslationNames: Record<keyof WorldSettings, string> = {
@@ -40,18 +48,26 @@ function isWearingCarvedPumpkin(player: Player): boolean {
   );
 }
 
-export function showSettingsPage(player: Player, onBack: () => void = () => {}) {
+export function showSettingsPage(
+  player: Player,
+  onBack: () => void = () => {},
+) {
   const settings = getSettings();
   const mayEdit = canEditSettings(player) && !isWearingCarvedPumpkin(player);
-  const form = new ModalFormData().title("guide.minere.settings.title");
+  const form = new ModalFormData().title({
+    translate: "guide.minere.settings.title",
+  });
 
   for (const key of settingKeys) {
     const name = settingTranslationNames[key];
     if (mayEdit) {
-      form.toggle(`guide.minere.settings.toggle.${name}`, {
-        defaultValue: settings[key],
-        tooltip: `guide.minere.settings.tooltip.${name}`,
-      });
+      form.toggle(
+        { translate: `guide.minere.settings.toggle.${name}` },
+        {
+          defaultValue: settings[key],
+          tooltip: { translate: `guide.minere.settings.tooltip.${name}` },
+        },
+      );
     } else {
       form.label({
         translate: `guide.minere.settings.display.${name}`,
@@ -67,21 +83,31 @@ export function showSettingsPage(player: Player, onBack: () => void = () => {}) 
     translate: mayEdit ? "guide.minere.settings.save" : "guide.minere.back",
   });
 
-  form.show(player).then((response) => {
-    if (response.canceled || !mayEdit) {
-      onBack();
-      return;
-    }
+  form
+    .show(player)
+    .then((response) => {
+      if (response.canceled || !mayEdit) {
+        onBack();
+        return;
+      }
 
-    if (!canEditSettings(player) || response.formValues?.length !== settingKeys.length) {
-      player.sendMessage("guide.minere.settings.update_failed");
+      if (
+        !canEditSettings(player) ||
+        response.formValues?.length !== settingKeys.length
+      ) {
+        player.sendMessage({
+          translate: "guide.minere.settings.update_failed",
+        });
+        onBack();
+        return;
+      }
+      const updated = { ...settings };
+      settingKeys.forEach((key, index) => {
+        updated[key] = response.formValues![index] as boolean;
+      });
+      saveSettings(updated);
+      player.sendMessage({ translate: "guide.minere.settings.updated" });
       onBack();
-      return;
-    }
-    const updated = { ...settings };
-    settingKeys.forEach((key, index) => { updated[key] = response.formValues![index] as boolean; });
-    saveSettings(updated);
-    player.sendMessage("guide.minere.settings.updated");
-    onBack();
-  }).catch((error) => console.error("Failed to show settings form: " + error));
+    })
+    .catch((error) => console.error("Failed to show settings form: " + error));
 }

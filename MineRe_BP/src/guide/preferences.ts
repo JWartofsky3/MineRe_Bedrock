@@ -9,13 +9,9 @@ const DEFAULT_PREFERENCES: PlayerPreferences = {
   enableHints: true,
 };
 
-function getPreferencesPropertyId(player: Player): string {
-  return `minere:preferences:${player.id}`;
-}
-
 export function getPreferences(player: Player): PlayerPreferences {
   const storedPreferences = world.getDynamicProperty(
-    getPreferencesPropertyId(player),
+    `minere:preferences:${player.id}`,
   );
 
   if (typeof storedPreferences !== "string") {
@@ -42,13 +38,9 @@ export function savePreferences(
   preferences: PlayerPreferences,
 ): void {
   world.setDynamicProperty(
-    getPreferencesPropertyId(player),
+    `minere:preferences:${player.id}`,
     JSON.stringify(preferences),
   );
-}
-
-export function areHintsEnabled(player: Player): boolean {
-  return getPreferences(player).enableHints;
 }
 
 export function showPreferencesPage(
@@ -56,13 +48,18 @@ export function showPreferencesPage(
   onBack: () => void = () => {},
 ): void {
   const preferences = getPreferences(player);
-  const form = new ModalFormData().title("guide.minere.preferences.title");
-
-  form.toggle("guide.minere.preferences.toggle.enable_hints", {
-    defaultValue: preferences.enableHints,
-    tooltip: "guide.minere.preferences.tooltip.enable_hints",
+  const form = new ModalFormData().title({
+    translate: "guide.minere.preferences.title",
   });
-  form.submitButton("guide.minere.preferences.save");
+
+  form.toggle(
+    { translate: "guide.minere.preferences.toggle.enable_hints" },
+    {
+      defaultValue: preferences.enableHints,
+      tooltip: { translate: "guide.minere.preferences.tooltip.enable_hints" },
+    },
+  );
+  form.submitButton({ translate: "guide.minere.preferences.save" });
 
   form
     .show(player)
@@ -73,7 +70,9 @@ export function showPreferencesPage(
       }
 
       if (response.formValues?.length !== 1) {
-        player.sendMessage("guide.minere.preferences.update_failed");
+        player.sendMessage({
+          translate: "guide.minere.preferences.update_failed",
+        });
         onBack();
         return;
       }
@@ -81,7 +80,7 @@ export function showPreferencesPage(
       savePreferences(player, {
         enableHints: response.formValues[0] as boolean,
       });
-      player.sendMessage("guide.minere.preferences.updated");
+      player.sendMessage({ translate: "guide.minere.preferences.updated" });
       onBack();
     })
     .catch((error) =>

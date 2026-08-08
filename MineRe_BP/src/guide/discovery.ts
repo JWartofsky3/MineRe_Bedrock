@@ -21,18 +21,44 @@ export interface GuideCreature {
 }
 
 const ANIMALS = [
-  "minere:bird", "minere:black_bear", "minere:butterfly", "minere:deer",
-  "minere:eagle", "minere:elephant", "minere:firefly", "minere:grizzly_bear",
-  "minere:monkey", "minere:moose", "minere:owl", "minere:queen_bee",
-  "minere:rat", "minere:squirrel", "minere:whale",
+  "minere:bird",
+  "minere:black_bear",
+  "minere:butterfly",
+  "minere:deer",
+  "minere:eagle",
+  "minere:elephant",
+  "minere:firefly",
+  "minere:grizzly_bear",
+  "minere:monkey",
+  "minere:moose",
+  "minere:owl",
+  "minere:queen_bee",
+  "minere:rat",
+  "minere:squirrel",
+  "minere:whale",
 ] as const;
 
 const MONSTERS = [
-  "minere:biter", "minere:cosmic_jelly", "minere:demon", "minere:demon_skull",
-  "minere:dire_wolf", "minere:ender_phantom", "minere:freeze", "minere:ghost",
-  "minere:goblin", "minere:gremlin", "minere:lizord", "minere:monster_bat",
-  "minere:necromancer", "minere:netherzord", "minere:ogre", "minere:scorpion",
-  "minere:stomp", "minere:vampire", "minere:walker", "minere:web_spider",
+  "minere:biter",
+  "minere:cosmic_jelly",
+  "minere:demon",
+  "minere:demon_skull",
+  "minere:dire_wolf",
+  "minere:ender_phantom",
+  "minere:freeze",
+  "minere:ghost",
+  "minere:goblin",
+  "minere:gremlin",
+  "minere:lizord",
+  "minere:monster_bat",
+  "minere:necromancer",
+  "minere:netherzord",
+  "minere:ogre",
+  "minere:scorpion",
+  "minere:stomp",
+  "minere:vampire",
+  "minere:walker",
+  "minere:web_spider",
   "minere:yeti",
 ] as const;
 
@@ -87,40 +113,55 @@ export function getDiscoveredCount(
   ).length;
 }
 
-export function getGuideCreatures(category: DiscoveryCategory): readonly GuideCreature[] {
+export function getGuideCreatures(
+  category: DiscoveryCategory,
+): readonly GuideCreature[] {
   return GUIDE_CREATURES.filter((creature) => creature.category === category);
 }
 
 function discoverEntity(
   player: Player,
   entity: Entity,
-  level: DiscoveryLevel,
+  completesEntry = false,
   defeated = false,
 ): void {
   const category = creatureCategories.get(entity.typeId);
   if (!category) return;
 
-  const discoveryLevel = category === "animals" || defeated ? level : 1;
+  const discoveryLevel: DiscoveryLevel =
+    category === "animals" ? 1 : completesEntry ? 2 : 1;
 
   const discoveries = getDiscoveryData(player);
   const currentLevel = discoveries[entity.typeId] ?? 0;
   if (currentLevel >= discoveryLevel) return;
 
   discoveries[entity.typeId] = discoveryLevel;
-  player.setDynamicProperty(GUIDE_DISCOVERY_PROPERTY, JSON.stringify(discoveries));
+  player.setDynamicProperty(
+    GUIDE_DISCOVERY_PROPERTY,
+    JSON.stringify(discoveries),
+  );
 
   if (category !== "animals") {
     if (!defeated) {
-      if (currentLevel !== 0) return;
-
-      player.sendMessage({
-        rawtext: [
-          { text: "Discovered " },
-          { text: `${FORMAT_CODE}b` },
-          { translate: `entity.${entity.typeId}.name` },
-          { text: `${FORMAT_CODE}r! It has been added to your guide.` },
-        ],
-      });
+      if (currentLevel === 0) {
+        player.sendMessage({
+          rawtext: [
+            { text: "Discovered " },
+            { text: `${FORMAT_CODE}b` },
+            { translate: `entity.${entity.typeId}.name` },
+            { text: `${FORMAT_CODE}r! It has been added to your guide.` },
+          ],
+        });
+      } else if (currentLevel === 1 && discoveryLevel === 2) {
+        player.sendMessage({
+          rawtext: [
+            { text: "Your guidebook entry for " },
+            { text: `${FORMAT_CODE}b` },
+            { translate: `entity.${entity.typeId}.name` },
+            { text: `${FORMAT_CODE}r has been completed!` },
+          ],
+        });
+      }
       return;
     }
 
@@ -129,7 +170,7 @@ function discoverEntity(
         { text: "Defeated " },
         { text: `${FORMAT_CODE}b` },
         { translate: `entity.${entity.typeId}.name` },
-        { text: `${FORMAT_CODE}r! It's guide entry has been completed!` },
+        { text: `${FORMAT_CODE}r! See the guide for more information.` },
       ],
     });
     return;
@@ -147,23 +188,27 @@ function discoverEntity(
   });
 }
 
-function asPlayer(entity: Entity | undefined): Player | undefined {
-  return entity?.typeId === "minecraft:player" ? (entity as Player) : undefined;
-}
-
 function getResponsiblePlayer(source: EntityDamageSource): Player | undefined {
-  const directPlayer = asPlayer(source.damagingEntity);
-  if (directPlayer) return directPlayer;
+  if (source.damagingEntity?.typeId === "minecraft:player") {
+    return source.damagingEntity as Player;
+  }
 
   const projectile = source.damagingProjectile ?? source.damagingEntity;
   const projectileComponent = projectile?.getComponent(
     EntityComponentTypes.Projectile,
   ) as EntityProjectileComponent | undefined;
-  return asPlayer(projectileComponent?.owner);
+  if (projectileComponent?.owner?.typeId === "minecraft:player") {
+    return projectileComponent.owner as Player;
+  }
+
+  return undefined;
 }
 
 function getSourceEntity(source: EntityDamageSource): Entity | undefined {
-  if (source.damagingEntity && creatureCategories.has(source.damagingEntity.typeId)) {
+  if (
+    source.damagingEntity &&
+    creatureCategories.has(source.damagingEntity.typeId)
+  ) {
     return source.damagingEntity;
   }
 
@@ -175,32 +220,35 @@ function getSourceEntity(source: EntityDamageSource): Entity | undefined {
 }
 
 export function initializeGuideDiscovery(): void {
-  world.afterEvents.entityHitEntity.subscribe(({ damagingEntity, hitEntity }) => {
-    const attackingPlayer = asPlayer(damagingEntity);
-    if (attackingPlayer) discoverEntity(attackingPlayer, hitEntity, 1);
+  world.afterEvents.entityHitEntity.subscribe(
+    ({ damagingEntity, hitEntity }) => {
+      if (damagingEntity.typeId === "minecraft:player") {
+        discoverEntity(damagingEntity as Player, hitEntity);
+      }
 
-    const hitPlayer = asPlayer(hitEntity);
-    if (hitPlayer) discoverEntity(hitPlayer, damagingEntity, 1);
-  });
+      if (hitEntity.typeId === "minecraft:player") {
+        discoverEntity(hitEntity as Player, damagingEntity);
+      }
+    },
+  );
 
   world.afterEvents.entityHurt.subscribe(({ damageSource, hurtEntity }) => {
     const attackingPlayer = getResponsiblePlayer(damageSource);
-    if (attackingPlayer) discoverEntity(attackingPlayer, hurtEntity, 1);
+    if (attackingPlayer) discoverEntity(attackingPlayer, hurtEntity);
 
-    const hurtPlayer = asPlayer(hurtEntity);
     const sourceEntity = getSourceEntity(damageSource);
-    if (hurtPlayer && sourceEntity) {
-      discoverEntity(hurtPlayer, sourceEntity, 1);
+    if (hurtEntity.typeId === "minecraft:player" && sourceEntity) {
+      discoverEntity(hurtEntity as Player, sourceEntity);
     }
   });
 
   world.afterEvents.playerInteractWithEntity.subscribe(({ player, target }) => {
-    discoverEntity(player, target, 2);
+    discoverEntity(player, target, true);
   });
 
   world.afterEvents.entityDie.subscribe(({ damageSource, deadEntity }) => {
     const player = getResponsiblePlayer(damageSource);
-    if (player) discoverEntity(player, deadEntity, 2, true);
+    if (player) discoverEntity(player, deadEntity, true, true);
   });
 
   system.runInterval(() => {
@@ -209,7 +257,7 @@ export function initializeGuideDiscovery(): void {
         location: player.location,
         maxDistance: 8,
       })) {
-        discoverEntity(player, entity, 1);
+        discoverEntity(player, entity);
       }
     }
   }, 20);

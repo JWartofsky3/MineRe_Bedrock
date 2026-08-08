@@ -37,6 +37,18 @@ const discoveryCategories: Partial<
 
 export function showGuide(player: Player) {
   const form = new ActionFormData().title("guide.minere.title");
+  const discoveredTotal =
+    getDiscoveredCount(player, "animals") +
+    getDiscoveredCount(player, "monsters") +
+    getDiscoveredCount(player, "bosses");
+  const totalEntries =
+    GUIDE_DISCOVERY_TOTALS.animals +
+    GUIDE_DISCOVERY_TOTALS.monsters +
+    GUIDE_DISCOVERY_TOTALS.bosses;
+  form.label({
+    translate: "guide.minere.section.total_progress",
+    with: [discoveredTotal.toString(), totalEntries.toString()],
+  });
   for (const section of sections) {
     const category = discoveryCategories[section];
     if (category) {
