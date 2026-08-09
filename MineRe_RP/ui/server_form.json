@@ -11,7 +11,7 @@
           },
           {
             "binding_type": "view",
-            "source_property_name": "((#title_text - 'textures/guide/') = #title_text)",
+            "source_property_name": "((#title_text - 'minere_guide_entity:') = #title_text)",
             "target_property_name": "#visible"
           }
         ]
@@ -33,7 +33,7 @@
       },
       {
         "binding_type": "view",
-        "source_property_name": "(not ((#title_text - 'textures/guide/') = #title_text))",
+        "source_property_name": "(not ((#title_text - 'minere_guide_entity:') = #title_text))",
         "target_property_name": "#visible"
       }
     ]
@@ -81,25 +81,25 @@
             {
               "deer_title@server_form.minere_guide_entity_title": {
                 "$text": "entity.minere:deer.name",
-                "$image_path": "textures/guide/animals/deer"
+                "$image_path": "minere_guide_entity:textures/guide/animals/deer"
               }
             },
             {
               "moose_title@server_form.minere_guide_entity_title": {
                 "$text": "entity.minere:moose.name",
-                "$image_path": "textures/guide/animals/moose"
+                "$image_path": "minere_guide_entity:textures/guide/animals/moose"
               }
             },
             {
               "vampire_title@server_form.minere_guide_entity_title": {
                 "$text": "entity.minere:vampire.name",
-                "$image_path": "textures/guide/monsters/vampire"
+                "$image_path": "minere_guide_entity:textures/guide/monsters/vampire"
               }
             },
             {
               "grizzly_bear_title@server_form.minere_guide_entity_title": {
                 "$text": "entity.minere:grizzly_bear.name",
-                "$image_path": "textures/guide/animals/grizzly_bear"
+                "$image_path": "minere_guide_entity:textures/guide/animals/grizzly_bear"
               }
             }
           ]
@@ -158,8 +158,9 @@
     "anchor_to": "top_middle",
     "bindings": [
       {
-        "binding_name": "#title_text",
-        "binding_name_override": "#texture"
+        "binding_type": "view",
+        "source_property_name": "(#title_text - 'minere_guide_entity:')",
+        "target_property_name": "#texture"
       }
     ]
   },

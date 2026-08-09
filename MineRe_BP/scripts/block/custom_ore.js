@@ -2,6 +2,7 @@ import { ItemStack, } from "@minecraft/server";
 import { hasSilkTouchOrShears, hasPickaxe, getEnchantmentLevel, } from "items/components/item_utils";
 import { addVector3 } from "util/vector3Functions";
 import { getRandomIntInclusive } from "util/mathFunctions";
+import { discoverOre } from "guide/blockDiscovery";
 const oreMap = new Map();
 oreMap.set("minere:sulfur_ore", {
     ore: "minecraft:gunpowder",
@@ -118,6 +119,7 @@ export const customOre = {
         if (!player) {
             return;
         }
+        discoverOre(player, arg.brokenBlockPermutation.type.id);
         const dimension = player.dimension;
         if (!hasPickaxe(player) || hasSilkTouchOrShears(player)) {
             return;

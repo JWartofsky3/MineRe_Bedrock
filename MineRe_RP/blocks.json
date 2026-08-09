@@ -28,6 +28,10 @@
     "textures": "minere:indigon_block",
     "sound": "stone"
   },
+  "minere:raw_indigon_block": {
+    "textures": "minere:raw_indigon_block",
+    "sound": "stone"
+  },
   "minere:freeze_ice": {
     "textures": "ice",
     "sound": "glass"

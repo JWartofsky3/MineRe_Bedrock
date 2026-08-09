@@ -10,6 +10,7 @@ import {
 } from "@minecraft/server";
 import { canPickupPot, getEnchantmentLevel } from "items/components/item_utils";
 import { addVector3, randomVector3 } from "util/vector3Functions";
+import { discoverBlock } from "guide/blockDiscovery";
 
 const XP = 6;
 const GHOST_CHANCE = 0.75;
@@ -23,6 +24,7 @@ export const ghostPot: BlockCustomComponent = {
     const location = arg.block.location;
     const dimension = arg.dimension;
     const player = arg.player;
+    discoverBlock(player, "ghost_pot");
     if (
       getEnchantmentLevel(player, "silk_touch") > 0 ||
       player.getGameMode() === GameMode.Creative

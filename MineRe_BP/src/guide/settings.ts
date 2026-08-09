@@ -34,26 +34,18 @@ const settingTranslationNames: Record<keyof WorldSettings, string> = {
   goldXPBonus: "gold_xp_bonus",
 };
 
-function canEditSettings(player: Player): boolean {
-  return player.commandPermissionLevel > CommandPermissionLevel.Any;
-}
-
-function isWearingCarvedPumpkin(player: Player): boolean {
-  const equippable = player.getComponent(
-    EntityComponentTypes.Equippable,
-  ) as EntityEquippableComponent;
-  return (
-    equippable?.getEquipment(EquipmentSlot.Head)?.typeId ===
-    "minecraft:carved_pumpkin"
-  );
-}
-
 export function showSettingsPage(
   player: Player,
   onBack: () => void = () => {},
 ) {
   const settings = getSettings();
-  const mayEdit = canEditSettings(player) && !isWearingCarvedPumpkin(player);
+  const equippable = player.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  const mayEdit =
+    player.commandPermissionLevel > CommandPermissionLevel.Any &&
+    equippable?.getEquipment(EquipmentSlot.Head)?.typeId !==
+      "minecraft:carved_pumpkin";
   const form = new ModalFormData().title({
     translate: "guide.minere.settings.title",
   });
@@ -92,7 +84,7 @@ export function showSettingsPage(
       }
 
       if (
-        !canEditSettings(player) ||
+        player.commandPermissionLevel === CommandPermissionLevel.Any ||
         response.formValues?.length !== settingKeys.length
       ) {
         player.sendMessage({

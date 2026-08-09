@@ -85,13 +85,13 @@ export function initializeWorldSettings() {
         }
     });
 }
-/** Gives each player one Guide when their character is loaded for the first time. */
-export function giveGuideOnPlayerLoad() {
-    world.afterEvents.entityLoad.subscribe((data) => {
-        if (data.entity.typeId !== "minecraft:player") {
+/** Gives each player one Guide on their initial join, once per player. */
+export function giveGuideOnInitialSpawn() {
+    world.afterEvents.playerSpawn.subscribe((data) => {
+        if (!data.initialSpawn) {
             return;
         }
-        const player = data.entity;
+        const player = data.player;
         if (player.getDynamicProperty(HAS_RECEIVED_GUIDE)) {
             return;
         }

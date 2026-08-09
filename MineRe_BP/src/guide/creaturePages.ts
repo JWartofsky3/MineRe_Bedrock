@@ -1,4 +1,4 @@
-import { GameMode, Player } from "@minecraft/server";
+import { GameMode, Player, RawMessage } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import {
   DiscoveryCategory,
@@ -35,11 +35,11 @@ const moosePage = new EntityPage({
         },
         {
           text: "guide.minere.item.dried_kelp_block",
-          iconPath: "textures/blocks/dried_kelp_top",
+          iconPath: "textures/items/dried_kelp",
         },
         {
           text: "guide.minere.item.hay_block",
-          iconPath: "textures/blocks/hay_block_side",
+          iconPath: "textures/items/hay_block",
         },
         {
           text: "guide.minere.item.melon_slice",
@@ -186,7 +186,7 @@ const grizzlyBearPage = new EntityPage({
         },
         {
           text: "guide.minere.item.honey_block",
-          iconPath: "textures/blocks/honey_top",
+          iconPath: "textures/items/honey_bottle",
         },
         {
           text: "guide.minere.item.honey_bottle",
@@ -199,7 +199,7 @@ const grizzlyBearPage = new EntityPage({
       items: [
         {
           text: "guide.minere.item.honey_block",
-          iconPath: "textures/blocks/honey_top",
+          iconPath: "textures/items/honey_bottle",
         },
       ],
     },
@@ -689,6 +689,10 @@ function getEntityIcon(
   ) {
     return undefined;
   }
+  return getGuideCreatureIcon(creature);
+}
+
+export function getGuideCreatureIcon(creature: GuideCreature): string {
   return (
     guideImagePaths[creature.typeId] ?? categoryFallbackIcons[creature.category]
   );
@@ -709,7 +713,10 @@ export function showCreatureSection(
     translate: `guide.minere.section.${section}`,
   });
 
-  if (section === "animals" || section === "monsters" || section === "bosses") {
+  if (
+    player.getGameMode() !== GameMode.Creative &&
+    (section === "animals" || section === "monsters")
+  ) {
     form.label({
       translate: "guide.minere.section.discovered_total",
       with: [
@@ -742,50 +749,40 @@ export function showCreatureSection(
         return;
       }
       const creature = creatures[response.selection];
+      const discoveryLevel = getDiscoveryLevel(player, creature.typeId);
       if (
         creature.category === "bosses" &&
         player.getGameMode() !== GameMode.Creative &&
-        getDiscoveryLevel(player, creature.typeId) === 0
+        discoveryLevel < 2
       ) {
-        if (creature.typeId === "minere:inferno") {
-          new ActionFormData()
-            .title({ translate: "entity.minere:inferno.name" })
-            .body({ translate: "guide.minere.entity.inferno.legend" })
-            .button({ translate: "guide.minere.back" })
-            .show(player)
-            .then((legendResponse) => {
-              if (!legendResponse.canceled) {
-                showCreatureSection(player, section, onBack);
-              }
-            })
-            .catch((error) =>
-              console.error("Failed to show Inferno legend: " + error),
-            );
-          return;
-        }
-
-        new ActionFormData()
-          .title({ translate: "entity.minere:glacier.name" })
-          .body({ translate: "guide.minere.entity.glacier.legend" })
-          .button({ translate: "guide.minere.back" })
-          .show(player)
-          .then((legendResponse) => {
-            if (!legendResponse.canceled) {
-              showCreatureSection(player, section, onBack);
-            }
-          })
-          .catch((error) =>
-            console.error("Failed to show Glacier legend: " + error),
-          );
+        const legend: RawMessage = {
+          rawtext: [
+            {
+              translate: `guide.minere.entity.${creature.typeId.split(":")[1]}.legend`,
+            },
+            ...(discoveryLevel === 1
+              ? [
+                  { text: "\n\n" },
+                  { translate: "guide.minere.entity.boss_defeat_prompt" },
+                ]
+              : []),
+          ],
+        };
+        showCreatureMessagePage(player, creature, legend, () =>
+          showCreatureSection(player, section, onBack),
+        );
         return;
       }
       if (
         creature.category !== "animals" &&
         player.getGameMode() !== GameMode.Creative &&
-        getDiscoveryLevel(player, creature.typeId) === 1
+        discoveryLevel === 1
       ) {
-        showLimitedEntityPage(player, creature, () =>
-          showCreatureSection(player, section, onBack),
+        showCreatureMessagePage(
+          player,
+          creature,
+          "guide.minere.entity.not_defeated",
+          () => showCreatureSection(player, section, onBack),
         );
         return;
       }
@@ -794,8 +791,11 @@ export function showCreatureSection(
         page.show(player, () => showCreatureSection(player, section, onBack));
         return;
       }
-      showUnavailableEntityPage(player, creature, () =>
-        showCreatureSection(player, section, onBack),
+      showCreatureMessagePage(
+        player,
+        creature,
+        "guide.minere.entity.page_coming_soon",
+        () => showCreatureSection(player, section, onBack),
       );
     })
     .catch((error) =>
@@ -803,34 +803,15 @@ export function showCreatureSection(
     );
 }
 
-function showLimitedEntityPage(
+function showCreatureMessagePage(
   player: Player,
   creature: GuideCreature,
+  message: RawMessage | string,
   onBack: () => void,
 ): void {
   new ActionFormData()
     .title({ translate: `entity.${creature.typeId}.name` })
-    .body({ translate: "guide.minere.entity.not_defeated" })
-    .button({ translate: "guide.minere.back" })
-    .show(player)
-    .then((response) => {
-      if (!response.canceled) {
-        onBack();
-      }
-    })
-    .catch((error) =>
-      console.error("Failed to show limited entity page: " + error),
-    );
-}
-
-function showUnavailableEntityPage(
-  player: Player,
-  creature: GuideCreature,
-  onBack: () => void,
-): void {
-  new ActionFormData()
-    .title({ translate: `entity.${creature.typeId}.name` })
-    .body({ translate: "guide.minere.entity.page_coming_soon" })
+    .body(typeof message === "string" ? { translate: message } : message)
     .button({ translate: "guide.minere.back" })
     .show(player)
     .then((response) => {

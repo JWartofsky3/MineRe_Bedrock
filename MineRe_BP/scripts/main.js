@@ -3,7 +3,7 @@ import { world, system } from "@minecraft/server";
 import { registerBlocks } from "registry/blockRegistry";
 import { registerItems } from "registry/itemRegistry";
 import { registerCustomEntities } from "registry/customEntityRegistry";
-import { ARMOR_WEIGHT, giveGuideOnPlayerLoad, initializeWorldSettings, } from "settings";
+import { ARMOR_WEIGHT, giveGuideOnInitialSpawn, initializeWorldSettings, } from "settings";
 // ───────────────────────── Imports: Player ─────────────────────────
 import { healFromItem } from "player/healFromItem";
 import { playerHungerHeal } from "player/playerHungerHeal";
@@ -30,6 +30,7 @@ import { useEmeraldStaff } from "items/staves/emerald_staff";
 import { useShadowStaff } from "items/staves/shadow_staff";
 import { RegisterCustomEvents } from "registry/eventRegistry";
 import { initializeGuideDiscovery } from "guide/discovery";
+import { initializeGuideEquipmentDiscovery } from "guide/equipmentDiscovery";
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
 // ───────────────────────── Startup ─────────────────────────
@@ -40,8 +41,9 @@ system.beforeEvents.startup.subscribe((data) => {
     RegisterCustomEvents();
     initializeWorldSettings();
 });
-giveGuideOnPlayerLoad();
+giveGuideOnInitialSpawn();
 initializeGuideDiscovery();
+initializeGuideEquipmentDiscovery();
 // ───────────────────────── Item Events ─────────────────────────
 world.afterEvents.itemReleaseUse.subscribe(fireInfintyBowAfter);
 world.afterEvents.itemCompleteUse.subscribe(healFromItem);

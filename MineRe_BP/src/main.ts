@@ -6,7 +6,7 @@ import { registerItems } from "registry/itemRegistry";
 import { registerCustomEntities } from "registry/customEntityRegistry";
 import {
   ARMOR_WEIGHT,
-  giveGuideOnPlayerLoad,
+  giveGuideOnInitialSpawn,
   initializeWorldSettings,
 } from "settings";
 
@@ -40,6 +40,7 @@ import { useEmeraldStaff } from "items/staves/emerald_staff";
 import { useShadowStaff } from "items/staves/shadow_staff";
 import { RegisterCustomEvents } from "registry/eventRegistry";
 import { initializeGuideDiscovery } from "guide/discovery";
+import { initializeGuideEquipmentDiscovery } from "guide/equipmentDiscovery";
 
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
@@ -53,8 +54,9 @@ system.beforeEvents.startup.subscribe((data: StartupEvent) => {
   initializeWorldSettings();
 });
 
-giveGuideOnPlayerLoad();
+giveGuideOnInitialSpawn();
 initializeGuideDiscovery();
+initializeGuideEquipmentDiscovery();
 
 // ───────────────────────── Item Events ─────────────────────────
 world.afterEvents.itemReleaseUse.subscribe(fireInfintyBowAfter);

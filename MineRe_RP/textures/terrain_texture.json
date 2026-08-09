@@ -25,6 +25,9 @@
     "minere:indigon_block": {
       "textures": "textures/blocks/minere/indigon_block"
     },
+    "minere:raw_indigon_block": {
+      "textures": "textures/blocks/minere/raw_indigon_block"
+    },
     "minere:ender_plasma_ore": {
       "textures": "textures/blocks/minere/ender_plasma_ore"
     },

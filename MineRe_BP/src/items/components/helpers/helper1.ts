@@ -1,9 +1,9 @@
 import { ItemCustomComponent } from "@minecraft/server";
-import { GUIDE_DISCOVERY_PROPERTY } from "guide/discovery";
+import { clearGuideDiscovery } from "guide/discoveryStorage";
 
 export const Helper1: ItemCustomComponent = {
   onUse(arg) {
-    arg.source.setDynamicProperty(GUIDE_DISCOVERY_PROPERTY, undefined);
+    clearGuideDiscovery(arg.source);
     arg.source.sendMessage("Guide discoveries cleared.");
   },
 };

@@ -10,7 +10,7 @@
     "components": {
       "minecraft:icon": "minere.diamond_shard",
       "minecraft:display_name": {
-        "value": "item.diamond_shard.name"
+        "value": "item.minere:diamond_shard"
       }
     }
   }

@@ -90,7 +90,9 @@ export class EntityPage {
       extra = [],
       spawning = [],
     } = this.options;
-    const form = new ActionFormData().title(this.options.imagePath);
+    const form = new ActionFormData().title(
+      `minere_guide_entity:${this.options.imagePath}`,
+    );
     const asHeartValue = (value: EntityPageStatValue): string =>
       typeof value === "number"
         ? (value / 2).toString()

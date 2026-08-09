@@ -1,4 +1,4 @@
-import { system, world, Player } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 
 export interface WorldSettings {
   reducedHealthRegen: boolean;
@@ -124,14 +124,14 @@ export function initializeWorldSettings(): void {
   });
 }
 
-/** Gives each player one Guide when their character is loaded for the first time. */
-export function giveGuideOnPlayerLoad(): void {
-  world.afterEvents.entityLoad.subscribe((data) => {
-    if (data.entity.typeId !== "minecraft:player") {
+/** Gives each player one Guide on their initial join, once per player. */
+export function giveGuideOnInitialSpawn(): void {
+  world.afterEvents.playerSpawn.subscribe((data) => {
+    if (!data.initialSpawn) {
       return;
     }
 
-    const player = data.entity as Player;
+    const player = data.player;
     if (player.getDynamicProperty(HAS_RECEIVED_GUIDE)) {
       return;
     }

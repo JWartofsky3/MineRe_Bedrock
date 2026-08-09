@@ -11,6 +11,7 @@ import {
 } from "items/components/item_utils";
 import { addVector3 } from "util/vector3Functions";
 import { getRandomIntInclusive } from "util/mathFunctions";
+import { discoverOre } from "guide/blockDiscovery";
 
 type OreDefinition = {
   ore: string;
@@ -149,6 +150,8 @@ export const customOre: BlockCustomComponent = {
     if (!player) {
       return;
     }
+    discoverOre(player, arg.brokenBlockPermutation.type.id);
+
     const dimension = player.dimension;
     if (!hasPickaxe(player) || hasSilkTouchOrShears(player)) {
       return;

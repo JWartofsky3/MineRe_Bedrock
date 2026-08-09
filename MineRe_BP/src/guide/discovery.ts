@@ -3,14 +3,17 @@ import {
   EntityComponentTypes,
   EntityDamageSource,
   EntityProjectileComponent,
+  GameMode,
   Player,
   system,
   world,
 } from "@minecraft/server";
+import {
+  getGuideDiscoveryCategory,
+  setGuideDiscoveryCategory,
+} from "guide/discoveryStorage";
 
 const FORMAT_CODE = String.fromCharCode(167);
-
-export const GUIDE_DISCOVERY_PROPERTY = "minere:guide_discovery";
 
 export type DiscoveryLevel = 1 | 2;
 export type DiscoveryCategory = "animals" | "monsters" | "bosses";
@@ -83,21 +86,16 @@ const creatureCategories = new Map<string, DiscoveryCategory>([
 type DiscoveryData = Record<string, DiscoveryLevel>;
 
 function getDiscoveryData(player: Player): DiscoveryData {
-  const value = player.getDynamicProperty(GUIDE_DISCOVERY_PROPERTY);
-  if (typeof value !== "string") return {};
-
-  try {
-    const parsed = JSON.parse(value) as Record<string, unknown>;
-    const discoveries: DiscoveryData = {};
-    for (const [typeId, level] of Object.entries(parsed)) {
+  const discoveries: DiscoveryData = {};
+  for (const category of ["animals", "monsters", "bosses"] as const) {
+    const categoryDiscoveries = getGuideDiscoveryCategory(player, category);
+    for (const [typeId, level] of Object.entries(categoryDiscoveries)) {
       if (creatureCategories.has(typeId) && (level === 1 || level === 2)) {
         discoveries[typeId] = level;
       }
     }
-    return discoveries;
-  } catch {
-    return {};
   }
+  return discoveries;
 }
 
 export function getDiscoveryLevel(player: Player, typeId: string): number {
@@ -125,6 +123,10 @@ function discoverEntity(
   completesEntry = false,
   defeated = false,
 ): void {
+  if (player.getGameMode() === GameMode.Creative) {
+    return;
+  }
+
   const category = creatureCategories.get(entity.typeId);
   if (!category) return;
 
@@ -136,9 +138,14 @@ function discoverEntity(
   if (currentLevel >= discoveryLevel) return;
 
   discoveries[entity.typeId] = discoveryLevel;
-  player.setDynamicProperty(
-    GUIDE_DISCOVERY_PROPERTY,
-    JSON.stringify(discoveries),
+  setGuideDiscoveryCategory(
+    player,
+    category,
+    Object.fromEntries(
+      Object.entries(discoveries).filter(
+        ([typeId]) => creatureCategories.get(typeId) === category,
+      ),
+    ),
   );
 
   if (category !== "animals") {
@@ -204,21 +211,6 @@ function getResponsiblePlayer(source: EntityDamageSource): Player | undefined {
   return undefined;
 }
 
-function getSourceEntity(source: EntityDamageSource): Entity | undefined {
-  if (
-    source.damagingEntity &&
-    creatureCategories.has(source.damagingEntity.typeId)
-  ) {
-    return source.damagingEntity;
-  }
-
-  const projectile = source.damagingProjectile ?? source.damagingEntity;
-  const projectileComponent = projectile?.getComponent(
-    EntityComponentTypes.Projectile,
-  ) as EntityProjectileComponent | undefined;
-  return projectileComponent?.owner ?? source.damagingEntity;
-}
-
 export function initializeGuideDiscovery(): void {
   world.afterEvents.entityHitEntity.subscribe(
     ({ damagingEntity, hitEntity }) => {
@@ -236,7 +228,13 @@ export function initializeGuideDiscovery(): void {
     const attackingPlayer = getResponsiblePlayer(damageSource);
     if (attackingPlayer) discoverEntity(attackingPlayer, hurtEntity);
 
-    const sourceEntity = getSourceEntity(damageSource);
+    const projectile =
+      damageSource.damagingProjectile ?? damageSource.damagingEntity;
+    const projectileComponent = projectile?.getComponent(
+      EntityComponentTypes.Projectile,
+    ) as EntityProjectileComponent | undefined;
+    const sourceEntity =
+      projectileComponent?.owner ?? damageSource.damagingEntity;
     if (hurtEntity.typeId === "minecraft:player" && sourceEntity) {
       discoverEntity(hurtEntity as Player, sourceEntity);
     }
