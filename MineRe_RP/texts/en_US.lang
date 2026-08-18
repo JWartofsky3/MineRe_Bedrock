@@ -14,6 +14,7 @@ entity.minere:goblin.name=Goblin
 entity.minere:goblin<>.name=Goblin
 entity.minere:gremlin.name=Gremlin
 entity.minere:grizzly_bear.name=Grizzly Bear
+entity.minere:zombear.name=Zombear
 entity.minere:lizord.name=Lizord
 entity.minere:lizord<>.name=Lizord
 entity.minere:monster_bat.name=Monster Bat
@@ -73,6 +74,7 @@ item.spawn_egg.entity.minere:ghost.name=Spawn Ghost
 item.spawn_egg.entity.minere:goblin.name=Spawn Goblin
 item.spawn_egg.entity.minere:gremlin.name=Spawn Gremlin
 item.spawn_egg.entity.minere:grizzly_bear.name=Spawn Grizzly Bear
+item.spawn_egg.entity.minere:zombear.name=Spawn Zombear
 item.spawn_egg.entity.minere:lizord.name=Spawn Lizord
 item.spawn_egg.entity.minere:monster_bat.name=Spawn Monster Bat
 item.spawn_egg.entity.minere:netherzord.name=Spawn Netherzord
@@ -235,6 +237,8 @@ item.minere:ghostwalker=Ghostwalker
 
 entity.minere:moose.name=Moose
 item.spawn_egg.entity.minere:moose.name=Spawn Moose
+entity.minere:skelemoose.name=Skelemoose
+item.spawn_egg.entity.minere:skelemoose.name=Spawn Skelemoose
 
 
 entity.minere:wind_bomb.name=Wind Bomb

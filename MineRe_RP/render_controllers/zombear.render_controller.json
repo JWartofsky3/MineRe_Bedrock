@@ -1,0 +1,20 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.zombear": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.zombie"]
+    },
+    "controller.render.minere.zombear_armor": {
+      "arrays": {
+        "textures": {
+          "Array.armor": ["Texture.empty", "Texture.copper_armor", "Texture.iron_armor", "Texture.gold_armor", "Texture.diamond_armor", "Texture.netherite_armor", "Texture.enderon_armor", "Texture.indigon_armor"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.armor" }],
+      "textures": ["Array.armor[query.mark_variant]"]
+    }
+  }
+}

@@ -3,6 +3,7 @@ import {
   getGuideDiscoveryCategory,
   setGuideDiscoveryCategory,
 } from "guide/discoveryStorage";
+import { sendGuideDiscoveryMessage } from "guide/discoveryMessage";
 
 export const GUIDE_ORE_BLOCKS = [
   "amethyst_ore",
@@ -53,6 +54,7 @@ export function discoverOre(player: Player, typeId: string): void {
 
   discoveries[blockId] = true;
   setGuideDiscoveryCategory(player, "ores", discoveries);
+  sendGuideDiscoveryMessage(player, { translate: `tile.${typeId}.name` });
 }
 
 export function getDiscoveredOres(player: Player): GuideOreBlockId[] {
@@ -82,6 +84,9 @@ export function discoverBlock(player: Player, blockId: string): void {
 
   discoveries[blockId] = true;
   setGuideDiscoveryCategory(player, "blocks", discoveries);
+  sendGuideDiscoveryMessage(player, {
+    translate: `tile.minere:${blockId}.name`,
+  });
 }
 
 export function hasDiscoveredBlock(player: Player, blockId: string): boolean {

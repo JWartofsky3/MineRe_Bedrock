@@ -1,0 +1,16 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.skelemoose": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.skeleton"]
+    },
+    "controller.render.minere.skelemoose.saddle": {
+      "arrays": { "textures": { "Array.saddle": ["Texture.empty", "Texture.saddle"] } },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.saddle" }],
+      "textures": ["Array.saddle[variable.saddled ? 1 : 0]"]
+    }
+  }
+}

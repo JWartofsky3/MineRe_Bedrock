@@ -9,6 +9,7 @@ import {
   getGuideDiscoveryCategory,
   setGuideDiscoveryCategory,
 } from "guide/discoveryStorage";
+import { sendGuideDiscoveryMessage } from "guide/discoveryMessage";
 
 type EquipmentDiscoveryData = Record<string, true>;
 
@@ -45,6 +46,10 @@ export const GUIDE_EQUIPMENT_DISCOVERY_TOTAL =
   DISCOVERABLE_EQUIPMENT.magicSwords.length +
   DISCOVERABLE_EQUIPMENT.magicTools.length +
   DISCOVERABLE_EQUIPMENT.magicArmor.length;
+
+const discoverableEquipmentIds = new Set<string>(
+  Object.values(DISCOVERABLE_EQUIPMENT).flat(),
+);
 
 function getEquipmentDiscoveryData(player: Player): EquipmentDiscoveryData {
   const entries = getGuideDiscoveryCategory(player, "equipment");
@@ -84,7 +89,7 @@ export function discoverEquipment(player: Player, itemId: string): void {
     return;
   }
 
-  if (!itemId.startsWith("minere:")) {
+  if (!discoverableEquipmentIds.has(itemId)) {
     return;
   }
 
@@ -95,6 +100,7 @@ export function discoverEquipment(player: Player, itemId: string): void {
 
   discoveries[itemId] = true;
   setGuideDiscoveryCategory(player, "equipment", discoveries);
+  sendGuideDiscoveryMessage(player, { translate: `item.${itemId}` });
 }
 
 function discoverEquippedEquipment(player: Player): void {

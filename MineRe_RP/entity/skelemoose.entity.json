@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:skelemoose",
+      "materials": {
+        "default": "entity_alphatest",
+        "saddle": "entity_alphatest"
+      },
+      "textures": {
+        "skeleton": "textures/entity/minere/moose/skeleton",
+        "saddle": "textures/entity/minere/moose/saddle",
+        "empty": "textures/entity/minere/moose/empty"
+      },
+      "geometry": { "default": "geometry.minere.moose" },
+      "animations": {
+        "walk": "animation.minere.moose.walk",
+        "gallop": "animation.minere.moose.gallop",
+        "attack": "animation.minere.moose.attack",
+        "look_at_target": "animation.minere.moose.look_at_target",
+        "graze": "animation.minere.moose.graze",
+        "controller": "controller.animation.minere.moose"
+      },
+      "scripts": {
+        "pre_animation": ["variable.saddled = query.is_saddled ? 1 : 0;"],
+        "animate": ["controller"]
+      },
+      "render_controllers": ["controller.render.minere.skelemoose.saddle", "controller.render.minere.skelemoose"],
+      "spawn_egg": { "base_color": "#dedede", "overlay_color": "#76604d" }
+    }
+  }
+}

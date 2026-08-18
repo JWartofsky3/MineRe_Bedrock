@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:zombear",
+      "materials": {
+        "default": "entity_alphablend",
+        "armor": "entity_emissive_alpha"
+      },
+      "textures": {
+        "zombie": "textures/entity/minere/grizzly_bear/zombie",
+        "copper_armor": "textures/entity/minere/grizzly_bear/copper_armor",
+        "iron_armor": "textures/entity/minere/grizzly_bear/iron_armor",
+        "gold_armor": "textures/entity/minere/grizzly_bear/gold_armor",
+        "diamond_armor": "textures/entity/minere/grizzly_bear/diamond_armor",
+        "netherite_armor": "textures/entity/minere/grizzly_bear/netherite_armor",
+        "enderon_armor": "textures/entity/minere/grizzly_bear/enderon_armor",
+        "indigon_armor": "textures/entity/minere/grizzly_bear/indigon_armor",
+        "empty": "textures/entity/minere/grizzly_bear/empty"
+      },
+      "geometry": { "default": "geometry.minere.grizzly_bear" },
+      "animations": {
+        "walk": "animation.minere.grizzly_bear.walk",
+        "run": "animation.minere.grizzly_bear.run",
+        "attack": "animation.minere.grizzly_bear.attack",
+        "look_at": "animation.minere.grizzly_bear.look_at",
+        "bite": "animation.minere.grizzly_bear.bite",
+        "jaw_closed": "animation.minere.grizzly_bear.jaw_closed",
+        "controller": "controller.animation.minere.grizzly_bear"
+      },
+      "scripts": {
+        "pre_animation": ["variable.armor_type = query.mark_variant;"],
+        "animate": ["controller", "look_at", { "bite": "query.is_delayed_attacking" }, { "jaw_closed": "!query.is_delayed_attacking" }]
+      },
+      "render_controllers": ["controller.render.minere.zombear", "controller.render.minere.zombear_armor"],
+      "spawn_egg": { "base_color": "#406b32", "overlay_color": "#3a2111" }
+    }
+  }
+}

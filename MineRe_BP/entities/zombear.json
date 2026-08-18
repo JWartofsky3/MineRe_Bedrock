@@ -1,0 +1,391 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:zombear",
+      "runtime_identifier": "minecraft:zombie",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "minere:to_grizzly_bear": {
+        "minecraft:transformation": {
+          "into": "minere:grizzly_bear",
+          "begin_transform_sound": "remedy",
+          "transformation_sound": "unfect",
+          "keep_level": true,
+          "delay": {
+            "value": 100,
+            "block_assist_chance": 0.01,
+            "block_radius": 4,
+            "block_chance": 0.3,
+            "block_types": [
+              "minecraft:bed",
+              "minecraft:iron_bars"
+            ]
+          }
+        },
+        "minecraft:spell_effects": {}
+      },
+      "minere:necromancer_rider": {
+        "minecraft:addrider": {
+          "entity_type": "minere:necromancer"
+        },
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "necromancer"
+          ],
+          "seats": [
+            {
+              "position": [
+                0,
+                1.35,
+                -0.1
+              ]
+            }
+          ]
+        }
+      },
+      "minere:copper_armor": {
+        "minecraft:mark_variant": {
+          "value": 1
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.64
+            }
+          ]
+        }
+      },
+      "minere:iron_armor": {
+        "minecraft:mark_variant": {
+          "value": 2
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.48
+            }
+          ]
+        }
+      },
+      "minere:gold_armor": {
+        "minecraft:mark_variant": {
+          "value": 3
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.6
+            }
+          ]
+        }
+      },
+      "minere:diamond_armor": {
+        "minecraft:mark_variant": {
+          "value": 4
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.36
+            }
+          ]
+        }
+      },
+      "minere:netherite_armor": {
+        "minecraft:mark_variant": {
+          "value": 5
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.32
+            }
+          ]
+        }
+      },
+      "minere:enderon_armor": {
+        "minecraft:mark_variant": {
+          "value": 6
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.4
+            }
+          ]
+        }
+      },
+      "minere:indigon_armor": {
+        "minecraft:mark_variant": {
+          "value": 7
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": "yes",
+              "damage_multiplier": 0.36
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zombear",
+          "grizzly_bear",
+          "bear",
+          "zombie",
+          "undead",
+          "monster",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 60,
+        "max": 60
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.7
+      },
+      "minecraft:attack": {
+        "damage": 8
+      },
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? Math.Random(5, 10) : 0"
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/zombear.json"
+      },
+      "minecraft:burns_in_daylight": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.4
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "avoid_sun": true,
+        "blocks_to_avoid": [
+          {
+            "name": "minecraft:powder_snow"
+          }
+        ]
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:follow_range": {
+        "value": 32
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "must_see": true,
+        "reselect_targets": true,
+        "within_radius": 35,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 35
+          }
+        ]
+      },
+      "minecraft:behavior.flee_sun": {
+        "priority": 3,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.delayed_attack": {
+        "priority": 4,
+        "attack_duration": 0.5,
+        "attack_once": false,
+        "cooldown_time": 0,
+        "track_target": true,
+        "require_complete_path": false,
+        "reach_multiplier": 1.65,
+        "speed_multiplier": 1.5,
+        "hit_delay_pct": 0.5
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "golden_apple"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "value": "minecraft:effect.weakness"
+                  }
+                ]
+              },
+              "event": "minere:cure_zombear",
+              "target": "self"
+            },
+            "use_item": true,
+            "interact_text": "action.interact.cure"
+          }
+        ]
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "target_distance": 6,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "randomize": [
+              {
+                "weight": 85,
+                "add": {}
+              },
+              {
+                "weight": 15,
+                "randomize": [
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:copper_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:iron_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:gold_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:diamond_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:netherite_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:enderon_armor"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "minere:indigon_armor"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 90,
+                "add": {}
+              },
+              {
+                "weight": 10,
+                "add": {
+                  "component_groups": [
+                    "minere:necromancer_rider"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "minere:cure_zombear": {
+        "add": {
+          "component_groups": [
+            "minere:to_grizzly_bear"
+          ]
+        }
+      }
+    }
+  }
+}
