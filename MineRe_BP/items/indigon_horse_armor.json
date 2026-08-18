@@ -14,9 +14,10 @@
         "value": "item.minere:indigon_horse_armor"
       },
       "minecraft:max_stack_size": 1,
+      "minecraft:enchantable": { "value": 10, "slot": "armor_torso" },
       "minecraft:wearable": {
         "slot": "slot.armor.body",
-        "protection": 12
+        "protection": 19
       }
     }
   }

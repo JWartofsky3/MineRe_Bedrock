@@ -1,0 +1,33 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 72
+        },
+        {
+          "type": "item",
+          "name": "minere:iron_bear_armor",
+          "weight": 9
+        },
+        {
+          "type": "item",
+          "name": "minere:copper_bear_armor",
+          "weight": 6
+        },
+        {
+          "type": "item",
+          "name": "minere:gold_bear_armor",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minere:diamond_bear_armor",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

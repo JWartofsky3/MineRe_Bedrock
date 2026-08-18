@@ -9,6 +9,7 @@
       },
       "textures": {
         "zombie": "textures/entity/minere/grizzly_bear/zombie",
+        "cold_zombie": "textures/entity/minere/grizzly_bear/cold_zombie",
         "copper_armor": "textures/entity/minere/grizzly_bear/copper_armor",
         "iron_armor": "textures/entity/minere/grizzly_bear/iron_armor",
         "gold_armor": "textures/entity/minere/grizzly_bear/gold_armor",
@@ -29,7 +30,7 @@
         "controller": "controller.animation.minere.grizzly_bear"
       },
       "scripts": {
-        "pre_animation": ["variable.armor_type = query.mark_variant;"],
+        "pre_animation": ["variable.armor_type = query.is_item_name_any('slot.armor.body', 'minere:copper_bear_armor') ? 1 : query.is_item_name_any('slot.armor.body', 'minere:iron_bear_armor') ? 2 : query.is_item_name_any('slot.armor.body', 'minere:gold_bear_armor') ? 3 : query.is_item_name_any('slot.armor.body', 'minere:diamond_bear_armor') ? 4 : query.is_item_name_any('slot.armor.body', 'minere:netherite_bear_armor') ? 5 : query.is_item_name_any('slot.armor.body', 'minere:enderon_bear_armor') ? 6 : query.is_item_name_any('slot.armor.body', 'minere:indigon_bear_armor') ? 7 : 0;"],
         "animate": ["controller", "look_at", { "bite": "query.is_delayed_attacking" }, { "jaw_closed": "!query.is_delayed_attacking" }]
       },
       "render_controllers": ["controller.render.minere.zombear", "controller.render.minere.zombear_armor"],

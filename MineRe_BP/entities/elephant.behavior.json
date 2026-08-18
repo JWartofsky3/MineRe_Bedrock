@@ -337,6 +337,38 @@
       },
       "minere:elephant_tame": {
         "minecraft:is_tamed": {},
+        "minecraft:equippable": {
+          "slots": [
+            {
+              "slot": 0,
+              "item": "saddle",
+              "accepted_items": ["saddle"],
+              "on_equip": {
+                "event": "minecraft:on_saddled"
+              },
+              "on_unequip": {
+                "event": "minecraft:on_unsaddled"
+              }
+            },
+            {
+              "slot": 1,
+              "item": "minere:iron_elephant_armor",
+              "accepted_items": [
+                "minere:copper_elephant_armor",
+                "minere:iron_elephant_armor",
+                "minere:gold_elephant_armor",
+                "minere:diamond_elephant_armor",
+                "minere:netherite_elephant_armor",
+                "minere:enderon_elephant_armor",
+                "minere:indigon_elephant_armor"
+              ]
+            }
+          ]
+        },
+        "minecraft:inventory": {
+          "inventory_size": 36,
+          "container_type": "horse"
+        },
         "minecraft:attack": {
           "damage": [16, 32]
         },
@@ -653,351 +685,6 @@
           ]
         }
       },
-      "minere:copper_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "projectile",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "entity_explosion",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "block_explosion",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "thorns",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "fire",
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "magic",
-              "damage_multiplier": 0.64
-            }
-          ]
-        }
-      },
-      "minere:iron_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "projectile",
-
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "entity_explosion",
-
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "block_explosion",
-
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "thorns",
-
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "fire",
-
-              "damage_multiplier": 0.48
-            }
-          ]
-        }
-      },
-      "minere:gold_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "all",
-
-              "damage_multiplier": 0.6
-            }
-          ]
-        }
-      },
-      "minere:diamond_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "projectile",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "entity_explosion",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "block_explosion",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "thorns",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "fire",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "lava",
-
-              "damage_multiplier": 0.64
-            }
-          ]
-        }
-      },
-      "minere:netherite_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "projectile",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "entity_explosion",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "block_explosion",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "thorns",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "fire",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "fire_tick",
-
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "lava",
-
-              "damage_multiplier": 0.32
-            }
-          ]
-        }
-      },
-      "minere:enderon_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "projectile",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "entity_explosion",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "block_explosion",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "thorns",
-
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "fire",
-
-              "damage_multiplier": 0.4
-            }
-          ]
-        }
-      },
-      "minere:indigon_armor": {
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "on_damage": {
-                "filters": {
-                  "test": "is_riding_self",
-                  "subject": "other",
-                  "value": true
-                }
-              },
-              "deals_damage": "no"
-            },
-            {
-              "cause": "fall",
-              "deals_damage": "no",
-              "damage_modifier": -3
-            },
-            {
-              "cause": "entity_attack",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "projectile",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "entity_explosion",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "block_explosion",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "thorns",
-
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "fire",
-
-              "damage_multiplier": 0.36
-            }
-          ]
-        }
-      },
       "minere:elephant_immobile": {
         "minecraft:movement": {
           "value": 0.0
@@ -1030,15 +717,36 @@
             {
               "on_interact": {
                 "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "saddle"
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
+                  ]
                 },
-                "event": "minecraft:on_saddled"
+                "target": "self"
               },
-              "use_item": true,
-              "play_sounds": "saddle",
+              "equip_item_slot": "0",
+              "play_sounds": "armor.equip_generic",
               "interact_text": "action.interact.saddle"
             },
             {
@@ -1152,19 +860,17 @@
                     }
                   ]
                 },
-                "event": "on_armor"
+                "target": "self"
               },
+              "equip_item_slot": "1",
+              "play_sounds": "armor.equip_generic",
               "interact_text": "action.interact.minere.add_armor"
             }
           ]
         }
       },
       "minere:elephant_chested": {
-        "minecraft:is_chested": {},
-        "minecraft:inventory": {
-          "inventory_size": 36,
-          "container_type": "inventory"
-        }
+        "minecraft:is_chested": {}
       },
       "minere:elephant_saddled": {
         "minecraft:is_saddled": {},
@@ -1306,8 +1012,10 @@
                     }
                   ]
                 },
-                "event": "on_armor"
+                "target": "self"
               },
+              "equip_item_slot": "1",
+              "play_sounds": "armor.equip_generic",
               "interact_text": "action.interact.minere.add_armor"
             },
             {
@@ -1318,6 +1026,12 @@
                       "test": "is_sneak_held",
                       "subject": "other",
                       "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "value": "saddle"
                     },
                     {
                       "test": "has_equipment",
@@ -1332,15 +1046,13 @@
                       "value": 0
                     }
                   ]
-                },
-                "event": "minecraft:on_unsaddled"
+                }
               },
               "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/saddle.json"
-              },
+              "drop_item_slot": "0",
+              "drop_item_y_offset": 1.1,
               "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
+              "play_sounds": "unsaddle",
               "vibration": "shear"
             },
             {
@@ -1933,136 +1645,6 @@
       },
       "minere:black_carpet": {
         "set_property": { "minere:carpet": 15 }
-      },
-      "minere:on_armor": {},
-      "minere:remove_armor": {
-        "set_property": { "minere:armor": -1 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:unarmored"]
-        }
-      },
-      "minere:copper_armor": {
-        "set_property": { "minere:armor": 0 },
-        "remove": {
-          "component_groups": [
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:copper_armor"]
-        }
-      },
-      "minere:iron_armor": {
-        "set_property": { "minere:armor": 1 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:iron_armor"]
-        }
-      },
-      "minere:gold_armor": {
-        "set_property": { "minere:armor": 2 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:gold_armor"]
-        }
-      },
-      "minere:diamond_armor": {
-        "set_property": { "minere:armor": 3 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:diamond_armor"]
-        }
-      },
-      "minere:netherite_armor": {
-        "set_property": { "minere:armor": 4 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:enderon_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:netherite_armor"]
-        }
-      },
-      "minere:enderon_armor": {
-        "set_property": { "minere:armor": 5 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:indigon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:enderon_armor"]
-        }
-      },
-      "minere:indigon_armor": {
-        "set_property": { "minere:armor": 6 },
-        "remove": {
-          "component_groups": [
-            "minere:copper_armor",
-            "minere:iron_armor",
-            "minere:gold_armor",
-            "minere:diamond_armor",
-            "minere:netherite_armor",
-            "minere:enderon_armor"
-          ]
-        },
-        "add": {
-          "component_groups": ["minere:indigon_armor"]
-        }
       }
     }
   }

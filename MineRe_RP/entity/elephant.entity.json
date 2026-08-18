@@ -47,7 +47,7 @@
       "scripts": {
         "pre_animation": [
           "variable.carpet = 1 + query.property('minere:carpet');",
-          "variable.armor = 1 + query.property('minere:armor');"
+          "variable.armor = query.is_item_name_any('slot.armor.body', 'minere:copper_elephant_armor') ? 1 : query.is_item_name_any('slot.armor.body', 'minere:iron_elephant_armor') ? 2 : query.is_item_name_any('slot.armor.body', 'minere:gold_elephant_armor') ? 3 : query.is_item_name_any('slot.armor.body', 'minere:diamond_elephant_armor') ? 4 : query.is_item_name_any('slot.armor.body', 'minere:netherite_elephant_armor') ? 5 : query.is_item_name_any('slot.armor.body', 'minere:enderon_elephant_armor') ? 6 : query.is_item_name_any('slot.armor.body', 'minere:indigon_elephant_armor') ? 7 : 0;"
         ],
         "animate": [
           "controller",

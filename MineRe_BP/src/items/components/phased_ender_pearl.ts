@@ -75,20 +75,28 @@ export const PhasedEnderPearl: ItemCustomComponent = {
       max += 1;
     }
 
+    const ridingComponent = player.getComponent(
+      EntityComponentTypes.Riding,
+    ) as EntityRidingComponent;
+    const mount = ridingComponent?.entityRidingOn;
+    const mountEquippable = mount?.getComponent(
+      EntityComponentTypes.Equippable,
+    ) as EntityEquippableComponent | undefined;
+    const mountHasEnderonArmor = mountEquippable
+      ?.getEquipment(EquipmentSlot.Body)
+      ?.typeId.includes(ENDERON);
+
     const offset = multiplyVector3Number(
       player.getViewDirection(),
-      MULTIPLIER * (min + Math.random() * (max - min)),
+      MULTIPLIER * (min + Math.random() * (max - min)) * (mountHasEnderonArmor ? 2 : 1),
     );
     offset.y += 1;
     const targetPos = addVector3(player.location, offset);
     targetPos.y = Math.max(dimension.heightRange.min + 2, targetPos.y);
     targetPos.y = Math.min(dimension.heightRange.max - 2, targetPos.y);
     let targetEntity: Entity = player;
-    const ridingComponent = player?.getComponent(
-      EntityComponentTypes.Riding,
-    ) as EntityRidingComponent;
-    if (ridingComponent && ridingComponent.entityRidingOn) {
-      targetEntity = ridingComponent.entityRidingOn;
+    if (mount) {
+      targetEntity = mount;
     }
 
     for (let i = 0; i <= GROUND_LOOK_DISTANCE; i++) {

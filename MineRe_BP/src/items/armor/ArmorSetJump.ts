@@ -3,6 +3,7 @@ import {
   Player,
   EntityComponentTypes,
   EntityEquippableComponent,
+  EntityInventoryComponent,
   EquipmentSlot,
   PlayerButtonInputAfterEvent,
   InputButton,
@@ -16,7 +17,6 @@ type ArmorJumpConfig = {
   chestplate: string;
   leggings: string;
   boots: string;
-  maxAirJumps: number;
   jumpImpulse: number;
   particle: string;
   sound: string;
@@ -27,6 +27,11 @@ type ArmorJumpConfig = {
 const AIR_JUMPS_USED_PROPERTY = "minere:armor_air_jumps_used";
 const groundResetRunners: Map<string, number> = new Map();
 const MAX_Y_VEL_TO_DOUBLE_JUMP = 0.3;
+const WIND_CHARGE_ITEM = "minecraft:wind_charge";
+const WIND_CHARGE_CONSUMPTION_CHANCE_PER_JUMP = 0.08;
+const AETHERIAL_NO_WIND_CHARGES_MESSAGE =
+  "info.minere:aetherial_armor.no_wind_charges";
+const WIND_JUMP_SLOW_FALLING_DURATION = 4 * 20;
 
 const ARMOR_JUMP_CONFIGS: Map<string, ArmorJumpConfig> = new Map([
   [
@@ -36,7 +41,6 @@ const ARMOR_JUMP_CONFIGS: Map<string, ArmorJumpConfig> = new Map([
       chestplate: "minere:aetherial_chestplate",
       leggings: "minere:aetherial_leggings",
       boots: "minere:aetherial_boots",
-      maxAirJumps: 2,
       jumpImpulse: 0.65,
       particle: "minecraft:wind_explosion_emitter",
       sound: "breeze_wind_charge.burst",
@@ -79,8 +83,24 @@ export function handleArmorSetJump(data: PlayerButtonInputAfterEvent): void {
   }
 
   const usedJumps = getAirJumpsUsed(player);
-  if (usedJumps >= config.maxAirJumps) {
+  const maxAirJumps = getEquippedAetherialPieceCount(player, config);
+  if (usedJumps >= maxAirJumps) {
     return;
+  }
+
+  const windChargeSlot = findWindChargeSlot(player);
+  if (windChargeSlot === null) {
+    player.sendMessage({ translate: AETHERIAL_NO_WIND_CHARGES_MESSAGE });
+    return;
+  }
+
+  const jumpNumber = usedJumps + 1;
+  const consumeChance = Math.min(
+    WIND_CHARGE_CONSUMPTION_CHANCE_PER_JUMP * jumpNumber,
+    WIND_CHARGE_CONSUMPTION_CHANCE_PER_JUMP * 4,
+  );
+  if (Math.random() < consumeChance) {
+    consumeWindCharge(player, windChargeSlot);
   }
 
   player.applyImpulse({
@@ -92,6 +112,9 @@ export function handleArmorSetJump(data: PlayerButtonInputAfterEvent): void {
   player.dimension.playSound(config.sound, player.location, {
     volume: config.soundVolume ?? 1.0,
     pitch: config.soundPitch ?? 1.0,
+  });
+  player.addEffect("slow_falling", WIND_JUMP_SLOW_FALLING_DURATION, {
+    showParticles: false,
   });
 
   setAirJumpsUsed(player, usedJumps + 1);
@@ -106,27 +129,78 @@ function getActiveArmorJumpConfig(player: Player): ArmorJumpConfig | null {
     return null;
   }
 
-  const helmet = equippable.getEquipment(EquipmentSlot.Head);
-  const chestplate = equippable.getEquipment(EquipmentSlot.Chest);
-  const leggings = equippable.getEquipment(EquipmentSlot.Legs);
-  const boots = equippable.getEquipment(EquipmentSlot.Feet);
-
-  if (!helmet || !chestplate || !leggings || !boots) {
-    return null;
-  }
-
   for (const config of ARMOR_JUMP_CONFIGS.values()) {
-    if (
-      helmet.typeId === config.helmet &&
-      chestplate.typeId === config.chestplate &&
-      leggings.typeId === config.leggings &&
-      boots.typeId === config.boots
-    ) {
+    if (getEquippedAetherialPieceCount(player, config) > 0) {
       return config;
     }
   }
 
   return null;
+}
+
+function getEquippedAetherialPieceCount(
+  player: Player,
+  config: ArmorJumpConfig,
+): number {
+  const equippable = player.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  if (!equippable) {
+    return 0;
+  }
+
+  const armorPieceIds = [
+    [EquipmentSlot.Head, config.helmet],
+    [EquipmentSlot.Chest, config.chestplate],
+    [EquipmentSlot.Legs, config.leggings],
+    [EquipmentSlot.Feet, config.boots],
+  ] as const;
+
+  let pieceCount = 0;
+  for (const [slot, itemId] of armorPieceIds) {
+    if (equippable.getEquipment(slot)?.typeId === itemId) {
+      pieceCount++;
+    }
+  }
+
+  return pieceCount;
+}
+
+function findWindChargeSlot(player: Player): number | null {
+  const inventory = player.getComponent(
+    EntityComponentTypes.Inventory,
+  ) as EntityInventoryComponent;
+  const container = inventory?.container;
+  if (!container) {
+    return null;
+  }
+
+  for (let slot = 0; slot < container.size; slot++) {
+    if (container.getItem(slot)?.typeId === WIND_CHARGE_ITEM) {
+      return slot;
+    }
+  }
+
+  return null;
+}
+
+function consumeWindCharge(player: Player, slot: number): void {
+  const inventory = player.getComponent(
+    EntityComponentTypes.Inventory,
+  ) as EntityInventoryComponent;
+  const container = inventory?.container;
+  const windCharge = container?.getItem(slot);
+  if (!container || !windCharge || windCharge.typeId !== WIND_CHARGE_ITEM) {
+    return;
+  }
+
+  if (windCharge.amount === 1) {
+    container.setItem(slot);
+    return;
+  }
+
+  windCharge.amount--;
+  container.setItem(slot, windCharge);
 }
 
 function getAirJumpsUsed(player: Player): number {

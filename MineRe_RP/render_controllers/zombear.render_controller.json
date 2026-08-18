@@ -2,9 +2,14 @@
   "format_version": "1.8.0",
   "render_controllers": {
     "controller.render.minere.zombear": {
+      "arrays": {
+        "textures": {
+          "Array.zombear_skin": ["Texture.zombie", "Texture.cold_zombie"]
+        }
+      },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
-      "textures": ["Texture.zombie"]
+      "textures": ["Array.zombear_skin[query.variant]"]
     },
     "controller.render.minere.zombear_armor": {
       "arrays": {
@@ -14,7 +19,7 @@
       },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.armor" }],
-      "textures": ["Array.armor[query.mark_variant]"]
+      "textures": ["Array.armor[variable.armor_type]"]
     }
   }
 }

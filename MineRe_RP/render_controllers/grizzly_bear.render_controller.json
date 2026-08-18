@@ -34,7 +34,7 @@
       },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.armor" }],
-      "textures": ["Array.armor[query.mark_variant]"]
+      "textures": ["Array.armor[variable.armor_type]"]
     }
   }
 }

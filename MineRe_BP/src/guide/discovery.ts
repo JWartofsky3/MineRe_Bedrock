@@ -195,17 +195,35 @@ function discoverEntity(
   });
 }
 
+function isValidEntity(entity: Entity | undefined): entity is Entity {
+  return entity?.isValid ?? false;
+}
+
+function getProjectileOwner(source: EntityDamageSource): Entity | undefined {
+  const projectile = source.damagingProjectile ?? source.damagingEntity;
+  if (!isValidEntity(projectile)) return undefined;
+
+  return (
+    (projectile.getComponent(EntityComponentTypes.Projectile) as EntityProjectileComponent | undefined)
+      ?.owner ?? undefined
+  );
+}
+
 function getResponsiblePlayer(source: EntityDamageSource): Player | undefined {
-  if (source.damagingEntity?.typeId === "minecraft:player") {
-    return source.damagingEntity as Player;
+  const damagingEntity = source.damagingEntity;
+  if (
+    isValidEntity(damagingEntity) &&
+    damagingEntity.typeId === "minecraft:player"
+  ) {
+    return damagingEntity as Player;
   }
 
-  const projectile = source.damagingProjectile ?? source.damagingEntity;
-  const projectileComponent = projectile?.getComponent(
-    EntityComponentTypes.Projectile,
-  ) as EntityProjectileComponent | undefined;
-  if (projectileComponent?.owner?.typeId === "minecraft:player") {
-    return projectileComponent.owner as Player;
+  const projectileOwner = getProjectileOwner(source);
+  if (
+    isValidEntity(projectileOwner) &&
+    projectileOwner.typeId === "minecraft:player"
+  ) {
+    return projectileOwner as Player;
   }
 
   return undefined;
@@ -228,14 +246,13 @@ export function initializeGuideDiscovery(): void {
     const attackingPlayer = getResponsiblePlayer(damageSource);
     if (attackingPlayer) discoverEntity(attackingPlayer, hurtEntity);
 
-    const projectile =
-      damageSource.damagingProjectile ?? damageSource.damagingEntity;
-    const projectileComponent = projectile?.getComponent(
-      EntityComponentTypes.Projectile,
-    ) as EntityProjectileComponent | undefined;
     const sourceEntity =
-      projectileComponent?.owner ?? damageSource.damagingEntity;
-    if (hurtEntity.typeId === "minecraft:player" && sourceEntity) {
+      getProjectileOwner(damageSource) ?? damageSource.damagingEntity;
+    if (
+      isValidEntity(hurtEntity) &&
+      hurtEntity.typeId === "minecraft:player" &&
+      isValidEntity(sourceEntity)
+    ) {
       discoverEntity(hurtEntity as Player, sourceEntity);
     }
   });

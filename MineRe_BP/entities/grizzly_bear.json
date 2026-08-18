@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.21.60",
   "minecraft:entity": {
     "description": {
       "identifier": "minere:grizzly_bear",
@@ -39,567 +39,81 @@
         }
       },
       "minere:armorable": {
-        "minecraft:mark_variant": {
-          "value": 0
-        },
         "minecraft:interact": {
           "interactions": [
             {
               "on_interact": {
                 "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:copper_bear_armor"
+                  "any_of": [
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:copper_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:iron_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:gold_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:diamond_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:netherite_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:enderon_bear_armor" },
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minere:indigon_bear_armor" }
+                  ]
                 },
-                "event": "equip_copper_armor"
+                "target": "self"
               },
-              "use_item": true,
-              "play_sounds": "saddle",
+              "equip_item_slot": "slot.armor.body",
+              "play_sounds": "armor.equip_generic",
               "interact_text": "action.interact.saddle"
             },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:iron_bear_armor"
-                },
-                "event": "equip_iron_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:gold_bear_armor"
-                },
-                "event": "equip_gold_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:diamond_bear_armor"
-                },
-                "event": "equip_diamond_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:netherite_bear_armor"
-                },
-                "event": "equip_netherite_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:enderon_bear_armor"
-                },
-                "event": "equip_enderon_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "test": "has_equipment",
-                  "subject": "other",
-                  "domain": "hand",
-                  "value": "minere:indigon_bear_armor"
-                },
-                "event": "equip_indigon_armor"
-              },
-              "use_item": true,
-              "play_sounds": "saddle",
-              "interact_text": "action.interact.saddle"
-            }
-          ]
-        }
-      },
-      "minere:copper_armor": {
-        "minecraft:mark_variant": {
-          "value": 1
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            },
-            {
-              "cause": "magic",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
             {
               "on_interact": {
                 "filters": {
                   "all_of": [
                     {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
+                      "any_of": [
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:copper_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:iron_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:gold_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:diamond_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:netherite_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:enderon_bear_armor" },
+                        { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:indigon_bear_armor" }
+                      ]
                     },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
+                    { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears" },
+                    { "test": "rider_count", "subject": "self", "operator": "equals", "value": 0 }
                   ]
                 },
-                "event": "on_unarmored"
+                "target": "self"
               },
               "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/copper_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
+              "drop_item_slot": "slot.armor.body",
               "play_sounds": "shear",
+              "interact_text": "action.interact.removesaddle",
               "vibration": "shear"
             }
           ]
+        },
+        "minecraft:equippable": {
+          "slots": [
+            {
+              "slot": 1,
+              "item": "minere:iron_bear_armor",
+              "accepted_items": [
+                "minere:copper_bear_armor",
+                "minere:iron_bear_armor",
+                "minere:gold_bear_armor",
+                "minere:diamond_bear_armor",
+                "minere:netherite_bear_armor",
+                "minere:enderon_bear_armor",
+                "minere:indigon_bear_armor"
+              ],
+              "on_equip": { "event": "minere:refresh_bear_body_armor" },
+              "on_unequip": { "event": "minere:refresh_bear_body_armor" }
+            }
+          ]
+        },
+        "minecraft:inventory": {
+          "inventory_size": 2,
+          "container_type": "horse"
         }
       },
-      "minere:iron_armor": {
-        "minecraft:mark_variant": {
-          "value": 2
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.48
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/iron_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
-        }
-      },
-      "minere:gold_armor": {
-        "minecraft:mark_variant": {
-          "value": 3
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": true,
-              "damage_multiplier": 0.6
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/gold_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
-        }
-      },
-      "minere:diamond_armor": {
-        "minecraft:mark_variant": {
-          "value": 4
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "lava",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/diamond_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
-        }
-      },
-      "minere:netherite_armor": {
-        "minecraft:mark_variant": {
-          "value": 5
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "fire_tick",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            },
-            {
-              "cause": "lava",
-              "deals_damage": true,
-              "damage_multiplier": 0.32
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/netherite_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
-        }
-      },
-      "minere:enderon_armor": {
-        "minecraft:mark_variant": {
-          "value": 6
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "fall",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.4
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/enderon_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
-        },
+      "minere:enderon_body_armor": {
         "minecraft:teleport": {
           "random_teleports": true,
           "max_random_teleport_time": 30,
@@ -608,87 +122,6 @@
           "target_teleport_chance": 0.05,
           "light_teleport_chance": 0.01,
           "dark_teleport_chance": 0.01
-        }
-      },
-      "minere:indigon_armor": {
-        "minecraft:mark_variant": {
-          "value": 7
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "entity_attack",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "projectile",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "entity_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "block_explosion",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "thorns",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "fire",
-              "deals_damage": true,
-              "damage_multiplier": 0.36
-            },
-            {
-              "cause": "lava",
-              "deals_damage": true,
-              "damage_multiplier": 0.64
-            }
-          ]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                },
-                "event": "on_unarmored"
-              },
-              "hurt_item": 1,
-              "spawn_items": {
-                "table": "loot_tables/entities/grizzly_bear/indigon_armor.json"
-              },
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "shear",
-              "vibration": "shear"
-            }
-          ]
         }
       },
       "minecraft:baby": {
@@ -1267,6 +700,15 @@
       "minecraft:conditional_bandwidth_optimization": {}
     },
     "events": {
+      "minere:refresh_bear_body_armor": {
+        "sequence": [
+          { "remove": { "component_groups": ["minere:enderon_body_armor"] } },
+          {
+            "filters": { "test": "has_equipment", "subject": "self", "domain": "armor", "value": "minere:enderon_bear_armor" },
+            "add": { "component_groups": ["minere:enderon_body_armor"] }
+          }
+        ]
+      },
       "minecraft:entity_transformed": {
         "add": {
           "component_groups": [
@@ -1470,126 +912,6 @@
           {
             "add": {
               "component_groups": ["minere:tame"]
-            }
-          }
-        ]
-      },
-      "equip_copper_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:copper_armor"]
-            }
-          }
-        ]
-      },
-      "equip_iron_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:iron_armor"]
-            }
-          }
-        ]
-      },
-      "equip_gold_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:gold_armor"]
-            }
-          }
-        ]
-      },
-      "equip_diamond_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:diamond_armor"]
-            }
-          }
-        ]
-      },
-      "equip_netherite_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:netherite_armor"]
-            }
-          }
-        ]
-      },
-      "equip_enderon_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:enderon_armor"]
-            }
-          }
-        ]
-      },
-      "equip_indigon_armor": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["minere:armorable"]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:indigon_armor"]
-            }
-          }
-        ]
-      },
-      "on_unarmored": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": [
-                "minere:copper_armor",
-                "minere:iron_armor",
-                "minere:gold_armor",
-                "minere:diamond_armor",
-                "minere:netherite_armor",
-                "minere:enderon_armor",
-                "minere:indigon_armor"
-              ]
-            }
-          },
-          {
-            "add": {
-              "component_groups": ["minere:armorable"]
             }
           }
         ]

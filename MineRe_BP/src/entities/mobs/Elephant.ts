@@ -35,7 +35,6 @@ import {
 
 const ELEPHANT_TYPE_ID = "minere:elephant";
 const CARPET_PROPERTY_ID = "minere:carpet";
-const ARMOR_PROPERTY_ID = "minere:armor";
 const ATTACK_COOLDOWN_PROPERTY_ID = "minere:attack_cooldown";
 const STOMP_COOLDOWN_PROPERTY_ID = "minere:stomp_cooldown";
 
@@ -108,25 +107,14 @@ const CARPET_ID_BY_VALUE = new Map<number, string>([
   [15, "minecraft:black_carpet"],
 ]);
 
-// Armor maps
-const ARMOR_ID_BY_VALUE = new Map<number, string>([
-  [0, "minere:copper_elephant_armor"],
-  [1, "minere:iron_elephant_armor"],
-  [2, "minere:gold_elephant_armor"],
-  [3, "minere:diamond_elephant_armor"],
-  [4, "minere:netherite_elephant_armor"],
-  [5, "minere:enderon_elephant_armor"],
-  [6, "minere:indigon_elephant_armor"],
-]);
-
-const ARMOR_EVENT_BY_TYPE_ID = new Map<string, string>([
-  ["minere:copper_elephant_armor", "minere:copper_armor"],
-  ["minere:iron_elephant_armor", "minere:iron_armor"],
-  ["minere:gold_elephant_armor", "minere:gold_armor"],
-  ["minere:diamond_elephant_armor", "minere:diamond_armor"],
-  ["minere:netherite_elephant_armor", "minere:netherite_armor"],
-  ["minere:enderon_elephant_armor", "minere:enderon_armor"],
-  ["minere:indigon_elephant_armor", "minere:indigon_armor"],
+const ELEPHANT_ARMOR_IDS = new Set<string>([
+  "minere:copper_elephant_armor",
+  "minere:iron_elephant_armor",
+  "minere:gold_elephant_armor",
+  "minere:diamond_elephant_armor",
+  "minere:netherite_elephant_armor",
+  "minere:enderon_elephant_armor",
+  "minere:indigon_elephant_armor",
 ]);
 
 const INVALID_TARGET_TYPES = new Set<string>([
@@ -187,11 +175,6 @@ export class Elephant extends BaseCustomEntity {
       return this.onCarpet(data, carpetEntry);
     }
 
-    const armorEvent = ARMOR_EVENT_BY_TYPE_ID.get(data.itemStack?.typeId);
-    if (armorEvent) {
-      return this.onArmor(data, armorEvent);
-    }
-
     const isSaddled = elephant.getComponent(
       EntityComponentTypes.IsSaddled,
     ) as EntityIsSaddledComponent;
@@ -216,14 +199,6 @@ export class Elephant extends BaseCustomEntity {
       );
     }
 
-    // drop armor
-    const armorType = elephant.getProperty(ARMOR_PROPERTY_ID) as number;
-    if (armorType > -1) {
-      elephant.dimension.spawnItem(
-        new ItemStack(ARMOR_ID_BY_VALUE.get(armorType)),
-        elephant.location,
-      );
-    }
   }
 
   onEntityHurtEntity(data: EntityHurtAfterEvent): void {
@@ -264,23 +239,6 @@ export class Elephant extends BaseCustomEntity {
     elephant.triggerEvent(carpet.eventName);
   }
 
-  onArmor(data: PlayerInteractWithEntityAfterEvent, armorEvent: string) {
-    const elephant = data.target;
-    const armorProp = elephant.getProperty(ARMOR_PROPERTY_ID) as number;
-    if (armorProp > -1) {
-      elephant.dimension.spawnItem(
-        new ItemStack(ARMOR_ID_BY_VALUE.get(armorProp)),
-        elephant.location,
-      );
-    }
-    const inventory = data.player.getComponent(
-      EntityComponentTypes.Inventory,
-    ) as EntityInventoryComponent;
-    inventory.container.setItem(data.player.selectedSlotIndex, undefined);
-    elephant.triggerEvent(armorEvent);
-    elephant.dimension.playSound("armor.equip_generic", elephant.location);
-  }
-
   onShear(data: PlayerInteractWithEntityAfterEvent) {
     const elephant = data.target;
     const dimension = elephant.dimension;
@@ -298,14 +256,14 @@ export class Elephant extends BaseCustomEntity {
     }
 
     // remove armor
-    const armorProp = elephant.getProperty(ARMOR_PROPERTY_ID) as number;
-    if (armorProp > -1) {
-      dimension.spawnItem(
-        new ItemStack(ARMOR_ID_BY_VALUE.get(armorProp)),
-        elephant.location,
-      );
+    const equipment = elephant.getComponent(
+      EntityComponentTypes.Equippable,
+    ) as EntityEquippableComponent;
+    const armor = equipment?.getEquipment(EquipmentSlot.Body);
+    if (armor && ELEPHANT_ARMOR_IDS.has(armor.typeId)) {
+      equipment.setEquipment(EquipmentSlot.Body, undefined);
+      dimension.spawnItem(armor, elephant.location);
       dimension.playSound("mob.sheep.shear", elephant.location);
-      elephant.triggerEvent("minere:remove_armor");
       return;
     }
 
@@ -340,7 +298,12 @@ export class Elephant extends BaseCustomEntity {
       system.currentTick,
     );
 
-    const isArmored = (elephant.getProperty(ARMOR_PROPERTY_ID) as number) > -1;
+    const equipment = elephant.getComponent(
+      EntityComponentTypes.Equippable,
+    ) as EntityEquippableComponent;
+    const isArmored = ELEPHANT_ARMOR_IDS.has(
+      equipment?.getEquipment(EquipmentSlot.Body)?.typeId ?? "",
+    );
     const dimension = elephant.dimension;
     const ignoredEntities = new Set<string>();
     ignoredEntities.add(elephant.id);

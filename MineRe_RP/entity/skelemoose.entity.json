@@ -10,6 +10,7 @@
       "textures": {
         "skeleton": "textures/entity/minere/moose/skeleton",
         "saddle": "textures/entity/minere/moose/saddle",
+        "reins": "textures/entity/minere/moose/reins",
         "empty": "textures/entity/minere/moose/empty"
       },
       "geometry": { "default": "geometry.minere.moose" },
@@ -25,7 +26,7 @@
         "pre_animation": ["variable.saddled = query.is_saddled ? 1 : 0;"],
         "animate": ["controller"]
       },
-      "render_controllers": ["controller.render.minere.skelemoose.saddle", "controller.render.minere.skelemoose"],
+      "render_controllers": ["controller.render.minere.skelemoose.saddle", "controller.render.minere.moose.reins", "controller.render.minere.skelemoose"],
       "spawn_egg": { "base_color": "#dedede", "overlay_color": "#76604d" }
     }
   }

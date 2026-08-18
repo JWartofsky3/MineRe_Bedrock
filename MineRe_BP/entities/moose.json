@@ -249,7 +249,9 @@
             {
               "slot": 0,
               "item": "saddle",
-              "accepted_items": ["saddle"],
+              "accepted_items": [
+                "saddle"
+              ],
               "on_equip": {
                 "event": "minecraft:on_saddled"
               },
@@ -260,7 +262,7 @@
           ]
         },
         "minecraft:inventory": {
-          "inventory_size": 15,
+          "inventory_size": 18,
           "container_type": "horse"
         },
         "minecraft:interact": {
@@ -269,9 +271,24 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle"},
-                    {"test": "is_sneak_held", "subject": "other", "value": false}
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -284,10 +301,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "rider_count", "subject": "self", "operator": "equals", "value": 0},
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
-                    {"test": "is_sneak_held", "subject": "other", "value": false}
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 }
               },
@@ -305,11 +341,29 @@
           "crouching_skip_interact": true,
           "on_rider_enter_event": "minere:no_stroll",
           "on_rider_exit_event": "minere:allow_stroll",
-          "family_types": ["player"],
+          "family_types": [
+            "player"
+          ],
           "interact_text": "action.interact.ride.horse",
           "seats": [
-            {"min_rider_count": 0, "max_rider_count": 2, "position": [0, 2.15, -0.2]},
-            {"min_rider_count": 1, "max_rider_count": 2, "position": [0, 2.0, -1.2]}
+            {
+              "min_rider_count": 0,
+              "max_rider_count": 2,
+              "position": [
+                0,
+                2.15,
+                -0.2
+              ]
+            },
+            {
+              "min_rider_count": 1,
+              "max_rider_count": 2,
+              "position": [
+                0,
+                2.0,
+                -1.2
+              ]
+            }
           ]
         },
         "minecraft:behavior.player_ride_tamed": {},
@@ -386,7 +440,10 @@
         },
         "minecraft:breedable": {
           "require_tame": true,
-          "breed_items": ["golden_apple", "glistering_melon_slice"],
+          "breed_items": [
+            "golden_apple",
+            "glistering_melon_slice"
+          ],
           "breeds_with": {
             "mate_type": "minere:moose",
             "baby_type": "minere:moose",
@@ -425,7 +482,9 @@
           "duration": 30,
           "broadcast_anger": true,
           "broadcast_range": 32,
-          "broadcast_targets": ["moose"],
+          "broadcast_targets": [
+            "moose"
+          ],
           "broadcast_anger_when_dying": false,
           "calm_event": {
             "event": "minecraft:on_calm",
@@ -451,9 +510,24 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle"},
-                    {"test": "is_sneak_held", "subject": "other", "value": false}
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -497,10 +571,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "rider_count", "subject": "self", "operator": "equals", "value": 0},
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
-                    {"test": "is_sneak_held", "subject": "other", "value": false}
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 }
               },
@@ -516,7 +609,9 @@
       },
       "minere:moose_saddled": {
         "minecraft:is_saddled": {},
-        "minecraft:loot": {"table": "loot_tables/entities/moose_saddled.json"},
+        "minecraft:loot": {
+          "table": "loot_tables/entities/moose_saddled.json"
+        },
         "minecraft:input_ground_controlled": {},
         "minecraft:can_power_jump": {}
       },
@@ -528,10 +623,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "operator": "not", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle"},
-                    {"test": "is_family", "subject": "other", "value": "player"},
-                    {"test": "is_sneaking", "subject": "other", "value": false}
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "operator": "not",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_sneaking",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 },
                 "target": "self"
@@ -544,10 +658,29 @@
               "on_interact": {
                 "filters": {
                   "all_of": [
-                    {"test": "rider_count", "subject": "self", "operator": "equals", "value": 0},
-                    {"test": "has_equipment", "subject": "self", "domain": "inventory", "value": "saddle"},
-                    {"test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
-                    {"test": "is_sneak_held", "subject": "other", "value": false}
+                    {
+                      "test": "rider_count",
+                      "subject": "self",
+                      "operator": "equals",
+                      "value": 0
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "self",
+                      "domain": "inventory",
+                      "value": "saddle"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "shears"
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": false
+                    }
                   ]
                 }
               },
@@ -569,7 +702,10 @@
     },
     "components": {
       "minecraft:type_family": {
-        "family": ["moose", "mob"]
+        "family": [
+          "moose",
+          "mob"
+        ]
       },
       "minecraft:variable_max_auto_step": {
         "base_value": 1.5,
@@ -729,7 +865,10 @@
         "sequence": [
           {
             "add": {
-              "component_groups": ["minere:moose_stroll", "minere:moose_calm"]
+              "component_groups": [
+                "minere:moose_stroll",
+                "minere:moose_calm"
+              ]
             }
           },
           {
@@ -764,7 +903,9 @@
       },
       "minecraft:entity_born": {
         "remove": {
-          "component_groups": ["minere:moose_adult"]
+          "component_groups": [
+            "minere:moose_adult"
+          ]
         },
         "add": {
           "component_groups": [
@@ -779,7 +920,10 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:baby_wild", "minere:moose_adult"]
+              "component_groups": [
+                "minere:baby_wild",
+                "minere:moose_adult"
+              ]
             }
           },
           {
@@ -805,7 +949,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:moose_adult"]
+          "component_groups": [
+            "minere:moose_adult"
+          ]
         }
       },
       "minecraft:spawn_adult": {
@@ -831,24 +977,33 @@
       },
       "minere:become_brown": {
         "add": {
-          "component_groups": ["minere:brown"]
+          "component_groups": [
+            "minere:brown"
+          ]
         }
       },
       "minere:become_dark": {
         "add": {
-          "component_groups": ["minere:dark"]
+          "component_groups": [
+            "minere:dark"
+          ]
         }
       },
       "minere:become_light": {
         "add": {
-          "component_groups": ["minere:light"]
+          "component_groups": [
+            "minere:light"
+          ]
         }
       },
       "minere:on_tame_moose": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:moose_wild", "minere:baby_wild"]
+              "component_groups": [
+                "minere:moose_wild",
+                "minere:baby_wild"
+              ]
             }
           },
           {
@@ -863,46 +1018,66 @@
       },
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": ["minere:moose_angry"]
+          "component_groups": [
+            "minere:moose_angry"
+          ]
         },
         "add": {
-          "component_groups": ["minere:moose_calm"]
+          "component_groups": [
+            "minere:moose_calm"
+          ]
         }
       },
       "minecraft:become_angry": {
         "remove": {
-          "component_groups": ["minere:moose_calm"]
+          "component_groups": [
+            "minere:moose_calm"
+          ]
         },
         "add": {
-          "component_groups": ["minere:moose_angry"]
+          "component_groups": [
+            "minere:moose_angry"
+          ]
         }
       },
       "minere:on_chest": {
         "remove": {
-          "component_groups": ["minere:moose_unchested"]
+          "component_groups": [
+            "minere:moose_unchested"
+          ]
         },
         "add": {
-          "component_groups": ["minere:moose_chested"]
+          "component_groups": [
+            "minere:moose_chested"
+          ]
         }
       },
       "minecraft:on_saddled": {
         "add": {
-          "component_groups": ["minere:moose_saddled"]
+          "component_groups": [
+            "minere:moose_saddled"
+          ]
         }
       },
       "minecraft:on_unsaddled": {
         "remove": {
-          "component_groups": ["minere:moose_saddled"]
+          "component_groups": [
+            "minere:moose_saddled"
+          ]
         }
       },
       "minere:no_stroll": {
         "remove": {
-          "component_groups": ["minere:moose_stroll"]
+          "component_groups": [
+            "minere:moose_stroll"
+          ]
         }
       },
       "minere:allow_stroll": {
         "add": {
-          "component_groups": ["minere:moose_stroll"]
+          "component_groups": [
+            "minere:moose_stroll"
+          ]
         }
       }
     }

@@ -63,6 +63,12 @@
       "minecraft:movement": {
         "value": 0.5
       },
+      "minecraft:behavior.find_mount": {
+        "priority": 3,
+        "within_radius": 16,
+        "start_delay": 15,
+        "max_failed_attempts": 20
+      },
       "minecraft:navigation.walk": {
         "avoid_sun": true,
         "can_path_over_water": true,

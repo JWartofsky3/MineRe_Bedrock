@@ -9,6 +9,11 @@
       "is_experimental": false
     },
     "component_groups": {
+      "minere:cold_zombear": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
       "minere:to_grizzly_bear": {
         "minecraft:transformation": {
           "into": "minere:grizzly_bear",
@@ -31,123 +36,42 @@
       "minere:necromancer_rider": {
         "minecraft:addrider": {
           "entity_type": "minere:necromancer"
-        },
-        "minecraft:rideable": {
-          "seat_count": 1,
-          "family_types": [
-            "necromancer"
-          ],
-          "seats": [
-            {
-              "position": [
-                0,
-                1.35,
-                -0.1
-              ]
-            }
-          ]
-        }
-      },
-      "minere:copper_armor": {
-        "minecraft:mark_variant": {
-          "value": 1
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.64
-            }
-          ]
-        }
-      },
-      "minere:iron_armor": {
-        "minecraft:mark_variant": {
-          "value": 2
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.48
-            }
-          ]
-        }
-      },
-      "minere:gold_armor": {
-        "minecraft:mark_variant": {
-          "value": 3
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.6
-            }
-          ]
-        }
-      },
-      "minere:diamond_armor": {
-        "minecraft:mark_variant": {
-          "value": 4
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.36
-            }
-          ]
-        }
-      },
-      "minere:netherite_armor": {
-        "minecraft:mark_variant": {
-          "value": 5
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.32
-            }
-          ]
-        }
-      },
-      "minere:enderon_armor": {
-        "minecraft:mark_variant": {
-          "value": 6
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.4
-            }
-          ]
-        }
-      },
-      "minere:indigon_armor": {
-        "minecraft:mark_variant": {
-          "value": 7
-        },
-        "minecraft:damage_sensor": {
-          "triggers": [
-            {
-              "cause": "all",
-              "deals_damage": "yes",
-              "damage_multiplier": 0.36
-            }
-          ]
         }
       }
     },
     "components": {
+      "minecraft:equippable": {
+        "slots": [
+          {
+            "slot": 1,
+            "item": "minere:iron_bear_armor",
+            "accepted_items": [
+              "minere:copper_bear_armor",
+              "minere:iron_bear_armor",
+              "minere:gold_bear_armor",
+              "minere:diamond_bear_armor",
+              "minere:netherite_bear_armor",
+              "minere:enderon_bear_armor",
+              "minere:indigon_bear_armor"
+            ]
+          }
+        ]
+      },
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "family_types": [
+          "necromancer"
+        ],
+        "seats": [
+          {
+            "position": [
+              0,
+              1.35,
+              -0.1
+            ]
+          }
+        ]
+      },
       "minecraft:type_family": {
         "family": [
           "zombear",
@@ -173,7 +97,10 @@
         "on_death": "query.last_hit_by_player ? Math.Random(5, 10) : 0"
       },
       "minecraft:loot": {
-        "table": "loot_tables/entities/zombear.json"
+        "table": "loot_tables/entities/zombear/zombear.json"
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/zombear/gear.json"
       },
       "minecraft:burns_in_daylight": {},
       "minecraft:breathable": {
@@ -293,82 +220,32 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "randomize": [
-              {
-                "weight": 85,
-                "add": {}
-              },
-              {
-                "weight": 15,
-                "randomize": [
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:copper_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:iron_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:gold_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:diamond_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:netherite_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:enderon_armor"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,
-                    "add": {
-                      "component_groups": [
-                        "minere:indigon_armor"
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cold"
+                },
+                {
+                  "test": "has_biome_tag",
+                  "value": "frozen"
+                }
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "minere:cold_zombear"
+              ]
+            }
           },
           {
             "randomize": [
               {
-                "weight": 90,
+                "weight": 10,
                 "add": {}
               },
               {
-                "weight": 10,
+                "weight": 5,
                 "add": {
                   "component_groups": [
                     "minere:necromancer_rider"

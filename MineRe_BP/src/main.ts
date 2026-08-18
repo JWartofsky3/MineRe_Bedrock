@@ -16,6 +16,7 @@ import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
 import { getItemLoreSyncInterval, syncItemLore } from "items/itemLore";
 import { checkStaffEquipHint } from "items/staves/staffHints";
+import { removePlayerBodyArmor } from "player/removeBodyArmor";
 
 // ───────────────────────── Imports: Items ─────────────────────────
 import { useAmethystStaff } from "items/staves/amethyst_staff";
@@ -110,6 +111,10 @@ system.runInterval(() => {
 
 system.runInterval(() => {
   world.getAllPlayers().forEach(checkStaffEquipHint);
+}, 1);
+
+system.runInterval(() => {
+  removePlayerBodyArmor();
 }, 1);
 
 runEndStorms();
