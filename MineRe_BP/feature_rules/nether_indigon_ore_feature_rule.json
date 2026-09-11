@@ -25,19 +25,28 @@
       ]
     },
     "distribution": {
-      "iterations": "t.noise = q.noise(v.originz/50,v.originx/50); return (t.noise > 0.5) ? ((t.noise > 0.7) ? ((t.noise > 0.9) ? 16 : 12) : 8) : 0;",
+      "iterations": "t.noise = q.noise(v.originz/50 + 0, v.originx/50 + 0); return (t.noise > 0.89872331) ? 16 : (t.noise > 0.49988228) ? 8 : 0;",
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",
-        "extent": [0, 16]
+        "extent": [
+          0,
+          16
+        ]
       },
       "y": {
         "distribution": "gaussian",
-        "extent": [0, 100]
+        "extent": [
+          0,
+          100
+        ]
       },
       "z": {
         "distribution": "uniform",
-        "extent": [0, 16]
+        "extent": [
+          0,
+          16
+        ]
       }
     }
   }

@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:friendly_walker",
+      "materials": { "default": "entity_emissive_alpha", "cracks": "iron_golem" },
+      "textures": {
+        "default": "textures/entity/minere/walker/walker_friendly",
+        "cracked_low": "textures/entity/minere/walker/cracked_low",
+        "cracked_medium": "textures/entity/minere/walker/cracked_medium",
+        "cracked_high": "textures/entity/minere/walker/cracked_high",
+        "cracked_none": "textures/entity/minere/walker/empty"
+      },
+      "geometry": { "default": "geometry.minere.walker" },
+      "spawn_egg": { "base_color": "#ffffcc", "overlay_color": "#003300" },
+      "scripts": {
+        "scale": "1.9",
+        "animate": ["controller", "flaps", "radar", { "shoot": "variable.is_charging" }, { "watch": "!variable.is_charging && !variable.is_blinking" }, { "blink": "!variable.is_charging && variable.is_blinking" }],
+        "pre_animation": ["variable.is_charging = query.is_charged || query.is_charging ? 1 : 0;", "variable.is_blinking = math.mod(query.life_time * 2, 24) >= 21;"]
+      },
+      "animations": {
+        "walk": "animation.minere.walker.walk", "radar": "animation.minere.walker.radar", "flaps": "animation.minere.walker.flaps", "kick": "animation.minere.walker.kick", "look_at_target": "animation.minere.walker.look_at_target", "controller": "controller.animation.minere.walker", "watch": "animation.minere.walker.watch", "shoot": "animation.minere.walker.shoot", "blink": "animation.minere.walker.blink"
+      },
+      "render_controllers": ["controller.render.minere.walker", "controller.render.minere.walker_cracks"],
+      "sound_effects": { "kick": "mob.walker.kick" }
+    }
+  }
+}

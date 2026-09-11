@@ -5,27 +5,59 @@
       "entries": [
         {
           "type": "empty",
-          "weight": 72
+          "weight": 7200
         },
         {
           "type": "item",
           "name": "minere:iron_bear_armor",
-          "weight": 9
+          "weight": 765
+        },
+        {
+          "type": "item",
+          "name": "minere:iron_bear_armor",
+          "weight": 135,
+          "functions": [
+            { "function": "enchant_randomly" }
+          ]
         },
         {
           "type": "item",
           "name": "minere:copper_bear_armor",
-          "weight": 6
+          "weight": 510
+        },
+        {
+          "type": "item",
+          "name": "minere:copper_bear_armor",
+          "weight": 90,
+          "functions": [
+            { "function": "enchant_randomly" }
+          ]
         },
         {
           "type": "item",
           "name": "minere:gold_bear_armor",
-          "weight": 2
+          "weight": 170
+        },
+        {
+          "type": "item",
+          "name": "minere:gold_bear_armor",
+          "weight": 30,
+          "functions": [
+            { "function": "enchant_randomly" }
+          ]
         },
         {
           "type": "item",
           "name": "minere:diamond_bear_armor",
-          "weight": 1
+          "weight": 85
+        },
+        {
+          "type": "item",
+          "name": "minere:diamond_bear_armor",
+          "weight": 15,
+          "functions": [
+            { "function": "enchant_randomly" }
+          ]
         }
       ]
     }

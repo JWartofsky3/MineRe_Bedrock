@@ -10,6 +10,7 @@ import {
   EntityComponentTypes,
   EntityEquippableComponent,
   EquipmentSlot,
+  Dimension,
 } from "@minecraft/server";
 import { reduceDurability } from "../components/reduce_durability";
 import { DEFAULT_TICK } from "main";
@@ -21,9 +22,11 @@ import {
 } from "util/vector3Functions";
 import { isAlive } from "mob/mob_utils";
 import { showHint } from "./staffHints";
+import { getEnchantmentLevel } from "items/components/item_utils";
+import { throwEntity } from "entities/functions/throw";
 
 const SHADOW_COOLDOWN = "echo_shadow_cooldown";
-const SHADOW_TIME = 8 * 20;
+const SHADOW_TIME = 4 * 20;
 const SHADOW_XP_COST = 10; // xp
 const SHADOW_DURABILITY_COST = 5;
 const SHADOW_RANGE = 8;
@@ -34,6 +37,45 @@ const SONIC_SPLASH_DAMAGE = 16;
 const SONIC_XP_COST = 10; // xp
 const SONIC_DURABILITY_COST = 5;
 const cooldownTime = 10;
+
+const igniteAirCube = (
+  dimension: Dimension,
+  location: { x: number; y: number; z: number },
+) => {
+  const center = {
+    x: Math.floor(location.x),
+    y: Math.floor(location.y),
+    z: Math.floor(location.z),
+  };
+  for (let x = -1; x <= 1; x++) {
+    for (let y = -1; y <= 1; y++) {
+      for (let z = -1; z <= 1; z++) {
+        const block = dimension.getBlock({
+          x: center.x + x,
+          y: center.y + y,
+          z: center.z + z,
+        });
+        if (block?.typeId === "minecraft:air" && Math.random() < 0.25) {
+          block.setType("minecraft:fire");
+        }
+      }
+    }
+  }
+};
+
+const applySonicEnchantments = (
+  source: Entity,
+  entity: Entity,
+  punchLevel: number,
+  flameLevel: number,
+) => {
+  if (punchLevel > 0) {
+    throwEntity(source.location, entity, punchLevel * 1.5, punchLevel * 0.5);
+  }
+  if (flameLevel > 0) {
+    entity.setOnFire(5);
+  }
+};
 
 export const useEchoStaff = (data: ItemUseBeforeEvent) => {
   if (!data.source) {
@@ -75,7 +117,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
           });
           source.addEffect("speed", SHADOW_TIME, {
             showParticles: false,
-            amplifier: 2,
+            amplifier: 4,
           });
           source.addEffect("jump_boost", SHADOW_TIME, {
             showParticles: false,
@@ -104,7 +146,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
             system.runTimeout(() => {
               nearbyEntities.forEach((entity: Entity) => {
                 if (entity?.location) {
-                  dimension.spawnParticle("minere:big_smoke", {
+                  dimension.spawnParticle("minecraft:sonic_explosion", {
                     x: entity.location.x,
                     y: entity.location.y + 1,
                     z: entity.location.z,
@@ -144,9 +186,16 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
             source.playSound("item.amethyst_staff.error");
             return;
           }
+          const infinityLevel = getEnchantmentLevel(source, "infinity");
+          const powerLevel = getEnchantmentLevel(source, "power");
+          const punchLevel = getEnchantmentLevel(source, "punch");
+          const flameLevel = getEnchantmentLevel(source, "flame");
+          const sonicRange = SONIC_RANGE * (infinityLevel > 0 ? 2 : 1);
+          const sonicDamage = SONIC_DAMAGE + powerLevel * 2;
+          const sonicSplashDamage = SONIC_SPLASH_DAMAGE + powerLevel * 2;
           // get direct hits
           const raycastHits = source.getEntitiesFromViewDirection({
-            maxDistance: SONIC_RANGE,
+            maxDistance: sonicRange,
             includeLiquidBlocks: false,
             includePassableBlocks: false,
           });
@@ -162,14 +211,14 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
 
           // get splash hits
           let targetLocation = source.getBlockFromViewDirection({
-            maxDistance: SONIC_RANGE,
+            maxDistance: sonicRange,
             includeLiquidBlocks: false,
             includePassableBlocks: false,
           })?.block?.location;
           if (!targetLocation) {
             targetLocation = addVector3(
               source.getHeadLocation(),
-              multiplyVector3Number(source.getViewDirection(), SONIC_RANGE),
+              multiplyVector3Number(source.getViewDirection(), sonicRange),
             );
           }
           const splashEntities = dimension
@@ -203,6 +252,10 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
               "mob.warden.sonic_boom",
               source.location,
             );
+            source.dimension.playSound("mob.warden.sonic_boom", targetLocation);
+            if (flameLevel > 0) {
+              igniteAirCube(dimension, targetLocation);
+            }
             raycastHits.forEach((raycastHit: EntityRaycastHit) => {
               const entity = raycastHit.entity;
               if (!isAlive(entity)) {
@@ -213,9 +266,9 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
 
               // Calculate damage multiplier
               let damageMultiplier = 1;
-              if (distance > SONIC_RANGE / 2) {
-                const excess = distance - SONIC_RANGE / 2;
-                const falloffRange = SONIC_RANGE / 2;
+              if (distance > sonicRange / 2) {
+                const excess = distance - sonicRange / 2;
+                const falloffRange = sonicRange / 2;
                 damageMultiplier = 1 - (excess / falloffRange) * 0.5;
                 if (damageMultiplier < 0.5) {
                   damageMultiplier = 0.5; // clamp
@@ -223,7 +276,7 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
               }
 
               // Apply scaled damage
-              entity.applyDamage(SONIC_DAMAGE * damageMultiplier, {
+              entity.applyDamage(sonicDamage * damageMultiplier, {
                 damagingEntity: source,
                 damagingProjectile: source,
                 cause:
@@ -231,10 +284,16 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
                     ? EntityDamageCause.entityAttack
                     : EntityDamageCause.sonicBoom,
               });
+              applySonicEnchantments(
+                source,
+                entity,
+                punchLevel,
+                flameLevel,
+              );
             });
             splashEntities.forEach((entity: Entity) => {
               if (entity?.location) {
-                entity.applyDamage(SONIC_SPLASH_DAMAGE, {
+                entity.applyDamage(sonicSplashDamage, {
                   damagingEntity: source,
                   damagingProjectile: source,
                   cause:
@@ -242,6 +301,12 @@ export const useEchoStaff = (data: ItemUseBeforeEvent) => {
                       ? EntityDamageCause.entityAttack
                       : EntityDamageCause.sonicBoom,
                 });
+                applySonicEnchantments(
+                  source,
+                  entity,
+                  punchLevel,
+                  flameLevel,
+                );
               }
             });
           }, 10);

@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "empty", "weight": 150 },
+        { "type": "item", "name": "minecraft:melon_slice", "weight": 20 },
+        { "type": "item", "name": "minecraft:stick", "weight": 15 },
+        { "type": "item", "name": "minecraft:bone", "weight": 15 }
+      ]
+    }
+  ]
+}

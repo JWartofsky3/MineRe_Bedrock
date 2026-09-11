@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10",
+  "render_controllers": {
+    "controller.render.minere.dark_staff_base": {
+      "geometry": "geometry.default",
+      "arrays": {
+        "textures": {
+          "Array.fire": [
+            "Texture.fire0",
+            "Texture.fire1",
+            "Texture.fire2",
+            "Texture.fire3"
+          ]
+        }
+      },
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.fire[variable.textureframe]"
+      ]
+    }
+  }
+}

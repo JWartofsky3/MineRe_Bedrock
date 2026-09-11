@@ -1,0 +1,1 @@
+{"format_version":"1.21.50","minecraft:recipe_shaped":{"description":{"identifier":"minere:andesite_brick_slab"},"tags":["crafting_table"],"pattern":["###"],"key":{"#":{"item":"minere:andesite_bricks"}},"result":{"item":"minere:andesite_brick_slab","count":6}}}

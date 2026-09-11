@@ -4,11 +4,13 @@ export const GUIDE_DISCOVERY_PROPERTY = "minere:guide_discovery";
 
 export type GuideDiscoveryCategory =
   | "animals"
+  | "golems"
   | "monsters"
   | "bosses"
   | "equipment"
   | "ores"
-  | "blocks";
+  | "blocks"
+  | "achievements";
 
 type DiscoveryEntries = Record<string, unknown>;
 type PlayerGuideDiscovery = Record<GuideDiscoveryCategory, DiscoveryEntries>;
@@ -16,11 +18,13 @@ type GuideDiscoveryStore = Record<string, Partial<PlayerGuideDiscovery>>;
 
 const discoveryCategories: GuideDiscoveryCategory[] = [
   "animals",
+  "golems",
   "monsters",
   "bosses",
   "equipment",
   "ores",
   "blocks",
+  "achievements",
 ];
 
 function getGuideDiscoveryStore(): GuideDiscoveryStore {

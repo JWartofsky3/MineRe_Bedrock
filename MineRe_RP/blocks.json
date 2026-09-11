@@ -24,6 +24,14 @@
     "textures": "minere:enderon_block",
     "sound": "stone"
   },
+  "minere:activated_enderon_block": {
+    "textures": "minere:activated_enderon_block",
+    "sound": "stone"
+  },
+  "minere:ender_sorter": {
+    "textures": "minere:ender_sorter",
+    "sound": "metal"
+  },
   "minere:indigon_block": {
     "textures": "minere:indigon_block",
     "sound": "stone"
@@ -153,6 +161,38 @@
     "sound": "stone"
   },
   "minere:diorite_bricks": {
+    "textures": "minere:diorite_bricks",
+    "sound": "stone"
+  },
+  "minere:lapis_brick_stairs": {
+    "textures": "minere:lapis_bricks",
+    "sound": "stone"
+  },
+  "minere:lapis_brick_slab": {
+    "textures": "minere:lapis_bricks",
+    "sound": "stone"
+  },
+  "minere:andesite_brick_stairs": {
+    "textures": "minere:andesite_bricks",
+    "sound": "stone"
+  },
+  "minere:andesite_brick_slab": {
+    "textures": "minere:andesite_bricks",
+    "sound": "stone"
+  },
+  "minere:granite_brick_stairs": {
+    "textures": "minere:granite_bricks",
+    "sound": "stone"
+  },
+  "minere:granite_brick_slab": {
+    "textures": "minere:granite_bricks",
+    "sound": "stone"
+  },
+  "minere:diorite_brick_stairs": {
+    "textures": "minere:diorite_bricks",
+    "sound": "stone"
+  },
+  "minere:diorite_brick_slab": {
     "textures": "minere:diorite_bricks",
     "sound": "stone"
   },

@@ -1,4 +1,5 @@
 import {
+  Entity,
   EntityComponentTypes,
   EntityDamageCause,
   EntityEquippableComponent,
@@ -67,6 +68,16 @@ export function infernoCrownOnEntityHurt(data: EntityHurtAfterEvent) {
     3,
     25,
     player.dimension,
+  );
+}
+
+export function isWearingInfernoCrown(entity: Entity): boolean {
+  const equippable = entity.getComponent(
+    EntityComponentTypes.Equippable,
+  ) as EntityEquippableComponent;
+  return (
+    equippable?.getEquipment(EquipmentSlot.Head)?.typeId ===
+    INFERNO_CROWN_ITEM_ID
   );
 }
 

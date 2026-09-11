@@ -361,6 +361,30 @@ const blockDefinitions: Record<string, GuideBlockPageDefinition> = {
     entries: [{ text: "???" }],
     discoverable: true,
   },
+  short_icicle: {
+    name: "tile.minere:short_icicle.name",
+    iconPath: "textures/guide/blocks/short_icicle",
+    description: ["guide.minere.blocks.icicle.short.description"],
+    crafting: [],
+  },
+  tall_icicle: {
+    name: "tile.minere:tall_icicle.name",
+    iconPath: "textures/guide/blocks/tall_icicle",
+    description: ["guide.minere.blocks.icicle.tall.description"],
+    crafting: [],
+  },
+  thin_icicle: {
+    name: "tile.minere:thin_icicle.name",
+    iconPath: "textures/guide/blocks/short_icicle",
+    description: ["guide.minere.blocks.icicle.thin.description"],
+    crafting: [],
+  },
+  thick_icicle: {
+    name: "tile.minere:thick_icicle.name",
+    iconPath: "textures/guide/blocks/tall_icicle",
+    description: ["guide.minere.blocks.icicle.thick.description"],
+    crafting: [],
+  },
 };
 
 const blockCategories: GuideBlockCategory[] = [
@@ -416,6 +440,11 @@ const blockCategories: GuideBlockCategory[] = [
       "raw_indigon_block",
       "nether_coal_block",
     ],
+  },
+  {
+    name: "guide.minere.blocks.icicles",
+    iconPath: "textures/guide/blocks/tall_icicle",
+    blockIds: ["short_icicle", "tall_icicle", "thin_icicle", "thick_icicle"],
   },
 ];
 

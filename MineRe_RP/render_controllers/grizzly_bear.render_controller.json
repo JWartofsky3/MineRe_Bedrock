@@ -14,8 +14,33 @@
         }
       },
       "geometry": "Geometry.default",
-      "materials": [{ "*": "Material.default" }],
-      "textures": ["Array.skins[query.variant]"]
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[query.variant]"
+      ]
+    },
+    "controller.render.minere.grizzly_bear_chest": {
+      "arrays": {
+        "textures": {
+          "Array.chest": [
+            "Texture.empty",
+            "Texture.chest"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.chest[query.is_chested ? 1 : 0]"
+      ]
     },
     "controller.render.minere.grizzly_bear_armor": {
       "arrays": {
@@ -33,8 +58,33 @@
         }
       },
       "geometry": "Geometry.default",
-      "materials": [{ "*": "Material.armor" }],
-      "textures": ["Array.armor[variable.armor_type]"]
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.armor[variable.armor]"
+      ]
+    },
+    "controller.render.minere.grizzly_bear_saddle": {
+      "arrays": {
+        "textures": {
+          "Array.saddle": [
+            "Texture.empty",
+            "Texture.saddle"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.saddle[query.is_saddled ? 1 : 0]"
+      ]
     }
   }
 }

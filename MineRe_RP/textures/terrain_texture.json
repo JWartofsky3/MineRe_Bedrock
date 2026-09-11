@@ -22,6 +22,12 @@
     "minere:enderon_block": {
       "textures": "textures/blocks/minere/enderon_block"
     },
+    "minere:activated_enderon_block": {
+      "textures": "textures/blocks/minere/activated_enderon_block"
+    },
+    "minere:ender_sorter": {
+      "textures": "textures/blocks/minere/ender_sorter"
+    },
     "minere:indigon_block": {
       "textures": "textures/blocks/minere/indigon_block"
     },
@@ -120,6 +126,9 @@
     },
     "minere:green_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/green"
+    },
+    "minere:red_firefly_lamp": {
+      "textures": "textures/blocks/minere/firefly_lamp/red"
     },
     "minere:yellow_firefly_lamp": {
       "textures": "textures/blocks/minere/firefly_lamp/yellow"

@@ -119,6 +119,9 @@ export abstract class BaseCustomEntity implements CustomEntity {
     world.beforeEvents.entityRemove.subscribe(
       (data: EntityRemoveBeforeEvent) => {
         if (data.removedEntity?.typeId === this.typeId) {
+          // entityRemoveAfter only exposes the type and id, so the runner must
+          // be cleared while the entity is still available.
+          this.stopTicking(data.removedEntity);
           this.onBeforeEntityRemove?.(data);
         }
       },
@@ -132,7 +135,8 @@ export abstract class BaseCustomEntity implements CustomEntity {
       },
     );
 
-    // Stop ticking when entity is removed/unloaded.
+    // The entity is no longer available here; runner cleanup happens in the
+    // corresponding before-event above.
     world.afterEvents.entityRemove.subscribe((data: EntityRemoveAfterEvent) => {
       if (data.typeId === this.typeId) {
         this.onEntityRemove?.(data);

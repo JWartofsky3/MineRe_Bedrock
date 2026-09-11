@@ -1,0 +1,61 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.indigon_golem": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [
+            {
+              "walk": "query.modified_move_speed"
+            },
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking == 1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attacking": {
+          "animations": [
+            "attack",
+            "look_at_target",
+            {
+              "walk": "query.modified_move_speed"
+            }
+          ],
+          "transitions": [
+            {
+              "walking": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.minere.indigon_golem_charge": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "transitions": [
+            {
+              "charging": "variable.is_charging"
+            }
+          ]
+        },
+        "charging": {
+          "animations": [
+            "shoot"
+          ],
+          "transitions": [
+            {
+              "idle": "!variable.is_charging"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

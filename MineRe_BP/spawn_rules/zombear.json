@@ -14,7 +14,7 @@
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 15
+          "default": 12
         },
         "minecraft:biome_filter": {
           "any_of": [
@@ -37,6 +37,26 @@
               "test": "has_biome_tag",
               "operator": "==",
               "value": "taiga"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 12
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "monster"
             }
           ]
         }

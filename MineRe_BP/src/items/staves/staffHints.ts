@@ -15,7 +15,7 @@ const STAFF_HINT_EQUIPPED_ITEM_PROPERTY = "minere:staff_hint_equipped_item";
 const STAFF_EQUIP_HINTS: Record<string, string> = {
   "minere:amethyst_staff": "hint.minere:staff.amethyst.sneak",
   "minere:echo_staff": "hint.minere:staff.echo.sneak",
-  "minere:shadow_staff": "hint.minere:staff.shadow.sneak",
+  "minere:dark_staff": "hint.minere:staff.shadow.sneak",
   "minere:fire_staff": "hint.minere:staff.fire.sneak",
   "minere:ice_staff": "hint.minere:staff.ice.sneak",
 };

@@ -18,8 +18,8 @@
         }
       },
       "geometry": "Geometry.default",
-      "materials": [{ "*": "Material.armor" }],
-      "textures": ["Array.armor[variable.armor_type]"]
+      "materials": [{ "*": "variable.armor_is_enchanted ? Material.enchanted : Material.armor" }],
+      "textures": ["Array.armor[variable.armor_type]", "Texture.enchanted"]
     }
   }
 }

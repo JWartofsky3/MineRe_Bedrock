@@ -1,0 +1,805 @@
+{
+  "format_version": "1.18.20",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:indigon_golem",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "minere:is_weapon_charging": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "minere:player_created": {},
+      "minere:to_corrupted_indigon_golem": {
+        "minecraft:transformation": {
+          "into": "minere:corrupted_indigon_golem",
+          "begin_transform_sound": "mob.indigon_golem.charge",
+          "transformation_sound": "mob.warden.sonic_boom",
+          "delay": {
+            "value": 100
+          }
+        },
+        "minecraft:spell_effects": {},
+        "minecraft:is_shaking": {}
+      },
+      "minere:commandable": {
+        "minecraft:tameable": {
+          "probability": 0,
+          "tame_items": "minecraft:barrier",
+          "tame_event": {
+            "event": "minere:on_take_command",
+            "target": "self"
+          }
+        }
+      },
+      "minere:commanded": {
+        "minecraft:is_tamed": {},
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        }
+      },
+      "minere:following_owner": {
+        "minecraft:behavior.follow_owner": {
+          "priority": 4,
+          "speed_multiplier": 1.5,
+          "start_distance": 8,
+          "stop_distance": 4
+        }
+      },
+      "minere:wander": {
+        "minecraft:behavior.random_stroll": {
+          "priority": 4,
+          "speed_multiplier": 0.8
+        },
+        "minecraft:behavior.move_through_village": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "only_at_night": true
+        }
+      },
+      "minere:normal_movement": {
+        "minecraft:movement": {
+          "value": 0.25
+        }
+      },
+      "minere:item_pickup": {
+        "minecraft:behavior.pickup_items": {
+          "priority": 4,
+          "max_dist": 10,
+          "goal_radius": 2,
+          "speed_multiplier": 1.25,
+          "pickup_based_on_chance": false,
+          "can_pickup_any_item": true,
+          "can_pickup_to_hand_or_equipment": false
+        }
+      },
+      "minere:attacks_hostile": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_reach": true,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "monster"
+                  }
+                ],
+                "none_of": [
+                  {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "piglin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "goblin"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zombie_pigman"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "enderman"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
+      "minere:attacks_monsters": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_reach": true,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
+      "minere:attacks_other_players": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_reach": true,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              "max_dist": 32
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  }
+                ],
+                "none_of": [
+                  {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
+      "minere:attacks_everything": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_reach": true,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "mob"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  }
+                ],
+                "none_of": [
+                  {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        }
+      },
+      "minere:supercharging": {
+        "minecraft:movement": {
+          "value": 0
+        }
+      },
+      "minere:melee_mode": {
+        "minecraft:behavior.delayed_attack": {
+          "priority": 3,
+          "attack_duration": 0.5,
+          "attack_once": false,
+          "cooldown_time": 0,
+          "track_target": true,
+          "require_complete_path": false,
+          "random_stop_interval": 0,
+          "reach_multiplier": 2.25,
+          "speed_multiplier": 1.25,
+          "hit_delay_pct": 0.5
+        }
+      },
+      "minere:ranged_mode": {
+        "minecraft:shooter": {
+          "def": "minere:plasma_bolt"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "attack_radius": 32,
+          "burst_shots": 3,
+          "burst_interval": 0.5,
+          "charge_shoot_trigger": 1.5,
+          "charge_charged_trigger": 1
+        }
+      },
+      "minere:plasma_cannon": {
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 6,
+          "outside_range": 6,
+          "must_see": true,
+          "on_inside_range": {
+            "event": "minere:switch_to_melee",
+            "target": "self"
+          },
+          "on_outside_range": {
+            "event": "minere:switch_to_ranged",
+            "target": "self"
+          }
+        }
+      },
+      "minere:sonic_blaster": {
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 6,
+          "outside_range": 6,
+          "must_see": true,
+          "on_inside_range": {
+            "event": "minere:switch_to_melee",
+            "target": "self"
+          },
+          "on_outside_range": {
+            "event": "minere:switch_to_sonic",
+            "target": "self"
+          }
+        }
+      },
+      "minere:sonic_mode": {
+        "minecraft:behavior.sonic_boom": {
+          "priority": 3,
+          "duration": 3.0,
+          "speed_multiplier": 1.2,
+          "attack_damage": 10,
+          "attack_range_horizontal": 15,
+          "attack_range_vertical": 20,
+          "attack_cooldown": 2,
+          "knockback_vertical_strength": 0.5,
+          "knockback_horizontal_strength": 2.5,
+          "knockback_height_cap": 0.5,
+          "duration_until_attack_sound": 1.7,
+          "charge_sound": "sonic_charge",
+          "attack_sound": "sonic_boom"
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:variant": {
+        "value": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1,
+        "entity_types": {
+          "filters": {
+            "test": "is_family",
+            "subject": "other",
+            "operator": "!=",
+            "value": "player"
+          }
+        }
+      },
+      "minecraft:follow_range": {
+        "value": 32,
+        "max": 32
+      },
+      "minecraft:nameable": {},
+      "minecraft:type_family": {
+        "family": [
+          "indigon_golem",
+          "irongolem",
+          "mob"
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/indigon_golem.json"
+      },
+      "minecraft:health": {
+        "value": 200,
+        "max": 200
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 2.9
+      },
+      "minecraft:attack": {
+        "damage": [
+          16,
+          32
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.9
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "fall",
+          "deals_damage": false
+        }
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "blocks_to_avoid": [
+          "minecraft:powder_snow",
+          "minecraft:fire",
+          "minecraft:lava",
+          "minecraft:magma"
+        ]
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:inventory": {
+        "inventory_size": 27,
+        "container_type": "container"
+      },
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minere:ender_plasma",
+            "priority": 1,
+            "pickup_limit": 64,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:echo_shard",
+            "priority": 1,
+            "pickup_limit": 64,
+            "stored_in_inventory": true
+          }
+        ]
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_sneaking",
+                    "subject": "other",
+                    "value": false
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "minere:indigon_ingot"
+                  },
+                  {
+                    "test": "is_missing_health",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            "use_item": true,
+            "health_amount": 32,
+            "play_sounds": "irongolem.repair",
+            "interact_text": "action.interact.repair"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "minecraft:sculk_catalyst"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "value": "minecraft:effect.weakness"
+                  }
+                ]
+              },
+              "event": "minere:corrupt_indigon_golem",
+              "target": "self"
+            },
+            "use_item": true,
+            "interact_text": "action.interact.cure"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_sneaking",
+                    "subject": "other",
+                    "value": false
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "minere:indigon_ingot"
+                  }
+                ]
+              },
+              "event": "minere:from_player",
+              "target": "self"
+            },
+            "use_item": false,
+            "interact_text": "action.interact.reprogram"
+          }
+        ]
+      },
+      "minecraft:behavior.look_at_target": {
+        "priority": 5,
+        "angle_of_view_horizontal": 90,
+        "angle_of_view_vertical": 90,
+        "look_distance": 32,
+        "look_time": [
+          4,
+          8
+        ],
+        "probability": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 6,
+        "angle_of_view_horizontal": 90,
+        "angle_of_view_vertical": 90,
+        "look_distance": 16,
+        "look_time": [
+          4,
+          8
+        ],
+        "probability": 0.5
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 7,
+        "angle_of_view_horizontal": 90,
+        "angle_of_view_vertical": 90
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "minere:wander",
+            "minere:attacks_hostile",
+            "minere:melee_mode"
+          ]
+        }
+      },
+      "minere:from_player": {
+        "add": {
+          "component_groups": [
+            "minere:player_created"
+          ]
+        }
+      },
+      "minere:corrupt_indigon_golem": {
+        "add": {
+          "component_groups": [
+            "minere:to_corrupted_indigon_golem"
+          ]
+        }
+      },
+      "minere:take_command": {
+        "add": {
+          "component_groups": [
+            "minere:commandable"
+          ]
+        }
+      },
+      "minere:on_take_command": {
+        "add": {
+          "component_groups": [
+            "minere:commanded"
+          ]
+        }
+      },
+      "minere:relinquish_command": {
+        "remove": {
+          "component_groups": [
+            "minere:commandable",
+            "minere:commanded",
+            "minere:following_owner"
+          ]
+        }
+      },
+      "minere:follow_owner": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:wander"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:following_owner"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:stay_here": {
+        "remove": {
+          "component_groups": [
+            "minere:following_owner",
+            "minere:wander"
+          ]
+        }
+      },
+      "minere:at_ease": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:following_owner"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:wander"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:enable_attack_hostile": {
+        "add": {
+          "component_groups": [
+            "minere:player_created",
+            "minere:attacks_hostile"
+          ]
+        }
+      },
+      "minere:enable_attack_monsters": {
+        "add": {
+          "component_groups": [
+            "minere:player_created",
+            "minere:attacks_monsters"
+          ]
+        }
+      },
+      "minere:enable_attack_other_players": {
+        "add": {
+          "component_groups": [
+            "minere:player_created",
+            "minere:attacks_other_players"
+          ]
+        }
+      },
+      "minere:enable_attack_everything": {
+        "add": {
+          "component_groups": [
+            "minere:player_created",
+            "minere:attacks_everything"
+          ]
+        }
+      },
+      "minere:enable_attack_only_owner_target": {
+        "remove": {
+          "component_groups": [
+            "minere:attacks_hostile",
+            "minere:attacks_monsters",
+            "minere:attacks_other_players",
+            "minere:attacks_everything",
+            "minere:player_created"
+          ]
+        }
+      },
+      "minere:supercharge": {
+        "add": {
+          "component_groups": [
+            "minere:supercharging"
+          ]
+        }
+      },
+      "minere:end_supercharge": {
+        "add": {
+          "component_groups": [
+            "minere:normal_movement"
+          ]
+        }
+      },
+      "minere:enable_item_pickup": {
+        "add": {
+          "component_groups": [
+            "minere:item_pickup"
+          ]
+        }
+      },
+      "minere:disable_item_pickup": {
+        "remove": {
+          "component_groups": [
+            "minere:item_pickup"
+          ]
+        }
+      },
+      "minere:activate_plasma_cannon": {
+        "add": {
+          "component_groups": [
+            "minere:plasma_cannon"
+          ]
+        }
+      },
+      "minere:deactivate_plasma_cannon": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:plasma_cannon",
+                "minere:ranged_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:melee_mode"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:activate_sonic_blaster": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:plasma_cannon",
+                "minere:ranged_mode",
+                "minere:melee_mode",
+                "minere:sonic_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:sonic_blaster",
+                "minere:sonic_mode"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:deactivate_sonic_blaster": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:sonic_blaster",
+                "minere:sonic_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:melee_mode"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:switch_to_melee": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:ranged_mode",
+                "minere:sonic_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:melee_mode"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:switch_to_ranged": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:melee_mode",
+                "minere:sonic_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:ranged_mode"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:switch_to_sonic": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "minere:melee_mode",
+                "minere:ranged_mode"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:sonic_mode"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

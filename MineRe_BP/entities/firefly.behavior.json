@@ -213,6 +213,51 @@
                 "particle_y_offset": 0.25,
                 "particle_offset_towards_interactor": true
               }
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {
+                      "test": "is_variant",
+                      "subject": "self",
+                      "value": 4
+                    },
+                    {
+                      "any_of": [
+                        {
+                          "test": "has_equipment",
+                          "domain": "hand",
+                          "subject": "other",
+                          "value": "glass"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "domain": "hand",
+                          "subject": "other",
+                          "value": "glass_bottle"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "event": "despawn",
+                "target": "self"
+              },
+              "use_item": true,
+              "transform_to_item": "minere:red_firefly_lamp",
+              "play_sounds": "saddle",
+              "interact_text": "action.interact.catch",
+              "particle_on_start": {
+                "particle_type": "smoke",
+                "particle_y_offset": 0.25,
+                "particle_offset_towards_interactor": true
+              }
             }
           ]
         },
@@ -262,6 +307,11 @@
       "minere:blue_firefly": {
         "minecraft:variant": {
           "value": 3
+        }
+      },
+      "minere:red_firefly": {
+        "minecraft:variant": {
+          "value": 4
         }
       }
     },
@@ -430,6 +480,13 @@
               "value": "warped_forest"
             },
             "trigger": "spawn_purple"
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag",
+              "value": "mushroom"
+            },
+            "trigger": "spawn_red"
           }
         ]
       },
@@ -454,6 +511,12 @@
       "spawn_blue": {
         "add": {
           "component_groups": ["minere:blue_firefly"]
+        },
+        "trigger": "add_base_components"
+      },
+      "spawn_red": {
+        "add": {
+          "component_groups": ["minere:red_firefly"]
         },
         "trigger": "add_base_components"
       },

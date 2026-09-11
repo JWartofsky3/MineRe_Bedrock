@@ -1,0 +1,73 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:evil_skeleton_monkey",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "skeleton": "textures/entity/minere/monkey/skeleton",
+        "skeleton_bite0": "textures/entity/minere/monkey/skeleton_bite0",
+        "skeleton_bite1": "textures/entity/minere/monkey/skeleton_bite1",
+        "empty": "textures/entity/minere/monkey/empty"
+      },
+      "geometry": {
+        "default": "geometry.minere.monkey"
+      },
+      "animations": {
+        "walk": "animation.minere.monkey.walk",
+        "run": "animation.minere.monkey.run",
+        "climb": "animation.minere.monkey.climb",
+        "attack": "animation.minere.monkey.attack",
+        "look_at_target": "animation.minere.monkey.look_at",
+        "sit": "animation.minere.monkey.sit",
+        "lean": "animation.minere.monkey.lean",
+        "lie_back": "animation.minere.monkey.lie_back",
+        "beat_chest": "animation.minere.monkey.beat_chest",
+        "beat_chest_sound": "animation.minere.monkey.beat_chest_sound",
+        "clap": "animation.minere.monkey.clap",
+        "clap_sound": "animation.minere.monkey.clap_sound",
+        "laugh": "animation.minere.monkey.laugh",
+        "scared": "animation.minere.monkey.scared",
+        "snack": "animation.minere.monkey.snack",
+        "snack_sound": "animation.minere.monkey.snack_sound",
+        "angel": "animation.minere.monkey.angel",
+        "nod": "animation.minere.monkey.nod",
+        "handstand": "animation.minere.monkey.handstand",
+        "controller": "controller.animation.minere.monkey",
+        "sit_controller": "controller.animation.minere.monkey_sit",
+        "attack_controller": "controller.animation.minere.monkey_attack"
+      },
+      "sound_effects": {
+        "thud": "mob.evil_skeleton_monkey.thud"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.play_anim_latched = 0.0;",
+          "variable.play_anim = 0.0;"
+        ],
+        "pre_animation": [
+          "variable.play_anim_latched = !variable.attack_time && query.is_on_ground && ((variable.play_anim_latched && query.ground_speed < 1.0) || (!variable.play_anim_latched && query.ground_speed < 0.35));",
+          "variable.play_anim = variable.play_anim_latched;",
+          "variable.bite_frame = math.mod(query.life_time * 4, 2);",
+          "variable.is_biting = variable.attack_time > 0.0;"
+        ],
+        "animate": [
+          "controller",
+          "attack_controller",
+          "sit_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.minere.evil_skeleton_monkey_bite",
+        "controller.render.minere.evil_skeleton_monkey"
+      ],
+      "enable_attachables": true,
+      "spawn_egg": {
+        "base_color": "#e0e0d8",
+        "overlay_color": "#554f43"
+      }
+    }
+  }
+}

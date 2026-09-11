@@ -4,7 +4,8 @@
     "description": {
       "identifier": "minere:elephant",
       "materials": {
-        "default": "entity_alphatest"
+        "default": "entity_alphatest",
+        "enchanted": "armor_enchanted"
       },
       "textures": {
         "gray": "textures/entity/minere/elephant/gray",
@@ -35,7 +36,8 @@
         "armor_diamond": "textures/entity/minere/elephant/armor/diamond",
         "armor_netherite": "textures/entity/minere/elephant/armor/netherite",
         "armor_enderon": "textures/entity/minere/elephant/armor/enderon",
-        "armor_indigon": "textures/entity/minere/elephant/armor/indigon"
+        "armor_indigon": "textures/entity/minere/elephant/armor/indigon",
+        "enchanted": "textures/misc/enchanted_actor_glint"
       },
       "geometry": {
         "default": "geometry.minere.elephant"
@@ -47,7 +49,8 @@
       "scripts": {
         "pre_animation": [
           "variable.carpet = 1 + query.property('minere:carpet');",
-          "variable.armor = query.is_item_name_any('slot.armor.body', 'minere:copper_elephant_armor') ? 1 : query.is_item_name_any('slot.armor.body', 'minere:iron_elephant_armor') ? 2 : query.is_item_name_any('slot.armor.body', 'minere:gold_elephant_armor') ? 3 : query.is_item_name_any('slot.armor.body', 'minere:diamond_elephant_armor') ? 4 : query.is_item_name_any('slot.armor.body', 'minere:netherite_elephant_armor') ? 5 : query.is_item_name_any('slot.armor.body', 'minere:enderon_elephant_armor') ? 6 : query.is_item_name_any('slot.armor.body', 'minere:indigon_elephant_armor') ? 7 : 0;"
+          "variable.armor = query.is_item_name_any('slot.armor.body', 'minere:copper_elephant_armor') ? 1 : query.is_item_name_any('slot.armor.body', 'minere:iron_elephant_armor') ? 2 : query.is_item_name_any('slot.armor.body', 'minere:gold_elephant_armor') ? 3 : query.is_item_name_any('slot.armor.body', 'minere:diamond_elephant_armor') ? 4 : query.is_item_name_any('slot.armor.body', 'minere:netherite_elephant_armor') ? 5 : query.is_item_name_any('slot.armor.body', 'minere:enderon_elephant_armor') ? 6 : query.is_item_name_any('slot.armor.body', 'minere:indigon_elephant_armor') ? 7 : 0;",
+          "variable.armor_is_enchanted = variable.armor > 0 && query.is_enchanted;"
         ],
         "animate": [
           "controller",

@@ -9,7 +9,7 @@ export const IndigonApple: ItemCustomComponent = {
 
     if (itemId === "minere:enchanted_indigon_apple") {
       player.addEffect("strength", 30 * SECONDS_TO_TICKS, {
-        amplifier: 3,
+        amplifier: 2,
       });
       player.addEffect("speed", 30 * SECONDS_TO_TICKS, {
         amplifier: 2,

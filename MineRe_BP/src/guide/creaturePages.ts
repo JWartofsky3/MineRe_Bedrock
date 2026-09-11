@@ -165,6 +165,13 @@ const grizzlyBearPage = new EntityPage({
     { value: 16, label: "guide.minere.entity.variant.tamed" },
   ],
   description: { translate: "guide.minere.entity.grizzly_bear.description" },
+  variants: [
+    { translate: "guide.minere.entity.grizzly_bear.variants.0" },
+    { translate: "guide.minere.entity.grizzly_bear.variants.1" },
+    { translate: "guide.minere.entity.grizzly_bear.variants.2" },
+    { translate: "guide.minere.entity.grizzly_bear.variants.3" },
+    { translate: "guide.minere.entity.grizzly_bear.variants.4" },
+  ],
   spawning: [
     { translate: "guide.minere.entity.grizzly_bear.spawn.taiga" },
     { translate: "guide.minere.entity.grizzly_bear.spawn.forest" },
@@ -243,15 +250,52 @@ const grizzlyBearPage = new EntityPage({
   ],
 });
 
+const indigonGolemPage = new EntityPage({
+  name: { translate: "entity.minere:indigon_golem.name" },
+  imagePath: "textures/guide/golems/indigon_golem",
+  maxHealth: 200,
+  attack: [16, 32],
+  description: { translate: "guide.minere.entity.indigon_golem.description" },
+  abilities: [
+    "guide.minere.entity.indigon_golem.abilities.0",
+    "guide.minere.entity.indigon_golem.abilities.1",
+    "guide.minere.entity.indigon_golem.abilities.2",
+    "guide.minere.entity.indigon_golem.abilities.3",
+    "guide.minere.entity.indigon_golem.abilities.4",
+  ],
+});
+
+const corruptedIndigonGolemPage = new EntityPage({
+  name: { translate: "entity.minere:corrupted_indigon_golem.name" },
+  imagePath: "textures/guide/golems/corrupted_indigon_golem",
+  maxHealth: 200,
+  attack: [16, 32],
+  description: {
+    translate: "guide.minere.entity.corrupted_indigon_golem.description",
+  },
+});
+
+const friendlyWalkerPage = new EntityPage({
+  name: { translate: "entity.minere:friendly_walker.name" },
+  imagePath: "textures/guide/golems/friendly_walker",
+  maxHealth: 150,
+  attack: [7, 10],
+  description: { translate: "guide.minere.entity.friendly_walker.description" },
+});
+
 const entityPages = new Map<string, EntityPage>([
   ["minere:moose", moosePage],
   ["minere:deer", deerPage],
   ["minere:vampire", vampirePage],
   ["minere:grizzly_bear", grizzlyBearPage],
+  ["minere:indigon_golem", indigonGolemPage],
+  ["minere:corrupted_indigon_golem", corruptedIndigonGolemPage],
+  ["minere:friendly_walker", friendlyWalkerPage],
 ]);
 
 const categoryFallbackIcons: Record<DiscoveryCategory, string> = {
   animals: "textures/guide/animals/deer",
+  golems: "textures/guide/golems/indigon_golem",
   monsters: "textures/guide/monsters/ogre",
   bosses: "textures/guide/bosses/inferno",
 };
@@ -272,6 +316,8 @@ const guideImagePaths: Partial<Record<string, string>> = {
   "minere:rat": "textures/guide/animals/rat",
   "minere:squirrel": "textures/guide/animals/squirrel",
   "minere:whale": "textures/guide/animals/whale",
+  "minere:indigon_golem": "textures/guide/golems/indigon_golem",
+  "minere:friendly_walker": "textures/guide/golems/friendly_walker",
   "minere:biter": "textures/guide/monsters/biter",
   "minere:cosmic_jelly": "textures/guide/monsters/cosmic_jelly",
   "minere:demon": "textures/guide/monsters/demon",
@@ -288,11 +334,16 @@ const guideImagePaths: Partial<Record<string, string>> = {
   "minere:netherzord": "textures/guide/monsters/netherzord",
   "minere:ogre": "textures/guide/monsters/ogre",
   "minere:scorpion": "textures/guide/monsters/scorpion",
+  "minere:skelemoose": "textures/guide/monsters/skelemoose",
+  "minere:skelephant": "textures/guide/monsters/skelephant",
+  "minere:soul_stomp": "textures/guide/monsters/soul_stomp",
   "minere:stomp": "textures/guide/monsters/stomp",
   "minere:vampire": "textures/guide/monsters/vampire",
   "minere:walker": "textures/guide/monsters/walker",
   "minere:web_spider": "textures/guide/monsters/web_spider",
   "minere:yeti": "textures/guide/monsters/yeti",
+  "minere:zombear": "textures/guide/monsters/zombear",
+  "minere:evil_skeleton_monkey": "textures/guide/monsters/evil_skeleton_monkey",
   "minere:inferno": "textures/guide/bosses/inferno",
   "minere:glacier": "textures/guide/bosses/glacier",
 };
@@ -339,7 +390,7 @@ const basicGuidePages: Readonly<Record<string, BasicGuidePage>> = {
   "minere:eagle": {
     health: 20,
     attack: 6,
-    spawning: 7,
+    spawning: 5,
     drops: 2,
   },
   "minere:elephant": {
@@ -362,9 +413,9 @@ const basicGuidePages: Readonly<Record<string, BasicGuidePage>> = {
   },
   "minere:firefly": {
     health: 6,
-    spawning: 10,
+    spawning: 11,
     breedItems: 3,
-    variants: 4,
+    variants: 5,
     extra: 1,
   },
   "minere:monkey": {
@@ -486,7 +537,7 @@ const basicGuidePages: Readonly<Record<string, BasicGuidePage>> = {
     weaknesses: 1,
   },
   "minere:necromancer": {
-    health: 28,
+    health: 30,
     abilities: 6,
     spawning: 2,
     drops: 3,
@@ -510,11 +561,36 @@ const basicGuidePages: Readonly<Record<string, BasicGuidePage>> = {
     spawning: 3,
     drops: 3,
   },
+  "minere:skelemoose": {
+    health: 50,
+    attack: 5,
+    spawning: 3,
+    experience: [5, 10],
+    drops: 1,
+  },
+  "minere:skelephant": {
+    health: 150,
+    attack: [10, 20],
+    spawning: 3,
+    experience: 200,
+    abilities: 1,
+    drops: 2,
+  },
   "minere:stomp": {
     health: 40,
     attack: 6,
-    spawning: 3,
-    drops: 3,
+    spawning: 2,
+    variants: 3,
+    drops: 2,
+  },
+  "minere:soul_stomp": {
+    health: 40,
+    attack: 12,
+    effects: [
+      { glyph: WEAKNESS_GLYPH, effectKey: "weakness_i", durationSeconds: 10 },
+    ],
+    spawning: 1,
+    drops: 1,
   },
   "minere:walker": {
     health: 150,
@@ -542,6 +618,20 @@ const basicGuidePages: Readonly<Record<string, BasicGuidePage>> = {
     abilities: 4,
     weaknesses: 1,
   },
+  "minere:zombear": {
+    health: 60,
+    attack: 8,
+    spawning: 5,
+    experience: [5, 10],
+    abilities: 1,
+    drops: 3,
+  },
+  "minere:evil_skeleton_monkey": {
+    health: 12,
+    attack: 3,
+    spawning: 1,
+    abilities: 1,
+  },
   "minere:inferno": {
     health: 300,
     attack: 9,
@@ -566,9 +656,8 @@ function guideEntityContentKey(
   index?: number,
 ): string {
   const entityId = typeId.replace("minere:", "");
-  return `guide.minere.entity.${entityId}.${section}${
-    index === undefined ? "" : `.${index}`
-  }`;
+  return `guide.minere.entity.${entityId}.${section}${index === undefined ? "" : `.${index}`
+    }`;
 }
 
 function guideEntityContentEntries(
@@ -602,51 +691,51 @@ for (const [typeId, page] of Object.entries(basicGuidePages)) {
       itemGroups:
         page.tameItems || page.breedItems
           ? [
-              ...(page.tameItems
-                ? [
-                    {
-                      title: "guide.minere.entity.tame",
-                      items: guideEntityContentEntries(
-                        typeId,
-                        "tame",
-                        page.tameItems,
-                      )!.map((text) => ({
-                        text,
-                        iconPath: "",
-                      })),
-                    },
-                  ]
-                : []),
-              ...(page.breedItems
-                ? [
-                    {
-                      title: "guide.minere.entity.breed",
-                      items: guideEntityContentEntries(
-                        typeId,
-                        "breed",
-                        page.breedItems,
-                      )!.map((text) => ({
-                        text,
-                        iconPath: "",
-                      })),
-                    },
-                  ]
-                : []),
-            ]
+            ...(page.tameItems
+              ? [
+                {
+                  title: "guide.minere.entity.tame",
+                  items: guideEntityContentEntries(
+                    typeId,
+                    "tame",
+                    page.tameItems,
+                  )!.map((text) => ({
+                    text,
+                    iconPath: "",
+                  })),
+                },
+              ]
+              : []),
+            ...(page.breedItems
+              ? [
+                {
+                  title: "guide.minere.entity.breed",
+                  items: guideEntityContentEntries(
+                    typeId,
+                    "breed",
+                    page.breedItems,
+                  )!.map((text) => ({
+                    text,
+                    iconPath: "",
+                  })),
+                },
+              ]
+              : []),
+          ]
           : undefined,
       equipment: page.equipment
         ? [
-            {
-              items: guideEntityContentEntries(
-                typeId,
-                "equipment",
-                page.equipment,
-              )!.map((text) => ({
-                text,
-                iconPath: "",
-              })),
-            },
-          ]
+          {
+            items: guideEntityContentEntries(
+              typeId,
+              "equipment",
+              page.equipment,
+            )!.map((text) => ({
+              text,
+              iconPath: "",
+            })),
+          },
+        ]
         : undefined,
       abilities: guideEntityContentEntries(typeId, "abilities", page.abilities),
       weaknesses: guideEntityContentEntries(
@@ -657,38 +746,28 @@ for (const [typeId, page] of Object.entries(basicGuidePages)) {
       experience: page.experience,
       drops: page.drops
         ? guideEntityContentEntries(typeId, "drops", page.drops)!.map(
-            (text) => ({
-              text,
-              iconPath: "",
-            }),
-          )
+          (text) => ({
+            text,
+            iconPath: "",
+          }),
+        )
         : undefined,
       extra:
         typeId === "minere:firefly"
           ? [
-              {
-                translate: guideEntityContentKey(typeId, "extra", 0),
-                with: [
-                  `${String.fromCharCode(167)}aFirefly Lamp${String.fromCharCode(167)}r`,
-                ],
-              },
-            ]
+            {
+              translate: guideEntityContentKey(typeId, "extra", 0),
+              with: [
+                `${String.fromCharCode(167)}aFirefly Lamp${String.fromCharCode(167)}r`,
+              ],
+            },
+          ]
           : guideEntityContentEntries(typeId, "extra", page.extra),
     }),
   );
 }
 
-function getEntityIcon(
-  player: Player,
-  creature: GuideCreature,
-): string | undefined {
-  if (
-    creature.category === "bosses" &&
-    player.getGameMode() !== GameMode.Creative &&
-    getDiscoveryLevel(player, creature.typeId) < 2
-  ) {
-    return undefined;
-  }
+function getEntityIcon(creature: GuideCreature): string {
   return getGuideCreatureIcon(creature);
 }
 
@@ -706,17 +785,13 @@ export function showCreatureSection(
   const creatures = getGuideCreatures(section).filter(
     (creature) =>
       player.getGameMode() === GameMode.Creative ||
-      creature.category === "bosses" ||
       getDiscoveryLevel(player, creature.typeId) > 0,
   );
   const form = new ActionFormData().title({
     translate: `guide.minere.section.${section}`,
   });
 
-  if (
-    player.getGameMode() !== GameMode.Creative &&
-    (section === "animals" || section === "monsters")
-  ) {
+  if (player.getGameMode() !== GameMode.Creative) {
     form.label({
       translate: "guide.minere.section.discovered_total",
       with: [
@@ -727,15 +802,15 @@ export function showCreatureSection(
   }
 
   if (creatures.length === 0) {
-    form.label({ translate: "guide.minere.entity.none_discovered" });
+    form.label({
+      translate: `guide.minere.entity.${section}.none_discovered`,
+    });
   }
   for (const creature of creatures) {
-    const icon = getEntityIcon(player, creature);
-    if (icon) {
-      form.button({ translate: `entity.${creature.typeId}.name` }, icon);
-    } else {
-      form.button({ translate: `entity.${creature.typeId}.name` });
-    }
+    form.button(
+      { translate: `entity.${creature.typeId}.name` },
+      getEntityIcon(creature),
+    );
   }
   form.button({ translate: "guide.minere.back" });
   form
@@ -750,29 +825,6 @@ export function showCreatureSection(
       }
       const creature = creatures[response.selection];
       const discoveryLevel = getDiscoveryLevel(player, creature.typeId);
-      if (
-        creature.category === "bosses" &&
-        player.getGameMode() !== GameMode.Creative &&
-        discoveryLevel < 2
-      ) {
-        const legend: RawMessage = {
-          rawtext: [
-            {
-              translate: `guide.minere.entity.${creature.typeId.split(":")[1]}.legend`,
-            },
-            ...(discoveryLevel === 1
-              ? [
-                  { text: "\n\n" },
-                  { translate: "guide.minere.entity.boss_defeat_prompt" },
-                ]
-              : []),
-          ],
-        };
-        showCreatureMessagePage(player, creature, legend, () =>
-          showCreatureSection(player, section, onBack),
-        );
-        return;
-      }
       if (
         creature.category !== "animals" &&
         player.getGameMode() !== GameMode.Creative &&

@@ -5,6 +5,8 @@ import {
   EntityDamageCause,
   ItemComponentTypes,
   ItemCooldownComponent,
+  EntityComponentTypes,
+  EntityHealthComponent,
   Block,
   Dimension,
   Vector3,
@@ -19,6 +21,8 @@ import { isAlive, isFamily } from "mob/mob_utils";
 import { reduceDurability } from "../components/reduce_durability";
 import { spawnParticleCloud } from "particles/particleCloud";
 import { showHint } from "./staffHints";
+import { getEnchantmentLevel } from "items/components/item_utils";
+import { throwEntity } from "entities/functions/throw";
 
 const MONSTER_DAMAGE = 8;
 const UNDEAD_DAMAGE = 12;
@@ -26,6 +30,10 @@ const XP_COST = 6;
 const MAX_RANGE = 40;
 const GROWTH_CHANCE = 0.1;
 const DAMAGE_RANGE = 1.75;
+const CORRUPTED_INDIGON_GOLEM_TYPE_ID = "minere:corrupted_indigon_golem";
+const RESTORATION_STARTED_PROPERTY =
+  "minere:corrupted_indigon_golem_restoration_started";
+const RESTORATION_CHANCE = 0.1;
 
 export type WeightedGrowable = {
   block: string;
@@ -72,16 +80,21 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
         return;
       }
       cooldownComponent.startCooldown(source);
+      const flameLevel = getEnchantmentLevel(source, "flame");
+      const infinityLevel = getEnchantmentLevel(source, "infinity");
+      const powerLevel = getEnchantmentLevel(source, "power");
+      const punchLevel = getEnchantmentLevel(source, "punch");
+      const maxRange = MAX_RANGE * (infinityLevel > 0 ? 2 : 1);
       const sourceDir = source.getViewDirection();
       const targetLocation =
         source.getBlockFromViewDirection({
-          maxDistance: MAX_RANGE,
+          maxDistance: maxRange,
           includeLiquidBlocks: false,
           includePassableBlocks: false,
         })?.block?.location ??
         addVector3(
           source.getHeadLocation(),
-          multiplyVector3Number(source.getViewDirection(), MAX_RANGE),
+          multiplyVector3Number(source.getViewDirection(), maxRange),
         );
       const sourcePos = source.getHeadLocation();
       const dist = distVector3(source.location, targetLocation);
@@ -119,20 +132,40 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
               }
               entitiesHit.add(entity.id);
               if (isFamily(entity, "monster")) {
-                entity.applyDamage(
-                  isFamily(entity, "undead") ? UNDEAD_DAMAGE : MONSTER_DAMAGE,
+                const wasDamaged = entity.applyDamage(
+                  (isFamily(entity, "undead")
+                    ? UNDEAD_DAMAGE
+                    : MONSTER_DAMAGE) + powerLevel,
                   {
                     damagingEntity: data.source,
                     cause: EntityDamageCause.magic,
                   },
                 );
+                if (
+                  wasDamaged &&
+                  entity.typeId === CORRUPTED_INDIGON_GOLEM_TYPE_ID &&
+                  entity.getDynamicProperty(RESTORATION_STARTED_PROPERTY) !==
+                    true &&
+                  Math.random() < RESTORATION_CHANCE
+                ) {
+                  entity.setDynamicProperty(RESTORATION_STARTED_PROPERTY, true);
+                  entity.triggerEvent("minere:restore_indigon_golem");
+                }
                 dimension.spawnParticle(
                   "minecraft:critical_hit_emitter",
                   entity.getHeadLocation(),
                 );
                 dimension.spawnParticle("minere:emerald_wave", entity.location);
+                if (wasDamaged && punchLevel > 0) {
+                  throwEntity(
+                    source.location,
+                    entity,
+                    punchLevel * 1.5,
+                    punchLevel * 0.5,
+                  );
+                }
               } else {
-                entity.addEffect("instant_health", 1);
+                healEntity(entity, powerLevel);
                 spawnParticleCloud(
                   "minecraft:heart_particle",
                   entity.getHeadLocation(),
@@ -140,6 +173,18 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
                   5,
                   entity.dimension,
                 );
+                if (flameLevel > 0) {
+                  system.runTimeout(() => {
+                    if (!entity.isValid) {
+                      return;
+                    }
+                    healEntity(entity, powerLevel);
+                    entity.dimension.spawnParticle(
+                      "minere:emerald_wave",
+                      entity.location,
+                    );
+                  }, 12);
+                }
               }
             }
             // apply effects to blocks
@@ -162,6 +207,22 @@ export const useEmeraldStaff = (data: ItemUseBeforeEvent) => {
     });
   }
 };
+
+function healEntity(
+  entity: import("@minecraft/server").Entity,
+  powerLevel: number,
+) {
+  entity.addEffect("instant_health", 1);
+  if (powerLevel <= 0) {
+    return;
+  }
+  const health = entity.getComponent(
+    EntityComponentTypes.Health,
+  ) as EntityHealthComponent;
+  health.setCurrentValue(
+    Math.min(health.effectiveMax, health.currentValue + powerLevel),
+  );
+}
 
 function growBlocks(dimension: Dimension, pos: Vector3) {
   if (pos.y < dimension.heightRange.min || pos.y > dimension.heightRange.max) {

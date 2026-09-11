@@ -1,0 +1,83 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.minere.indigon_golem",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0],
+					"locators": {
+						"center_particles": [0, 24, 0]
+					}
+				},
+				{
+					"name": "right_leg",
+					"parent": "root",
+					"pivot": [-5, 18, 0],
+					"cubes": [
+						{"origin": [-9, 0, -4], "size": [8, 18, 8], "uv": [64, 66]}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "root",
+					"pivot": [5, 18, 0],
+					"cubes": [
+						{"origin": [1, 0, -4], "size": [8, 18, 8], "uv": [0, 67]}
+					]
+				},
+				{
+					"name": "torso",
+					"parent": "root",
+					"pivot": [0, 18, -1],
+					"cubes": [
+						{"origin": [-8, 18, -3], "size": [16, 5, 6], "uv": [68, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "torso",
+					"pivot": [0, 23, 0],
+					"cubes": [
+						{"origin": [-3, 21, -7], "size": [6, 20, 13], "uv": [0, 0]},
+						{"origin": [-11, 23, -3], "size": [8, 26, 8], "uv": [0, 33]},
+						{"origin": [3, 23, -3], "size": [8, 26, 8], "uv": [32, 33]}
+					],
+					"locators": {
+						"charge_particles": [0, 45, 1]
+					}
+				},
+				{
+					"name": "left_arm",
+					"parent": "head",
+					"pivot": [11, 34, -1],
+					"cubes": [
+						{"origin": [11, 13, -5], "size": [6, 24, 9], "uv": [38, 0]}
+					],
+					"locators": {
+						"left_hand": [14, 14, -1]
+					}
+				},
+				{
+					"name": "right_arm",
+					"parent": "head",
+					"pivot": [-11, 34, -1],
+					"cubes": [
+						{"origin": [-17, 13, -5], "size": [6, 24, 9], "uv": [64, 33]}
+					],
+					"locators": {
+						"right_hand": [-14, 14, -1]
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,68 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:skelephant",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "armor": "entity_emissive_alpha",
+        "enchanted": "armor_enchanted"
+      },
+      "textures": {
+        "skeleton": "textures/entity/minere/elephant/skeleton",
+        "saddle": "textures/entity/minere/elephant/saddle",
+        "chest": "textures/entity/minere/elephant/chest",
+        "empty": "textures/entity/minere/elephant/empty",
+        "armor_copper": "textures/entity/minere/elephant/armor/copper",
+        "armor_iron": "textures/entity/minere/elephant/armor/iron",
+        "armor_gold": "textures/entity/minere/elephant/armor/gold",
+        "armor_diamond": "textures/entity/minere/elephant/armor/diamond",
+        "armor_netherite": "textures/entity/minere/elephant/armor/netherite",
+        "armor_enderon": "textures/entity/minere/elephant/armor/enderon",
+        "armor_indigon": "textures/entity/minere/elephant/armor/indigon",
+        "enchanted": "textures/misc/enchanted_actor_glint"
+      },
+      "geometry": {
+        "default": "geometry.minere.skelephant"
+      },
+      "spawn_egg": {
+        "base_color": "#dedede",
+        "overlay_color": "#76604d"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.armor = query.is_item_name_any('slot.armor.body', 'minere:copper_elephant_armor') ? 1 : query.is_item_name_any('slot.armor.body', 'minere:iron_elephant_armor') ? 2 : query.is_item_name_any('slot.armor.body', 'minere:gold_elephant_armor') ? 3 : query.is_item_name_any('slot.armor.body', 'minere:diamond_elephant_armor') ? 4 : query.is_item_name_any('slot.armor.body', 'minere:netherite_elephant_armor') ? 5 : query.is_item_name_any('slot.armor.body', 'minere:enderon_elephant_armor') ? 6 : query.is_item_name_any('slot.armor.body', 'minere:indigon_elephant_armor') ? 7 : 0;",
+          "variable.armor_is_enchanted = variable.armor > 0 && query.is_enchanted;"
+        ],
+        "animate": [
+          "controller",
+          "breathe",
+          {
+            "hide_reins": "!query.has_rider"
+          }
+        ]
+      },
+      "animations": {
+        "walk": "animation.minere.elephant.walk",
+        "breathe": "animation.minere.elephant.breathe",
+        "attack": "animation.minere.elephant.attack",
+        "look_at_target": "animation.minere.elephant.look_at",
+        "controller": "controller.animation.minere.skelephant",
+        "hide_reins": "animation.minere.elephant.hide_reins",
+        "stomp": "animation.minere.elephant.stomp",
+        "sink": "animation.minere.skelephant.sink"
+      },
+      "sound_effects": {
+        "stomp": "mob.ogre.smash",
+        "trumpet": "mob.elephant.trumpet",
+        "swing": "boss.inferno.swing"
+      },
+      "render_controllers": [
+        "controller.render.minere.elephant_chest",
+        "controller.render.minere.skelephant_armor",
+        "controller.render.minere.elephant_saddle",
+        "controller.render.minere.skelephant"
+      ]
+    }
+  }
+}

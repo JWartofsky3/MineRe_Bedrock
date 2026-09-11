@@ -9,8 +9,7 @@
       "textures": {
         "default": "textures/entity/minere/stomp/sand_stomp",
         "red": "textures/entity/minere/stomp/red_stomp",
-        "end": "textures/entity/minere/stomp/end_stomp",
-        "soul": "textures/entity/minere/stomp/soul_stomp"
+        "end": "textures/entity/minere/stomp/end_stomp"
       },
       "geometry": {
         "default": "geometry.minere.stomp"

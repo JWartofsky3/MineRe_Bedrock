@@ -1,0 +1,9 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": { "identifier": "minere:furnace_copper_bear_armor" },
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:copper_bear_armor",
+    "output": "minecraft:copper_ingot"
+  }
+}

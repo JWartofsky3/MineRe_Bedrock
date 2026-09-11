@@ -213,7 +213,7 @@
         },
         "minecraft:breedable": {
           "require_tame": false,
-          "breed_items": ["melon_slice"],
+          "breed_items": ["glistering_melon_slice"],
           "breeds_with": {
             "mate_type": "minere:monkey",
             "baby_type": "minere:monkey",
@@ -243,9 +243,24 @@
           "max_to_eat": 0,
           "initial_eat_delay": 2
         },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "skeleton_monkey"
+              },
+              "max_dist": 16,
+              "walk_speed_multiplier": 1.1,
+              "sprint_speed_multiplier": 1.6
+            }
+          ]
+        },
         "minecraft:tameable": {
-          "probability": 1.0,
-          "tame_items": ["glistering_melon_slice"],
+          "probability": 0.2,
+          "tame_items": ["melon_slice"],
           "tame_event": {
             "event": "minere:on_tame",
             "target": "self"
@@ -1525,7 +1540,64 @@
       }
     },
     "components": {
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "all_slots_empty",
+                    "subject": "self",
+                    "value": "hand",
+                    "operator": "not"
+                  },
+                  {
+                    "test": "all_slots_empty",
+                    "subject": "other",
+                    "value": "main_hand"
+                  }
+                ]
+              }
+            },
+            "drop_item_slot": "slot.weapon.mainhand",
+            "drop_item_y_offset": 0.5,
+            "swing": true,
+            "interact_text": "action.interact.drop_item"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "all_slots_empty",
+                    "subject": "other",
+                    "value": "main_hand"
+                  }
+                ]
+              }
+            },
+            "drop_item_slot": "slot.armor.head",
+            "drop_item_y_offset": 0.5,
+            "swing": true,
+            "interact_text": "action.interact.drop_item"
+          }
+        ]
+      },
       "minecraft:is_hidden_when_invisible": {},
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/monkey_gear.json"
+      },
       "minecraft:type_family": {
         "family": ["monkey", "mob"]
       },

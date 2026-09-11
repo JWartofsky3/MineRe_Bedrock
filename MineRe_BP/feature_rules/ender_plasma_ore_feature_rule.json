@@ -20,19 +20,28 @@
       ]
     },
     "distribution": {
-      "iterations": "(Math.abs(v.originz) < 750 && Math.abs(v.originx) < 750) ? 0 : 15",
+      "iterations": "t.noise = q.noise(v.originz/200 + 0, v.originx/200 + 0); return (t.noise > 1.000001) ? 15 : (t.noise > -1.000001) ? 15 : 0;",
       "coordinate_eval_order": "zyx",
       "x": {
         "distribution": "uniform",
-        "extent": [0, 16]
+        "extent": [
+          0,
+          16
+        ]
       },
       "y": {
         "distribution": "gaussian",
-        "extent": [-48, 80]
+        "extent": [
+          -48,
+          80
+        ]
       },
       "z": {
         "distribution": "uniform",
-        "extent": [0, 16]
+        "extent": [
+          0,
+          16
+        ]
       }
     }
   }

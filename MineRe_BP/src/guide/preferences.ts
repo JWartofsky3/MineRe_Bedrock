@@ -1,5 +1,6 @@
 import { Player, world } from "@minecraft/server";
-import { ModalFormData } from "@minecraft/server-ui";
+import { ActionFormData, MessageFormData, ModalFormData } from "@minecraft/server-ui";
+import { clearGuideDiscovery } from "guide/discoveryStorage";
 
 export interface PlayerPreferences {
   enableHints: boolean;
@@ -47,6 +48,34 @@ export function showPreferencesPage(
   player: Player,
   onBack: () => void = () => {},
 ): void {
+  const form = new ActionFormData().title({
+    translate: "guide.minere.preferences.title",
+  });
+  form.button({ translate: "guide.minere.preferences.configure" });
+  form.button({ translate: "guide.minere.preferences.reset_discovery" });
+  form.button({ translate: "guide.minere.back" });
+
+  form
+    .show(player)
+    .then((response) => {
+      if (response.canceled || response.selection === 2) {
+        onBack();
+        return;
+      }
+      if (response.selection === 0) {
+        showPreferencesForm(player, onBack);
+        return;
+      }
+      if (response.selection === 1) {
+        showResetGuideDiscoveryConfirmation(player, onBack);
+      }
+    })
+    .catch((error) =>
+      console.error("Failed to show preferences page: " + error),
+    );
+}
+
+function showPreferencesForm(player: Player, onBack: () => void): void {
   const preferences = getPreferences(player);
   const form = new ModalFormData().title({
     translate: "guide.minere.preferences.title",
@@ -85,5 +114,31 @@ export function showPreferencesPage(
     })
     .catch((error) =>
       console.error("Failed to show preferences form: " + error),
+    );
+}
+
+function showResetGuideDiscoveryConfirmation(
+  player: Player,
+  onBack: () => void,
+): void {
+  const form = new MessageFormData()
+    .title({ translate: "guide.minere.preferences.reset_confirm.title" })
+    .body({ translate: "guide.minere.preferences.reset_confirm.body" })
+    .button1({ translate: "guide.minere.preferences.reset_confirm.yes" })
+    .button2({ translate: "guide.minere.preferences.reset_confirm.no" });
+
+  form
+    .show(player)
+    .then((response) => {
+      if (!response.canceled && response.selection === 0) {
+        clearGuideDiscovery(player);
+        player.sendMessage({
+          translate: "guide.minere.preferences.reset_discovery.complete",
+        });
+      }
+      onBack();
+    })
+    .catch((error) =>
+      console.error("Failed to show guide reset confirmation: " + error),
     );
 }

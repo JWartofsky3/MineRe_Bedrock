@@ -4,7 +4,6 @@
     "controller.render.minere.walker": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.default", "Texture.friendly"],
           "Array.cracks": [
             "Texture.cracked_high",
             "Texture.cracked_low",
@@ -18,12 +17,11 @@
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.skins[query.variant]"]
+      "textures": ["Texture.default"]
     },
     "controller.render.minere.walker_cracks": {
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.default", "Texture.friendly"],
           "Array.cracks": [
             "Texture.cracked_high",
             "Texture.cracked_medium",

@@ -6,9 +6,18 @@ import {
   Player,
 } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
-import { WorldSettings, getSettings, saveSettings } from "settings";
+import {
+  MAX_TELEPORTER_MAX_DISTANCE,
+  MIN_TELEPORTER_MAX_DISTANCE,
+  WorldSettings,
+  getSettings,
+  saveSettings,
+} from "settings";
 
-const settingKeys: (keyof WorldSettings)[] = [
+const toggleSettingKeys: (keyof Omit<
+  WorldSettings,
+  "teleporterMaxDistance"
+>)[] = [
   "reducedHealthRegen",
   "healingFromSoup",
   "armorWeight",
@@ -21,7 +30,10 @@ const settingKeys: (keyof WorldSettings)[] = [
   "goldXPBonus",
 ];
 
-const settingTranslationNames: Record<keyof WorldSettings, string> = {
+const settingTranslationNames: Record<
+  keyof Omit<WorldSettings, "teleporterMaxDistance">,
+  string
+> = {
   reducedHealthRegen: "reduced_health_regen",
   healingFromSoup: "healing_from_soup",
   armorWeight: "armor_weight",
@@ -50,7 +62,7 @@ export function showSettingsPage(
     translate: "guide.minere.settings.title",
   });
 
-  for (const key of settingKeys) {
+  for (const key of toggleSettingKeys) {
     const name = settingTranslationNames[key];
     if (mayEdit) {
       form.toggle(
@@ -71,6 +83,27 @@ export function showSettingsPage(
     }
   }
 
+  if (mayEdit) {
+    form.textField(
+      { translate: "guide.minere.settings.teleporter_max_distance" },
+      `${MIN_TELEPORTER_MAX_DISTANCE}-${MAX_TELEPORTER_MAX_DISTANCE}`,
+      {
+        defaultValue: String(settings.teleporterMaxDistance),
+        tooltip: {
+          translate: "guide.minere.settings.tooltip.teleporter_max_distance",
+        },
+      },
+    );
+  } else {
+    form.label({
+      translate: "guide.minere.settings.display.teleporter_max_distance",
+      with: [String(settings.teleporterMaxDistance)],
+    });
+    form.label({
+      translate: "guide.minere.settings.tooltip.teleporter_max_distance",
+    });
+  }
+
   form.submitButton({
     translate: mayEdit ? "guide.minere.settings.save" : "guide.minere.back",
   });
@@ -85,7 +118,7 @@ export function showSettingsPage(
 
       if (
         player.commandPermissionLevel === CommandPermissionLevel.Any ||
-        response.formValues?.length !== settingKeys.length
+        response.formValues?.length !== toggleSettingKeys.length + 1
       ) {
         player.sendMessage({
           translate: "guide.minere.settings.update_failed",
@@ -94,9 +127,24 @@ export function showSettingsPage(
         return;
       }
       const updated = { ...settings };
-      settingKeys.forEach((key, index) => {
+      toggleSettingKeys.forEach((key, index) => {
         updated[key] = response.formValues![index] as boolean;
       });
+      const teleporterMaxDistance = Number(
+        response.formValues![toggleSettingKeys.length],
+      );
+      if (
+        !Number.isInteger(teleporterMaxDistance) ||
+        teleporterMaxDistance < MIN_TELEPORTER_MAX_DISTANCE ||
+        teleporterMaxDistance > MAX_TELEPORTER_MAX_DISTANCE
+      ) {
+        player.sendMessage({
+          translate: "guide.minere.settings.update_failed",
+        });
+        onBack();
+        return;
+      }
+      updated.teleporterMaxDistance = teleporterMaxDistance;
       saveSettings(updated);
       player.sendMessage({ translate: "guide.minere.settings.updated" });
       onBack();

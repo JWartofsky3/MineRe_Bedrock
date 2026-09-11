@@ -1,0 +1,20 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.evil_skeleton_monkey": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.skeleton"]
+    },
+    "controller.render.minere.evil_skeleton_monkey_bite": {
+      "arrays": {
+        "textures": {
+          "Array.bites": ["Texture.empty", "Texture.skeleton_bite0", "Texture.skeleton_bite1"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.bites[variable.is_biting ? (variable.bite_frame + 1) : 0]"]
+    }
+  }
+}

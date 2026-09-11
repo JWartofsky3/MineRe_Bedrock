@@ -14,7 +14,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 16
+          "default": 14
         },
         "minecraft:density_limit": {
           "surface": 2
@@ -83,7 +83,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 30
+          "default": 20
         },
         "minecraft:density_limit": {
           "surface": 3
@@ -190,7 +190,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 30
+          "default": 32
         },
         "minecraft:difficulty_filter": {
           "min": "easy",
@@ -259,7 +259,7 @@
           "adjust_for_weather": true
         },
         "minecraft:weight": {
-          "default": 100
+          "default": 75
         },
         "minecraft:spawns_on_block_filter": [
           "minecraft:ice",

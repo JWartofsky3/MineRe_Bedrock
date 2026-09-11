@@ -24,6 +24,8 @@ import { reduceDurability } from "../components/reduce_durability";
 import { findItemInContainer } from "items/components/item_utils";
 import { isFireMob } from "entities/functions/isFireMob";
 import { showHint } from "./staffHints";
+import { getEnchantmentLevel } from "items/components/item_utils";
+import { isWearingIceCrown } from "items/armor/IceCrown";
 
 const MAX_RANGE = 19;
 const WAVE_COUNT = 4;
@@ -38,6 +40,9 @@ const FREEZE_SOUND = "item.ice_charge.frost";
 const WAVE_SOUND = "mob.freeze.freeze";
 const WAVE_PARTICLE = "minere:ice_staff_wave";
 const AMMO_CONSUME_CHANCE = 0.64;
+const ATTACK_COOLDOWN_PROPERTY = "minere:ice_staff_attack_cooldown";
+const ATTACK_COOLDOWN_SECONDS = 3.2;
+const QUICK_CHARGE_REDUCTION_SECONDS = 0.15;
 
 export const useIceStaff = (data: ItemUseBeforeEvent) => {
   if (!data.source) {
@@ -53,6 +58,9 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
   if (itemStack.typeId !== "minere:ice_staff") {
     return;
   }
+  if (!source.isSneaking) {
+    data.cancel = true;
+  }
 
   system.run(() => {
     if (cooldownComponent?.getCooldownTicksRemaining(source)) {
@@ -60,6 +68,7 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
     }
     if (source.isSneaking) {
       if (
+        !isWearingIceCrown(source) &&
         !source.runCommand(
           `clear @s[m=!c] minere:ice_charge 0 ${SNEAK_AMMO_COST}`,
         ).successCount &&
@@ -103,7 +112,24 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
       return;
     }
 
+    const quickChargeLevel = getEnchantmentLevel(source, "quick_charge");
+    const cooldown = source.getDynamicProperty(ATTACK_COOLDOWN_PROPERTY);
+    const cooldownTicks = Math.max(
+      0,
+      (ATTACK_COOLDOWN_SECONDS -
+        quickChargeLevel * QUICK_CHARGE_REDUCTION_SECONDS) *
+        20,
+    );
     if (
+      typeof cooldown === "number" &&
+      system.currentTick - cooldown < cooldownTicks
+    ) {
+      source.playSound("item.amethyst_staff.error");
+      return;
+    }
+
+    if (
+      !isWearingIceCrown(source) &&
       source.getGameMode() !== GameMode.Creative &&
       findItemInContainer(
         (
@@ -118,17 +144,20 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
       showHint(source, "hint.minere:staff.ice.ammo");
       return;
     }
-    if (Math.random() < AMMO_CONSUME_CHANCE) {
+    if (!isWearingIceCrown(source) && Math.random() < AMMO_CONSUME_CHANCE) {
       source.runCommand("clear @s[m=!c] minere:ice_charge 0 1");
     }
 
-    cooldownComponent.startCooldown(source);
+    source.setDynamicProperty(ATTACK_COOLDOWN_PROPERTY, system.currentTick);
     reduceDurability(source, itemStack, 1);
     dimension.playSound(FREEZE_SOUND, source.location);
 
     const entitiesHit = new Set<string>();
 
-    for (let i = 0; i < WAVE_COUNT; i++) {
+    const multishotLevel = getEnchantmentLevel(source, "multishot");
+    const piercingLevel = getEnchantmentLevel(source, "piercing");
+    const waveCount = multishotLevel > 0 ? 6 : WAVE_COUNT;
+    for (let i = 0; i < waveCount; i++) {
       system.runTimeout(() => {
         const sourcePos = source.getHeadLocation();
         const sourceDir = getAimDirection(source.getViewDirection());
@@ -175,7 +204,7 @@ export const useIceStaff = (data: ItemUseBeforeEvent) => {
               }
               entitiesHit.add(entity.id);
               rollFreeze(entity);
-              let damage = DAMAGE;
+              let damage = DAMAGE + piercingLevel * 2;
               if (isFireMob(entity)) {
                 damage *= 3;
               }

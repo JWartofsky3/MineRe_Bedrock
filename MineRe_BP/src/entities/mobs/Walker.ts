@@ -6,8 +6,8 @@ const THROW_DISTANCE_SCALE = 1.25;
 const THROW_VERTICAL = 1.0;
 
 export class Walker extends BaseCustomEntity {
-  constructor() {
-    super("minere:walker");
+  constructor(typeId = "minere:walker") {
+    super(typeId);
   }
 
   onEntityHurtEntity = (data: EntityHurtAfterEvent): void => {

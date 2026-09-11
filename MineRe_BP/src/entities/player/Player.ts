@@ -1,4 +1,4 @@
-import { EntityDamageCause, EntityHurtAfterEvent } from "@minecraft/server";
+import { EntityDamageCause, EntityHurtAfterEvent, Player } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import { indigonArmorOnEntityHurt } from "items/armor/IndigonArmor";
 import { iceCrownOnEntityHurt } from "items/armor/IceCrown";

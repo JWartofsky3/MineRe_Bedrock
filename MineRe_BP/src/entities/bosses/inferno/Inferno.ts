@@ -3,6 +3,8 @@ import {
   EntityDamageCause,
   EntityHurtAfterEvent,
   EntitySpawnAfterEvent,
+  GameMode,
+  Player,
   system,
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
@@ -45,6 +47,7 @@ const DYNAMIC_PROPERTIES = {
 const TICK_INTERVAL: [number, number] = [16, 24];
 const STUN_PROPERTIES = {
   DAMAGE_THRESHOLD: 50,
+  SINK_FORCE: 0.08,
 };
 
 const SOUND_PROPERTIES = {
@@ -135,7 +138,11 @@ export class Inferno extends BaseCustomEntity {
   constructor() {
     super(INFERNO_TYPE_ID, {
       tick: TICK_INTERVAL,
-      targetQuery: { families: TARGET_FAMILIES, maxDistance: 48 },
+      targetQuery: {
+        families: TARGET_FAMILIES,
+        maxDistance: 48,
+        excludeGameModes: [GameMode.Creative, GameMode.Spectator],
+      },
     });
   }
 
@@ -168,6 +175,9 @@ export class Inferno extends BaseCustomEntity {
       return;
     }
     const attacker = data.damageSource?.damagingEntity;
+    if (attacker instanceof Player && attacker.getGameMode() === GameMode.Creative) {
+      return;
+    }
 
     const mode = this.getMode(boss);
     if (mode === InfernoMode.Stunned) {
@@ -406,6 +416,12 @@ export class Inferno extends BaseCustomEntity {
 
   // Handle stunned duration and exit conditions.
   private handleStunned(entity: Entity): void {
+    // Stop any movement loop that was already active when the stun landed.
+    this.killMovement(entity);
+    if (!entity.isOnGround) {
+      entity.applyImpulse({ x: 0, y: -STUN_PROPERTIES.SINK_FORCE, z: 0 });
+    }
+
     const cycles = entity.getDynamicProperty(DYNAMIC_PROPERTIES.STUN_CYCLE);
     const cycleValue = typeof cycles === "number" ? cycles : 0;
     const damage = entity.getDynamicProperty(DYNAMIC_PROPERTIES.STUN_DAMAGE);

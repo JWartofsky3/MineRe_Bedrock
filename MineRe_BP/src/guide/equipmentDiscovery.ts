@@ -1,7 +1,6 @@
 import {
   EntityComponentTypes,
   EquipmentSlot,
-  GameMode,
   Player,
   world,
 } from "@minecraft/server";
@@ -21,7 +20,7 @@ export const DISCOVERABLE_EQUIPMENT = {
     "minere:emerald_staff",
     "minere:fire_staff",
     "minere:ice_staff",
-    "minere:shadow_staff",
+    "minere:dark_staff",
   ],
   magicSwords: [
     "minere:darkheart",
@@ -85,10 +84,6 @@ export function getDiscoveredEquipmentTotal(player: Player): number {
 }
 
 export function discoverEquipment(player: Player, itemId: string): void {
-  if (player.getGameMode() === GameMode.Creative) {
-    return;
-  }
-
   if (!discoverableEquipmentIds.has(itemId)) {
     return;
   }

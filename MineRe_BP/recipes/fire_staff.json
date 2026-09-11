@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:fire_staff"
     },
-    "tags": ["crafting_table"],
+    "tags": ["altar"],
     "pattern": ["RER", "RIR", " I "],
     "key": {
       "R": {

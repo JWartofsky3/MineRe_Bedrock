@@ -1,0 +1,9 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": { "identifier": "minere:furnace_enderon_bear_armor" },
+    "tags": ["furnace", "blast_furnace"],
+    "input": "minere:enderon_bear_armor",
+    "output": "minere:enderon_gemstone"
+  }
+}

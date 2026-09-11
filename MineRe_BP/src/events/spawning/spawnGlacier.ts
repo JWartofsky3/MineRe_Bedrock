@@ -3,9 +3,6 @@ import {
   world,
   EntitySpawnAfterEvent,
   Dimension,
-  EntityComponentTypes,
-  EntityEquippableComponent,
-  EquipmentSlot,
   Player,
   Vector3,
 } from "@minecraft/server";
@@ -20,14 +17,11 @@ const MIN_WORLD_DAYS = 10;
 const SPAWN_CHANCE_COOLDOWN_TICKS = 90 * 60 * 20;
 const GLACIER_SPAWN_PROP = "minere:glacier_spawn";
 const SPAWNER_BLOCK_RADIUS = 12;
-const GLACIER_TOTEM_ID = "minere:glacier_totem";
-const GLACIER_WARD_ID = "minere:glacier_ward";
 const SURFACE_CHANCE_ROLL = 0.5;
 
 type Challenger = {
   player: Player;
   effectiveLevel: number;
-  hasTotem: boolean;
 };
 
 export class GlacierSpawnEvent implements RegisterableEvent {
@@ -66,20 +60,9 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
 
   let challenger: Challenger | undefined = undefined;
   for (const player of players) {
-    const glacierHeldItemState = getGlacierHeldItemState(player);
-    if (glacierHeldItemState.hasWard) {
-      return;
-    }
-
-    const effectiveLevel = glacierHeldItemState.hasTotem
-      ? LEVEL_CAP
-      : player.level;
+    const effectiveLevel = player.level;
     const miniBossProp = player.getDynamicProperty(GLACIER_SPAWN_PROP);
-    if (
-      !glacierHeldItemState.hasTotem &&
-      !!miniBossProp &&
-      typeof miniBossProp === "number"
-    ) {
+    if (!!miniBossProp && typeof miniBossProp === "number") {
       if (system.currentTick - miniBossProp < SPAWN_CHANCE_COOLDOWN_TICKS) {
         continue;
       }
@@ -88,21 +71,18 @@ function handleGlacierSpawn(data: EntitySpawnAfterEvent): void {
     if (
       !challenger ||
       effectiveLevel > challenger.effectiveLevel ||
-      (effectiveLevel === challenger.effectiveLevel &&
-        glacierHeldItemState.hasTotem &&
-        !challenger.hasTotem)
+      effectiveLevel === challenger.effectiveLevel
     ) {
       challenger = {
         player: player,
         effectiveLevel: effectiveLevel,
-        hasTotem: glacierHeldItemState.hasTotem,
       };
     }
   }
   if (!challenger) {
     return;
   }
-  if (!challenger.hasTotem && world.getDay() < MIN_WORLD_DAYS) {
+  if (world.getDay() < MIN_WORLD_DAYS) {
     return;
   }
 
@@ -132,32 +112,4 @@ function hasNearbyMobSpawner(dimension: Dimension, location: Vector3): boolean {
       return block.typeId === "minecraft:mob_spawner";
     },
   );
-}
-
-function getGlacierHeldItemState(player: Player): {
-  hasTotem: boolean;
-  hasWard: boolean;
-} {
-  const equippable = player.getComponent(
-    EntityComponentTypes.Equippable,
-  ) as EntityEquippableComponent;
-  if (!equippable) {
-    return {
-      hasTotem: false,
-      hasWard: false,
-    };
-  }
-
-  const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
-  const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
-  const hasWard =
-    mainhand?.typeId === GLACIER_WARD_ID || offhand?.typeId === GLACIER_WARD_ID;
-  const hasTotem =
-    mainhand?.typeId === GLACIER_TOTEM_ID ||
-    offhand?.typeId === GLACIER_TOTEM_ID;
-
-  return {
-    hasTotem: hasTotem,
-    hasWard: hasWard,
-  };
 }

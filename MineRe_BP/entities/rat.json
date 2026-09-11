@@ -25,16 +25,6 @@
     },
     "component_groups": {
       "minere:rat_neutral": {
-        "minecraft:environment_sensor": {
-          "triggers": {
-            "filters": {
-              "test": "is_brightness",
-              "operator": "<",
-              "value": 0.49
-            },
-            "event": "minere:become_hostile"
-          }
-        },
         "minecraft:on_friendly_anger": {
           "event": "minere:become_angry",
           "target": "self"
@@ -88,6 +78,18 @@
               "sprint_speed_multiplier": 2.0
             }
           ]
+        }
+      },
+      "minere:rat_dark_hostile_capable": {
+        "minecraft:environment_sensor": {
+          "triggers": {
+            "filters": {
+              "test": "is_brightness",
+              "operator": "<",
+              "value": 0.49
+            },
+            "event": "minere:become_hostile"
+          }
         }
       },
       "minere:rat_hostile": {
@@ -1232,6 +1234,21 @@
             ]
           },
           {
+            "randomize": [
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [
+                    "minere:rat_dark_hostile_capable"
+                  ]
+                }
+              },
+              {
+                "weight": 4
+              }
+            ]
+          },
+          {
             "add": {
               "component_groups": [
                 "minere:rat_neutral"
@@ -1274,7 +1291,8 @@
         "remove": {
           "component_groups": [
             "minere:rat_neutral",
-            "minere:rat_hostile"
+            "minere:rat_hostile",
+            "minere:rat_dark_hostile_capable"
           ]
         },
         "add": {

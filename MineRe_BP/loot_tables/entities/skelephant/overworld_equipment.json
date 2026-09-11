@@ -1,0 +1,12 @@
+{
+  "pools": [{
+    "rolls": 1,
+    "entries": [
+      { "type": "empty", "weight": 100 },
+      { "type": "item", "name": "minere:iron_elephant_armor", "weight": 55 },
+      { "type": "item", "name": "minere:copper_elephant_armor", "weight": 30 },
+      { "type": "item", "name": "minere:gold_elephant_armor", "weight": 12 },
+      { "type": "item", "name": "minere:diamond_elephant_armor", "weight": 3 }
+    ]
+  }]
+}

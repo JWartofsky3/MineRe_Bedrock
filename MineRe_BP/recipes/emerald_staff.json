@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:emerald_staff"
     },
-    "tags": ["crafting_table"],
+    "tags": ["altar"],
     "pattern": [" EB", " RE", "R  "],
     "key": {
       "R": {

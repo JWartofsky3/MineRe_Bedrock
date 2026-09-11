@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:activated_enderon_block"
+    },
+    "components": {
+      "minecraft:custom_components": ["minere:activated_enderon_block"],
+      "minecraft:loot": "loot_tables/blocks/activated_enderon_block.json",
+      "tag:minecraft:wood_tier_destructible": {},
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:stone": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 4.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 60
+      },
+      "minecraft:map_color": "#A33CBE",
+      "minecraft:light_emission": 4,
+      "minecraft:tick": {
+        "interval_range": [20, 20],
+        "looping": true
+      }
+    }
+  }
+}

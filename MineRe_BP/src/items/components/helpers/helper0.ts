@@ -1,28 +1,29 @@
-import { ItemCustomComponent, Player, world } from "@minecraft/server";
+import { ItemCustomComponent, Player } from "@minecraft/server";
+import { takeCommand } from "entities/helpers/commandableCompanion";
+
+const INDIGON_GOLEM = "minere:indigon_golem";
 
 export const Helper0: ItemCustomComponent = {
   onUse(arg) {
-    arg.source.sendMessage("Clearing old torches...");
-    const dimension = arg.source.dimension;
-    const { x, y, z } = arg.source.location;
+    if (!(arg.source instanceof Player)) {
+      return;
+    }
 
-    const spacing = 14; // keep darkest areas between 1–6 light level
-    const radius = 64; // covers a 128×128 area
+    const golems = arg.source.dimension.getEntities({
+      type: INDIGON_GOLEM,
+      location: arg.source.location,
+      maxDistance: 16,
+    });
 
-    for (let dx = -radius; dx <= radius; dx += spacing) {
-      for (let dz = -radius; dz <= radius; dz += spacing) {
-        const tx = Math.floor(x + dx);
-        const ty = Math.floor(y); // same Y level as player’s feet
-        const tz = Math.floor(z + dz);
-
-        // First clear any old torch
-        dimension.runCommand(`setblock ${tx} ${ty} ${tz} air`);
-
-        // Then place a new one
-        dimension.runCommand(`setblock ${tx} ${ty} ${tz} torch`);
+    let commandedGolems = 0;
+    for (const golem of golems) {
+      if (takeCommand(golem, arg.source, "minere:take_command")) {
+        commandedGolems++;
       }
     }
 
-    arg.source.sendMessage("Torch grid refreshed!");
+    arg.source.sendMessage(
+      `Took command of ${commandedGolems} nearby Indigon Golem(s).`,
+    );
   },
 };

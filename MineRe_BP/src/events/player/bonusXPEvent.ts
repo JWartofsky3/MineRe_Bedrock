@@ -8,22 +8,45 @@ import { RegisterableEvent } from "events/CustomEvent";
 import { getMainItem } from "items/components/item_utils";
 import { isFamily } from "mob/mob_utils";
 import { GOLD_XP_BONUS } from "settings";
+import {
+  hasAnyIdentifierKeyword,
+  hasIdentifierKeywords,
+} from "util/identifierKeywords";
 import { addVector3, randomVector3 } from "util/vector3Functions";
 
 const GOLD = 0.5;
 const COPPER = 0.1;
+const DAMAGE_DEALING_ITEM_KEYWORDS = [
+  // Vanilla weapons and tools.
+  "sword",
+  "pickaxe",
+  "axe",
+  "shovel",
+  "hoe",
+  "trident",
+  "mace",
+  "bow",
+  "crossbow",
+  // MineRe and common weapon names.
+  "spear",
+  "dagger",
+  "knife",
+  "scythe",
+  "battleaxe",
+  "hammer",
+  "warhammer",
+  "club",
+  "halberd",
+  "glaive",
+  "pike",
+  "lance",
+  "rapier",
+  "treecapitator",
+];
 
 const XP_VERTICAL_VELOCITY = 0.02;
 const XP_VELOCITY = 0.02;
 const itemXPMap = new Map<string, number>();
-
-// GOLD
-itemXPMap.set("minecraft:golden_sword", GOLD);
-itemXPMap.set("minecraft:golden_pickaxe", GOLD);
-itemXPMap.set("minecraft:golden_axe", GOLD);
-itemXPMap.set("minecraft:golden_shovel", GOLD);
-itemXPMap.set("minecraft:golden_hoe", GOLD);
-itemXPMap.set("minere:golden_treecapitator", GOLD);
 
 // COPPER
 itemXPMap.set("minecraft:copper_sword", COPPER);
@@ -70,7 +93,7 @@ function giveExtraXP(source: Entity, entity: Entity) {
   if (!health) {
     return;
   }
-  const itemXPFactor = itemXPMap.get(tool.typeId);
+  const itemXPFactor = getToolXPFactor(tool.typeId);
   if (!itemXPFactor) {
     return;
   }
@@ -91,4 +114,19 @@ function giveExtraXP(source: Entity, entity: Entity) {
       }),
     );
   }
+}
+
+function getToolXPFactor(typeId: string): number | undefined {
+  if (isDamageDealingGoldenItem(typeId)) {
+    return GOLD;
+  }
+
+  return itemXPMap.get(typeId);
+}
+
+function isDamageDealingGoldenItem(typeId: string): boolean {
+  return (
+    hasIdentifierKeywords(typeId, ["golden"]) &&
+    hasAnyIdentifierKeyword(typeId, DAMAGE_DEALING_ITEM_KEYWORDS)
+  );
 }

@@ -17,6 +17,7 @@ import {
   EntityIsChestedComponent,
   EntityEquippableComponent,
   EquipmentSlot,
+  EntityLoadAfterEvent,
 } from "@minecraft/server";
 import { BaseCustomEntity } from "entities/BaseCustomEntity";
 import {
@@ -117,6 +118,16 @@ const ELEPHANT_ARMOR_IDS = new Set<string>([
   "minere:indigon_elephant_armor",
 ]);
 
+const LEGACY_ARMOR_ID_BY_VALUE = new Map<number, string>([
+  [0, "minere:copper_elephant_armor"],
+  [1, "minere:iron_elephant_armor"],
+  [2, "minere:gold_elephant_armor"],
+  [3, "minere:diamond_elephant_armor"],
+  [4, "minere:netherite_elephant_armor"],
+  [5, "minere:enderon_elephant_armor"],
+  [6, "minere:indigon_elephant_armor"],
+]);
+
 const INVALID_TARGET_TYPES = new Set<string>([
   "minecraft:item",
   "minecraft:xp",
@@ -187,6 +198,26 @@ export class Elephant extends BaseCustomEntity {
     }
   }
 
+  onEntityLoad(data: EntityLoadAfterEvent): void {
+    const elephant = data.entity;
+    const legacyArmorId = LEGACY_ARMOR_ID_BY_VALUE.get(
+      elephant.getProperty("minere:armor") as number,
+    );
+    if (!legacyArmorId) {
+      return;
+    }
+
+    const equipment = elephant.getComponent(
+      EntityComponentTypes.Equippable,
+    ) as EntityEquippableComponent;
+    if (!equipment.getEquipment(EquipmentSlot.Body)) {
+      equipment.setEquipment(EquipmentSlot.Body, new ItemStack(legacyArmorId));
+    }
+
+    // Prevent legacy state from re-equipping armor after it is removed in the UI.
+    elephant.setProperty("minere:armor", -1);
+  }
+
   onEntityDie(data: EntityDieAfterEvent): void {
     const elephant = data.deadEntity;
 
@@ -252,18 +283,6 @@ export class Elephant extends BaseCustomEntity {
       );
       dimension.playSound("mob.sheep.shear", elephant.location);
       elephant.triggerEvent("minere:remove_carpet");
-      return;
-    }
-
-    // remove armor
-    const equipment = elephant.getComponent(
-      EntityComponentTypes.Equippable,
-    ) as EntityEquippableComponent;
-    const armor = equipment?.getEquipment(EquipmentSlot.Body);
-    if (armor && ELEPHANT_ARMOR_IDS.has(armor.typeId)) {
-      equipment.setEquipment(EquipmentSlot.Body, undefined);
-      dimension.spawnItem(armor, elephant.location);
-      dimension.playSound("mob.sheep.shear", elephant.location);
       return;
     }
 

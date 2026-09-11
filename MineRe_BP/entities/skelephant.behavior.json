@@ -1,0 +1,389 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minere:skelephant",
+      "runtime_identifier": "minecraft:skeleton",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "minere:is_stomping": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "minere:is_sinking": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "minere:skelephant_stomping": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:behavior.knockback_roar": {
+          "priority": 0,
+          "duration": 1.25,
+          "attack_time": 0.9,
+          "knockback_damage": 0,
+          "knockback_horizontal_strength": 7,
+          "knockback_vertical_strength": 5,
+          "knockback_range": 5,
+          "knockback_filters": {
+            "none_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "skeleton"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "necromancer"
+              }
+            ]
+          },
+          "on_roar_end": {
+            "event": "minere:end_stomp"
+          }
+        }
+      },
+      "minere:skelephant_saddled": {
+        "minecraft:is_saddled": {}
+      },
+      "minere:skelephant_sinking": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:pushable": {
+          "is_pushable": false,
+          "is_pushable_by_piston": false
+        }
+      },
+      "minere:skelephant_nether_equipment": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/skelephant/nether_equipment.json"
+        }
+      }
+    },
+    "components": {
+      "minecraft:boss": {
+        "name": "entity.minere:skelephant.name",
+        "hud_range": 10
+      },
+      "minecraft:type_family": {
+        "family": [
+          "skelephant",
+          "elephant",
+          "undead",
+          "monster",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 150
+      },
+      "minecraft:attack": {
+        "damage": [
+          10,
+          20
+        ]
+      },
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? 200 : 0"
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/skelephant/loot.json"
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/skelephant/overworld_equipment.json"
+      },
+      "minecraft:burns_in_daylight": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "skeleton"
+              }
+            },
+            "deals_damage": "no"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "necromancer"
+              }
+            },
+            "deals_damage": "no"
+          },
+          {
+            "cause": "freezing",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fall",
+            "damage_modifier": -3
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.9
+      },
+      "minecraft:movement": {
+        "value": 0.23
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "avoid_sun": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:collision_box": {
+        "width": 3.5,
+        "height": 4.5
+      },
+      "minecraft:follow_range": {
+        "value": 35
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:rideable": {
+        "seat_count": 5,
+        "family_types": [
+          "skeleton"
+        ],
+        "pull_in_entities": false,
+        "seats": [
+          {
+            "min_rider_count": 0,
+            "max_rider_count": 5,
+            "position": [
+              0,
+              3.75,
+              0.5
+            ]
+          },
+          {
+            "min_rider_count": 1,
+            "max_rider_count": 5,
+            "position": [
+              -0.75,
+              3.75,
+              -0.5
+            ]
+          },
+          {
+            "min_rider_count": 2,
+            "max_rider_count": 5,
+            "position": [
+              0.75,
+              3.75,
+              -0.5
+            ]
+          },
+          {
+            "min_rider_count": 3,
+            "max_rider_count": 5,
+            "position": [
+              -0.75,
+              3.75,
+              -1.5
+            ]
+          },
+          {
+            "min_rider_count": 4,
+            "max_rider_count": 5,
+            "position": [
+              0.75,
+              3.75,
+              -1.5
+            ]
+          }
+        ]
+      },
+      "minecraft:equippable": {
+        "slots": [
+          {
+            "slot": 1,
+            "item": "minere:iron_elephant_armor",
+            "accepted_items": [
+              "minere:copper_elephant_armor",
+              "minere:iron_elephant_armor",
+              "minere:gold_elephant_armor",
+              "minere:diamond_elephant_armor"
+            ]
+          }
+        ]
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "must_see": true,
+        "reselect_targets": true,
+        "within_radius": 35,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 35
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "villager"
+            },
+            "max_dist": 35
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "irongolem"
+            },
+            "max_dist": 35
+          }
+        ]
+      },
+      "minecraft:behavior.delayed_attack": {
+        "priority": 3,
+        "attack_duration": 1,
+        "attack_once": false,
+        "cooldown_time": 0,
+        "track_target": true,
+        "require_complete_path": false,
+        "reach_multiplier": 1.5,
+        "speed_multiplier": 1.5,
+        "hit_delay_pct": 0.58
+      },
+      "minecraft:behavior.flee_sun": {
+        "priority": 4,
+        "speed_multiplier": 1.0
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6,
+        "speed_multiplier": 1.0
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 8,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minere:saddled": {
+        "add": {
+          "component_groups": [
+            "minere:skelephant_saddled"
+          ]
+        }
+      },
+      "minere:spawn_nether": {
+        "add": {
+          "component_groups": [
+            "minere:skelephant_nether_equipment"
+          ]
+        }
+      },
+      "minere:start_stomp": {
+        "filters": {
+          "test": "bool_property",
+          "domain": "minere:is_stomping",
+          "value": false
+        },
+        "sequence": [
+          {
+            "set_property": {
+              "minere:is_stomping": true
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:skelephant_stomping"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:start_sinking": {
+        "filters": {
+          "test": "bool_property",
+          "domain": "minere:is_sinking",
+          "value": false
+        },
+        "sequence": [
+          {
+            "set_property": {
+              "minere:is_sinking": true
+            }
+          },
+          {
+            "remove": {
+              "component_groups": [
+                "minere:skelephant_stomping"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "minere:skelephant_sinking"
+              ]
+            }
+          }
+        ]
+      },
+      "minere:end_stomp": {
+        "sequence": [
+          {
+            "set_property": {
+              "minere:is_stomping": false
+            }
+          },
+          {
+            "remove": {
+              "component_groups": [
+                "minere:skelephant_stomping"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

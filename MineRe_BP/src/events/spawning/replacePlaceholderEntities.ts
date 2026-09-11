@@ -110,6 +110,10 @@ placeholderMap.set("minere:yeti_placeholder", {
   density: 4,
 });
 
+placeholderMap.set("minere:corrupted_indigon_golem_placeholder", {
+  typeId: "minere:corrupted_indigon_golem",
+});
+
 placeholderMap.set("minere:scorpion_placeholder", {
   typeId: "minere:scorpion",
 });
@@ -120,6 +124,10 @@ placeholderMap.set("minere:stomp_placeholder", {
     distanceFromOrigin: 1000,
     endermanChance: 0.5,
   },
+});
+
+placeholderMap.set("minere:soul_stomp_placeholder", {
+  typeId: "minere:soul_stomp",
 });
 
 placeholderMap.set("minere:biter_placeholder", {

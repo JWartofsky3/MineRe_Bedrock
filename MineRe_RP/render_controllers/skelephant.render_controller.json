@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.skelephant": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.skeleton"]
+    },
+    "controller.render.minere.skelephant_armor": {
+      "arrays": {
+        "textures": {
+          "Array.armor": [
+            "Texture.empty",
+            "Texture.armor_copper",
+            "Texture.armor_iron",
+            "Texture.armor_gold",
+            "Texture.armor_diamond",
+            "Texture.armor_netherite",
+            "Texture.armor_enderon",
+            "Texture.armor_indigon"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "variable.armor_is_enchanted ? Material.enchanted : Material.armor" }
+      ],
+      "textures": ["Array.armor[variable.armor]", "Texture.enchanted"]
+    }
+  }
+}

@@ -13,7 +13,7 @@
       "minecraft:damage": 3,
       "minecraft:can_destroy_in_creative": true,
       "minecraft:enchantable": {
-        "slot": "sword",
+        "slot": "crossbow",
         "value": 15
       },
       "minecraft:rarity": "uncommon",
@@ -22,7 +22,7 @@
       },
       "minecraft:cooldown": {
         "category": "amethystStaff",
-        "duration": 10.0
+        "duration": 10.2
       },
       "minecraft:repairable": {
         "repair_items": [

@@ -31,11 +31,37 @@
             ]
           }
         },
-        "minecraft:spell_effects": {}
+        "minecraft:spell_effects": {},
+        "minecraft:is_shaking": {}
       },
       "minere:necromancer_rider": {
         "minecraft:addrider": {
-          "entity_type": "minere:necromancer"
+          "entity_type": "minere:necromancer",
+          "spawn_event": "minere:mounted"
+        }
+      },
+      "minere:zombear_angry": {
+        "minecraft:angry": {
+          "duration": 30,
+          "broadcast_anger": true,
+          "broadcast_range": 32,
+          "broadcast_targets": ["zombear"],
+          "broadcast_anger_when_dying": false,
+          "calm_event": {
+            "event": "minere:on_calm",
+            "target": "self"
+          },
+          "angry_sound": "angry",
+          "sound_interval": {
+            "range_min": 3,
+            "range_max": 6
+          }
+        }
+      },
+      "minere:zombear_calm": {
+        "minecraft:on_target_acquired": {
+          "event": "minere:become_angry",
+          "target": "self"
         }
       }
     },
@@ -60,7 +86,8 @@
       "minecraft:rideable": {
         "seat_count": 1,
         "family_types": [
-          "necromancer"
+          "necromancer",
+          "bogged"
         ],
         "seats": [
           {
@@ -86,6 +113,20 @@
       "minecraft:health": {
         "value": 60,
         "max": 60
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "necromancer"
+              }
+            },
+            "deals_damage": "no"
+          }
+        ]
       },
       "minecraft:knockback_resistance": {
         "value": 0.7
@@ -220,6 +261,11 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
+            "add": {
+              "component_groups": ["minere:zombear_calm"]
+            }
+          },
+          {
             "filters": {
               "any_of": [
                 {
@@ -241,11 +287,11 @@
           {
             "randomize": [
               {
-                "weight": 10,
+                "weight": 90,
                 "add": {}
               },
               {
-                "weight": 5,
+                "weight": 10,
                 "add": {
                   "component_groups": [
                     "minere:necromancer_rider"
@@ -261,6 +307,27 @@
           "component_groups": [
             "minere:to_grizzly_bear"
           ]
+        }
+      },
+      "minere:necromancer_summoned": {
+        "add": {
+          "component_groups": ["minere:zombear_calm"]
+        }
+      },
+      "minere:become_angry": {
+        "remove": {
+          "component_groups": ["minere:zombear_calm"]
+        },
+        "add": {
+          "component_groups": ["minere:zombear_angry"]
+        }
+      },
+      "minere:on_calm": {
+        "remove": {
+          "component_groups": ["minere:zombear_angry"]
+        },
+        "add": {
+          "component_groups": ["minere:zombear_calm"]
         }
       }
     }

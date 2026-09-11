@@ -100,21 +100,21 @@
         }
       ]
     },
-    "item.shadow_staff.wave": {
+    "item.dark_staff.whoosh": {
       "category": "player",
       "sounds": [
         {
-          "name": "sounds/item/shadow_staff/wave",
+          "name": "sounds/item/dark_staff/whoosh",
           "volume": 1.5,
-          "pitch": 0.65
+          "pitch": 1.35
         }
       ]
     },
-    "item.shadow_staff.wave": {
+    "item.dark_staff.wave": {
       "category": "player",
       "sounds": [
         {
-          "name": "sounds/item/shadow_staff/wave",
+          "name": "sounds/item/dark_staff/wave",
           "volume": 1.5,
           "pitch": 0.65
         }
@@ -378,12 +378,45 @@
       ],
       "subtitle": "subtitles.entity.generic.eat"
     },
-    "mob.butterfly.squish": {
+    "mob.evil_skeleton_monkey.ambient": {
       "category": "ambient",
       "sounds": [
-        "sounds/mob/butterfly/squish0",
-        "sounds/mob/butterfly/squish1"
+        "sounds/mob/evil_skeleton_monkey/ambient0",
+        "sounds/mob/evil_skeleton_monkey/ambient1",
+        "sounds/mob/evil_skeleton_monkey/ambient2",
+        "sounds/mob/evil_skeleton_monkey/ambient3",
+        "sounds/mob/evil_skeleton_monkey/ambient4",
+        "sounds/mob/evil_skeleton_monkey/screech0",
+        "sounds/mob/evil_skeleton_monkey/screech1"
       ]
+    },
+    "mob.evil_skeleton_monkey.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/evil_skeleton_monkey/hurt0",
+        {
+          "name": "sounds/mob/evil_skeleton_monkey/screech0",
+          "pitch": 1.25,
+          "volume": 1.25
+        },
+        {
+          "name": "sounds/mob/evil_skeleton_monkey/screech1",
+          "pitch": 1.25,
+          "volume": 1.25
+        }
+      ]
+    },
+    "mob.evil_skeleton_monkey.thud": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/evil_skeleton_monkey/thud0",
+        "sounds/mob/evil_skeleton_monkey/thud1",
+        "sounds/mob/evil_skeleton_monkey/thud2"
+      ]
+    },
+    "mob.butterfly.squish": {
+      "category": "ambient",
+      "sounds": ["sounds/mob/butterfly/squish0", "sounds/mob/butterfly/squish1"]
     },
     "mob.elephant.ambient": {
       "category": "ambient",
@@ -423,16 +456,11 @@
     },
     "mob.moose.hurt": {
       "category": "ambient",
-      "sounds": [
-        "sounds/mob/moose/hurt0",
-        "sounds/mob/moose/hurt1"
-      ]
+      "sounds": ["sounds/mob/moose/hurt0", "sounds/mob/moose/hurt1"]
     },
     "mob.moose.death": {
       "category": "ambient",
-      "sounds": [
-        "sounds/mob/moose/death"
-      ]
+      "sounds": ["sounds/mob/moose/death"]
     },
     "mob.moose.angry": {
       "category": "ambient",
@@ -452,6 +480,72 @@
         }
       ]
     },
+    "mob.skelemoose.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/skelemoose/ambient0",
+        "sounds/mob/skelemoose/ambient1",
+        "sounds/mob/skelemoose/hurt1",
+        "sounds/mob/cow/say2",
+        "sounds/mob/cow/say4"
+      ]
+    },
+    "mob.skelemoose.hurt": {
+      "category": "ambient",
+      "sounds": ["sounds/mob/skelemoose/hurt0", "sounds/mob/skelemoose/hurt1"]
+    },
+    "mob.skelemoose.death": {
+      "category": "ambient",
+      "sounds": ["sounds/mob/skelemoose/death"]
+    },
+    "mob.skelemoose.angry": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/skelemoose/angry0",
+        "sounds/mob/skelemoose/angry1",
+        "sounds/mob/skelemoose/angry2"
+      ]
+    },
+    "mob.skelemoose.attack": {
+      "category": "ambient",
+      "sounds": [
+        { "name": "sounds/mob/skelemoose/hurt1", "pitch": 1.1, "volume": 1.25 }
+      ]
+    },
+    "mob.zombear.ambient": {
+      "category": "ambient",
+      "sounds": ["sounds/mob/zombear/ambient0", "sounds/mob/zombear/ambient1"]
+    },
+    "mob.zombear.hurt": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/mob/zombear/hurt0",
+        "sounds/mob/zombear/hurt1",
+        "sounds/mob/zombear/hurt2"
+      ]
+    },
+    "mob.zombear.death": {
+      "category": "ambient",
+      "sounds": [
+        { "name": "sounds/mob/zombear/hurt0", "pitch": 0.7, "volume": 1.5 },
+        { "name": "sounds/mob/zombear/hurt1", "pitch": 0.7, "volume": 1.5 },
+        { "name": "sounds/mob/zombear/hurt2", "pitch": 0.7, "volume": 1.5 }
+      ]
+    },
+    "mob.zombear.angry": {
+      "category": "ambient",
+      "sounds": [
+        { "name": "sounds/mob/zombear/hurt0", "pitch": 1.2, "volume": 1.1 },
+        { "name": "sounds/mob/zombear/hurt1", "pitch": 1.2, "volume": 1.1 },
+        { "name": "sounds/mob/zombear/hurt2", "pitch": 1.2, "volume": 1.1 }
+      ]
+    },
+    "mob.zombear.attack": {
+      "category": "ambient",
+      "sounds": [
+        { "name": "sounds/mob/zombear/hurt1", "pitch": 0.9, "volume": 1.25 }
+      ]
+    },
     "mob.demon.ambient": {
       "category": "hostile",
       "sounds": [
@@ -463,16 +557,11 @@
     },
     "mob.demon.attack": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/demon/attack"
-      ]
+      "sounds": ["sounds/mob/demon/attack"]
     },
     "mob.demon.die": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/demon/die0",
-        "sounds/mob/demon/die1"
-      ]
+      "sounds": ["sounds/mob/demon/die0", "sounds/mob/demon/die1"]
     },
     "mob.demon.hurt": {
       "category": "hostile",
@@ -485,10 +574,7 @@
     },
     "mob.demon.laugh": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/demon/laugh0",
-        "sounds/mob/demon/laugh1"
-      ]
+      "sounds": ["sounds/mob/demon/laugh0", "sounds/mob/demon/laugh1"]
     },
     "mob.demon.magic": {
       "category": "hostile",
@@ -508,15 +594,11 @@
     },
     "boss.inferno.swing": {
       "category": "hostile",
-      "sounds": [
-        "sounds/boss/inferno/swing"
-      ]
+      "sounds": ["sounds/boss/inferno/swing"]
     },
     "boss.inferno.hydraulic": {
       "category": "hostile",
-      "sounds": [
-        "sounds/boss/inferno/hydraulic"
-      ]
+      "sounds": ["sounds/boss/inferno/hydraulic"]
     },
     "mob.freeze.hurt": {
       "category": "hostile",
@@ -531,21 +613,15 @@
     },
     "mob.freeze.die": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/freeze/crumble1"
-      ]
+      "sounds": ["sounds/mob/freeze/crumble1"]
     },
     "mob.freeze.attack": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/freeze/attack"
-      ]
+      "sounds": ["sounds/mob/freeze/attack"]
     },
     "mob.freeze.freeze": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/freeze/freeze"
-      ]
+      "sounds": ["sounds/mob/freeze/freeze"]
     },
     "boss.glacier.ambient": {
       "sounds": [
@@ -565,9 +641,7 @@
     },
     "boss.glacier.inhale": {
       "category": "hostile",
-      "sounds": [
-        "sounds/boss/glacier/inhale"
-      ]
+      "sounds": ["sounds/boss/glacier/inhale"]
     },
     "boss.glacier.magic": {
       "category": "hostile",
@@ -602,17 +676,11 @@
     },
     "mob.gremlin.angry": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/gremlin/hurt0",
-        "sounds/mob/gremlin/hurt1"
-      ]
+      "sounds": ["sounds/mob/gremlin/hurt0", "sounds/mob/gremlin/hurt1"]
     },
     "mob.gremlin.scared": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/gremlin/scared0",
-        "sounds/mob/gremlin/scared1"
-      ]
+      "sounds": ["sounds/mob/gremlin/scared0", "sounds/mob/gremlin/scared1"]
     },
     "mob.gremlin.die": {
       "category": "hostile",
@@ -627,18 +695,14 @@
       "category": "hostile",
       "max_distance": 80.0,
       "min_distance": 0.0,
-      "sounds": [
-        "sounds/mob/ghast/fireball4"
-      ]
+      "sounds": ["sounds/mob/ghast/fireball4"]
     },
     "mob.blaze.shoot": {
       "__use_legacy_max_distance": "true",
       "category": "hostile",
       "max_distance": 48.0,
       "min_distance": 0.0,
-      "sounds": [
-        "sounds/mob/ghast/fireball4"
-      ]
+      "sounds": ["sounds/mob/ghast/fireball4"]
     },
     "mob.cosmic_jelly.bubble": {
       "category": "hostile",
@@ -669,9 +733,7 @@
     },
     "mob.cosmic_jelly.shoot": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/cosmic_jelly/wave"
-      ],
+      "sounds": ["sounds/mob/cosmic_jelly/wave"],
       "__use_legacy_max_distance": "true",
       "max_distance": 80.0,
       "min_distance": 0
@@ -728,9 +790,7 @@
     },
     "mob.goblin.die": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/goblin/die"
-      ]
+      "sounds": ["sounds/mob/goblin/die"]
     },
     "mob.goblin.ambient": {
       "category": "hostile",
@@ -753,16 +813,11 @@
     },
     "mob.goblin.laugh": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/goblin/laugh0",
-        "sounds/mob/goblin/laugh1"
-      ]
+      "sounds": ["sounds/mob/goblin/laugh0", "sounds/mob/goblin/laugh1"]
     },
     "mob.goblin.admire": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/goblin/vocalization0"
-      ]
+      "sounds": ["sounds/mob/goblin/vocalization0"]
     },
     "mob.goblin.angry": {
       "category": "hostile",
@@ -786,9 +841,7 @@
     "mob.scorpion.death": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/scorpion/death"
-      ]
+      "sounds": ["sounds/mob/scorpion/death"]
     },
     "mob.scorpion.walk": {
       "category": "hostile",
@@ -813,9 +866,7 @@
     "mob.vampire.hurt": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/vampire/hurt0"
-      ]
+      "sounds": ["sounds/mob/vampire/hurt0"]
     },
     "mob.vampire.die": {
       "category": "hostile",
@@ -868,23 +919,17 @@
     "mob.ghost.attack": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/ghost/attack"
-      ]
+      "sounds": ["sounds/mob/ghost/attack"]
     },
     "mob.ghost.hurt": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/ghost/hurt0"
-      ]
+      "sounds": ["sounds/mob/ghost/hurt0"]
     },
     "mob.ghost.die": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/ghost/die"
-      ]
+      "sounds": ["sounds/mob/ghost/die"]
     },
     "mob.walker.shoot": {
       "category": "hostile",
@@ -892,6 +937,28 @@
       "sounds": [
         {
           "name": "sounds/mob/walker/shoot"
+        }
+      ]
+    },
+    "mob.indigon_golem.shoot": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        {
+          "name": "sounds/mob/walker/shoot",
+          "pitch": 1.25,
+          "volume": 0.6
+        }
+      ]
+    },
+    "mob.indigon_golem.charge": {
+      "category": "hostile",
+      "__use_legacy_max_distance": "true",
+      "sounds": [
+        {
+          "name": "sounds/mob/walker/charge",
+          "pitch": 1.25,
+          "volume": 0.6
         }
       ]
     },
@@ -1008,17 +1075,13 @@
       "category": "hostile",
       "max_distance": 64.0,
       "min_distance": 16.0,
-      "sounds": [
-        "sounds/mob/lizord/exhale"
-      ]
+      "sounds": ["sounds/mob/lizord/exhale"]
     },
     "mob.lizord.warn": {
       "category": "hostile",
       "max_distance": 64.0,
       "min_distance": 16.0,
-      "sounds": [
-        "sounds/mob/lizord/inhale"
-      ]
+      "sounds": ["sounds/mob/lizord/inhale"]
     },
     "mob.lizord.step": {
       "category": "hostile",
@@ -1040,9 +1103,7 @@
     },
     "mob.eagle.hawk": {
       "category": "ambient",
-      "sounds": [
-        "sounds/mob/eagle/hawk"
-      ]
+      "sounds": ["sounds/mob/eagle/hawk"]
     },
     "mob.owl.ambient": {
       "category": "ambient",
@@ -1056,10 +1117,7 @@
     },
     "mob.owl.hurt": {
       "category": "ambient",
-      "sounds": [
-        "sounds/mob/owl/hurt0",
-        "sounds/mob/owl/hurt1"
-      ]
+      "sounds": ["sounds/mob/owl/hurt0", "sounds/mob/owl/hurt1"]
     },
     "mob.dire_wolf.howl": {
       "__use_legacy_max_distance": "true",
@@ -1088,9 +1146,7 @@
     },
     "mob.dire_wolf.dig": {
       "category": "hostile",
-      "sounds": [
-        "sounds/mob/dire_wolf/digging"
-      ]
+      "sounds": ["sounds/mob/dire_wolf/digging"]
     },
     "mob.ogre.step": {
       "category": "hostile",
@@ -1366,10 +1422,7 @@
     "mob.yeti.purr": {
       "category": "hostile",
       "__use_legacy_max_distance": "true",
-      "sounds": [
-        "sounds/mob/yeti/purr0",
-        "sounds/mob/yeti/purr1"
-      ]
+      "sounds": ["sounds/mob/yeti/purr0", "sounds/mob/yeti/purr1"]
     }
   }
 }

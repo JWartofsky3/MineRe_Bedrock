@@ -8,15 +8,13 @@
       "is_experimental": false
     },
     "component_groups": {
-      "persistent": {
-        "minecraft:persistent": {}
-      },
       "hostile": {
-        "minecraft:variant": {
-          "value": 0
-        },
         "minecraft:type_family": {
-          "family": ["walker", "mob", "monster"]
+          "family": [
+            "walker",
+            "mob",
+            "monster"
+          ]
         },
         "minecraft:behavior.hurt_by_target": {
           "priority": 1
@@ -52,74 +50,13 @@
         },
         "minecraft:is_shaking": {}
       },
-      "friendly": {
-        "minecraft:variant": {
-          "value": 1
-        },
-        "minecraft:leashable": {
-          "soft_distance": 12,
-          "hard_distance": 20,
-          "max_distance": 32
-        },
-        "minecraft:type_family": {
-          "family": ["walker", "mob"]
-        },
-        "minecraft:behavior.hurt_by_target": {
-          "priority": 2,
-          "entity_types": {
-            "filters": {
-              "test": "is_family",
-              "subject": "other",
-              "operator": "!=",
-              "value": "player"
-            }
+      "transforming_to_friendly": {
+        "minecraft:transformation": {
+          "into": "minere:friendly_walker",
+          "transformation_sound": "mob.walker.reprogram_complete",
+          "delay": {
+            "value": 0
           }
-        },
-        "minecraft:behavior.tempt": {
-          "priority": 0,
-          "speed_multiplier": 1.5,
-          "items": ["ender_eye"]
-        },
-        "minecraft:interact": {
-          "interactions": [
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "is_family",
-                      "subject": "other",
-                      "value": "player"
-                    },
-                    {
-                      "any_of": [
-                        {
-                          "test": "has_equipment",
-                          "domain": "hand",
-                          "subject": "other",
-                          "value": "end_stone"
-                        },
-                        {
-                          "test": "has_equipment",
-                          "domain": "hand",
-                          "subject": "other",
-                          "value": "end_bricks"
-                        }
-                      ]
-                    },
-                    {
-                      "test": "is_missing_health",
-                      "value": true
-                    }
-                  ]
-                }
-              },
-              "use_item": true,
-              "health_amount": 15,
-              "play_sounds": "irongolem.repair",
-              "interact_text": "action.interact.repair"
-            }
-          ]
         }
       },
       "emerging": {
@@ -188,20 +125,10 @@
               "max_dist": 48,
               "reevaluate_description": true,
               "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 0
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "player"
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "operator": "==",
+                "value": "player"
               }
             },
             {
@@ -209,134 +136,21 @@
               "max_dist": 24,
               "reevaluate_description": true,
               "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 0
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "walker"
-                  },
-                  {
-                    "test": "is_variant",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": 1
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "operator": "==",
+                "value": "friendly_walker"
               }
             },
             {
               "priority": 0,
+              "max_dist": 24,
               "reevaluate_description": true,
               "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 1
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "walker"
-                  },
-                  {
-                    "test": "is_variant",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": 0
-                  }
-                ]
-              }
-            },
-            {
-              "priority": 1,
-              "max_dist": 48,
-              "reevaluate_description": true,
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 1
-                  }
-                ],
-                "any_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "monster"
-                  }
-                ],
-                "none_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "enderman"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "gremlin"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "shulker"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "stomp"
-                  }
-                ]
-              }
-            },
-            {
-              "priority": 1,
-              "max_dist": 8,
-              "reevaluate_description": true,
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "is_variant",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": 1
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "enderman"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "stomp"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "endermite"
-                  }
-                ]
+                "test": "is_family",
+                "subject": "other",
+                "operator": "==",
+                "value": "indigon_golem"
               }
             }
           ],
@@ -365,19 +179,6 @@
         "minecraft:behavior.ranged_attack": {
           "priority": 3,
           "attack_radius": 32,
-          "burst_shots": 2,
-          "burst_interval": 0.5,
-          "charge_shoot_trigger": 1.5,
-          "charge_charged_trigger": 1
-        }
-      },
-      "ranged_mode_friendly": {
-        "minecraft:shooter": {
-          "def": "minere:plasma_bolt"
-        },
-        "minecraft:behavior.ranged_attack": {
-          "priority": 3,
-          "attack_radius": 64,
           "burst_shots": 2,
           "burst_interval": 0.5,
           "charge_shoot_trigger": 1.5,
@@ -432,13 +233,20 @@
         ]
       },
       "minecraft:attack": {
-        "damage": [7, 10]
+        "damage": [
+          7,
+          10
+        ]
       },
       "minecraft:knockback_resistance": {
         "value": 0.8
       },
       "minecraft:type_family": {
-        "family": ["walker", "mob", "monster"]
+        "family": [
+          "walker",
+          "mob",
+          "monster"
+        ]
       },
       "minecraft:collision_box": {
         "width": 3,
@@ -462,17 +270,11 @@
     "events": {
       "minecraft:entity_spawned": {
         "add": {
-          "component_groups": ["emerging", "hostile", "immobile"]
-        }
-      },
-      "spawn_hostile": {
-        "add": {
-          "component_groups": ["hostile"]
-        }
-      },
-      "spawn_friendly": {
-        "add": {
-          "component_groups": ["friendly"]
+          "component_groups": [
+            "emerging",
+            "hostile",
+            "immobile"
+          ]
         }
       },
       "start_reprogram": {
@@ -489,7 +291,10 @@
               ]
             },
             "add": {
-              "component_groups": ["reprogramming", "immobile"]
+              "component_groups": [
+                "reprogramming",
+                "immobile"
+              ]
             },
             "queue_command": {
               "command": "playsound mob.walker.reprogram @a ~ ~ ~ 2.0"
@@ -507,85 +312,59 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["immobile", "reprogramming"]
+              "component_groups": [
+                "immobile",
+                "reprogramming"
+              ]
             }
           },
           {
             "add": {
               "component_groups": [
-                "friendly",
-                "can_move",
-                "mode_switcher",
-                "persistent"
+                "transforming_to_friendly"
               ]
-            }
-          },
-          {
-            "queue_command": {
-              "command": "playsound mob.walker.reprogram_complete @a ~ ~ ~ 2.0"
-            }
-          },
-          {
-            "queue_command": {
-              "command": "summon endermite ~ ~ ~"
-            }
-          },
-          {
-            "queue_command": {
-              "command": "summon endermite ~ ~ ~"
             }
           }
         ]
       },
       "switch_to_melee": {
         "remove": {
-          "component_groups": ["ranged_mode", "ranged_mode_friendly"]
+          "component_groups": [
+            "ranged_mode"
+          ]
         },
         "add": {
-          "component_groups": ["melee_mode"]
+          "component_groups": [
+            "melee_mode"
+          ]
         }
       },
       "switch_to_ranged": {
-        "sequence": [
-          {
-            "remove": {
-              "component_groups": ["melee_mode"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_variant",
-              "subject": "self",
-              "operator": "==",
-              "value": 0
-            },
-            "add": {
-              "component_groups": ["ranged_mode"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_variant",
-              "subject": "self",
-              "operator": "==",
-              "value": 1
-            },
-            "add": {
-              "component_groups": ["ranged_mode_friendly"]
-            }
-          }
-        ]
+        "remove": {
+          "component_groups": [
+            "melee_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "ranged_mode"
+          ]
+        }
       },
       "minecraft:spawn_emerging": {
         "add": {
-          "component_groups": ["emerging"]
+          "component_groups": [
+            "emerging"
+          ]
         }
       },
       "minere:emerged": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["emerging"]
+              "component_groups": [
+                "emerging"
+              ]
             }
           },
           {
@@ -604,10 +383,15 @@
               ]
             },
             "remove": {
-              "component_groups": ["immobile"]
+              "component_groups": [
+                "immobile"
+              ]
             },
             "add": {
-              "component_groups": ["can_move", "mode_switcher"]
+              "component_groups": [
+                "can_move",
+                "mode_switcher"
+              ]
             }
           }
         ]

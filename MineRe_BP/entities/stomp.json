@@ -32,23 +32,20 @@
           "table": "loot_tables/entities/stomp/end_stomp.json"
         }
       },
-      "minere:soul_stomp": {
-        "minecraft:variant": {
-          "value": 3
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/stomp/soul_stomp.json"
-        },
-        "minecraft:fire_immune": {}
-      },
       "minere:calm": {
         "minecraft:movement.jump": {
-          "jump_delay": [4, 6]
+          "jump_delay": [
+            4,
+            6
+          ]
         }
       },
       "minere:aggressive": {
         "minecraft:movement.jump": {
-          "jump_delay": [1, 2]
+          "jump_delay": [
+            1,
+            2
+          ]
         }
       }
     },
@@ -71,7 +68,11 @@
         "on_death": "query.last_hit_by_player ? 5"
       },
       "minecraft:type_family": {
-        "family": ["stomp", "monster", "mob"]
+        "family": [
+          "stomp",
+          "monster",
+          "mob"
+        ]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -94,7 +95,6 @@
       },
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
-
       "minecraft:damage_sensor": {
         "triggers": [
           {
@@ -167,6 +167,12 @@
                         "test": "has_equipment",
                         "subject": "other",
                         "domain": "hand",
+                        "value": "minere:indigon_pickaxe"
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "other",
+                        "domain": "hand",
                         "value": "minere:enderon_pickaxe"
                       }
                     ]
@@ -204,7 +210,10 @@
         ]
       },
       "minecraft:movement.jump": {
-        "jump_delay": [2.0, 6.0]
+        "jump_delay": [
+          2.0,
+          6.0
+        ]
       },
       "minecraft:on_target_acquired": {
         "event": "minecraft:become_aggressive",
@@ -233,8 +242,16 @@
         "cause": "entity_attack",
         "entity_filter": {
           "any_of": [
-            { "test": "is_family", "subject": "other", "value": "player" },
-            { "test": "is_family", "subject": "other", "value": "irongolem" }
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "irongolem"
+            }
           ]
         }
       },
@@ -288,7 +305,10 @@
         "sequence": [
           {
             "add": {
-              "component_groups": ["minere:calm", "minere:stomp"]
+              "component_groups": [
+                "minere:calm",
+                "minere:stomp"
+              ]
             }
           },
           {
@@ -297,10 +317,14 @@
               "value": "mesa"
             },
             "remove": {
-              "component_groups": ["minere:stomp"]
+              "component_groups": [
+                "minere:stomp"
+              ]
             },
             "add": {
-              "component_groups": ["minere:red_stomp"]
+              "component_groups": [
+                "minere:red_stomp"
+              ]
             }
           },
           {
@@ -309,34 +333,30 @@
               "value": "the_end"
             },
             "remove": {
-              "component_groups": ["minere:stomp"]
+              "component_groups": [
+                "minere:stomp"
+              ]
             },
             "add": {
-              "component_groups": ["minere:end_stomp"]
-            }
-          },
-          {
-            "filters": {
-              "test": "has_biome_tag",
-              "value": "nether"
-            },
-            "remove": {
-              "component_groups": ["minere:stomp"]
-            },
-            "add": {
-              "component_groups": ["minere:soul_stomp"]
+              "component_groups": [
+                "minere:end_stomp"
+              ]
             }
           }
         ]
       },
       "minecraft:become_calm": {
         "add": {
-          "component_groups": ["minere:calm"]
+          "component_groups": [
+            "minere:calm"
+          ]
         }
       },
       "minecraft:become_aggressive": {
         "add": {
-          "component_groups": ["minere:aggressive"]
+          "component_groups": [
+            "minere:aggressive"
+          ]
         }
       }
     }

@@ -125,6 +125,24 @@ const bombDefinitions: GuideItemPageDefinition[] = [
       },
     ],
   },
+  {
+    itemId: "minere:dark_bomb",
+    name: "item.minere:dark_bomb",
+    iconPath: "textures/items/minere/dark_bomb",
+    sections: [
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.dark_bomb.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: [
+          craftingIngredient("item.minere:bomb"),
+          craftingIngredient("item.dark_charge.name"),
+        ],
+      },
+    ],
+  },
 ];
 
 const itemDefinitions: GuideItemPageDefinition[] = [
@@ -284,6 +302,10 @@ const itemDefinitions: GuideItemPageDefinition[] = [
         entries: ["guide.minere.items.raw_indigon.ore"],
       },
       {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.raw_indigon.crafting"],
+      },
+      {
         title: "guide.minere.blocks.smelts_into",
         entries: ["item.minere:indigon_ingot"],
       },
@@ -300,7 +322,10 @@ const itemDefinitions: GuideItemPageDefinition[] = [
     sections: [
       {
         title: "guide.minere.crafting",
-        entries: [craftingIngredient("tile.minere:indigon_block.name")],
+        entries: [
+          "guide.minere.items.indigon_ingot.crafting",
+          craftingIngredient("tile.minere:indigon_block.name"),
+        ],
       },
       {
         title: "guide.minere.items.crafts",
@@ -308,7 +333,7 @@ const itemDefinitions: GuideItemPageDefinition[] = [
           "guide.minere.equipment.indigon_armor",
           "guide.minere.equipment.indigon_tools",
           "item.minere:indigon_treecapitator",
-          "item.minere:shadow_staff",
+          "item.minere:dark_staff",
           "item.minere:indigon_apple",
           "item.minere:enchanted_indigon_apple",
           "tile.minere:indigon_block.name",
@@ -346,6 +371,231 @@ const itemDefinitions: GuideItemPageDefinition[] = [
       {
         title: "guide.minere.items.dropped_by",
         entries: ["guide.minere.items.nether_coal.dropped_by"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:acorn",
+    name: "item.acorn.name",
+    iconPath: "textures/items/minere/acorn",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.acorn.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: [
+          craftingIngredient("tile.sapling.oak.name"),
+          "guide.minere.crafting.alternative",
+          craftingIngredient("tile.sapling.dark_oak.name"),
+        ],
+      },
+    ],
+  },
+  {
+    itemId: "minere:venison",
+    name: "item.venison.name",
+    iconPath: "textures/items/minere/venison",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.venison.description"],
+      },
+      {
+        title: "guide.minere.blocks.smelts_into",
+        entries: ["item.cooked_venison.name"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:cooked_venison",
+    name: "item.cooked_venison.name",
+    iconPath: "textures/items/minere/cooked_venison",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.cooked_venison.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.cooked_venison.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:whacon",
+    name: "item.whacon.name",
+    iconPath: "textures/items/minere/whacon",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.whacon.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.whacon.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:blubber",
+    name: "item.blubber.name",
+    iconPath: "textures/items/minere/blubber",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.blubber.description"],
+      },
+      {
+        title: "guide.minere.items.crafts",
+        entries: ["item.whacon.name", "guide.minere.items.blubber.torches"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:emerald_shard",
+    name: "item.emerald_shard.name",
+    iconPath: "textures/items/minere/emerald_shard",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.emerald_shard.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.emerald_shard.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:diamond_shard",
+    name: "item.minere:diamond_shard",
+    iconPath: "textures/items/minere/diamond_shard",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.diamond_shard.description"],
+      },
+      {
+        title: "guide.minere.items.crafts",
+        entries: [
+          "tile.minere:runic_blackstone.name",
+          "tile.minere:runic_blackstone_bricks.name",
+        ],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.diamond_shard.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:indigon_apple",
+    name: "item.minere:indigon_apple",
+    iconPath: "textures/items/minere/indigon_apple",
+    sections: [
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.indigon_apple.abilities"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.indigon_apple.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:enchanted_indigon_apple",
+    name: "item.minere:enchanted_indigon_apple",
+    iconPath: "textures/items/minere/indigon_apple",
+    sections: [
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.enchanted_indigon_apple.abilities"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.enchanted_indigon_apple.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:jump_boots",
+    name: "item.minere:jump_boots",
+    iconPath: "textures/items/minere/jump_boots",
+    sections: [
+      {
+        title: "guide.minere.equipment.stats",
+        entries: ["guide.minere.items.jump_boots.stats"],
+      },
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.jump_boots.abilities"],
+      },
+      {
+        title: "guide.minere.items.dropped_by",
+        entries: ["guide.minere.items.jump_boots.dropped_by"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:popcorn",
+    name: "item.popcorn.name",
+    iconPath: "textures/items/minere/popcorn",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.popcorn.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.popcorn.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:royal_jelly",
+    name: "item.royal_jelly.name",
+    iconPath: "textures/items/minere/royal_jelly",
+    sections: [
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.royal_jelly.abilities"],
+      },
+      {
+        title: "guide.minere.items.dropped_by",
+        entries: ["guide.minere.items.royal_jelly.dropped_by"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:guide",
+    name: "item.minere:guide",
+    iconPath: "textures/items/minere/guide",
+    sections: [
+      {
+        title: "guide.minere.items.description",
+        entries: ["guide.minere.items.guide.description"],
+      },
+      {
+        title: "guide.minere.crafting",
+        entries: ["guide.minere.items.guide.crafting"],
+      },
+    ],
+  },
+  {
+    itemId: "minere:elixir_of_experience",
+    name: "item.elixir_of_experience.name",
+    iconPath: "textures/items/minere/elixir_of_experience",
+    sections: [
+      {
+        title: "guide.minere.items.abilities",
+        entries: ["guide.minere.items.elixir_of_experience.abilities"],
+      },
+      {
+        title: "guide.minere.items.dropped_by",
+        entries: ["guide.minere.items.elixir_of_experience.dropped_by"],
       },
     ],
   },
@@ -422,6 +672,23 @@ const totemsPage = new ItemPage({
   buttons: totemDefinitions.map(createItemButton),
 });
 
+const foodItemIds = new Set([
+  "minere:venison",
+  "minere:cooked_venison",
+  "minere:whacon",
+  "minere:blubber",
+  "minere:indigon_apple",
+  "minere:enchanted_indigon_apple",
+  "minere:popcorn",
+]);
+
+const foodPage = new ItemPage({
+  title: { translate: "guide.minere.items.food" },
+  buttons: itemDefinitions
+    .filter((definition) => foodItemIds.has(definition.itemId))
+    .map(createItemButton),
+});
+
 const itemsPage = new ItemPage({
   title: { translate: "guide.minere.section.items" },
   buttons: [
@@ -437,7 +704,15 @@ const itemsPage = new ItemPage({
       show: (player: Player, onBack: () => void) =>
         totemsPage.show(player, onBack),
     },
-    ...itemDefinitions.map(createItemButton),
+    {
+      text: { translate: "guide.minere.items.food" },
+      iconPath: "textures/items/minere/indigon_apple",
+      show: (player: Player, onBack: () => void) =>
+        foodPage.show(player, onBack),
+    },
+    ...itemDefinitions
+      .filter((definition) => !foodItemIds.has(definition.itemId))
+      .map(createItemButton),
   ],
 });
 

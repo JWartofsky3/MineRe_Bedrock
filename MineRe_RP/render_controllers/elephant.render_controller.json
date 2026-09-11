@@ -93,10 +93,10 @@
       "geometry": "Geometry.default",
       "materials": [
         {
-          "*": "Material.default"
+          "*": "variable.armor_is_enchanted ? Material.enchanted : Material.default"
         }
       ],
-      "textures": ["Array.carpets[variable.armor]"]
+      "textures": ["Array.carpets[variable.armor]", "Texture.enchanted"]
     }
   }
 }

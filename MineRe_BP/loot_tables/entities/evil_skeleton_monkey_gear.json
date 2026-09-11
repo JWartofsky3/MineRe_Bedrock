@@ -1,0 +1,153 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 100
+        },
+        {
+          "type": "item",
+          "name": "minecraft:wooden_sword",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stone_sword",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:wooden_axe",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stone_axe",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:wooden_shovel",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stone_shovel",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 7
+        },
+        {
+          "type": "item",
+          "name": "minecraft:bone",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 100
+        },
+        {
+          "type": "item",
+          "name": "minecraft:leather_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:copper_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chainmail_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "enchant_random_gear",
+              "chance": 0.25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

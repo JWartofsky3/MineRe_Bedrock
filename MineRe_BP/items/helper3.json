@@ -1,0 +1,14 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minere:helper3"
+    },
+    "components": {
+      "minecraft:icon": "minere.helper3",
+      "minecraft:max_stack_size": 1,
+      "minecraft:custom_components": ["minere:helper3"],
+      "minecraft:rarity": "rare"
+    }
+  }
+}

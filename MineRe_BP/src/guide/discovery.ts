@@ -12,11 +12,12 @@ import {
   getGuideDiscoveryCategory,
   setGuideDiscoveryCategory,
 } from "guide/discoveryStorage";
+import { completeAchievement } from "guide/achievements";
 
 const FORMAT_CODE = String.fromCharCode(167);
 
 export type DiscoveryLevel = 1 | 2;
-export type DiscoveryCategory = "animals" | "monsters" | "bosses";
+export type DiscoveryCategory = "animals" | "golems" | "monsters" | "bosses";
 
 export interface GuideCreature {
   typeId: string;
@@ -48,6 +49,7 @@ const MONSTERS = [
   "minere:demon_skull",
   "minere:dire_wolf",
   "minere:ender_phantom",
+  "minere:evil_skeleton_monkey",
   "minere:freeze",
   "minere:ghost",
   "minere:goblin",
@@ -58,24 +60,35 @@ const MONSTERS = [
   "minere:netherzord",
   "minere:ogre",
   "minere:scorpion",
+  "minere:skelemoose",
+  "minere:skelephant",
+  "minere:soul_stomp",
   "minere:stomp",
   "minere:vampire",
   "minere:walker",
   "minere:web_spider",
   "minere:yeti",
+  "minere:zombear",
 ] as const;
 
 const BOSSES = ["minere:inferno", "minere:glacier"] as const;
+const GOLEMS = [
+  "minere:indigon_golem",
+  "minere:corrupted_indigon_golem",
+  "minere:friendly_walker",
+] as const;
 
 export const GUIDE_CREATURES: readonly GuideCreature[] = [
   ...ANIMALS.map((typeId) => ({ typeId, category: "animals" as const })),
+  ...GOLEMS.map((typeId) => ({ typeId, category: "golems" as const })),
   ...MONSTERS.map((typeId) => ({ typeId, category: "monsters" as const })),
   ...BOSSES.map((typeId) => ({ typeId, category: "bosses" as const })),
 ];
 
 export const GUIDE_DISCOVERY_TOTALS: Record<DiscoveryCategory, number> = {
   animals: 15,
-  monsters: 21,
+  golems: 2,
+  monsters: 25,
   bosses: 2,
 };
 
@@ -87,7 +100,7 @@ type DiscoveryData = Record<string, DiscoveryLevel>;
 
 function getDiscoveryData(player: Player): DiscoveryData {
   const discoveries: DiscoveryData = {};
-  for (const category of ["animals", "monsters", "bosses"] as const) {
+  for (const category of ["animals", "golems", "monsters", "bosses"] as const) {
     const categoryDiscoveries = getGuideDiscoveryCategory(player, category);
     for (const [typeId, level] of Object.entries(categoryDiscoveries)) {
       if (creatureCategories.has(typeId) && (level === 1 || level === 2)) {
@@ -131,7 +144,11 @@ function discoverEntity(
   if (!category) return;
 
   const discoveryLevel: DiscoveryLevel =
-    category === "animals" ? 1 : completesEntry ? 2 : 1;
+    category === "animals" || category === "golems"
+      ? 1
+      : completesEntry
+        ? 2
+        : 1;
 
   const discoveries = getDiscoveryData(player);
   const currentLevel = discoveries[entity.typeId] ?? 0;
@@ -148,7 +165,20 @@ function discoverEntity(
     ),
   );
 
-  if (category !== "animals") {
+  if (
+    category === "animals" &&
+    getDiscoveredCount(player, category) === GUIDE_DISCOVERY_TOTALS[category]
+  ) {
+    completeAchievement(player, "discover_all_animals");
+  }
+  if (
+    category === "monsters" &&
+    getDiscoveredCount(player, category) === GUIDE_DISCOVERY_TOTALS[category]
+  ) {
+    completeAchievement(player, "discover_all_monsters");
+  }
+
+  if (category !== "animals" && category !== "golems") {
     if (!defeated) {
       if (currentLevel === 0) {
         player.sendMessage({
@@ -204,8 +234,11 @@ function getProjectileOwner(source: EntityDamageSource): Entity | undefined {
   if (!isValidEntity(projectile)) return undefined;
 
   return (
-    (projectile.getComponent(EntityComponentTypes.Projectile) as EntityProjectileComponent | undefined)
-      ?.owner ?? undefined
+    (
+      projectile.getComponent(EntityComponentTypes.Projectile) as
+        | EntityProjectileComponent
+        | undefined
+    )?.owner ?? undefined
   );
 }
 

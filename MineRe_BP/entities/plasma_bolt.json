@@ -36,16 +36,9 @@
               "damage": 30,
               "knockback": false,
               "semi_random_diff_damage": false
-            },
-            "definition_event": {
-              "affect_projectile": true,
-              "event_trigger": {
-                "event": "minere:explode",
-                "target": "self"
-              }
             }
           },
-          "power": 3.0,
+          "power": 1,
           "gravity": 0,
           "inertia": 1,
           "liquid_inertia": 1,
@@ -81,6 +74,43 @@
           "anchor": 2,
           "offset": [0, 2.3, 0],
           "catch_fire": false
+        }
+      },
+      "minere:indigon_laser": {
+        "minecraft:projectile": {
+          "on_hit": {
+            "impact_damage": {
+              "damage": 16,
+              "knockback": false,
+              "semi_random_diff_damage": false
+            },
+            "definition_event": {
+              "affect_projectile": true,
+              "event_trigger": {
+                "event": "minere:indigon_explode",
+                "target": "self"
+              }
+            }
+          },
+          "power": 3.0,
+          "gravity": 0,
+          "inertia": 1,
+          "liquid_inertia": 1,
+          "uncertainty_base": 0,
+          "uncertainty_multiplier": 0,
+          "anchor": 2,
+          "offset": [0, 1.35, 0],
+          "catch_fire": false
+        }
+      },
+      "minere:indigon_exploding": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 1,
+          "causes_fire": false,
+          "fire_affected_by_griefing": false,
+          "destroy_affected_by_griefing": false
         }
       }
     },
@@ -131,11 +161,40 @@
           },
           {
             "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "indigon_golem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "corrupted_indigon_golem"
+                }
+              ]
+            },
+            "add": {
+              "component_groups": ["minere:indigon_laser"]
+            }
+          },
+          {
+            "filters": {
               "none_of": [
                 {
                   "test": "is_family",
                   "subject": "other",
                   "value": "walker"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "indigon_golem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "corrupted_indigon_golem"
                 }
               ]
             },
@@ -148,6 +207,16 @@
       "minere:mob_explode": {
         "add": {
           "component_groups": ["minere:mob_exploding"]
+        }
+      },
+      "minere:activate_player_laser": {
+        "add": {
+          "component_groups": ["minere:player_laser"]
+        }
+      },
+      "minere:indigon_explode": {
+        "add": {
+          "component_groups": ["minere:indigon_exploding"]
         }
       },
       "minere:explode": {

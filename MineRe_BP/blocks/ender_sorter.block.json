@@ -1,0 +1,68 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "minere:ender_sorter",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "minere:powered": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:custom_components": [
+        "minere:ender_sorter"
+      ],
+      "minecraft:geometry": "geometry.minere.ender_sorter",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "minere:ender_sorter_off",
+          "ambient_occlusion": true,
+          "face_dimming": false,
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/ender_sorter.json",
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:stone": {},
+      "tag:metal": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 30
+      },
+      "minecraft:map_color": "#4a1c6b",
+      "minecraft:redstone_conductivity": {
+        "redstone_conductor": true,
+        "allows_wire_to_step_down": true
+      },
+      "minecraft:tick": {
+        "interval_range": [
+          3,
+          3
+        ],
+        "looping": true
+      }
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minere:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "minere:ender_sorter"
+            }
+          },
+          "minecraft:light_emission": 3
+        }
+      }
+    ]
+  }
+}

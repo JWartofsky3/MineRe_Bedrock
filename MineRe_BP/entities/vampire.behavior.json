@@ -180,7 +180,7 @@
       "minecraft:type_family": {
         "family": ["vampire", "undead", "mob", "monster"]
       },
-      "minecraft:equipment": {
+      "minecraft:loot": {
         "table": "loot_tables/entities/vampire.json"
       },
       "minecraft:experience_reward": {

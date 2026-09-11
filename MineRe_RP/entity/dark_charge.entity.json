@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:dark_charge",
+      "materials": { "default": "entity_alphatest" },
+      "textures": {
+        "texture0": "textures/entity/minere/dark_charge/dark0",
+        "texture1": "textures/entity/minere/dark_charge/dark1",
+        "texture2": "textures/entity/minere/dark_charge/dark2",
+        "texture3": "textures/entity/minere/dark_charge/dark3"
+      },
+      "geometry": { "default": "geometry.minere.dark_charge" },
+      "particle_effects": {
+        "flame": "minere:dark_particles",
+        "snow": "minere:dark_particles"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.textureframe = math.mod(query.life_time, 4);"
+        ],
+        "animate": ["move"]
+      },
+      "animations": { "move": "animation.minere.dark_charge.move" },
+      "render_controllers": ["controller.render.minere.dark_charge"]
+    }
+  }
+}

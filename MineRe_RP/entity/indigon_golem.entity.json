@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:indigon_golem",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "damage": "iron_golem",
+        "fire": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/indigon_golem/purple",
+        "damage0": "textures/entity/minere/indigon_golem/damage/damage0",
+        "damage1": "textures/entity/minere/indigon_golem/damage/damage1",
+        "damage2": "textures/entity/minere/indigon_golem/damage/damage2",
+        "damage3": "textures/entity/minere/indigon_golem/damage/damage3",
+        "damage4": "textures/entity/minere/indigon_golem/damage/damage4",
+        "damage5": "textures/entity/minere/indigon_golem/damage/damage5",
+        "empty": "textures/entity/minere/indigon_golem/damage/empty",
+        "fire0": "textures/entity/minere/indigon_golem/fire/fire0",
+        "fire1": "textures/entity/minere/indigon_golem/fire/fire1",
+        "sonicFire0": "textures/entity/minere/indigon_golem/fire/sonicFire0",
+        "sonicFire1": "textures/entity/minere/indigon_golem/fire/sonicFire1",
+        "plasma_fire0": "textures/entity/minere/indigon_golem/fire/plasma_fire0",
+        "plasma_fire1": "textures/entity/minere/indigon_golem/fire/plasma_fire1"
+      },
+      "geometry": {
+        "default": "geometry.minere.indigon_golem"
+      },
+      "animations": {
+        "walk": "animation.minere.indigon_golem.walk",
+        "attack": "animation.minere.indigon_golem.attack",
+        "shoot": "animation.minere.indigon_golem.charge",
+        "summon": "animation.minere.indigon_golem.summon",
+        "look_at_target": "animation.minere.indigon_golem.look_at_target",
+        "controller": "controller.animation.minere.indigon_golem",
+        "charge_controller": "controller.animation.minere.indigon_golem_charge"
+      },
+      "render_controllers": [
+        "controller.render.minere.indigon_golem_fire",
+        "controller.render.minere.indigon_golem_damage",
+        "controller.render.minere.indigon_golem"
+      ],
+      "particle_effects": {
+        "indigon_magic": "minere:indigon_magic"
+      },
+      "sound_effects": {
+        "summon": "mob.evocation_illager.prepare_summon"
+      },
+      "spawn_egg": {
+        "base_color": "#4f00ff",
+        "overlay_color": "#3e05ba"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.is_charging = query.is_charged || query.is_charging ? 1 : 0;"
+        ],
+        "animate": ["controller", "charge_controller"]
+      }
+    }
+  }
+}

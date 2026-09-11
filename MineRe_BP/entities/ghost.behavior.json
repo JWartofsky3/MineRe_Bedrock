@@ -24,6 +24,9 @@
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? 7 : 0"
       },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/ghost.json"
+      },
       "minecraft:nameable": {},
       "minecraft:type_family": {
         "family": ["ghost", "monster", "mob", "undead"]

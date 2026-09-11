@@ -81,31 +81,6 @@
           "value": "the_end"
         }
       },
-      {
-        "minecraft:spawns_on_surface": {},
-
-        "minecraft:spawns_underground": {},
-
-        "minecraft:brightness_filter": {
-          "min": 0,
-          "max": 7
-        },
-
-        "minecraft:difficulty_filter": {
-          "min": "easy",
-          "max": "hard"
-        },
-
-        "minecraft:weight": {
-          "default": 15
-        },
-
-        "minecraft:biome_filter": {
-          "test": "has_biome_tag",
-          "operator": "==",
-          "value": "soulsand_valley"
-        }
-      }
     ]
   }
 }

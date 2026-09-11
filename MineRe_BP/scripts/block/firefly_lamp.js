@@ -34,6 +34,9 @@ export const fireflyLamp = {
                 case "minere:blue_firefly_lamp":
                     spawnEvent = "spawn_blue";
                     break;
+                case "minere:red_firefly_lamp":
+                    spawnEvent = "spawn_red";
+                    break;
             }
             if (fireflyLamp) {
                 fireflyLamp.remove();

@@ -13,7 +13,7 @@
       "minecraft:damage": 3,
       "minecraft:can_destroy_in_creative": true,
       "minecraft:enchantable": {
-        "slot": "sword",
+        "slot": "crossbow",
         "value": 15
       },
       "minecraft:rarity": "rare",
@@ -22,7 +22,7 @@
       },
       "minecraft:cooldown": {
         "category": "iceStaff",
-        "duration": 3.0
+        "duration": 3.2
       },
       "minecraft:repairable": {
         "repair_items": [

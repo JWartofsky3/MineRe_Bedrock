@@ -4,7 +4,7 @@
     "description": {
       "identifier": "minere:skelemoose",
       "materials": {
-        "default": "entity_alphatest",
+        "default": "entity_emissive_alpha",
         "saddle": "entity_alphatest"
       },
       "textures": {
@@ -13,7 +13,9 @@
         "reins": "textures/entity/minere/moose/reins",
         "empty": "textures/entity/minere/moose/empty"
       },
-      "geometry": { "default": "geometry.minere.moose" },
+      "geometry": {
+        "default": "geometry.minere.moose"
+      },
       "animations": {
         "walk": "animation.minere.moose.walk",
         "gallop": "animation.minere.moose.gallop",
@@ -23,11 +25,22 @@
         "controller": "controller.animation.minere.moose"
       },
       "scripts": {
-        "pre_animation": ["variable.saddled = query.is_saddled ? 1 : 0;"],
-        "animate": ["controller"]
+        "pre_animation": [
+          "variable.saddled = query.is_saddled ? 1 : 0;"
+        ],
+        "animate": [
+          "controller"
+        ]
       },
-      "render_controllers": ["controller.render.minere.skelemoose.saddle", "controller.render.minere.moose.reins", "controller.render.minere.skelemoose"],
-      "spawn_egg": { "base_color": "#dedede", "overlay_color": "#76604d" }
+      "render_controllers": [
+        "controller.render.minere.skelemoose.saddle",
+        "controller.render.minere.moose.reins",
+        "controller.render.minere.skelemoose"
+      ],
+      "spawn_egg": {
+        "base_color": "#dedede",
+        "overlay_color": "#76604d"
+      }
     }
   }
 }

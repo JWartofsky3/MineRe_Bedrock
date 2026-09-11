@@ -12,7 +12,9 @@
             "Texture.purple",
             "Texture.purple_off",
             "Texture.blue",
-            "Texture.blue_off"
+            "Texture.blue_off",
+            "Texture.red",
+            "Texture.red_off"
           ]
         }
       },

@@ -22,6 +22,7 @@ import { Guide } from "guide/item";
 import { Helper0 } from "items/components/helpers/helper0";
 import { Helper1 } from "items/components/helpers/helper1";
 import { Helper2 } from "items/components/helpers/helper2";
+import { Helper3 } from "items/components/helpers/helper3";
 import { Ghostwalker } from "items/components/ghostwalker";
 import { IndigonApple } from "items/components/indigon_apple";
 import { BossTotem } from "items/components/bossTotem";
@@ -30,6 +31,8 @@ import { WindShovel } from "items/components/wind_shovel";
 import { ShadowScythe } from "items/components/shadow_scythe";
 import { IndigonTool } from "items/components/indigon_tool";
 import { VenomSpear } from "items/components/venom_spear";
+import { slabDouble } from "items/components/slab_double";
+import { DarkChargeItem } from "items/components/dark_charge";
 
 export function registerItems(data: StartupEvent) {
   data.itemComponentRegistry.registerCustomComponent(
@@ -132,8 +135,17 @@ export function registerItems(data: StartupEvent) {
     "minere:phased_ender_pearl",
     PhasedEnderPearl,
   );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:slab_double",
+    slabDouble,
+  );
+  data.itemComponentRegistry.registerCustomComponent(
+    "minere:dark_charge",
+    DarkChargeItem,
+  );
   data.itemComponentRegistry.registerCustomComponent("minere:guide", Guide);
   data.itemComponentRegistry.registerCustomComponent("minere:helper0", Helper0);
   data.itemComponentRegistry.registerCustomComponent("minere:helper1", Helper1);
   data.itemComponentRegistry.registerCustomComponent("minere:helper2", Helper2);
+  data.itemComponentRegistry.registerCustomComponent("minere:helper3", Helper3);
 }

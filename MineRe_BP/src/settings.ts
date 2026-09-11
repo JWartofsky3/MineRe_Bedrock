@@ -11,6 +11,7 @@ export interface WorldSettings {
   ogreBreaksBlocks: boolean;
   reduceDaylightDrowned: boolean;
   goldXPBonus: boolean;
+  teleporterMaxDistance: number;
 }
 
 export const REDUCED_HEALTH_REGEN = "minere:reducedHealthRegen";
@@ -23,6 +24,10 @@ export const GREMLIN_BREAKS_TORCHES = "minere:gremlinBreaksTorches";
 export const OGRE_BREAKS_BLOCKS = "minere:ogreBreaksBlocks";
 export const REDUCE_DAYLIGHT_DROWNED = "minere:reduceDaylightDrowned";
 export const GOLD_XP_BONUS = "minere:goldXPBonus";
+export const TELEPORTER_MAX_DISTANCE = "minere:teleporterMaxDistance";
+export const MIN_TELEPORTER_MAX_DISTANCE = 99;
+export const MAX_TELEPORTER_MAX_DISTANCE = 9999;
+export const DEFAULT_TELEPORTER_MAX_DISTANCE = 2048;
 const HAS_RECEIVED_GUIDE = "minere:hasReceivedGuide";
 
 // Function to get the current settings from dynamic properties.
@@ -44,7 +49,19 @@ export function getSettings(): WorldSettings {
       REDUCE_DAYLIGHT_DROWNED,
     ) as boolean,
     goldXPBonus: world.getDynamicProperty(GOLD_XP_BONUS) as boolean,
+    teleporterMaxDistance: getTeleporterMaxDistance(),
   };
+}
+
+export function getTeleporterMaxDistance(): number {
+  const value = world.getDynamicProperty(TELEPORTER_MAX_DISTANCE);
+  if (typeof value !== "number" || !Number.isInteger(value)) {
+    return DEFAULT_TELEPORTER_MAX_DISTANCE;
+  }
+  return Math.max(
+    MIN_TELEPORTER_MAX_DISTANCE,
+    Math.min(MAX_TELEPORTER_MAX_DISTANCE, value),
+  );
 }
 
 // Function to save the settings to dynamic properties.
@@ -65,6 +82,16 @@ export function saveSettings(settings: WorldSettings) {
     settings.reduceDaylightDrowned,
   );
   world.setDynamicProperty(GOLD_XP_BONUS, settings.goldXPBonus);
+  world.setDynamicProperty(
+    TELEPORTER_MAX_DISTANCE,
+    Math.max(
+      MIN_TELEPORTER_MAX_DISTANCE,
+      Math.min(
+        MAX_TELEPORTER_MAX_DISTANCE,
+        Math.round(settings.teleporterMaxDistance),
+      ),
+    ),
+  );
 }
 
 /**
@@ -120,6 +147,13 @@ export function initializeWorldSettings(): void {
     // Check and set default for Gold XP Bonus
     if (world.getDynamicProperty(GOLD_XP_BONUS) === undefined) {
       world.setDynamicProperty(GOLD_XP_BONUS, true);
+    }
+
+    if (world.getDynamicProperty(TELEPORTER_MAX_DISTANCE) === undefined) {
+      world.setDynamicProperty(
+        TELEPORTER_MAX_DISTANCE,
+        DEFAULT_TELEPORTER_MAX_DISTANCE,
+      );
     }
   });
 }

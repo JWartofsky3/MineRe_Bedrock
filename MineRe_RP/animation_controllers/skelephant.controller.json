@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.skelephant": {
+      "initial_state": "walking",
+      "states": {
+        "walking": {
+          "animations": [{ "walk": "query.modified_move_speed" }, "look_at_target"],
+          "transitions": [
+            { "sinking": "query.property('minere:is_sinking')" },
+            { "attacking": "query.is_delayed_attacking == 1" },
+            { "stomping": "query.is_roaring" }
+          ],
+          "blend_transition": 0.25
+        },
+        "attacking": {
+          "animations": ["attack", { "walk": "query.modified_move_speed" }],
+          "transitions": [
+            { "sinking": "query.property('minere:is_sinking')" },
+            { "walking": "query.all_animations_finished" },
+            { "stomping": "query.is_roaring" }
+          ],
+          "blend_transition": 0.5
+        },
+        "stomping": {
+          "animations": ["stomp", "look_at_target"],
+          "transitions": [
+            { "sinking": "query.property('minere:is_sinking')" },
+            { "walking": "query.all_animations_finished" }
+          ],
+          "blend_transition": 0.5
+        },
+        "sinking": {
+          "animations": ["sink"],
+          "blend_transition": 0.0
+        }
+      }
+    }
+  }
+}

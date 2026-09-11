@@ -8,13 +8,14 @@
     "conditions": [
       {
         "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underground": {},
         "minecraft:brightness_filter": {
           "min": 0,
           "max": 7,
           "adjust_for_weather": false
         },
         "minecraft:weight": {
-          "default": 20
+          "default": 12
         },
         "minecraft:biome_filter": {
           "any_of": [
@@ -26,7 +27,7 @@
             {
               "test": "has_biome_tag",
               "operator": "==",
-              "value": "extreme_hills"
+              "value": "tundra"
             },
             {
               "test": "has_biome_tag",

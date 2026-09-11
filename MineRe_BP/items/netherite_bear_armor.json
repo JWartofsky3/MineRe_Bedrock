@@ -15,6 +15,8 @@
       "minecraft:max_stack_size": 1,
       "minecraft:enchantable": { "value": 15, "slot": "armor_torso" },
       "minecraft:tags": { "tags": ["minere:bear_armor"] },
+      "minecraft:durability": { "max_durability": 1628 },
+      "minecraft:repairable": { "repair_items": [{ "items": ["minecraft:netherite_ingot"], "repair_amount": 326 }] },
       "minecraft:wearable": { "slot": "slot.armor.body", "protection": 20 },
       "minecraft:fire_resistant": {
         "value": true

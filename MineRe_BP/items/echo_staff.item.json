@@ -13,7 +13,7 @@
       "minecraft:damage": 2,
       "minecraft:can_destroy_in_creative": true,
       "minecraft:enchantable": {
-        "slot": "shield",
+        "slot": "bow",
         "value": 15
       },
       "minecraft:rarity": "rare",

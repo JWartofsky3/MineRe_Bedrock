@@ -102,11 +102,9 @@ export function freezeEntity(target: Entity, duration: number) {
   target.addEffect("mining_fatigue", 80, {
     amplifier: 0,
   });
-  if (dimension.id.includes("nether")) {
-    dimension.spawnParticle("minere:big_smoke", target.location);
-    dimension.playSound("extinguish.fire", target.location);
-    return;
-  }
+  const freezeDuration = dimension.id.includes("nether")
+    ? duration / 2
+    : duration;
   const location = {
     x: Math.round(target.location.x),
     y: Math.round(target.location.y),
@@ -176,7 +174,7 @@ export function freezeEntity(target: Entity, duration: number) {
         height * tickDelay - i * tickDelay,
       );
     }
-  }, duration * 20);
+  }, freezeDuration * 20);
 
   // const size = sizes.get(target.typeId) ?? { x: 1, y: 2};
 

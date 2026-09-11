@@ -1,5 +1,11 @@
 [
   {
+    "flipbook_texture": "textures/blocks/minere/activated_enderon_block",
+    "atlas_tile": "minere:activated_enderon_block",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
     "flipbook_texture": "textures/blocks/minere/amethyst_shield",
     "atlas_tile": "minere:amethyst_shield",
     "frames": [0, 1, 2, 3],
@@ -63,6 +69,12 @@
   {
     "flipbook_texture": "textures/blocks/minere/firefly_lamp/green",
     "atlas_tile": "minere:green_firefly_lamp",
+    "frames": [0, 1, 2, 3],
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/minere/firefly_lamp/red",
+    "atlas_tile": "minere:red_firefly_lamp",
     "frames": [0, 1, 2, 3],
     "ticks_per_frame": 2
   },

@@ -9,6 +9,7 @@ import { BonusXPEvent } from "events/player/bonusXPEvent";
 import { HorseDieRemoveChestEvent } from "events/reaction/horseDieRemoveChest";
 import { BabySpawnMatchParentEvent } from "events/spawning/babySpawnMatchParent";
 import { PlayerInputEvent } from "events/player/playerInputEvent";
+import { BuildIndigonGolemEvent } from "events/spawning/buildIndigonGolem";
 
 export function RegisterCustomEvents() {
   // spawn events
@@ -16,6 +17,7 @@ export function RegisterCustomEvents() {
   new InfernoSpawnEvent().register();
   new GlacierSpawnEvent().register();
   new BabySpawnMatchParentEvent().register();
+  new BuildIndigonGolemEvent().register();
 
   // reaction events
   new EndCrystalDestructionEvent().register();

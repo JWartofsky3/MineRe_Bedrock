@@ -1,0 +1,1 @@
+{"format_version":"1.21.50","minecraft:recipe_shapeless":{"description":{"identifier":"minere:stonecutter_granite_brick_slab"},"tags":["stonecutter"],"ingredients":[{"item":"minere:granite_bricks"}],"result":{"item":"minere:granite_brick_slab","count":2}}}

@@ -10,6 +10,7 @@ import {
   ItemComponentTypes,
   ItemCooldownComponent,
   GameMode,
+  EntityDamageCause,
 } from "@minecraft/server";
 import {
   multiplyVector3Number,
@@ -20,8 +21,42 @@ import { reduceDurability } from "../components/reduce_durability";
 import { replaceableBlocks } from "block/blockUtils";
 import { findItemInContainer } from "../components/item_utils";
 import { showHint } from "./staffHints";
+import { getEnchantmentLevel } from "items/components/item_utils";
+import { throwEntity } from "entities/functions/throw";
+import { isWearingInfernoCrown } from "items/armor/InfernoCrown";
 
 const AMMO_CONSUME_CHANCE = 0.64;
+const INFINITY_AMMO_CONSUMPTION_MULTIPLIER = 0.25;
+const FLAME_SPEED_BONUS = 0.75;
+const FIREBALL_POWER_PROPERTY = "minere:staff_fireball_power";
+const FIREBALL_PUNCH_PROPERTY = "minere:staff_fireball_punch";
+
+world.afterEvents.projectileHitEntity.subscribe((data) => {
+  const projectile = data.projectile;
+  if (projectile.typeId !== "minere:staff_fireball") {
+    return;
+  }
+  const target = data.getEntityHit()?.entity;
+  if (!target) {
+    return;
+  }
+  const powerLevel = projectile.getDynamicProperty(FIREBALL_POWER_PROPERTY);
+  const punchLevel = projectile.getDynamicProperty(FIREBALL_PUNCH_PROPERTY);
+  const projectileComponent = projectile.getComponent(
+    EntityComponentTypes.Projectile,
+  ) as EntityProjectileComponent;
+  const owner = projectileComponent.owner;
+  if (typeof powerLevel === "number" && powerLevel > 0) {
+    target.applyDamage(powerLevel, {
+      damagingEntity: owner,
+      damagingProjectile: projectile,
+      cause: EntityDamageCause.fire,
+    });
+  }
+  if (typeof punchLevel === "number" && punchLevel > 0 && owner) {
+    throwEntity(owner.location, target, punchLevel * 1.5, punchLevel * 0.5);
+  }
+});
 
 export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -29,6 +64,10 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
   const dimension = world.getDimension(source.dimension.id);
   if (itemStack.typeId == "minere:fire_staff") {
     system.run(() => {
+      const infinityLevel = getEnchantmentLevel(source, "infinity");
+      const hasInfernoCrown = isWearingInfernoCrown(source);
+      const ammoConsumptionMultiplier =
+        infinityLevel > 0 ? INFINITY_AMMO_CONSUMPTION_MULTIPLIER : 1;
       if (source.isSneaking) {
         const cooldownComponent = data?.itemStack.getComponent(
           ItemComponentTypes.Cooldown,
@@ -41,7 +80,10 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
           cooldownComponent.startCooldown(source);
         }
         if (
-          !source.runCommand("clear @s[m=!c] fire_charge 0 4").successCount &&
+          !hasInfernoCrown &&
+          !source.runCommand(
+            `clear @s[m=!c] fire_charge 0 ${4 * ammoConsumptionMultiplier}`,
+          ).successCount &&
           source.getGameMode() !== GameMode.Creative
         ) {
           source.playSound("item.amethyst_staff.error");
@@ -55,6 +97,7 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
         reduceDurability(source, itemStack, 6);
       } else {
         if (
+          !hasInfernoCrown &&
           source.getGameMode() !== GameMode.Creative &&
           findItemInContainer(
             (
@@ -69,7 +112,10 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
           showHint(source, "hint.minere:staff.fire.ammo");
           return;
         }
-        if (Math.random() < AMMO_CONSUME_CHANCE) {
+        if (
+          !hasInfernoCrown &&
+          Math.random() < AMMO_CONSUME_CHANCE * ammoConsumptionMultiplier
+        ) {
           source.runCommand("clear @s[m=!c] fire_charge 0 1");
         }
 
@@ -92,13 +138,21 @@ export const useFireStaff = (data: ItemUseBeforeEvent) => {
           EntityComponentTypes.Projectile,
         ) as EntityProjectileComponent;
         proj.owner = source;
+        const powerLevel = getEnchantmentLevel(source, "power");
+        const punchLevel = getEnchantmentLevel(source, "punch");
+        const flameLevel = getEnchantmentLevel(source, "flame");
+        fireball.setDynamicProperty(FIREBALL_POWER_PROPERTY, powerLevel);
+        fireball.setDynamicProperty(FIREBALL_PUNCH_PROPERTY, punchLevel);
         fireball.setRotation({
           x: -1 * source.getRotation().x,
           y: -1 * source.getRotation().y,
         });
         fireball.applyImpulse(
           addVector3(
-            multiplyVector3Number(source.getViewDirection(), 2.25),
+            multiplyVector3Number(
+              source.getViewDirection(),
+              2.25 + flameLevel * FLAME_SPEED_BONUS,
+            ),
             randomVector3(0.05),
           ),
         );

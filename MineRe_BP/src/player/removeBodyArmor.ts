@@ -39,7 +39,8 @@ export function removePlayerBodyArmor(): void {
     const inventory = player.getComponent(
       EntityComponentTypes.Inventory,
     ) as EntityInventoryComponent | undefined;
-    const remaining = inventory?.container.addItem(bodyItem) ?? bodyItem;
+    const container = inventory?.container;
+    const remaining = container ? container.addItem(bodyItem) : bodyItem;
     if (remaining) player.dimension.spawnItem(remaining, player.location);
   }
 }

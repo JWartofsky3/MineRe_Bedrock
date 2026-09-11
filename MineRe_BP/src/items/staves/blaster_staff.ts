@@ -4,6 +4,7 @@ import {
   ItemUseBeforeEvent,
   EntityComponentTypes,
   EntityProjectileComponent,
+  EntityInventoryComponent,
   ItemComponentTypes,
   ItemCooldownComponent,
   EntityEquippableComponent,
@@ -13,6 +14,16 @@ import {
 import { multiplyVector3Number } from "util/vector3Functions";
 import { reduceDurability } from "../components/reduce_durability";
 import { showHint } from "./staffHints";
+import {
+  findItemInContainer,
+  getEnchantmentLevel,
+} from "../components/item_utils";
+
+const AMMO_CONSUME_CHANCE = 0.5;
+const INFINITY_AMMO_CONSUMPTION_MULTIPLIER = 0.5;
+const PLASMA_POWER_PROPERTY = "minere:blaster_plasma_power";
+const PLASMA_PUNCH_PROPERTY = "minere:blaster_plasma_punch";
+const PLASMA_FLAME_PROPERTY = "minere:blaster_plasma_flame";
 
 export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
   const itemStack = data.itemStack;
@@ -45,13 +56,25 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
           showHint(source, "hint.minere:staff.blaster.ammo");
           return;
         }
+        const inventory = source.getComponent(
+          EntityComponentTypes.Inventory,
+        ) as EntityInventoryComponent;
         if (
-          !source.runCommand("clear @s[m=!c] minere:ender_plasma 0 1")
-            .successCount &&
-          source.getGameMode() !== GameMode.Creative
+          source.getGameMode() !== GameMode.Creative &&
+          findItemInContainer(inventory?.container, "minere:ender_plasma") ===
+            -1
         ) {
           source.playSound("item.amethyst_staff.error");
           return;
+        }
+        const infinityLevel = getEnchantmentLevel(source, "infinity");
+        if (
+          source.getGameMode() !== GameMode.Creative &&
+          Math.random() <
+            AMMO_CONSUME_CHANCE *
+              (infinityLevel > 0 ? INFINITY_AMMO_CONSUMPTION_MULTIPLIER : 1)
+        ) {
+          source.runCommand("clear @s[m=!c] minere:ender_plasma 0 1");
         }
 
         dimension.playSound("mob.walker.shoot", source.location);
@@ -64,10 +87,23 @@ export const useBlasterStaff = (data: ItemUseBeforeEvent) => {
           "minere:plasma_bolt",
           loc,
         );
+        plasmaBolt.triggerEvent("minere:activate_player_laser");
         const proj = plasmaBolt.getComponent(
           EntityComponentTypes.Projectile,
         ) as EntityProjectileComponent;
         proj.owner = source;
+        plasmaBolt.setDynamicProperty(
+          PLASMA_POWER_PROPERTY,
+          getEnchantmentLevel(source, "power"),
+        );
+        plasmaBolt.setDynamicProperty(
+          PLASMA_PUNCH_PROPERTY,
+          getEnchantmentLevel(source, "punch"),
+        );
+        plasmaBolt.setDynamicProperty(
+          PLASMA_FLAME_PROPERTY,
+          getEnchantmentLevel(source, "flame") > 0,
+        );
         plasmaBolt.setRotation({
           x: -1 * source.getRotation().x,
           y: -1 * source.getRotation().y,

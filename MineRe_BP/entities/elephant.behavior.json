@@ -9,13 +9,19 @@
       "properties": {
         "minere:armor": {
           "type": "int",
-          "range": [-1, 7],
+          "range": [
+            -1,
+            7
+          ],
           "default": -1,
           "client_sync": true
         },
         "minere:carpet": {
           "type": "int",
-          "range": [-1, 15],
+          "range": [
+            -1,
+            15
+          ],
           "default": -1,
           "client_sync": true
         },
@@ -244,6 +250,11 @@
                     "test": "is_family",
                     "subject": "other",
                     "value": "rat"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "skelephant"
                   }
                 ]
               },
@@ -266,7 +277,10 @@
           "table": "loot_tables/entities/elephant.json"
         },
         "minecraft:attack": {
-          "damage": [10, 20]
+          "damage": [
+            10,
+            20
+          ]
         },
         "minecraft:behavior.delayed_attack": {
           "priority": 3,
@@ -298,17 +312,29 @@
             {
               "min_rider_count": 0,
               "max_rider_count": 3,
-              "position": [0, 3.75, 0.5]
+              "position": [
+                0,
+                3.75,
+                0.5
+              ]
             },
             {
               "min_rider_count": 1,
               "max_rider_count": 3,
-              "position": [-0.6, 3.75, -0.5]
+              "position": [
+                -0.6,
+                3.75,
+                -0.5
+              ]
             },
             {
               "min_rider_count": 2,
               "max_rider_count": 3,
-              "position": [0.6, 3.75, -0.5]
+              "position": [
+                0.6,
+                3.75,
+                -0.5
+              ]
             }
           ]
         },
@@ -342,7 +368,9 @@
             {
               "slot": 0,
               "item": "saddle",
-              "accepted_items": ["saddle"],
+              "accepted_items": [
+                "saddle"
+              ],
               "on_equip": {
                 "event": "minecraft:on_saddled"
               },
@@ -370,7 +398,10 @@
           "container_type": "horse"
         },
         "minecraft:attack": {
-          "damage": [16, 32]
+          "damage": [
+            16,
+            32
+          ]
         },
         "minecraft:healable": {
           "items": [
@@ -442,7 +473,9 @@
         },
         "minecraft:breedable": {
           "require_tame": true,
-          "breed_items": ["golden_apple"],
+          "breed_items": [
+            "golden_apple"
+          ],
           "breeds_with": {
             "mate_type": "minere:elephant",
             "baby_type": "minere:elephant",
@@ -565,7 +598,10 @@
               "event": "minere:become_mobile",
               "cooldown": 0.0,
               "y_offset": 4.5,
-              "range": [3.5, 2.0],
+              "range": [
+                3.5,
+                2.0
+              ],
               "minimum_count": 0,
               "maximum_count": 0,
               "event_filters": {
@@ -588,7 +624,10 @@
               "event": "minere:become_immobile",
               "cooldown": 0.0,
               "y_offset": 4.5,
-              "range": [3.0, 1.5],
+              "range": [
+                3.0,
+                1.5
+              ],
               "minimum_count": 1,
               "event_filters": {
                 "all_of": [
@@ -614,7 +653,9 @@
           "duration": 30,
           "broadcast_anger": true,
           "broadcast_range": 32,
-          "broadcast_targets": ["elephant"],
+          "broadcast_targets": [
+            "elephant"
+          ],
           "broadcast_anger_when_dying": false,
           "calm_event": {
             "event": "minecraft:on_calm",
@@ -788,22 +829,6 @@
                       "test": "has_equipment",
                       "subject": "other",
                       "domain": "hand",
-                      "value": "shears"
-                    }
-                  ]
-                },
-                "event": "minere:remove_equipment"
-              },
-              "interact_text": "action.interact.minere.remove_equipment"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
                       "value": "carpet"
                     }
                   ]
@@ -881,23 +906,37 @@
           "on_rider_exit_event": "minere:allow_stroll",
           "rider_can_interact": true,
           "dismount_mode": "on_top_center",
-          "family_types": ["player"],
+          "family_types": [
+            "player"
+          ],
           "interact_text": "action.interact.ride.horse",
           "seats": [
             {
               "min_rider_count": 0,
               "max_rider_count": 3,
-              "position": [0, 3.75, 0.5]
+              "position": [
+                0,
+                3.75,
+                0.5
+              ]
             },
             {
               "min_rider_count": 1,
               "max_rider_count": 3,
-              "position": [-0.6, 3.75, -0.5]
+              "position": [
+                -0.6,
+                3.75,
+                -0.5
+              ]
             },
             {
               "min_rider_count": 2,
               "max_rider_count": 3,
-              "position": [0.6, 3.75, -0.5]
+              "position": [
+                0.6,
+                3.75,
+                -0.5
+              ]
             }
           ]
         },
@@ -1023,43 +1062,6 @@
                 "filters": {
                   "all_of": [
                     {
-                      "test": "is_sneak_held",
-                      "subject": "other",
-                      "value": false
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "self",
-                      "domain": "inventory",
-                      "value": "saddle"
-                    },
-                    {
-                      "test": "has_equipment",
-                      "subject": "other",
-                      "domain": "hand",
-                      "value": "shears"
-                    },
-                    {
-                      "test": "rider_count",
-                      "subject": "self",
-                      "operator": "equals",
-                      "value": 0
-                    }
-                  ]
-                }
-              },
-              "hurt_item": 1,
-              "drop_item_slot": "0",
-              "drop_item_y_offset": 1.1,
-              "interact_text": "action.interact.removesaddle",
-              "play_sounds": "unsaddle",
-              "vibration": "shear"
-            },
-            {
-              "on_interact": {
-                "filters": {
-                  "all_of": [
-                    {
                       "test": "rider_count",
                       "subject": "self",
                       "operator": ">",
@@ -1088,7 +1090,10 @@
     },
     "components": {
       "minecraft:type_family": {
-        "family": ["elephant", "mob"]
+        "family": [
+          "elephant",
+          "mob"
+        ]
       },
       "minecraft:variable_max_auto_step": {
         "base_value": 2.0,
@@ -1269,7 +1274,9 @@
               ]
             },
             "add": {
-              "component_groups": ["minere:brown"]
+              "component_groups": [
+                "minere:brown"
+              ]
             }
           },
           {
@@ -1292,7 +1299,9 @@
               {
                 "weight": 1,
                 "add": {
-                  "component_groups": ["minere:blue"]
+                  "component_groups": [
+                    "minere:blue"
+                  ]
                 }
               }
             ]
@@ -1301,7 +1310,9 @@
       },
       "minecraft:entity_born": {
         "remove": {
-          "component_groups": ["minere:elephant_adult"]
+          "component_groups": [
+            "minere:elephant_adult"
+          ]
         },
         "add": {
           "component_groups": [
@@ -1316,7 +1327,10 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:baby_wild", "minere:elephant_adult"]
+              "component_groups": [
+                "minere:baby_wild",
+                "minere:elephant_adult"
+              ]
             }
           },
           {
@@ -1344,7 +1358,9 @@
               ]
             },
             "add": {
-              "component_groups": ["minere:elephant_adult"]
+              "component_groups": [
+                "minere:elephant_adult"
+              ]
             }
           },
           {
@@ -1385,29 +1401,40 @@
       },
       "minere:become_gray": {
         "add": {
-          "component_groups": ["minere:gray"]
+          "component_groups": [
+            "minere:gray"
+          ]
         }
       },
       "minere:become_brown": {
         "add": {
-          "component_groups": ["minere:brown"]
+          "component_groups": [
+            "minere:brown"
+          ]
         }
       },
       "minere:become_blue": {
         "add": {
-          "component_groups": ["minere:blue"]
+          "component_groups": [
+            "minere:blue"
+          ]
         }
       },
       "minere:on_tame_elephant": {
         "sequence": [
           {
             "remove": {
-              "component_groups": ["minere:elephant_wild", "minere:baby_wild"]
+              "component_groups": [
+                "minere:elephant_wild",
+                "minere:baby_wild"
+              ]
             }
           },
           {
             "add": {
-              "component_groups": ["minere:elephant_tame"]
+              "component_groups": [
+                "minere:elephant_tame"
+              ]
             }
           },
           {
@@ -1427,36 +1454,52 @@
       },
       "minecraft:on_calm": {
         "remove": {
-          "component_groups": ["minere:elephant_angry"]
+          "component_groups": [
+            "minere:elephant_angry"
+          ]
         },
         "add": {
-          "component_groups": ["minere:elephant_calm"]
+          "component_groups": [
+            "minere:elephant_calm"
+          ]
         }
       },
       "minecraft:become_angry": {
         "remove": {
-          "component_groups": ["minere:elephant_calm"]
+          "component_groups": [
+            "minere:elephant_calm"
+          ]
         },
         "add": {
-          "component_groups": ["minere:elephant_angry"]
+          "component_groups": [
+            "minere:elephant_angry"
+          ]
         }
       },
       "minere:on_chest": {
         "add": {
-          "component_groups": ["minere:elephant_chested"]
+          "component_groups": [
+            "minere:elephant_chested"
+          ]
         }
       },
       "minere:on_remove_chest": {
         "remove": {
-          "component_groups": ["minere:elephant_chested"]
+          "component_groups": [
+            "minere:elephant_chested"
+          ]
         }
       },
       "minecraft:on_saddled": {
         "remove": {
-          "component_groups": ["minere:elephant_unsaddled"]
+          "component_groups": [
+            "minere:elephant_unsaddled"
+          ]
         },
         "add": {
-          "component_groups": ["minere:elephant_saddled"]
+          "component_groups": [
+            "minere:elephant_saddled"
+          ]
         }
       },
       "minecraft:on_unsaddled": {
@@ -1475,12 +1518,16 @@
       },
       "minere:no_stroll": {
         "remove": {
-          "component_groups": ["minere:elephant_stroll"]
+          "component_groups": [
+            "minere:elephant_stroll"
+          ]
         }
       },
       "minere:allow_stroll": {
         "add": {
-          "component_groups": ["minere:elephant_stroll"]
+          "component_groups": [
+            "minere:elephant_stroll"
+          ]
         }
       },
       "minere:become_immobile": {
@@ -1499,7 +1546,9 @@
           ]
         },
         "add": {
-          "component_groups": ["minere:elephant_immobile"]
+          "component_groups": [
+            "minere:elephant_immobile"
+          ]
         },
         "remove": {
           "component_groups": [
@@ -1534,7 +1583,9 @@
           ]
         },
         "remove": {
-          "component_groups": ["minere:elephant_immobile"]
+          "component_groups": [
+            "minere:elephant_immobile"
+          ]
         },
         "set_property": {
           "minere:can_move": true
@@ -1557,16 +1608,22 @@
         },
         "sequence": [
           {
-            "set_property": { "minere:is_stomping": true }
+            "set_property": {
+              "minere:is_stomping": true
+            }
           },
           {
             "remove": {
-              "component_groups": ["minere:elephant_mobile"]
+              "component_groups": [
+                "minere:elephant_mobile"
+              ]
             }
           },
           {
             "add": {
-              "component_groups": ["minere:elephant_stomping"]
+              "component_groups": [
+                "minere:elephant_stomping"
+              ]
             }
           }
         ]
@@ -1574,10 +1631,14 @@
       "minere:end_stomp": {
         "sequence": [
           {
-            "set_property": { "minere:is_stomping": false }
+            "set_property": {
+              "minere:is_stomping": false
+            }
           },
           {
-            "set_property": { "minere:can_move": true }
+            "set_property": {
+              "minere:can_move": true
+            }
           },
           {
             "remove": {
@@ -1589,62 +1650,98 @@
           },
           {
             "add": {
-              "component_groups": ["minere:elephant_mobile"]
+              "component_groups": [
+                "minere:elephant_mobile"
+              ]
             }
           }
         ]
       },
       "minere:on_carpet": {},
       "minere:remove_carpet": {
-        "set_property": { "minere:carpet": -1 }
+        "set_property": {
+          "minere:carpet": -1
+        }
       },
       "minere:white_carpet": {
-        "set_property": { "minere:carpet": 0 }
+        "set_property": {
+          "minere:carpet": 0
+        }
       },
       "minere:orange_carpet": {
-        "set_property": { "minere:carpet": 1 }
+        "set_property": {
+          "minere:carpet": 1
+        }
       },
       "minere:magenta_carpet": {
-        "set_property": { "minere:carpet": 2 }
+        "set_property": {
+          "minere:carpet": 2
+        }
       },
       "minere:light_blue_carpet": {
-        "set_property": { "minere:carpet": 3 }
+        "set_property": {
+          "minere:carpet": 3
+        }
       },
       "minere:yellow_carpet": {
-        "set_property": { "minere:carpet": 4 }
+        "set_property": {
+          "minere:carpet": 4
+        }
       },
       "minere:lime_carpet": {
-        "set_property": { "minere:carpet": 5 }
+        "set_property": {
+          "minere:carpet": 5
+        }
       },
       "minere:pink_carpet": {
-        "set_property": { "minere:carpet": 6 }
+        "set_property": {
+          "minere:carpet": 6
+        }
       },
       "minere:gray_carpet": {
-        "set_property": { "minere:carpet": 7 }
+        "set_property": {
+          "minere:carpet": 7
+        }
       },
       "minere:light_gray_carpet": {
-        "set_property": { "minere:carpet": 8 }
+        "set_property": {
+          "minere:carpet": 8
+        }
       },
       "minere:cyan_carpet": {
-        "set_property": { "minere:carpet": 9 }
+        "set_property": {
+          "minere:carpet": 9
+        }
       },
       "minere:purple_carpet": {
-        "set_property": { "minere:carpet": 10 }
+        "set_property": {
+          "minere:carpet": 10
+        }
       },
       "minere:blue_carpet": {
-        "set_property": { "minere:carpet": 11 }
+        "set_property": {
+          "minere:carpet": 11
+        }
       },
       "minere:brown_carpet": {
-        "set_property": { "minere:carpet": 12 }
+        "set_property": {
+          "minere:carpet": 12
+        }
       },
       "minere:green_carpet": {
-        "set_property": { "minere:carpet": 13 }
+        "set_property": {
+          "minere:carpet": 13
+        }
       },
       "minere:red_carpet": {
-        "set_property": { "minere:carpet": 14 }
+        "set_property": {
+          "minere:carpet": 14
+        }
       },
       "minere:black_carpet": {
-        "set_property": { "minere:carpet": 15 }
+        "set_property": {
+          "minere:carpet": 15
+        }
       }
     }
   }

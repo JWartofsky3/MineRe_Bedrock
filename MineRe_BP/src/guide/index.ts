@@ -15,29 +15,40 @@ import {
 } from "guide/equipmentDiscovery";
 import { showEquipmentPage } from "guide/equipmentPages";
 import { showItemsPage } from "guide/itemsPages";
+import {
+  ACHIEVEMENTS,
+  getCompletedAchievementCount,
+  showAchievementsPage,
+} from "guide/achievements";
 import { showPreferencesPage } from "guide/preferences";
 import { showSettingsPage } from "guide/settings";
+import { showAboutPage } from "guide/about";
 
 const sections = [
   "animals",
+  "golems",
   "monsters",
   "bosses",
   "equipment",
   "blocks",
   "items",
+  "achievements",
 ] as const;
 
 const sectionIcons: Partial<Record<(typeof sections)[number], string>> = {
   animals: "textures/guide/animals/deer",
+  golems: "textures/guide/golems/indigon_golem",
   monsters: "textures/guide/monsters/ogre",
   bosses: "textures/guide/bosses/inferno",
   equipment: "textures/items/minere/emerald_staff",
   blocks: "textures/guide/blocks/indigon_block",
   items: "textures/items/minere/ender_plasma",
+  achievements: "textures/items/minere/ice_crown",
 };
 
 const undiscoveredSectionIcons: Partial<Record<DiscoveryCategory, string>> = {
   animals: "textures/items/egg",
+  golems: "textures/guide/blocks/indigon_block",
   monsters: "textures/items/bone",
   bosses: "textures/items/nether_star",
 };
@@ -46,6 +57,7 @@ const discoveryCategories: Partial<
   Record<(typeof sections)[number], DiscoveryCategory>
 > = {
   animals: "animals",
+  golems: "golems",
   monsters: "monsters",
   bosses: "bosses",
 };
@@ -97,6 +109,17 @@ export function showGuide(player: Player) {
             },
         sectionIcons[section],
       );
+    } else if (section === "achievements") {
+      form.button(
+        {
+          translate: "guide.minere.section.achievements.progress",
+          with: [
+            getCompletedAchievementCount(player).toString(),
+            ACHIEVEMENTS.length.toString(),
+          ],
+        },
+        sectionIcons[section],
+      );
     } else {
       form.button(`guide.minere.section.${section}`, sectionIcons[section]);
     }
@@ -106,6 +129,7 @@ export function showGuide(player: Player) {
     "textures/guide/main/preferences",
   );
   form.button("guide.minere.section.settings", "textures/guide/main/settings");
+  form.button("guide.minere.section.about", "textures/items/minere/guide");
   form.label("guide.minere.section.crafting_hint");
   form
     .show(player)
@@ -121,10 +145,15 @@ export function showGuide(player: Player) {
         showSettingsPage(player, () => showGuide(player));
         return;
       }
+      if (response.selection === sections.length + 2) {
+        showAboutPage(player, () => showGuide(player));
+        return;
+      }
       const section = sections[response.selection];
       const onBack = () => showGuide(player);
       if (
         section === "animals" ||
+        section === "golems" ||
         section === "monsters" ||
         section === "bosses"
       ) {
@@ -137,6 +166,10 @@ export function showGuide(player: Player) {
       }
       if (section === "items") {
         showItemsPage(player, onBack);
+        return;
+      }
+      if (section === "achievements") {
+        showAchievementsPage(player, onBack);
         return;
       }
       showBlocksPage(player, onBack);

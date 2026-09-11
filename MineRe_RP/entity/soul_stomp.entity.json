@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minere:soul_stomp",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/minere/stomp/soul_stomp"
+      },
+      "geometry": {
+        "default": "geometry.minere.stomp"
+      },
+      "render_controllers": ["controller.render.minere.stomp"],
+      "spawn_egg": {
+        "base_color": "#2f6f75",
+        "overlay_color": "#78d8d2"
+      }
+    }
+  }
+}

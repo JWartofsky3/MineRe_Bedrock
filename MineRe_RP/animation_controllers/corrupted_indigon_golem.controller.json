@@ -1,0 +1,18 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minere.corrupted_indigon_golem_particles": {
+      "initial_state": "active",
+      "states": {
+        "active": {
+          "particle_effects": [
+            {
+              "effect": "dark_particles",
+              "locator": "center_particles"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

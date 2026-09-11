@@ -15,6 +15,8 @@
       "minecraft:max_stack_size": 1,
       "minecraft:enchantable": { "value": 10, "slot": "armor_torso" },
       "minecraft:tags": { "tags": ["minere:bear_armor"] },
+      "minecraft:durability": { "max_durability": 1452 },
+      "minecraft:repairable": { "repair_items": [{ "items": ["minecraft:diamond"], "repair_amount": 291 }] },
       "minecraft:wearable": { "slot": "slot.armor.body", "protection": 19 }
     }
   }

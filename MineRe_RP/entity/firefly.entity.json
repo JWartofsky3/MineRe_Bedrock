@@ -14,7 +14,9 @@
         "purple": "textures/entity/minere/firefly/purple",
         "purple_off": "textures/entity/minere/firefly/purple_off",
         "blue": "textures/entity/minere/firefly/blue",
-        "blue_off": "textures/entity/minere/firefly/blue_off"
+        "blue_off": "textures/entity/minere/firefly/blue_off",
+        "red": "textures/entity/minere/firefly/red",
+        "red_off": "textures/entity/minere/firefly/red_off"
       },
       "geometry": {
         "default": "geometry.minere.firefly"

@@ -1,7 +1,8 @@
 import { system, Entity, Vector3 } from "@minecraft/server";
 import { isSolid } from "block/blockUtils";
+import { findValidLocation } from "functions/area/findValidLocation";
 import { particleWave } from "particles/particleWave";
-import { distVector3, getRandomAir } from "util/vector3Functions";
+import { distVector3 } from "util/vector3Functions";
 
 const TELEPORT_PROPERTIES = {
   MAX_DISTANCE: 32,
@@ -68,36 +69,32 @@ export function tryInfernoTeleport(options: InfernoTeleportOptions): void {
     TELEPORT_PROPERTIES.MIN_DISTANCE_TO_TARGET + distanceBonus;
   const maxTeleportDistance =
     TELEPORT_PROPERTIES.MAX_DISTANCE_TO_TARGET + distanceBonus;
-  const randomOffset = Math.ceil(maxTeleportDistance);
-
-  for (let i = 0; i < 6; i++) {
-    const candidate = getRandomAir(origin, entity.dimension, randomOffset, 6);
-    if (!candidate) {
-      continue;
-    }
-    const destination = snapToBlockCenter(candidate);
-    const distance = distVector3(destination, origin);
-    const vertical = Math.abs(destination.y - origin.y);
-    if (distance < minTeleportDistance || distance > maxTeleportDistance) {
-      continue;
-    }
-    if (vertical > TELEPORT_PROPERTIES.VERTICAL_RANGE) {
-      continue;
-    }
-    if (
-      !isWithinTeleportRange(entity, destination, options.dynamicProperties)
-    ) {
-      continue;
-    }
-    if (!isSafeTeleportDestination(entity, destination)) {
-      continue;
-    }
-    if (!hasTeleportLineOfSight(destination, target)) {
-      continue;
-    }
+  const destination = findValidLocation({
+    dimension: entity.dimension,
+    origin,
+    attempts: 36,
+    maxHorizontalDistance: maxTeleportDistance,
+    minVerticalOffset: -TELEPORT_PROPERTIES.VERTICAL_RANGE,
+    maxVerticalOffset: TELEPORT_PROPERTIES.VERTICAL_RANGE,
+    centerOnBlock: true,
+    clearance: {
+      width: 1,
+      height: TELEPORT_PROPERTIES.REQUIRED_CLEARANCE_HEIGHT,
+      requireGround: false,
+    },
+    target: {
+      location: origin,
+      minDistance: minTeleportDistance,
+      maxDistance: maxTeleportDistance,
+      maxVerticalDistance: TELEPORT_PROPERTIES.VERTICAL_RANGE,
+    },
+    isValidCandidate: (location) =>
+      isWithinTeleportRange(entity, location, options.dynamicProperties) &&
+      hasTeleportLineOfSight(location, target),
+  });
+  if (destination) {
     teleportWithEffects(entity, destination, origin);
     markTeleported(entity, options.dynamicProperties);
-    return;
   }
 }
 
@@ -166,44 +163,6 @@ function isWithinTeleportRange(
     distVector3(entity.location, destination) > TELEPORT_PROPERTIES.MAX_DISTANCE
   ) {
     return false;
-  }
-  return true;
-}
-
-function snapToBlockCenter(location: { x: number; y: number; z: number }): {
-  x: number;
-  y: number;
-  z: number;
-} {
-  return {
-    x: Math.floor(location.x) + 0.5,
-    y: Math.floor(location.y),
-    z: Math.floor(location.z) + 0.5,
-  };
-}
-
-function isSafeTeleportDestination(
-  entity: Entity,
-  destination: { x: number; y: number; z: number },
-): boolean {
-  const base = {
-    x: Math.floor(destination.x),
-    y: Math.floor(destination.y),
-    z: Math.floor(destination.z),
-  };
-
-  for (let y = 0; y < TELEPORT_PROPERTIES.REQUIRED_CLEARANCE_HEIGHT; y++) {
-    const checkBlock = entity.dimension.getBlock({
-      x: base.x,
-      y: base.y + y,
-      z: base.z,
-    });
-    if (!checkBlock?.isValid) {
-      return false;
-    }
-    if (!checkBlock.isAir) {
-      return false;
-    }
   }
   return true;
 }

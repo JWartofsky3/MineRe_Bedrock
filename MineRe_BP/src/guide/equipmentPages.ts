@@ -24,6 +24,8 @@ interface ItemPageOptions {
   entries?: EquipmentPageText[];
   sections?: EquipmentPageSection[];
   buttons?: EquipmentPageButton[];
+  buttonGroups?: EquipmentPageButtonGroup[];
+  unobtainedItemIds?: readonly string[];
   emptyMessage?: EquipmentPageText;
 }
 
@@ -32,13 +34,49 @@ interface EquipmentPageSection {
   entries: EquipmentPageText[];
 }
 
+interface EquipmentPageButtonGroup {
+  title: EquipmentPageText;
+  buttons: EquipmentPageButton[];
+}
+
+const MAGIC_ITEM_COLORS: Readonly<Record<string, string>> = {
+  "minere:amethyst_staff": "§d",
+  "minere:blaster_staff": "§5",
+  "minere:echo_staff": "§b",
+  "minere:emerald_staff": "§a",
+  "minere:fire_staff": "§c",
+  "minere:ice_staff": "§b",
+  "minere:dark_staff": "§8",
+  "minere:darkheart": "§4",
+  "minere:firebrand": "§c",
+  "minere:ghostwalker": "§7",
+  "minere:ice_dagger": "§b",
+  "minere:illumina": "§e",
+  "minere:venom_shank": "§2",
+  "minere:windforce": "§9",
+  "minere:fire_axe": "§c",
+  "minere:ice_pick": "§b",
+  "minere:shadow_scythe": "§8",
+  "minere:wind_shovel": "§9",
+};
+
+function coloredEquipmentItemName(itemId: string): RawMessage {
+  return {
+    rawtext: [
+      { text: MAGIC_ITEM_COLORS[itemId] ?? "§f" },
+      { translate: `item.${itemId}` },
+      { text: "§r" },
+    ],
+  };
+}
+
 /** A standard ActionForm page used for text-only item sets and categories. */
 export class ItemPage {
   constructor(private readonly options: ItemPageOptions) {}
 
   show(player: Player, onBack: () => void): void {
     const entries = this.options.entries ?? [];
-    const buttons = (this.options.buttons ?? []).filter((button) => {
+    const isVisible = (button: EquipmentPageButton): boolean => {
       if (player.getGameMode() === GameMode.Creative) {
         return true;
       }
@@ -47,7 +85,20 @@ export class ItemPage {
         !button.requiredItemId ||
         hasDiscoveredEquipment(player, button.requiredItemId)
       );
-    });
+    };
+    const buttons = (this.options.buttons ?? []).filter(isVisible);
+    const buttonGroups = (this.options.buttonGroups ?? []).map((group) => ({
+      ...group,
+      buttons: group.buttons.filter(isVisible),
+    }));
+    const groupedButtons = buttonGroups.flatMap((group) => group.buttons);
+    const allButtons = [...buttons, ...groupedButtons];
+    const unobtainedItemIds =
+      player.getGameMode() === GameMode.Creative
+        ? []
+        : (this.options.unobtainedItemIds ?? []).filter(
+            (itemId) => !hasDiscoveredEquipment(player, itemId),
+          );
     const form = new ActionFormData().title(this.options.title);
 
     for (const entry of entries) {
@@ -61,8 +112,10 @@ export class ItemPage {
       }
     }
     if (
-      buttons.length === 0 &&
-      (this.options.emptyMessage || this.options.buttons?.length)
+      allButtons.length === 0 &&
+      (this.options.emptyMessage ||
+        this.options.buttons?.length ||
+        this.options.buttonGroups?.some((group) => group.buttons.length))
     ) {
       form.label(
         this.options.emptyMessage ?? {
@@ -89,6 +142,35 @@ export class ItemPage {
           : button.text);
       form.button(text, button.iconPath);
     }
+    for (const group of buttonGroups) {
+      form.divider();
+      form.header(group.title);
+      for (const button of group.buttons) {
+        const text =
+          button.getText?.(player) ??
+          (player.getGameMode() !== GameMode.Creative &&
+          button.progressTranslation &&
+          button.progressItemIds
+            ? {
+                translate: button.progressTranslation,
+                with: [
+                  getDiscoveredEquipmentCount(
+                    player,
+                    button.progressItemIds,
+                  ).toString(),
+                  button.progressItemIds.length.toString(),
+                ],
+              }
+            : button.text);
+        form.button(text, button.iconPath);
+      }
+    }
+    if (unobtainedItemIds.length > 0) {
+      form.divider();
+      for (const itemId of unobtainedItemIds) {
+        form.label(coloredEquipmentItemName(itemId));
+      }
+    }
     form.button({ translate: "guide.minere.back" });
     form
       .show(player)
@@ -96,11 +178,11 @@ export class ItemPage {
         if (response.canceled || response.selection === undefined) {
           return;
         }
-        if (response.selection === buttons.length) {
+        if (response.selection === allButtons.length) {
           onBack();
           return;
         }
-        buttons[response.selection].show(player, () =>
+        allButtons[response.selection].show(player, () =>
           this.show(player, onBack),
         );
       })
@@ -131,7 +213,7 @@ function magicItemButton(
     ],
   });
   return {
-    text: { translate: `item.${itemId}` },
+    text: coloredEquipmentItemName(itemId),
     iconPath: imagePath,
     requiredItemId: itemId,
     show: (player, onBack) => page.show(player, onBack),
@@ -140,6 +222,7 @@ function magicItemButton(
 
 const magicStavesPage = new ItemPage({
   title: { translate: "guide.minere.equipment.magic_staves" },
+  unobtainedItemIds: DISCOVERABLE_EQUIPMENT.magicStaves,
   emptyMessage: {
     translate: "guide.minere.equipment.magic_staves.none_discovered",
   },
@@ -376,8 +459,8 @@ const magicStavesPage = new ItemPage({
       },
     ]),
     magicItemButton(
-      "minere:shadow_staff",
-      "textures/items/minere/shadow_staff",
+      "minere:dark_staff",
+      "textures/items/minere/dark_staff",
       [
         {
           title: { translate: "guide.minere.equipment.stats" },
@@ -422,6 +505,7 @@ const magicStavesPage = new ItemPage({
 
 const magicSwordsPage = new ItemPage({
   title: { translate: "guide.minere.equipment.magic_swords" },
+  unobtainedItemIds: DISCOVERABLE_EQUIPMENT.magicSwords,
   emptyMessage: {
     translate: "guide.minere.equipment.magic_swords.none_discovered",
   },
@@ -632,52 +716,68 @@ const magicSwordsPage = new ItemPage({
 
 const magicToolsPage = new ItemPage({
   title: { translate: "guide.minere.equipment.magic_tools" },
+  unobtainedItemIds: DISCOVERABLE_EQUIPMENT.magicTools,
   emptyMessage: {
     translate: "guide.minere.equipment.magic_tools.none_discovered",
   },
   buttons: [
-    magicItemButton("minere:fire_axe", "textures/items/minere/fire_axe", [
-      {
-        title: { translate: "guide.minere.equipment.stats" },
-        entries: [
-          {
-            translate: "guide.minere.equipment.stat.attack_damage",
-            with: ["6"],
-          },
-          {
-            translate: "guide.minere.equipment.stat.durability",
-            with: ["2000"],
-          },
-        ],
-      },
-      {
-        title: { translate: "guide.minere.equipment.abilities" },
-        entries: [
-          { translate: "guide.minere.equipment.tool.fire_axe.abilities" },
-        ],
-      },
-    ]),
-    magicItemButton("minere:ice_pick", "textures/items/minere/ice_pick", [
-      {
-        title: { translate: "guide.minere.equipment.stats" },
-        entries: [
-          {
-            translate: "guide.minere.equipment.stat.attack_damage",
-            with: ["5"],
-          },
-          {
-            translate: "guide.minere.equipment.stat.durability",
-            with: ["1024"],
-          },
-        ],
-      },
-      {
-        title: { translate: "guide.minere.equipment.abilities" },
-        entries: [
-          { translate: "guide.minere.equipment.tool.ice_pick.abilities" },
-        ],
-      },
-    ]),
+    magicItemButton(
+      "minere:fire_axe",
+      "textures/items/minere/fire_axe",
+      [
+        {
+          title: { translate: "guide.minere.equipment.stats" },
+          entries: [
+            {
+              translate: "guide.minere.equipment.stat.attack_damage",
+              with: ["6"],
+            },
+            {
+              translate: "guide.minere.equipment.stat.durability",
+              with: ["2000"],
+            },
+          ],
+        },
+        {
+          title: { translate: "guide.minere.equipment.abilities" },
+          entries: [
+            { translate: "guide.minere.equipment.tool.fire_axe.abilities" },
+          ],
+        },
+      ],
+      ["guide.minere.equipment.tool.fire_axe.obtain.inferno"],
+    ),
+    magicItemButton(
+      "minere:ice_pick",
+      "textures/items/minere/ice_pick",
+      [
+        {
+          title: { translate: "guide.minere.equipment.stats" },
+          entries: [
+            {
+              translate: "guide.minere.equipment.stat.attack_damage",
+              with: ["5"],
+            },
+            {
+              translate: "guide.minere.equipment.stat.durability",
+              with: ["1024"],
+            },
+          ],
+        },
+        {
+          title: { translate: "guide.minere.equipment.abilities" },
+          entries: [
+            { translate: "guide.minere.equipment.tool.ice_pick.abilities" },
+          ],
+        },
+      ],
+      [
+        "guide.minere.equipment.tool.ice_pick.obtain.glacier",
+        "guide.minere.equipment.tool.ice_pick.obtain.ice_dungeon",
+        "guide.minere.equipment.tool.ice_pick.obtain.ice_castle",
+        "guide.minere.equipment.tool.ice_pick.obtain.goblin_trades",
+      ],
+    ),
     magicItemButton(
       "minere:shadow_scythe",
       "textures/items/minere/shadow_scythe",
@@ -704,28 +804,37 @@ const magicToolsPage = new ItemPage({
           ],
         },
       ],
+      ["guide.minere.equipment.tool.shadow_scythe.obtain.wither_pyramid"],
     ),
-    magicItemButton("minere:wind_shovel", "textures/items/minere/wind_shovel", [
-      {
-        title: { translate: "guide.minere.equipment.stats" },
-        entries: [
-          {
-            translate: "guide.minere.equipment.stat.attack_damage",
-            with: ["7"],
-          },
-          {
-            translate: "guide.minere.equipment.stat.durability",
-            with: ["1400"],
-          },
-        ],
-      },
-      {
-        title: { translate: "guide.minere.equipment.abilities" },
-        entries: [
-          { translate: "guide.minere.equipment.tool.wind_shovel.abilities" },
-        ],
-      },
-    ]),
+    magicItemButton(
+      "minere:wind_shovel",
+      "textures/items/minere/wind_shovel",
+      [
+        {
+          title: { translate: "guide.minere.equipment.stats" },
+          entries: [
+            {
+              translate: "guide.minere.equipment.stat.attack_damage",
+              with: ["7"],
+            },
+            {
+              translate: "guide.minere.equipment.stat.durability",
+              with: ["1400"],
+            },
+          ],
+        },
+        {
+          title: { translate: "guide.minere.equipment.abilities" },
+          entries: [
+            { translate: "guide.minere.equipment.tool.wind_shovel.abilities" },
+          ],
+        },
+      ],
+      [
+        "guide.minere.equipment.tool.wind_shovel.obtain.trial_chambers",
+        "guide.minere.equipment.tool.wind_shovel.obtain.goblin_trades",
+      ],
+    ),
   ],
 });
 
@@ -819,17 +928,35 @@ const treecapitatorsPage = new ItemPage({
   ],
 });
 
+type ToolsetMaterial =
+  | "wooden"
+  | "golden"
+  | "stone"
+  | "iron"
+  | "diamond"
+  | "netherite"
+  | "enderon"
+  | "indigon";
+
 function toolsetPage(
-  set: "enderon" | "indigon",
+  set: ToolsetMaterial,
   durability: string,
   miningSpeed: string,
+  swordDamage: string,
 ): ItemPage {
+  const isCustom = set === "enderon" || set === "indigon";
+  const itemKey = (item: string): string =>
+    isCustom ? `item.minere:${set}_${item}` : `item.${set}_${item}.name`;
   return new ItemPage({
     title: { translate: `guide.minere.equipment.${set}_tools` },
     sections: [
       {
         title: { translate: "guide.minere.equipment.stats" },
         entries: [
+          {
+            translate: "guide.minere.equipment.stat.attack_damage",
+            with: [swordDamage],
+          },
           {
             translate: "guide.minere.equipment.stat.durability",
             with: [durability],
@@ -838,56 +965,113 @@ function toolsetPage(
             translate: "guide.minere.equipment.stat.mining_speed",
             with: [miningSpeed],
           },
-          { translate: `guide.minere.equipment.${set}_tools.repair` },
+          ...(isCustom
+            ? [{ translate: `guide.minere.equipment.${set}_tools.repair` }]
+            : []),
         ],
       },
-      {
-        title: { translate: "guide.minere.equipment.abilities" },
-        entries: [
-          { translate: `guide.minere.equipment.${set}_tools.abilities` },
-        ],
-      },
+      ...(isCustom
+        ? [
+            {
+              title: { translate: "guide.minere.equipment.abilities" },
+              entries: [
+                { translate: `guide.minere.equipment.${set}_tools.abilities` },
+              ],
+            },
+          ]
+        : []),
       {
         title: { translate: "guide.minere.equipment.includes" },
         entries: [
-          { translate: `item.minere:${set}_sword` },
-          { translate: `item.minere:${set}_spear` },
-          { translate: `item.minere:${set}_pickaxe` },
-          { translate: `item.minere:${set}_axe` },
-          { translate: `item.minere:${set}_shovel` },
-          { translate: `item.minere:${set}_hoe` },
+          { translate: itemKey("sword") },
+          ...(isCustom ? [{ translate: itemKey("spear") }] : []),
+          { translate: itemKey("pickaxe") },
+          { translate: itemKey("axe") },
+          { translate: itemKey("shovel") },
+          { translate: itemKey("hoe") },
         ],
       },
     ],
   });
 }
 
-const enderonToolsPage = toolsetPage("enderon", "1280", "12");
-const indigonToolsPage = toolsetPage("indigon", "1776", "8");
+const woodenToolsPage = toolsetPage("wooden", "59", "2", "4");
+const goldenToolsPage = toolsetPage("golden", "32", "12", "4");
+const stoneToolsPage = toolsetPage("stone", "131", "4", "5");
+const ironToolsPage = toolsetPage("iron", "250", "6", "6");
+const diamondToolsPage = toolsetPage("diamond", "1561", "8", "7");
+const indigonToolsPage = toolsetPage("indigon", "1776", "8", "7");
+const enderonToolsPage = toolsetPage("enderon", "1280", "12", "7");
+const netheriteToolsPage = toolsetPage("netherite", "2031", "9", "8");
 
 const toolsetsPage = new ItemPage({
   title: { translate: "guide.minere.equipment.toolsets" },
   buttons: [
     {
-      text: { translate: "guide.minere.equipment.enderon_tools" },
-      iconPath: "textures/items/minere/enderon_pickaxe",
-      show: (player, onBack) => enderonToolsPage.show(player, onBack),
+      text: { translate: "guide.minere.equipment.wooden_tools" },
+      iconPath: "textures/items/wood_sword",
+      show: (player, onBack) => woodenToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.golden_tools" },
+      iconPath: "textures/items/gold_sword",
+      show: (player, onBack) => goldenToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.stone_tools" },
+      iconPath: "textures/items/stone_sword",
+      show: (player, onBack) => stoneToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.iron_tools" },
+      iconPath: "textures/items/iron_sword",
+      show: (player, onBack) => ironToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.diamond_tools" },
+      iconPath: "textures/items/diamond_sword",
+      show: (player, onBack) => diamondToolsPage.show(player, onBack),
     },
     {
       text: { translate: "guide.minere.equipment.indigon_tools" },
-      iconPath: "textures/items/minere/indigon_pickaxe",
+      iconPath: "textures/items/minere/indigon_sword",
       show: (player, onBack) => indigonToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.enderon_tools" },
+      iconPath: "textures/items/minere/enderon_sword",
+      show: (player, onBack) => enderonToolsPage.show(player, onBack),
+    },
+    {
+      text: { translate: "guide.minere.equipment.netherite_tools" },
+      iconPath: "textures/items/netherite_sword",
+      show: (player, onBack) => netheriteToolsPage.show(player, onBack),
     },
   ],
 });
 
+type ArmorMaterial =
+  | "leather"
+  | "chainmail"
+  | "golden"
+  | "iron"
+  | "diamond"
+  | "netherite"
+  | "enderon"
+  | "indigon"
+  | "aetherial";
+
 function armorSetPage(
-  set: "enderon" | "indigon" | "aetherial",
+  set: ArmorMaterial,
   protection: string,
   durability: string,
-  abilityKey: string,
+  weight: "light" | "heavy",
+  abilityKey?: string,
   craftingKey?: string,
 ): ItemPage {
+  const isCustom = ["enderon", "indigon", "aetherial"].includes(set);
+  const itemKey = (item: string): string =>
+    isCustom ? `item.minere:${set}_${item}` : `item.${set}_${item}.name`;
   return new ItemPage({
     title: { translate: `guide.minere.equipment.${set}_armor` },
     sections: [
@@ -904,16 +1088,20 @@ function armorSetPage(
           },
           {
             translate:
-              set === "indigon"
+              weight === "heavy"
                 ? "guide.minere.equipment.stat.weight_heavy"
                 : "guide.minere.equipment.stat.weight_light",
           },
         ],
       },
-      {
-        title: { translate: "guide.minere.equipment.abilities" },
-        entries: [{ translate: abilityKey }],
-      },
+      ...(abilityKey
+        ? [
+            {
+              title: { translate: "guide.minere.equipment.abilities" },
+              entries: [{ translate: abilityKey }],
+            },
+          ]
+        : []),
       ...(craftingKey
         ? [
             {
@@ -925,10 +1113,10 @@ function armorSetPage(
       {
         title: { translate: "guide.minere.equipment.includes" },
         entries: [
-          { translate: `item.minere:${set}_helmet` },
-          { translate: `item.minere:${set}_chestplate` },
-          { translate: `item.minere:${set}_leggings` },
-          { translate: `item.minere:${set}_boots` },
+          { translate: itemKey("helmet") },
+          { translate: itemKey("chestplate") },
+          { translate: itemKey("leggings") },
+          { translate: itemKey("boots") },
         ],
       },
     ],
@@ -939,39 +1127,88 @@ const enderonArmorPage = armorSetPage(
   "enderon",
   "20",
   "1485",
+  "light",
   "guide.minere.equipment.armor.enderon.abilities",
 );
 const indigonArmorPage = armorSetPage(
   "indigon",
   "20",
   "2065",
+  "heavy",
   "guide.minere.equipment.armor.indigon.abilities",
 );
 const aetherialArmorPage = armorSetPage(
   "aetherial",
   "17",
   "1485",
+  "light",
   "guide.minere.equipment.armor.aetherial.abilities",
   "guide.minere.equipment.armor.aetherial.crafting",
 );
+const leatherArmorPage = armorSetPage("leather", "7", "275", "light");
+const chainmailArmorPage = armorSetPage("chainmail", "12", "825", "light");
+const goldenArmorPage = armorSetPage("golden", "11", "385", "heavy");
+const ironArmorPage = armorSetPage("iron", "15", "825", "heavy");
+const diamondArmorPage = armorSetPage("diamond", "20", "1815", "heavy");
+const netheriteArmorPage = armorSetPage("netherite", "20", "2035", "heavy");
 
 const armorPage = new ItemPage({
   title: { translate: "guide.minere.equipment.armor" },
-  buttons: [
+  buttonGroups: [
     {
-      text: { translate: "guide.minere.equipment.enderon_armor" },
-      iconPath: "textures/items/minere/enderon_helmet",
-      show: (player, onBack) => enderonArmorPage.show(player, onBack),
+      title: { text: "§aLight§r" },
+      buttons: [
+        {
+          text: { translate: "guide.minere.equipment.leather_armor" },
+          iconPath: "textures/items/leather_helmet",
+          show: (player, onBack) => leatherArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.chainmail_armor" },
+          iconPath: "textures/items/chainmail_helmet",
+          show: (player, onBack) => chainmailArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.aetherial_armor" },
+          iconPath: "textures/items/minere/aetherial_helmet",
+          show: (player, onBack) => aetherialArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.enderon_armor" },
+          iconPath: "textures/items/minere/enderon_helmet",
+          show: (player, onBack) => enderonArmorPage.show(player, onBack),
+        },
+      ],
     },
     {
-      text: { translate: "guide.minere.equipment.indigon_armor" },
-      iconPath: "textures/items/minere/indigon_helmet",
-      show: (player, onBack) => indigonArmorPage.show(player, onBack),
-    },
-    {
-      text: { translate: "guide.minere.equipment.aetherial_armor" },
-      iconPath: "textures/items/minere/aetherial_helmet",
-      show: (player, onBack) => aetherialArmorPage.show(player, onBack),
+      title: { text: "§cHeavy§r" },
+      buttons: [
+        {
+          text: { translate: "guide.minere.equipment.golden_armor" },
+          iconPath: "textures/items/gold_helmet",
+          show: (player, onBack) => goldenArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.iron_armor" },
+          iconPath: "textures/items/iron_helmet",
+          show: (player, onBack) => ironArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.diamond_armor" },
+          iconPath: "textures/items/diamond_helmet",
+          show: (player, onBack) => diamondArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.netherite_armor" },
+          iconPath: "textures/items/netherite_helmet",
+          show: (player, onBack) => netheriteArmorPage.show(player, onBack),
+        },
+        {
+          text: { translate: "guide.minere.equipment.indigon_armor" },
+          iconPath: "textures/items/minere/indigon_helmet",
+          show: (player, onBack) => indigonArmorPage.show(player, onBack),
+        },
+      ],
     },
   ],
 });

@@ -1,0 +1,11 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": { "identifier": "minere:lapis_brick_slab", "menu_category": { "category": "construction" } },
+    "components": {
+      "minecraft:display_name": { "value": "tile.minere:lapis_brick_slab.name" },
+      "minecraft:block_placer": { "block": "minere:lapis_brick_slab", "replace_block_item": true, "use_on": [] },
+      "minere:slab_double": { "variant": "minere:lapis_bricks" }
+    }
+  }
+}

@@ -206,11 +206,6 @@
         },
         {
           "type": "item",
-          "name": "minere:inferno_ward",
-          "weight": 1
-        },
-        {
-          "type": "item",
           "name": "minere:inferno_totem",
           "weight": 1
         }

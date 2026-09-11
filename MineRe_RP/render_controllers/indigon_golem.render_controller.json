@@ -1,0 +1,56 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minere.indigon_golem": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Texture.default"]
+    },
+    "controller.render.minere.indigon_golem_fire": {
+      "arrays": {
+        "textures": {
+          "Array.fire": ["Texture.fire0", "Texture.fire1"],
+          "Array.sonic_fire": ["Texture.sonicFire0", "Texture.sonicFire1"],
+          "Array.plasma_fire": ["Texture.plasma_fire0", "Texture.plasma_fire1"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.fire"
+        }
+      ],
+      "textures": [
+        "query.is_sonic_boom ? Array.sonic_fire[math.mod(math.floor(query.life_time * 2), 2)] : variable.is_charging ? Array.plasma_fire[math.mod(math.floor(query.life_time * 2), 2)] : Array.fire[math.mod(math.floor(query.life_time * 2), 2)]"
+      ]
+    },
+    "controller.render.minere.indigon_golem_damage": {
+      "arrays": {
+        "textures": {
+          "Array.damage": [
+            "Texture.empty",
+            "Texture.damage0",
+            "Texture.damage1",
+            "Texture.damage2",
+            "Texture.damage3",
+            "Texture.damage4",
+            "Texture.damage5"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.damage"
+        }
+      ],
+      "textures": [
+        "Array.damage[query.health / 200 < 0.15 ? 6 : query.health / 200 < 0.3 ? 5 : query.health / 200 < 0.45 ? 4 : query.health / 200 < 0.6 ? 3 : query.health / 200 < 0.75 ? 2 : query.health / 200 < 0.9 ? 1 : 0]"
+      ]
+    }
+  }
+}

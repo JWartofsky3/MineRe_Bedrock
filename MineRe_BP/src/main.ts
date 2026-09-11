@@ -16,7 +16,6 @@ import { playerHungerHeal } from "player/playerHungerHeal";
 import { armorWeight } from "player/armorWeight";
 import { getItemLoreSyncInterval, syncItemLore } from "items/itemLore";
 import { checkStaffEquipHint } from "items/staves/staffHints";
-import { removePlayerBodyArmor } from "player/removeBodyArmor";
 
 // ───────────────────────── Imports: Items ─────────────────────────
 import { useAmethystStaff } from "items/staves/amethyst_staff";
@@ -30,6 +29,8 @@ import { onAxeUse, onShovelUse, onHoeUse } from "items/components/custom_tools";
 
 // ───────────────────────── Imports: Blocks ─────────────────────────
 import { blockDropItem } from "block/blockDropItem";
+import { sendTeleporterPlacementHint } from "block/teleporter";
+import { sendEnderSorterPlacementHint } from "block/enderSorter";
 
 // ───────────────────────── Imports: Mobs / AI ─────────────────────────
 import { skeletonStrafe } from "mob/skeleton_strafe";
@@ -38,10 +39,11 @@ import { matchParent } from "events/spawning/babySpawnMatchParent";
 // ───────────────────────── Imports: World / Weather ─────────────────────────
 import { runEndStorms } from "weather/end_storm";
 import { useEmeraldStaff } from "items/staves/emerald_staff";
-import { useShadowStaff } from "items/staves/shadow_staff";
+import { useDarkStaff } from "items/staves/dark_staff";
 import { RegisterCustomEvents } from "registry/eventRegistry";
 import { initializeGuideDiscovery } from "guide/discovery";
 import { initializeGuideEquipmentDiscovery } from "guide/equipmentDiscovery";
+import { initializeGuideAchievements } from "guide/achievements";
 
 // ───────────────────────── Constants ─────────────────────────
 export const DEFAULT_TICK = 20;
@@ -58,6 +60,7 @@ system.beforeEvents.startup.subscribe((data: StartupEvent) => {
 giveGuideOnInitialSpawn();
 initializeGuideDiscovery();
 initializeGuideEquipmentDiscovery();
+initializeGuideAchievements();
 
 // ───────────────────────── Item Events ─────────────────────────
 world.afterEvents.itemReleaseUse.subscribe(fireInfintyBowAfter);
@@ -69,7 +72,7 @@ world.beforeEvents.itemUse.subscribe((data) => {
   useFireStaff(data);
   useBlasterStaff(data);
   useEmeraldStaff(data);
-  useShadowStaff(data);
+  useDarkStaff(data);
   useIceStaff(data);
 });
 
@@ -79,6 +82,15 @@ world.afterEvents.entityHealthChanged.subscribe(playerHungerHeal);
 world.afterEvents.playerBreakBlock.subscribe((data) => {
   offHandTreecapitate(data);
   blockDropItem(data);
+});
+
+world.afterEvents.playerPlaceBlock.subscribe((data) => {
+  if (data.block.typeId === "minere:teleporter") {
+    sendTeleporterPlacementHint(data.player);
+  }
+  if (data.block.typeId === "minere:ender_sorter") {
+    sendEnderSorterPlacementHint(data.player);
+  }
 });
 
 world.afterEvents.playerInteractWithBlock.subscribe((data) => {
@@ -111,10 +123,6 @@ system.runInterval(() => {
 
 system.runInterval(() => {
   world.getAllPlayers().forEach(checkStaffEquipHint);
-}, 1);
-
-system.runInterval(() => {
-  removePlayerBodyArmor();
 }, 1);
 
 runEndStorms();

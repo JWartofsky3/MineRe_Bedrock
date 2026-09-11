@@ -5,6 +5,9 @@ import { teleporter } from "block/teleporter";
 import { ghostPot } from "block/ghost_pot";
 import { despawnBlock } from "block/despawnBlock";
 import { icicleBreak } from "block/icicleBreak";
+import { stairs } from "block/stairs";
+import { activatedEnderonBlock } from "block/activatedEnderonBlock";
+import { enderSorter } from "block/enderSorter";
 
 export function registerBlocks(data: StartupEvent) {
   data.blockComponentRegistry.registerCustomComponent(
@@ -24,6 +27,14 @@ export function registerBlocks(data: StartupEvent) {
     teleporter,
   );
   data.blockComponentRegistry.registerCustomComponent(
+    "minere:activated_enderon_block",
+    activatedEnderonBlock,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
+    "minere:ender_sorter",
+    enderSorter,
+  );
+  data.blockComponentRegistry.registerCustomComponent(
     "minere:ghost_pot",
     ghostPot,
   );
@@ -31,4 +42,5 @@ export function registerBlocks(data: StartupEvent) {
     "minere:icicle_break",
     icicleBreak,
   );
+  data.blockComponentRegistry.registerCustomComponent("minere:stairs", stairs);
 }

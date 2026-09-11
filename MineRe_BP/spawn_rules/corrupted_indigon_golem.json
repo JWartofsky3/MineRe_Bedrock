@@ -1,0 +1,10 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minere:corrupted_indigon_golem",
+      "population_control": "monster"
+    },
+    "conditions": []
+  }
+}
